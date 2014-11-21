@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.google.android.apps.common.testing.accessibility.framework</groupId>
+  <artifactId>accessibility-test-framework</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Accessibility Test Framework</name>
+  <url>https://code.google.com/p/eyes-free/</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.android.support</groupId>
+      <artifactId>support-v4</artifactId>
+      <version>19.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>android</groupId>
+      <artifactId>android</artifactId>
+      <version>5.0_r1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <sourceDirectory>src</sourceDirectory>
+    <pluginManagement>
+     <plugins>
+      <plugin>
+       <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+       <artifactId>android-maven-plugin</artifactId>
+       <version>3.1.1</version>
+       <extensions>true</extensions>
+      </plugin>
+     </plugins>
+    </pluginManagement>
+    <plugins>
+     <plugin>
+      <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+      <artifactId>android-maven-plugin</artifactId>
+      <configuration>
+       <sdk>
+        <platform>21</platform>
+       </sdk>
+      </configuration>
+     </plugin>
+    </plugins>
+   </build>
+</project>

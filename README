@@ -1,0 +1,36 @@
+Accessibility Test Framework for Android
+----------------------------------------
+To help people with disabilities access Android apps, developers of those apps
+need to consider how their apps will be presented to accessibility services.
+Some good practices can be checked by automated tools, such as if a View has a
+contentDescription. Other rules require human judgment, such as whether or not
+a contentDescription makes sense to all users.
+
+For more information about Mobile Accessibility, see:
+http://www.w3.org/WAI/mobile/
+
+This library collects various accessibility-related checks on View objects as
+well as AccessibilityNodeInfo objects (which the Android framework derives from
+Views and sends to AccessibilityServices).
+
+Building the Library
+--------------------
+Use maven to build the library. You will need to install Android 5.0 (API 21) 
+or higher to build the library. We used the Maven Android SDK Deployer to build:
+https://github.com/mosabua/maven-android-sdk-deployer
+
+Sample Usage
+------------
+Given a View view, the following code runs all accessibility checks and throws 
+an exception if any errors are found:
+
+Set<AccessibilityCheck> checks = getAllChecksForPreset(VIEW_CHECKS);
+List<AccessibilityViewCheckResult> results = new LinkedList<AccessibilityViewCheckResult>();
+for (AccessibilityCheck check : checks) {
+  results.addAll(((AccessibilityViewCheck) check).runCheckOnView(view));
+}
+List<AccessibilityViewCheckResult> errors = AccessibilityCheckResultUtils.getResultsForType(
+        results, AccessibilityCheckResultType.ERROR);
+if (errors.size() > 0) {
+  throw new RuntimeException(errors.get(0).getMessage().toString());
+}
