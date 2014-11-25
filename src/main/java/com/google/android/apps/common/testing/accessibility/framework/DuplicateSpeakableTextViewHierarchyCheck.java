@@ -29,15 +29,11 @@ import java.util.Set;
 
 /**
  * If two Views in a hierarchy have the same speakable text, that could be confusing for users.
- * If one of those Views is clickable and the other isn't, that's an error because a user will
- * not be able to distinguish the View that performs the desired action from the "decoy".
- * Two clickable Views can have the same speakable text if clicking the two Views produces the same
- * result. Since it is not possible to determine if they do, in fact, product the same result, we
- * warn in that situation.
+ * Two Views with the same text, and at least one of them is clickable we warn in that situation.
  * If we find two non-clickable Views with the same speakable text, we report that fact as info.
  * If no Views in the hierarchy have any speakable text, we report that the test was not run.
  */
-public class SpeakableTextUniqueViewCheck extends AccessibilityViewHierarchyCheck {
+public class DuplicateSpeakableTextViewHierarchyCheck extends AccessibilityViewHierarchyCheck {
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(View root) {
@@ -45,10 +41,10 @@ public class SpeakableTextUniqueViewCheck extends AccessibilityViewHierarchyChec
 
     /* Find all text and the views that have that text */
     Set<View> allViews = AccessibilityCheckUtils.getAllViewsInHierarchy(root);
-    Map<CharSequence, List<View>> textToViewMap = getSpeakableTextToViewMap(allViews);
+    Map<String, List<View>> textToViewMap = getSpeakableTextToViewMap(allViews);
 
     /* Deal with any duplicated text */
-    for (CharSequence speakableText : textToViewMap.keySet()) {
+    for (String speakableText : textToViewMap.keySet()) {
       if (textToViewMap.get(speakableText).size() < 2) {
         continue; // Text is not duplicated
       }
@@ -64,39 +60,32 @@ public class SpeakableTextUniqueViewCheck extends AccessibilityViewHierarchyChec
         }
       }
 
-      /* Display warning or errors */
       if (clickableViews.size() > 0) {
-        if (nonClickableViews.size() > 0) {
-          results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.ERROR,
-              String.format("Clickable view's speakable text: \"%s\" is identical to that of %d "
-                  + "non-clickable view(s)", speakableText.toString(),
-                  nonClickableViews.size()), clickableViews.get(0)));
-        } else {
-          results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.WARNING,
-              String.format("Clickable view's speakable text: \"%s\" is identical to that of %d "
-                  + "other clickable view(s)", speakableText.toString(),
-                  nonClickableViews.size()), clickableViews.get(0)));
-        }
+        /* Display warning */
+        results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.WARNING,
+            String.format("Clickable view's speakable text: \"%s\" is identical to that of %d "
+                + "other view(s)", speakableText, nonClickableViews.size()),
+                clickableViews.get(0)));
         clickableViews.remove(0);
       } else {
         /* Only duplication is on non-clickable views */
         results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.INFO,
             String.format("Non-clickable view's speakable text: \"%s\" is identical to that of %d "
-                + "other non-clickable view(s)", speakableText.toString(),
-                nonClickableViews.size() - 1), nonClickableViews.get(0)));
+                + "other non-clickable view(s)", speakableText, nonClickableViews.size() - 1),
+                nonClickableViews.get(0)));
         nonClickableViews.remove(0);
       }
 
       /* Add infos to help track down the duplication */
       for (View clickableView : clickableViews) {
         results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.INFO,
-            String.format("  Clickable View has speakable text: \"%s\".",
-                speakableText.toString()), clickableView));
+            String.format("  Clickable View has speakable text: \"%s\".", speakableText),
+            clickableView));
       }
       for (View clickableView : nonClickableViews) {
         results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.INFO,
-            String.format("  Non-clickable View has speakable text: \"%s\".",
-                speakableText.toString()), clickableView));
+            String.format("  Non-clickable View has speakable text: \"%s\".", speakableText),
+            clickableView));
       }
     }
 
@@ -113,11 +102,12 @@ public class SpeakableTextUniqueViewCheck extends AccessibilityViewHierarchyChec
    * @param allViews Set of views to index by their speakable text
    * @return map from speakable text to all views with that speakable text
    */
-  private Map<CharSequence, List<View>> getSpeakableTextToViewMap(Set<View> allViews) {
-    Map<CharSequence, List<View>> textToViewMap = new HashMap<CharSequence, List<View>>();
+  private Map<String, List<View>> getSpeakableTextToViewMap(Set<View> allViews) {
+    Map<String, List<View>> textToViewMap = new HashMap<String, List<View>>();
 
     for (View view : allViews) {
-      CharSequence speakableText = AccessibilityCheckUtils.getSpeakableTextForView(view);
+      String speakableText = AccessibilityCheckUtils.getSpeakableTextForView(view)
+          .toString().trim();
       if (TextUtils.isEmpty(speakableText)) {
         continue;
       }

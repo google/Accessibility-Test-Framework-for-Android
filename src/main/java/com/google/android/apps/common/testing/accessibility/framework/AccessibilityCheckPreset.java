@@ -40,11 +40,11 @@ public enum AccessibilityCheckPreset {
   INFO_HIERARCHY_CHECKS;
 
   private static final AccessibilityCheck[] ALL_ACCESSIBILITY_CHECKS = {
+      new DuplicateSpeakableTextViewHierarchyCheck(),
       new EditableContentDescInfoCheck(),
       new EditableContentDescViewCheck(),
       new SpeakableTextPresentInfoCheck(),
       new SpeakableTextPresentViewCheck(),
-      new SpeakableTextUniqueViewCheck(),
       new TextContrastViewCheck(),
       new TouchTargetSizeViewCheck()
     };

@@ -47,8 +47,8 @@ public class TouchTargetSizeViewCheck extends AccessibilityViewCheck {
     if (view.getTouchDelegate() == null) {
       if (targetHeight < TOUCH_TARGET_MIN_HEIGHT || targetWidth < TOUCH_TARGET_MIN_WIDTH) {
         String message = String.format("View is too small of a touch target. Minimum touch target "
-            + "size is %dx%ddp. Actual size is (%.1fx%.1fdp).",
-            TOUCH_TARGET_MIN_HEIGHT, TOUCH_TARGET_MIN_WIDTH, targetHeight, targetWidth);
+            + "size is %dx%ddp. Actual size is %.1fx%.1fdp (screen density is %.1f).",
+            TOUCH_TARGET_MIN_WIDTH, TOUCH_TARGET_MIN_HEIGHT, targetWidth, targetHeight, density);
         results.add(new AccessibilityViewCheckResult(
             this, AccessibilityCheckResultType.ERROR, message, view));
       }
