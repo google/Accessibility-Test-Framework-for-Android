@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import android.net.Uri;
 
 /**
  * Helper class for monitoring packages on the system.
- * 
+ *
  * @author svetoslavganov@google.com (Svetoslav R. Ganov)
  * @author alanv@google.com (Alan Viverette)
  */
@@ -106,7 +106,7 @@ public abstract class BasePackageMonitor extends BroadcastReceiver {
 
     /**
      * Called when a new application package has been installed on the device.
-     * 
+     *
      * @param packageName The name of the package that was added.
      */
     protected abstract void onPackageAdded(String packageName);
@@ -114,7 +114,7 @@ public abstract class BasePackageMonitor extends BroadcastReceiver {
     /**
      * Called when an existing application package has been removed from the
      * device.
-     * 
+     *
      * @param packageName The name of the package that was removed.
      */
     protected abstract void onPackageRemoved(String packageName);
@@ -122,7 +122,7 @@ public abstract class BasePackageMonitor extends BroadcastReceiver {
     /**
      * Called when an existing application package has been changed (e.g. a
      * component has been disabled or enabled).
-     * 
+     *
      * @param packageName The name of the package that was changed.
      */
     protected abstract void onPackageChanged(String packageName);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 Google Inc.
+ * Copyright (C) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ public class LogUtils {
      * <code>
      * LogUtils.log(this, Log.ERROR, "Invalid value: %d", value);
      * </code>
-     * 
+     *
      * @param source The object that generated the log event.
      * @param priority The log entry priority, see
      *            {@link Log#println(int, String, String)}.
@@ -74,7 +74,7 @@ public class LogUtils {
     /**
      * Logs a formatted string to the console using the default tag (see
      * {@link LogUtils#TAG}.
-     * 
+     *
      * @param priority The log entry priority, see
      *            {@link Log#println(int, String, String)}.
      * @param format A format string, see
@@ -87,7 +87,7 @@ public class LogUtils {
 
     /**
      * Sets the log display level.
-     * 
+     *
      * @param logLevel The minimum log level that will be printed to the
      *            console.
      */
