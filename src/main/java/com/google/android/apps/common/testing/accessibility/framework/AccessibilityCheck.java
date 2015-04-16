@@ -22,9 +22,8 @@ package com.google.android.apps.common.testing.accessibility.framework;
  * {@code AccessibilityInfoCheck}, the base class for checks that run against
  * {@code AccessibilityNodeInfo}s.
  *
- * Classes extending this one must implement {@code runCheck...} that return {@code List}s of
+ * <p>Classes extending this one must implement {@code runCheck...} that return {@code List}s of
  * a subclass of {@code AccessibilityCheckResult}.
  */
 public abstract class AccessibilityCheck {
-
 }

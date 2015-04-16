@@ -18,13 +18,28 @@ package com.google.android.apps.common.testing.accessibility.framework;
 
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
- * Base class to check the accessibility of {@code View}s.
+ * Base class for checking a single View.
+ * Use hierarchy checks instead. All single-view checks are being rewritten to be
+ * hierarchy checks instead.
  */
-public abstract class AccessibilityViewCheck extends AccessibilityCheck {
+@Deprecated
+public abstract class AccessibilityViewCheck extends AccessibilityViewHierarchyCheck {
   public AccessibilityViewCheck() {
+  }
+
+  @Override
+  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(View root) {
+    List<AccessibilityViewCheckResult> results = new ArrayList<>();
+    Set<View> viewsToCheck = ViewAccessibilityUtils.getAllViewsInHierarchy(root);
+    for (View view : viewsToCheck) {
+      results.addAll(runCheckOnView(view));
+    }
+    return results;
   }
 
   /**
@@ -35,5 +50,4 @@ public abstract class AccessibilityViewCheck extends AccessibilityCheck {
    * empty if the check passes without incident.
    */
   public abstract List<AccessibilityViewCheckResult> runCheckOnView(View view);
-
 }

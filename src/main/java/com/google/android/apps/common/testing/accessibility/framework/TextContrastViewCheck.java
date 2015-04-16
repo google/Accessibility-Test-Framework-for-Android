@@ -1,16 +1,14 @@
 /*
  * Copyright (C) 2014 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 
@@ -22,6 +20,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,6 +28,7 @@ import com.googlecode.eyesfree.utils.ContrastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Check to ensure that a TextView has sufficient contrast between text color and background color
@@ -39,7 +39,7 @@ public class TextContrastViewCheck extends AccessibilityViewCheck {
   public List<AccessibilityViewCheckResult> runCheckOnView(View view) {
     ArrayList<AccessibilityViewCheckResult> results = new ArrayList<AccessibilityViewCheckResult>();
     // TODO(caseyburkhardt): Implement this for other types of views
-    if (view instanceof TextView) {
+    if ((view instanceof TextView) && (!TextUtils.isEmpty(((TextView) view).getText()))) {
       TextView textView = (TextView) view;
       int textColor = textView.getCurrentTextColor();
       Drawable background = textView.getBackground();
@@ -53,34 +53,36 @@ public class TextContrastViewCheck extends AccessibilityViewCheck {
               ContrastUtils.calculateLuminance(textColor),
               ContrastUtils.calculateLuminance(backgroundColor));
           double backgroundAlpha = Color.alpha(backgroundColor);
-          double requiredContrast = isLargeText(textView)
-              ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
-              : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+          double requiredContrast =
+              isLargeText(textView) ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
+                  : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
           if (contrast < requiredContrast) {
             if (backgroundAlpha < 255) {
               // Cannot guarantee contrast ratio if the background is not opaque
               String message = "View's background color must be opaque";
-              results.add(new AccessibilityViewCheckResult(
-                  this, AccessibilityCheckResultType.NOT_RUN, message, view));
+              results.add(new AccessibilityViewCheckResult(this.getClass(),
+                  AccessibilityCheckResultType.NOT_RUN, message, view));
             } else {
-              String message = String.format("TextView does not have required contrast of "
-                  + "%f. Actual contrast is %f", requiredContrast, contrast);
-              results.add(new AccessibilityViewCheckResult(
-                  this, AccessibilityCheckResultType.ERROR, message, view));
+              String message = String.format(Locale.US,
+                  "TextView does not have required contrast of " + "%f. Actual contrast is %f",
+                  requiredContrast, contrast);
+              results.add(new AccessibilityViewCheckResult(this.getClass(),
+                  AccessibilityCheckResultType.ERROR, message, view));
             }
           }
         } else {
           String message = "Cannot be run on API levels lower than 11";
-          results.add(new AccessibilityViewCheckResult(
-                  this, AccessibilityCheckResultType.NOT_RUN, message, view));
+          results.add(new AccessibilityViewCheckResult(this.getClass(),
+              AccessibilityCheckResultType.NOT_RUN, message, view));
         }
-      } else {  // non-solid background color
-        results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.NOT_RUN,
-            "TextView does not have a solid background color", view));
+      } else { // non-solid background color
+        results.add(new AccessibilityViewCheckResult(this.getClass(),
+            AccessibilityCheckResultType.NOT_RUN, "TextView does not have a solid background color",
+            view));
       }
     } else {
-      results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.NOT_RUN,
-          "View must be a TextView", view));
+      results.add(new AccessibilityViewCheckResult(this.getClass(),
+          AccessibilityCheckResultType.NOT_RUN, "View must be a non-empty TextView", view));
     }
     return results;
   }
@@ -91,9 +93,9 @@ public class TextContrastViewCheck extends AccessibilityViewCheck {
    */
   private static boolean isLargeText(TextView textView) {
     float textSize = textView.getTextSize();
-    if ((textSize >= ContrastUtils.WCAG_LARGE_TEXT_MIN_SIZE)
-        || ((textSize >= ContrastUtils.WCAG_LARGE_BOLD_TEXT_MIN_SIZE)
-            && textView.getTypeface().isBold())) {
+    if ((textSize >= ContrastUtils.WCAG_LARGE_TEXT_MIN_SIZE) || (
+        (textSize >= ContrastUtils.WCAG_LARGE_BOLD_TEXT_MIN_SIZE)
+        && textView.getTypeface().isBold())) {
       return true;
     }
     return false;

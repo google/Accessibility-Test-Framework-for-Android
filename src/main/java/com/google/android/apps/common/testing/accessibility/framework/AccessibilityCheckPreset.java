@@ -16,7 +16,6 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,64 +23,121 @@ import java.util.Set;
  * Pre-sets for check configurations used with {@code getConfigForPreset}
  */
 public enum AccessibilityCheckPreset {
+  /** The latest set of checks (in general the most comprehensive list */
+  LATEST,
+
+  /** The set of checks available in the 1.0 release of the framework */
+  VERSION_1_0_CHECKS,
+
   /** Don't check anything */
   NO_CHECKS,
 
-  /** Check everything on a single View */
-  VIEW_CHECKS,
-
-  /** Check everything on a single AccessibilityNodeInfo */
-  INFO_CHECKS,
-
-  /** Check everything on all Views in a hierarchy */
-  VIEW_HIERARCHY_CHECKS,
-
-  /** Check everything on all AccessibilityNodeInfos in a hierarchy */
-  INFO_HIERARCHY_CHECKS;
-
-  private static final AccessibilityCheck[] ALL_ACCESSIBILITY_CHECKS = {
-      new DuplicateSpeakableTextViewHierarchyCheck(),
-      new EditableContentDescInfoCheck(),
-      new EditableContentDescViewCheck(),
-      new SpeakableTextPresentInfoCheck(),
-      new SpeakableTextPresentViewCheck(),
-      new TextContrastViewCheck(),
-      new TouchTargetSizeViewCheck()
-    };
+  /**
+   * Preset used occasionally to hold checks that are about to be part of {@code LATEST}.
+   * Includes all checks in {@code LATEST}.
+   */
+  PRERELEASE;
 
   /**
    * @param preset The preset of interest
-   * @return An unmodifiable set of all checks with scopes that are covered by the specified scope
+   * @return A set of all checks for {@code View}s with scopes for the preset
    */
-  public static Set<AccessibilityCheck> getAllChecksForPreset(AccessibilityCheckPreset preset) {
-    Set<AccessibilityCheck> checks = new HashSet<AccessibilityCheck>();
-    for (AccessibilityCheck check : ALL_ACCESSIBILITY_CHECKS) {
-      switch (preset) {
-        case VIEW_CHECKS:
-          if (check instanceof AccessibilityViewCheck) {
-            checks.add(check);
-          }
-          break;
-        case VIEW_HIERARCHY_CHECKS:
-          if (check instanceof AccessibilityViewHierarchyCheck) {
-            checks.add(check);
-          }
-          break;
-        case INFO_CHECKS:
-          if (check instanceof AccessibilityInfoCheck) {
-            checks.add(check);
-          }
-          break;
-        case INFO_HIERARCHY_CHECKS:
-          if (check instanceof AccessibilityInfoHierarchyCheck) {
-            checks.add(check);
-          }
-          break;
-        case NO_CHECKS:
-        default:
-          break;
-      }
+  public static Set<AccessibilityViewHierarchyCheck>
+      getViewChecksForPreset(AccessibilityCheckPreset preset) {
+    Set<AccessibilityViewHierarchyCheck> checks = new HashSet<>();
+    if (preset == NO_CHECKS) {
+      return checks;
     }
-    return Collections.unmodifiableSet(checks);
+
+    /* Checks included in version 1.0 */
+    checks.add(new TouchTargetSizeViewCheck());
+    checks.add(new TextContrastViewCheck());
+    checks.add(new DuplicateSpeakableTextViewHierarchyCheck());
+    checks.add(new SpeakableTextPresentViewCheck());
+    checks.add(new EditableContentDescViewCheck());
+    if (preset == VERSION_1_0_CHECKS) {
+      return checks;
+    }
+
+    /* Checks added since last release */
+    checks.add(new ClickableSpanViewCheck());
+    checks.add(new RedundantContentDescViewCheck());
+    checks.add(new DuplicateClickableBoundsViewCheck());
+    if (preset == LATEST) {
+      return checks;
+    }
+
+    if (preset == PRERELEASE) {
+      return checks;
+    }
+    /*
+     * Throw an exception if we didn't handle a preset. This code should be unreachable, but it
+     * makes writing a test for unhandled presets trivial.
+     */
+    throw new IllegalArgumentException();
+  }
+
+  /**
+   * @param preset The preset of interest
+   * @return A set of all checks for {@code AccessibilityNodeInfo}s with scopes for the preset
+   */
+  public static Set<AccessibilityInfoHierarchyCheck>
+      getInfoChecksForPreset(AccessibilityCheckPreset preset) {
+    Set<AccessibilityInfoHierarchyCheck> checks = new HashSet<>();
+    if (preset == NO_CHECKS) {
+      return checks;
+    }
+
+    /* Checks included in version 1.0 */
+    checks.add(new EditableContentDescInfoCheck());
+    checks.add(new SpeakableTextPresentInfoCheck());
+    if (preset == VERSION_1_0_CHECKS) {
+      return checks;
+    }
+
+    /* Checks added since last release */
+    checks.add(new ClickableSpanInfoCheck());
+    checks.add(new TouchTargetSizeInfoCheck());
+    checks.add(new RedundantContentDescInfoCheck());
+    checks.add(new DuplicateClickableBoundsInfoCheck());
+    if (preset == LATEST) {
+      return checks;
+    }
+    if (preset == PRERELEASE) {
+      return checks;
+    }
+
+    /*
+     * Throw an exception if we didn't handle a preset. This code should be unreachable, but it
+     * makes writing a test for unhandled presets trivial.
+     */
+    throw new IllegalArgumentException();
+  }
+
+  /**
+   * @param preset The preset of interest
+   * @return A set of all checks for {@code AccessibilityNodeInfo}s with scopes for the preset
+   */
+  public static Set<AccessibilityEventCheck>
+      getEventChecksForPreset(AccessibilityCheckPreset preset) {
+    Set<AccessibilityEventCheck> checks = new HashSet<>();
+    if ((preset == NO_CHECKS) || (preset == VERSION_1_0_CHECKS)) {
+      return checks;
+    }
+
+    /* Checks added since last release */
+    checks.add(new AnnouncementEventCheck());
+    if (preset == LATEST) {
+      return checks;
+    }
+    if (preset == PRERELEASE) {
+      return checks;
+    }
+
+    /*
+     * Throw an exception if we didn't handle a preset. This code should be unreachable, but it
+     * makes writing a test for unhandled presets trivial.
+     */
+    throw new IllegalArgumentException();
   }
 }

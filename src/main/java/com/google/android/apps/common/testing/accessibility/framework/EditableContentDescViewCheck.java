@@ -37,16 +37,17 @@ public class EditableContentDescViewCheck extends AccessibilityViewCheck {
       TextView textView = (TextView) view;
       if ((textView.getEditableText() != null)) {
         if (!TextUtils.isEmpty(textView.getContentDescription())) {
-          results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.ERROR,
+          results.add(new AccessibilityViewCheckResult(this.getClass(),
+              AccessibilityCheckResultType.ERROR,
               "Editable TextView should not have a contentDescription.", textView));
         }
       } else {
-        results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.NOT_RUN,
-            "TextView must be editable", textView));
+        results.add(new AccessibilityViewCheckResult(this.getClass(),
+            AccessibilityCheckResultType.NOT_RUN, "TextView must be editable", textView));
       }
     } else {
-      results.add(new AccessibilityViewCheckResult(this, AccessibilityCheckResultType.NOT_RUN,
-          "View must be a TextView", view));
+      results.add(new AccessibilityViewCheckResult(this.getClass(),
+          AccessibilityCheckResultType.NOT_RUN, "View must be a TextView", view));
     }
 
     return results;

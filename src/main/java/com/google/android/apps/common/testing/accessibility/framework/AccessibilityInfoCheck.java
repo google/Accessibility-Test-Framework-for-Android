@@ -16,20 +16,37 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+import android.content.Context;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Base class to check the accessibility of {@code AccessibilityNodeInfo}s.
  */
-public abstract class AccessibilityInfoCheck extends AccessibilityCheck {
+public abstract class AccessibilityInfoCheck extends AccessibilityInfoHierarchyCheck {
+  @Override
+  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(
+      AccessibilityNodeInfo root, Context context) {
+    List<AccessibilityInfoCheckResult> results = new ArrayList<>();
+    List<AccessibilityNodeInfoCompat> compatInfos = getAllInfoCompatsInHierarchy(context, root);
+    for (AccessibilityNodeInfoCompat compatInfo : compatInfos) {
+      AccessibilityNodeInfo info = (AccessibilityNodeInfo) compatInfo.getInfo();
+      results.addAll(runCheckOnInfo(info, context));
+    }
+    return results;
+  }
+
   /**
    * Run the check on the view.
    * @param info The node info to check. The info should be fully initialized and part of a valid
    * hierarchy so all of its methods can be called.
+   * @param context The context of the service.
    * @return A list of interesting results encountered while running the check. The list will be
    * empty if the check passes without incident.
    */
-  public abstract List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info);
+  public abstract List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
+      Context context);
 }

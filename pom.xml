@@ -4,11 +4,47 @@
 
   <groupId>com.google.android.apps.common.testing.accessibility.framework</groupId>
   <artifactId>accessibility-test-framework</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>2.0</version>
   <packaging>jar</packaging>
 
   <name>Accessibility Test Framework</name>
+  <description>Library used to test for common accessibility issues.</description>
   <url>https://code.google.com/p/eyes-free/</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Phil Weaver</name>
+      <email>pweaver@google.com</email>
+      <organization>Google, Inc</organization>
+      <organizationUrl>http://www.google.com</organizationUrl>
+    </developer>
+    <developer>
+      <name>Casey Burkhardt</name>
+      <email>caseyburkhardt@google.com</email>
+      <organization>Google, Inc</organization>
+      <organizationUrl>http://www.google.com</organizationUrl>
+    </developer>
+    <developer>
+      <name>Samuel Rush</name>
+      <email>sjrush@google.com</email>
+      <organization>Google, Inc</organization>
+      <organizationUrl>http://www.google.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:svn:http://eyes-free.googlecode.com/svn/trunk/</connection>
+    <developerConnection>scm:svn:https://eyes-free.googlecode.com/svn/trunk/</developerConnection>
+    <url>https://code.google.com/p/eyes-free/source/browse</url>
+  </scm>
 
   <dependencies>
     <dependency>
@@ -47,6 +83,33 @@
         <platform>21</platform>
        </sdk>
       </configuration>
+     </plugin>
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-source-plugin</artifactId>
+      <executions>
+       <execution>
+        <id>attach-sources</id>
+        <goals>
+         <goal>jar</goal>
+        </goals>
+        </execution>
+       </executions>
+     </plugin>
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-javadoc-plugin</artifactId>
+      <configuration>
+       <sourcepath>src</sourcepath>
+      </configuration>
+      <executions>
+       <execution>
+        <id>attach-javadocs</id>
+        <goals>
+         <goal>jar</goal>
+        </goals>
+       </execution>
+      </executions>
      </plugin>
     </plugins>
    </build>
