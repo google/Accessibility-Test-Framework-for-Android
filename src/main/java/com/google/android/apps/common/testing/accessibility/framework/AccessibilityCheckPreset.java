@@ -29,6 +29,9 @@ public enum AccessibilityCheckPreset {
   /** The set of checks available in the 1.0 release of the framework */
   VERSION_1_0_CHECKS,
 
+  /** The set of checks available in the 2.0 release of the framework */
+  VERSION_2_0_CHECKS,
+
   /** Don't check anything */
   NO_CHECKS,
 
@@ -59,10 +62,14 @@ public enum AccessibilityCheckPreset {
       return checks;
     }
 
-    /* Checks added since last release */
     checks.add(new ClickableSpanViewCheck());
     checks.add(new RedundantContentDescViewCheck());
     checks.add(new DuplicateClickableBoundsViewCheck());
+    if (preset == VERSION_2_0_CHECKS) {
+      return checks;
+    }
+
+    /* Checks added since last release */
     if (preset == LATEST) {
       return checks;
     }
@@ -95,11 +102,15 @@ public enum AccessibilityCheckPreset {
       return checks;
     }
 
-    /* Checks added since last release */
     checks.add(new ClickableSpanInfoCheck());
     checks.add(new TouchTargetSizeInfoCheck());
     checks.add(new RedundantContentDescInfoCheck());
     checks.add(new DuplicateClickableBoundsInfoCheck());
+    if (preset == VERSION_2_0_CHECKS) {
+      return checks;
+    }
+
+    /* Checks added since last release */
     if (preset == LATEST) {
       return checks;
     }
@@ -125,8 +136,12 @@ public enum AccessibilityCheckPreset {
       return checks;
     }
 
-    /* Checks added since last release */
     checks.add(new AnnouncementEventCheck());
+    if (preset == VERSION_2_0_CHECKS) {
+      return checks;
+    }
+
+    /* Checks added since last release */
     if (preset == LATEST) {
       return checks;
     }
