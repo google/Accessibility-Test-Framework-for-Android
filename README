@@ -21,8 +21,8 @@ https://github.com/mosabua/maven-android-sdk-deployer
 
 Sample Usage
 ------------
-Given a root view, the following code runs all accessibility checks on all views in the
-hierarchy and and throws an exception if any errors are found:
+Given a view, the following code runs all accessibility checks on all views in the
+hierarchy rooted at that view and throws an exception if any errors are found:
 
 Set<AccessibilityViewHierarchyCheck> checks = getViewChecksForPreset(LATEST);
 List<AccessibilityViewCheckResult> results = new LinkedList<AccessibilityViewCheckResult>();
