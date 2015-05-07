@@ -14,8 +14,6 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.proto.FrameworkProtos.AccessibilityCheckResultProto;
-
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.View;
