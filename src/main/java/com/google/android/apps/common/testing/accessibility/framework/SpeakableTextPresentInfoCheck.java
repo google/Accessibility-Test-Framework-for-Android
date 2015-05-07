@@ -17,6 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.TextUtils;
@@ -46,7 +47,7 @@ public class SpeakableTextPresentInfoCheck extends AccessibilityInfoCheck {
 
   @Override
   public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context) {
+      Context context, Bundle metadata) {
     List<AccessibilityInfoCheckResult> results = new ArrayList<AccessibilityInfoCheckResult>();
     AccessibilityNodeInfoCompat compatInfo = new AccessibilityNodeInfoCompat(info);
     for (Class<? extends ViewGroup> clazz : blacklistedViewTypes) {

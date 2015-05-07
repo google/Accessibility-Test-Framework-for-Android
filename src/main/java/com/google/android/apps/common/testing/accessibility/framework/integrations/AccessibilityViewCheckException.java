@@ -12,21 +12,21 @@
  * the License.
  */
 
-package com.google.android.apps.common.testing.accessibility.framework;
+package com.google.android.apps.common.testing.accessibility.framework.integrations;
 
-import android.view.View;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultDescriptor;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 
 import java.util.List;
 import java.util.Locale;
 
 /**
- * An exception class to be used for throwing exceptions with accessibility results. This class can
- * be extended to provide descriptions of {@link AccessibilityViewCheckResult}s that the developer
- * considers readable. To extend this class, override the constructor and call super, and override
- * {@link #getResultMessage} to provide a readable String description of a result.
+ * An exception class to be used for throwing exceptions with accessibility results.
  */
 public class AccessibilityViewCheckException extends RuntimeException {
   private List<AccessibilityViewCheckResult> results;
+  private AccessibilityCheckResultDescriptor resultDescriptor =
+      new AccessibilityCheckResultDescriptor();
 
   /**
    * Any extension of this class must call this constructor.
@@ -34,7 +34,7 @@ public class AccessibilityViewCheckException extends RuntimeException {
    * @param results a list of {@link AccessibilityViewCheckResult}s that are associated with the
    *        failure(s) that cause this to be thrown.
    */
-  protected AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results) {
+  public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results) {
     super();
     if ((results == null) || (results.size() == 0)) {
       throw new RuntimeException(
@@ -56,9 +56,20 @@ public class AccessibilityViewCheckException extends RuntimeException {
         exceptionMessage.append(",\n");
       }
       AccessibilityViewCheckResult result = results.get(i);
-      exceptionMessage.append(getResultMessage(result));
+      exceptionMessage.append(resultDescriptor.describeResult(result));
     }
     return exceptionMessage.toString();
+  }
+
+  /**
+   * Sets the {@link AccessibilityCheckResultDescriptor} used to generate the exception message.
+   *
+   * @return this
+   */
+  public AccessibilityViewCheckException setResultDescriptor(
+      AccessibilityCheckResultDescriptor resultDescriptor) {
+    this.resultDescriptor = resultDescriptor;
+    return this;
   }
 
   /**
@@ -66,26 +77,5 @@ public class AccessibilityViewCheckException extends RuntimeException {
    */
   public List<AccessibilityViewCheckResult> getResults() {
     return results;
-  }
-
-  /**
-   * Returns a String description of the given {@link AccessibilityViewCheckResult}. The default
-   * is to return the view's resource entry name followed by the result's message.
-   *
-   * @param result the {@link AccessibilityViewCheckResult} to describe
-   * @return a String description of the result
-   */
-  protected String getResultMessage(AccessibilityViewCheckResult result) {
-    StringBuilder msg = new StringBuilder();
-    View view = result.getView();
-    if ((view != null) && (view.getId() != View.NO_ID) && (view.getResources() != null)) {
-      msg.append("View ");
-      msg.append(view.getResources().getResourceEntryName(view.getId()));
-      msg.append(": ");
-    } else {
-      msg.append("View with no valid resource name: ");
-    }
-    msg.append(result.getMessage());
-    return msg.toString();
   }
 }

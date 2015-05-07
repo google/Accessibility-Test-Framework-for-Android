@@ -18,6 +18,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.accessibility.AccessibilityNodeInfo;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class DuplicateClickableBoundsInfoCheck extends AccessibilityInfoHierarch
 
   @Override
   public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(AccessibilityNodeInfo root,
-      Context context) {
+      Context context, Bundle metadata) {
     List<AccessibilityInfoCheckResult> results = new ArrayList<>(1);
     Map<Rect, AccessibilityNodeInfo> clickableRectToInfoMap = new HashMap<>();
 

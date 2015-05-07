@@ -14,6 +14,13 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+import com.google.android.apps.common.testing.accessibility.framework.proto.FrameworkProtos.AccessibilityCheckResultProto;
+
+import android.graphics.Rect;
+import android.os.Build;
+import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
+
 /**
  * The result of an accessibility check. The results are "interesting" in the sense that they
  * indicate some sort of accessibility issue. {@code AccessibilityCheck}s return lists of classes
@@ -106,5 +113,73 @@ public abstract class AccessibilityCheckResult {
     checkClass = null;
     type = null;
     message = null;
+  }
+
+  /**
+   * An object that describes an {@link AccessibilityCheckResult}. This can be extended to provide
+   * descriptions of the result and their contents in a form that is localized to the environment in
+   * which checks are being run.
+   */
+  public static class AccessibilityCheckResultDescriptor {
+
+    /**
+     * Returns a String description of the given {@link AccessibilityCheckResult}.
+     *
+     * @param result the {@link AccessibilityCheckResult} to describe
+     * @return a String description of the result
+     */
+    public String describeResult(AccessibilityCheckResult result) {
+      StringBuilder message = new StringBuilder();
+      if (result instanceof AccessibilityViewCheckResult) {
+        message.append(describeView(((AccessibilityViewCheckResult) result).getView()));
+        message.append(": ");
+      } else if (result instanceof AccessibilityInfoCheckResult) {
+        message.append(describeInfo(((AccessibilityInfoCheckResult) result).getInfo()));
+        message.append(": ");
+      }
+      message.append(result.getMessage());
+      return message.toString();
+    }
+
+    /**
+     * Returns a String description of the given {@link View}. The default is to return the view's
+     * resource entry name.
+     *
+     * @param view the {@link View} to describe
+     * @return a String description of the given {@link View}
+     */
+    public String describeView(View view) {
+      // TODO(sjrush): update describeView to include class name, bounds, visibility, text, CD
+      StringBuilder message = new StringBuilder();
+      if ((view != null) && (view.getId() != View.NO_ID) && (view.getResources() != null)) {
+        message.append("View ");
+        message.append(view.getResources().getResourceEntryName(view.getId()));
+      } else {
+        message.append("View with no valid resource name");
+      }
+      return message.toString();
+    }
+
+    /**
+     * Returns a String description of the given {@link AccessibilityNodeInfo}. The default is to
+     * return the view's resource entry name.
+     *
+     * @param info the {@link AccessibilityNodeInfo} to describe
+     * @return a String description of the given {@link AccessibilityNodeInfo}
+     */
+    public String describeInfo(AccessibilityNodeInfo info) {
+      StringBuilder message = new StringBuilder();
+      message.append("View ");
+      if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+          && (info != null) && (info.getViewIdResourceName() != null)) {
+        message.append(info.getViewIdResourceName());
+      } else {
+        message.append("with bounds: ");
+        Rect bounds = new Rect();
+        info.getBoundsInScreen(bounds);
+        message.append(bounds.toShortString());
+      }
+      return message.toString();
+    }
   }
 }

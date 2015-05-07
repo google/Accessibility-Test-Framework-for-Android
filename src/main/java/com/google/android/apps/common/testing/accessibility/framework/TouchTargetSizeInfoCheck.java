@@ -18,6 +18,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -41,7 +42,7 @@ public class TouchTargetSizeInfoCheck extends AccessibilityInfoCheck {
 
   @Override
   public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context) {
+      Context context, Bundle metadata) {
     ArrayList<AccessibilityInfoCheckResult> results = new ArrayList<AccessibilityInfoCheckResult>();
 
     // TODO(sjrush): Have all info checks use AccessibilityNodeInfoCompat

@@ -17,6 +17,7 @@
 package com.google.android.apps.common.testing.accessibility.framework;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -28,25 +29,36 @@ import java.util.List;
  */
 public abstract class AccessibilityInfoCheck extends AccessibilityInfoHierarchyCheck {
   @Override
-  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(
-      AccessibilityNodeInfo root, Context context) {
+  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(AccessibilityNodeInfo root,
+      Context context, Bundle metadata) {
     List<AccessibilityInfoCheckResult> results = new ArrayList<>();
     List<AccessibilityNodeInfoCompat> compatInfos = getAllInfoCompatsInHierarchy(context, root);
     for (AccessibilityNodeInfoCompat compatInfo : compatInfos) {
       AccessibilityNodeInfo info = (AccessibilityNodeInfo) compatInfo.getInfo();
-      results.addAll(runCheckOnInfo(info, context));
+      results.addAll(runCheckOnInfo(info, context, metadata));
     }
     return results;
   }
 
   /**
    * Run the check on the view.
+   *
    * @param info The node info to check. The info should be fully initialized and part of a valid
-   * hierarchy so all of its methods can be called.
+   *        hierarchy so all of its methods can be called.
    * @param context The context of the service.
+   * @param metadata An optional Bundle that may contain check metadata defined by
+   *        {@link AccessibilityCheckMetadata}.
    * @return A list of interesting results encountered while running the check. The list will be
-   * empty if the check passes without incident.
+   *         empty if the check passes without incident.
    */
   public abstract List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context);
+      Context context, Bundle metadata);
+
+  /**
+   * @see #runCheckOnInfo(AccessibilityNodeInfo, Context, Bundle)
+   */
+  public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
+      Context context) {
+    return runCheckOnInfo(info, context, null);
+  }
 }

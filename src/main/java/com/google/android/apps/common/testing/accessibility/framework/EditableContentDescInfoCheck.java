@@ -18,6 +18,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -35,7 +36,7 @@ public class EditableContentDescInfoCheck extends AccessibilityInfoCheck {
 
   @Override
   public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context) {
+      Context context, Bundle metadata) {
     List<AccessibilityInfoCheckResult> results = new ArrayList<AccessibilityInfoCheckResult>(1);
     AccessibilityNodeInfoCompat compatInfo = new AccessibilityNodeInfoCompat(info);
 
