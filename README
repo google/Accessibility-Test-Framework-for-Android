@@ -13,6 +13,12 @@ This library collects various accessibility-related checks on View objects as
 well as AccessibilityNodeInfo objects (which the Android framework derives from
 Views and sends to AccessibilityServices).
 
+Including the Library in your project
+-------------------------------------
+Gradle users can include the following dependency (available on JCenter):
+
+androidTestCompile 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:2.0'
+
 Building the Library
 --------------------
 Use maven to build the library. You will need to install Android 5.0 (API 21) 
