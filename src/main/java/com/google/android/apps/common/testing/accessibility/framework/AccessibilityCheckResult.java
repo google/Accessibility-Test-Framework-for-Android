@@ -14,6 +14,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+import com.google.android.apps.common.testing.accessibility.framework.proto.FrameworkProtos.AccessibilityCheckResultProto;
+
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.View;
@@ -111,6 +113,24 @@ public abstract class AccessibilityCheckResult {
     checkClass = null;
     type = null;
     message = null;
+  }
+
+  /**
+   * Returns a populated {@link AccessibilityCheckResultProto}
+   */
+  public AccessibilityCheckResultProto toProto() {
+    AccessibilityCheckResultProto.Builder builder = AccessibilityCheckResultProto.newBuilder();
+    if (type != null) {
+      // enum in this class and proto are consistent, one can resolve the string name in the other
+      builder.setResultType(AccessibilityCheckResultProto.ResultType.valueOf(type.name()));
+    }
+    if (message != null) {
+      builder.setMsg(message.toString());
+    }
+    if (checkClass != null) {
+      builder.setSourceCheckClass(checkClass.getName());
+    }
+    return builder.build();
   }
 
   /**

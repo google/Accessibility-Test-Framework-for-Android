@@ -52,8 +52,8 @@ public class TouchTargetSizeViewCheck extends AccessibilityViewCheck {
 
     // dp calculation is pixels/density
     float density = view.getContext().getResources().getDisplayMetrics().density;
-    float targetHeight = view.getHeight() / density;
-    float targetWidth = view.getWidth() / density;
+    int targetHeight = (int) (view.getHeight() / density);
+    int targetWidth = (int) (view.getWidth() / density);
 
     if (targetHeight < TOUCH_TARGET_MIN_HEIGHT || targetWidth < TOUCH_TARGET_MIN_WIDTH) {
       // Before we know a view fails this check, we must check if one of the view's ancestors may be
@@ -66,18 +66,34 @@ public class TouchTargetSizeViewCheck extends AccessibilityViewCheck {
           hasDelegate ? AccessibilityCheckResultType.WARNING : AccessibilityCheckResultType.ERROR;
 
       StringBuilder messageBuilder = new StringBuilder(String.format(
-          "View falls below the minimum recommended size for touch targets. Minimum touch target "
-          + "size is %dx%ddp. Actual size is %.1fx%.1fdp (screen density is %.1f).",
-          TOUCH_TARGET_MIN_WIDTH,
-          TOUCH_TARGET_MIN_HEIGHT,
-          targetWidth,
-          targetHeight,
-          density));
+          "View falls below the minimum recommended size for touch targets."));
+
+      if (targetHeight < TOUCH_TARGET_MIN_HEIGHT && targetWidth < TOUCH_TARGET_MIN_WIDTH) {
+        // Not wide or tall enough
+        messageBuilder.append(String.format(" Minimum touch target "
+            + "size is %dx%ddp. Actual size is %dx%ddp.",
+            TOUCH_TARGET_MIN_WIDTH,
+            TOUCH_TARGET_MIN_HEIGHT,
+            targetWidth,
+            targetHeight));
+      } else if (targetHeight < TOUCH_TARGET_MIN_HEIGHT) {
+        // Not tall enough
+        messageBuilder.append(String.format(" Minimum touch target "
+            + "height is %ddp. Actual height is %ddp.",
+            TOUCH_TARGET_MIN_HEIGHT,
+            targetHeight));
+      } else if (targetWidth < TOUCH_TARGET_MIN_WIDTH) {
+        // Not wide enough
+        messageBuilder.append(String.format(" Minimum touch target "
+            + "width is %ddp. Actual width is %ddp.",
+            TOUCH_TARGET_MIN_WIDTH,
+            targetWidth));
+      }
       if (hasDelegate) {
         messageBuilder.append(
             " A TouchDelegate has been detected on one of this view's ancestors. If the delegate "
-            + "is of sufficient size and handles touches for this view, this warning may be "
-            + "ignored.");
+                + "is of sufficient size and handles touches for this view, this warning may be "
+                + "ignored.");
       }
 
       results.add(

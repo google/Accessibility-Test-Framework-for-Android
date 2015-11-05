@@ -48,7 +48,7 @@ public class TouchTargetSizeInfoCheck extends AccessibilityInfoCheck {
     // TODO(sjrush): Have all info checks use AccessibilityNodeInfoCompat
     AccessibilityNodeInfoCompat infoCompat = new AccessibilityNodeInfoCompat(info);
     if (!(AccessibilityNodeInfoUtils.isClickable(infoCompat)
-          || AccessibilityNodeInfoUtils.isLongClickable(infoCompat))) {
+        || AccessibilityNodeInfoUtils.isLongClickable(infoCompat))) {
       results.add(new AccessibilityInfoCheckResult(this.getClass(),
           AccessibilityCheckResultType.NOT_RUN, "View is not clickable", info));
       return results;
@@ -64,19 +64,34 @@ public class TouchTargetSizeInfoCheck extends AccessibilityInfoCheck {
     float density = context.getResources().getDisplayMetrics().density;
     Rect bounds = new Rect();
     info.getBoundsInScreen(bounds);
-    float targetHeight = bounds.height() / density;
-    float targetWidth = bounds.width() / density;
+    int targetHeight = (int) (Math.abs(bounds.height()) / density);
+    int targetWidth = (int) (Math.abs(bounds.width()) / density);
     if (targetHeight < TOUCH_TARGET_MIN_HEIGHT || targetWidth < TOUCH_TARGET_MIN_WIDTH) {
-      String message = String.format(Locale.US,
-          "View is too small of a touch target. Minimum touch target size is %dx%ddp. "
-          + "Actual size is %.1fx%.1fdp (screen density is %.1f).",
-          TOUCH_TARGET_MIN_WIDTH,
-          TOUCH_TARGET_MIN_HEIGHT,
-          targetWidth,
-          targetHeight,
-          density);
+      StringBuilder messageBuilder = new StringBuilder(String.format(Locale.US,
+          "View falls below the minimum recommended size for touch targets."));
+      if (targetHeight < TOUCH_TARGET_MIN_HEIGHT && targetWidth < TOUCH_TARGET_MIN_WIDTH) {
+        // Not tall or wide enough
+        messageBuilder.append(String.format(" Minimum touch target size is %dx%ddp. "
+            + "Actual size is %dx%ddp.",
+            TOUCH_TARGET_MIN_WIDTH,
+            TOUCH_TARGET_MIN_HEIGHT,
+            targetWidth,
+            targetHeight));
+      } else if (targetHeight < TOUCH_TARGET_MIN_HEIGHT) {
+        // Not tall enough
+        messageBuilder.append(String.format(" Minimum touch target height is %ddp. "
+            + "Actual height is %ddp.",
+            TOUCH_TARGET_MIN_HEIGHT,
+            targetHeight));
+      } else if (targetWidth < TOUCH_TARGET_MIN_WIDTH) {
+        // Not wide enough
+        messageBuilder.append(String.format(" Minimum touch target width is %ddp. "
+            + "Actual width is %ddp.",
+            TOUCH_TARGET_MIN_WIDTH,
+            targetWidth));
+      }
       results.add(new AccessibilityInfoCheckResult(this.getClass(),
-          AccessibilityCheckResultType.ERROR, message, info));
+          AccessibilityCheckResultType.ERROR, messageBuilder, info));
     }
     return results;
   }

@@ -72,7 +72,7 @@ public class DuplicateSpeakableTextViewHierarchyCheck extends AccessibilityViewH
         results.add(new AccessibilityViewCheckResult(this.getClass(),
             AccessibilityCheckResultType.WARNING, String.format(Locale.US,
                 "Clickable view's speakable text: \"%s\" is identical to that of %d "
-                + "other view(s)", speakableText, nonClickableViews.size()),
+                + "other clickable view(s)", speakableText, clickableViews.size()),
             clickableViews.get(0)));
         clickableViews.remove(0);
       } else {

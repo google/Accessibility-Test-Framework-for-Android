@@ -16,6 +16,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+import android.view.View;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,7 +41,15 @@ public enum AccessibilityCheckPreset {
    * Preset used occasionally to hold checks that are about to be part of {@code LATEST}.
    * Includes all checks in {@code LATEST}.
    */
-  PRERELEASE;
+  PRERELEASE,
+
+  /**
+   * Included for compatibility with Robolectric. Do not use.
+   */
+  @Deprecated
+  VIEW_CHECKS,
+  @Deprecated
+  VIEW_HIERARCHY_CHECKS;
 
   /**
    * @param preset The preset of interest
@@ -110,10 +120,12 @@ public enum AccessibilityCheckPreset {
       return checks;
     }
 
+    checks.add(new ContrastInfoCheck());
     /* Checks added since last release */
     if (preset == LATEST) {
       return checks;
     }
+
     if (preset == PRERELEASE) {
       return checks;
     }
@@ -154,5 +166,29 @@ public enum AccessibilityCheckPreset {
      * makes writing a test for unhandled presets trivial.
      */
     throw new IllegalArgumentException();
+  }
+
+  /**
+   * Included for compatibility with older Robolectric version. Do not use.
+   * Remove for public release.
+   * TODO(pweaver) This is a workaround to make Robolectric built against 1.0 of the framework
+   * continue to function with later versions of the framework. Fix Robolectric properly.
+   */
+  @Deprecated
+  public static Set<? extends AccessibilityCheck> getAllChecksForPreset(
+      @SuppressWarnings("unused") AccessibilityCheckPreset preset) {
+    Set<AccessibilityViewHierarchyCheck> checks = new HashSet<>();
+
+    if (preset == VIEW_HIERARCHY_CHECKS) {
+      checks.add(new SpeakableTextPresentViewCheck() {
+        @Override
+        protected boolean shouldFocusView(View view) {
+          return true;
+        }
+      });
+      checks.add(new ClickableSpanViewCheck());
+      checks.add(new EditableContentDescViewCheck());
+    }
+    return checks;
   }
 }

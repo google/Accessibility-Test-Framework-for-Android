@@ -1,0 +1,53 @@
+/*
+ * Copyright (C) 2015 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+syntax = "proto2";
+
+package android.apps.common.testing.accessibility.framework.proto;
+
+option java_package = "com.google.android.apps.common.testing.accessibility.framework.proto";
+option java_outer_classname  = "FrameworkProtos";
+
+// Proto describing a run of the ATF
+message Run {
+  repeated AccessibilityCheckResultProto result = 1;
+  // TODO(sjrush): include more fields, like screenshot and activity information
+}
+
+// Proto describing an AccessibilityCheckResult
+// Next index: 5
+message AccessibilityCheckResultProto {
+  // Other than UNKNOWN, this should mirror
+  // AccessibilityCheckResult.AccessibilityCheckResultType
+  // Next index: 6
+  enum ResultType {
+    UNKNOWN = 0;
+    ERROR = 1;
+    WARNING = 2;
+    INFO = 3;
+    NOT_RUN = 4;
+    SUPPRESSED = 5;
+  }
+
+  optional ResultType result_type = 1;
+  optional string source_check_class = 2;
+  optional string msg = 3;
+  optional ViewDescriptionProto view_description = 4;
+}
+
+// A description of a UI element (a View, an AccessibilityNodeInfo, or other)
+// Next index: 1
+message ViewDescriptionProto {
+  extensions 10000 to max;
+}

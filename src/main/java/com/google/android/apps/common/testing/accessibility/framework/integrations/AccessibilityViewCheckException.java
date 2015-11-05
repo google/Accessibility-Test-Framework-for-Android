@@ -23,30 +23,45 @@ import java.util.Locale;
 /**
  * An exception class to be used for throwing exceptions with accessibility results.
  */
-public class AccessibilityViewCheckException extends RuntimeException {
+public final class AccessibilityViewCheckException extends RuntimeException {
   private List<AccessibilityViewCheckResult> results;
-  private AccessibilityCheckResultDescriptor resultDescriptor =
-      new AccessibilityCheckResultDescriptor();
+  private AccessibilityCheckResultDescriptor resultDescriptor;
 
   /**
-   * Any extension of this class must call this constructor.
+   * Create an instance with the default {@link AccessibilityCheckResultDescriptor}
+   */
+  public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results) {
+    this(results, new AccessibilityCheckResultDescriptor());
+  }
+
+  /**
+   * Create an exception with results and a result descriptor to generate the message.
    *
    * @param results a list of {@link AccessibilityViewCheckResult}s that are associated with the
    *        failure(s) that cause this to be thrown.
+   * @param resultDescriptor the {@link AccessibilityCheckResultDescriptor} used to generate the
+   *        exception message.
    */
-  public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results) {
+  public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results,
+      AccessibilityCheckResultDescriptor resultDescriptor) {
     super();
-    if ((results == null) || (results.size() == 0)) {
-      throw new RuntimeException(
+    if (results == null || results.isEmpty()) {
+      throw new IllegalArgumentException(
           "AccessibilityViewCheckException requires at least 1 AccessibilityViewCheckResult");
     }
+    if (resultDescriptor == null) {
+      throw new IllegalArgumentException("Result descriptor cannot be null");
+    }
     this.results = results;
+    this.resultDescriptor = resultDescriptor;
   }
 
   @Override
   public String getMessage() {
     // Lump all error result messages into one string to be the exception message
     StringBuilder exceptionMessage = new StringBuilder();
+    // TODO(sjrush): allow for developers to set their own Locale, and use that instead of
+    // Locale.US below, regardless of what Locale they're testing on.
     String errorCountMessage = (results.size() == 1)
         ? "There was 1 accessibility error:\n"
         : String.format(Locale.US, "There were %d accessibility errors:\n", results.size());
@@ -59,17 +74,6 @@ public class AccessibilityViewCheckException extends RuntimeException {
       exceptionMessage.append(resultDescriptor.describeResult(result));
     }
     return exceptionMessage.toString();
-  }
-
-  /**
-   * Sets the {@link AccessibilityCheckResultDescriptor} used to generate the exception message.
-   *
-   * @return this
-   */
-  public AccessibilityViewCheckException setResultDescriptor(
-      AccessibilityCheckResultDescriptor resultDescriptor) {
-    this.resultDescriptor = resultDescriptor;
-    return this;
   }
 
   /**

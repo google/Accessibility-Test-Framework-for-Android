@@ -20,12 +20,13 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.integrations.AccessibilityViewCheckException;
-
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
 import org.hamcrest.Matcher;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,20 +36,18 @@ import java.util.List;
  * Espresso. Clients can call {@link #checkAndReturnResults} on a {@link View}
  * to run all of the checks with the options specified in this object.
  */
-public class AccessibilityValidator {
+public final class AccessibilityValidator {
 
   private static final String TAG = "AccessibilityValidator";
+  private AccessibilityCheckPreset preset = AccessibilityCheckPreset.LATEST;
   private boolean runChecksFromRootView = false;
   private boolean throwExceptionForErrors = true;
   private AccessibilityCheckResultDescriptor resultDescriptor =
       new AccessibilityCheckResultDescriptor();
-  private List<AccessibilityViewHierarchyCheck> viewHierarchyChecks =
-      new LinkedList<AccessibilityViewHierarchyCheck>();
   private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
+  private List<AccessibilityCheckListener> checkListeners = new LinkedList<>();
 
   public AccessibilityValidator() {
-    viewHierarchyChecks.addAll(AccessibilityCheckPreset.getViewChecksForPreset(
-        AccessibilityCheckPreset.LATEST));
   }
 
   /**
@@ -63,6 +62,17 @@ public class AccessibilityValidator {
       return runAccessibilityChecks(viewToCheck);
     }
     return Collections.<AccessibilityViewCheckResult>emptyList();
+  }
+
+  /**
+   * Specify the set of checks to be run. The default is {link AccessibilityCheckPreset.LATEST}.
+   *
+   * @param preset The preset specifying the group of checks to run.
+   * @return this
+   */
+  public AccessibilityValidator setCheckPreset(AccessibilityCheckPreset preset) {
+    this.preset = preset;
+    return this;
   }
 
   /**
@@ -114,6 +124,21 @@ public class AccessibilityValidator {
   }
 
   /**
+   * Adds a listener to receive all {@link AccessibilityCheckResult}s after suppression. Listeners
+   * will be called in the order they are added and before any
+   * {@link AccessibilityViewCheckException} would be thrown.
+   *
+   * @return this
+   */
+  public AccessibilityValidator addCheckListener(AccessibilityCheckListener listener) {
+    if (listener == null) {
+      throw new IllegalArgumentException("Check listener cannot be null");
+    }
+    checkListeners.add(listener);
+    return this;
+  }
+
+  /**
    * Runs accessibility checks on a {@code View} hierarchy
    *
    * @param root the root {@code View} of the hierarchy
@@ -121,20 +146,31 @@ public class AccessibilityValidator {
    */
   private List<AccessibilityViewCheckResult> runAccessibilityChecks(
       View root) {
-    List<AccessibilityViewCheckResult> results = new LinkedList<>();
+    List<AccessibilityViewHierarchyCheck> viewHierarchyChecks = new ArrayList<>(
+        AccessibilityCheckPreset.getViewChecksForPreset(preset));
+    List<AccessibilityViewCheckResult> results = new ArrayList<>();
     for (AccessibilityViewHierarchyCheck check : viewHierarchyChecks) {
       results.addAll(check.runCheckOnViewHierarchy(root));
     }
     AccessibilityCheckResultUtils.suppressMatchingResults(results, suppressingMatcher);
+
+    for (AccessibilityCheckListener checkListener : checkListeners) {
+      checkListener.onResults(root.getContext(), results);
+    }
+
     processResults(results);
     return results;
   }
 
+  /**
+   * Reports the given results to the user using logcat and/or exceptions depending on the options
+   * set for this {@code AccessibilityValidator}. Results of type {@code INFO} and {@code WARNING}
+   * will be logged to logcat, and results of type {@code ERROR} will be logged to logcat or
+   * a single {@link AccessibilityViewCheckException} will be thrown containing all {@code ERROR}
+   * results, depending on the value of {@link #throwExceptionForErrors}.
+   */
   // TODO(sjrush): Determine a more robust reporting mechanism instead of using logcat.
   private void processResults(Iterable<AccessibilityViewCheckResult> results) {
-    if (results == null) {
-      return;
-    }
     List<AccessibilityViewCheckResult> infos = AccessibilityCheckResultUtils.getResultsForType(
         results, AccessibilityCheckResultType.INFO);
     List<AccessibilityViewCheckResult> warnings = AccessibilityCheckResultUtils.getResultsForType(
@@ -148,12 +184,18 @@ public class AccessibilityValidator {
       Log.w(TAG, resultDescriptor.describeResult(result));
     }
     if (!errors.isEmpty() && throwExceptionForErrors) {
-      throw new AccessibilityViewCheckException(errors)
-          .setResultDescriptor(resultDescriptor);
+      throw new AccessibilityViewCheckException(errors, resultDescriptor);
     } else {
       for (AccessibilityViewCheckResult result : errors) {
         Log.e(TAG, resultDescriptor.describeResult(result));
       }
     }
+  }
+
+  /**
+   * Interface for receiving callbacks when results have been obtained.
+   */
+  public static interface AccessibilityCheckListener {
+    void onResults(Context context, List<? extends AccessibilityViewCheckResult> results);
   }
 }

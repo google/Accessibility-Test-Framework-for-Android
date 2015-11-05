@@ -32,8 +32,8 @@ import java.util.List;
  * Check to ensure that {@code ClickableSpan} is not being used in a TextView.
  *
  * <p>{@code ClickableSpan} is inaccessible because individual spans cannot be selected
- * independently in a single TextView and because accessibility services are unable to call
- * the OnClick method of a {@code ClickableSpan}.
+ * independently in a single {@code TextView} and because accessibility services are unable to call
+ * {@link ClickableSpan#onClick}.
  *
  * <p>The exception to this rule is that {@code URLSpan}s are accessible if they do not contain a
  * relative URI.
@@ -42,7 +42,7 @@ public class ClickableSpanViewCheck extends AccessibilityViewCheck {
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnView(View view) {
-    List<AccessibilityViewCheckResult> results = new ArrayList<AccessibilityViewCheckResult>(1);
+    List<AccessibilityViewCheckResult> results = new ArrayList<>(1);
     if (view instanceof TextView) {
       TextView textView = (TextView) view;
       if (textView.getText() instanceof Spanned) {
@@ -52,28 +52,41 @@ public class ClickableSpanViewCheck extends AccessibilityViewCheck {
           if (clickableSpan instanceof URLSpan) {
             String url = ((URLSpan) clickableSpan).getURL();
             if (url == null) {
-              results.add(new AccessibilityViewCheckResult(this.getClass(),
-                  AccessibilityCheckResultType.ERROR, "URLSpan has null URL", view));
+              results.add(
+                  new AccessibilityViewCheckResult(
+                      this.getClass(),
+                      AccessibilityCheckResultType.ERROR,
+                      "URLSpan has null URL",
+                      view));
             } else {
               Uri uri = Uri.parse(url);
               if (uri.isRelative()) {
                 // Relative URIs cannot be resolved.
-                results.add(new AccessibilityViewCheckResult(this.getClass(),
-                    AccessibilityCheckResultType.ERROR, "URLSpan should not contain relative links",
-                    view));
+                results.add(
+                    new AccessibilityViewCheckResult(
+                        this.getClass(),
+                        AccessibilityCheckResultType.ERROR,
+                        "URLSpan should not contain relative links",
+                        view));
               }
             }
           } else { // Non-URLSpan ClickableSpan
-            results.add(new AccessibilityViewCheckResult(this.getClass(),
-                AccessibilityCheckResultType.ERROR,
-                "URLSpan should be used in place of ClickableSpan for improved accessibility",
-                view));
+            results.add(
+                new AccessibilityViewCheckResult(
+                    this.getClass(),
+                    AccessibilityCheckResultType.ERROR,
+                    "URLSpan should be used in place of ClickableSpan for improved accessibility",
+                    view));
           }
         }
       }
     } else {
-      results.add(new AccessibilityViewCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View must be a TextView", view));
+      results.add(
+          new AccessibilityViewCheckResult(
+              this.getClass(),
+              AccessibilityCheckResultType.NOT_RUN,
+              "View must be a TextView",
+              view));
     }
     return results;
   }

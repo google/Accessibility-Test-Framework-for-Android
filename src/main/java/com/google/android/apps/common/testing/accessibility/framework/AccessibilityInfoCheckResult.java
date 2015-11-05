@@ -22,7 +22,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import com.googlecode.eyesfree.compat.CompatUtils;
 import com.googlecode.eyesfree.utils.LogUtils;
+
+import java.lang.reflect.Method;
 
 /**
  * Result generated when an accessibility check runs on a {@code AccessibilityNodeInfo}.
@@ -31,7 +34,7 @@ import com.googlecode.eyesfree.utils.LogUtils;
 public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult implements
     Parcelable {
 
-  private AccessibilityNodeInfo info;
+  private AccessibilityNodeInfoWrapper mInfoWrapper;
 
   /**
    * @param checkClass The check that generated the error
@@ -43,7 +46,7 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
       AccessibilityCheckResultType type, CharSequence message, AccessibilityNodeInfo info) {
     super(checkClass, type, message);
     if (info != null) {
-      this.info = AccessibilityNodeInfo.obtain(info);
+      this.mInfoWrapper = new AccessibilityNodeInfoWrapper(AccessibilityNodeInfo.obtain(info));
     }
   }
 
@@ -56,16 +59,16 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
    * @return The info to which the result applies.
    */
   public AccessibilityNodeInfo getInfo() {
-    return info;
+    return (mInfoWrapper != null) ? mInfoWrapper.getWrappedInfo() : null;
   }
 
   @Override
   public void recycle() {
     super.recycle();
 
-    if (info != null) {
-      info.recycle();
-      info = null;
+    if (mInfoWrapper != null) {
+      mInfoWrapper.getWrappedInfo().recycle();
+      mInfoWrapper = null;
     }
   }
 
@@ -79,10 +82,9 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
     dest.writeString((checkClass != null) ? checkClass.getName() : "");
     dest.writeInt((type != null) ? type.ordinal() : -1);
     TextUtils.writeToParcel(message, dest, flags);
-    // Info requires a presence flag
-    if (info != null) {
+    if (mInfoWrapper != null) {
       dest.writeInt(1);
-      info.writeToParcel(dest, flags);
+      mInfoWrapper.writeToParcel(dest, flags);
     } else {
       dest.writeInt(0);
     }
@@ -112,13 +114,15 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
     // Message
     this.message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
 
-    // Info
-    this.info = (in.readInt() == 1) ? AccessibilityNodeInfo.CREATOR.createFromParcel(in) : null;
-
+    // Info wrapper
+    this.mInfoWrapper =
+        (in.readInt() == 1) ? AccessibilityNodeInfoWrapper.WRAPPER_CREATOR.createFromParcel(in)
+            : null;
   }
 
   public static final Parcelable.Creator<AccessibilityInfoCheckResult> CREATOR =
       new Parcelable.Creator<AccessibilityInfoCheckResult>() {
+
         @Override
         public AccessibilityInfoCheckResult createFromParcel(Parcel in) {
           return new AccessibilityInfoCheckResult(in);
@@ -129,4 +133,82 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
           return new AccessibilityInfoCheckResult[size];
         }
       };
+
+  /**
+   * We use a Parcelable wrapper for {@link AccessibilityNodeInfo} to work around a bug within the
+   * Android framework, which improperly unparcels instances which are sealed.
+   */
+  private static class AccessibilityNodeInfoWrapper implements Parcelable {
+    private static final Method METHOD_isSealed = CompatUtils.getMethod(
+        AccessibilityNodeInfo.class, "isSealed");
+
+    private static final Method METHOD_setSealed = CompatUtils.getMethod(
+        AccessibilityNodeInfo.class, "setSealed", boolean.class);
+
+    AccessibilityNodeInfo mWrappedInfo;
+
+    public AccessibilityNodeInfoWrapper(AccessibilityNodeInfo wrappedNode) {
+      mWrappedInfo = wrappedNode;
+    }
+
+    private AccessibilityNodeInfoWrapper(Parcel in) {
+      readFromParcel(in);
+    }
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    public AccessibilityNodeInfo getWrappedInfo() {
+      return mWrappedInfo;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      if (mWrappedInfo != null) {
+        dest.writeInt(1);
+        if ((Boolean) CompatUtils.invoke(mWrappedInfo, false, METHOD_isSealed, (Object[]) null)) {
+          // In the case we've encountered a sealed info, we need to unseal it before parceling.
+          // Otherwise, the Android framework won't allow it to be recreated from a parcel due to a
+          // bug which improperly checks sealed state when adding parceled actions to an instance.
+          // We write our own int to indicate that the node must be re-sealed.
+          dest.writeInt(1);
+          CompatUtils.invoke(mWrappedInfo, null, METHOD_setSealed, false);
+        } else {
+          dest.writeInt(0);
+        }
+        mWrappedInfo.writeToParcel(dest, flags);
+      } else {
+        dest.writeInt(0);
+      }
+    }
+
+    private void readFromParcel(Parcel in) {
+      if (in.readInt() == 1) {
+        boolean shouldSeal = (in.readInt() == 1);
+        mWrappedInfo = AccessibilityNodeInfo.CREATOR.createFromParcel(in);
+        if (shouldSeal) {
+          CompatUtils.invoke(mWrappedInfo, null, METHOD_setSealed, true);
+        }
+      } else {
+        mWrappedInfo = null;
+      }
+    }
+
+
+    public static final Parcelable.Creator<AccessibilityNodeInfoWrapper> WRAPPER_CREATOR =
+        new Parcelable.Creator<AccessibilityNodeInfoWrapper>() {
+
+          @Override
+          public AccessibilityNodeInfoWrapper createFromParcel(Parcel in) {
+            return new AccessibilityNodeInfoWrapper(in);
+          }
+
+          @Override
+          public AccessibilityNodeInfoWrapper[] newArray(int size) {
+            return new AccessibilityNodeInfoWrapper[size];
+          }
+        };
+  }
 }

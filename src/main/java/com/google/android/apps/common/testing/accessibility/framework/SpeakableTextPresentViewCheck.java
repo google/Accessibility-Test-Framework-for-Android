@@ -66,7 +66,7 @@ public class SpeakableTextPresentViewCheck extends AccessibilityViewCheck {
         return results;
       }
     }
-    if (ViewAccessibilityUtils.shouldFocusView(view)) {
+    if (shouldFocusView(view)) {
       // We must evaluate this view for speakable text
       if (TextUtils.isEmpty(AccessibilityCheckUtils.getSpeakableTextForView(view))) {
         results.add(new AccessibilityViewCheckResult(this.getClass(),
@@ -78,5 +78,10 @@ public class SpeakableTextPresentViewCheck extends AccessibilityViewCheck {
           AccessibilityCheckResultType.NOT_RUN, "View is not focused by a screen reader", view));
     }
     return results;
+  }
+
+  /* TODO(pweaver) Remove this awkward way of allowing Robolectric to use this */
+  protected boolean shouldFocusView(View view) {
+    return ViewAccessibilityUtils.shouldFocusView(view);
   }
 }

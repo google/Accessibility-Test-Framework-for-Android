@@ -23,6 +23,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 
 import java.util.ArrayList;
@@ -136,6 +137,30 @@ public final class AccessibilityCheckResultUtils {
       @Override
       public boolean matchesSafely(AccessibilityCheckResult result) {
         return typeMatcher.matches(result.getType());
+      }
+    };
+  }
+
+  /**
+   * Returns a {@link Matcher} for an {@link AccessibilityCheckResult} whose source check class
+   * matches the given matcher.
+   * <p>
+   * Note: Do not use {@link Matchers#is} for a {@link Class}, as the deprecated form will match
+   * only objects of that class instead of the class object itself. Use {@link Matchers#equalTo}
+   * instead.
+   *
+   * @param classMatcher a {@code Matcher} for a {@code Class<? extends AccessibilityCheck>}.
+   *                     Note: strict typing not enforced for Java 7 compatibility
+   * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
+   */
+  public static Matcher<AccessibilityCheckResult> matchesChecks(final Matcher<?> classMatcher) {
+    if (classMatcher == null) {
+      return null;
+    }
+    return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check", classMatcher) {
+      @Override
+      public boolean matchesSafely(AccessibilityCheckResult result) {
+        return classMatcher.matches(result.getSourceCheckClass());
       }
     };
   }
