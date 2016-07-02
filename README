@@ -17,7 +17,7 @@ Including the Library in your project
 -------------------------------------
 Gradle users can include the following dependency (available on JCenter):
 
-androidTestCompile 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:2.0'
+androidTestCompile 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:2.1'
 
 Building the Library
 --------------------
