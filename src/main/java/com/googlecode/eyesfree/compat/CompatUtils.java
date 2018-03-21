@@ -16,9 +16,9 @@
 
 package com.googlecode.eyesfree.compat;
 
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -27,7 +27,7 @@ public class CompatUtils {
     private static final String TAG = CompatUtils.class.getSimpleName();
 
     /** Whether to log debug output. */
-    public static boolean DEBUG = false;
+    public static final boolean DEBUG = false;
 
     public static Class<?> getClass(String className) {
         if (TextUtils.isEmpty(className)) {
@@ -112,10 +112,10 @@ public class CompatUtils {
         return null;
     }
 
-    public static Object invoke(
-            Object receiver, Object defaultValue, Method method, Object... args) {
+    public static @Nullable Object invoke(
+            Object receiver, @Nullable Object defaultReturnValue, Method method, Object... args) {
         if (method == null) {
-            return defaultValue;
+            return defaultReturnValue;
         }
 
         try {
@@ -128,12 +128,13 @@ public class CompatUtils {
             }
         }
 
-        return defaultValue;
+        return defaultReturnValue;
     }
 
-    public static Object getFieldValue(Object receiver, Object defaultValue, Field field) {
+    public static @Nullable Object getFieldValue(
+            Object receiver, @Nullable Object defaultReturnValue, Field field) {
         if (field == null) {
-            return defaultValue;
+            return defaultReturnValue;
         }
 
         try {
@@ -144,7 +145,7 @@ public class CompatUtils {
             }
         }
 
-        return defaultValue;
+        return defaultReturnValue;
     }
 
     public static void setFieldValue(Object receiver, Field field, Object value) {

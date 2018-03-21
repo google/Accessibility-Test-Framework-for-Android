@@ -14,109 +14,24 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewParent;
-
-import java.util.ArrayList;
+import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;
 import java.util.List;
 
 /**
  * Check to ensure that a view has a touch target that is at least 48x48dp.
+ *
+ * @deprecated Replaced by {@link TouchTargetSizeCheck}
  */
-public class TouchTargetSizeViewCheck extends AccessibilityViewCheck {
+@Deprecated
+public class TouchTargetSizeViewCheck extends AccessibilityViewHierarchyCheck {
 
-  /**
-   * Minimum height and width are set according to <a
-   * href="http://developer.android.com/design/patterns/accessibility.html"></a>
-   */
-  private static final int TOUCH_TARGET_MIN_HEIGHT = 48;
-  private static final int TOUCH_TARGET_MIN_WIDTH = 48;
+  private static final TouchTargetSizeCheck DELEGATION_CHECK = new TouchTargetSizeCheck();
 
   @Override
-  public List<AccessibilityViewCheckResult> runCheckOnView(View view) {
-    ArrayList<AccessibilityViewCheckResult> results = new ArrayList<AccessibilityViewCheckResult>();
-
-    if (!(view.isClickable() || view.isLongClickable())) {
-      results.add(new AccessibilityViewCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View is not clickable", view));
-      return results;
-    }
-
-    if (!ViewAccessibilityUtils.isVisibleToUser(view)) {
-      results.add(new AccessibilityViewCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View is not visible", view));
-      return results;
-    }
-
-    // dp calculation is pixels/density
-    float density = view.getContext().getResources().getDisplayMetrics().density;
-    int targetHeight = (int) (view.getHeight() / density);
-    int targetWidth = (int) (view.getWidth() / density);
-
-    if (targetHeight < TOUCH_TARGET_MIN_HEIGHT || targetWidth < TOUCH_TARGET_MIN_WIDTH) {
-      // Before we know a view fails this check, we must check if one of the view's ancestors may be
-      // handling touches on its behalf.
-      boolean hasDelegate = hasAncestorWithTouchDelegate(view);
-
-      // We can't get the delegated view from a TouchDelegate, so any TouchDelegate in the view's
-      // lineage will demote ERROR to WARNING.
-      AccessibilityCheckResultType resultType =
-          hasDelegate ? AccessibilityCheckResultType.WARNING : AccessibilityCheckResultType.ERROR;
-
-      StringBuilder messageBuilder = new StringBuilder(String.format(
-          "View falls below the minimum recommended size for touch targets."));
-
-      if (targetHeight < TOUCH_TARGET_MIN_HEIGHT && targetWidth < TOUCH_TARGET_MIN_WIDTH) {
-        // Not wide or tall enough
-        messageBuilder.append(String.format(" Minimum touch target "
-            + "size is %dx%ddp. Actual size is %dx%ddp.",
-            TOUCH_TARGET_MIN_WIDTH,
-            TOUCH_TARGET_MIN_HEIGHT,
-            targetWidth,
-            targetHeight));
-      } else if (targetHeight < TOUCH_TARGET_MIN_HEIGHT) {
-        // Not tall enough
-        messageBuilder.append(String.format(" Minimum touch target "
-            + "height is %ddp. Actual height is %ddp.",
-            TOUCH_TARGET_MIN_HEIGHT,
-            targetHeight));
-      } else if (targetWidth < TOUCH_TARGET_MIN_WIDTH) {
-        // Not wide enough
-        messageBuilder.append(String.format(" Minimum touch target "
-            + "width is %ddp. Actual width is %ddp.",
-            TOUCH_TARGET_MIN_WIDTH,
-            targetWidth));
-      }
-      if (hasDelegate) {
-        messageBuilder.append(
-            " A TouchDelegate has been detected on one of this view's ancestors. If the delegate "
-                + "is of sufficient size and handles touches for this view, this warning may be "
-                + "ignored.");
-      }
-
-      results.add(
-          new AccessibilityViewCheckResult(this.getClass(), resultType, messageBuilder, view));
-    }
-
-    return results;
-  }
-
-  private static boolean hasAncestorWithTouchDelegate(View view) {
-    if (view == null) {
-      return false;
-    }
-
-    View evalView = null;
-    ViewParent parent = view.getParent();
-    if (parent instanceof View) {
-      evalView = (View) parent;
-      if (evalView.getTouchDelegate() != null) {
-        return true;
-      }
-    }
-
-    return hasAncestorWithTouchDelegate(evalView);
+  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
+      View root, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
   }
 }

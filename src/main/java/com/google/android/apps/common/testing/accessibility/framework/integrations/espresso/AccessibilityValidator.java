@@ -13,6 +13,11 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.integrations.espresso;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPreset;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
@@ -20,16 +25,10 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.integrations.AccessibilityViewCheckException;
-import android.content.Context;
-import android.util.Log;
-import android.view.View;
-
-import org.hamcrest.Matcher;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
+import org.hamcrest.Matcher;
 
 /**
  * A configurable executor for the {@link AccessibilityViewHierarchyCheck}s designed for use with
@@ -45,7 +44,7 @@ public final class AccessibilityValidator {
   private AccessibilityCheckResultDescriptor resultDescriptor =
       new AccessibilityCheckResultDescriptor();
   private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
-  private List<AccessibilityCheckListener> checkListeners = new LinkedList<>();
+  private final List<AccessibilityCheckListener> checkListeners = new ArrayList<>();
 
   public AccessibilityValidator() {
   }
@@ -131,9 +130,7 @@ public final class AccessibilityValidator {
    * @return this
    */
   public AccessibilityValidator addCheckListener(AccessibilityCheckListener listener) {
-    if (listener == null) {
-      throw new IllegalArgumentException("Check listener cannot be null");
-    }
+    checkNotNull(listener);
     checkListeners.add(listener);
     return this;
   }
@@ -169,7 +166,6 @@ public final class AccessibilityValidator {
    * a single {@link AccessibilityViewCheckException} will be thrown containing all {@code ERROR}
    * results, depending on the value of {@link #throwExceptionForErrors}.
    */
-  // TODO(sjrush): Determine a more robust reporting mechanism instead of using logcat.
   private void processResults(Iterable<AccessibilityViewCheckResult> results) {
     List<AccessibilityViewCheckResult> infos = AccessibilityCheckResultUtils.getResultsForType(
         results, AccessibilityCheckResultType.INFO);

@@ -16,18 +16,17 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
-
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility class for dealing with {@code AccessibilityCheckResult}s
@@ -61,13 +60,13 @@ public final class AccessibilityCheckResultUtils {
   }
 
   /**
-   * Takes a list of {@code AccessibilityCheckResult}s and returns a list with only results
-   * with the given {@code AccessibilityCheckResultType}.
+   * Filters {@link AccessibilityCheckResult}s and returns a list with only results which match the
+   * given {@link AccessibilityCheckResultType}.
    *
-   * @param results a list of {@code AccessibilityCheckResult}s
-   * @param type the {@code AccessibilityCheckResultType} for the results to be returned
-   * @return a list of {@code AccessibilityCheckResult}s with the given
-   *         {@code AccessibilityCheckResultType}.
+   * @param results an {@link Iterable} of {@link AccessibilityCheckResult}s
+   * @param type the {@link AccessibilityCheckResultType} for the results to be returned
+   * @return a list of {@link AccessibilityCheckResult}s with the given
+   *         {@link AccessibilityCheckResultType}.
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForType(
       Iterable<T> results, AccessibilityCheckResultType type) {
@@ -81,6 +80,27 @@ public final class AccessibilityCheckResultUtils {
   }
 
   /**
+   * Filters {@code AccessibilityCheckResult}s and returns a list with only results which match the
+   * given {@link AccessibilityCheckResultType}s.
+   *
+   * @param results an {@link Iterable} of {@code AccessibilityCheckResult}s
+   * @param types a {@link Set} of {@link AccessibilityCheckResultType}s that should be returned in
+   *        the filtered list
+   * @return a {@link List} containing only the {@link AccessibilityHierarchyCheckResult}s from
+   *         {@code results} which are of a type included in {@code types}
+   */
+  public static <T extends AccessibilityCheckResult> List<T> getResultsForTypes(
+      Iterable<T> results, Set<AccessibilityCheckResultType> types) {
+    List<T> resultsForTypes = new ArrayList<T>();
+    for (T result : results) {
+      if (types.contains(result.getType())) {
+        resultsForTypes.add(result);
+      }
+    }
+    return resultsForTypes;
+  }
+
+  /**
    * Takes a list of {@code AccessibilityCheckResult}s and returns a list with only results
    * pertaining to the given {@code View}.
    *
@@ -90,8 +110,7 @@ public final class AccessibilityCheckResultUtils {
    */
   public static List<AccessibilityViewCheckResult> getResultsForView(
       Iterable<AccessibilityViewCheckResult> results, View view) {
-    List<AccessibilityViewCheckResult> resultsForView =
-        new ArrayList<AccessibilityViewCheckResult>();
+    List<AccessibilityViewCheckResult> resultsForView = new ArrayList<>();
     for (AccessibilityViewCheckResult result : results) {
       if (result.getView() == view) {
         resultsForView.add(result);
@@ -111,8 +130,7 @@ public final class AccessibilityCheckResultUtils {
    */
   public static List<AccessibilityInfoCheckResult> getResultsForInfo(
       Iterable<AccessibilityInfoCheckResult> results, AccessibilityNodeInfo info) {
-    List<AccessibilityInfoCheckResult> resultsForInfo =
-        new ArrayList<AccessibilityInfoCheckResult>();
+    List<AccessibilityInfoCheckResult> resultsForInfo = new ArrayList<>();
     for (AccessibilityInfoCheckResult result : results) {
       if (info.equals(result.getInfo())) {
         resultsForInfo.add(result);
@@ -130,9 +148,6 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityCheckResult> matchesTypes(
       final Matcher<? super AccessibilityCheckResultType> typeMatcher) {
-    if (typeMatcher == null) {
-      return null;
-    }
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>("result type", typeMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityCheckResult result) {
@@ -154,9 +169,6 @@ public final class AccessibilityCheckResultUtils {
    * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
    */
   public static Matcher<AccessibilityCheckResult> matchesChecks(final Matcher<?> classMatcher) {
-    if (classMatcher == null) {
-      return null;
-    }
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check", classMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityCheckResult result) {
@@ -174,9 +186,6 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityCheckResult> matchesCheckNames(
       final Matcher<? super String> classNameMatcher) {
-    if (classNameMatcher == null) {
-      return null;
-    }
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check name",
         classNameMatcher) {
       @Override
@@ -195,13 +204,11 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityViewCheckResult> matchesViews(
       final Matcher<? super View> viewMatcher) {
-    if (viewMatcher == null) {
-      return null;
-    }
     return new TypeSafeMemberMatcher<AccessibilityViewCheckResult>("View", viewMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityViewCheckResult result) {
-        return viewMatcher.matches(result.getView());
+        View view = result.getView();
+        return (view != null) && viewMatcher.matches(view);
       }
     };
   }
@@ -215,14 +222,12 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityInfoCheckResult> matchesInfos(
       final Matcher<? super AccessibilityNodeInfo> infoMatcher) {
-    if (infoMatcher == null) {
-      return null;
-    }
     return new TypeSafeMemberMatcher<AccessibilityInfoCheckResult>("AccessibilityNodeInfo",
         infoMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityInfoCheckResult result) {
-        return infoMatcher.matches(result.getInfo());
+        AccessibilityNodeInfo info = result.getInfo();
+        return (info != null) && infoMatcher.matches(info);
       }
     };
   }
@@ -235,16 +240,15 @@ public final class AccessibilityCheckResultUtils {
    * @param matcher a Matcher that determines whether a given {@code AccessibilityCheckResult}
    *        should be suppressed
    */
-  public static <T extends AccessibilityCheckResult> void suppressMatchingResults(List<T> results,
-      Matcher<? super T> matcher) {
-    modifyResultType(results, matcher, AccessibilityCheckResultType.SUPPRESSED);
+  public static <T extends AccessibilityCheckResult> void suppressMatchingResults(
+      List<T> results, @Nullable Matcher<? super T> matcher) {
+    if (matcher != null) {
+      modifyResultType(results, matcher, AccessibilityCheckResultType.SUPPRESSED);
+    }
   }
 
-  private static <T extends AccessibilityCheckResult> void modifyResultType(List<T> results,
-      Matcher<? super T> matcher, AccessibilityCheckResultType newType) {
-    if (results == null || matcher == null) {
-      return;
-    }
+  private static <T extends AccessibilityCheckResult> void modifyResultType(
+      List<T> results, Matcher<? super T> matcher, AccessibilityCheckResultType newType) {
     for (T result : results) {
       if (matcher.matches(result)) {
         result.setType(newType);
@@ -254,8 +258,9 @@ public final class AccessibilityCheckResultUtils {
 
   private abstract static class TypeSafeMemberMatcher<T> extends TypeSafeMatcher<T> {
     private static final String DESCRIPTION_FORMAT_STRING = "with %s: ";
-    private String memberDescription;
-    private Matcher<?> matcher;
+    private final String memberDescription;
+    private final Matcher<?> matcher;
+
     public TypeSafeMemberMatcher(String member, Matcher<?> matcher) {
       memberDescription = String.format(DESCRIPTION_FORMAT_STRING, member);
       this.matcher = matcher;

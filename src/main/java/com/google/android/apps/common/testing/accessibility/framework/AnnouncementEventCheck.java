@@ -14,22 +14,19 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-
-import java.util.ArrayList;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
+import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Check which may be used to flag use of {@link View#announceForAccessibility(CharSequence)} or
  * dispatch of {@link AccessibilityEvent}s of type {@link AccessibilityEvent#TYPE_ANNOUNCEMENT}. The
  * use of these events, expect in specific situations, can be disruptive to the user.
  */
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class AnnouncementEventCheck extends AccessibilityEventCheck {
 
   @Override
@@ -39,13 +36,10 @@ public class AnnouncementEventCheck extends AccessibilityEventCheck {
 
   @Override
   public List<AccessibilityEventCheckResult> runCheckOnEvent(AccessibilityEvent event) {
-    // TODO(caseyburkhardt): Promote multiple qualifying events within a time threshold to
-    // AccessibilityCheckResultType.ERROR
-    // TODO(caseyburkhardt): Develop some heuristic for identifying approved use cases
-    List<AccessibilityEventCheckResult> results = new ArrayList<AccessibilityEventCheckResult>(1);
-    results.add(new AccessibilityEventCheckResult(this.getClass(),
-        AccessibilityCheckResultType.WARNING,
-        "A disruptive accessibility announcement has been used,", event));
-    return results;
+    String message = StringManager.getString(
+        Locale.getDefault(), "result_message_disruptive_announcement");
+    return ImmutableList.<AccessibilityEventCheckResult>of(
+        new AccessibilityEventCheckResult(
+            this.getClass(), AccessibilityCheckResultType.WARNING, message, event));
   }
 }

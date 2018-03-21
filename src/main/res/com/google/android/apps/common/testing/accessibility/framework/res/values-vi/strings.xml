@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Mục này được cho là không quan trọng về khả năng truy cập.</string>
+  
+  <string name="result_message_no_content_desc">Mục này không có &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Mục này không hiển thị.</string>
+  
+  <string name="result_message_not_enabled">Mục này bị tắt.</string>
+  
+  <string name="result_message_not_text_view">Mục này không phải là &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Không thể lấy được dữ liệu ảnh chụp màn hình.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Vị trí trên màn hình của mục này (&lt;tt&gt;%1$s&lt;/tt&gt;) không nằm trong vị trí trên màn hình của ảnh chụp màn hình (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Thông tin ảnh chụp màn hình của mục này bị ẩn.</string>
+  
+  <string name="clickable">có thể nhấp</string>
+  
+  <string name="non_clickable">không thể nhấp</string>
+  
+  <string name="long_clickable">có thể nhấp và giữ</string>
+  
+  <string name="clickable_and_long_clickable">có thể nhấp, có thể nhấp và giữ</string>
+  
+  <string name="actionable">có thể thao tác</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Liên kết</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Loại của mục này chưa được xác định.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Xác minh rằng URL trong &lt;tt&gt;URLSpan&lt;/tt&gt; của mục này hợp lệ.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Mục này nên sử dụng &lt;tt&gt;URLSpan&lt;/tt&gt; thay cho &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Các mục có thể nhấp</string>
+  
+  <string name="result_message_brief_same_view_bounds">Nhiều mục %1$s dùng chung vị trí này trên màn hình.</string>
+  
+  <string name="result_message_same_view_bounds">Mục %1$s này có cùng vị trí trên màn hình (&lt;tt&gt;%2$s&lt;/tt&gt;) như %3$d mục khác có các thuộc tính đó.</string>
+  
+  <string name="result_message_view_bounds">Mục %1$s này cũng có vị trí trên màn hình của &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Mô tả mục</string>
+  
+  <string name="result_message_brief_same_speakable_text">Nhiều mục có cùng mô tả.</string>
+  
+  <string name="result_message_same_speakable_text">Văn bản có thể nói của mục %1$s này: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" giống với văn bản có thể nói của %3$d mục khác.</string>
+  
+  <string name="result_message_speakable_text">Mục %1$s này có văn bản có thể nói: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Nhãn mục có thể chỉnh sửa</string>
+  
+  <string name="result_message_editable_textview_content_desc">&lt;tt&gt;TextView&lt;/tt&gt; có thể chỉnh sửa này có &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Trình đọc màn hình có thể đọc thuộc tính này thay vì nội dung có thể chỉnh sửa khi người dùng đang điều hướng.</string>
+  
+  <string name="result_message_not_editable_textview">Mục này không phải là &lt;tt&gt;TextView&lt;/tt&gt; có thể chỉnh sửa.</string>
+  
+  <string name="check_title_image_contrast">Độ tương phản hình ảnh</string>
+  
+  <string name="result_message_not_imageview">Mục này không phải là &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Cân nhắc tăng tỷ lệ tương phản giữa mặt nổi và nền của hình ảnh.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Tỷ lệ tương phản của hình ảnh là %1$.2f. Tỷ lệ này dựa trên màu mặt nổi ước tính của &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền ước tính của &lt;tt&gt;#%4$06X&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ này lên %2$.2f hoặc cao hơn.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Nhãn loại mục</string>
+  
+  <string name="result_message_english_locale_only">Kiểm tra này chỉ chạy trên các thiết bị có ngôn ngữ được đặt thành tiếng Anh.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này có thể chứa văn bản không cần thiết.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này \"&lt;tt&gt;%1$s&lt;/tt&gt;\" kết thúc bằng loại của mục.</string>
+  
+  <string name="check_title_speakable_text_present">Nhãn mục</string>
+  
+  <string name="result_message_should_not_focus">Trình đọc màn hình sẽ không tập trung vào mục này.</string>
+  
+  <string name="result_message_web_content">Nội dung web chưa được xác thực.</string>
+  
+  <string name="result_message_missing_speakable_text">Mục này có thể không có nhãn mà trình đọc màn hình đọc được.</string>
+  
+  <string name="check_title_text_contrast">Độ tương phản văn bản</string>
+  
+  <string name="result_message_textview_empty">&lt;tt&gt;TextView&lt;/tt&gt; này bị trống.</string>
+  
+  <string name="result_message_could_not_get_text_color">Màu văn bản của mục này không thể xác định được.</string>
+  
+  <string name="result_message_could_not_get_background_color">Màu nền của mục này không thể xác định được.</string>
+  
+  <string name="result_message_text_must_be_opaque">Màu văn bản của mục này không đục.</string>
+  
+  <string name="result_message_background_must_be_opaque">Màu nền của mục này không đục.</string>
+  
+  <string name="result_message_addendum_opacity_description">Độ đục thực tế là %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Cân nhắc tăng tỷ lệ tương phản giữa mặt nổi và nền văn bản của mục này.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này dựa trên màu văn bản của &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền của &lt;tt&gt;#%4$06X&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ tương phản văn bản của mục này lên %2$.2f hoặc cao hơn.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này dựa trên màu mặt nổi ước tính của &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền ước tính của &lt;tt&gt;#%4$06X&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ tương phản văn bản của mục này lên %2$.2f hoặc cao hơn.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Tỷ lệ tương phản văn bản của mục này %1$.2f. Tỷ lệ này dựa trên màu mặt nổi ước tính của &lt;tt&gt;#%4$06X&lt;/tt&gt; và màu nền ước tính của &lt;tt&gt;#%5$06X&lt;/tt&gt;. Hãy cân nhắc sử dụng tỷ lệ tương phản lớn hơn %2$.2f cho văn bản nhỏ hoặc %3$.2f cho văn bản lớn.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Mục tiêu cảm ứng</string>
+  
+  <string name="result_message_not_clickable">Chế độ xem này không thể nhấp được.</string>
+  
+  <string name="result_message_brief_small_touch_target">Hãy cân nhắc tạo mục có thể nhấp này lớn hơn.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Kích thước của mục này là &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Hãy cân nhắc tạo mục tiêu cảm ứng này rộng từ &lt;tt&gt;%3$ddp&lt;/tt&gt; và cao từ &lt;tt&gt;%4$ddp&lt;/tt&gt; trở lên.</string>
+  
+  <string name="result_message_small_touch_target_height">Chiều cao của mục này là &lt;tt&gt;%1$ddp&lt;/tt&gt;. Hãy cân nhắc đặt chiều cao của mục tiêu cảm ứng này từ &lt;tt&gt;%2$ddp&lt;/tt&gt; trở lên.</string>
+  
+  <string name="result_message_small_touch_target_width">Chiều rộng của mục này là &lt;tt&gt;%1$ddp&lt;/tt&gt;. Hãy cân nhắc đặt chiều rộng của mục tiêu cảm ứng này từ &lt;tt&gt;%2$ddp&lt;/tt&gt; trở lên.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Đã phát hiện thấy &lt;tt&gt;TouchDelegate&lt;/tt&gt; trên một trong các nhóm cao cấp của mục này. Bạn có thể bỏ qua thông báo này nếu yếu tố đại diện có kích thước đầy đủ và xử lý các sự kiện cảm ứng cho mục này.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Một vùng chứa chính có thể đang xử lý các sự kiện cảm ứng cho mục này. Nếu việc chọn vùng chứa lớn hơn thực hiện cùng một tác vụ như chọn mục này thì hãy cân nhắc xác định mục này là không thể nhấp vào. Nếu thực hiện một tác vụ khác, hãy cân nhắc tăng kích thước của mục này.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Một vùng chứa chính có thể đang cắt nhỏ kích thước của mục có vùng vẽ &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; này. Hãy cân nhắc tăng kích thước cắt ban đầu của mục này hoặc cho phép vùng chứa chính lớn hơn xử lý các tác vụ thay cho mục này.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Mục này không được đánh giá vì có thể mục này chỉ hiển thị một phần trong phạm vi vùng chứa có thể cuộn.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

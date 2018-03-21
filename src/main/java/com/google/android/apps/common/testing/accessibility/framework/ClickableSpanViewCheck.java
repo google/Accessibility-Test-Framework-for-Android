@@ -16,16 +16,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
-import android.net.Uri;
-import android.text.Spanned;
+import android.support.annotation.Nullable;
 import android.text.style.ClickableSpan;
-import android.text.style.URLSpan;
 import android.view.View;
-import android.widget.TextView;
-
-import java.util.ArrayList;
+import com.google.android.apps.common.testing.accessibility.framework.checks.ClickableSpanCheck;
 import java.util.List;
 
 /**
@@ -37,57 +31,17 @@ import java.util.List;
  *
  * <p>The exception to this rule is that {@code URLSpan}s are accessible if they do not contain a
  * relative URI.
+ *
+ * @deprecated Replaced by {@link ClickableSpanCheck}
  */
-public class ClickableSpanViewCheck extends AccessibilityViewCheck {
+@Deprecated
+public class ClickableSpanViewCheck extends AccessibilityViewHierarchyCheck {
+
+  private static final ClickableSpanCheck DELEGATION_CHECK = new ClickableSpanCheck();
 
   @Override
-  public List<AccessibilityViewCheckResult> runCheckOnView(View view) {
-    List<AccessibilityViewCheckResult> results = new ArrayList<>(1);
-    if (view instanceof TextView) {
-      TextView textView = (TextView) view;
-      if (textView.getText() instanceof Spanned) {
-        Spanned text = (Spanned) textView.getText();
-        ClickableSpan[] clickableSpans = text.getSpans(0, text.length(), ClickableSpan.class);
-        for (ClickableSpan clickableSpan : clickableSpans) {
-          if (clickableSpan instanceof URLSpan) {
-            String url = ((URLSpan) clickableSpan).getURL();
-            if (url == null) {
-              results.add(
-                  new AccessibilityViewCheckResult(
-                      this.getClass(),
-                      AccessibilityCheckResultType.ERROR,
-                      "URLSpan has null URL",
-                      view));
-            } else {
-              Uri uri = Uri.parse(url);
-              if (uri.isRelative()) {
-                // Relative URIs cannot be resolved.
-                results.add(
-                    new AccessibilityViewCheckResult(
-                        this.getClass(),
-                        AccessibilityCheckResultType.ERROR,
-                        "URLSpan should not contain relative links",
-                        view));
-              }
-            }
-          } else { // Non-URLSpan ClickableSpan
-            results.add(
-                new AccessibilityViewCheckResult(
-                    this.getClass(),
-                    AccessibilityCheckResultType.ERROR,
-                    "URLSpan should be used in place of ClickableSpan for improved accessibility",
-                    view));
-          }
-        }
-      }
-    } else {
-      results.add(
-          new AccessibilityViewCheckResult(
-              this.getClass(),
-              AccessibilityCheckResultType.NOT_RUN,
-              "View must be a TextView",
-              view));
-    }
-    return results;
+  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
+      View root, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
   }
 }

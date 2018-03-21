@@ -21,13 +21,10 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
@@ -40,15 +37,11 @@ public class ContrastSwatch implements Parcelable {
 
     private Bitmap mImage;
 
-    private final String mName;
+    private final @Nullable String mName;
 
-    private final HashMap<Integer, Double> mLuminanceMap;
+    private int mBackgroundColor;
 
-    private final HashMap<Double, Integer> mLuminanceHistogram;
-
-    private final List<Integer> mBackgroundColors;
-
-    private final List<Integer> mForegroundColors;
+    private int mForegroundColor;
 
     private double mBackgroundLuminance;
 
@@ -71,29 +64,19 @@ public class ContrastSwatch implements Parcelable {
      *            evaluated
      * @param name Optional name identifying the image being evaluated
      */
-    public ContrastSwatch(Bitmap image, Rect screenBounds, String name) {
+    public ContrastSwatch(Bitmap image, Rect screenBounds, @Nullable String name) {
         mImage = image;
         mScreenBounds = screenBounds;
         mName = name;
-        mBackgroundColors = new LinkedList<Integer>();
-        mForegroundColors = new LinkedList<Integer>();
-        mLuminanceMap = new HashMap<Integer, Double>();
-        mLuminanceHistogram = new HashMap<Double, Integer>();
 
-        processSwatch();
+        processSwatch(image);
     }
 
     private ContrastSwatch(Parcel source) {
-        mBackgroundColors = new LinkedList<Integer>();
-        mForegroundColors = new LinkedList<Integer>();
-        mLuminanceMap = new HashMap<Integer, Double>();
-        mLuminanceHistogram = new HashMap<Double, Integer>();
-
+        mImage = null;
         mName = source.readString();
-        source.readMap(mLuminanceMap, null);
-        source.readMap(mLuminanceHistogram, null);
-        source.readList(mBackgroundColors, null);
-        source.readList(mForegroundColors, null);
+        mBackgroundColor = source.readInt();
+        mForegroundColor = source.readInt();
         mBackgroundLuminance = source.readDouble();
         mForegroundLuminance = source.readDouble();
         mScreenBounds = (Rect) source.readValue(Rect.class.getClassLoader());
@@ -106,9 +89,13 @@ public class ContrastSwatch implements Parcelable {
         }
     }
 
-    private void processSwatch() {
-        processLuminanceData();
-        extractFgBgData();
+    /**
+     * Compute the background and foreground colors and luminance for the image, and the contrast
+     * ratio.
+     */
+    private void processSwatch(Bitmap image) {
+        final Map<Integer, Integer> colorHistogram = processLuminanceData(image);
+        extractFgBgData(colorHistogram);
 
         // Two-decimal digits of precision for the contrast ratio
         mContrastRatio = Math.round(
@@ -116,113 +103,104 @@ public class ContrastSwatch implements Parcelable {
                 * 100.0d) / 100.0d;
     }
 
-    private void processLuminanceData() {
-        for (int x = 0; x < mImage.getWidth(); ++x) {
-            for (int y = 0; y < mImage.getHeight(); ++y) {
-                final int color = mImage.getPixel(x, y);
-                final double luminance = ContrastUtils.calculateLuminance(color);
-                if (!mLuminanceMap.containsKey(color)) {
-                    mLuminanceMap.put(color, luminance);
-                }
+   /**
+    * @return a map where the keys are colors that are present in the image, and the values are the
+    *     number of pixels with each color.
+    */
+    private static Map<Integer, Integer> processLuminanceData(Bitmap image) {
+        final Map<Integer, Integer> colorHistogram = new HashMap<>();
+        final int width = image.getWidth();
+        final int height = image.getHeight();
+        if ((width * height) == 0) {
+            return colorHistogram;
+        }
+        int[] pixels = new int[width * height];
+        image.getPixels(pixels, 0, width, 0, 0, width, height);
 
-                if (!mLuminanceHistogram.containsKey(luminance)) {
-                    mLuminanceHistogram.put(luminance, 0);
-                }
+        Arrays.sort(pixels);
 
-                mLuminanceHistogram.put(luminance, mLuminanceHistogram.get(luminance) + 1);
+        // Loop invariants
+        int currentColor = pixels[0];
+        int currentColorCount = 1;
+        for (int i = 1; i < pixels.length; i++) {
+            int color = pixels[i];
+            if (color == currentColor) {
+                currentColorCount++;
+            } else {
+                colorHistogram.put(currentColor, currentColorCount);
+                currentColor = color;
+                currentColorCount = 1;
             }
         }
+        // Catch the last unprocessed color
+        colorHistogram.put(currentColor, currentColorCount);
+        return colorHistogram;
     }
 
-    private void extractFgBgData() {
-        if (mLuminanceMap.isEmpty()) {
-            // An empty luminance map indicates we've encountered a 0px area
-            // image. It has no luminance.
+    /**
+     * Set the fields mBackgroundColor, mForegroundColor, mBackgroundLuminance and
+     * mForegroundLuminance based upon the color histogram.
+     */
+    private void extractFgBgData(Map<Integer, Integer> colorHistogram) {
+        if (colorHistogram.isEmpty()) {
+            // An empty histogram indicates we've encountered a 0px area image. It has no luminance.
             mBackgroundLuminance = mForegroundLuminance = 0;
-            mBackgroundColors.add(Color.BLACK);
-            mForegroundColors.add(Color.BLACK);
-        } else if (mLuminanceMap.size() == 1) {
+            mBackgroundColor = Color.BLACK;
+            mForegroundColor = Color.BLACK;
+        } else if (colorHistogram.size() == 1) {
             // Deal with views that only contain a single color
-            mBackgroundLuminance = mForegroundLuminance = mLuminanceHistogram.keySet().iterator()
-                    .next();
-            final int singleColor = mLuminanceMap.keySet().iterator().next();
-            mForegroundColors.add(singleColor);
-            mBackgroundColors.add(singleColor);
+            final int singleColor = colorHistogram.keySet().iterator().next();
+            mBackgroundLuminance = mForegroundLuminance =
+                    ContrastUtils.calculateLuminance(singleColor);
+            mForegroundColor = singleColor;
+            mBackgroundColor = singleColor;
         } else {
-            // Sort all luminance values seen from low to high
-            final ArrayList<Entry<Integer, Double>> colorsByLuminance = new ArrayList<
-                    Entry<Integer, Double>>(mLuminanceMap.size());
-            colorsByLuminance.addAll(mLuminanceMap.entrySet());
-            Collections.sort(colorsByLuminance, new Comparator<Entry<Integer, Double>>() {
-                @Override
-                public int compare(Entry<Integer, Double> lhs, Entry<Integer, Double> rhs) {
-                    return Double.compare(lhs.getValue(), rhs.getValue());
-                }
-            });
-
-            // Sort luminance values seen by frequency in the image
-            final ArrayList<Entry<Double, Integer>> luminanceByFrequency = new ArrayList<
-                    Entry<Double, Integer>>(mLuminanceHistogram.size());
-            luminanceByFrequency.addAll(mLuminanceHistogram.entrySet());
-            Collections.sort(luminanceByFrequency, new Comparator<Entry<Double, Integer>>() {
-                @Override
-                public int compare(Entry<Double, Integer> lhs, Entry<Double, Integer> rhs) {
-                    return Integer.compare(lhs.getValue(), rhs.getValue());
-                }
-            });
-
             // Find the average luminance value within the set of luminances for
             // purposes of splitting luminance values into high-luminance and
             // low-luminance buckets. This is explicitly not a weighted average.
             double luminanceSum = 0;
-            for (Entry<Double, Integer> luminanceCount : luminanceByFrequency) {
-                luminanceSum += luminanceCount.getKey();
+            for (int color : colorHistogram.keySet()) {
+                luminanceSum += ContrastUtils.calculateLuminance(color);
             }
 
-            final double averageLuminance = luminanceSum / luminanceByFrequency.size();
+            final double averageLuminance = luminanceSum / colorHistogram.size();
 
             // Select the highest and lowest luminance values that contribute to
             // most number of pixels in the image -- our background and
             // foreground colors.
             double lowLuminanceContributor = 0.0d;
-            for (int i = luminanceByFrequency.size() - 1; i >= 0; --i) {
-                final double luminanceValue = luminanceByFrequency.get(i).getKey();
-                if (luminanceValue < averageLuminance) {
-                    lowLuminanceContributor = luminanceValue;
-                    break;
-                }
-            }
-
             double highLuminanceContributor = 1.0d;
-            for (int i = luminanceByFrequency.size() - 1; i >= 0; --i) {
-                final double luminanceValue = luminanceByFrequency.get(i).getKey();
-                if (luminanceValue >= averageLuminance) {
+            int lowLuminanceColor = -1;
+            int highLuminanceColor = -1;
+            int maxLowLuminanceFrequency = 0;
+            int maxHighLuminanceFrequency = 0;
+            for (Entry<Integer, Integer> entry : colorHistogram.entrySet()) {
+                final int color = entry.getKey();
+                final double luminanceValue = ContrastUtils.calculateLuminance(color);
+                final int frequency = entry.getValue();
+                if ((luminanceValue < averageLuminance) && (frequency > maxLowLuminanceFrequency)) {
+                    lowLuminanceContributor = luminanceValue;
+                    maxLowLuminanceFrequency = frequency;
+                    lowLuminanceColor = color;
+                } else if ((luminanceValue >= averageLuminance)
+                        && (frequency > maxHighLuminanceFrequency)) {
                     highLuminanceContributor = luminanceValue;
-                    break;
+                    maxHighLuminanceFrequency = frequency;
+                    highLuminanceColor = color;
                 }
             }
 
             // Background luminance is that which occurs more frequently
-            if (mLuminanceHistogram.get(highLuminanceContributor)
-                    > mLuminanceHistogram.get(lowLuminanceContributor)) {
+            if (maxHighLuminanceFrequency > maxLowLuminanceFrequency) {
                 mBackgroundLuminance = highLuminanceContributor;
+                mBackgroundColor = highLuminanceColor;
                 mForegroundLuminance = lowLuminanceContributor;
+                mForegroundColor = lowLuminanceColor;
             } else {
                 mBackgroundLuminance = lowLuminanceContributor;
+                mBackgroundColor = lowLuminanceColor;
                 mForegroundLuminance = highLuminanceContributor;
-            }
-
-            // Determine the contributing colors for those luminance values
-            // TODO(caseyburkhardt): I know, this is gross to iterate through
-            // the whole image again...
-            for (Entry<Integer, Double> colorLuminance : mLuminanceMap.entrySet()) {
-                if (colorLuminance.getValue() == mBackgroundLuminance) {
-                    mBackgroundColors.add(colorLuminance.getKey());
-                }
-
-                if (colorLuminance.getValue() == mForegroundLuminance) {
-                    mForegroundColors.add(colorLuminance.getKey());
-                }
+                mForegroundColor = highLuminanceColor;
             }
         }
     }
@@ -235,16 +213,16 @@ public class ContrastSwatch implements Parcelable {
         mImage = image;
     }
 
-    public CharSequence getName() {
+    public @Nullable CharSequence getName() {
         return mName;
     }
 
-    public List<Integer> getBackgroundColors() {
-        return Collections.unmodifiableList(mBackgroundColors);
+    public int getBackgroundColor() {
+      return mBackgroundColor;
     }
 
-    public List<Integer> getForegroundColors() {
-        return Collections.unmodifiableList(mForegroundColors);
+    public int getForegroundColor() {
+        return mForegroundColor;
     }
 
     public double getBackgroundLuminance() {
@@ -271,10 +249,8 @@ public class ContrastSwatch implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mName);
-        dest.writeMap(mLuminanceMap);
-        dest.writeMap(mLuminanceHistogram);
-        dest.writeList(mBackgroundColors);
-        dest.writeList(mForegroundColors);
+        dest.writeInt(mBackgroundColor);
+        dest.writeInt(mForegroundColor);
         dest.writeDouble(mBackgroundLuminance);
         dest.writeDouble(mForegroundLuminance);
         dest.writeValue(mScreenBounds);
@@ -284,8 +260,8 @@ public class ContrastSwatch implements Parcelable {
     @Override
     public String toString() {
         return "{name:" + mName + ", contrast:1:" + mContrastRatio + ", background:"
-                + ContrastUtils.colorsToHexString(mBackgroundColors) + ", foreground:"
-                + ContrastUtils.colorsToHexString(mForegroundColors) + "}";
+                + ContrastUtils.colorToHexString(mBackgroundColor) + ", foreground:"
+                + ContrastUtils.colorToHexString(mForegroundColor) + "}";
     }
 
     public static final Parcelable.Creator<ContrastSwatch>

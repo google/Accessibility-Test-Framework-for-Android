@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Za ta element je bilo ugotovljeno, da ni pomemben za dostopnost.</string>
+  
+  <string name="result_message_no_content_desc">Ta element nima atributa &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Ta element ni viden.</string>
+  
+  <string name="result_message_not_enabled">Ta element ni omogočen.</string>
+  
+  <string name="result_message_not_text_view">Ta element ni primerek razreda &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Podatkov o zajemu zaslona ni bilo mogoče pridobiti.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Lokacija tega elementa na zaslonu (&lt;tt&gt;%1$s&lt;/tt&gt;) ni bila znotraj območja zajema zaslona (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Podatki o zajemu zaslona za ta element so bili skriti.</string>
+  
+  <string name="clickable">element je mogoče klikniti</string>
+  
+  <string name="non_clickable">elementa ni mogoče klikniti</string>
+  
+  <string name="long_clickable">mogoč je dolgi klik elementa</string>
+  
+  <string name="clickable_and_long_clickable">mogoča sta klik in dolgi klik elementa</string>
+  
+  <string name="actionable">z elementom je mogoče opraviti dejanje</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Povezava</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Vrsta tega elementa ni določena.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Preverite, ali je URL v atributu &lt;tt&gt;URLSpan&lt;/tt&gt; za ta element veljaven.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Element mora namesto atributa &lt;tt&gt;ClickableSpan&lt;/tt&gt; uporabljati atribut &lt;tt&gt;URLSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Elementi, ki jih je mogoče klikniti</string>
+  
+  <string name="result_message_brief_same_view_bounds">Več elementov z lastnostjo »%1$s« si deli to lokacijo na zaslonu.</string>
+  
+  <string name="result_message_same_view_bounds">Ta element z lastnostjo »%1$s« je na isti lokaciji na zaslonu (&lt;tt&gt;%2$s&lt;/tt&gt;) kot toliko drugih elementov z enakimi lastnostmi: %3$d.</string>
+  
+  <string name="result_message_view_bounds">Ta element z lastnostjo »%1$s« je tudi na tej lokaciji na zaslonu: &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Opisi elementov</string>
+  
+  <string name="result_message_brief_same_speakable_text">Več elementov ima enak opis.</string>
+  
+  <string name="result_message_same_speakable_text">Besedilo tega elementa z lastnostjo »%1$s«, ki ga je mogoče izgovoriti (»&lt;tt&gt;%2$s&lt;/tt&gt;«), je enako kot pri toliko drugih elementih: %3$d.</string>
+  
+  <string name="result_message_speakable_text">Tudi ta element z lastnostjo »%1$s« ima besedilo, ki ga je mogoče izgovoriti: »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
+  
+  <string name="check_title_editable_content_desc">Oznaka elementa, ki ga je mogoče urejati</string>
+  
+  <string name="result_message_editable_textview_content_desc">Ta element &lt;tt&gt;TextView&lt;/tt&gt;, ki ga je mogoče urejati, ima atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Bralnik zaslona lahko med krmarjenjem uporabnika namesto vsebine, ki jo je mogoče urejati, prebere ta atribut.</string>
+  
+  <string name="result_message_not_editable_textview">Tega elementa &lt;tt&gt;TextView&lt;/tt&gt; ni mogoče urejati.</string>
+  
+  <string name="check_title_image_contrast">Kontrast slike</string>
+  
+  <string name="result_message_not_imageview">Ta element ni primerek razreda &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Razmislite o povečanju kontrastnega razmerja med ospredjem in ozadjem slike.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povečanju razmerja na %2$.2f ali več.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Oznaka vrste elementa</string>
+  
+  <string name="result_message_english_locale_only">To preverjanje deluje le v napravah, kjer je jezik nastavljen na angleščino.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">V atributu &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa je morda nepotrebno besedilo.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa (»&lt;tt&gt;%1$s&lt;/tt&gt;«) se konča z vrsto elementa.</string>
+  
+  <string name="check_title_speakable_text_present">Oznaka elementa</string>
+  
+  <string name="result_message_should_not_focus">Bralnik zaslona bi preskočil ta element.</string>
+  
+  <string name="result_message_web_content">Spletna vsebina se ne ocenjuje.</string>
+  
+  <string name="result_message_missing_speakable_text">Ta element ne sme imeti oznake, ki jo lahko preberejo bralniki zaslona.</string>
+  
+  <string name="check_title_text_contrast">Kontrast besedila</string>
+  
+  <string name="result_message_textview_empty">Ta element &lt;tt&gt;TextView&lt;/tt&gt; je prazen.</string>
+  
+  <string name="result_message_could_not_get_text_color">Barve besedila tega elementa ni bilo mogoče ugotoviti.</string>
+  
+  <string name="result_message_could_not_get_background_color">Barve ozadja tega elementa ni bilo mogoče ugotoviti.</string>
+  
+  <string name="result_message_text_must_be_opaque">Barva besedila tega elementa ni neprosojna.</string>
+  
+  <string name="result_message_background_must_be_opaque">Barva ozadja tega elementa ni neprosojna.</string>
+  
+  <string name="result_message_addendum_opacity_description">Njegova dejanska neprosojnost je %1$.2f %%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Razmislite o povečanju kontrastnega razmerja ospredja in ozadja besedila elementa.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;#%3$06X&lt;/tt&gt; in barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %2$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %2$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%4$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%5$06X&lt;/tt&gt;. Razmislite o uporabi kontrastnega razmerja, večjega od %2$.2f, za majhno besedilo, ali %3$.2f za veliko besedilo.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Cilj dotika</string>
+  
+  <string name="result_message_not_clickable">Tega elementa uporabniškega vmesnika ni mogoče klikniti.</string>
+  
+  <string name="result_message_brief_small_touch_target">Razmislite o povečanju tega elementa, ki ga je mogoče klikniti.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Velikost tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o tem, da bi bil cilj dotika širok &lt;tt&gt;%3$ddp&lt;/tt&gt; in visok &lt;tt&gt;%4$ddp&lt;/tt&gt; ali več.</string>
+  
+  <string name="result_message_small_touch_target_height">Višina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju višine tega cilja dotika na &lt;tt&gt;%2$ddp&lt;/tt&gt; ali več.</string>
+  
+  <string name="result_message_small_touch_target_width">Širina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju širine tega cilja dotika na &lt;tt&gt;%2$ddp&lt;/tt&gt; ali več.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">V enem od nadrejenih razredov tega elementa je bil zaznan element &lt;tt&gt;TouchDelegate&lt;/tt&gt;. To sporočilo lahko prezrete, če je izvedeni element dovolj velik in obravnava dotike za ta element.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Nadrejeni vsebnik morda obravnava dogodke dotikov za ta element. Če se z izbiro večjega vsebnika izvede enako dejanje kot z izbiro tega elementa, razmislite o tem, da elementa ne bi določili kot takega, ki ga je mogoče klikniti. Če se izvede drugo dejanje, razmislite o povečanju velikosti tega elementa.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Ta element, ki ima območje risanja velikosti &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;, je morda obrezan zaradi nadrejenega vsebnika. Povečajte nadrejeni element za obrezovanje tega elementa ali dovolite, da dejanja v imenu tega elementa obravnava večji nadrejeni vsebnik.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Ta element ni bil ocenjen, ker je morda le delno viden v vsebniku, po katerem se je mogoče pomikati.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

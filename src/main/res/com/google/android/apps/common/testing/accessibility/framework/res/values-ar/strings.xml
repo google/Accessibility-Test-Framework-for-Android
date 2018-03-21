@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">تبيّن أن هذا العنصر ليس مهمًا لتسهيل إمكانية الوصول.</string>
+  
+  <string name="result_message_no_content_desc">لا يتضمن هذا العنصر &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">هذا العنصر غير مرئي.</string>
+  
+  <string name="result_message_not_enabled">لم يتم تمكين هذا العنصر.</string>
+  
+  <string name="result_message_not_text_view">هذا العنصر ليس &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">تعذّر الحصول على بيانات لقطة الشاشة.</string>
+  
+  <string name="result_message_view_not_within_screencapture">إنّ موقع هذا العنصر على الشاشة (&lt;tt&gt;%1$s&lt;/tt&gt;) غير مضمّن في الموقع الذي تم التقاطه على الشاشة (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">تم إخفاء معلومات لقطة الشاشة لهذا العنصر.</string>
+  
+  <string name="clickable">قابل للنقر</string>
+  
+  <string name="non_clickable">غير قابل للنقر</string>
+  
+  <string name="long_clickable">قابل للنقر المطوّل</string>
+  
+  <string name="clickable_and_long_clickable">قابل للنقر وللنقر المطوّل</string>
+  
+  <string name="actionable">يمكن اتخاذ إجراء بشأنه</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">الرابط</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">نوع هذا العنصر غير محدد.</string>
+  
+  <string name="result_message_urlspan_invalid_url">يجب التحقق من أنّ عنوان URL ضمن &lt;tt&gt;URLSpan&lt;/tt&gt; التابع لهذا العنصر صالح.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">يجب أن يستخدم هذا العنصر &lt;tt&gt;URLSpan&lt;/tt&gt; بدلاً من &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">عناصر قابلة للنقر</string>
+  
+  <string name="result_message_brief_same_view_bounds">تتشارك عناصر متعددة %1$s هذا الموقع على الشاشة.</string>
+  
+  <string name="result_message_same_view_bounds">يظهر هذا العنصر %1$s على الموقع نفسه على الشاشة (&lt;tt&gt;%2$s&lt;/tt&gt;) حيث يظهر %3$d عنصر آخر بهذه الخصائص.</string>
+  
+  <string name="result_message_view_bounds">يحتل هذا العنصر %1$s أيضًا موقعًا على الشاشة بحدود &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">أوصاف العناصر</string>
+  
+  <string name="result_message_brief_same_speakable_text">تملك عناصر متعددة الوصف نفسه.</string>
+  
+  <string name="result_message_same_speakable_text">يتطابق النص القابل القابل لقراءته بصوت مرتفع: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" لهذا العنصر %1$s مع النص القابل لقراءته بصوت مرتفع لـ %3$d عنصر آخر.</string>
+  
+  <string name="result_message_speakable_text">يضم هذا العنصر %1$s أيضًا نصًا قابلاً لقراءته بصوت مرتفع: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">تسمية عنصر قابل للتعديل</string>
+  
+  <string name="result_message_editable_textview_content_desc">يملك &lt;tt&gt;TextView&lt;/tt&gt; القابل للتعديل هذا &lt;tt&gt;android:contentDescription&lt;/tt&gt;. قد يقرأ قارئ الشاشة هذه السمة بدلاً من المحتوى القابل للتعديل أثناء تنقل المستخدم.</string>
+  
+  <string name="result_message_not_editable_textview">ليس هذا العنصر &lt;tt&gt;TextView&lt;/tt&gt; قابلاً للتعديل.</string>
+  
+  <string name="check_title_image_contrast">تباين الصورة</string>
+  
+  <string name="result_message_not_imageview">ليس هذا العنصر &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">ننصحك بزيادة معدل التباين بين واجهة هذه الصورة وخلفيتها.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">إنّ معدل تباين الصورة هو %1$.2f. يستند هذا المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%3$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة المعدل إلى %2$.2f أو أكثر.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">تسمية نوع العنصر</string>
+  
+  <string name="result_message_english_locale_only">يمكن تشغيل عملية التحقق هذه على أجهزة تم تعيين اللغة فيها إلى الإنجليزية فقط.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">قد يتضمن &lt;tt&gt;android:contentDescription&lt;/tt&gt; لهذا العنصر نصًا غير ضروري.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">ينتهي &lt;tt&gt;android:contentDescription&lt;/tt&gt; لهذا العنصر، \"&lt;tt&gt;%1$s&lt;/tt&gt;\"، بنوع العنصر.</string>
+  
+  <string name="check_title_speakable_text_present">تسمية العنصر</string>
+  
+  <string name="result_message_should_not_focus">لن يتم التركيز على هذا العنصر من قبل قارئ الشاشة.</string>
+  
+  <string name="result_message_web_content">لم يتم تقييم محتوى الويب.</string>
+  
+  <string name="result_message_missing_speakable_text">قد لا يحتوي هذا العنصر على تسمية يمكن قراءتها بواسطة قارئات الشاشة.</string>
+  
+  <string name="check_title_text_contrast">تباين النص</string>
+  
+  <string name="result_message_textview_empty">إنّ &lt;tt&gt;TextView&lt;/tt&gt; هذا فارغ.</string>
+  
+  <string name="result_message_could_not_get_text_color">تعذّر تحديد لون نص هذا العنصر.</string>
+  
+  <string name="result_message_could_not_get_background_color">تعذّر تحديد لون خلفية هذا العنصر.</string>
+  
+  <string name="result_message_text_must_be_opaque">إنّ لون نص هذا العنصر غير معتم.</string>
+  
+  <string name="result_message_background_must_be_opaque">إنّ لون خلفية هذا العنصر غير معتم.</string>
+  
+  <string name="result_message_addendum_opacity_description">تبلغ درجة التعتيم الحالية %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">ننصحك بزيادة معدل تباين ألوان الواجهة إلى الخلفية لنص هذا العنصر.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">يبلغ معدل تباين النص %1$.2f. يستند هذا المعدل إلى لون نص &lt;tt&gt;#%3$06X&lt;/tt&gt; ولون خلفية &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة معدل تباين نص هذا العنصر إلى %2$.2f أو أكثر.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">يبلغ معدل تباين نص العنصر %1$.2f. يستند المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%3$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة معدل تباين نص العنصر هذا إلى %2$.2f أو أكثر.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">يبلغ معدل تباين نص هذا العنصر %1$.2f. يستند المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%4$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%5$06X&lt;/tt&gt;. ننصحك باستخدام معدل تباين يزيد عن %2$.2f للنصوص الصغيرة الحجم أو %3$.2f للنصوص الكبيرة الحجم.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">هدف اللمس</string>
+  
+  <string name="result_message_not_clickable">هذا العرض غير قابل للنقر.</string>
+  
+  <string name="result_message_brief_small_touch_target">ننصحك بتكبير حجم هذا العنصر القابل للنقر.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">يبلغ حجم هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt; x ‏&lt;tt&gt;%2$ddp&lt;/tt&gt;. ننصحك بزيادة عرض هدف اللمس هذا إلى &lt;tt&gt;%3$ddp&lt;/tt&gt; وارتفاعه إلى &lt;tt&gt;%4$ddp&lt;/tt&gt; أو أكثر.</string>
+  
+  <string name="result_message_small_touch_target_height">يبلغ ارتفاع هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة ارتفاع هدف اللمس هذا إلى &lt;tt&gt;%2$ddp&lt;/tt&gt; أو أكثر.</string>
+  
+  <string name="result_message_small_touch_target_width">يبلغ عرض هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة عرض هدف اللمس هذا إلى &lt;tt&gt;%2$ddp&lt;/tt&gt; أو أكثر.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">تم اكتشاف &lt;tt&gt;TouchDelegate&lt;/tt&gt; على الإصدار السابق من هذا العنصر. يمكنك تجاهل هذه الرسالة إذا كان العنصر المفوض بحجم مناسب ويعالج اللمسات لهذا العنصر.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">يمكن أن تتولى حاوية أساسية معالجة أحداث اللمس لهذا العنصر. إذا أدى تحديد الحاوية الأكبر إلى تنفيذ الإجراء نفسه كتحديد هذا العنصر، ننصحك بتعريف هذا العنصر على أنه غير قابل للنقر. إذا تم تنفيذ إجراء مختلف، فننصحك بتكبير حجم هذا العنصر.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">يُحتمل أن يتم اقتصاص حجم هذا العنصر، الذي تبلغ منطقة الرسم فيه &lt;tt&gt;%1$ddp&lt;/tt&gt; x ‏&lt;tt&gt;%2$ddp&lt;/tt&gt;، بواسطة حاوية أساسية. ننصحك بزيادة حجم الإصدار السابق من العنصر الذي تسبّب بالاقتصاص أو السماح لحاوية أساسية أكبر بتولي الإجراءات نيابةً عن هذا العنصر.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">لم يتم تقييم هذا العنصر لأنه قد يكون مرئيًا جزئيًا فقط ضمن حاوية قابلة للتمرير.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

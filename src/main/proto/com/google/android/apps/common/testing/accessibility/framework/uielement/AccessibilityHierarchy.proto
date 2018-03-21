@@ -1,0 +1,119 @@
+/*
+ * Copyright (C) 2015 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+syntax = "proto2";
+
+package com.google.android.apps.common.testing.accessibility.framework.uielement.proto;
+
+option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
+option java_outer_classname  = "AccessibilityHierarchyProtos";
+
+import "com/google/android/apps/common/testing/accessibility/framework/uielement/AndroidFramework.proto";
+
+// Wire format for an AccessibilityHierarchy
+// Next index: 4
+message AccessibilityHierarchyProto {
+  optional DeviceStateProto device_state = 1;
+  repeated WindowHierarchyElementProto windows = 2;
+  optional int32 active_window_id = 3 [default = -1];
+}
+
+// Wire format for a DeviceState
+// Next index: 4
+message DeviceStateProto {
+  optional DisplayInfoProto default_display_info = 1;
+  optional int32 sdk_version = 2;
+
+  // An IETF BCP 47 language tag representing the locale at the time the app
+  // was launched.
+  optional string locale = 3;
+}
+
+// Wire format for a DisplayInfo
+// Next index = 3;
+message DisplayInfoProto {
+  optional DisplayInfoMetricsProto metrics_without_decoration = 1;
+  optional DisplayInfoMetricsProto real_metrics = 2;
+}
+
+// Wire format for a DisplayInfo.Metrics
+// Next index: 8
+message DisplayInfoMetricsProto {
+  optional float density = 1;
+  optional float scaled_density = 2;
+  optional float x_dpi = 3;
+  optional float y_dpi = 4;
+  optional int32 density_dpi = 5;
+  optional int32 height_pixels = 6;
+  optional int32 width_pixels = 7;
+}
+
+// Wire format for a WindowHierarchyElement
+// Next index: 12
+message WindowHierarchyElementProto {
+  // Bookkeeping
+  optional int32 id = 1 [default = -1];
+  optional int32 parent_id = 2 [default = -1];
+  repeated int32 child_ids = 3;
+  repeated ViewHierarchyElementProto views = 4;
+
+  // Window properties
+  optional int32 window_id = 5;
+  optional int32 layer = 6;
+  optional int32 type = 7;
+  optional bool focused = 8;
+  optional bool accessibility_focused = 9;
+  optional bool active = 10;
+  optional RectProto bounds_in_screen = 11;
+}
+
+// Wire format for a ViewHierarchyElement
+// Next index: 33
+message ViewHierarchyElementProto {
+  // Bookkeeping
+  optional int32 id = 1 [default = -1];
+  optional int32 parent_id = 2 [default = -1];
+  repeated int32 child_ids = 3;
+
+  // View properties
+  optional string package_name = 4;
+  optional string class_name = 5;
+  optional string resource_name = 6;
+  optional CharSequenceProto content_description = 7;
+  optional CharSequenceProto text = 8;
+  optional bool important_for_accessibility = 9;
+  optional bool visible_to_user = 10;
+  optional bool clickable = 11;
+  optional bool long_clickable = 12;
+  optional bool focusable = 13;
+  optional bool editable = 14;
+  optional bool scrollable = 15;
+  optional bool can_scroll_forward = 16;
+  optional bool can_scroll_backward = 17;
+  optional bool checkable = 18;
+  optional bool has_touch_delegate = 19;
+  optional RectProto bounds_in_screen = 20;
+  optional float text_size = 21;
+  optional int32 text_color = 22;
+  optional int32 background_drawable_color = 23;
+  optional int32 typeface_style = 24;
+  optional bool enabled = 25;
+  optional int64 labeled_by_id = 26;
+  optional int32 nonclipped_height = 27;
+  optional int32 nonclipped_width = 28;
+  optional bool checked = 29;
+  optional string accessibility_class_name = 30;
+  optional int64 accessibility_traversal_before_id = 31;
+  optional int64 accessibility_traversal_after_id = 32;
+}

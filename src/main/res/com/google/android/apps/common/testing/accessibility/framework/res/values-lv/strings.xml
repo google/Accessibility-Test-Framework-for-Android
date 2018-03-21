@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Šis vienums netika konstatēts kā svarīgs pieejamībai.</string>
+  
+  <string name="result_message_no_content_desc">Šim vienumam nav atribūta &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Šis vienums nav redzams.</string>
+  
+  <string name="result_message_not_enabled">Šis vienums nav iespējots.</string>
+  
+  <string name="result_message_not_text_view">Šis vienums nav klases &lt;tt&gt;TextView&lt;/tt&gt; vienums.</string>
+  
+  <string name="result_message_no_screencapture">Nevarēja iegūt ekrāna tveršanas datus.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Šī vienuma atrašanās vieta ekrānā (&lt;tt&gt;%1$s&lt;/tt&gt;) nebija ekrāna tveršanas robežās (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Ekrāna tveršanas informācija par šo vienumu bija paslēpta.</string>
+  
+  <string name="clickable">klikšķināms</string>
+  
+  <string name="non_clickable">neklikšķināms</string>
+  
+  <string name="long_clickable">ilgi klikšķināms</string>
+  
+  <string name="clickable_and_long_clickable">klikšķināms un ilgi klikšķināms</string>
+  
+  <string name="actionable">izmantojams</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Saite</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Šī vienuma veids ir nenoteikts.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Apstipriniet, ka šī vienuma hipersaites &lt;tt&gt;URLSpan&lt;/tt&gt; vietrādis URL ir derīgs.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Šajā vienumā ieteicams izmantot klasi &lt;tt&gt;URLSpan&lt;/tt&gt; klases &lt;tt&gt;ClickableSpan&lt;/tt&gt; vietā.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Klikšķināmi vienumi</string>
+  
+  <string name="result_message_brief_same_view_bounds">Šajā vietā uz ekrāna atrodas vairāki vienumi (vienumu veids: %1$s).</string>
+  
+  <string name="result_message_same_view_bounds">Šim vienumam (vienuma veids: %1$s) ir tāda pati atrašanās vieta uz ekrāna (&lt;tt&gt;%2$s&lt;/tt&gt;) kā %3$d citam(-iem) vienumam(-iem) ar šādām īpašībām.</string>
+  
+  <string name="result_message_view_bounds">Arī šim vienumam (vienuma veids: %1$s) ir šāda atrašanās vieta ekrānā: &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Vienumu apraksti</string>
+  
+  <string name="result_message_brief_same_speakable_text">Vairākiem vienumiem ir vienādi apraksti.</string>
+  
+  <string name="result_message_same_speakable_text">Šī vienuma (vienuma veids: %1$s) runātais teksts (&lt;tt&gt;%2$s&lt;/tt&gt;) ir identisks ar %3$d cita(-u) vienuma(-u) runāto tekstu.</string>
+  
+  <string name="result_message_speakable_text">Arī šim vienumam (vienuma veids: %1$s) ir šāds runātais teksts: &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_editable_content_desc">Rediģējama vienuma iezīme</string>
+  
+  <string name="result_message_editable_textview_content_desc">Šim rediģējamam vienumam (&lt;tt&gt;TextView&lt;/tt&gt;) ir šāda iezīme: &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Kad lietotājs pārvietosies, ekrāna lasītājs var nolasīt šo atribūtu rediģējamā satura vietā.</string>
+  
+  <string name="result_message_not_editable_textview">Šis vienums nav rediģējams klases &lt;tt&gt;TextView&lt;/tt&gt; vienums.</string>
+  
+  <string name="check_title_image_contrast">Attēla kontrasts</string>
+  
+  <string name="result_message_not_imageview">Šis vienums nav klases &lt;tt&gt;ImageView&lt;/tt&gt; vienums.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Apsveriet iespēju palielināt kontrasta attiecību starp šī attēla priekšplānu un fonu.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šo attiecību uz %2$.2f vai lielāku attiecību.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Vienuma veida iezīme</string>
+  
+  <string name="result_message_english_locale_only">Šī pārbaude darbojas tikai ierīcēs ar iestatītām atrašanās vietām, kur tiek atbalstīta angļu valoda.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Iespējams, šī vienuma atribūtā &lt;tt&gt;android:contentDescription&lt;/tt&gt; ir ietverts nevajadzīgs teksts.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Šī vienuma atribūts &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) beidzas ar vienuma veidu.</string>
+  
+  <string name="check_title_speakable_text_present">Vienuma iezīme</string>
+  
+  <string name="result_message_should_not_focus">Šis vienums nebūs ekrāna lasītāja fokusā.</string>
+  
+  <string name="result_message_web_content">Tīmekļa saturs nav novērtēts.</string>
+  
+  <string name="result_message_missing_speakable_text">Iespējams, šim vienumam nav iezīmes, ko ekrāna lasītāji var nolasīt.</string>
+  
+  <string name="check_title_text_contrast">Teksta kontrasts</string>
+  
+  <string name="result_message_textview_empty">Šis vienums (&lt;tt&gt;TextView&lt;/tt&gt;) ir tukšs.</string>
+  
+  <string name="result_message_could_not_get_text_color">Nevarēja noteikt šī vienuma teksta krāsu.</string>
+  
+  <string name="result_message_could_not_get_background_color">Nevarēja noteikt šī vienuma fona krāsu.</string>
+  
+  <string name="result_message_text_must_be_opaque">Šī vienuma teksta krāsa nav necaurredzama.</string>
+  
+  <string name="result_message_background_must_be_opaque">Šī vienuma fona krāsa nav necaurredzama.</string>
+  
+  <string name="result_message_addendum_opacity_description">Tā faktiskā necaurredzamība ir %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Apsveriet iespēju palielināt šī vienuma teksta priekšplāna/fona kontrasta attiecību.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz teksta krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) un fona krāsu (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %2$.2f vai lielāku attiecību.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %2$.2f vai lielāku attiecību.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;#%4$06X&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;#%5$06X&lt;/tt&gt;). Apsveriet iespēju izmantot kontrasta attiecību, kas pārsniedz %2$.2f mazam tekstam vai %3$.2f lielam tekstam.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Skāriena mērķis</string>
+  
+  <string name="result_message_not_clickable">Šis skatījums nav klikšķināms.</string>
+  
+  <string name="result_message_brief_small_touch_target">Apsveriet iespēju palielināt šī klikšķināmā vienuma izmēru.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Šī vienuma izmērs ir &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Apsveriet iespēju mainīt šī skāriena mērķa platumu uz &lt;tt&gt;%3$ddp&lt;/tt&gt; un augstumu uz &lt;tt&gt;%4$ddp&lt;/tt&gt; vai vairāk.</string>
+  
+  <string name="result_message_small_touch_target_height">Šī vienuma augstums ir &lt;tt&gt;%1$ddp&lt;/tt&gt;. Apsveriet iespēju mainīt šī skāriena mērķa augstumu uz &lt;tt&gt;%2$ddp&lt;/tt&gt; vai vairāk.</string>
+  
+  <string name="result_message_small_touch_target_width">Šī vienuma platums ir &lt;tt&gt;%1$ddp&lt;/tt&gt;. Apsveriet iespēju mainīt šī skāriena mērķa platumu uz &lt;tt&gt;%2$ddp&lt;/tt&gt; vai vairāk.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Vienā no šī vienuma priekštečiem ir konstatēts &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Ja delegātam ir pietiekams izmērs un tas pilda šī vienuma skāriena funkciju, šo ziņojumu var ignorēt.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Iespējams, vecākkonteiners pilda šī vienuma skāriena funkciju. Ja, atlasot lielāko konteineru, tiek veikta tā pati darbība, kas tiek veikta, atlasot šo vienumu, apsveriet iespēju definēt šo vienumu kā neklikšķināmu. Ja tiek veikta atšķirīga darbība, apsveriet iespēju palielināt šī vienuma izmēru.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Iespējams, vecākkonteiners samazina šī vienuma lielumu (tā zīmētais laukums ir: &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;). Apsveriet to ietverošā elementa palielināšanu vai ļaujiet lielākam vecākkonteineram apstrādāt šo vienumu.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Šis vienums netika novērtēts, jo, iespējams, tas ir tikai daļēji redzams ritināmajā konteinerā.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

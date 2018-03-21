@@ -14,24 +14,20 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
-
-import com.googlecode.eyesfree.utils.LogUtils;
 
 /**
  * Result generated when an accessibility check runs on a {@link AccessibilityEvent}.
  */
-@TargetApi(Build.VERSION_CODES.DONUT)
 public final class AccessibilityEventCheckResult extends AccessibilityCheckResult implements
     Parcelable {
 
-  private AccessibilityEvent event;
+  private final AccessibilityEvent event;
 
   /**
    * @param checkClass The check that generated the error
@@ -42,14 +38,7 @@ public final class AccessibilityEventCheckResult extends AccessibilityCheckResul
   public AccessibilityEventCheckResult(Class<? extends AccessibilityCheck> checkClass,
       AccessibilityCheckResultType type, CharSequence message, AccessibilityEvent event) {
     super(checkClass, type, message);
-    if (event != null) {
-      this.event = AccessibilityEvent.obtain(event);
-    }
-  }
-
-  private AccessibilityEventCheckResult(Parcel in) {
-    super(null, null, null);
-    readFromParcel(in);
+    this.event = AccessibilityEvent.obtain(event);
   }
 
   /**
@@ -60,67 +49,55 @@ public final class AccessibilityEventCheckResult extends AccessibilityCheckResul
   }
 
   @Override
-  public void recycle() {
-    super.recycle();
-    if (event != null) {
-      event.recycle();
-      event = null;
-    }
-  }
-
-  @Override
   public int describeContents() {
     return 0;
   }
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString((checkClass != null) ? checkClass.getName() : "");
+    dest.writeString(checkClass.getName());
     dest.writeInt((type != null) ? type.ordinal() : -1);
-    TextUtils.writeToParcel(message, dest, flags);
-
-    // Event requires a presence flag
-    if (event != null) {
-      dest.writeInt(1);
-      event.writeToParcel(dest, flags);
-    } else {
-      dest.writeInt(0);
-    }
+    TextUtils.writeToParcel(checkNotNull(message), dest, flags);
+    event.writeToParcel(dest, flags);
   }
 
   @SuppressWarnings("unchecked")
-  private void readFromParcel(Parcel in) {
+  private static AccessibilityEventCheckResult readFromParcel(Parcel in) {
     // Check class (unchecked cast checked by isAssignableFrom)
-    checkClass = null;
-    String checkClassName = in.readString();
-    if (!("".equals(checkClassName))) {
-      try {
-        Class<?> uncheckedClass = Class.forName(checkClassName);
-        if (AccessibilityCheck.class.isAssignableFrom(uncheckedClass)) {
-          checkClass = (Class<? extends AccessibilityCheck>) uncheckedClass;
-        }
-      } catch (ClassNotFoundException e) {
-        // If the reference can't be resolved by our class loader, remain null.
-        LogUtils.log(this, Log.WARN, "Attempt to obtain unknown class %1$s", checkClassName);
+    String checkClassName = checkNotNull(in.readString());
+    Class<? extends AccessibilityCheck> checkClass;
+    try {
+      Class<?> uncheckedClass = Class.forName(checkClassName);
+      if ((uncheckedClass != null) && AccessibilityCheck.class.isAssignableFrom(uncheckedClass)) {
+        checkClass = (Class<? extends AccessibilityCheck>) uncheckedClass;
+      } else {
+        throw new RuntimeException(
+            String.format("Class: %1$s is not assignable from AccessibilityCheck", checkClassName));
       }
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(
+          String.format("Failed to resolve check class: %1$s", checkClassName));
     }
 
     // Type
-    final int type = in.readInt();
-    this.type = (type != -1) ? AccessibilityCheckResultType.values()[type] : null;
+    int typeInt = in.readInt();
+    AccessibilityCheckResultType type =
+        (typeInt != -1) ? AccessibilityCheckResultType.values()[typeInt] : null;
 
     // Message
-    this.message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+    CharSequence message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
 
     // Event
-    this.event = (in.readInt() == 1) ? AccessibilityEvent.CREATOR.createFromParcel(in) : null;
+    AccessibilityEvent event = AccessibilityEvent.CREATOR.createFromParcel(in);
+
+    return new AccessibilityEventCheckResult(checkClass, checkNotNull(type), message, event);
   }
 
   public static final Parcelable.Creator<AccessibilityEventCheckResult> CREATOR =
       new Parcelable.Creator<AccessibilityEventCheckResult>() {
         @Override
         public AccessibilityEventCheckResult createFromParcel(Parcel in) {
-          return new AccessibilityEventCheckResult(in);
+          return readFromParcel(in);
         }
 
         @Override

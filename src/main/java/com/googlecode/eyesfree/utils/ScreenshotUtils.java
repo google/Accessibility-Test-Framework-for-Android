@@ -21,14 +21,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
 import android.view.WindowManager;
-
 import com.googlecode.eyesfree.compat.view.SurfaceControlCompatUtils;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -128,13 +128,34 @@ public class ScreenshotUtils {
      *         was {@code null} or the crop parameters were out of bounds.
      */
     public static Bitmap cropBitmap(Bitmap sourceBitmap, Rect bounds) {
+        if ((bounds == null) || bounds.isEmpty())  {
+            return null;
+        }
+
+        return cropBitmap(sourceBitmap, bounds.left, bounds.top, bounds.width(), bounds.height());
+    }
+
+    /**
+     * Creates a new {@link Bitmap} object with a rectangular region of pixels
+     * from the source bitmap.
+     * <p>
+     * The source bitmap is unaffected by this operation.
+     *
+     * @param sourceBitmap The source bitmap to crop.
+     * @param left The leftmost coordinate to include in the cropped image
+     * @param top The toptmost coordinate to include in the cropped image
+     * @param width The width of the cropped image
+     * @param height The height of the cropped image
+     * @return A new bitmap of the cropped area, or {@code null} if the source
+     *         was {@code null} or the crop parameters were out of bounds.
+     */
+    public static Bitmap cropBitmap(Bitmap sourceBitmap, int left, int top, int width, int height) {
         if (sourceBitmap == null) {
             return null;
         }
 
         try {
-            return Bitmap.createBitmap(
-                    sourceBitmap, bounds.left, bounds.top, bounds.width(), bounds.height());
+            return Bitmap.createBitmap(sourceBitmap, left, top, width, height);
         } catch (IllegalArgumentException ex) {
             // Can throw exception if cropping arguments are out of bounds.
             LogUtils.log(ScreenshotUtils.class, Log.ERROR, Log.getStackTraceString(ex));
@@ -143,8 +164,25 @@ public class ScreenshotUtils {
     }
 
     /**
-     * Writes a {@link Bitmap} object to a file in the current context's files
-     * directory.
+     * Decodes a {@link Bitmap} from the provided file {@code path}
+     *
+     * @param path The absolute file patch from which to read the {@link Bitmap}
+     * @return The decoded {@link Bitmap}, or {@code null} if the provided {@code path} does not
+     *         exist, or the file at that location could not be decoded.
+     */
+    public static Bitmap readBitmap(String path) {
+        if (!TextUtils.isEmpty(path)) {
+            final File file = new File(path);
+            if (file.exists()) {
+                return BitmapFactory.decodeFile(file.getAbsolutePath());
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Writes a {@link Bitmap} object to a file in the current context's files directory.
      *
      * @param context The current context.
      * @param bitmap The bitmap object to output.
@@ -154,11 +192,42 @@ public class ScreenshotUtils {
      *         operation failed.
      */
     public static File writeBitmap(Context context, Bitmap bitmap, String dir, String filename) {
-        if (bitmap == null) {
+        if ((bitmap == null) || TextUtils.isEmpty(dir) || TextUtils.isEmpty(filename)) {
             return null;
         }
-
         final File dirFile = new File(context.getFilesDir(), dir);
+        return writeBitmapToDirectory(bitmap, filename, dirFile);
+    }
+
+    /**
+     * Writes a {@link Bitmap} object to a file in the current context's cache directory.
+     *
+     * @param context The current context.
+     * @param bitmap The bitmap object to output.
+     * @param dir The output directory name within the cache directory.
+     * @param filename The name of the file to output.
+     * @return A file where the Bitmap was stored, or {@code null} if the write
+     *         operation failed.
+     */
+    public static File writeBitmapToCache(Context context, Bitmap bitmap, String dir,
+        String filename) {
+        if ((bitmap == null) || TextUtils.isEmpty(dir) || TextUtils.isEmpty(filename)) {
+            return null;
+        }
+        final File dirFile = new File(context.getCacheDir(), dir);
+        return writeBitmapToDirectory(bitmap, filename, dirFile);
+    }
+
+    /**
+     * Writes a {@link Bitmap} object to a file in the current context to the given directory.
+     *
+     * @param bitmap The bitmap object to output.
+     * @param filename The name of the file to output.
+     * @param dirFile The directory {@link File} into which to write the bitmap.
+     * @return A file where the Bitmap was stored, or {@code null} if the write
+     *         operation failed.
+     */
+    private static File writeBitmapToDirectory(Bitmap bitmap, String filename, File dirFile) {
         if (!dirFile.exists() && !dirFile.mkdirs()) {
             LogUtils.log(ScreenshotUtils.class, Log.WARN,
                     "Directory %s does not exist and could not be created.",

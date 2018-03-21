@@ -14,66 +14,27 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
-import android.graphics.Rect;
-import android.os.Build;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateClickableBoundsCheck;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Developers sometimes have containers marked clickable when they don't process click events.
- * This error is difficult to detect, but when a container shares its bounds with a child view,
- * that is a clear error. This class catches that case.
+ * Developers sometimes have containers marked clickable when they don't process click events. This
+ * error is difficult to detect, but when a container shares its bounds with a child view, that is a
+ * clear error. This class catches that case.
+ *
+ * @deprecated Replaced by {@link DuplicateClickableBoundsCheck}
  */
+@Deprecated
 public class DuplicateClickableBoundsViewCheck extends AccessibilityViewHierarchyCheck {
 
+  private static final DuplicateClickableBoundsCheck DELEGATION_CHECK =
+      new DuplicateClickableBoundsCheck();
+
   @Override
-  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(View root) {
-    List<AccessibilityViewCheckResult> results = new ArrayList<>(1);
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      results.add(new AccessibilityViewCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN,
-          "This check only runs on Android 2.3.3 and above.",
-          root));
-      return results;
-    }
-    Map<Rect, View> clickableRectToViewMap = new HashMap<>();
-
-    checkForDuplicateClickableViews(root, clickableRectToViewMap, results);
-    return results;
-  }
-
-  private void checkForDuplicateClickableViews(View root, Map<Rect, View> clickableRectToViewMap,
-      List<AccessibilityViewCheckResult> results) {
-    if (!ViewAccessibilityUtils.isVisibleToUser(root)) {
-      return;
-    }
-    if (root.isClickable() && ViewAccessibilityUtils.isImportantForAccessibility(root)) {
-      Rect bounds = new Rect();
-      if (root.getGlobalVisibleRect(bounds)) {
-        if (clickableRectToViewMap.containsKey(bounds)) {
-          results.add(new AccessibilityViewCheckResult(this.getClass(),
-              AccessibilityCheckResultType.ERROR,
-              "Clickable view has same bounds as another clickable view (likely a descendent)",
-              clickableRectToViewMap.get(bounds)));
-        } else {
-          clickableRectToViewMap.put(bounds, root);
-        }
-      }
-    }
-    if (!(root instanceof ViewGroup)) {
-      return;
-    }
-    ViewGroup viewGroup = (ViewGroup) root;
-    for (int i = 0; i < viewGroup.getChildCount(); ++i) {
-      View child = viewGroup.getChildAt(i);
-      checkForDuplicateClickableViews(child, clickableRectToViewMap, results);
-    }
+  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
+      View root, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
   }
 }

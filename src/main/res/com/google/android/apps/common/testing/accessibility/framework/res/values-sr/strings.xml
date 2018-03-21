@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Није утврђено да је ова ставка важна за приступачност.</string>
+  
+  <string name="result_message_no_content_desc">Ова ставка нема &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Ова ставка није видљива.</string>
+  
+  <string name="result_message_not_enabled">Ова ставка није активирана.</string>
+  
+  <string name="result_message_not_text_view">Ова ставка није &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Није било могуће добити снимак екрана.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Локација ставке на екрану (&lt;tt&gt;%1$s&lt;/tt&gt;) није била у оквиру локације снимка екрана (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Информације о снимку екрана за ову ставку су биле скривене.</string>
+  
+  <string name="clickable">која подржава клик</string>
+  
+  <string name="non_clickable">која не подржава клик</string>
+  
+  <string name="long_clickable">које подржавају дуги клик</string>
+  
+  <string name="clickable_and_long_clickable">која подржава клик и дуги клик</string>
+  
+  <string name="actionable">које подржавају радње</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Линк</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Тип ове ставке није утврђен.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Потврдите да је URL унутар функције &lt;tt&gt;URLSpan&lt;/tt&gt; ове ставке важећи.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Ова ставка треба да користи &lt;tt&gt;URLSpan&lt;/tt&gt; уместо &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Ставке које подржавају клик</string>
+  
+  <string name="result_message_brief_same_view_bounds">Више ставки %1$s дели ову локацију на екрану.</string>
+  
+  <string name="result_message_same_view_bounds">Ова ставка %1$s има исти положај на екрану (&lt;tt&gt;%2$s&lt;/tt&gt;) као и остале ставке (%3$d) истих својстава.</string>
+  
+  <string name="result_message_view_bounds">Ова ставка %1$s има и локацију на екрану &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Описи ставки</string>
+  
+  <string name="result_message_brief_same_speakable_text">Више ставки има исти опис.</string>
+  
+  <string name="result_message_same_speakable_text">Текст из ставке %1$s који се може изговорити: „&lt;tt&gt;%2$s&lt;/tt&gt;“ исти је као онај у осталим ставкама (%3$d).</string>
+  
+  <string name="result_message_speakable_text">Ова ставка %1$s има и текст који се може изговорити: „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="check_title_editable_content_desc">Ознака измењиве ставке</string>
+  
+  <string name="result_message_editable_textview_content_desc">Ова измењива ставка &lt;tt&gt;TextView&lt;/tt&gt; садржи &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Читач екрана може да прочита тај атрибут уместо измењивог садржаја док корисник обавља навигацију.</string>
+  
+  <string name="result_message_not_editable_textview">Ова ставка није измењиви &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="check_title_image_contrast">Контраст слике</string>
+  
+  <string name="result_message_not_imageview">Ова ставка није &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Не би било лоше да повећате контраст између слике и позадине.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Однос контраста на слици је %1$.2f. Tај однос се заснива на процењеној боји предњег плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и процењеној боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Не би било лоше да повећате тај однос бар на %2$.2f.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Ознака типа ставке</string>
+  
+  <string name="result_message_english_locale_only">Ова провера може да се обавља само на уређајима чији је локалитет подешен на  енглески.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Изгледа да &lt;tt&gt;android:contentDescription&lt;/tt&gt; ове ставке садржи непотребан текст.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">&lt;tt&gt;android:contentDescription&lt;/tt&gt; ове ставке, „&lt;tt&gt;%1$s&lt;/tt&gt;“, завршава се типом ставке.</string>
+  
+  <string name="check_title_speakable_text_present">Ознака ставке</string>
+  
+  <string name="result_message_should_not_focus">Читач екрана се неће фокусирати на ову ставку.</string>
+  
+  <string name="result_message_web_content">Веб садржај није процењен.</string>
+  
+  <string name="result_message_missing_speakable_text">Изгледа да ова ставка нема ознаку коју читачи екрана могу да прочитају.</string>
+  
+  <string name="check_title_text_contrast">Контраст текста</string>
+  
+  <string name="result_message_textview_empty">Елемент &lt;tt&gt;TextView&lt;/tt&gt; је празан.</string>
+  
+  <string name="result_message_could_not_get_text_color">Боја текста ове ставке није утврђена.</string>
+  
+  <string name="result_message_could_not_get_background_color">Боја позадине ове ставке није утврђена.</string>
+  
+  <string name="result_message_text_must_be_opaque">Боја текста ове ставке није непрозирна.</string>
+  
+  <string name="result_message_background_must_be_opaque">Боја позадине ове ставке није непрозирна.</string>
+  
+  <string name="result_message_addendum_opacity_description">Њена стварна непрозирност је %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Не би било лоше да повећате однос контраста текста и позадине ове ставке.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Однос контраста текста ове ставке је %1$.2f. Тај однос се заснива на боји текста (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Не би било лоше да повећате однос контраста текста ове ставке бар на %2$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Однос контраста текста ове ставке је %1$.2f. Тај однос се заснива на процењеној боји предњег плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и процењеној боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Не би било лоше да повећате тај однос бар на %2$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Однос контраста текста ове ставке је %1$.2f. Тај однос се заснива на процењеној боји предњег плана (&lt;tt&gt;#%4$06X&lt;/tt&gt;) и процењеној боји позадине (&lt;tt&gt;#%5$06X&lt;/tt&gt;). Не би било лоше да повећате тај однос на неки већи од %2$.2f за мали текст или на неки већи од %3$.2f за већи текст.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Мета за додир</string>
+  
+  <string name="result_message_not_clickable">На овај елемент не може да се кликне.</string>
+  
+  <string name="result_message_brief_small_touch_target">Не би било лоше да увећате ову ставку која подржава клик.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Димензије ове ставке су &lt;tt&gt;%1$ddp&lt;/tt&gt;×&lt;tt&gt;%2$ddp&lt;/tt&gt;. Не би било лоше да ширина мете за додир буде бар &lt;tt&gt;%3$ddp&lt;/tt&gt;, а висина &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_touch_target_height">Висина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Не би било лоше да висина ове мете за додир буде бар &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_touch_target_width">Ширина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Не би било лоше да ширина ове мете за додир буде бар &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">На једном од надређених елемената ове ставке је откривен &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Занемарите ову поруку ако је делегат довољне величине и обрађује додире на ову ставку.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Додире на ову ставку можда обрађује надређени контејнер. Ако одабир већег контејнера обавља исту радњу као одабир ове ставке, не би било лоше да ту ставку дефинишете као ставку која не подржава клик. Ако се обавља нека друга радња, не би било лоше да повећате величину ове ставке.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Надређени контејнер можда исеца део ове ставке, која има површину исцртавања од &lt;tt&gt;%1$ddp&lt;/tt&gt;×&lt;tt&gt;%2$ddp&lt;/tt&gt;. Размислите о повећању величине претка ове ставке који је исеца или дозволите већем надређеном контејнеру да манипулише радњама које се тичу те ставке.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Ставка није процењена јер је можда само делимично видљива у контејнеру чији садржај може да се помера.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

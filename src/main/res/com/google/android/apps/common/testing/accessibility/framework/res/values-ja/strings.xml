@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">このアイテムは、ユーザー補助機能にとって重要ではないことがわかりました。</string>
+  
+  <string name="result_message_no_content_desc">このアイテムには &lt;tt&gt;android:contentDescription&lt;/tt&gt; がありません。</string>
+  
+  <string name="result_message_not_visible">このアイテムは視認できません。</string>
+  
+  <string name="result_message_not_enabled">このアイテムは有効になっていません。</string>
+  
+  <string name="result_message_not_text_view">このアイテムは &lt;tt&gt;TextView&lt;/tt&gt; ではありません。</string>
+  
+  <string name="result_message_no_screencapture">スクリーン キャプチャ データを取得できませんでした。</string>
+  
+  <string name="result_message_view_not_within_screencapture">このアイテムの画面上の場所（&lt;tt&gt;%1$s&lt;/tt&gt;）は、スクリーン キャプチャの画面上の場所（&lt;tt&gt;%2$s&lt;/tt&gt;）の範囲に含まれていませんでした。</string>
+  
+  <string name="result_message_screencapture_data_hidden">このアイテムのスクリーン キャプチャ情報は非表示でした。</string>
+  
+  <string name="clickable">クリック可能</string>
+  
+  <string name="non_clickable">クリック不可</string>
+  
+  <string name="long_clickable">クリック可能（長め）</string>
+  
+  <string name="clickable_and_long_clickable">クリック可能 / クリック可能（長め）</string>
+  
+  <string name="actionable">操作可能</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">リンク</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">このアイテムのタイプを特定できません。</string>
+  
+  <string name="result_message_urlspan_invalid_url">このアイテムの &lt;tt&gt;URLSpan&lt;/tt&gt; に含まれている URL が有効であることを確認してください。</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">このアイテムは、&lt;tt&gt;ClickableSpan&lt;/tt&gt; の代わりに &lt;tt&gt;URLSpan&lt;/tt&gt; を使用する必要があります。</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">クリック可能アイテム</string>
+  
+  <string name="result_message_brief_same_view_bounds">複数の%1$sアイテムが画面上でこの場所を共有しています。</string>
+  
+  <string name="result_message_same_view_bounds">この%1$sアイテムは、同じプロパティを持つ %3$d 個の他のアイテムと画面上の同じ場所（&lt;tt&gt;%2$s&lt;/tt&gt;）を共有しています。</string>
+  
+  <string name="result_message_view_bounds">この%1$sアイテムは、画面上の場所 &lt;tt&gt;%2$s&lt;/tt&gt; も保持しています。</string>
+  
+  <string name="check_title_duplicate_speakable_text">アイテムの説明</string>
+  
+  <string name="result_message_brief_same_speakable_text">複数のアイテムの説明が同じです。</string>
+  
+  <string name="result_message_same_speakable_text">この%1$sアイテムの読み上げテキスト「&lt;tt&gt;%2$s&lt;/tt&gt;」は、%3$d 個の他のアイテムのものと同じです。</string>
+  
+  <string name="result_message_speakable_text">この%1$sアイテムは、読み上げテキスト「&lt;tt&gt;%2$s&lt;/tt&gt;」も保持しています。</string>
+  
+  <string name="check_title_editable_content_desc">編集可能なアイテムラベル</string>
+  
+  <string name="result_message_editable_textview_content_desc">この編集可能な &lt;tt&gt;TextView&lt;/tt&gt; は &lt;tt&gt;android:contentDescription&lt;/tt&gt; を保持しています。ユーザーのナビゲーションの際、読み上げ機能は、編集可能なコンテンツの代わりに、この属性を読み上げる可能性があります。</string>
+  
+  <string name="result_message_not_editable_textview">このアイテムは編集可能な &lt;tt&gt;TextView&lt;/tt&gt; ではありません。</string>
+  
+  <string name="check_title_image_contrast">イメージのコントラスト</string>
+  
+  <string name="result_message_not_imageview">このアイテムは &lt;tt&gt;ImageView&lt;/tt&gt; ではありません。</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">イメージの前景と背景の間のコントラスト比を上げることを検討してください。</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">アイテムタイプのラベル</string>
+  
+  <string name="result_message_english_locale_only">このチェックは、ロケールが英語に設定されているデバイスでのみ実行されます。</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; には、不必要なテキストが含まれています。</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt;、「&lt;tt&gt;%1$s&lt;/tt&gt;」はアイテムタイプで終わっています。</string>
+  
+  <string name="check_title_speakable_text_present">アイテムのラベル</string>
+  
+  <string name="result_message_should_not_focus">このアイテムは、読み上げ機能の対象外となる可能性があります。</string>
+  
+  <string name="result_message_web_content">ウェブ コンテンツは評価されていません。</string>
+  
+  <string name="result_message_missing_speakable_text">このアイテムには、読み上げ機能が認識できるラベルがない可能性があります。</string>
+  
+  <string name="check_title_text_contrast">テキストのコントラスト</string>
+  
+  <string name="result_message_textview_empty">この &lt;tt&gt;TextView&lt;/tt&gt; は空です。</string>
+  
+  <string name="result_message_could_not_get_text_color">このアイテムのテキストの色を特定できませんでした。</string>
+  
+  <string name="result_message_could_not_get_background_color">このアイテムの背景色を特定できませんでした。</string>
+  
+  <string name="result_message_text_must_be_opaque">このアイテムのテキストの色は不透明ではありません。</string>
+  
+  <string name="result_message_background_must_be_opaque">このアイテムの背景色は不透明ではありません。</string>
+  
+  <string name="result_message_addendum_opacity_description">実際の不透明度は %1$.2f%% です。</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">アイテムのテキストの前景と背景のコントラスト比を上げることを検討してください。</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %2$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %2$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%5$06X&lt;/tt&gt; に基づいています。小さいテキストに %2$.2f 以上、大きいテキストに %3$.2f 以上のコントラスト比を使用することを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">タッチ ターゲット</string>
+  
+  <string name="result_message_not_clickable">このビューはクリック可能ではありません。</string>
+  
+  <string name="result_message_brief_small_touch_target">このクリック可能アイテムを大きくすることを検討してください。</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">このアイテムのサイズは &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; です。このタッチ ターゲットの幅を &lt;tt&gt;%3$ddp&lt;/tt&gt; 以上、高さを &lt;tt&gt;%4$ddp&lt;/tt&gt; 以上にすることを検討してください。</string>
+  
+  <string name="result_message_small_touch_target_height">このアイテムの高さは &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタッチ ターゲットの高さを &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上にすることを検討してください。</string>
+  
+  <string name="result_message_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタッチ ターゲットの幅を &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上にすることを検討してください。</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">このアイテムの祖先のいずれかで &lt;tt&gt;TouchDelegate&lt;/tt&gt; が検出されました。デリゲートが十分なサイズであり、このアイテムに対するタッチを処理する場合、このメッセージは無視できます。</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">親コンテナがこのアイテムのタッチイベントを処理している可能性があります。より大きなコンテナを選択しても、このアイテムを選択した場合と同じ操作が実行される場合、このアイテムをクリック不可として定義することを検討してください。異なる操作が実行される場合、このアイテムのサイズを大きくすることを検討してください。</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">親コンテナがこの項目（&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;）のサイズを縮小している可能性があります。この項目を縮小している祖先のサイズを大きくするか、より大きな親コンテナでこの項目のアクションを処理させることを検討してください。</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">このアイテムはスクロール可能なコンテナ内で部分的に表示されている可能性があるため、評価されませんでした。</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

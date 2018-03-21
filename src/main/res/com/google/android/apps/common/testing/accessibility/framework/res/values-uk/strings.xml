@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Цей елемент неважливий для спеціальних можливостей.</string>
+  
+  <string name="result_message_no_content_desc">Цей елемент не має атрибута &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Цей елемент не відображається.</string>
+  
+  <string name="result_message_not_enabled">Цей елемент не ввімкнено.</string>
+  
+  <string name="result_message_not_text_view">Цей елемент не належить до класу &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Не вдалось отримати знімок екрана.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Цей елемент (&lt;tt&gt;%1$s&lt;/tt&gt;) не потрапив на знімок екрана (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Знімок екрана з цим елементом приховано.</string>
+  
+  <string name="clickable">можна натискати</string>
+  
+  <string name="non_clickable">не можна натискати</string>
+  
+  <string name="long_clickable">можна натискати й утримувати</string>
+  
+  <string name="clickable_and_long_clickable">можна натискати або натискати й утримувати</string>
+  
+  <string name="actionable">може бути об’єктом дії</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Посилання</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Тип елемента не визначено.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Переконайтесь, що в тегу &lt;tt&gt;URLSpan&lt;/tt&gt; цього елемента вказано дійсну URL-адресу.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">У цьому елементі замість тегу &lt;tt&gt;ClickableSpan&lt;/tt&gt; має бути тег &lt;tt&gt;URLSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Елементи, які можна натискати</string>
+  
+  <string name="result_message_brief_same_view_bounds">У цій частині екрана розташовано кілька елементів, які %1$s.</string>
+  
+  <string name="result_message_same_view_bounds">Цей елемент, який %1$s, розташований у тій же частині екрана (&lt;tt&gt;%2$s&lt;/tt&gt;), що й інші елементи (%3$d) з такими самими властивостями.</string>
+  
+  <string name="result_message_view_bounds">Цей елемент, який %1$s, також розташований на екрані за координатами &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Описи елементів</string>
+  
+  <string name="result_message_brief_same_speakable_text">Кілька елементів мають однакові описи.</string>
+  
+  <string name="result_message_same_speakable_text">Текст \"&lt;tt&gt;%2$s&lt;/tt&gt;\", зачитуваний для цього елемента, який %1$s, збігається з текстом для озвучення інших елементів (%3$d).</string>
+  
+  <string name="result_message_speakable_text">Для цього елемента, який %1$s, також зачитується текст \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Мітка елемента, який можна редагувати</string>
+  
+  <string name="result_message_editable_textview_content_desc">Цей елемент класу &lt;tt&gt;TextView&lt;/tt&gt;, який можна редагувати, містить атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Коли користувач здійснює навігацію, програма зчитування з екрана може відтворити цей атрибут замість вмісту, який можна редагувати.</string>
+  
+  <string name="result_message_not_editable_textview">Цей елемент не належить до класу &lt;tt&gt;TextView&lt;/tt&gt;, який можна редагувати.</string>
+  
+  <string name="check_title_image_contrast">Контрастність зображення</string>
+  
+  <string name="result_message_not_imageview">Цей елемент не належить до класу &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Рекомендуємо збільшити коефіцієнт контрастності між переднім планом і фоном цього зображення.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Коефіцієнт контрастності цього зображення складає %1$.2f. Його отримано на основі оцінюваних значень кольору переднього плану (&lt;tt&gt;#%3$06X&lt;/tt&gt;) і кольору фону (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Рекомендуємо задати для цього коефіцієнта значення %2$.2f або більше.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Мітка типу елемента</string>
+  
+  <string name="result_message_english_locale_only">Цю перевірку можна виконувати лише на пристроях, на яких вибрано англійську мову.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; цього елемента містить непотрібний текст.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; цього елемента (\"&lt;tt&gt;%1$s&lt;/tt&gt;\") закінчується типом елемента.</string>
+  
+  <string name="check_title_speakable_text_present">Мітка елемента</string>
+  
+  <string name="result_message_should_not_focus">Цей елемент не відтворюється програмою зчитування з екрана.</string>
+  
+  <string name="result_message_web_content">Веб-вміст не проскановано.</string>
+  
+  <string name="result_message_missing_speakable_text">Цей елемент не містить мітку, відтворювану програмами зчитування з екрана.</string>
+  
+  <string name="check_title_text_contrast">Контрастність тексту</string>
+  
+  <string name="result_message_textview_empty">Цей елемент класу &lt;tt&gt;TextView&lt;/tt&gt; порожній.</string>
+  
+  <string name="result_message_could_not_get_text_color">Неможливо визначити колір тексту цього елемента.</string>
+  
+  <string name="result_message_could_not_get_background_color">Неможливо визначити колір фону цього елемента.</string>
+  
+  <string name="result_message_text_must_be_opaque">Колір тексту цього елемента прозорий.</string>
+  
+  <string name="result_message_background_must_be_opaque">Колір фону цього елемента прозорий.</string>
+  
+  <string name="result_message_addendum_opacity_description">Його фактична прозорість становить %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Рекомендуємо збільшити коефіцієнт контрастності між текстом на передньому плані та фоном цього елемента.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Коефіцієнт контрастності тексту в цьому елементі становить %1$.2f. Його отримано на основі значень кольору тексту (&lt;tt&gt;#%3$06X&lt;/tt&gt;) і кольору фону (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Рекомендуємо задати для цього коефіцієнта значення %2$.2f або більше.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Коефіцієнт контрастності тексту в цьому елементі становить %1$.2f. Його отримано на основі оцінюваних значень кольору переднього плану (&lt;tt&gt;#%3$06X&lt;/tt&gt;) і кольору фону (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Рекомендуємо задати для цього коефіцієнта значення %2$.2f або більше.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Коефіцієнт контрастності тексту в цьому елементі становить %1$.2f. Його отримано на основі оцінюваних значень кольору переднього плану (&lt;tt&gt;#%4$06X&lt;/tt&gt;) і кольору фону (&lt;tt&gt;#%5$06X&lt;/tt&gt;). Для маленького тексту рекомендуємо вибрати коефіцієнт контрастності більше %2$.2f, а для великого – %3$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Ціль дотику</string>
+  
+  <string name="result_message_not_clickable">Цей елемент не можна натискати.</string>
+  
+  <string name="result_message_brief_small_touch_target">Рекомендуємо збільшити цей елемент, який можна натискати.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Розмір цього елемента становить &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Рекомендуємо задати для цієї цілі дотику ширину &lt;tt&gt;%3$ddp&lt;/tt&gt; і висоту &lt;tt&gt;%4$ddp&lt;/tt&gt; або вказати вищі значення.</string>
+  
+  <string name="result_message_small_touch_target_height">Висота цього елемента становить &lt;tt&gt;%1$ddp&lt;/tt&gt;. Рекомендуємо задати для цієї цілі дотику висоту &lt;tt&gt;%2$ddp&lt;/tt&gt; або більшу.</string>
+  
+  <string name="result_message_small_touch_target_width">Ширина цього елемента становить &lt;tt&gt;%1$ddp&lt;/tt&gt;. Рекомендуємо задати для цієї цілі дотику ширину &lt;tt&gt;%2$ddp&lt;/tt&gt; або більше.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">В одному з прототипів цього елемента виявлено клас &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Якщо делегат має достатній розмір і обробляє дотики для цього елемента, ігноруйте це повідомлення.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Батьківський контейнер може обробляти події дотику для цього елемента. Якщо в разі вибору більшого контейнера виконується та сама дія, що і в разі вибору цього елемента, рекомендуємо визначити цей елемент як такий, який не можна натискати. Якщо виконується інша дія, збільште розмір цього елемента.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Батьківський контейнер може обрізувати цей елемент, розмір полотна якого становить &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Збільште розмір батьківського контейнера або виберіть більший батьківський контейнер для обробки дій від імені цього елемента.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Не вдалось оцінити цей елемент, оскільки він лише частково видимий у контейнері, який можна прокручувати.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

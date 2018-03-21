@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Tällä kohteella ei havaittu olevan merkitystä esteettömyyden kannalta.</string>
+  
+  <string name="result_message_no_content_desc">Tällä kohteella ei ole attribuuttia &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Tämä kohde ei ole näkyvä.</string>
+  
+  <string name="result_message_not_enabled">Tätä kohdetta ei ole otettu käyttöön.</string>
+  
+  <string name="result_message_not_text_view">Tämä kohde ei ole &lt;tt&gt;TextView&lt;/tt&gt;-elementti.</string>
+  
+  <string name="result_message_no_screencapture">Kuvakaappaustietoja ei voitu hakea.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Tämän kohteen sijainti näytöllä (&lt;tt&gt;%1$s&lt;/tt&gt;) oli kuvakaappauksen sijainnin (&lt;tt&gt;%2$s&lt;/tt&gt;) ulkopuolella.</string>
+  
+  <string name="result_message_screencapture_data_hidden">Tämän kohteen kuvakaappaustiedot eivät olleet näkyvissä.</string>
+  
+  <string name="clickable">napautettava</string>
+  
+  <string name="non_clickable">ei-napautettava</string>
+  
+  <string name="long_clickable">pitkään painettava</string>
+  
+  <string name="clickable_and_long_clickable">napautettava ja pitkään painettava</string>
+  
+  <string name="actionable">toiminnallinen</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Linkki</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Tämän kohteen tyyppiä ei ole määritetty.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Varmista, että tämän kohteen &lt;tt&gt;URLSpan&lt;/tt&gt;-elementin URL-osoite on kelvollinen.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Tässä kohteessa tulisi käyttää &lt;tt&gt;URLSpan&lt;/tt&gt;-elementtiä &lt;tt&gt;ClickableSpan&lt;/tt&gt;-elementin sijaan.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Napautettavat kohteet</string>
+  
+  <string name="result_message_brief_same_view_bounds">Tässä näytön kohdassa on useita kohteita, joiden tyyppi on %1$s.</string>
+  
+  <string name="result_message_same_view_bounds">Tämä %1$s kohde on samassa kohtaa näyttöä (&lt;tt&gt;%2$s&lt;/tt&gt;) kuin %3$d muuta kohdetta, joilla on nämä ominaisuudet.</string>
+  
+  <string name="result_message_view_bounds">Tämä %1$s kohde on myös näytön kohdassa &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Kohteen kuvaukset</string>
+  
+  <string name="result_message_brief_same_speakable_text">Useilla kohteilla on sama kuvaus.</string>
+  
+  <string name="result_message_same_speakable_text">Tämä %1$s kohde jakaa saman puhuttavan tekstin ”&lt;tt&gt;%2$s&lt;/tt&gt;” %3$d muun kohteen kanssa.</string>
+  
+  <string name="result_message_speakable_text">Tämä %1$s kohde sisältää myös puhuttavan tekstin ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="check_title_editable_content_desc">Muokattavan kohteen tunniste</string>
+  
+  <string name="result_message_editable_textview_content_desc">Tällä muokattavalla &lt;tt&gt;TextView&lt;/tt&gt;-elementillä on attribuutti &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Näytönlukija voi navigoinnin aikana lukea tämän attribuutin muokattavan sisällön sijaan.</string>
+  
+  <string name="result_message_not_editable_textview">Tämä kohde ei ole muokattava &lt;tt&gt;TextView&lt;/tt&gt;-elementti.</string>
+  
+  <string name="check_title_image_contrast">Kuvan kontrasti</string>
+  
+  <string name="result_message_not_imageview">Tämä kohde ei ole &lt;tt&gt;ImageView&lt;/tt&gt;-elementti.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Tämän kuvan taustan ja etualan välistä kontrastia kannattaa lisätä.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Tämän kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja arvioituun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Suhteeksi kannattaa asettaa vähintään %2$.2f.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Kohdetyypin tunniste</string>
+  
+  <string name="result_message_english_locale_only">Tämä tarkistus tehdään vain laitteissa, joiden kieleksi on määritetty englanti.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;-attribuutissa voi olla tarpeetonta tekstiä.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;-attribuutin ”&lt;tt&gt;%1$s&lt;/tt&gt;” lopussa on kohteen tyyppi.</string>
+  
+  <string name="check_title_speakable_text_present">Kohteen tunniste</string>
+  
+  <string name="result_message_should_not_focus">Näytönlukija ei tunnistaisi tätä kohdetta.</string>
+  
+  <string name="result_message_web_content">Verkkosisältöä ei tarkistettu.</string>
+  
+  <string name="result_message_missing_speakable_text">Tällä kohteella ei ehkä ole tunnistetta, jonka näytönlukijat voivat lukea.</string>
+  
+  <string name="check_title_text_contrast">Tekstin kontrasti</string>
+  
+  <string name="result_message_textview_empty">Tämä &lt;tt&gt;TextView&lt;/tt&gt;-elementti on tyhjä.</string>
+  
+  <string name="result_message_could_not_get_text_color">Tämän kohteen tekstin väriä ei voitu määrittää.</string>
+  
+  <string name="result_message_could_not_get_background_color">Tämän kohteen taustaväriä ei voitu määrittää.</string>
+  
+  <string name="result_message_text_must_be_opaque">Tämän kohteen tekstin väri on läpikuultava.</string>
+  
+  <string name="result_message_background_must_be_opaque">Tämän kohteen taustaväri on läpikuultava.</string>
+  
+  <string name="result_message_addendum_opacity_description">Sen läpikuultamattomuus on %1$.2f %%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Tämän kohteen etualan ja taustan kontrastisuhdetta kannattaa lisätä.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %2$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %2$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%5$06X&lt;/tt&gt;). Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %2$.2f ja suuren tekstin kontrastisuhteeksi yli %3$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Kosketusalue</string>
+  
+  <string name="result_message_not_clickable">Tätä näkymää ei voi napauttaa.</string>
+  
+  <string name="result_message_brief_small_touch_target">Tätä napautettavaa kohdetta kannattaa suurentaa.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Tämän kohteen koko on &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Kosketusalueen leveydeksi kannattaa asettaa vähintään &lt;tt&gt;%3$ddp&lt;/tt&gt; ja korkeudeksi vähintään &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_touch_target_height">Tämän kohteen korkeus on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen korkeudeksi kannattaa asettaa vähintään &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_touch_target_width">Tämän kohteen leveys on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen leveydeksi kannattaa asettaa vähintään &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Tämän kohteen aiemmasta versiosta on tunnistettu &lt;tt&gt;TouchDelegate&lt;/tt&gt;-elementti. Voit jättää tämän viestin huomiotta, jos sen delegaatti on riittävän suuri ja ohjaa tämän kohteen kosketustoimintoja.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Emosäilö ohjaa ehkä tämän kohteen kosketustoimintoja. Jos suuremman säilön valitseminen ja tämän kohteen valitseminen aiheuttavat saman toiminnon, kohde kannattaa määrittää ei-napautettavaksi. Jos toiminnot poikkeavat toisistaan, tämän kohteen kokoa kannattaa suurentaa.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Emosäilö voi rajata tämän kohteen kokoa. Kohteen piirtokenttä on &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Kokeile suurentaa sen kohteen kokoa, jonka kentän mukaan tämä kohde leikkautuu, tai salli suuremman emosäilön huolehtia toiminnoista tämän kohteen puolesta.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Tätä kohdetta ei arvioitu, koska se voi näkyä vieritettävässä säilössä vain osittain.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

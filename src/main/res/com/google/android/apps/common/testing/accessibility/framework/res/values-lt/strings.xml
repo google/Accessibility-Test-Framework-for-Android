@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Šio elemento svarba pritaikant neįgaliesiems nenustatyta.</string>
+  
+  <string name="result_message_no_content_desc">Šiame elemente nėra &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Šis elementas nematomas.</string>
+  
+  <string name="result_message_not_enabled">Šis elementas neįgalintas.</string>
+  
+  <string name="result_message_not_text_view">Šio elemento tipas nėra &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Nepavyko užfiksuoti ekrano duomenų.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Šio elemento vieta ekrane (&lt;tt&gt;%1$s&lt;/tt&gt;) nesutapo su fiksuojama ekrano vieta (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Šio elemento fiksuojama ekrano informacija paslėpta.</string>
+  
+  <string name="clickable">spustelėjamas</string>
+  
+  <string name="non_clickable">nespustelėjamas</string>
+  
+  <string name="long_clickable">ilgai spustelėjamas</string>
+  
+  <string name="clickable_and_long_clickable">spustelėjamas ir ilgai spustelėjamas</string>
+  
+  <string name="actionable">veikiamasis</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Nuoroda</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Šio elemento tipas nenustatytas.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Patvirtina, kad URL, esantis šio elemento &lt;tt&gt;URLSpan&lt;/tt&gt;, tinkamas.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Šiame elemente vietoje &lt;tt&gt;ClickableSpan&lt;/tt&gt; turėtų būti naudojama &lt;tt&gt;URLSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Spustelėjami elementai</string>
+  
+  <string name="result_message_brief_same_view_bounds">Keletas %1$s elementų yra toje pačioje ekrano vietoje.</string>
+  
+  <string name="result_message_same_view_bounds">Šis %1$s elementas yra toje pačioje ekrano vietoje (&lt;tt&gt;%2$s&lt;/tt&gt;) kaip ir kiti to paties tipo elementai (%3$d).</string>
+  
+  <string name="result_message_view_bounds">Šis %1$s elementas taip pat yra toje pačioje ekrano vietoje (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="check_title_duplicate_speakable_text">Elemento aprašai</string>
+  
+  <string name="result_message_brief_same_speakable_text">Kelių elementų aprašai sutampa.</string>
+  
+  <string name="result_message_same_speakable_text">Šio %1$s elemento ištariamas tekstas „&lt;tt&gt;%2$s&lt;/tt&gt;“ yra toks pats kaip kitų elementų (%3$d).</string>
+  
+  <string name="result_message_speakable_text">Šio %1$s elemento ištariamas tekstas taip pat yra „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="check_title_editable_content_desc">Redaguojama elemento etiketė</string>
+  
+  <string name="result_message_editable_textview_content_desc">Šiame redaguojamame &lt;tt&gt;TextView&lt;/tt&gt; yra &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Naudotojui naršant, ekrano skaitytuvas gali perskaityti šį atributą vietoje redaguojamo turinio.</string>
+  
+  <string name="result_message_not_editable_textview">Šis elementas nėra redaguojamas &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="check_title_image_contrast">Vaizdo kontrastas</string>
+  
+  <string name="result_message_not_imageview">Šio elemento tipas nėra &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Apsvarstykite galimybę padidinti kontrasto santykį tarp šio vaizdo priekinio plano ir fono.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Vaizdo kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%4$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šį santykį iki %2$.2f arba didesnio.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Elemento tipo etiketė</string>
+  
+  <string name="result_message_english_locale_only">Tikrinama tik įrenginiuose, kuriuose nustatyta anglų kalba.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt; gali būti nereikalingo teksto.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt;, „&lt;tt&gt;%1$s&lt;/tt&gt;“ pabaigoje nurodytas elemento tipas.</string>
+  
+  <string name="check_title_speakable_text_present">Elemento etiketė</string>
+  
+  <string name="result_message_should_not_focus">Šio elemento nepavyktų sufokusuoti ekrano skaitytuvu.</string>
+  
+  <string name="result_message_web_content">Žiniatinklio turinys nebuvo įvertintas.</string>
+  
+  <string name="result_message_missing_speakable_text">Šiame elemente gali nebūti ekrano skaitytuvais nuskaitomos etiketės.</string>
+  
+  <string name="check_title_text_contrast">Teksto kontrastas</string>
+  
+  <string name="result_message_textview_empty">Šis &lt;tt&gt;TextView&lt;/tt&gt; tuščias.</string>
+  
+  <string name="result_message_could_not_get_text_color">Nepavyko nustatyti šio elemento teksto spalvos.</string>
+  
+  <string name="result_message_could_not_get_background_color">Nepavyko nustatyti šio elemento fono spalvos.</string>
+  
+  <string name="result_message_text_must_be_opaque">Šio elemento tekstas skaidrus.</string>
+  
+  <string name="result_message_background_must_be_opaque">Šio elemento fonas skaidrus.</string>
+  
+  <string name="result_message_addendum_opacity_description">Jo faktinis neskaidrumas yra %1$.2f proc.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Apsvarstykite galimybę padidinti šio elemento teksto priekinio plano ir fono kontrasto santykį.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal teksto (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%4$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %2$.2f arba didesnio.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%4$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %2$.2f arba didesnio.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;#%4$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%5$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę naudoti didesnį negu %2$.2f šio elemento teksto kontrasto santykį trumpam tekstui arba %3$.2f ilgam tekstui.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Liečiama sritis</string>
+  
+  <string name="result_message_not_clickable">Šis rodinys nėra spustelėjamas.</string>
+  
+  <string name="result_message_brief_small_touch_target">Apsvarstykite galimybę padaryti šį spustelėjamą elementą didesnį.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Šio elemento dydis yra &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Apsvarstykite galimybę nustatyti &lt;tt&gt;%3$ddp&lt;/tt&gt; arba didesnį šios liečiamos srities plotį ir &lt;tt&gt;%4$ddp&lt;/tt&gt; arba didesnį aukštį.</string>
+  
+  <string name="result_message_small_touch_target_height">Šio elemento aukštis yra &lt;tt&gt;%1$ddp&lt;/tt&gt;. Apsvarstykite galimybę nustatyti &lt;tt&gt;%2$ddp&lt;/tt&gt; arba didesnį šios liečiamos srities aukštį.</string>
+  
+  <string name="result_message_small_touch_target_width">Šio elemento plotis yra &lt;tt&gt;%1$ddp&lt;/tt&gt;. Apsvarstykite galimybę nustatyti &lt;tt&gt;%2$ddp&lt;/tt&gt; arba didesnį šios liečiamos srities plotį.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Viename iš šio elemento pirminių variantų buvo aptikta &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Galite ignoruoti šį pranešimą, jei šio tipo elementas yra pakankamo dydžio ir gali būti liečiamas.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Nuo pagrindinio sudėtinio rodinio gali priklausyti šio elemento liečiamumas. Jei pasirinkus didesnį sudėtinį rodinį atliekamas tas pats veiksmas, kaip ir pasirinkus šį elementą, apsvarstykite galimybę nustatyti šį elementą kaip nespustelėjamą. Jei atliekami skirtingi veiksmai, apsvarstykite galimybę padidinti šį elementą.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Pagrindinis sudėtinis rodinys gali sumažinti šį elementą, kurio piešinio plotas – &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pamėginkite padidinti šio elemento mažinimo prototipo dydį arba leiskite didesniam pagrindiniam sudėtiniam rodiniui atlikti veiksmus vietoje šio elemento.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Šis elementas nebuvo įvertintas, nes gali būti, kad slenkamajame sudėtiniame rodinyje matoma tik jo dalis.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

@@ -14,27 +14,31 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
-
+import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.googlecode.eyesfree.compat.CompatUtils;
-import com.googlecode.eyesfree.utils.LogUtils;
-
 import java.lang.reflect.Method;
 
 /**
  * Result generated when an accessibility check runs on a {@code AccessibilityNodeInfo}.
+ *
+ * @deprecated Direct evaluation of {@link AccessibilityNodeInfo}s is deprecated.  Instead, create
+ *             an {@link AccessibilityHierarchy} using a source {@link AccessibilityNodeInfo}, and
+ *             run {@link AccessibilityHierarchyCheck}s obtained with
+ *             {@link AccessibilityCheckPreset}.  Results will be provided in the form of
+ *             {@link AccessibilityHierarchyCheckResult}s.
  */
-@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+@Deprecated
 public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult implements
     Parcelable {
 
-  private AccessibilityNodeInfoWrapper mInfoWrapper;
+  private final @Nullable AccessibilityNodeInfo info;
 
   /**
    * @param checkClass The check that generated the error
@@ -42,34 +46,20 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
    * @param message A human-readable message explaining the error
    * @param info The info that was responsible for generating the error
    */
-  public AccessibilityInfoCheckResult(Class<? extends AccessibilityCheck> checkClass,
-      AccessibilityCheckResultType type, CharSequence message, AccessibilityNodeInfo info) {
+  public AccessibilityInfoCheckResult(
+      Class<? extends AccessibilityCheck> checkClass,
+      AccessibilityCheckResultType type,
+      CharSequence message,
+      @Nullable AccessibilityNodeInfo info) {
     super(checkClass, type, message);
-    if (info != null) {
-      this.mInfoWrapper = new AccessibilityNodeInfoWrapper(AccessibilityNodeInfo.obtain(info));
-    }
-  }
-
-  private AccessibilityInfoCheckResult(Parcel in) {
-    super(null, null, null);
-    readFromParcel(in);
+    this.info = (info != null) ? AccessibilityNodeInfo.obtain(info) : null;
   }
 
   /**
    * @return The info to which the result applies.
    */
-  public AccessibilityNodeInfo getInfo() {
-    return (mInfoWrapper != null) ? mInfoWrapper.getWrappedInfo() : null;
-  }
-
-  @Override
-  public void recycle() {
-    super.recycle();
-
-    if (mInfoWrapper != null) {
-      mInfoWrapper.getWrappedInfo().recycle();
-      mInfoWrapper = null;
-    }
+  public @Nullable AccessibilityNodeInfo getInfo() {
+    return info;
   }
 
   @Override
@@ -79,45 +69,48 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString((checkClass != null) ? checkClass.getName() : "");
-    dest.writeInt((type != null) ? type.ordinal() : -1);
-    TextUtils.writeToParcel(message, dest, flags);
-    if (mInfoWrapper != null) {
+    dest.writeString(checkClass.getName());
+    dest.writeInt(type.ordinal());
+    TextUtils.writeToParcel(checkNotNull(message), dest, flags);
+    if (info != null) {
       dest.writeInt(1);
-      mInfoWrapper.writeToParcel(dest, flags);
+      new AccessibilityNodeInfoWrapper(info).writeToParcel(dest, flags);
     } else {
       dest.writeInt(0);
     }
   }
 
   @SuppressWarnings("unchecked")
-  private void readFromParcel(Parcel in) {
+  private static AccessibilityInfoCheckResult readFromParcel(Parcel in) {
     // Check class (unchecked cast checked by isAssignableFrom)
-    checkClass = null;
     String checkClassName = in.readString();
-    if (!("".equals(checkClassName))) {
-      try {
-        Class<?> uncheckedClass = Class.forName(checkClassName);
-        if (AccessibilityCheck.class.isAssignableFrom(uncheckedClass)) {
-          checkClass = (Class<? extends AccessibilityCheck>) uncheckedClass;
-        }
-      } catch (ClassNotFoundException e) {
-        // If the reference can't be resolved by our class loader, remain null.
-        LogUtils.log(this, Log.WARN, "Attempt to obtain unknown class %1$s", checkClassName);
+    Class<? extends AccessibilityCheck> checkClass;
+    try {
+      Class<?> uncheckedClass = (checkClassName == null) ? null : Class.forName(checkClassName);
+      if ((uncheckedClass != null) && AccessibilityCheck.class.isAssignableFrom(uncheckedClass)) {
+        checkClass = (Class<? extends AccessibilityCheck>) uncheckedClass;
+      } else {
+        throw new RuntimeException(
+            String.format("Class: %1$s is not assignable from AccessibilityCheck", checkClassName));
       }
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(
+          String.format("Failed to resolve check class: %1$s", checkClassName));
     }
 
     // Type
-    final int type = in.readInt();
-    this.type = (type != -1) ? AccessibilityCheckResultType.values()[type] : null;
+    final int typeInt = in.readInt();
+    AccessibilityCheckResultType type = AccessibilityCheckResultType.values()[typeInt];
 
     // Message
-    this.message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+    CharSequence message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
 
     // Info wrapper
-    this.mInfoWrapper =
-        (in.readInt() == 1) ? AccessibilityNodeInfoWrapper.WRAPPER_CREATOR.createFromParcel(in)
+    AccessibilityNodeInfo info =
+        (in.readInt() == 1)
+            ? AccessibilityNodeInfoWrapper.WRAPPER_CREATOR.createFromParcel(in).getWrappedInfo()
             : null;
+    return new AccessibilityInfoCheckResult(checkClass, checkNotNull(type), message, info);
   }
 
   public static final Parcelable.Creator<AccessibilityInfoCheckResult> CREATOR =
@@ -125,7 +118,7 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
 
         @Override
         public AccessibilityInfoCheckResult createFromParcel(Parcel in) {
-          return new AccessibilityInfoCheckResult(in);
+          return readFromParcel(in);
         }
 
         @Override
@@ -145,14 +138,10 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
     private static final Method METHOD_setSealed = CompatUtils.getMethod(
         AccessibilityNodeInfo.class, "setSealed", boolean.class);
 
-    AccessibilityNodeInfo mWrappedInfo;
+    private final AccessibilityNodeInfo wrappedInfo;
 
     public AccessibilityNodeInfoWrapper(AccessibilityNodeInfo wrappedNode) {
-      mWrappedInfo = wrappedNode;
-    }
-
-    private AccessibilityNodeInfoWrapper(Parcel in) {
-      readFromParcel(in);
+      wrappedInfo = wrappedNode;
     }
 
     @Override
@@ -161,39 +150,41 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
     }
 
     public AccessibilityNodeInfo getWrappedInfo() {
-      return mWrappedInfo;
+      return wrappedInfo;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-      if (mWrappedInfo != null) {
-        dest.writeInt(1);
-        if ((Boolean) CompatUtils.invoke(mWrappedInfo, false, METHOD_isSealed, (Object[]) null)) {
-          // In the case we've encountered a sealed info, we need to unseal it before parceling.
-          // Otherwise, the Android framework won't allow it to be recreated from a parcel due to a
-          // bug which improperly checks sealed state when adding parceled actions to an instance.
-          // We write our own int to indicate that the node must be re-sealed.
-          dest.writeInt(1);
-          CompatUtils.invoke(mWrappedInfo, null, METHOD_setSealed, false);
-        } else {
-          dest.writeInt(0);
-        }
-        mWrappedInfo.writeToParcel(dest, flags);
+      if (isSealed(wrappedInfo)) {
+        // In the case we've encountered a sealed info, we need to unseal it before parceling.
+        // Otherwise, the Android framework won't allow it to be recreated from a parcel due to a
+        // bug which improperly checks sealed state when adding parceled actions to an instance.
+        // We write our own int to indicate that the node must be re-sealed.
+        dest.writeInt(1); // Is sealed
+        CompatUtils.invoke(wrappedInfo, null, METHOD_setSealed, false);
       } else {
-        dest.writeInt(0);
+        dest.writeInt(0); // Is not sealed
       }
+      wrappedInfo.writeToParcel(dest, flags);
     }
 
-    private void readFromParcel(Parcel in) {
-      if (in.readInt() == 1) {
-        boolean shouldSeal = (in.readInt() == 1);
-        mWrappedInfo = AccessibilityNodeInfo.CREATOR.createFromParcel(in);
-        if (shouldSeal) {
-          CompatUtils.invoke(mWrappedInfo, null, METHOD_setSealed, true);
-        }
-      } else {
-        mWrappedInfo = null;
+    /**
+     * Use Reflection to see if the given node is sealed. This property is not exposed by
+     * AccessibilityNodeInfo.
+     */
+    private static boolean isSealed(AccessibilityNodeInfo info) {
+      return Boolean.TRUE.equals(
+          CompatUtils.invoke(info, /* defaultReturnValue= */ false, METHOD_isSealed));
+    }
+
+    private static AccessibilityNodeInfoWrapper readFromParcel(Parcel in) {
+      boolean shouldSeal = (in.readInt() == 1);
+      AccessibilityNodeInfo info =
+          AccessibilityNodeInfo.CREATOR.createFromParcel(in);
+      if (shouldSeal) {
+        CompatUtils.invoke(info, null, METHOD_setSealed, true);
       }
+      return new AccessibilityNodeInfoWrapper(info);
     }
 
 
@@ -202,7 +193,7 @@ public final class AccessibilityInfoCheckResult extends AccessibilityCheckResult
 
           @Override
           public AccessibilityNodeInfoWrapper createFromParcel(Parcel in) {
-            return new AccessibilityNodeInfoWrapper(in);
+            return readFromParcel(in);
           }
 
           @Override

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Hindi itinuturing na mahalaga para sa accessibility ang item na ito.</string>
+  
+  <string name="result_message_no_content_desc">Walang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ang item na ito.</string>
+  
+  <string name="result_message_not_visible">Hindi nakikita ang item na ito.</string>
+  
+  <string name="result_message_not_enabled">Hindi naka-enable ang item na ito.</string>
+  
+  <string name="result_message_not_text_view">Hindi &lt;tt&gt;TextView&lt;/tt&gt; ang item na ito.</string>
+  
+  <string name="result_message_no_screencapture">Hindi makuha ang data ng screen capture.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Wala sa loob ng on-screen na lokasyon (&lt;tt&gt;%2$s&lt;/tt&gt;) ng screen capture ang on-screen na lokasyon ng item na ito (&lt;tt&gt;%1$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Nakatago ang impormasyon ng screen capture para sa item na ito.</string>
+  
+  <string name="clickable">naki-click</string>
+  
+  <string name="non_clickable">hindi naki-click</string>
+  
+  <string name="long_clickable">naki-click nang matagal</string>
+  
+  <string name="clickable_and_long_clickable">naki-click at naki-click nang matagal</string>
+  
+  <string name="actionable">naaaksyunan</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Link</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Hindi matiyak ang uri ng item na ito.</string>
+  
+  <string name="result_message_urlspan_invalid_url">I-verify na balido ang URL sa loob ng &lt;tt&gt;URLSpan&lt;/tt&gt; ng item na ito.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Dapat gumamit ng &lt;tt&gt;URLSpan&lt;/tt&gt; kapalit ng &lt;tt&gt;ClickableSpan&lt;/tt&gt; ang item na ito.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Mga naki-click na item</string>
+  
+  <string name="result_message_brief_same_view_bounds">Pinaghahatian ng maraming %1$s na item ang lokasyong ito sa screen.</string>
+  
+  <string name="result_message_same_view_bounds">Pareho ang on-screen na lokasyon ng %1$s na item na ito (&lt;tt&gt;%2$s&lt;/tt&gt;) tulad ng %3$d (na) iba pang item na may ganoong katangian.</string>
+  
+  <string name="result_message_view_bounds">May on-screen na lokasyon din na &lt;tt&gt;%2$s&lt;/tt&gt; ang %1$s na item na ito.</string>
+  
+  <string name="check_title_duplicate_speakable_text">mga paglalarawan ng item</string>
+  
+  <string name="result_message_brief_same_speakable_text">Maraming item na may parehong paglalarawan.</string>
+  
+  <string name="result_message_same_speakable_text">Ang nasasabing teksto ng %1$s na item na ito: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" ay kapareho ng %3$d (na) iba pang item.</string>
+  
+  <string name="result_message_speakable_text">May nasasabing teksto rin ang %1$s na item na ito: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Nae-edit na label ng item</string>
+  
+  <string name="result_message_editable_textview_content_desc">May &lt;tt&gt;android:contentDescription&lt;/tt&gt; ang nae-edit na &lt;tt&gt;TextView&lt;/tt&gt; na ito. Maaaring mabasa ng isang screen reader ang katangiang ito sa halip na ang nae-edit na content kapag nagna-navigate ang user.</string>
+  
+  <string name="result_message_not_editable_textview">Hindi nae-edit na &lt;tt&gt;TextView&lt;/tt&gt; ang item na ito.</string>
+  
+  <string name="check_title_image_contrast">Contrast ng larawan</string>
+  
+  <string name="result_message_not_imageview">Hindi &lt;tt&gt;ImageView&lt;/tt&gt; ang item na ito.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Pag-isipang taasan ang contrast ratio sa pagitan ng foreground at background ng larawang ito.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">%1$.2f ang contrast ratio ng larawan. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pag-isipang taasan ang ratio na ito sa %2$.2f o higit pa.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Label ng uri ng item</string>
+  
+  <string name="result_message_english_locale_only">Tumatakbo lang ang pagsusuring ito sa mga device na may mga locale na nakatakda sa English.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Maaring maglaman ng hindi kinakailangang teksto ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ng item na ito.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Nagtatapos sa uri ng item ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; na, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito.</string>
+  
+  <string name="check_title_speakable_text_present">Label ng item</string>
+  
+  <string name="result_message_should_not_focus">Hindi matututukan ng isang screen reader ang item na ito.</string>
+  
+  <string name="result_message_web_content">Hindi nasuri ang web content.</string>
+  
+  <string name="result_message_missing_speakable_text">Maaaring walang label na mababasa ng mga screen reader ang item na ito.</string>
+  
+  <string name="check_title_text_contrast">Contrast ng teksto</string>
+  
+  <string name="result_message_textview_empty">Walang laman ang &lt;tt&gt;TextView&lt;/tt&gt; na ito.</string>
+  
+  <string name="result_message_could_not_get_text_color">Hindi matukoy ang kulay ng teksto ng item na ito.</string>
+  
+  <string name="result_message_could_not_get_background_color">Hindi matukoy ang kulay ng background ng item na ito.</string>
+  
+  <string name="result_message_text_must_be_opaque">Hindi opaque ang kulay ng teksto ng item na ito.</string>
+  
+  <string name="result_message_background_must_be_opaque">Hindi opaque ang kulay ng background ng item na ito.</string>
+  
+  <string name="result_message_addendum_opacity_description">%1$.2f%% ang totoong opacity nito.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Pag-isipang taasan ang contrast ratio ng foreground sa background ng teksto ng item na ito.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">%1$.2f ang contrast ratio ng teksto ng item na ito. Nakabatay ang ratio na ito sa isang kulay ng teksto na &lt;tt&gt;#%3$06X&lt;/tt&gt; at kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng teksto ng item na ito sa %2$.2f o higit pa.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">%1$.2f ang contrast ratio ng teksto ng item na ito. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng teksto ng item na ito sa %2$.2f o higit pa.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">%1$.2f ang contrast ratio ng teksto ng item na ito. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%4$06X&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;#%5$06X&lt;/tt&gt;. Pag-isipan ang paggamit ng contrast ratio na higit pa sa %2$.2f para sa maliliit na teksto, o %3$.2f para sa malalaking teksto.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Pipindutin</string>
+  
+  <string name="result_message_not_clickable">Hindi naki-click ang view na ito.</string>
+  
+  <string name="result_message_brief_small_touch_target">Pag-isipang gawing mas malaki ang naki-click na item na ito.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; ang laki ng item na ito. Pag-isipang gawing &lt;tt&gt;%3$ddp&lt;/tt&gt; ang lapad at &lt;tt&gt;%4$ddp&lt;/tt&gt; ang taas o higit pa ang pipindutin na ito.</string>
+  
+  <string name="result_message_small_touch_target_height">&lt;tt&gt;%1$ddp&lt;/tt&gt; ang taas ng item na ito. Pag-isipang gawing &lt;tt&gt;%2$ddp&lt;/tt&gt; o higit pa ang taas ng pipindutin na ito.</string>
+  
+  <string name="result_message_small_touch_target_width">&lt;tt&gt;%1$ddp&lt;/tt&gt; ang lapad ng item na ito. Pag-isipang gawing &lt;tt&gt;%2$ddp&lt;/tt&gt; o higit pa ang lapad ng pipindutin na ito.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">May nakitang &lt;tt&gt;TouchDelegate&lt;/tt&gt; sa isa sa mga pinagmulan ng item na ito. Maaaring balewalain ang mensaheng ito kung sapat ang laki ng delegado at humahawak ng mga pipindutin para sa item na ito.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Maaaring may parent container na humahawak ng mga kaganapan ng pagpindot para sa item na ito. Kung ang pagpili ng mas malaking container ay nagsasagawa ng parehong aksyon tulad ng pagpili sa item na ito, pag-isipang tukuyin ang item na ito bilang hindi naki-click. Kung may isasagawang ibang aksyon, pag-isipang taasan ang laki ng item na ito.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Maaaring may parent container na nakababawas sa sukat ng item na ito, na may drawing area na &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Isaalang-alang ang pagdaragdag sa sukat ng clipping ancestor ng item na ito, o pagpapahintulot ng mas malaking parent container na hahawak sa mga aksyon para sa item na ito.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Hindi nasuri ang item na ito dahil maaaring bahagyang nakikita lang ito sa loob ng isang naii-scroll na container.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

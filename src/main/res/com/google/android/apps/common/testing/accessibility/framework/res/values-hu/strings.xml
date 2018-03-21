@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Ez az elem nem minősült fontosnak a kisegítő lehetőségek szempontjából.</string>
+  
+  <string name="result_message_no_content_desc">Ez az elem nem rendelkezik a következővel: &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Ez az elem nem látható.</string>
+  
+  <string name="result_message_not_enabled">Ez az elem nincs bekapcsolva.</string>
+  
+  <string name="result_message_not_text_view">Ez az elem nem a következő: &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Nem sikerült megszerezni a képernyőkép készítéséhez szükséges adatokat.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Az elem képernyőn való elhelyezkedése (&lt;tt&gt;%1$s&lt;/tt&gt;) nem egyezett meg a készített képernyőkép helyével (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Az elemre vonatkozó képernyőkép-készítési adatok rejtettek voltak.</string>
+  
+  <string name="clickable">kattintható</string>
+  
+  <string name="non_clickable">nem kattintható</string>
+  
+  <string name="long_clickable">hosszan kattintható</string>
+  
+  <string name="clickable_and_long_clickable">kattintható és hosszan kattintható</string>
+  
+  <string name="actionable">végrehajtható</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Link</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Az elem típusa nincs meghatározva.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Ellenőrizze, hogy az elem &lt;tt&gt;URLSpan&lt;/tt&gt; részében szereplő URL érvényes-e.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Az elemnek a következőt kellene használnia: &lt;tt&gt;URLSpan&lt;/tt&gt;, ehelyett: &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Kattintható elemek</string>
+  
+  <string name="result_message_brief_same_view_bounds">Ez a hely több %1$s elem között oszlik meg a képernyőn.</string>
+  
+  <string name="result_message_same_view_bounds">Ez a %1$s elem ugyanazon a helyen található a képernyőn (&lt;tt&gt;%2$s&lt;/tt&gt;), mint %3$d további, ugyanezekkel a tulajdonságokkal rendelkező elem.</string>
+  
+  <string name="result_message_view_bounds">Ennek a %1$s elemnek a képernyőn elfoglalt helye szintén &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Elemleírások</string>
+  
+  <string name="result_message_brief_same_speakable_text">Több elem rendelkezik ugyanazzal a leírással.</string>
+  
+  <string name="result_message_same_speakable_text">Ehhez a %1$s elemhez a következő kimondható szöveg tartozik: a „&lt;tt&gt;%2$s&lt;/tt&gt;” megegyezik %3$d másik elemével.</string>
+  
+  <string name="result_message_speakable_text">Ehhez a %1$s elemhez is a következő kimondható szöveg tartozik: „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="check_title_editable_content_desc">Szerkeszthető elemcímke</string>
+  
+  <string name="result_message_editable_textview_content_desc">Ez a szerkeszthető &lt;tt&gt;TextView&lt;/tt&gt; &lt;tt&gt;android:contentDescription&lt;/tt&gt; címkével rendelkezik. A felhasználó navigálása közben a képernyőolvasó felolvashatja ezt az attribútumot a szerkeszthető tartalom helyett.</string>
+  
+  <string name="result_message_not_editable_textview">Ez az elem nem szerkeszthető &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="check_title_image_contrast">Képkontraszt</string>
+  
+  <string name="result_message_not_imageview">Ez az elem nem &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Érdemes lenne növelni a kép előtere és háttere közötti kontrasztarányt.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">A kép kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; becsült előtérszínen, valamint a(z) &lt;tt&gt;#%4$06X&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni az arányt.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Elemtípuscímke</string>
+  
+  <string name="result_message_english_locale_only">Ez az ellenőrzés csak angol nyelvre állított eszközökön fut.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma felesleges szöveget tartalmazhat.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma, „&lt;tt&gt;%1$s&lt;/tt&gt;” az elem típusával végződik.</string>
+  
+  <string name="check_title_speakable_text_present">Elemcímke</string>
+  
+  <string name="result_message_should_not_focus">Erre az elemre nem fókuszálna a képernyőolvasó.</string>
+  
+  <string name="result_message_web_content">A webes tartalom nincs megvizsgálva.</string>
+  
+  <string name="result_message_missing_speakable_text">Ez az elem nem rendelkezik képernyőolvasó által olvasható címkével.</string>
+  
+  <string name="check_title_text_contrast">Szövegkontraszt</string>
+  
+  <string name="result_message_textview_empty">Ez a(z) &lt;tt&gt;TextView&lt;/tt&gt; üres.</string>
+  
+  <string name="result_message_could_not_get_text_color">Nem sikerült meghatározni az elem szövegének színét.</string>
+  
+  <string name="result_message_could_not_get_background_color">Nem sikerült meghatározni az elem háttérszínét.</string>
+  
+  <string name="result_message_text_must_be_opaque">Az elem szövegének színe nem átlátszó.</string>
+  
+  <string name="result_message_background_must_be_opaque">Az elem háttérszíne nem átlátszó.</string>
+  
+  <string name="result_message_addendum_opacity_description">A tényleges átlátszóság %1$.2f %%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Érdemes lenne növelni az elemszöveg előterének és hátterének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;#%4$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; becsült előtérszínen és a(z) &lt;tt&gt;#%4$06X&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%4$06X&lt;/tt&gt; becsült előtérszínen és a(z) &lt;tt&gt;#%5$06X&lt;/tt&gt;. becsült háttérszínen alapul. Érdemes lenne %2$.2f értéknél nagyobb kontrasztarányt alkalmazni a kis méretű szöveghez, vagy %3$.2f kontrasztarányt a nagy méretű szöveghez.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Érintési célelem</string>
+  
+  <string name="result_message_not_clickable">Ez a nézet nem kattintható.</string>
+  
+  <string name="result_message_brief_small_touch_target">Érdemes lenne nagyobbra venni ezt a kattintható elemet.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Az elem mérete &lt;tt&gt;%1$ddp&lt;/tt&gt;x&lt;tt&gt;%2$ddp&lt;/tt&gt;. Érdemes lenne ezt az érintési célelemet &lt;tt&gt;%3$ddp&lt;/tt&gt; szélesre és &lt;tt&gt;%4$ddp&lt;/tt&gt; magasra (vagy ennél nagyobbra) venni.</string>
+  
+  <string name="result_message_small_touch_target_height">Az elem magassága &lt;tt&gt;%1$ddp&lt;/tt&gt;. Érdemes lenne ezt az érintési célelemet &lt;tt&gt;%2$ddp&lt;/tt&gt; vagy még magasabbra venni.</string>
+  
+  <string name="result_message_small_touch_target_width">Az elem szélessége &lt;tt&gt;%1$ddp&lt;/tt&gt;. Érdemes lenne ezt az érintési célelemet &lt;tt&gt;%2$ddp&lt;/tt&gt; vagy még szélesebbre venni.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Az elem egyik elődjénél &lt;tt&gt;TouchDelegate&lt;/tt&gt; osztályt észleltünk. Ez az üzenet figyelmen kívül hagyható, ha a delegált megfelelő méretű, és kezeli az elemhez tartozó érintéseket.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Az elemhez tartozó érintéseseményeket szülőtároló kezelheti. Ha a nagyobb tároló kiválasztása ugyanazt a műveletet idézi elő, mint az elem kiválasztása, akkor érdemes lenne nem kattinthatóként definiálni ezt az elemet. Ha másik műveletre kerül sor, akkor érdemes lenne növelni az elem méretét.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">A szülő tároló levághat az elemből, amelynek rajzterülete &lt;tt&gt;%1$ddp&lt;/tt&gt;x&lt;tt&gt;%2$ddp&lt;/tt&gt;. Érdemes megfontolni az elem vágási elődje méretének növelését, vagy engedélyezni, hogy nagyobb szülő tároló kezelje a műveleteket az elem esetében.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Az elemet nem értékeltük, mert csak részben látható a görgethető tárolón belül.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

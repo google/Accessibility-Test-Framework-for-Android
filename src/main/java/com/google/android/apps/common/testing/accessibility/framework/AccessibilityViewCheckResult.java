@@ -14,37 +14,41 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+import android.support.annotation.Nullable;
 import android.view.View;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 
 /**
  * Result generated when an accessibility check runs on a {@code View}.
+ *
+ * @deprecated Direct evaluation of {@link View}s is deprecated.  Instead, create an
+ *             {@link AccessibilityHierarchy} using a source {@link View}, and run
+ *             {@link AccessibilityHierarchyCheck}s obtained with {@link AccessibilityCheckPreset}.
+ *             Results will be provided in the form of {@link AccessibilityHierarchyCheckResult}s.
  */
+@Deprecated
 public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
 
-  private View view;
+  private final @Nullable View view;
 
   /**
    * @param checkClass The check that generated the error
    * @param type The type of the result
    * @param message A human-readable message explaining the error
-   * @param view The view that was responsible for generating the error
+   * @param view The view that was responsible for generating the error. This may be {@code null} if
+   *     the result does not apply to a specific {@code View}.
    */
   public AccessibilityViewCheckResult(Class<? extends AccessibilityCheck> checkClass,
-      AccessibilityCheckResultType type, CharSequence message, View view) {
+      AccessibilityCheckResultType type, CharSequence message, @Nullable View view) {
     super(checkClass, type, message);
     this.view = view;
   }
 
   /**
-   * @return The view to which the result applies.
+   * @return The view to which the result applies, or {@code null} if the result does not apply to a
+   *     specific {@code View}.
    */
-  public View getView() {
+  public @Nullable View getView() {
     return view;
-  }
-
-  @Override
-  public void recycle() {
-    super.recycle();
-    view = null;
   }
 }

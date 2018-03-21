@@ -14,21 +14,25 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.annotation.TargetApi;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.AdapterView;
-import android.widget.CompoundButton;
+import android.widget.Checkable;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import com.googlecode.eyesfree.utils.LogUtils;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,8 +40,7 @@ import java.util.Set;
  * This class provides a set of utilities used to evaluate accessibility properties and behaviors of
  * hierarchies of {@link View}s.
  */
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-final class ViewAccessibilityUtils {
+public final class ViewAccessibilityUtils {
 
   private ViewAccessibilityUtils() {}
 
@@ -46,7 +49,7 @@ final class ViewAccessibilityUtils {
    * @return A Set containing the root view and all views below it in the hierarchy
    */
   public static Set<View> getAllViewsInHierarchy(View rootView) {
-    Set<View> allViews = new HashSet<View>();
+    Set<View> allViews = new HashSet<>();
     allViews.add(rootView);
     addAllChildrenToSet(rootView, allViews);
     return allViews;
@@ -62,10 +65,13 @@ final class ViewAccessibilityUtils {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       return view.isImportantForAccessibility();
+    } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+      // Prior to Jelly Bean, all Views were considered important for accessibility.
+      return true;
     } else {
-      // On earlier APIs, we must piece together accessibility importance from the available
-      // properties. We return false incorrectly for some cases where unretrievable listeners
-      // prevent us from determining importance.
+      // On APIs between 16 and 21, we must piece together accessibility importance from the
+      // available properties. We return false incorrectly for some cases where unretrievable
+      // listeners prevent us from determining importance.
 
       // If the developer marked the view as explicitly not important, it isn't.
       int mode = view.getImportantForAccessibility();
@@ -117,6 +123,7 @@ final class ViewAccessibilityUtils {
    * @param view The {@link View} to evaluate
    * @return {@code true} if {@code view} is visible to the user
    */
+  @RequiresApi(Build.VERSION_CODES.HONEYCOMB) // Uses View#getAlpha
   public static boolean isVisibleToUser(View view) {
     if (view == null) {
       return false;
@@ -142,28 +149,26 @@ final class ViewAccessibilityUtils {
    * @return {@code true} if a screen reader would choose to place accessibility focus on
    *         {@code view}, {@code false} otherwise.
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
   public static boolean shouldFocusView(View view) {
     if (view == null) {
       return false;
     }
 
-    if (!isVisibleToUser(view)) {
-      // We don't focus views that are not visible
+    if (!isVisibleToUser(view) || !isImportantForAccessibility(view)) {
+      // We don't focus views that are not visible or not important for accessibility
       return false;
     }
 
     if (isAccessibilityFocusable(view)) {
       if ((!(view instanceof ViewGroup))
-          || ((view instanceof ViewGroup) && (((ViewGroup) view).getChildCount() == 0))) {
-        // TODO(caseyburkhardt): Do we need to evaluate all ViewGroups and filter non-important
-        // Views to determine leaves? If so, this seems like a rare corner case.
-
+          || ((view instanceof ViewGroup) && !hasAnyImportantDescendant((ViewGroup) view))) {
         // Leaves that are accessibility focusable always gain focus regardless of presence of a
         // spoken description. This allows unlabeled, but still actionable, widgets to be activated
         // by the user.
         return true;
       } else if (isSpeakingView(view)) {
-        // The view (or its non-actionable children)
+        // The view (or its grouped non-actionable children) have content to speak.
         return true;
       }
 
@@ -184,7 +189,7 @@ final class ViewAccessibilityUtils {
    * @return The {@code View} that is the labelFor the specified view. {@code null}
    * if nothing labels it.
    */
-  public static View getLabelForView(View view) {
+  public static @Nullable View getLabelForView(View view) {
     if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)) {
       /* Earlier versions don't support labelFor */
       return null;
@@ -216,8 +221,49 @@ final class ViewAccessibilityUtils {
     }
   }
 
-  private static View lookForLabelForViewInViewAndChildren(View view, View childToSkip,
-      int idToFind) {
+  /**
+   * @param view The {@link View} to evaluate
+   * @return {@link Boolean#TRUE} if {@code view} is considered editable, {@link Boolean#FALSE} if
+   *         not, or {@code null} if this information cannot be determined.
+   */
+  public static @Nullable Boolean isViewEditable(View view) {
+    if (view == null) {
+      return null;
+    }
+    if (view instanceof EditText) {
+      return true;
+    }
+    if (view instanceof TextView) {
+      return ((TextView) view).getEditableText() != null;
+    }
+    return false;
+  }
+
+  /**
+   * @param view The {@link View} to identify
+   * @return a {@link String} resource name for the provided {@code view} in the format
+   *         "package:type/entry", or {@code null} if a resource name does not exist or cannot be
+   *         resolved.
+   */
+  public static @Nullable String getResourceNameForView(View view) {
+    if ((view == null) || (view.getId() == View.NO_ID) || (view.getResources() == null)) {
+      return null;
+    }
+
+    try {
+      return view.getResources().getResourceName(view.getId());
+    } catch (Resources.NotFoundException nfe) {
+      // Do nothing -- Potential test environment issue
+      LogUtils.log(
+          ViewAccessibilityUtils.class, Log.WARN, "Unable to resolve resource name from view ID.");
+    }
+
+    return null;
+  }
+
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1) // Calls View#getLabelFor
+  private static @Nullable View lookForLabelForViewInViewAndChildren(
+      View view, @Nullable View childToSkip, int idToFind) {
     if (view.getLabelFor() == idToFind) {
       return view;
     }
@@ -293,6 +339,7 @@ final class ViewAccessibilityUtils {
    * @return {@code true} if an ancestor of {@code view} may gain accessibility focus, {@code false}
    *         otherwise
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean hasFocusableAncestor(View view) {
     if (view == null) {
       return false;
@@ -317,12 +364,17 @@ final class ViewAccessibilityUtils {
    * @return {@code true} if it is possible for {@code view} to gain accessibility focus,
    *         {@code false} otherwise.
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls isChildOfScrollableContainer
   private static boolean isAccessibilityFocusable(View view) {
     if (view == null) {
       return false;
     }
 
     if (view.getVisibility() != View.VISIBLE) {
+      return false;
+    }
+
+    if (!isImportantForAccessibility(view)) {
       return false;
     }
 
@@ -340,6 +392,7 @@ final class ViewAccessibilityUtils {
    * @return {@code true} if {@code view} is a top-level view within a scrollable container,
    *         {@code false} otherwise
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean isChildOfScrollableContainer(View view) {
     if (view == null) {
       return false;
@@ -372,11 +425,12 @@ final class ViewAccessibilityUtils {
    * @return {@code true} if a spoken description for {@code view} was determined, {@code false}
    *         otherwise.
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls hasNonActionableSpeakingChildren
   private static boolean isSpeakingView(View view) {
     if (hasText(view)) {
       return true;
-    } else if (view instanceof CompoundButton) {
-      // Special case for CompoundButton / CheckBox / Switch.
+    } else if (view instanceof Checkable) {
+      // Special case for checkable items, which screen readers may describe without text
       return true;
     } else if (hasNonActionableSpeakingChildren(view)) {
       return true;
@@ -394,6 +448,7 @@ final class ViewAccessibilityUtils {
    * @param view The {@link View} to evaluate
    * @return {@code true} if {@code view} has non-actionable speaking children within its subtree
    */
+  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls isAccessibilityFocusable
   private static boolean hasNonActionableSpeakingChildren(View view) {
     if ((view == null) || !(view instanceof ViewGroup)) {
       return false;
@@ -426,6 +481,37 @@ final class ViewAccessibilityUtils {
       return true;
     } else if (view instanceof TextView) {
       return !TextUtils.isEmpty(((TextView) view).getText());
+    }
+
+    return false;
+  }
+
+  /**
+   * Determines if the provided {@code group} has any descendant, direct or indirect, which is
+   * considered important for accessibility.  This is useful in determining whether or not the
+   * Android framework will attempt to reparent any child in the subtree as a direct descendant of
+   * {@code group} while converting the hierarchy to an accessibility API representation.
+   *
+   * @param group the {@link ViewGroup} to evaluate
+   * @return {@code true} if any child in {@code group}'s subtree is considered important for
+   *         accessibility, {@code false} otherwise
+   */
+  private static boolean hasAnyImportantDescendant(ViewGroup group) {
+    if (group == null) {
+     return false;
+    }
+
+    for (int i = 0; i < group.getChildCount(); ++i) {
+      View child = group.getChildAt(i);
+      if (isImportantForAccessibility(child)) {
+        return true;
+      }
+
+      if (child instanceof ViewGroup) {
+        if (hasAnyImportantDescendant((ViewGroup) child)) {
+          return true;
+        }
+      }
     }
 
     return false;

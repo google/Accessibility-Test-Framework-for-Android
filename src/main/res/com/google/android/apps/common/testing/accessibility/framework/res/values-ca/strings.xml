@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Aquest element no es considera important per a l\'accessibilitat.</string>
+  
+  <string name="result_message_no_content_desc">Aquest element no té cap atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Aquest element no és visible.</string>
+  
+  <string name="result_message_not_enabled">Aquest element no està activat.</string>
+  
+  <string name="result_message_not_text_view">Aquest element no és una classe &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">No s\'han pogut obtenir les dades de la captura de pantalla.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Tot l\'element o part de l\'element (&lt;tt&gt;%1$s&lt;/tt&gt;) no apareixia en pantalla en fer la captura (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">La informació de la captura de pantalla d\'aquest element estava oculta.</string>
+  
+  <string name="clickable">clicable</string>
+  
+  <string name="non_clickable">no clicable</string>
+  
+  <string name="long_clickable">clicable de manera prolongada</string>
+  
+  <string name="clickable_and_long_clickable">clicable i clicable de manera prolongada</string>
+  
+  <string name="actionable">accionable</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Enllaç</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Aquest tipus d\'element és indeterminat.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Verifica que l\'URL de la classe &lt;tt&gt;URLSpan&lt;/tt&gt; d\'aquest element sigui vàlida.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Aquest element ha d\'utilitzar una classe &lt;tt&gt;URLSpan&lt;/tt&gt; en comptes d\'una classe &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Elements clicables</string>
+  
+  <string name="result_message_brief_same_view_bounds">Diversos elements %1$s tenen aquesta ubicació a la pantalla.</string>
+  
+  <string name="result_message_same_view_bounds">Aquest element %1$s té la mateixa ubicació a la pantalla (&lt;tt&gt;%2$s&lt;/tt&gt;) que %3$d element(s) més amb aquestes propietats.</string>
+  
+  <string name="result_message_view_bounds">Aquest element %1$s també té una ubicació a la pantalla de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Descripcions dels elements</string>
+  
+  <string name="result_message_brief_same_speakable_text">Diversos elements tenen la mateixa descripció.</string>
+  
+  <string name="result_message_same_speakable_text">El text parlat de l\'element %1$s, \"&lt;tt&gt;%2$s&lt;/tt&gt;\", és idèntic al de %3$d element(s) més.</string>
+  
+  <string name="result_message_speakable_text">Aquest element %1$s també té el text parlat: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Etiqueta d\'element editable</string>
+  
+  <string name="result_message_editable_textview_content_desc">La classe editable &lt;tt&gt;TextView&lt;/tt&gt; té una etiqueta &lt;tt&gt;android:contentDescription&lt;/tt&gt;. És possible que un lector de pantalla llegeixi aquest atribut en lloc del contingut editable quan l\'usuari estigui navegant.</string>
+  
+  <string name="result_message_not_editable_textview">Aquest element no és una classe &lt;tt&gt;TextView&lt;/tt&gt; editable.</string>
+  
+  <string name="check_title_image_contrast">Contrast de la imatge</string>
+  
+  <string name="result_message_not_imageview">Aquest element no és una classe &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Pots augmentar la relació de contrast entre el primer pla i el fons d\'aquesta imatge.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Pots augmentar aquesta relació a %2$.2f o més.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Etiqueta de tipus d\'element</string>
+  
+  <string name="result_message_english_locale_only">Aquesta comprovació només s\'executa en dispositius amb l\'anglès seleccionat a la configuració regional.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">És possible que l\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element contingui text innecessari.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">L\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", acaba amb el tipus d\'element.</string>
+  
+  <string name="check_title_speakable_text_present">Etiqueta d\'element</string>
+  
+  <string name="result_message_should_not_focus">Un lector de pantalla no se centrarà en aquest element.</string>
+  
+  <string name="result_message_web_content">El contingut web no s\'ha avaluat.</string>
+  
+  <string name="result_message_missing_speakable_text">És possible que aquest element no tingui una etiqueta que puguin llegir els lectors de pantalla.</string>
+  
+  <string name="check_title_text_contrast">Contrast del text</string>
+  
+  <string name="result_message_textview_empty">La classe &lt;tt&gt;TextView&lt;/tt&gt; és buida.</string>
+  
+  <string name="result_message_could_not_get_text_color">El color del text d\'aquest element no s\'ha pogut determinar.</string>
+  
+  <string name="result_message_could_not_get_background_color">El color de fons d\'aquest element no s\'ha pogut determinar.</string>
+  
+  <string name="result_message_text_must_be_opaque">El color del text d\'aquest element no és opac.</string>
+  
+  <string name="result_message_background_must_be_opaque">El color de fons d\'aquest element no és opac.</string>
+  
+  <string name="result_message_addendum_opacity_description">La seva opacitat real és %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Pots augmentar la relació de contrast entre el primer pla i el fons del text d\'aquest element.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color del text &lt;tt&gt;#%3$06X&lt;/tt&gt; i el color de fons &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pots augmentar aquesta relació a %2$.2f o més.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Pots augmentar aquesta relació a %2$.2f o més.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%4$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%5$06X&lt;/tt&gt;) estimats. Pots utilitzar una relació de contrast superior a %2$.2f per al text petit, o %3$.2f per al text gran.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Objectiu tàctil</string>
+  
+  <string name="result_message_not_clickable">Aquest element no és clicable.</string>
+  
+  <string name="result_message_brief_small_touch_target">Pots ampliar aquest element clicable.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Dimensions d\'aquest element: &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pots canviar l\'amplada d\'aquest objectiu tàctil a &lt;tt&gt;%3$ddp&lt;/tt&gt; i l\'alçada a &lt;tt&gt;%4$ddp&lt;/tt&gt; o més.</string>
+  
+  <string name="result_message_small_touch_target_height">Alçada d\'aquest element: &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pots canviar l\'alçada d\'aquest objectiu tàctil a &lt;tt&gt;%2$ddp&lt;/tt&gt; o més.</string>
+  
+  <string name="result_message_small_touch_target_width">Amplada d\'aquest element: &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pots canviar l\'amplada d\'aquest objectiu tàctil a &lt;tt&gt;%2$ddp&lt;/tt&gt; o més.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">S\'ha detectat una classe &lt;tt&gt;TouchDelegate&lt;/tt&gt; en un dels antecessors d\'aquest element. Pots ignorar aquest missatge si el delegat és prou gran i gestiona els tocs d\'aquest element.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">És possible que un contenidor principal gestioni els esdeveniments tàctils d\'aquest element. Si en seleccionar el contenidor més gran s\'executa la mateixa acció que en seleccionar aquest element, pots configurar l\'element com a no clicable. Si s\'executa una altra acció, pots ampliar-lo.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">És possible que un contenidor principal estigui limitant la mida d\'aquest element, que té una àrea de dibuix de: &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pots provar d\'augmentar la mida de l\'antecessor o bé permetre que un contenidor principal més gran gestioni les accions en nom de l\'element.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Aquest element no s\'ha pogut avaluar perquè només es pot veure parcialment en un contenidor desplaçable.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

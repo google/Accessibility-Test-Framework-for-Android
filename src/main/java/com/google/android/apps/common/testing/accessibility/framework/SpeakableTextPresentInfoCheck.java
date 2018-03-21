@@ -14,62 +14,25 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.text.TextUtils;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.webkit.WebView;
-import android.widget.ListView;
-import android.widget.ScrollView;
-
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck;
 import java.util.List;
 
 /**
  * Check to ensure that an info has speakable text for a screen reader
+ *
+ * @deprecated Replaced by {@link SpeakableTextPresentCheck}
  */
-public class SpeakableTextPresentInfoCheck extends AccessibilityInfoCheck {
-  private static List<Class<? extends ViewGroup>> blacklistedViewTypes =
-      /*
-       * TODO(pweaver) Revisit this list once we have robust testing for info checks. It should
-       * only contain classes that can't be handled any other way. ShouldFocusNode likely
-       * handles many of them, for example.
-       */
-      Arrays.asList(ListView.class, ScrollView.class, ViewPager.class, WebView.class);
+@Deprecated
+public class SpeakableTextPresentInfoCheck extends AccessibilityInfoHierarchyCheck {
+
+  private static final SpeakableTextPresentCheck DELEGATION_CHECK = new SpeakableTextPresentCheck();
 
   @Override
-  public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context, Bundle metadata) {
-    List<AccessibilityInfoCheckResult> results = new ArrayList<AccessibilityInfoCheckResult>();
-    AccessibilityNodeInfoCompat compatInfo = new AccessibilityNodeInfoCompat(info);
-    for (Class<? extends ViewGroup> clazz : blacklistedViewTypes) {
-      if (AccessibilityNodeInfoUtils.nodeMatchesAnyClassByType(null, compatInfo, clazz)) {
-        String msg =
-            String.format("Views of type %s are not checked for speakable text.", clazz.getName());
-        results.add(new AccessibilityInfoCheckResult(this.getClass(),
-            AccessibilityCheckResultType.NOT_RUN, msg, info));
-        return results;
-      }
-    }
-    if (AccessibilityNodeInfoUtils.shouldFocusNode(context, compatInfo)) {
-      if (TextUtils.isEmpty(AccessibilityCheckUtils.getSpeakableTextForInfo(info))) {
-        results.add(new AccessibilityInfoCheckResult(this.getClass(),
-            AccessibilityCheckResultType.ERROR,
-            "View is missing speakable text needed for a screen reader", info));
-      }
-    } else {
-      results.add(new AccessibilityInfoCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View is not focused by screen readers", info));
-    }
-    return results;
+  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(
+      AccessibilityNodeInfo root, Context context, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnInfo(root, this, DELEGATION_CHECK, context, metadata);
   }
-
 }

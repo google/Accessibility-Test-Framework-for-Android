@@ -14,9 +14,11 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.integrations;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -24,8 +26,8 @@ import java.util.Locale;
  * An exception class to be used for throwing exceptions with accessibility results.
  */
 public final class AccessibilityViewCheckException extends RuntimeException {
-  private List<AccessibilityViewCheckResult> results;
-  private AccessibilityCheckResultDescriptor resultDescriptor;
+  private final List<AccessibilityViewCheckResult> results;
+  private final AccessibilityCheckResultDescriptor resultDescriptor;
 
   /**
    * Create an instance with the default {@link AccessibilityCheckResultDescriptor}
@@ -45,13 +47,10 @@ public final class AccessibilityViewCheckException extends RuntimeException {
   public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results,
       AccessibilityCheckResultDescriptor resultDescriptor) {
     super();
-    if (results == null || results.isEmpty()) {
-      throw new IllegalArgumentException(
-          "AccessibilityViewCheckException requires at least 1 AccessibilityViewCheckResult");
-    }
-    if (resultDescriptor == null) {
-      throw new IllegalArgumentException("Result descriptor cannot be null");
-    }
+    checkArgument(
+        results != null && !results.isEmpty(),
+        "AccessibilityViewCheckException requires at least 1 AccessibilityViewCheckResult");
+    checkNotNull(resultDescriptor);
     this.results = results;
     this.resultDescriptor = resultDescriptor;
   }
@@ -60,8 +59,6 @@ public final class AccessibilityViewCheckException extends RuntimeException {
   public String getMessage() {
     // Lump all error result messages into one string to be the exception message
     StringBuilder exceptionMessage = new StringBuilder();
-    // TODO(sjrush): allow for developers to set their own Locale, and use that instead of
-    // Locale.US below, regardless of what Locale they're testing on.
     String errorCountMessage = (results.size() == 1)
         ? "There was 1 accessibility error:\n"
         : String.format(Locale.US, "There were %d accessibility errors:\n", results.size());

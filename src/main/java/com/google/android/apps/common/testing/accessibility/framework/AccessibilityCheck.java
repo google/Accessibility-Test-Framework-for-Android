@@ -17,13 +17,39 @@
 package com.google.android.apps.common.testing.accessibility.framework;
 
 /**
- * Abstract base class for all accessibility checks. Abstract subclasses include
- * {@code AccessibilityViewCheck}, the base class for all that run against {@code View}s, and
- * {@code AccessibilityInfoCheck}, the base class for checks that run against
- * {@code AccessibilityNodeInfo}s.
+ * Abstract base class for all accessibility checks. Abstract subclasses include:
+ * <ul>
+ *   <li>{@link AccessibilityHierarchyCheck} - the base class for all checks that run against
+ *   {@code AccessibilityHierarchy}</li>
+ *   <li>{@link AccessibilityEventCheck} - the base class for all checks that that run against
+ *   {@code AccessibilityEvent}</li>
+ *   <li>Deprecated {@link AccessibilityViewHierarchyCheck} - the base class for all checks that run
+ *   against {@code View}s</li>
+ *   <li>Deprecated {@link AccessibilityInfoHierarchyCheck} - the base class for all checks that run
+ *   against {@code AccessibilityNodeInfo}s</li>
+ * </ul>
  *
  * <p>Classes extending this one must implement {@code runCheck...} that return {@code List}s of
  * a subclass of {@code AccessibilityCheckResult}.
  */
 public abstract class AccessibilityCheck {
+
+  /** Categories of accessibility checks. */
+  public enum Category {
+
+    /** Checks for controls whose content labels are missing or confusing. */
+    CONTENT_LABELING,
+
+    /** Checks for touch targets that could cause difficulty for users with motor impairments. */
+    TOUCH_TARGET_SIZE,
+
+    /** Checks for elements that may be difficult to see due to low contrast. */
+    LOW_CONTRAST,
+
+    /**
+     * Checks for conditions that impact accessibility due to the way a UI presents itself to
+     * accessibility services.
+     */
+    IMPLEMENTATION;
+  }
 }

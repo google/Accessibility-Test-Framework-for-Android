@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Este item não foi encontrado, pois não faz parte do serviço de acessibilidade.</string>
+  
+  <string name="result_message_no_content_desc">Este item não contém &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Este item não é visível.</string>
+  
+  <string name="result_message_not_enabled">Este item não está ativo.</string>
+  
+  <string name="result_message_not_text_view">Este item não é &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Os dados de captura de tela não foram obtidos.</string>
+  
+  <string name="result_message_view_not_within_screencapture">O local do item na tela (&lt;tt&gt;%1$s&lt;/tt&gt;) não foi incluído no local da captura de tela (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">As informações de captura de tela estavam ocultas para este item.</string>
+  
+  <string name="clickable">clicável</string>
+  
+  <string name="non_clickable">não clicável</string>
+  
+  <string name="long_clickable">clique longo</string>
+  
+  <string name="clickable_and_long_clickable">clicável e com clique longo</string>
+  
+  <string name="actionable">acionável</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Link</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">O tipo deste item é indeterminado.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Verifique se o URL no &lt;tt&gt;URLSpan&lt;/tt&gt; do item é válido.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Este item deve usar um &lt;tt&gt;URLSpan&lt;/tt&gt; em vez de um &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Itens clicáveis</string>
+  
+  <string name="result_message_brief_same_view_bounds">Vários itens %1$s compartilham este local na tela.</string>
+  
+  <string name="result_message_same_view_bounds">Este item %1$s tem o mesmo local na tela (&lt;tt&gt;%2$s&lt;/tt&gt;) que outros %3$d itens com essas propriedades.</string>
+  
+  <string name="result_message_view_bounds">Este item %1$s também está localizado no local da tela &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Descrições de itens</string>
+  
+  <string name="result_message_brief_same_speakable_text">Vários itens têm a mesma descrição.</string>
+  
+  <string name="result_message_same_speakable_text">O texto falado deste item %1$s: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" é idêntico a outros %3$d itens.</string>
+  
+  <string name="result_message_speakable_text">Este item %1$s também tem um texto falado: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Rótulo editável do item</string>
+  
+  <string name="result_message_editable_textview_content_desc">Este &lt;tt&gt;TextView&lt;/tt&gt; editável tem &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Um leitor de tela pode ler este atributo em vez do conteúdo editável durante a navegação pelo usuário.</string>
+  
+  <string name="result_message_not_editable_textview">Este item não é um &lt;tt&gt;TextView&lt;/tt&gt; editável.</string>
+  
+  <string name="check_title_image_contrast">Contraste da imagem</string>
+  
+  <string name="result_message_not_imageview">Este item não é um &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Considere aumentar a taxa de contraste entre o primeiro plano e o plano de fundo dessa imagem.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar essa taxa para %2$.2f ou mais.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Rótulo do tipo de item</string>
+  
+  <string name="result_message_english_locale_only">A verificação só é executada em dispositivos com localizações definidas em inglês.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; deste item pode conter texto desnecessário.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; \"&lt;tt&gt;%1$s&lt;/tt&gt;\" deste item termina com o tipo do item.</string>
+  
+  <string name="check_title_speakable_text_present">Rótulo do item</string>
+  
+  <string name="result_message_should_not_focus">Este item não pode ser focado por um leitor de tela.</string>
+  
+  <string name="result_message_web_content">O conteúdo da Web não foi avaliado.</string>
+  
+  <string name="result_message_missing_speakable_text">O rótulo deste item pode não ser lido por leitores de tela.</string>
+  
+  <string name="check_title_text_contrast">Contraste do texto</string>
+  
+  <string name="result_message_textview_empty">Este &lt;tt&gt;TextView&lt;/tt&gt; está vazio.</string>
+  
+  <string name="result_message_could_not_get_text_color">A cor do texto deste item não pôde ser determinada.</string>
+  
+  <string name="result_message_could_not_get_background_color">A cor de fundo deste item não pôde ser determinada.</string>
+  
+  <string name="result_message_text_must_be_opaque">A cor do texto deste item não é opaca.</string>
+  
+  <string name="result_message_background_must_be_opaque">A cor de fundo destes itens não é opaca.</string>
+  
+  <string name="result_message_addendum_opacity_description">Sua opacidade real é %1$.2f%%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Considere aumentar a taxa de contraste do primeiro plano e do plano de fundo do texto neste item.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do texto &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %2$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %2$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%4$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%5$06X&lt;/tt&gt;. Considere usar uma taxa de contraste maior que %2$.2f para textos pequenos ou %3$.2f para textos grandes.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Área de toque</string>
+  
+  <string name="result_message_not_clickable">Este item não é clicável.</string>
+  
+  <string name="result_message_brief_small_touch_target">Considere aumentar este item clicável.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">O tamanho deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Considere aumentar a largura em &lt;tt&gt;%3$ddp&lt;/tt&gt; e a altura em &lt;tt&gt;%4$ddp&lt;/tt&gt; ou mais nesta área de toque.</string>
+  
+  <string name="result_message_small_touch_target_height">A altura deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt;. Considere definir a altura desta área de toque como &lt;tt&gt;%2$ddp&lt;/tt&gt; ou maior.</string>
+  
+  <string name="result_message_small_touch_target_width">A largura deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt;. Considere definir a largura desta área de toque como &lt;tt&gt;%2$ddp&lt;/tt&gt; ou maior.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Um &lt;tt&gt;TouchDelegate&lt;/tt&gt; foi detectado em um dos ancestrais deste item. Esta mensagem pode ser ignorada se o delegado for de tamanho suficiente e processar toques para este item.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Um contêiner com filhos pode estar processando eventos de toque para este item. Se a seleção do maior contêiner executar a mesma ação que a seleção desse item, considere definir o item como não clicável. Se uma ação diferente for executada, considere aumentar o tamanho deste item.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Um contêiner pai está comprimindo o tamanho do item, cuja área de desenho é de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Aumente o tamanho do compressor ancestral dele ou permita que um contêiner pai maior administre as ações em nome deste item.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Este item não foi avaliado, pois ele pode estar parcialmente visível dentro de um contêiner de rolagem.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

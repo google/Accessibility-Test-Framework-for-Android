@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Dette element blev ikke anset som væsentligt for tilgængelighed.</string>
+  
+  <string name="result_message_no_content_desc">Dette element har ingen &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Dette element er ikke synligt.</string>
+  
+  <string name="result_message_not_enabled">Dette element er ikke aktiveret.</string>
+  
+  <string name="result_message_not_text_view">Dette element er ikke et &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Skærmbilleddataene kunne ikke hentes.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Elementets placering på skærmen (&lt;tt&gt;%1$s&lt;/tt&gt;) var ikke inden for skærmbilledets placering på skærmen (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Skærmbilledoplysningerne for dette element blev skjult.</string>
+  
+  <string name="clickable">klikbart</string>
+  
+  <string name="non_clickable">ikke klikbart</string>
+  
+  <string name="long_clickable">klikbart med langt klik</string>
+  
+  <string name="clickable_and_long_clickable">klikbart og klikbart med langt klik</string>
+  
+  <string name="actionable">handlingsrettet</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Link</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Dette elements type kan ikke fastlægges.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Kontrollér, at webadressen inden for dette elements &lt;tt&gt;URLSpan&lt;/tt&gt; er gyldig.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Dette element bør bruge et &lt;tt&gt;URLSpan&lt;/tt&gt; i stedet for et &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Klikbare elementer</string>
+  
+  <string name="result_message_brief_same_view_bounds">Flere %1$s elementer deler denne placering på skærmen.</string>
+  
+  <string name="result_message_same_view_bounds">Dette %1$s element har samme placering på skærmen (&lt;tt&gt;%2$s&lt;/tt&gt;) som %3$d andre elementer med de samme egenskaber.</string>
+  
+  <string name="result_message_view_bounds">Dette %1$s elements placering på skærmen er også &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Elementbeskrivelser</string>
+  
+  <string name="result_message_brief_same_speakable_text">Flere elementer har samme beskrivelse.</string>
+  
+  <string name="result_message_same_speakable_text">Dette %1$s elements taleegnede tekst: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" er identisk med teksten for %3$d andre elementer.</string>
+  
+  <string name="result_message_speakable_text">Dette %1$s element indeholder også taleegnet tekst: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">Redigerbar elementetiket</string>
+  
+  <string name="result_message_editable_textview_content_desc">Dette redigerbare &lt;tt&gt;TextView&lt;/tt&gt; indeholder en &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Det er muligt, at en skærmlæser vil læse denne attribut i stedet for det redigerbare indhold, når brugeren navigerer.</string>
+  
+  <string name="result_message_not_editable_textview">Dette element er ikke et redigerbart &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="check_title_image_contrast">Billedkontrast</string>
+  
+  <string name="result_message_not_imageview">Dette element er ikke et &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Vi anbefaler, at du øger kontrastforholdet mellem billedets for- og baggrund.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Billedets kontrastforhold er %1$.2f. Dette forhold er baseret på den estimerede forgrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt; og den estimerede baggrundsfarve &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge forholdet til %2$.2f eller mere.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Etiket for elementtype</string>
+  
+  <string name="result_message_english_locale_only">Denne kontrol kan kun køres på enheder, hvor sproget er angivet til engelsk.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Dette elements &lt;tt&gt;android:contentDescription&lt;/tt&gt; indeholder muligvis overflødig tekst.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">\"&lt;tt&gt;%1$s&lt;/tt&gt;\" for elementet &lt;tt&gt;android:contentDescription&lt;/tt&gt; slutter på elementets type.</string>
+  
+  <string name="check_title_speakable_text_present">Elementetiket</string>
+  
+  <string name="result_message_should_not_focus">En skærmlæser vil ikke fokusere på dette element.</string>
+  
+  <string name="result_message_web_content">Webindholdet blev ikke evalueret.</string>
+  
+  <string name="result_message_missing_speakable_text">Dette elements etiket kan muligvis ikke læses af skærmlæsere.</string>
+  
+  <string name="check_title_text_contrast">Tekstkontrast</string>
+  
+  <string name="result_message_textview_empty">Dette &lt;tt&gt;TextView&lt;/tt&gt; er tomt.</string>
+  
+  <string name="result_message_could_not_get_text_color">Dette elements tekstfarve kunne ikke fastlægges.</string>
+  
+  <string name="result_message_could_not_get_background_color">Dette elements baggrundsfarve kunne ikke fastlægges.</string>
+  
+  <string name="result_message_text_must_be_opaque">Dette elements tekstfarve er ikke uigennemsigtig.</string>
+  
+  <string name="result_message_background_must_be_opaque">Dette elements baggrundsfarve er ikke uigennemsigtig.</string>
+  
+  <string name="result_message_addendum_opacity_description">Dens faktiske uigennemsigtighed er %1$.2f %%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Overvej at øge kontrastforholdet mellem tekstens for- og baggrund for dette element.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Elementets kontrastforhold er %1$.2f. Dette er baseret på tekstfarven &lt;tt&gt;#%3$06X&lt;/tt&gt; og baggrundsfarven &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge tekstens kontrastforhold til %2$.2f eller mere.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastforholdet for elementets tekst er %1$.2f. Dette er baseret på, at den estimerede forgrundsfarve er &lt;tt&gt;#%3$06X&lt;/tt&gt;, og at den estimerede baggrundsfarve er &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til %2$.2f eller mere.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Kontrastforholdet for elementets tekst er %1$.2f. Dette er baseret på, at den estimerede forgrundsfarve er &lt;tt&gt;#%4$06X&lt;/tt&gt;, og at den estimerede baggrundsfarve er &lt;tt&gt;#%5$06X&lt;/tt&gt;. Overvej at bruge et kontrastforhold, der er højere end %2$.2f for lille tekst og %3$.2f for stor tekst.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Berøringselement</string>
+  
+  <string name="result_message_not_clickable">Denne visning er ikke klikbar.</string>
+  
+  <string name="result_message_brief_small_touch_target">Overvej at gøre det klikbare element større.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Dette element har en størrelse på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overvej at gøre dette berøringselement &lt;tt&gt;%3$ddp&lt;/tt&gt; bredt og &lt;tt&gt;%4$ddp&lt;/tt&gt; højt eller mere.</string>
+  
+  <string name="result_message_small_touch_target_height">Dette element har en højde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej at give dette berøringselement en højde på &lt;tt&gt;%2$ddp&lt;/tt&gt; eller mere.</string>
+  
+  <string name="result_message_small_touch_target_width">Dette element har en bredde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej at give dette berøringselement en bredde på &lt;tt&gt;%2$ddp&lt;/tt&gt; eller mere.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">Der er blevet registreret følgende på en af dette elements forgængere: &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Denne meddelelse kan ignoreres, hvis repræsentanten har en tilstrækkelig størrelse og håndterer berøringer for elementet.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Begivenheder for dette element håndteres muligvis af en overliggende beholder. Hvis der udføres den samme handling både ved valg af den større beholder og dette element, skal du overveje at definere dette element som ikke klikbart. Hvis der foretages en anden handling, skal du overveje at øge dette elements størrelse.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">En overliggende beholder beskærer muligvis størrelsen på dette element, der har et tegningsområde på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overvej at øge størrelsen på elementets overordnede beskæringstype, eller giv en større overliggende beholder tilladelse til at håndtere begivenheder på vegne af dette element.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Dette element blev ikke evalueret, da det muligvis kun er delvist synligt i en rulbar beholder.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

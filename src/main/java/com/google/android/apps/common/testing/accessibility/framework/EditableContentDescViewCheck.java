@@ -16,40 +16,24 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.TextView;
-
-import java.util.ArrayList;
+import com.google.android.apps.common.testing.accessibility.framework.checks.EditableContentDescCheck;
 import java.util.List;
 
 /**
  * Check to ensure that an editable TextView is not labeled by a contentDescription
+ *
+ * @deprecated Replaced by {@link EditableContentDescCheck}
  */
-public class EditableContentDescViewCheck extends AccessibilityViewCheck {
+@Deprecated
+public class EditableContentDescViewCheck extends AccessibilityViewHierarchyCheck {
+
+  private static final EditableContentDescCheck DELEGATION_CHECK = new EditableContentDescCheck();
 
   @Override
-  public List<AccessibilityViewCheckResult> runCheckOnView(View view) {
-    List<AccessibilityViewCheckResult> results = new ArrayList<AccessibilityViewCheckResult>(1);
-    if (view instanceof TextView) {
-      TextView textView = (TextView) view;
-      if ((textView.getEditableText() != null)) {
-        if (!TextUtils.isEmpty(textView.getContentDescription())) {
-          results.add(new AccessibilityViewCheckResult(this.getClass(),
-              AccessibilityCheckResultType.ERROR,
-              "Editable TextView should not have a contentDescription.", textView));
-        }
-      } else {
-        results.add(new AccessibilityViewCheckResult(this.getClass(),
-            AccessibilityCheckResultType.NOT_RUN, "TextView must be editable", textView));
-      }
-    } else {
-      results.add(new AccessibilityViewCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View must be a TextView", view));
-    }
-
-    return results;
+  public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
+      View root, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
   }
 }

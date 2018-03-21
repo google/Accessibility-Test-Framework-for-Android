@@ -38,12 +38,24 @@ public class ContrastUtils {
      */
     public static final int WCAG_LARGE_BOLD_TEXT_MIN_SIZE = 14;
 
+    /** The color value used to censor secure windows from screen capture */
+    public static final int COLOR_SECURE_WINDOW_CENSOR = Color.BLACK;
+
     public static final double CONTRAST_RATIO_WCAG_NORMAL_TEXT = 4.5;
 
     public static final double CONTRAST_RATIO_WCAG_LARGE_TEXT = 3.0;
 
     private ContrastUtils() {
         // Not instantiable
+    }
+
+    /**
+     * Calculates the contrast ratio of two color ints.
+     * <p>
+     * Derived from formula at http://gmazzocato.altervista.org/colorwheel/algo.php
+     */
+    public static double calculateContrastRatio(int color1, int color2) {
+      return calculateContrastRatio(calculateLuminance(color1), calculateLuminance(color2));
     }
 
     /**
@@ -55,18 +67,19 @@ public class ContrastUtils {
      * @return the luminance value of the given color
      */
     public static double calculateLuminance(int color) {
-        final double[] sRGB = new double[3];
-        sRGB[0] = Color.red(color) / 255.0d;
-        sRGB[1] = Color.green(color) / 255.0d;
-        sRGB[2] = Color.blue(color) / 255.0d;
+        double r = linearColor(Color.red(color));
+        double g = linearColor(Color.green(color));
+        double b = linearColor(Color.blue(color));
+        return 0.2126d * r + 0.7152d * g + 0.0722d * b;
+    }
 
-        final double[] lumRGB = new double[3];
-        for (int i = 0; i < sRGB.length; ++i) {
-            lumRGB[i] = (sRGB[i] <= 0.03928d) ? sRGB[i] / 12.92d
-                    : Math.pow(((sRGB[i] + 0.055d) / 1.055d), 2.4d);
+    private static double linearColor(int component) {
+        double sRGB = component / 255.0d;
+        if (sRGB <= 0.03928d) {
+            return sRGB / 12.92d;
+        } else {
+            return Math.pow(((sRGB + 0.055d) / 1.055d), 2.4d);
         }
-
-        return 0.2126d * lumRGB[0] + 0.7152d * lumRGB[1] + 0.0722d * lumRGB[2];
     }
 
     /**
@@ -85,26 +98,6 @@ public class ContrastUtils {
         }
 
         return (Math.max(lum1, lum2) + 0.05d) / (Math.min(lum1, lum2) + 0.05d);
-    }
-
-    /**
-     * Converts a collection of {@code int} representations of colors to a
-     * string representation of those colors in hex format.
-     *
-     * @param colors Collection of {@link Color} values to convert
-     * @return The hex string representation of the colors
-     */
-    public static CharSequence colorsToHexString(Iterable<Integer> colors) {
-        StringBuilder colorStr = new StringBuilder(7);
-        for (int color : colors) {
-            if (colorStr.length() != 0) {
-                colorStr.append(", ");
-            }
-
-            colorStr.append(ContrastUtils.colorToHexString(color));
-        }
-
-        return colorStr;
     }
 
     /**

@@ -16,21 +16,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.text.Spanned;
-import android.text.style.ClickableSpan;
-import android.text.style.URLSpan;
+import android.support.annotation.Nullable;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.TextView;
-
-import com.googlecode.eyesfree.utils.AccessibilityNodeInfoUtils;
-
-import java.util.ArrayList;
+import com.google.android.apps.common.testing.accessibility.framework.checks.ClickableSpanCheck;
 import java.util.List;
 
 /**
@@ -38,49 +27,21 @@ import java.util.List;
  *
  * <p>{@code ClickableSpan} is inaccessible because individual spans cannot be selected
  * independently in a single TextView and because accessibility services are unable to call
- * {@link ClickableSpan#onClick}.
+ * {@link android.text.style.ClickableSpan#onClick}.
  *
  * <p>The exception to this rule is that {@code URLSpan}s are accessible if they do not contain a
  * relative URI.
+ *
+ * @deprecated Replaced by {@link ClickableSpanCheck}
  */
-public class ClickableSpanInfoCheck extends AccessibilityInfoCheck {
+@Deprecated
+public class ClickableSpanInfoCheck extends AccessibilityInfoHierarchyCheck {
+
+  private static final ClickableSpanCheck DELEGATION_CHECK = new ClickableSpanCheck();
 
   @Override
-  public List<AccessibilityInfoCheckResult> runCheckOnInfo(AccessibilityNodeInfo info,
-      Context context, Bundle metadata) {
-    List<AccessibilityInfoCheckResult> results = new ArrayList<AccessibilityInfoCheckResult>(1);
-    AccessibilityNodeInfoCompat compatInfo = new AccessibilityNodeInfoCompat(info);
-    if (AccessibilityNodeInfoUtils.nodeMatchesAnyClassByType(context, compatInfo, TextView.class)) {
-      if (info.getText() instanceof Spanned) {
-        Spanned text = (Spanned) info.getText();
-        ClickableSpan[] clickableSpans = text.getSpans(0, text.length(), ClickableSpan.class);
-        for (ClickableSpan clickableSpan : clickableSpans) {
-          if (clickableSpan instanceof URLSpan) {
-            String url = ((URLSpan) clickableSpan).getURL();
-            if (url == null) {
-              results.add(new AccessibilityInfoCheckResult(this.getClass(),
-                  AccessibilityCheckResultType.ERROR, "URLSpan has null URL", info));
-            } else {
-              Uri uri = Uri.parse(url);
-              if (uri.isRelative()) {
-                // Relative URIs cannot be resolved.
-                results.add(new AccessibilityInfoCheckResult(this.getClass(),
-                    AccessibilityCheckResultType.ERROR, "URLSpan should not contain relative links",
-                    info));
-              }
-            }
-          } else { // Non-URLSpan ClickableSpan
-            results.add(new AccessibilityInfoCheckResult(this.getClass(),
-                AccessibilityCheckResultType.ERROR,
-                "URLSpan should be used in place of ClickableSpan for improved accessibility",
-                info));
-          }
-        }
-      }
-    } else {
-      results.add(new AccessibilityInfoCheckResult(this.getClass(),
-          AccessibilityCheckResultType.NOT_RUN, "View must be a TextView", info));
-    }
-    return results;
+  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(
+      AccessibilityNodeInfo root, Context context, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnInfo(root, this, DELEGATION_CHECK, context, metadata);
   }
 }

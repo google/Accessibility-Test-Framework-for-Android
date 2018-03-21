@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">לפי הערכתנו, פריט זה אינו חשוב לנגישות.</string>
+  
+  <string name="result_message_no_content_desc">לפריט זה אין &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">פריט זה אינו גלוי.</string>
+  
+  <string name="result_message_not_enabled">פריט זה אינו מופעל.</string>
+  
+  <string name="result_message_not_text_view">פריט זה אינו &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">לא הצלחנו להשיג נתונים של צילום מסך.</string>
+  
+  <string name="result_message_view_not_within_screencapture">המיקום של פריט זה על המסך (&lt;tt&gt;%1$s&lt;/tt&gt;) היה מחוץ למיקום של צילום המסך (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">פרטי צילום המסך של פריט זה היו מוסתרים.</string>
+  
+  <string name="clickable">מאפשר לחיצה</string>
+  
+  <string name="non_clickable">לא מאפשר לחיצה</string>
+  
+  <string name="long_clickable">מאפשר לחיצה ארוכה</string>
+  
+  <string name="clickable_and_long_clickable">מאפשר לחיצה רגילה ולחיצה ארוכה</string>
+  
+  <string name="actionable">מאפשר פעולה</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">קישור</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">לא ניתן לקבוע את סוג הפריט הזה.</string>
+  
+  <string name="result_message_urlspan_invalid_url">ודא כי כתובת האתר שבתוך &lt;tt&gt;URLSpan&lt;/tt&gt; של פריט זה היא כתובת חוקית.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">פריט זה צריך להשתמש ב-&lt;tt&gt;URLSpan&lt;/tt&gt; במקום ב-&lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">פריטים שמאפשרים לחיצה</string>
+  
+  <string name="result_message_brief_same_view_bounds">המיקום הזה משותף לפריטים רבים מסוג ש%1$s.</string>
+  
+  <string name="result_message_same_view_bounds">פריט זה ש%1$s נמצא באותו מיקום במסך (&lt;tt&gt;%2$s&lt;/tt&gt;) כמו של %3$d פריטים אחרים בעלי מאפיינים אלה.</string>
+  
+  <string name="result_message_view_bounds">פריט זה ש%1$s מופיע במסך גם במיקום &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">תיאורי פריטים</string>
+  
+  <string name="result_message_brief_same_speakable_text">יש כמה פריטים בעלי תיאור זהה.</string>
+  
+  <string name="result_message_same_speakable_text">הטקסט המיועד להקראה עבור פריט זה ש%1$s: \"&lt;tt&gt;%2$s&lt;/tt&gt;\" זהה לטקסט של %3$d פריטים אחרים.</string>
+  
+  <string name="result_message_speakable_text">לפריט הזה ש%1$s יש גם טקסט המיועד להקראה: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="check_title_editable_content_desc">תווית של פריט הניתן לעריכה</string>
+  
+  <string name="result_message_editable_textview_content_desc">ל-&lt;tt&gt;TextView&lt;/tt&gt; הזה שניתן לעריכה יש &lt;tt&gt;android:contentDescription&lt;/tt&gt;. קורא מסך עשוי להקריא את המאפיין הזה במקום את התוכן הניתן לעריכה כאשר המשתמש עובר בין פריטים במסך.</string>
+  
+  <string name="result_message_not_editable_textview">הפריט הזה אינו &lt;tt&gt;TextView&lt;/tt&gt; שניתן לעריכה.</string>
+  
+  <string name="check_title_image_contrast">ניגודיות תמונה</string>
+  
+  <string name="result_message_not_imageview">הפריט הזה אינו &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">כדאי להגדיל את יחס הניגודיות בין קדמת התמונה לרקע שלה.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; ועל הערכה שצבע הרקע של התמונה הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. כדאי להגדיל את היחס הזה ל-%2$.2f לפחות.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">תווית סוג פריט</string>
+  
+  <string name="result_message_english_locale_only">בדיקה זו פועלת רק במכשירים ששפת האזור שלהם מוגדרת לאנגלית.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">ה-&lt;tt&gt;android:contentDescription&lt;/tt&gt; של פריט זה עשוי להכיל טקסט מיותר.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">ה-&lt;tt&gt;android:contentDescription&lt;/tt&gt; של פריט זה, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", מסתיים בסוג הפריט.</string>
+  
+  <string name="check_title_speakable_text_present">תווית פריט</string>
+  
+  <string name="result_message_should_not_focus">קוראי מסך לא יצליחו להתמקד בפריט זה.</string>
+  
+  <string name="result_message_web_content">תוכן אינטרנט שאינו עובר הערכה.</string>
+  
+  <string name="result_message_missing_speakable_text">ייתכן שלפריט זה אין תווית שקוראי מסך מסוגלים לקרוא.</string>
+  
+  <string name="check_title_text_contrast">ניגודיות טקסט</string>
+  
+  <string name="result_message_textview_empty">ה-&lt;tt&gt;TextView&lt;/tt&gt; הזה ריק.</string>
+  
+  <string name="result_message_could_not_get_text_color">לא ניתן לקבוע את צבע הטקסט של פריט זה.</string>
+  
+  <string name="result_message_could_not_get_background_color">לא ניתן לקבוע את צבע הרקע של פריט זה.</string>
+  
+  <string name="result_message_text_must_be_opaque">צבע הטקסט של פריט זה אינו אטום.</string>
+  
+  <string name="result_message_background_must_be_opaque">צבע הרקע של פריט זה אינו אטום.</string>
+  
+  <string name="result_message_addendum_opacity_description">האטימות שלו בפועל היא %%%1$.2f.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">כדאי להגדיל את יחס הניגודיות בין קדמת הטקסט לרקע הטקסט של פריט זה.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על צבע טקסט &lt;tt&gt;#%3$06X&lt;/tt&gt; ועל צבע רקע &lt;tt&gt;#%4$06X&lt;/tt&gt;. כדאי להגדיל את יחס הניגודיות של טקסט הפריט ל-%2$.2f לפחות.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%2$.2f לפחות.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%4$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%5$06X&lt;/tt&gt;. לטקסט קטן מומלץ להשתמש ביחס ניגודיות הגבוה מ-%2$.2f, ולטקסט גדול מומלץ להשתמש ביחס גבוה מ-%3$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">יעד מגע</string>
+  
+  <string name="result_message_not_clickable">תצוגה זו אינה מאפשרת לחיצה.</string>
+  
+  <string name="result_message_brief_small_touch_target">מומלץ להגדיל את הפריט הזה המאפשר לחיצה.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">גודל הפריט הזה הוא ‎&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;‎. מומלץ להגדיל את יעד המגע הזה לרוחב של &lt;tt&gt;%3$ddp&lt;/tt&gt; ולגובה של &lt;tt&gt;%4$ddp&lt;/tt&gt; לפחות.</string>
+  
+  <string name="result_message_small_touch_target_height">הגובה של פריט זה הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הגובה של יעד מגע זה ל-&lt;tt&gt;%2$ddp&lt;/tt&gt; לפחות.</string>
+  
+  <string name="result_message_small_touch_target_width">הרוחב של פריט זה הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הרוחב של יעד מגע זה ל-&lt;tt&gt;%2$ddp&lt;/tt&gt; לפחות.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">באחד מפריטי האב של פריט זה זוהה &lt;tt&gt;TouchDelegate&lt;/tt&gt;. אם אובייקט ההקצאה (Delegate) גדול מספיק והוא מטפל בנקודות המגע של פריט זה, אפשר להתעלם מההודעה הזו.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">ייתכן שגורם מכיל המהווה  אובייקט אב מטפל באירועי מגע עבור פריט זה. אם הבחירה בגורם המכיל הגדול יותר מובילה לביצוע אותה פעולה שפריט זה מבצע כשבוחרים בו, מומלץ להגדיר את הפריט הזה כלא מאפשר לחיצה. אחרת, מומלץ להגדיל את הפריט הזה.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">ייתכן שגורם מכיל חותך את הגודל של הפריט הזה, שגודל אזור הציור שלו הוא &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. נסה להגדיל את גודל גורם החיתוך של פריט זה, או לאפשר לגורם מכיל גדול יותר לטפל בפעולות בשם הפריט הזה.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">פריט זה לא הוערך מכיוון שהוא גלוי רק באופן חלקי בתוך גורם מכיל המאפשר גלילה.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  
+  <string name="result_message_not_important_for_accessibility">Zjistili jsme, že tato položka není pro přístupnost důležitá.</string>
+  
+  <string name="result_message_no_content_desc">Položka nemá atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
+  
+  <string name="result_message_not_visible">Položka se nezobrazuje.</string>
+  
+  <string name="result_message_not_enabled">Položka není zapnutá.</string>
+  
+  <string name="result_message_not_text_view">Položka nepatří do třídy &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_no_screencapture">Nelze získat data snímku obrazovky.</string>
+  
+  <string name="result_message_view_not_within_screencapture">Umístění položky na obrazovce (&lt;tt&gt;%1$s&lt;/tt&gt;) bylo mimo oblast snímku obrazovky (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_screencapture_data_hidden">Informace o snímku obrazovky pro tuto položku jsou skryté.</string>
+  
+  <string name="clickable">reaguje na kliknutí</string>
+  
+  <string name="non_clickable">nereaguje na kliknutí</string>
+  
+  <string name="long_clickable">reaguje na dlouhé kliknutí</string>
+  
+  <string name="clickable_and_long_clickable">reaguje na kliknutí a dlouhé kliknutí</string>
+  
+  <string name="actionable">aktivní</string>
+  
+  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="check_title_clickablespan">Odkaz</string>
+  
+  <string name="result_message_clickablespan_no_determined_type">Typ této položky není určen.</string>
+  
+  <string name="result_message_urlspan_invalid_url">Ověření platnosti adresy URL v rámci &lt;tt&gt;URLSpan&lt;/tt&gt; této položky.</string>
+  
+  <string name="result_message_urlspan_not_clickablespan">Tato položka by měla použít &lt;tt&gt;URLSpan&lt;/tt&gt; namísto &lt;tt&gt;ClickableSpan&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_clickable_bounds">Položky reagující na kliknutí</string>
+  
+  <string name="result_message_brief_same_view_bounds">V této oblasti obrazovky je více než jedna položka, která %1$s.</string>
+  
+  <string name="result_message_same_view_bounds">Tato položka, která %1$s, je na stejném místě obrazovky (&lt;tt&gt;%2$s&lt;/tt&gt;) jako další položky (%3$d) se stejnými vlastnostmi.</string>
+  
+  <string name="result_message_view_bounds">Tato položka, která %1$s, je také na obrazovce umístěna na &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="check_title_duplicate_speakable_text">Popisy položek</string>
+  
+  <string name="result_message_brief_same_speakable_text">Několik položek má stejný popis.</string>
+  
+  <string name="result_message_same_speakable_text">Čtený text této položky, která %1$s: „&lt;tt&gt;%2$s&lt;/tt&gt;“ je shodný s textem dalších položek (%3$d).</string>
+  
+  <string name="result_message_speakable_text">Tato položka, která %1$s, má také čtený text: „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="check_title_editable_content_desc">Popisek editovatelné položky</string>
+  
+  <string name="result_message_editable_textview_content_desc">Tato upravitelná třída &lt;tt&gt;TextView&lt;/tt&gt; má značku &lt;tt&gt;android:contentDescription&lt;/tt&gt;. Nástroj pro čtení obsahu obrazovky může při ovládání číst tento atribut namísto upravitelného obsahu.</string>
+  
+  <string name="result_message_not_editable_textview">Tato položka není upravitelná položka &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="check_title_image_contrast">Kontrast obrazu</string>
+  
+  <string name="result_message_not_imageview">Tato položka není upravitelná položka &lt;tt&gt;ImageView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_image_contrast_not_sufficient">Zkuste zvýšit kontrastní poměr mezi popředím a pozadím tohoto obrázku.</string>
+  
+  <string name="result_message_image_contrast_not_sufficient">Kontrastní poměr tohoto obrázku je %1$.2f. Poměr vychází z odhadované barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste poměr zvýšit na %2$.2f nebo více.</string>
+  
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_redundant_description">Popisek typu položky</string>
+  
+  <string name="result_message_english_locale_only">Tato kontrola se spouští pouze v zařízeních, jejichž prostředí je v angličtině.</string>
+  
+  <string name="result_message_brief_content_desc_ends_with_view_type">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky pravděpodobně obsahuje zbytečný text.</string>
+  
+  <string name="result_message_content_desc_ends_with_view_type">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ končí typem položky.</string>
+  
+  <string name="check_title_speakable_text_present">Popisek položky</string>
+  
+  <string name="result_message_should_not_focus">Tato položka nebude v nástroji na čtení obrazovky zpracována.</string>
+  
+  <string name="result_message_web_content">Webový obsah nebyl vyhodnocen.</string>
+  
+  <string name="result_message_missing_speakable_text">Popisek této položky pravděpodobně nebude pro nástroj na čtení obrazovky čitelný.</string>
+  
+  <string name="check_title_text_contrast">Kontrast textu</string>
+  
+  <string name="result_message_textview_empty">Tento prvek &lt;tt&gt;TextView&lt;/tt&gt; je prázdný.</string>
+  
+  <string name="result_message_could_not_get_text_color">Barvu textu této položky nelze určit.</string>
+  
+  <string name="result_message_could_not_get_background_color">Barvu pozadí této položky nelze určit.</string>
+  
+  <string name="result_message_text_must_be_opaque">Barva textu této položky není neprůhledná.</string>
+  
+  <string name="result_message_background_must_be_opaque">Barva pozadí této položky není neprůhledná.</string>
+  
+  <string name="result_message_addendum_opacity_description">Její skutečná průhlednost je %1$.2f %%.</string>
+  
+  <string name="result_message_brief_text_contrast_not_sufficient">Zkuste zvýšit kontrastní poměr mezi popředím a pozadím tohoto obrázku.</string>
+  
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Poměr vychází z barvy textu &lt;tt&gt;#%3$06X&lt;/tt&gt; a barvy pozadí položky &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na %2$.2f nebo více.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Poměr vychází z odhadované barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na %2$.2f nebo více.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_borderline">Kontrastní poměr textu této položky je %1$.2f. Poměr vychází z odhadované barvy popředí &lt;tt&gt;#%4$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%5$06X&lt;/tt&gt;. Zkuste použít kontrastní poměr vyšší než %2$.2f pro malý text nebo %3$.2f pro velký text.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  
+  <string name="check_title_touch_target_size">Místo dotyku</string>
+  
+  <string name="result_message_not_clickable">Tento prvek nereaguje na kliknutí.</string>
+  
+  <string name="result_message_brief_small_touch_target">Zkuste tuto položku reagující na kliknutí zvětšit.</string>
+  
+  <string name="result_message_small_touch_target_width_and_height">Velikost této položky je &lt;tt&gt;%1$ddp&lt;/tt&gt; × &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zkuste velikost místa dotyku změnit na šířku &lt;tt&gt;%3$ddp&lt;/tt&gt; a výšku &lt;tt&gt;%4$ddp&lt;/tt&gt; nebo více.</string>
+  
+  <string name="result_message_small_touch_target_height">Výška této položky je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zkuste zvětšit výšku této položky na &lt;tt&gt;%2$ddp&lt;/tt&gt; nebo více.</string>
+  
+  <string name="result_message_small_touch_target_width">Šířka této položky je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zkuste zvětšit šířku položky na &lt;tt&gt;%2$ddp&lt;/tt&gt; nebo více.</string>
+  
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  
+  <string name="result_message_addendum_touch_delegate">U jednoho z předchůdců této položky jsme zjistili &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Pokud je delegát dostatečně velký a zpracovává dotyky pro tuto položku, zprávu můžete ignorovat.</string>
+  
+  <string name="result_message_addendum_clickable_ancestor">Události dotyku pro tuto položku pravděpodobně zpracovává nadřazený kontejner. Pokud se při výběru většího kontejneru provede stejná akce jako při výběru této položky, zkuste definovat tuto položku jako nereagující na dotyk. Pokud se provede jiná akce, zkuste zvětšit velikost této položky.</string>
+  
+  <string name="result_message_addendum_clipped_by_ancestor">Nadřazený kontejner může ořezávat velikost této položky s kreslicí oblastí &lt;tt&gt;%1$ddp&lt;/tt&gt; × &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvažte zvětšení velikosti nadřazeného ořezávajícího prvku této položky nebo udělení povolení většímu nadřazenému kontejneru k vykonání akcí jménem této položky.</string>
+  
+  <string name="result_message_addendum_against_scrollable_edge">Tato položka nebyla vyhodnocena, protože může být viditelná pouze částečně v posouvatelném kontejneru.</string>
+  
+  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  
+  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  
+  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  
+  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  
+  <string name="check_title_accessibility_traversal">Traversal order</string>
+  
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  
+  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+
+</resources>

@@ -14,12 +14,18 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.proto.FrameworkProtos.AccessibilityCheckResultProto;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
+import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.ResultTypeProto;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * The result of an accessibility check. The results are "interesting" in the sense that they
@@ -33,46 +39,81 @@ import android.view.accessibility.AccessibilityNodeInfo;
  */
 public abstract class AccessibilityCheckResult {
   /**
-   * Types of results. This must be kept consistent (other than UNKNOWN) with the ResultType enum in
-   * {@code AccessibilityCheckResultProto}.
+   * Types of results. This must be kept consistent (other than UNKNOWN) with the ResultTypeProto
+   * enum in {@code AccessibilityEvaluation.proto}
+   *
+   * <p>CONTRACT: Once a value is defined here, it must not be removed and its tag number as defined
+   * in the protocol buffer representation cannot change. Data may be persisted using these values,
+   * so incompatible changes may result in corruption during deserialization.
    */
   public enum AccessibilityCheckResultType {
     /** Clearly an accessibility bug, for example no speakable text on a clicked button */
-    ERROR,
+    ERROR(ResultTypeProto.ERROR),
     /**
      * Potentially an accessibility bug, for example finding another view with the same speakable
      * text as a clicked view
      */
-    WARNING,
+    WARNING(ResultTypeProto.WARNING),
     /**
      * Information that may be helpful when evaluating accessibility, for example a listing of all
      * speakable text in a view hierarchy in the traversal order used by an accessibility service.
      */
-    INFO,
+    INFO(ResultTypeProto.INFO),
     /**
      * A signal that the check was not run at all (ex. because the API level was too low)
      */
-    NOT_RUN,
+    NOT_RUN(ResultTypeProto.NOT_RUN),
     /**
      * A result that has been explicitly suppressed from throwing any Exceptions, used to allow for
      * known issues.
      */
-    SUPPRESSED
+    SUPPRESSED(ResultTypeProto.SUPPRESSED);
+
+    private static final Map<Integer, AccessibilityCheckResultType> PROTO_NUMBER_MAP =
+        new HashMap<>();
+
+    static {
+      for (AccessibilityCheckResultType type : values()) {
+        PROTO_NUMBER_MAP.put(type.protoNumber, type);
+      }
+    }
+
+    final int protoNumber;
+
+    private AccessibilityCheckResultType(ResultTypeProto proto) {
+      this.protoNumber = proto.getNumber();
+    }
+
+    public static AccessibilityCheckResultType fromProto(ResultTypeProto proto) {
+      AccessibilityCheckResultType type = PROTO_NUMBER_MAP.get(proto.getNumber());
+      checkArgument(
+          (type != null),
+          "Failed to create AccessibilityCheckResultType from proto with unknown value: %s",
+          proto.getNumber());
+      return checkNotNull(type);
+    }
+
+    public ResultTypeProto toProto() {
+      return ResultTypeProto.forNumber(protoNumber);
+    }
   }
 
   protected Class<? extends AccessibilityCheck> checkClass;
 
   protected AccessibilityCheckResultType type;
 
-  protected CharSequence message;
+  protected @Nullable CharSequence message;
 
   /**
    * @param checkClass The class of the check that generated the error
    * @param type The type of the result
-   * @param message A human-readable message explaining the error
+   * @param message A human-readable message explaining the error. This may be {@code null} when
+   *     a subclass overrides {@link #getMessage}.
    */
-  public AccessibilityCheckResult(Class<? extends AccessibilityCheck> checkClass,
-      AccessibilityCheckResultType type, CharSequence message) {
+  public AccessibilityCheckResult(
+      Class<? extends AccessibilityCheck> checkClass,
+      AccessibilityCheckResultType type,
+      @Nullable CharSequence message) {
     this.checkClass = checkClass;
     this.type = type;
     this.message = message;
@@ -103,34 +144,23 @@ public abstract class AccessibilityCheckResult {
    * @return A human-readable message explaining the result.
    */
   public CharSequence getMessage() {
-    return message;
+    return checkNotNull(message, "No message was provided");
   }
 
   /**
-   * Recycles all resources held by this object.
+   * @return A human-readable message explaining the result.
+   *
+   * @param locale desired locale for the message
    */
-  public void recycle() {
-    checkClass = null;
-    type = null;
-    message = null;
+  @SuppressWarnings("unused") // locale is provided for possible future use
+  public CharSequence getMessage(Locale locale) {
+    return getMessage();
   }
 
-  /**
-   * Returns a populated {@link AccessibilityCheckResultProto}
-   */
-  public AccessibilityCheckResultProto toProto() {
-    AccessibilityCheckResultProto.Builder builder = AccessibilityCheckResultProto.newBuilder();
-    if (type != null) {
-      // enum in this class and proto are consistent, one can resolve the string name in the other
-      builder.setResultType(AccessibilityCheckResultProto.ResultType.valueOf(type.name()));
-    }
-    if (message != null) {
-      builder.setMsg(message.toString());
-    }
-    if (checkClass != null) {
-      builder.setSourceCheckClass(checkClass.getName());
-    }
-    return builder.build();
+  // For debugging
+  @Override
+  public String toString() {
+    return String.format("AccessibilityCheckResult %s %s \"%s\"", type, checkClass, message);
   }
 
   /**
@@ -156,6 +186,11 @@ public abstract class AccessibilityCheckResult {
         message.append(": ");
       }
       message.append(result.getMessage());
+      Class<? extends AccessibilityCheck> checkClass = result.getSourceCheckClass();
+      if (checkClass != null) {
+        message.append(" Reported by ");
+        message.append(result.getSourceCheckClass().getName());
+      }
       return message.toString();
     }
 
@@ -166,12 +201,16 @@ public abstract class AccessibilityCheckResult {
      * @param view the {@link View} to describe
      * @return a String description of the given {@link View}
      */
-    public String describeView(View view) {
-      // TODO(sjrush): update describeView to include class name, bounds, visibility, text, CD
+    public String describeView(@Nullable View view) {
       StringBuilder message = new StringBuilder();
       if ((view != null) && (view.getId() != View.NO_ID) && (view.getResources() != null)) {
         message.append("View ");
-        message.append(view.getResources().getResourceEntryName(view.getId()));
+        try {
+          message.append(view.getResources().getResourceEntryName(view.getId()));
+        } catch (Exception e) {
+          /* In some integrations (seen in Robolectric), the resources may behave inconsistently */
+          message.append("with no valid resource name");
+        }
       } else {
         message.append("View with no valid resource name");
       }
@@ -185,7 +224,10 @@ public abstract class AccessibilityCheckResult {
      * @param info the {@link AccessibilityNodeInfo} to describe
      * @return a String description of the given {@link AccessibilityNodeInfo}
      */
-    public String describeInfo(AccessibilityNodeInfo info) {
+    public String describeInfo(@Nullable AccessibilityNodeInfo info) {
+      if (info == null) {
+        return "<null>";
+      }
       StringBuilder message = new StringBuilder();
       message.append("View ");
       if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)

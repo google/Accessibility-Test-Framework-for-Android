@@ -14,63 +14,28 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
-
 import android.content.Context;
-import android.graphics.Rect;
-import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.accessibility.AccessibilityNodeInfo;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateClickableBoundsCheck;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Developers sometimes have containers marked clickable when they don't process click events.
  * This error is difficult to detect, but when a container shares its bounds with a child view,
  * that is a clear error. This class catches that case.
+ *
+ * @deprecated Replaced by {@link DuplicateClickableBoundsCheck}
  */
+@Deprecated
 public class DuplicateClickableBoundsInfoCheck extends AccessibilityInfoHierarchyCheck {
 
+  private static final DuplicateClickableBoundsCheck DELEGATION_CHECK =
+      new DuplicateClickableBoundsCheck();
+
   @Override
-  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(AccessibilityNodeInfo root,
-      Context context, Bundle metadata) {
-    List<AccessibilityInfoCheckResult> results = new ArrayList<>(1);
-    Map<Rect, AccessibilityNodeInfo> clickableRectToInfoMap = new HashMap<>();
-
-    checkForDuplicateClickableViews(root, clickableRectToInfoMap, results);
-    for (AccessibilityNodeInfo info : clickableRectToInfoMap.values()) {
-      info.recycle();
-    }
-    return results;
-  }
-
-  private void checkForDuplicateClickableViews(AccessibilityNodeInfo root,
-      Map<Rect, AccessibilityNodeInfo> clickableRectToInfoMap,
-      List<AccessibilityInfoCheckResult> results) {
-    /*
-     * TODO(pweaver) It may be possible for this check to false-negative if one view is marked
-     * clickable and the other is only long clickable and/or has custom actions. Determine if this
-     * limitation applies to real UIs.
-     */
-    if (root.isClickable() && root.isVisibleToUser()) {
-      Rect bounds = new Rect();
-      root.getBoundsInScreen(bounds);
-      if (clickableRectToInfoMap.containsKey(bounds)) {
-        results.add(new AccessibilityInfoCheckResult(this.getClass(),
-            AccessibilityCheckResultType.ERROR,
-            "Clickable view has same bounds as another clickable view (likely a descendent)",
-            clickableRectToInfoMap.get(bounds)));
-      } else {
-        clickableRectToInfoMap.put(bounds, AccessibilityNodeInfo.obtain(root));
-      }
-    }
-
-    for (int i = 0; i < root.getChildCount(); ++i) {
-      AccessibilityNodeInfo child = root.getChild(i);
-      checkForDuplicateClickableViews(child, clickableRectToInfoMap, results);
-      child.recycle();
-    }
+  public List<AccessibilityInfoCheckResult> runCheckOnInfoHierarchy(
+      AccessibilityNodeInfo root, Context context, @Nullable Metadata metadata) {
+    return super.runDelegationCheckOnInfo(root, this, DELEGATION_CHECK, context, metadata);
   }
 }
