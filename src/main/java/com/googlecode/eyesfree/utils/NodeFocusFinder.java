@@ -16,7 +16,7 @@
 
 package com.googlecode.eyesfree.utils;
 
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 public class NodeFocusFinder {
     public static final int SEARCH_FORWARD = 1;

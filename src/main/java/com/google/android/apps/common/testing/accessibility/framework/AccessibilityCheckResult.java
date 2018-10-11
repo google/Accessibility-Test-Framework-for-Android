@@ -19,7 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.ResultTypeProto;

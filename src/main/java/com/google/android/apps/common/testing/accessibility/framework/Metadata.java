@@ -2,7 +2,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 
 import static com.google.common.base.Preconditions.checkState;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.MetadataProto;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.TypedValueProto;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.TypedValueProto.TypeProto;

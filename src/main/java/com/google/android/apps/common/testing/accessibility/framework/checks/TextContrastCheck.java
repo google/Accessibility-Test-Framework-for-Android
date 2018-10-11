@@ -19,7 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckMetadata;

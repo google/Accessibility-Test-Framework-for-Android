@@ -18,7 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Point} */
 public class Point implements Replaceable<android.graphics.Point>, Parcelable {

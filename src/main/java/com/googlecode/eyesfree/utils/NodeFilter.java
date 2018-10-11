@@ -17,7 +17,7 @@
 package com.googlecode.eyesfree.utils;
 
 import android.content.Context;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 import java.util.LinkedList;
 

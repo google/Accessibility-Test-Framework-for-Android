@@ -4,8 +4,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
     }
 }
 
@@ -21,11 +21,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion "android-27"
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 28
     }
     sourceSets {
         main {
@@ -67,7 +67,7 @@ protobuf {
 
 dependencies {
     compile 'com.google.protobuf:protobuf-lite:3.0.1'
-    compile 'com.android.support:support-v4:27.1.0'
+    compile 'androidx.legacy:legacy-support-v4:1.0.0'
     compile 'com.google.guava:guava:24.0-android'
     compile 'org.checkerframework:checker:2.3.2'
     compile 'org.hamcrest:hamcrest-library:1.3'

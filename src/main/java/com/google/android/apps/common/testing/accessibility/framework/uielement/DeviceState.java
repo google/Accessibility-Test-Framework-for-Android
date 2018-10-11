@@ -20,7 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.content.Context;
 import android.os.Build;
 import android.os.Parcel;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 import android.view.WindowManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DeviceStateProto;
 import com.google.common.base.Splitter;

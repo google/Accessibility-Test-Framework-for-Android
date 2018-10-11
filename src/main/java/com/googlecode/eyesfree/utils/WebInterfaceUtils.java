@@ -19,7 +19,7 @@ package com.googlecode.eyesfree.utils;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 /**
  * Utility class for sending commands to ChromeVox.

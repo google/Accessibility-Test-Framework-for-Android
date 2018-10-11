@@ -16,7 +16,7 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;

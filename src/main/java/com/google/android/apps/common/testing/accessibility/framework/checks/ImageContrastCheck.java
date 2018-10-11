@@ -17,7 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;

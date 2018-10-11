@@ -15,7 +15,7 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.checks;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.widget.TextView;

@@ -3,7 +3,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.HorizontalScrollView;

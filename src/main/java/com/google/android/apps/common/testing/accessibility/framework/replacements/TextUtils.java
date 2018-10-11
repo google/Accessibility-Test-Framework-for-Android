@@ -14,8 +14,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.checkerframework.checker.nullness.qual.EnsuresNonNullIf;
 
 /** Used as a local replacement for Android's {@link android.text.TextUtils} */

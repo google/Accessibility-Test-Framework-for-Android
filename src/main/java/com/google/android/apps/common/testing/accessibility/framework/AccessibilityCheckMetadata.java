@@ -19,7 +19,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.checks.ImageContrastCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;

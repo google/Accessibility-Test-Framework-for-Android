@@ -3,7 +3,7 @@ package com.google.android.apps.common.testing.accessibility.framework.strings;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;

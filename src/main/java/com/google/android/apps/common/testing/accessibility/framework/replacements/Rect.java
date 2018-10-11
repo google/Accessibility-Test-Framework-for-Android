@@ -16,7 +16,7 @@ package com.google.android.apps.common.testing.accessibility.framework.replaceme
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.RectProto;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Rect} */

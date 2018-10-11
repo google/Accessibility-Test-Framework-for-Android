@@ -18,7 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;

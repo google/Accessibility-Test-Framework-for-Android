@@ -1,7 +1,7 @@
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
 import android.os.Parcel;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Utility class for writing to and reading from Parcels

@@ -2,7 +2,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.Html;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.AccessibilityHierarchyCheckResultProto;
