@@ -16,12 +16,12 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.support.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck.Category;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResult;
-import com.google.android.apps.common.testing.accessibility.framework.Metadata;
+import com.google.android.apps.common.testing.accessibility.framework.HashMapResultMetadata;
+import com.google.android.apps.common.testing.accessibility.framework.Parameters;
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * If two Views in a hierarchy have the same speakable text, that could be confusing for users. Two
@@ -70,7 +71,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
       @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Metadata metadata) {
+      @Nullable Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     /* Find all text and the views that have that text throughout the full hierarchy */
@@ -87,10 +88,10 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
       // within scope for evaluation.
       List<ViewHierarchyElement> clickableViews = new ArrayList<>();
       List<ViewHierarchyElement> nonClickableViews = new ArrayList<>();
-      List<ViewHierarchyElement> viewsToEval = (fromRoot != null)
-          ? fromRoot.getSelfAndAllDescendants() : null;
+      List<? extends ViewHierarchyElement> viewsToEval =
+          (fromRoot != null) ? fromRoot.getSelfAndAllDescendants() : null;
       for (ViewHierarchyElement view : textToViewMap.get(speakableText)) {
-        if ((viewsToEval == null) || (viewsToEval.contains(view))) {
+        if ((viewsToEval == null) || viewsToEval.contains(view)) {
           if (Boolean.TRUE.equals(view.isClickable())) {
             clickableViews.add(view);
           } else {
@@ -101,7 +102,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
 
       if (!clickableViews.isEmpty()) {
         /* Display warning */
-        Metadata resultMetadata = new Metadata();
+        ResultMetadata resultMetadata = new HashMapResultMetadata();
         resultMetadata.putString(
             KEY_SPEAKABLE_TEXT, speakableText);
         resultMetadata.putInt(KEY_CONFLICTING_VIEW_COUNT,
@@ -115,7 +116,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
         clickableViews.remove(0);
       } else if (!nonClickableViews.isEmpty()) {
         /* Only duplication is on non-clickable views */
-        Metadata resultMetadata = new Metadata();
+        ResultMetadata resultMetadata = new HashMapResultMetadata();
         resultMetadata.putString(
             KEY_SPEAKABLE_TEXT, speakableText);
         resultMetadata.putInt(KEY_CONFLICTING_VIEW_COUNT,
@@ -138,7 +139,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
       Locale locale, int resultId, @Nullable ResultMetadata metadata) {
     // For each of the following result IDs, metadata will have been set on the result.
     checkNotNull(metadata);
-    switch(resultId) {
+    switch (resultId) {
       case RESULT_ID_CLICKABLE_SAME_SPEAKABLE_TEXT:
         return String.format(locale,
             StringManager.getString(locale, "result_message_same_speakable_text"),
@@ -170,7 +171,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
   @Override
   public String getShortMessageForResultData(
       Locale locale, int resultId, @Nullable ResultMetadata metadata) {
-    switch(resultId) {
+    switch (resultId) {
       case RESULT_ID_CLICKABLE_SAME_SPEAKABLE_TEXT:
       case RESULT_ID_NON_CLICKABLE_SAME_SPEAKABLE_TEXT:
       case RESULT_ID_CLICKABLE_SPEAKABLE_TEXT:
@@ -178,6 +179,24 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
         return StringManager.getString(locale, "result_message_brief_same_speakable_text");
       default:
         throw new IllegalStateException("Unsupported result id");
+    }
+  }
+
+  /**
+   * Calculates a secondary priority for a duplicate speakable text result.
+   *
+   * <p>The result is the number of other views with the same text. Thus, the greater the number of
+   * repetitions, the higher the priority.
+   */
+  @Override
+  public @Nullable Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
+    ResultMetadata metadata = result.getMetadata();
+    switch (result.getResultId()) {
+      case RESULT_ID_CLICKABLE_SAME_SPEAKABLE_TEXT:
+      case RESULT_ID_NON_CLICKABLE_SAME_SPEAKABLE_TEXT:
+        return (double) checkNotNull(metadata).getInt(KEY_CONFLICTING_VIEW_COUNT, 0);
+      default:
+        return null;
     }
   }
 
@@ -191,7 +210,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
    * @return map from speakable text to all views with that speakable text
    */
   private Map<String, List<ViewHierarchyElement>> getSpeakableTextToViewMap(
-      Collection<ViewHierarchyElement> allViews) {
+      Collection<? extends ViewHierarchyElement> allViews) {
     Map<String, List<ViewHierarchyElement>> textToViewMap = new HashMap<>();
 
     for (ViewHierarchyElement view : allViews) {

@@ -25,8 +25,6 @@ package com.google.android.apps.common.testing.accessibility.framework;
  *   {@code AccessibilityEvent}</li>
  *   <li>Deprecated {@link AccessibilityViewHierarchyCheck} - the base class for all checks that run
  *   against {@code View}s</li>
- *   <li>Deprecated {@link AccessibilityInfoHierarchyCheck} - the base class for all checks that run
- *   against {@code AccessibilityNodeInfo}s</li>
  * </ul>
  *
  * <p>Classes extending this one must implement {@code runCheck...} that return {@code List}s of

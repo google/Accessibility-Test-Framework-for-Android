@@ -17,11 +17,9 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.RequiresApi;
+import androidx.core.view.ViewCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -32,15 +30,19 @@ import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.googlecode.eyesfree.utils.LogUtils;
+import com.google.android.libraries.accessibility.utils.log.LogUtils;
 import java.util.HashSet;
 import java.util.Set;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * This class provides a set of utilities used to evaluate accessibility properties and behaviors of
  * hierarchies of {@link View}s.
  */
+
 public final class ViewAccessibilityUtils {
+
+  private static final String TAG = "ViewA11yUtils";
 
   private ViewAccessibilityUtils() {}
 
@@ -55,9 +57,7 @@ public final class ViewAccessibilityUtils {
     return allViews;
   }
 
-  /**
-   * @see View#isImportantForAccessibility()
-   */
+  /** See {@link View#isImportantForAccessibility()}. */
   public static boolean isImportantForAccessibility(View view) {
     if (view == null) {
       return false;
@@ -116,9 +116,9 @@ public final class ViewAccessibilityUtils {
 
   /**
    * Determines if the supplied {@link View} is visible to the user, which requires that it be
-   * marked visible, that all its parents are visible, that it and all parents have alpha
-   * greater than 0, and that it has non-zero size. This code attempts to replicate the protected
-   * method {@code View.isVisibleToUser}.
+   * marked visible, that all its parents are visible, that it and all parents have alpha greater
+   * than 0, and that it has non-zero size. This code attempts to replicate the protected method
+   * {@code View.isVisibleToUser}.
    *
    * @param view The {@link View} to evaluate
    * @return {@code true} if {@code view} is visible to the user
@@ -132,8 +132,7 @@ public final class ViewAccessibilityUtils {
     Object current = view;
     while (current instanceof View) {
       View currentView = (View) current;
-      if ((ViewCompat.getAlpha(currentView) <= 0)
-          || (currentView.getVisibility() != View.VISIBLE)) {
+      if ((currentView.getAlpha() <= 0) || (currentView.getVisibility() != View.VISIBLE)) {
         return false;
       }
       current = currentView.getParent();
@@ -146,8 +145,8 @@ public final class ViewAccessibilityUtils {
    * screen reader.
    *
    * @param view The {@link View} to evaluate
-   * @return {@code true} if a screen reader would choose to place accessibility focus on
-   *         {@code view}, {@code false} otherwise.
+   * @return {@code true} if a screen reader would choose to place accessibility focus on {@code
+   *     view}, {@code false} otherwise.
    */
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
   public static boolean shouldFocusView(View view) {
@@ -161,7 +160,7 @@ public final class ViewAccessibilityUtils {
     }
 
     if (isAccessibilityFocusable(view)) {
-      if ((!(view instanceof ViewGroup))
+      if (!(view instanceof ViewGroup)
           || ((view instanceof ViewGroup) && !hasAnyImportantDescendant((ViewGroup) view))) {
         // Leaves that are accessibility focusable always gain focus regardless of presence of a
         // spoken description. This allows unlabeled, but still actionable, widgets to be activated
@@ -186,8 +185,8 @@ public final class ViewAccessibilityUtils {
    * Find a {@code View}, if one exists, that labels a given {@code View}.
    *
    * @param view The target of the labelFor.
-   * @return The {@code View} that is the labelFor the specified view. {@code null}
-   * if nothing labels it.
+   * @return The {@code View} that is the labelFor the specified view. {@code null} if nothing
+   *     labels it.
    */
   public static @Nullable View getLabelForView(View view) {
     if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)) {
@@ -224,7 +223,7 @@ public final class ViewAccessibilityUtils {
   /**
    * @param view The {@link View} to evaluate
    * @return {@link Boolean#TRUE} if {@code view} is considered editable, {@link Boolean#FALSE} if
-   *         not, or {@code null} if this information cannot be determined.
+   *     not, or {@code null} if this information cannot be determined.
    */
   public static @Nullable Boolean isViewEditable(View view) {
     if (view == null) {
@@ -242,23 +241,34 @@ public final class ViewAccessibilityUtils {
   /**
    * @param view The {@link View} to identify
    * @return a {@link String} resource name for the provided {@code view} in the format
-   *         "package:type/entry", or {@code null} if a resource name does not exist or cannot be
-   *         resolved.
+   *     "package:type/entry", or {@code null} if a resource name does not exist or cannot be
+   *     resolved.
    */
   public static @Nullable String getResourceNameForView(View view) {
     if ((view == null) || (view.getId() == View.NO_ID) || (view.getResources() == null)) {
       return null;
     }
 
-    try {
-      return view.getResources().getResourceName(view.getId());
-    } catch (Resources.NotFoundException nfe) {
-      // Do nothing -- Potential test environment issue
-      LogUtils.log(
-          ViewAccessibilityUtils.class, Log.WARN, "Unable to resolve resource name from view ID.");
+    if (!isViewIdGenerated(view.getId())) {
+      try {
+        return view.getResources().getResourceName(view.getId());
+      } catch (Resources.NotFoundException nfe) {
+        // Do nothing -- Potential test environment issue
+        LogUtils.w(TAG, "Unable to resolve resource name from view ID.");
+      }
     }
-
     return null;
+  }
+
+  /**
+   * Determines if a View's resource identifier was generated at runtime.
+   *
+   * @param resourceId to evaluate
+   * @return {@code true} if the identifier was generated a runtime, or {@code false} if generated
+   *     by AAPT.
+   */
+  public static boolean isViewIdGenerated(int resourceId) {
+    return (resourceId & 0xFF000000) == 0 && (resourceId & 0x00FFFFFF) != 0;
   }
 
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1) // Calls View#getLabelFor
@@ -305,13 +315,13 @@ public final class ViewAccessibilityUtils {
   /**
    * Determines if the supplied {@link View} has any retrievable listeners that might qualify the
    * view to be important for accessibility purposes.
-   * <p>
-   * NOTE: This method tries to behave like the hidden {@code View#hasListenersForAccessibility()}
-   * method, but cannot retrieve several of the listeners.
+   *
+   * <p>NOTE: This method tries to behave like the hidden {@code
+   * View#hasListenersForAccessibility()} method, but cannot retrieve several of the listeners.
    *
    * @param view The {@link View} to evaluate
    * @return {@code true} if any of the retrievable listeners on {@code view} might qualify it to be
-   *         important for accessibility purposes.
+   *     important for accessibility purposes.
    */
   private static boolean hasListenersForAccessibility(View view) {
     if (view == null) {
@@ -331,13 +341,13 @@ public final class ViewAccessibilityUtils {
   /**
    * Determines if the supplied {@link View} has an ancestor which meets the criteria for gaining
    * accessibility focus.
-   * <p>
-   * NOTE: This method only evaluates ancestors which may be considered important for accessibility
-   * and explicitly does not evaluate the supplied {@code view}.
+   *
+   * <p>NOTE: This method only evaluates ancestors which may be considered important for
+   * accessibility and explicitly does not evaluate the supplied {@code view}.
    *
    * @param view The {@link View} to evaluate
    * @return {@code true} if an ancestor of {@code view} may gain accessibility focus, {@code false}
-   *         otherwise
+   *     otherwise
    */
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean hasFocusableAncestor(View view) {
@@ -361,8 +371,8 @@ public final class ViewAccessibilityUtils {
    * Determines if the supplied {@link View} meets the criteria for gaining accessibility focus.
    *
    * @param view The {@link View} to evaluate
-   * @return {@code true} if it is possible for {@code view} to gain accessibility focus,
-   *         {@code false} otherwise.
+   * @return {@code true} if it is possible for {@code view} to gain accessibility focus, {@code
+   *     false} otherwise.
    */
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls isChildOfScrollableContainer
   private static boolean isAccessibilityFocusable(View view) {
@@ -389,8 +399,8 @@ public final class ViewAccessibilityUtils {
    * Determines if the supplied {@link View} is a top-level item within a scrollable container.
    *
    * @param view The {@link View} to evaluate
-   * @return {@code true} if {@code view} is a top-level view within a scrollable container,
-   *         {@code false} otherwise
+   * @return {@code true} if {@code view} is a top-level view within a scrollable container, {@code
+   *     false} otherwise
    */
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean isChildOfScrollableContainer(View view) {
@@ -410,20 +420,22 @@ public final class ViewAccessibilityUtils {
 
     // Specifically check for parents that are AdapterView, ScrollView, or HorizontalScrollView, but
     // exclude Spinners, which are a special case of AdapterView.
-    return (((parent instanceof AdapterView) || (parent instanceof ScrollView)
-        || (parent instanceof HorizontalScrollView)) && !(parent instanceof Spinner));
+    return (((parent instanceof AdapterView)
+            || (parent instanceof ScrollView)
+            || (parent instanceof HorizontalScrollView))
+        && !(parent instanceof Spinner));
   }
 
   /**
    * Determines if the supplied {@link View} is one which would produce speech if it were to gain
    * accessibility focus.
-   * <p>
-   * NOTE: This method also evaluates the subtree of the {@code view} for children that should be
+   *
+   * <p>NOTE: This method also evaluates the subtree of the {@code view} for children that should be
    * included in {@code view}'s spoken description.
    *
    * @param view The {@link View} to evaluate
    * @return {@code true} if a spoken description for {@code view} was determined, {@code false}
-   *         otherwise.
+   *     otherwise.
    */
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls hasNonActionableSpeakingChildren
   private static boolean isSpeakingView(View view) {
@@ -457,7 +469,8 @@ public final class ViewAccessibilityUtils {
     ViewGroup group = (ViewGroup) view;
     for (int i = 0; i < group.getChildCount(); ++i) {
       View child = group.getChildAt(i);
-      if ((child == null) || (child.getVisibility() != View.VISIBLE)
+      if ((child == null)
+          || (child.getVisibility() != View.VISIBLE)
           || isAccessibilityFocusable(child)) {
         continue;
       }
@@ -488,17 +501,17 @@ public final class ViewAccessibilityUtils {
 
   /**
    * Determines if the provided {@code group} has any descendant, direct or indirect, which is
-   * considered important for accessibility.  This is useful in determining whether or not the
+   * considered important for accessibility. This is useful in determining whether or not the
    * Android framework will attempt to reparent any child in the subtree as a direct descendant of
    * {@code group} while converting the hierarchy to an accessibility API representation.
    *
    * @param group the {@link ViewGroup} to evaluate
    * @return {@code true} if any child in {@code group}'s subtree is considered important for
-   *         accessibility, {@code false} otherwise
+   *     accessibility, {@code false} otherwise
    */
   private static boolean hasAnyImportantDescendant(ViewGroup group) {
     if (group == null) {
-     return false;
+      return false;
     }
 
     for (int i = 0; i < group.getChildCount(); ++i) {

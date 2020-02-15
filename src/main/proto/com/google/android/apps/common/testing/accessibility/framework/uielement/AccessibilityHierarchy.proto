@@ -1,14 +1,16 @@
 /*
  * Copyright (C) 2015 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
  * the License.
  */
 
@@ -16,17 +18,24 @@ syntax = "proto2";
 
 package com.google.android.apps.common.testing.accessibility.framework.uielement.proto;
 
-option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
-option java_outer_classname  = "AccessibilityHierarchyProtos";
-
 import "com/google/android/apps/common/testing/accessibility/framework/uielement/AndroidFramework.proto";
 
+option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
+option java_outer_classname = "AccessibilityHierarchyProtos";
+
 // Wire format for an AccessibilityHierarchy
-// Next index: 4
+// Next index: 5
 message AccessibilityHierarchyProto {
   optional DeviceStateProto device_state = 1;
   repeated WindowHierarchyElementProto windows = 2;
   optional int32 active_window_id = 3 [default = -1];
+  optional ViewElementClassNamesProto view_element_class_names = 4;
+}
+
+// Wire format for an ViewElementClassNames
+// Next index: 2
+message ViewElementClassNamesProto {
+  map<string, int32> class_name = 1;
 }
 
 // Wire format for a DeviceState
@@ -79,7 +88,7 @@ message WindowHierarchyElementProto {
 }
 
 // Wire format for a ViewHierarchyElement
-// Next index: 33
+// Next index: 37
 message ViewHierarchyElementProto {
   // Bookkeeping
   optional int32 id = 1 [default = -1];
@@ -116,4 +125,19 @@ message ViewHierarchyElementProto {
   optional string accessibility_class_name = 30;
   optional int64 accessibility_traversal_before_id = 31;
   optional int64 accessibility_traversal_after_id = 32;
+
+  // Integers that identify class names in ViewElementClassNamesProto
+  repeated int32 superclasses = 33;
+  optional int32 drawing_order = 34;
+  repeated RectProto touch_delegate_bounds = 35;
+
+  // Accessibility actions exposed by the view.
+  repeated ViewHierarchyActionProto actions = 36;
+}
+
+// Wire format for a ViewHierarchyAction
+// Next index: 3
+message ViewHierarchyActionProto {
+  optional int32 action_id = 1;
+  optional string action_label = 2;
 }

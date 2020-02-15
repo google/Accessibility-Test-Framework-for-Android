@@ -13,84 +13,56 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
-import android.os.Build;
-import android.os.Parcel;
-import android.support.annotation.Nullable;
-import android.util.DisplayMetrics;
-import android.view.Display;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoProto;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * Representation of a {@link Display}
- * <p>
- * NOTE: Currently, this class holds only {@link Metrics}, but will likely have additional fields in
- * the future.
+ * Representation of a {@link android.view.Display}
+ *
+ * <p>NOTE: Currently, this class holds only {@link Metrics}, but will likely have additional fields
+ * in the future.
  */
 public class DisplayInfo {
 
-  private final Metrics metricsWithoutDecoration;
-  private final @Nullable Metrics realMetrics;
-
-  /**
-   * Derives an instance from a {@link Display}
-   *
-   * @param display The {@link Display} instance from which to construct
-   */
-  public DisplayInfo(Display display) {
-    DisplayMetrics tempMetrics = new DisplayMetrics();
-    display.getMetrics(tempMetrics);
-    this.metricsWithoutDecoration = new Metrics(tempMetrics);
-    tempMetrics.setToDefaults();
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      display.getRealMetrics(tempMetrics);
-      this.realMetrics = new Metrics(tempMetrics);
-    } else {
-      this.realMetrics = null;
-    }
-  }
-
-  DisplayInfo(Parcel fromParcel) {
-    this.metricsWithoutDecoration = new Metrics(fromParcel);
-    this.realMetrics = (fromParcel.readInt() == 1) ? new Metrics(fromParcel) : null;
-  }
+  @Nullable private final Metrics metricsWithoutDecoration;
+  @Nullable private final Metrics realMetrics;
 
   DisplayInfo(DisplayInfoProto fromProto) {
     this.metricsWithoutDecoration = new Metrics(fromProto.getMetricsWithoutDecoration());
-    this.realMetrics =
-        (fromProto.hasRealMetrics()) ? new Metrics(fromProto.getRealMetrics()) : null;
+    this.realMetrics = fromProto.hasRealMetrics() ? new Metrics(fromProto.getRealMetrics()) : null;
+  }
+
+  protected DisplayInfo() {
+    this.metricsWithoutDecoration = null;
+    this.realMetrics = null;
   }
 
   /**
    * @return a {@link Metrics} representing the display's metrics excluding certain system
-   *         decorations.
-   * @see Display#getMetrics(DisplayMetrics)
+   *     decorations.
+   * @see android.view.Display#getMetrics(android.util.DisplayMetrics)
    */
   public Metrics getMetricsWithoutDecoration() {
+    checkNotNull(metricsWithoutDecoration);
     return metricsWithoutDecoration;
   }
 
   /**
    * @return a {@link Metrics} representing the display's real metrics, which include system
-   *         decorations. This value can be {@code null} for instances created on platform versions
-   *         that don't support resolution of real metrics.
-   * @see Display#getRealMetrics(DisplayMetrics)
+   *     decorations. This value can be {@code null} for instances created on platform versions that
+   *     don't support resolution of real metrics.
+   * @see android.view.Display#getRealMetrics(android.util.DisplayMetrics)
    */
-  public @Nullable Metrics getRealMetrics() {
+  @Nullable
+  public Metrics getRealMetrics() {
     return realMetrics;
   }
 
-  void writeToParcel(Parcel out, int flags) {
-    metricsWithoutDecoration.writeToParcel(out, flags);
-    if (realMetrics != null) {
-      out.writeInt(1);
-      realMetrics.writeToParcel(out, flags);
-    } else {
-      out.writeInt(0);
-    }
-  }
-
   DisplayInfoProto toProto() {
+    checkNotNull(metricsWithoutDecoration);
     DisplayInfoProto.Builder builder = DisplayInfoProto.newBuilder();
     builder.setMetricsWithoutDecoration(metricsWithoutDecoration.toProto());
     if (realMetrics != null) {
@@ -99,42 +71,32 @@ public class DisplayInfo {
     return builder.build();
   }
 
-  /**
-   * Representation of a {@link DisplayMetrics}
-   */
+  /** Representation of a {@link android.util.DisplayMetrics} */
   public static class Metrics {
 
-    private final float density;
-    private final float scaledDensity;
-    private final float xDpi;
-    private final float yDpi;
-    private final int densityDpi;
-    private final int heightPixels;
-    private final int widthPixels;
+    protected final float density;
+    protected final float scaledDensity;
+    protected final float xDpi;
+    protected final float yDpi;
+    protected final int densityDpi;
+    protected final int heightPixels;
+    protected final int widthPixels;
 
-    /**
-     * Derives an instance from a {@link DisplayMetrics}
-     *
-     * @param metrics The {@link DisplayMetrics} instance from which to construct
-     */
-    public Metrics(DisplayMetrics metrics) {
-      this.density = metrics.density;
-      this.scaledDensity = metrics.scaledDensity;
-      this.xDpi = metrics.xdpi;
-      this.yDpi = metrics.ydpi;
-      this.densityDpi = metrics.densityDpi;
-      this.heightPixels = metrics.heightPixels;
-      this.widthPixels = metrics.widthPixels;
-    }
-
-    Metrics(Parcel fromParcel) {
-      this.density = fromParcel.readFloat();
-      this.scaledDensity = fromParcel.readFloat();
-      this.xDpi = fromParcel.readFloat();
-      this.yDpi = fromParcel.readFloat();
-      this.densityDpi = fromParcel.readInt();
-      this.heightPixels = fromParcel.readInt();
-      this.widthPixels = fromParcel.readInt();
+    Metrics(
+        float density,
+        float scaledDensity,
+        float xDpi,
+        float yDpi,
+        int densityDpi,
+        int heightPixels,
+        int widthPixels) {
+      this.density = density;
+      this.scaledDensity = scaledDensity;
+      this.xDpi = xDpi;
+      this.yDpi = yDpi;
+      this.densityDpi = densityDpi;
+      this.heightPixels = heightPixels;
+      this.widthPixels = widthPixels;
     }
 
     Metrics(DisplayInfoMetricsProto fromProto) {
@@ -147,63 +109,39 @@ public class DisplayInfo {
       this.widthPixels = fromProto.getWidthPixels();
     }
 
-    /**
-     * @see DisplayMetrics#density
-     */
+    /** See {@link android.util.DisplayMetrics#density}. */
     public float getDensity() {
       return density;
     }
 
-    /**
-     * @see DisplayMetrics#scaledDensity
-     */
+    /** See {@link android.util.DisplayMetrics#scaledDensity}. */
     public float getScaledDensity() {
       return scaledDensity;
     }
 
-    /**
-     * @see DisplayMetrics#xdpi
-     */
+    /** See {@link android.util.DisplayMetrics#xdpi}. */
     public float getxDpi() {
       return xDpi;
     }
 
-    /**
-     * @see DisplayMetrics#ydpi
-     */
+    /** See {@link android.util.DisplayMetrics#ydpi}. */
     public float getyDpi() {
       return yDpi;
     }
 
-    /**
-     * @see DisplayMetrics#densityDpi
-     */
+    /** See {@link android.util.DisplayMetrics#densityDpi}. */
     public int getDensityDpi() {
       return densityDpi;
     }
 
-    /**
-     * @see DisplayMetrics#heightPixels
-     */
+    /** See {@link android.util.DisplayMetrics#heightPixels}. */
     public int getHeightPixels() {
       return heightPixels;
     }
 
-    /**
-     * @see DisplayMetrics#widthPixels
-     */
+    /** See {@link android.util.DisplayMetrics#widthPixels}. */
     public int getWidthPixels() {
       return widthPixels;
-    }
-
-    void writeToParcel(Parcel dest, @SuppressWarnings("unused") int flags) {
-      dest.writeFloat(density);
-      dest.writeFloat(scaledDensity);
-      dest.writeFloat(xDpi);
-      dest.writeFloat(yDpi);
-      dest.writeInt(densityDpi);
-      dest.writeInt(heightPixels);
-      dest.writeInt(widthPixels);
     }
 
     DisplayInfoMetricsProto toProto() {

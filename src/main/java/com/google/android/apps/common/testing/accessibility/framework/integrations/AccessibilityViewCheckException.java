@@ -24,8 +24,11 @@ import java.util.Locale;
 
 /**
  * An exception class to be used for throwing exceptions with accessibility results.
+ *
+ * @deprecated Use the AccessibilityViewCheckException in the espresso sub-package.
  */
-public final class AccessibilityViewCheckException extends RuntimeException {
+@Deprecated
+public class AccessibilityViewCheckException extends RuntimeException {
   private final List<AccessibilityViewCheckResult> results;
   private final AccessibilityCheckResultDescriptor resultDescriptor;
 
@@ -57,12 +60,14 @@ public final class AccessibilityViewCheckException extends RuntimeException {
 
   @Override
   public String getMessage() {
-    // Lump all error result messages into one string to be the exception message
+    // Lump all result messages into one string to be the exception message
     StringBuilder exceptionMessage = new StringBuilder();
-    String errorCountMessage = (results.size() == 1)
-        ? "There was 1 accessibility error:\n"
-        : String.format(Locale.US, "There were %d accessibility errors:\n", results.size());
-    exceptionMessage.append(errorCountMessage);
+
+    String resultCountMessage =
+        (results.size() == 1)
+            ? "There was 1 accessibility result:\n"
+            : String.format(Locale.US, "There were %d accessibility results:\n", results.size());
+    exceptionMessage.append(resultCountMessage);
     for (int i = 0; i < results.size(); i++) {
       if (i > 0) {
         exceptionMessage.append(",\n");

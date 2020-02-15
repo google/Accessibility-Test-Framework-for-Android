@@ -1,14 +1,16 @@
 /*
  * Copyright (C) 2015 Google Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
  * the License.
  */
 
@@ -17,7 +19,7 @@ syntax = "proto2";
 package com.google.android.apps.common.testing.accessibility.framework.uielement.proto;
 
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
-option java_outer_classname  = "AndroidFrameworkProtos";
+option java_outer_classname = "AndroidFrameworkProtos";
 
 // Proto representation of Rect
 // Next index: 5
@@ -36,7 +38,7 @@ message CharSequenceProto {
 }
 
 // Proto representation of a Spanned
-// Next index: 7
+// Next index: 8
 message SpanProto {
   optional int32 start = 1;
   optional int32 end = 2;
@@ -44,12 +46,15 @@ message SpanProto {
   optional SpanType type = 4;
   optional string url = 5;
   optional string span_class_name = 6;
+  optional int32 style = 7;
 
   // Span types used by the test framework
-  // Next index: 3
+  // Next index: 5
   enum SpanType {
     UNKNOWN = 0;
     CLICKABLE = 1;
     URL = 2;
+    STYLE = 3;
+    UNDERLINE = 4;
   }
 }
