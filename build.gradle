@@ -4,8 +4,9 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.4'
+        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
+        classpath 'digital.wup:android-maven-publish:3.6.2'
     }
 }
 
@@ -19,18 +20,15 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'digital.wup.android-maven-publish'
+apply plugin: 'maven-publish'
 
 android {
-    compileSdkVersion "android-27"
-    buildToolsVersion '27.0.3'
+    compileSdkVersion "android-29"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
-    }
-    sourceSets {
-        main {
-            manifest.srcFile 'src/main/java/com/google/android/apps/common/testing/accessibility/framework/AndroidManifest.xml'
-        }
+        targetSdkVersion 29
     }
     lintOptions {
         abortOnError false
@@ -43,7 +41,7 @@ android {
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.5.1'
+        artifact = 'com.google.protobuf:protoc:3.7.1'
     }
     plugins {
         javalite {
@@ -65,13 +63,72 @@ protobuf {
     }
 }
 
+// Creates the source jar for release to maven central.
+task sourceJar(type: Jar) {
+    classifier "sources"
+    from android.sourceSets.main.java.srcDirs
+}
+
+// Creates javadoc for the project.
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    exclude "**/AndroidManifest.xml"
+    failOnError false // Currently cannot import android sdk javadoc references so we ignore errors.
+}
+
+// Creates the source javadoc jar for release to maven central.
+task javadocJar(type: Jar) {
+    classifier "javadoc"
+    from javadoc
+}
+
+// Creates the artifacts for release to maven central.
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            groupId 'com.google.android.apps.common.testing.accessibility.framework'
+            artifactId 'accessibility-test-framework'
+            version '3.1'
+            from components.android
+            artifact sourceJar
+            artifact javadocJar
+            pom {
+                name = 'Accessibility Test Framework'
+                description = 'Library used to test for common accessibility issues.'
+                url = 'https://github.com/google/Accessibility-Test-Framework-for-Android'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Casey Burkhardt'
+                        email = 'caseyburkhardt@google.com'
+                        organization = 'Google LLC'
+                        organizationUrl = 'https://www.google.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git@github.com:google/Accessibility-Test-Framework-for-Android.git'
+                    developerConnection = 'scm:git:git@github.com:google/Accessibility-Test-Framework-for-Android.git'
+                    url = 'https://github.com/google/Accessibility-Test-Framework-for-Android'
+                }
+            }
+        }
+    }
+}
+
 dependencies {
-    compile 'com.google.protobuf:protobuf-lite:3.0.1'
-    compile 'com.android.support:support-v4:27.1.0'
-    compile 'com.google.guava:guava:24.0-android'
-    compile 'org.checkerframework:checker:2.3.2'
-    compile 'org.hamcrest:hamcrest-library:1.3'
-    compile 'org.hamcrest:hamcrest-core:1.3'
+    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.guava:guava:27.1-android'
+    implementation 'org.checkerframework:checker:2.8.0'
+    implementation 'org.hamcrest:hamcrest-library:2.1'
+    implementation 'org.hamcrest:hamcrest-core:2.1'
+    implementation 'org.jsoup:jsoup:1.11.3'
 }
 
 clean {

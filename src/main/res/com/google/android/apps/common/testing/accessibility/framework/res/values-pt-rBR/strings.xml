@@ -17,6 +17,8 @@
   
   <string name="result_message_screencapture_data_hidden">As informações de captura de tela estavam ocultas para este item.</string>
   
+  <string name="result_message_screencapture_uniform_color">A captura de tela tem cor uniforme.</string>
+  
   <string name="clickable">clicável</string>
   
   <string name="non_clickable">não clicável</string>
@@ -27,7 +29,9 @@
   
   <string name="actionable">acionável</string>
   
-  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  <string name="result_message_sdk_version_not_applicable">Esta verificação não se aplica a dispositivos que usam o Android %1$s e versões posteriores.</string>
+  
+  <string name="result_message_addendum_view_potentially_obscured">Este item pode estar coberto por outro conteúdo na tela. Considere testar manualmente o contraste deste item.</string>
   
   <string name="check_title_clickablespan">Link</string>
   
@@ -67,15 +71,19 @@
   
   <string name="result_message_image_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar essa taxa para %2$.2f ou mais.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Ela é determinada com base na estimativa da cor de primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor da tela de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Aumente esse valor para a taxa configurada de %2$.2f ou mais.</string>
   
   <string name="check_title_redundant_description">Rótulo do tipo de item</string>
   
   <string name="result_message_english_locale_only">A verificação só é executada em dispositivos com localizações definidas em inglês.</string>
   
-  <string name="result_message_brief_content_desc_ends_with_view_type">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; deste item pode conter texto desnecessário.</string>
+  <string name="result_message_brief_content_desc_contains_redundant_word">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; deste item pode conter texto desnecessário.</string>
   
   <string name="result_message_content_desc_ends_with_view_type">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; \"&lt;tt&gt;%1$s&lt;/tt&gt;\" deste item termina com o tipo do item.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word">A descrição &lt;tt&gt;android:contentDescription&lt;/tt&gt; do item \"&lt;tt&gt;%1$s&lt;/tt&gt;\" contém o tipo de item \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="button_item_type">botão</string>
   
   <string name="check_title_speakable_text_present">Rótulo do item</string>
   
@@ -101,13 +109,31 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Considere aumentar a taxa de contraste do primeiro plano e do plano de fundo do texto neste item.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do texto &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %2$.2f ou mais.</string>
+  <string name="result_message_textview_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do texto &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %4$.2f ou mais.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %2$.2f ou mais.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
   
-  <string name="result_message_textview_heuristic_contrast_borderline">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%4$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%5$06X&lt;/tt&gt;. Considere usar uma taxa de contraste maior que %2$.2f para textos pequenos ou %3$.2f para textos grandes.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">A taxa de contraste do texto no item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; fornecida e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecida. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na estimativa da cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor da tela de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Aumente esse valor para a taxa de contraste de texto do item de %4$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; fornecida e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecida. Aumente esse valor para a taxa de contraste de texto do item de %4$.2f ou mais.</string>
+  
+  <string name="question_id_message_confirm_foreground_background_colors">As cores de primeiro plano e de fundo estão corretas?</string>
+  
+  <string name="question_option_message_both_correct">Ambas corretas</string>
+  
+  <string name="question_option_message_foreground_incorrect">Cor de primeiro plano incorreta</string>
+  
+  <string name="question_option_message_background_incorrect">Cor de fundo incorreta</string>
+  
+  <string name="question_option_message_both_incorrect">As cores de primeiro plano e de fundo estão incorretas</string>
+  
+  <string name="question_option_message_unknown">Não é possível determinar</string>
+  
+  <string name="question_id_message_provide_foreground_color">Qual é a cor de primeiro plano correta?</string>
+  
+  <string name="question_id_message_provide_background_color">Qual é a cor de fundo correta?</string>
   
   <string name="check_title_touch_target_size">Área de toque</string>
   
@@ -121,38 +147,92 @@
   
   <string name="result_message_small_touch_target_width">A largura deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt;. Considere definir a largura desta área de toque como &lt;tt&gt;%2$ddp&lt;/tt&gt; ou maior.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">O tamanho do item é &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Aumente essa área de toque para o tamanho mínimo configurado de &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">A altura deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt;. Aumente a altura dessa área de toque para o valor mínimo configurado de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">A largura deste item é &lt;tt&gt;%1$ddp&lt;/tt&gt;. Aumente a largura dessa área de toque para o valor mínimo configurado de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Um &lt;tt&gt;TouchDelegate&lt;/tt&gt; foi detectado em um dos ancestrais deste item. Esta mensagem pode ser ignorada se o delegado for de tamanho suficiente e processar toques para este item.</string>
+  
+  <string name="result_message_addendum_touch_delegate_with_hit_rect">A classe &lt;tt&gt;TouchDelegate&lt;/tt&gt; com &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; de tamanho foi detectada para esse item. Considere aumentar o tamanho da área de toque &lt;tt&gt;Rect&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_clickable_ancestor">Um contêiner com filhos pode estar processando eventos de toque para este item. Se a seleção do maior contêiner executar a mesma ação que a seleção desse item, considere definir o item como não clicável. Se uma ação diferente for executada, considere aumentar o tamanho deste item.</string>
   
   <string name="result_message_addendum_clipped_by_ancestor">Um contêiner pai está comprimindo o tamanho do item, cuja área de desenho é de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Aumente o tamanho do compressor ancestral dele ou permita que um contêiner pai maior administre as ações em nome deste item.</string>
   
-  <string name="result_message_addendum_against_scrollable_edge">Este item não foi avaliado, pois ele pode estar parcialmente visível dentro de um contêiner de rolagem.</string>
+  <string name="result_message_addendum_against_scrollable_edge">Este item pode estar apenas parcialmente visível dentro de um contêiner de rolagem.</string>
   
-  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  <string name="check_title_class_name_not_supported">Tipo de item não aceito</string>
   
-  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  <string name="result_message_class_name_not_supported_brief">O tipo deste item pode não ser compatível.</string>
   
-  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_not_supported_detail">O tipo deste item &lt;tt&gt;%1$s&lt;/tt&gt; pode não ser processado pelos serviços de acessibilidade. Use um tipo definido pelo SDK do Android.</string>
   
-  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_is_empty">O tipo deste item pode não ser informado aos serviços de acessibilidade. Use um tipo definido pelo SDK do Android.</string>
   
-  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  <string name="result_message_class_name_is_unknown">Não foi possível determinar o tipo deste item.</string>
   
-  <string name="check_title_accessibility_traversal">Traversal order</string>
+  <string name="check_title_accessibility_traversal">Ordem de apresentação</string>
   
-  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_cycle">Este item pode fazer parte de um ciclo de ordem de apresentação devido ao atributo &lt;tt&gt;%1$s&lt;/tt&gt;. O comportamento da apresentação com leitores de tela pode ser imprevisível.</string>
   
-  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_over_constrained">A ordem de apresentação deste item pode estar danificada com base nos atributos &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; e &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt;. O comportamento da apresentação com leitores de tela pode ser imprevisível.</string>
   
-  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_brief_unpredictable_traversal">O comportamento da apresentação com leitores de tela pode ser imprevisível.</string>
   
-  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+  <string name="result_message_disruptive_announcement">Anúncio de acessibilidade prejudicial usado.</string>
+  
+  <string name="check_view_banned_word">Palavra proibida</string>
+  
+  <string name="result_message_banned_word">O texto deste item pode conter uma palavra inapropriada: \"&lt;tt&gt;%1$s&lt;/tt&gt;\"</string>
+  
+  <string name="result_message_brief_banned_word">Remova as palavras inapropriadas deste texto</string>
+  
+  <string name="check_title_text_style">Estilo do texto</string>
+  
+  <string name="result_message_styled_text">Este item pode conter o estilo %1$s em um grande trecho do texto. Considere remover o estilo da fonte para melhorar a legibilidade.</string>
+  
+  <string name="result_message_brief_styled_text">Considere remover o estilo %1$s de trechos maiores do texto.</string>
+  
+  <string name="italic_text">itálico</string>
+  
+  <string name="underline_text">sublinhado</string>
+  
+  <string name="italic_underline_text">itálico e sublinhado</string>
+  
+  <string name="result_message_no_typeface_info">Não foi possível determinar a face de tipos deste item.</string>
+  
+  <string name="check_title_link_test">Texto do link</string>
+  
+  <string name="result_message_brief_link_text_not_descriptive">Considere usar um texto mais descritivo no link.</string>
+  
+  <string name="result_message_link_text_not_descriptive">O texto de \"&lt;tt&gt;%1$s&lt;/tt&gt;\" pode não transmitir o propósito do link se exibido isoladamente.</string>
+  
+  <string name="check_title_reading_score">Legibilidade</string>
+  
+  <string name="result_message_low_reading_score">O texto deste item tem uma pontuação de legibilidade de aproximadamente %1$.0f, que é menor que a recomendada de %2$.0f. Use palavras ou sentenças mais simples para facilitar a leitura do texto.</string>
+  
+  <string name="result_message_brief_low_reading_score">Este texto pode ter uma baixa pontuação de legibilidade.</string>
+  
+  <string name="result_message_short_text">O texto deste item é muito curto para ser avaliado.</string>
+  
+  <string name="result_message_ai4design_text_not_determined">Não foi possível determinar o texto do item.</string>
+  
+  <string name="result_message_ai4design_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Aumente esse valor para %2$.2f ou mais.</string>
+  
+  <string name="result_message_item_exposed_needs_manual_assessment">Esta tela precisa de inspeção manual para garantir que todos os itens estejam expostos a serviços de acessibilidade.</string>
+  
+  <string name="result_message_has_unexposed_items">Esta tela pode ter itens que não estão expostos a serviços de acessibilidade.</string>
+  
+  <string name="result_message_is_unexposed_item_screen_region">A região com a localização na tela &lt;tt&gt;%1$s&lt;/tt&gt; contém pelo menos um item que não está exposto a serviços de acessibilidade.</string>
+  
+  <string name="check_title_item_exposed">Itens expostos</string>
+  
+  <string name="result_message_brief_is_unexposed_item_screen_region">Considere expor itens nesta região para serviços de acessibilidade.</string>
+  
+  <string name="question_message_screen_has_unexposed_items">A tela contém itens importantes que não estão descritos?</string>
+  
+  <string name="question_message_identify_unexposed_items">Selecione regiões da tela com itens não identificados.</string>
 
 </resources>

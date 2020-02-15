@@ -17,6 +17,8 @@
   
   <string name="result_message_screencapture_data_hidden">このアイテムのスクリーン キャプチャ情報は非表示でした。</string>
   
+  <string name="result_message_screencapture_uniform_color">スクリーン キャプチャに同一色があります。</string>
+  
   <string name="clickable">クリック可能</string>
   
   <string name="non_clickable">クリック不可</string>
@@ -27,7 +29,9 @@
   
   <string name="actionable">操作可能</string>
   
-  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  <string name="result_message_sdk_version_not_applicable">このチェックは、Android %1$s 以降が実行されているデバイスには該当しません。</string>
+  
+  <string name="result_message_addendum_view_potentially_obscured">このアイテムは、画面上の他のコンテンツによって表示が遮られる可能性があります。このアイテムのコントラストを手動でテストすることを検討してください。</string>
   
   <string name="check_title_clickablespan">リンク</string>
   
@@ -67,15 +71,19 @@
   
   <string name="result_message_image_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を設定された比率 %2$.2f 以上に上げることを検討してください。</string>
   
   <string name="check_title_redundant_description">アイテムタイプのラベル</string>
   
   <string name="result_message_english_locale_only">このチェックは、ロケールが英語に設定されているデバイスでのみ実行されます。</string>
   
-  <string name="result_message_brief_content_desc_ends_with_view_type">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; には、不必要なテキストが含まれています。</string>
+  <string name="result_message_brief_content_desc_contains_redundant_word">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; には、不必要なテキストが含まれています。</string>
   
   <string name="result_message_content_desc_ends_with_view_type">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt;、「&lt;tt&gt;%1$s&lt;/tt&gt;」はアイテムタイプで終わっています。</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; の「&lt;tt&gt;%1$s&lt;/tt&gt;」には、アイテムタイプ「&lt;tt&gt;%2$s&lt;/tt&gt;」が含まれています。</string>
+  
+  <string name="button_item_type">ボタン</string>
   
   <string name="check_title_speakable_text_present">アイテムのラベル</string>
   
@@ -101,13 +109,31 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">アイテムのテキストの前景と背景のコントラスト比を上げることを検討してください。</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %4$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_borderline">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%5$06X&lt;/tt&gt; に基づいています。小さいテキストに %2$.2f 以上、大きいテキストに %3$.2f 以上のコントラスト比を使用することを検討してください。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を設定された比率 %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を設定された比率 %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="question_id_message_confirm_foreground_background_colors">検出された前景色と背景色は正しいですか？</string>
+  
+  <string name="question_option_message_both_correct">両方とも正しい</string>
+  
+  <string name="question_option_message_foreground_incorrect">前景色が正しくない</string>
+  
+  <string name="question_option_message_background_incorrect">背景色が正しくない</string>
+  
+  <string name="question_option_message_both_incorrect">両方とも正しくない</string>
+  
+  <string name="question_option_message_unknown">不明</string>
+  
+  <string name="question_id_message_provide_foreground_color">正しい前景色は何ですか？</string>
+  
+  <string name="question_id_message_provide_background_color">正しい背景色は何ですか？</string>
   
   <string name="check_title_touch_target_size">タッチ ターゲット</string>
   
@@ -121,38 +147,92 @@
   
   <string name="result_message_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタッチ ターゲットの幅を &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上にすることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">このアイテムのサイズは &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; です。このタップ ターゲットのサイズを設定された最小サイズ &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">このアイテムの高さは &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの高さを設定された最小の高さ &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの幅を設定された最小の幅 &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
   <string name="result_message_addendum_touch_delegate">このアイテムの祖先のいずれかで &lt;tt&gt;TouchDelegate&lt;/tt&gt; が検出されました。デリゲートが十分なサイズであり、このアイテムに対するタッチを処理する場合、このメッセージは無視できます。</string>
+  
+  <string name="result_message_addendum_touch_delegate_with_hit_rect">このアイテムに、&lt;tt&gt;%1$ddp&lt;/tt&gt;×&lt;tt&gt;%2$ddp&lt;/tt&gt; の範囲の &lt;tt&gt;TouchDelegate&lt;/tt&gt; が検出されました。認識する &lt;tt&gt;Rect&lt;/tt&gt; の範囲を拡張することをおすすめします。</string>
   
   <string name="result_message_addendum_clickable_ancestor">親コンテナがこのアイテムのタッチイベントを処理している可能性があります。より大きなコンテナを選択しても、このアイテムを選択した場合と同じ操作が実行される場合、このアイテムをクリック不可として定義することを検討してください。異なる操作が実行される場合、このアイテムのサイズを大きくすることを検討してください。</string>
   
   <string name="result_message_addendum_clipped_by_ancestor">親コンテナがこの項目（&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;）のサイズを縮小している可能性があります。この項目を縮小している祖先のサイズを大きくするか、より大きな親コンテナでこの項目のアクションを処理させることを検討してください。</string>
   
-  <string name="result_message_addendum_against_scrollable_edge">このアイテムはスクロール可能なコンテナ内で部分的に表示されている可能性があるため、評価されませんでした。</string>
+  <string name="result_message_addendum_against_scrollable_edge">このアイテムはスクロール可能なコンテナ内で部分的にしか表示されない可能性があります。</string>
   
-  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  <string name="check_title_class_name_not_supported">サポートされていないアイテムタイプ</string>
   
-  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  <string name="result_message_class_name_not_supported_brief">このアイテムのタイプはサポートされていない可能性があります。</string>
   
-  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_not_supported_detail">このアイテムのタイプ &lt;tt&gt;%1$s&lt;/tt&gt; は、ユーザー補助機能サービスで解決できない可能性があります。Android SDK で定義されたタイプを使用することをおすすめします。</string>
   
-  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_is_empty">このアイテムのタイプは、ユーザー補助機能サービスで報告されない可能性があります。Android SDK で定義されたタイプを使用することをおすすめします。</string>
   
-  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  <string name="result_message_class_name_is_unknown">このアイテムのタイプを特定できませんでした。</string>
   
-  <string name="check_title_accessibility_traversal">Traversal order</string>
+  <string name="check_title_accessibility_traversal">移動順序</string>
   
-  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_cycle">このアイテムは、&lt;tt&gt;%1$s&lt;/tt&gt; 属性があるため、移動順序サイクルの一部である可能性があります。スクリーン リーダーと移動動作の同時使用は予期しない結果をもたらすことがあります。</string>
   
-  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_over_constrained">このアイテムの移動順序は、&lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; と &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; の属性に基づいて極端に制限されている可能性があります。スクリーン リーダーと移動動作の同時使用は予期しない結果をもたらすことがあります。</string>
   
-  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_brief_unpredictable_traversal">スクリーン リーダーと移動動作の同時使用は予期しない結果をもたらすことがあります。</string>
   
-  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+  <string name="result_message_disruptive_announcement">操作の妨げとなるユーザー補助機能通知があります。</string>
+  
+  <string name="check_view_banned_word">禁止用語</string>
+  
+  <string name="result_message_banned_word">このアイテムのテキストには、不適切な用語「&lt;tt&gt;%1$s&lt;/tt&gt;」が含まれている可能性があります</string>
+  
+  <string name="result_message_brief_banned_word">このアイテムのテキストから不適切な用語を削除すること検討してください</string>
+  
+  <string name="check_title_text_style">テキスト スタイル</string>
+  
+  <string name="result_message_styled_text">このアイテムは、長いテキストに%1$sフォントを適用することがあります。読みやすさ向上のために、このフォント スタイルを解除することをおすすめします。</string>
+  
+  <string name="result_message_brief_styled_text">長いテキストには%1$sを適用しないことをおすすめします。</string>
+  
+  <string name="italic_text">斜体</string>
+  
+  <string name="underline_text">下線</string>
+  
+  <string name="italic_underline_text">斜体と下線</string>
+  
+  <string name="result_message_no_typeface_info">このアイテムの書体を特定できませんでした。</string>
+  
+  <string name="check_title_link_test">リンクテキスト</string>
+  
+  <string name="result_message_brief_link_text_not_descriptive">リンクテキストをもう少し説明的な内容にすることを検討してください。</string>
+  
+  <string name="result_message_link_text_not_descriptive">リンクテキスト「&lt;tt&gt;%1$s&lt;/tt&gt;」だけではリンクの目的を伝えられない可能性があります。</string>
+  
+  <string name="check_title_reading_score">読みやすさ</string>
+  
+  <string name="result_message_low_reading_score">このアイテムのテキストの可読性スコアは概算値で %1$.0f となり、推奨スコアの %2$.0f を下回っています。テキストの読みやすさを向上させるため、より平易な単語や文を使用することを検討してください。</string>
+  
+  <string name="result_message_brief_low_reading_score">このテキストは可読性スコアが低い可能性があります。</string>
+  
+  <string name="result_message_short_text">このアイテムのテキストは短すぎるため評価できません。</string>
+  
+  <string name="result_message_ai4design_text_not_determined">このアイテムのテキストを特定できませんでした。</string>
+  
+  <string name="result_message_ai4design_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率を %2$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_item_exposed_needs_manual_assessment">この画面を手動検査して、すべてのアイテムがユーザー補助機能サービスに対して公開されていることを確認する必要があります。</string>
+  
+  <string name="result_message_has_unexposed_items">この画面には、ユーザー補助機能サービスに対して公開されていないアイテムが含まれている可能性があります。</string>
+  
+  <string name="result_message_is_unexposed_item_screen_region">画面上の場所 &lt;tt&gt;%1$s&lt;/tt&gt; がある領域には、ユーザー補助機能サービスに対して公開されていないアイテムが少なくとも 1 つ含まれています。</string>
+  
+  <string name="check_title_item_exposed">公開されているアイテム</string>
+  
+  <string name="result_message_brief_is_unexposed_item_screen_region">この領域内のアイテムをユーザー補助機能サービスに対して公開することを検討してください。</string>
+  
+  <string name="question_message_screen_has_unexposed_items">この画面には、アウトラインに表示されていない重要なアイテムが含まれていますか？</string>
+  
+  <string name="question_message_identify_unexposed_items">特定されていないアイテムを含んでいる画面上の領域を選択してください。</string>
 
 </resources>

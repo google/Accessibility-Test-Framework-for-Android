@@ -20,6 +20,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityEvent;
+import java.util.Locale;
 
 /**
  * Result generated when an accessibility check runs on a {@link AccessibilityEvent}.
@@ -55,9 +56,9 @@ public final class AccessibilityEventCheckResult extends AccessibilityCheckResul
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(checkClass.getName());
-    dest.writeInt((type != null) ? type.ordinal() : -1);
-    TextUtils.writeToParcel(checkNotNull(message), dest, flags);
+    dest.writeString(getSourceCheckClass().getName());
+    dest.writeInt(getType().ordinal());
+    TextUtils.writeToParcel(getMessage(Locale.ENGLISH), dest, flags);
     event.writeToParcel(dest, flags);
   }
 
@@ -81,8 +82,7 @@ public final class AccessibilityEventCheckResult extends AccessibilityCheckResul
 
     // Type
     int typeInt = in.readInt();
-    AccessibilityCheckResultType type =
-        (typeInt != -1) ? AccessibilityCheckResultType.values()[typeInt] : null;
+    AccessibilityCheckResultType type = AccessibilityCheckResultType.values()[typeInt];
 
     // Message
     CharSequence message = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);

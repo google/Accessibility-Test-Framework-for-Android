@@ -16,13 +16,13 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.dataflow.qual.Pure;
 
 /**
@@ -45,6 +45,7 @@ public class ClusteringUtils {
    *
    * @param <T> the type of values being compared
    */
+
   public interface Similarity<T> {
     /**
      * Evaluates this predicate on the given arguments.
@@ -55,6 +56,7 @@ public class ClusteringUtils {
   }
 
   /** Function that produces a resource identifier for an element. */
+
   public interface ResourceIdGenerator {
     /** Returns a resource identifier for the given element. */
     @Nullable String apply(ViewHierarchyElement vhe);
@@ -209,6 +211,7 @@ public class ClusteringUtils {
     return (resourceId == null) ? null : resourceId.toString();
   }
 
+  @SuppressWarnings("ReferenceEquality")
   private static @Nullable StringBuilder getResourceIdBuilder(
       ViewHierarchyElement vhe, boolean includeIndices) {
     String resourceName = vhe.getResourceName();
@@ -221,6 +224,7 @@ public class ClusteringUtils {
       if (parentResourceId != null) {
         int childCount = parent.getChildViewCount();
         for (int i = 0; i < childCount; i++) {
+          // Comparing object instances because ViewHierarchyElement.equals() can be expensive.
           if (parent.getChildView(i) == vhe) {
             CharSequence shortClassName = getShortClassName(vhe);
             if (shortClassName != null) {

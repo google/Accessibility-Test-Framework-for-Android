@@ -17,6 +17,8 @@
   
   <string name="result_message_screencapture_data_hidden">Informácie nasnímania obrazovky pre túto položku boli skryté.</string>
   
+  <string name="result_message_screencapture_uniform_color">Nasnímaná obrazovka má jednotnú farbu.</string>
+  
   <string name="clickable">možno kliknúť</string>
   
   <string name="non_clickable">nemožno kliknúť</string>
@@ -27,7 +29,9 @@
   
   <string name="actionable">možno vykonať akciu</string>
   
-  <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  <string name="result_message_sdk_version_not_applicable">Túto kontrolu nie je možné použiť v zariadeniach s Androidom %1$s a novším.</string>
+  
+  <string name="result_message_addendum_view_potentially_obscured">Táto položka môže byť zakrytá ďalším obsahom na obrazovke. Mali by ste manuálne vyskúšať kontrast tejto položky.</string>
   
   <string name="check_title_clickablespan">Odkaz</string>
   
@@ -67,15 +71,19 @@
   
   <string name="result_message_image_contrast_not_sufficient">Kontrastný pomer tohto obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“ a odhadovanej farbe pozadia „&lt;tt&gt;#%4$06X&lt;/tt&gt;“. Zvážte zvýšenie tohto pomeru na %2$.2f alebo viac.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastný pomer tohto obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadovanej farbe pozadia &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zvážte zvýšenie tohto pomeru na konfigurovaný pomer %2$.2f alebo viac.</string>
   
   <string name="check_title_redundant_description">Štítok typu položky</string>
   
   <string name="result_message_english_locale_only">Túto kontrolu možno spustiť len na zariadeniach s nastaveným jazykom angličtina.</string>
   
-  <string name="result_message_brief_content_desc_ends_with_view_type">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky možno obsahuje nepotrebný text.</string>
+  <string name="result_message_brief_content_desc_contains_redundant_word">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky možno obsahuje nepotrebný text.</string>
   
   <string name="result_message_content_desc_ends_with_view_type">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky, „&lt;tt&gt;%1$s&lt;/tt&gt;“ končí typom položky.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ obsahuje typ položky „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="button_item_type">tlačidlo</string>
   
   <string name="check_title_speakable_text_present">Štítok položky</string>
   
@@ -101,13 +109,31 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Zvážte zvýšenie kontrastného pomeru popredia a pozadia textu tejto položky.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu „&lt;tt&gt;#%3$06X&lt;/tt&gt;“ a farbe pozadia „&lt;tt&gt;#%4$06X&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru textu tejto položky na %2$.2f alebo viac.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu „&lt;tt&gt;#%2$06X&lt;/tt&gt;“ a farbe pozadia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“ a odhadovanej farbe pozadia „&lt;tt&gt;#%4$06X&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru položky na %2$.2f alebo viac.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
   
-  <string name="result_message_textview_heuristic_contrast_borderline">Kontrastný pomer textu položky je %1$.2f. Tento pomer ja založený na odhadovanej farbe popredia „&lt;tt&gt;#%4$06X&lt;/tt&gt;“ a odhadovanej farbe pozadia „&lt;tt&gt;#%5$06X&lt;/tt&gt;“. Zvážte použitie kontrastného pomeru vyššieho ako %2$.2f pre malý text alebo %3$.2f pre veľký text.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia &lt;tt&gt;#%2$06X&lt;/tt&gt; a odhadovanej farbe pozadia &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvážte zvýšenie kontrastného pomeru textu tejto položky na konfigurovaný pomer %4$.2f alebo viac.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na konfigurovaný pomer %4$.2f alebo viac.</string>
+  
+  <string name="question_id_message_confirm_foreground_background_colors">Sú rozpoznané farby popredia a pozadia správne?</string>
+  
+  <string name="question_option_message_both_correct">Obe sú správne</string>
+  
+  <string name="question_option_message_foreground_incorrect">Nesprávne popredie</string>
+  
+  <string name="question_option_message_background_incorrect">Nesprávne pozadie</string>
+  
+  <string name="question_option_message_both_incorrect">Nesprávne popredie aj pozadie</string>
+  
+  <string name="question_option_message_unknown">Neznáme</string>
+  
+  <string name="question_id_message_provide_foreground_color">Aká je správna farba popredia?</string>
+  
+  <string name="question_id_message_provide_background_color">Aká je správna farba pozadia?</string>
   
   <string name="check_title_touch_target_size">Cieľ dotyku</string>
   
@@ -121,38 +147,92 @@
   
   <string name="result_message_small_touch_target_width">Šírka tejto položky je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie šírky tohto cieľa dotyku na &lt;tt&gt;%2$ddp&lt;/tt&gt; alebo viac.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Táto položka má veľkosť &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie tohto cieľa klepnutia na konfigurovanú minimálnu veľkosť &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Táto položka má výšku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie výšky tohto cieľa klepnutia aspoň na konfigurovanú minimálnu výšku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Táto položka má šírku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie šírky tohto cieľa klepnutia aspoň na konfigurovanú minimálnu šírku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Na jednom z predchodcov tejto položky sa zistil delegát &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Túto správu možno ignorovať, ak má delegát dostatočnú veľkosť a spracúva dotyky pre túto položku.</string>
+  
+  <string name="result_message_addendum_touch_delegate_with_hit_rect">Pre túto položku bola zistená trieda &lt;tt&gt;TouchDelegate&lt;/tt&gt; s veľkosťou &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie veľkosti oblasti klepnutia, ktorá predstavuje &lt;tt&gt;Rect&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_clickable_ancestor">Dotyky na túto položku môže spravovať nadradený kontajner. Ak výber väčšieho kontajnera vykoná rovnakú akciu ako výber tejto položky, zvážte zmenu tejto položky na položku, na ktorú nemožno kliknúť. Ak sa vykoná iná akcia, zvážte zväčšenie veľkosti tejto položky.</string>
   
   <string name="result_message_addendum_clipped_by_ancestor">Nadradený kontajner zrejme obmedzuje veľkosť tejto položky, ktorej vykresľovaná oblasť má veľkosť &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie veľkosti nadradeného kontajnera alebo umožnenie väčšiemu kontajneru spravovať akcie tejto položky.</string>
   
-  <string name="result_message_addendum_against_scrollable_edge">Táto položka nebola vyhodnotená, pretože v rámci posúvateľného kontajnera môže byť len čiastočne viditeľná.</string>
+  <string name="result_message_addendum_against_scrollable_edge">Táto položka môže byť v posúvateľnom kontajneri viditeľná len čiastočne.</string>
   
-  <string name="check_title_class_name_not_supported">Unsupported item type</string>
+  <string name="check_title_class_name_not_supported">Nepodporovaný typ položky</string>
   
-  <string name="result_message_class_name_not_supported_brief">This item\'s type may not be supported.</string>
+  <string name="result_message_class_name_not_supported_brief">Typ tejto položky nemusí byť podporovaný.</string>
   
-  <string name="result_message_class_name_not_supported_detail">This item\'s type &lt;tt&gt;%1$s&lt;/tt&gt; may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_not_supported_detail">Typ tejto položky &lt;tt&gt;%1$s&lt;/tt&gt; nemusia služby dostupnosti rozpoznať. Zvážte použitie typu definovaného v súprave Android SDK.</string>
   
-  <string name="result_message_class_name_is_empty">This item\'s type may not be reported to accessibility services. Consider using a type defined by the Android SDK.</string>
+  <string name="result_message_class_name_is_empty">Typ tejto položky nemusí byť prístupný pre služby dostupnosti. Zvážte použitie typu definovaného v súprave Android SDK.</string>
   
-  <string name="result_message_class_name_is_unknown">This item\'s type could not be determined.</string>
+  <string name="result_message_class_name_is_unknown">Typ tejto položky nemožno určiť.</string>
   
-  <string name="check_title_accessibility_traversal">Traversal order</string>
+  <string name="check_title_accessibility_traversal">Poradie prechodu</string>
   
-  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_cycle">Táto položka môže byť súčasťou cyklického poradia prechodu v dôsledku atribútu &lt;tt&gt;%1$s&lt;/tt&gt;. Prechod pri čítačkách obrazoviek môže byť nepredvídateľný.</string>
   
-  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_over_constrained">Poradie prechodu pre túto položku môže byť príliš obmedzené v dôsledku atribútov &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; a &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt;. Prechod pri čítačkách obrazoviek môže byť nepredvídateľný.</string>
   
-  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_brief_unpredictable_traversal">Prechod pri čítačkách obrazoviek môže byť nepredvídateľný.</string>
   
-  <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+  <string name="result_message_disruptive_announcement">Bolo použité oznámenie o rušivých prvkoch v rámci dostupnosti.</string>
+  
+  <string name="check_view_banned_word">Zakázané slovo</string>
+  
+  <string name="result_message_banned_word">Text tejto položky môže obsahovať nevhodné slovo – „&lt;tt&gt;%1$s&lt;/tt&gt;“</string>
+  
+  <string name="result_message_brief_banned_word">Zvážte odstránenie nevhodných slov z textu tejto položky</string>
+  
+  <string name="check_title_text_style">Štýl textu</string>
+  
+  <string name="result_message_styled_text">Pri tejto položke sa pre dlhé pasáže textu používa písmo %1$s. Na zlepšenie čitateľnosti zvážte odstránenie štýlu písma.</string>
+  
+  <string name="result_message_brief_styled_text">Zvážte odstránenie štýlu písma %1$s z dlhých pasáží textu.</string>
+  
+  <string name="italic_text">kurzíva</string>
+  
+  <string name="underline_text">podčiarknutie</string>
+  
+  <string name="italic_underline_text">kurzíva a podčiarknutie</string>
+  
+  <string name="result_message_no_typeface_info">Typ písma tejto položky nemožno určiť.</string>
+  
+  <string name="check_title_link_test">Text odkazu</string>
+  
+  <string name="result_message_brief_link_text_not_descriptive">Mali by ste použiť popisnejší text odkazu.</string>
+  
+  <string name="result_message_link_text_not_descriptive">Samotný text odkazu „&lt;tt&gt;%1$s&lt;/tt&gt;“ nemusí vystihovať účel odkazu.</string>
+  
+  <string name="check_title_reading_score">Čitateľnosť</string>
+  
+  <string name="result_message_low_reading_score">Text tejto položky má skóre čitateľnosti približne %1$.0f, čo je menej ako odporúčané skóre %2$.0f. Zvážte použitie jednoduchších slov alebo viet, aby sa text ľahšie čítal.</string>
+  
+  <string name="result_message_brief_low_reading_score">Tento text môže mať nízke skóre čitateľnosti.</string>
+  
+  <string name="result_message_short_text">Text tejto položky je na hodnotenie príliš krátky.</string>
+  
+  <string name="result_message_ai4design_text_not_determined">Text tejto položky sa nepodarilo určiť.</string>
+  
+  <string name="result_message_ai4design_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Skúste ho zvýšiť na hodnotu %2$.2f alebo vyššiu.</string>
+  
+  <string name="result_message_item_exposed_needs_manual_assessment">Túto obrazovku je potrebné skontrolovať manuálne, aby sa zaistilo, že všetky položky sú vystavené službám dostupnosti.</string>
+  
+  <string name="result_message_has_unexposed_items">Táto obrazovka môže obsahovať položky, ktoré nie sú vystavené službám dostupnosti.</string>
+  
+  <string name="result_message_is_unexposed_item_screen_region">Oblasť s polohou na obrazovke &lt;tt&gt;%1$s&lt;/tt&gt; obsahuje najmenej jednu položku, ktorá nie je vystavená službám dostupnosti.</string>
+  
+  <string name="check_title_item_exposed">Vystavené položky</string>
+  
+  <string name="result_message_brief_is_unexposed_item_screen_region">Zvážte vystavenie položiek v tejto oblasti službám dostupnosti.</string>
+  
+  <string name="question_message_screen_has_unexposed_items">Obsahuje táto obrazovka dôležité položky, ktoré nie sú zobrazené?</string>
+  
+  <string name="question_message_identify_unexposed_items">Vyberte oblasti obrazovky s neidentifikovanými položkami.</string>
 
 </resources>

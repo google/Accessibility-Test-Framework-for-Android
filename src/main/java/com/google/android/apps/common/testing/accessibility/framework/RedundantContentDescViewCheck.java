@@ -14,10 +14,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.RedundantDescriptionCheck;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Checks to ensure that speakable text does not contain redundant information about the view's
@@ -25,7 +25,7 @@ import java.util.List;
  * (ex: Screen readers may append "button" to the speakable text of a {@link
  * android.widget.Button}).
  *
- * @deprecated Replaced by {@link RedundantDescriptionCheck
+ * @deprecated Replaced by {@link RedundantDescriptionCheck}
  */
 @Deprecated
 public class RedundantContentDescViewCheck extends AccessibilityViewHierarchyCheck {
@@ -34,7 +34,7 @@ public class RedundantContentDescViewCheck extends AccessibilityViewHierarchyChe
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Metadata metadata) {
-    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
+      View root, @Nullable Parameters parameters) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

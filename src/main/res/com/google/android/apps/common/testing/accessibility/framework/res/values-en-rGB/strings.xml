@@ -17,6 +17,8 @@
   
   <string name="result_message_screencapture_data_hidden">Screen capture information for this item was hidden.</string>
   
+  <string name="result_message_screencapture_uniform_color">Screen capture has a uniform colour.</string>
+  
   <string name="clickable">clickable</string>
   
   <string name="non_clickable">non-clickable</string>
@@ -28,6 +30,8 @@
   <string name="actionable">actionable</string>
   
   <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
+  
+  <string name="result_message_addendum_view_potentially_obscured">This item may be obscured by other on-screen content. Consider manually testing this item\'s contrast.</string>
   
   <string name="check_title_clickablespan">Link</string>
   
@@ -67,15 +71,19 @@
   
   <string name="result_message_image_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
   
   <string name="check_title_redundant_description">Item type label</string>
   
   <string name="result_message_english_locale_only">This check only runs on devices with locales set to English.</string>
   
-  <string name="result_message_brief_content_desc_ends_with_view_type">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt; might contain unnecessary text.</string>
+  <string name="result_message_brief_content_desc_contains_redundant_word">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt; might contain unnecessary text.</string>
   
   <string name="result_message_content_desc_ends_with_view_type">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ends with the item\'s type.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;, ‘&lt;tt&gt;%1$s&lt;/tt&gt;’ contains the item type ‘&lt;tt&gt;%2$s&lt;/tt&gt;’.</string>
+  
+  <string name="button_item_type">button</string>
   
   <string name="check_title_speakable_text_present">Item label</string>
   
@@ -101,13 +109,31 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Consider increasing this item\'s text foreground to background contrast ratio.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %2$.2f or greater.</string>
+  <string name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %2$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
   
-  <string name="result_message_textview_heuristic_contrast_borderline">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%4$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%5$06X&lt;/tt&gt;. Consider using a contrast ratio greater than %2$.2f for small text or %3$.2f for large text.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground color of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background color of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %4$.2f or greater.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %4$.2f or greater.</string>
+  
+  <string name="question_id_message_confirm_foreground_background_colors">Are the detected foreground and background colours correct?</string>
+  
+  <string name="question_option_message_both_correct">Both correct</string>
+  
+  <string name="question_option_message_foreground_incorrect">Foreground incorrect</string>
+  
+  <string name="question_option_message_background_incorrect">Background incorrect</string>
+  
+  <string name="question_option_message_both_incorrect">Foreground and background incorrect</string>
+  
+  <string name="question_option_message_unknown">Unknown</string>
+  
+  <string name="question_id_message_provide_foreground_color">What is the correct foreground colour?</string>
+  
+  <string name="question_id_message_provide_background_color">What is the correct background colour?</string>
   
   <string name="check_title_touch_target_size">Touch target</string>
   
@@ -129,11 +155,13 @@
   
   <string name="result_message_addendum_touch_delegate">A &lt;tt&gt;TouchDelegate&lt;/tt&gt; has been detected on one of this item\'s ancestors. This message can be ignored if the delegate is of sufficient size and handles touches for this item.</string>
   
+  <string name="result_message_addendum_touch_delegate_with_hit_rect">A &lt;tt&gt;TouchDelegate&lt;/tt&gt; with size &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; has been detected for this item. Consider increasing the size of its hit &lt;tt&gt;Rect&lt;/tt&gt;.</string>
+  
   <string name="result_message_addendum_clickable_ancestor">A parent container may be handling touch events for this item. If selecting the larger container performs the same action as selecting this item, consider defining this item as not clickable. If a different action is performed, consider increasing the size of this item.</string>
   
   <string name="result_message_addendum_clipped_by_ancestor">A parent container may be clipping the size of this item, which has a drawing area of &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing the size of this item\'s clipping ancestor, or allowing a larger parent container to handle actions on behalf of this item.</string>
   
-  <string name="result_message_addendum_against_scrollable_edge">This item was not evaluated because it may be only partially visible within a scrollable container.</string>
+  <string name="result_message_addendum_against_scrollable_edge">This item may be only partially visible within a scrollable container.</string>
   
   <string name="check_title_class_name_not_supported">Unsupported item type</string>
   
@@ -147,12 +175,64 @@
   
   <string name="check_title_accessibility_traversal">Traversal order</string>
   
-  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute.  Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_cycle">This item may be part of a traversal ordering cycle due to its &lt;tt&gt;%1$s&lt;/tt&gt; attribute. Traversal behaviour with screen readers may be unpredictable.</string>
   
-  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_traversal_over_constrained">Traversal ordering for this item may be over constrained based on its &lt;tt&gt;android:accessibilityTraversalBefore&lt;/tt&gt; and &lt;tt&gt;android:accessibilityTraversalAfter&lt;/tt&gt; attributes. Traversal behaviour with screen readers may be unpredictable.</string>
   
-  <string name="result_message_brief_unpredictable_traversal">Traversal behavior with screen readers may be unpredictable.</string>
+  <string name="result_message_brief_unpredictable_traversal">Traversal behaviour with screen readers may be unpredictable.</string>
   
   <string name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
+  
+  <string name="check_view_banned_word">Banned word</string>
+  
+  <string name="result_message_banned_word">This item\'s text may contain an inappropriate word: &lt;tt&gt;%1$s&lt;/tt&gt;</string>
+  
+  <string name="result_message_brief_banned_word">Consider removing inappropriate words from this item\'s text</string>
+  
+  <string name="check_title_text_style">Text style</string>
+  
+  <string name="result_message_styled_text">This item may use %1$s font for a long passage of text. Consider removing the style from the font to improve readability.</string>
+  
+  <string name="result_message_brief_styled_text">Consider removing %1$s styling on longer passages of text.</string>
+  
+  <string name="italic_text">italic</string>
+  
+  <string name="underline_text">underline</string>
+  
+  <string name="italic_underline_text">italic and underline</string>
+  
+  <string name="result_message_no_typeface_info">This item\'s typeface could not be determined.</string>
+  
+  <string name="check_title_link_test">Link text</string>
+  
+  <string name="result_message_brief_link_text_not_descriptive">Consider using more descriptive text in the link.</string>
+  
+  <string name="result_message_link_text_not_descriptive">The link text &lt;tt&gt;%1$s&lt;/tt&gt; may not independently convey the link\'s purpose.</string>
+  
+  <string name="check_title_reading_score">Readability</string>
+  
+  <string name="result_message_low_reading_score">This item\'s text has an approximate readability score of %1$.0f, which is lower than the recommended score of %2$.0f. Consider using simpler words or sentences to make the text easier to read.</string>
+  
+  <string name="result_message_brief_low_reading_score">This text may have a low readability score.</string>
+  
+  <string name="result_message_short_text">This item\'s text is too short to be evaluated.</string>
+  
+  <string name="result_message_ai4design_text_not_determined">The item\'s text could not be determined.</string>
+  
+  <string name="result_message_ai4design_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f.Consider increasing this item\'s text contrast ratio to %2$.2f or greater.</string>
+  
+  <string name="result_message_item_exposed_needs_manual_assessment">This screen needs manual inspection to ensure that all items are exposed to accessibility services.</string>
+  
+  <string name="result_message_has_unexposed_items">This screen may have items that are not exposed to accessibility services.</string>
+  
+  <string name="result_message_is_unexposed_item_screen_region">The region with on-screen location &lt;tt&gt;%1$s&lt;/tt&gt; contains at least one item that is not exposed to accessibility services.</string>
+  
+  <string name="check_title_item_exposed">Exposed items</string>
+  
+  <string name="result_message_brief_is_unexposed_item_screen_region">Consider exposing items in this region to accessibility services.</string>
+  
+  <string name="question_message_screen_has_unexposed_items">Does this screen contain important items that are not outlined?</string>
+  
+  <string name="question_message_identify_unexposed_items">Select regions of the screen with unidentified items.</string>
 
 </resources>

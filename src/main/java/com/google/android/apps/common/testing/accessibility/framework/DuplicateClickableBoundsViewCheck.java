@@ -14,10 +14,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateClickableBoundsCheck;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Developers sometimes have containers marked clickable when they don't process click events. This
@@ -34,7 +34,7 @@ public class DuplicateClickableBoundsViewCheck extends AccessibilityViewHierarch
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Metadata metadata) {
-    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
+      View root, @Nullable Parameters parameters) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

@@ -1,10 +1,10 @@
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
-import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** A fairly lightweight local replacement for {@link android.text.SpannableStringBuilder} */
 public class SpannableStringBuilder implements CharSequence {

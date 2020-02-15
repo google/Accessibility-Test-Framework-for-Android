@@ -27,6 +27,9 @@
   <string description="The result message of a check describing that the screenshot of a view (UI element) was hidden. [CHAR LIMIT=NONE]"
     name="result_message_screencapture_data_hidden">Screen capture information for this item was hidden.</string>
 
+  <string description="The result message of a check describing that the screenshot of a view (UI element) has a uniform color. [CHAR LIMIT=NONE]"
+    name="result_message_screencapture_uniform_color">Screen capture has a uniform color.</string>
+
   <string description="Describes a UI element that is clickable [CHAR LIMIT=NONE]"
     name="clickable">clickable</string>
 
@@ -44,6 +47,9 @@
 
   <string description="The result message of a check describing that the check is not applicable since specific Android SDK version. [CHAR LIMIT=NONE]"
       name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android <xliff:g example="8.0" id="android_version">%1$s</xliff:g> and above.</string>
+
+  <string description="A message that is appended to a result message of a check describing that the view (UI element) may be obscured by other on-screen content. [CHAR LIMIT=NONE]"
+      name="result_message_addendum_view_potentially_obscured">This item may be obscured by other on-screen content. Consider manually testing this item\'s contrast.</string>
 
   <!-- Result message strings that are used by ClickableSpanCheck -->
 
@@ -124,10 +130,18 @@
     name="result_message_english_locale_only">This check only runs on devices with locales set to English.</string>
 
   <string description="The brief result message of a check describing that this view (UI element) has redundant or unnecessary text within its 'android:contentDescription' attribute. [CHAR LIMIT=NONE]"
-    name="result_message_brief_content_desc_ends_with_view_type">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g> might contain unnecessary text.</string>
+    name="result_message_brief_content_desc_contains_redundant_word">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g> might contain unnecessary text.</string>
 
   <string description="The result message of a check stating that a description of a view (UI element) ends with that view's type (ex: a view of type Button whose 'android:contentDescription' is 'Save button'). [CHAR LIMIT=NONE]"
     name="result_message_content_desc_ends_with_view_type">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>, \"<xliff:g example="Save button" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" ends with the item\'s type.</string>
+
+  <string description="The result message of a check stating that a description of a view (UI element) has redundant or unnecessary text (ex: a view of type Button whose 'android:contentDescription' is 'Save button'). [CHAR LIMIT=NONE]"
+    name="result_message_content_desc_contains_redundant_word">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>, \"<xliff:g example="Save button" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" contains the item type \"<xliff:g example="button" id="item_type">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".</string>
+
+  <!-- Words for RedundantDescriptionCheck -->
+
+  <string description="The term for a UI element that functions as a button. [CHAR LIMIT=NONE]"
+    name="button_item_type">button</string>
 
   <!-- Result message strings that are used by SpeakableTextPresentCheck -->
 
@@ -170,16 +184,44 @@
     name="result_message_brief_text_contrast_not_sufficient">Consider increasing this item\'s text foreground to background contrast ratio.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
-    name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
-
-  <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio according to a heuristic check based on the foreground and background colors we computed. [CHAR LIMIT=NONE]"
-    name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+    name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio unless its text is considered to be large. [CHAR LIMIT=NONE]"
-    name="result_message_textview_heuristic_contrast_borderline">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%5$06X&lt;/tt&gt;</xliff:g>. Consider using a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%2$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%3$.2f</xliff:g> for large text.</string>
+    name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
+
+  <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio unless its text is considered to be large. Result based on colors obtained or confirmed through questions. [CHAR LIMIT=NONE]"
+      name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than a user-defined ratio. [CHAR LIMIT=NONE]"
-      name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the configured ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+      name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the configured ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+
+  <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than a user-defined ratio based on user provided colors. [CHAR LIMIT=NONE]"
+      name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the configured ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+
+  <!-- Question message string that are used by TextContrastCheck -->
+  <string description="The question message for question of if the foreground and background colors are correct [CHAR LIMIT=NONE]"
+      name="question_id_message_confirm_foreground_background_colors">Are the detected foreground and background colors correct?</string>
+
+  <string description="The user selection option for if the foreground and background colors are both correct [CHAR LIMIT=NONE]"
+      name="question_option_message_both_correct">Both correct</string>
+
+  <string description="The user selection option for if only the foreground color is incorrect. [CHAR LIMIT=NONE]"
+      name="question_option_message_foreground_incorrect">Foreground incorrect</string>
+
+  <string description="The user selection option for if only the background color is incorrect. [CHAR LIMIT=NONE]"
+      name="question_option_message_background_incorrect">Background incorrect</string>
+
+  <string description="The user selection option for if the foreground and background colors are incorrect.[CHAR LIMIT=NONE]"
+      name="question_option_message_both_incorrect">Foreground and background incorrect</string>
+
+  <string description="The user selection option for if it is unknown if the foreground and background colors are both incorrect.[CHAR LIMIT=NONE]"
+      name="question_option_message_unknown">Unknown</string>
+
+  <string description="The question prompting a user to provide a foreground color [CHAR LIMIT=NONE]"
+      name="question_id_message_provide_foreground_color">What is the correct foreground color?</string>
+
+  <string description="The question prompting a user to provide a background color [CHAR LIMIT=NONE]"
+      name="question_id_message_provide_background_color">What is the correct background color?</string>
 
   <!-- Result message strings that are used by TouchTargetSizeCheck -->
 
@@ -213,18 +255,21 @@
   <string description="A message that is appended to a result message of a check describing that the result may be inaccurate because this view (UI element) uses a 'TouchDelegate', which allows a developer to define their own touchable region for the view. [CHAR LIMIT=NONE]"
     name="result_message_addendum_touch_delegate">A <xliff:g example="TouchDelegate" id="touch_delegate_class">&lt;tt&gt;TouchDelegate&lt;/tt&gt;</xliff:g> has been detected on one of this item\'s ancestors. This message can be ignored if the delegate is of sufficient size and handles touches for this item.</string>
 
+  <string description="A message that is appended to a result message of a check describing that the result may be inaccurate because this view (UI element) uses a 'TouchDelegate', which allows a developer to define their own touchable region for the view. [CHAR LIMIT=NONE]"
+    name="result_message_addendum_touch_delegate_with_hit_rect">A <xliff:g example="TouchDelegate" id="touch_delegate_class">&lt;tt&gt;TouchDelegate&lt;/tt&gt;</xliff:g> with size <xliff:g example="30dp" id="hit_rect_width">&lt;tt&gt;%1$ddp&lt;/tt&gt;</xliff:g> x <xliff:g example="30dp" id="hit_rect_height">&lt;tt&gt;%2$ddp&lt;/tt&gt;</xliff:g> has been detected for this item. Consider increasing the size of its hit <xliff:g example="Rect" id="rect_class">&lt;tt&gt;Rect&lt;/tt&gt;</xliff:g>.</string>
+
   <string description="A message that is appended to a result message of a check describing that the result may be ignored in the case where this view's (UI element) parent (a larger containing UI element) performs the same action of this view when clicked. [CHAR LIMIT=NONE]"
     name="result_message_addendum_clickable_ancestor">A parent container may be handling touch events for this item. If selecting the larger container performs the same action as selecting this item, consider defining this item as not clickable. If a different action is performed, consider increasing the size of this item.</string>
 
   <string description="A message that is appended to a result message of a check describing that this view's (UI element) parent (a containing UI element) is clipping (constraining in size) the size of this item. [CHAR LIMIT=NONE]"
     name="result_message_addendum_clipped_by_ancestor">A parent container may be clipping the size of this item, which has a drawing area of <xliff:g example="30dp" id="nonclipped_width">&lt;tt&gt;%1$ddp&lt;/tt&gt;</xliff:g> x <xliff:g example="30dp" id="nonclipped_height">&lt;tt&gt;%2$ddp&lt;/tt&gt;</xliff:g>. Consider increasing the size of this item\'s clipping ancestor, or allowing a larger parent container to handle actions on behalf of this item.</string>
 
-  <string description="A message that is appended to a result message of a check indicating that the check decided not to evaluate the view (UI element) because it may only be partially visible and is against the scrollable edge of a parent (a larger containing UI element). [CHAR LIMIT=NONE]"
-    name="result_message_addendum_against_scrollable_edge">This item was not evaluated because it may be only partially visible within a scrollable container.</string>
+  <string description="A message that is appended to a result message of a check indicating the view (UI element) may only be partially visible and is against the scrollable edge of a parent (a larger containing UI element). [CHAR LIMIT=NONE]"
+    name="result_message_addendum_against_scrollable_edge">This item may be only partially visible within a scrollable container.</string>
 
   <!-- Result message strings that are used by ClassNameCheck -->
 
-  <string description="The title of a check describing that the class name is not supported by the accessibility service. [CHAR LIMIT=NONE]"
+  <string description="The title of a check describing that the class name is not supported by the accessibility service. [CHAR LIMIT=50]"
       name="check_title_class_name_not_supported">Unsupported item type</string>
 
   <string description="The result message of a check describing that the class name is not supported by the accessibility service. [CHAR LIMIT=NONE]"
@@ -255,7 +300,94 @@
 
   <!-- Result message strings that are used by AnnouncementEventCheck -->
 
-  <string description="The result message of a check describing that an event can be disruptive to the user. [CHAR LIMIT=50]"
+  <string description="The result message of a check describing that an event can be disruptive to the user. [CHAR LIMIT=NONE]"
     name="result_message_disruptive_announcement">A disruptive accessibility announcement has been used.</string>
 
+  <!-- Result message strings that are used by BannedWordCheck -->
+
+  <string description="The title of a check used to detect banned words within the text of a view. [CHAR LIMIT=50]"
+      name="check_view_banned_word">Banned word</string>
+
+  <string description="The result message of a check describing that the word used in this string is inappropriate. [CHAR LIMIT=NONE]"
+      name="result_message_banned_word">This item\'s text may contain an inappropriate word, "<xliff:g example="heck" id="banned_word">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>"</string>
+
+  <string description="The brief result message describing an inappropriate word being used. [CHAR LIMIT=NONE]"
+      name="result_message_brief_banned_word">Consider removing inappropriate words from this item\'s text</string>
+
+  <!-- Message strings used by TextStyleCheck -->
+  <string description="The title of a check on the styling of text. [CHAR LIMIT=50]"
+      name="check_title_text_style">Text Style</string>
+
+  <string description="The full result message if text uses italic style. [CHAR LIMIT=NONE]"
+      name="result_message_styled_text">This item may use <xliff:g example="italic" id="style_info">%1$s</xliff:g> font for a long passage of text. Consider removing the style from the font to improve readability.</string>
+
+  <string description="The brief message describing that using bold typeface is ideal. [CHAR LIMIT=NONE]"
+      name="result_message_brief_styled_text">Consider removing <xliff:g example="italic" id="style_info">%1$s</xliff:g> styling on longer passages of text.</string>
+
+  <string description="Describes italic text styling. [CHAR LIMIT=NONE]"
+      name="italic_text">italic</string>
+
+  <string description="Describes underlined text styling. [CHAR LIMIT=NONE]"
+      name="underline_text">underline</string>
+
+  <string description="Describes text with both italic and underlined styling. [CHAR LIMIT=NONE]"
+      name="italic_underline_text">italic and underline</string>
+
+  <string description="The message if this check was unable to get typeface info for a TextView. [CHAR LIMIT=NONE]"
+      name="result_message_no_typeface_info">This item\'s typeface could not be determined.</string>
+  <!-- Result message strings that are used by LinkPurposeUnclearCheck -->
+
+  <string description="The title of a check on link text. [CHAR LIMIT=50]"
+    name="check_title_link_test">Link text</string>
+
+  <string description="The brief result message of a check describing that link text is not descriptive. [CHAR LIMIT=NONE]"
+    name="result_message_brief_link_text_not_descriptive">Consider using more descriptive text in the link.</string>
+
+  <string description="The result message of a check describing that link text is not descriptive. [CHAR LIMIT=NONE]"
+    name="result_message_link_text_not_descriptive">The link text \"<xliff:g example="This is an arbitrary string." id="link_text">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" may not independently convey the link\'s purpose.</string>
+
+  <!-- Message strings that are used by ReadingScoreCheck -->
+
+  <string description="The title of a check used to determine readability of text based on reading score. [CHAR LIMIT=50]"
+      name="check_title_reading_score">Readability</string>
+
+  <string description="The full result message if text has a low readability score. [CHAR LIMIT=NONE]"
+      name="result_message_low_reading_score">This item\'s text has an approximate readability score of <xliff:g example="32" id="text_reading_score">%1$.0f</xliff:g>, which is lower than the recommended score of <xliff:g example="70" id="target_reading_score">%2$.0f</xliff:g>. Consider using simpler words or sentences to make the text easier to read.</string>
+
+  <string description="The brief result message if text has a low readability score. [CHAR LIMIT=NONE]"
+      name="result_message_brief_low_reading_score">This text may have a low readability score.</string>
+
+  <string description="The result message if text is too short to run a check on. [CHAR LIMIT=NONE]"
+      name="result_message_short_text">This item\'s text is too short to be evaluated.</string>
+
+  <!-- Result message string that are used by AI4DesignTextContrastCheck -->
+
+  <string description="The result messafe of a check describing that an error occured trying to determine the text. [CHAR LIMIT=NONE]"
+      name="result_message_ai4design_text_not_determined">The item\'s text could not be determined.</string>
+
+  <string description="The result message of a check describing that the contrast of the textview was not sufficient. [CHAR LIMIT=NONE]"
+      name="result_message_ai4design_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>.Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+
+  <!-- Result message string that are used by ElementExposedCheck -->
+  <string description="The result message indicating that the user must provide more information to determine if all UI elements within a view hierarchy are exposed properly to accessibility services. [CHAR LIMIT=NONE]"
+      name="result_message_item_exposed_needs_manual_assessment">This screen needs manual inspection to ensure all items are exposed to accessibility services.</string>
+
+  <string description="The result message if user was uncertain if a screen has any UI elements that were not exposed properly to accessibility services. [CHAR LIMIT=NONE]"
+      name="result_message_has_unexposed_items">This screen may have items that are not exposed to accessibility services.</string>
+
+  <string description="The result message if a screen region contains an unexposed element [CHAR LIMIT=NONE]"
+      name="result_message_is_unexposed_item_screen_region">The region with on-screen location <xliff:g example="[0,0][1920,1080]" id="region_bounds">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g> contains at least one item that is not exposed to accessibility services.</string>
+
+  <string description="The title of a check describing that UI elements may be unexposed to accessibility services [CHAR LIMIT=NONE]"
+      name="check_title_item_exposed">Exposed items</string>
+
+  <string description="The brief result message of a check describing that an element is not exposed to accessibility services [CHAR LIMIT=NONE]"
+      name="result_message_brief_is_unexposed_item_screen_region">Consider exposing items in this region to accessibility services.</string>
+
+  <!-- Question message string that are used by ElementExposedQuestionHandler -->
+  <string description="The question message for question of if there are unexposed elements in a view [CHAR LIMIT=NONE]"
+      name="question_message_screen_has_unexposed_items">Does this screen contain important items that are not outlined?</string>
+
+  <string description="The question message for question prompting the identification of screen regions with unexposed elements [CHAR LIMIT=NONE]"
+      name="question_message_identify_unexposed_items">Select regions of the screen with unidentified items.</string>
 </resources>
