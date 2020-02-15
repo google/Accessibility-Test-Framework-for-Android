@@ -15,16 +15,13 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.checks;
 
-import android.support.annotation.Nullable;
-import android.text.style.ClickableSpan;
-import android.text.style.URLSpan;
-import android.widget.TextView;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck.Category;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResult;
-import com.google.android.apps.common.testing.accessibility.framework.Metadata;
+import com.google.android.apps.common.testing.accessibility.framework.Parameters;
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
+import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Span;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Spans;
@@ -36,6 +33,7 @@ import com.google.android.apps.common.testing.accessibility.framework.uielement.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Check to ensure that {@code ClickableSpan} is not being used in a TextView.
@@ -64,7 +62,7 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
    */
   public static final int RESULT_ID_VERSION_NOT_APPLICABLE = 6;
 
-  /** Until Android 8.0 O+ (SDK 26), ClickableSpans work properly with accessibility services. */
+  /** From Android 8.0 O+ (SDK 26), ClickableSpans work properly with accessibility services. */
   private static final int APPLICABLE_UNTIL_ANDROID_SDK_VERSION = 26;
 
   @Override
@@ -81,7 +79,7 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
       @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Metadata metadata) {
+      @Nullable Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     if (hierarchy.getDeviceState().getSdkVersion() >= APPLICABLE_UNTIL_ANDROID_SDK_VERSION) {
       results.add(
@@ -94,14 +92,9 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
       return results;
     }
 
-    List<ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
+    List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
     for (ViewHierarchyElement element : viewsToEval) {
-      Boolean isTextView = element.checkInstanceOf(TextView.class);
-      if (isTextView == null) {
-        results.add(new AccessibilityHierarchyCheckResult(this.getClass(),
-            AccessibilityCheckResultType.NOT_RUN, element, RESULT_ID_NO_DETERMINED_TYPE, null));
-        continue;
-      } else if (isTextView.equals(Boolean.FALSE)) {
+      if (!element.checkInstanceOf(ViewHierarchyElementUtils.TEXT_VIEW_CLASS_NAME)) {
         results.add(new AccessibilityHierarchyCheckResult(this.getClass(),
             AccessibilityCheckResultType.NOT_RUN, element, RESULT_ID_NOT_TEXT_VIEW, null));
         continue;

@@ -14,10 +14,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Check to ensure that a TextView has sufficient contrast between text color and background color
@@ -31,7 +31,7 @@ public class TextContrastViewCheck extends AccessibilityViewHierarchyCheck {
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Metadata metadata) {
-    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
+      View root, @Nullable Parameters parameters) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

@@ -18,26 +18,28 @@ syntax = "proto2";
 
 package com.google.android.apps.common.testing.accessibility.framework.proto;
 
+import "com/google/android/apps/common/testing/accessibility/framework/uielement/AccessibilityHierarchy.proto";
+
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.proto";
 option java_outer_classname = "AccessibilityEvaluationProtos";
-
-import "com/google/android/apps/common/testing/accessibility/framework/uielement/AccessibilityHierarchy.proto";
 
 // Describes a single-hierarchy accessibility evaluation by ATF
 // Next index: 3
 message AccessibilityEvaluation {
-  optional com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProto hierarchy = 1;
+  optional com.google.android.apps.common.testing.accessibility.framework
+      .uielement.proto.AccessibilityHierarchyProto hierarchy = 1;
   repeated AccessibilityHierarchyCheckResultProto results = 2;
 }
 
 // Describes an AccessibilityHierarchyCheckResult
-// Next index: 6
+// Next index: 7
 message AccessibilityHierarchyCheckResultProto {
   optional string source_check_class = 1;
   optional int32 result_id = 2;
   optional ResultTypeProto result_type = 3;
   optional int64 hierarchy_source_id = 4;
   optional MetadataProto metadata = 5;
+  repeated AnswerProto answers = 6;
 }
 
 // Other than UNKNOWN, this should mirror
@@ -59,12 +61,26 @@ message MetadataProto {
   map<string, TypedValueProto> metadata_map = 1;
 }
 
+// Proto describing a list of string.
+// Next index: 2
+message StringListProto {
+  repeated string values = 1;
+}
+
+// Proto describing a list of int.
+// Next index: 2
+message IntListProto {
+  repeated int32 values = 1;
+}
+
 // Proto describing raw metadata information and its associated type
-// Next index: 11
+// Next index: 13
 message TypedValueProto {
-  // Other than UNKNOWN, this should mirror data types known to
-  // Metadata.TypedValue.Type for serialization
-  // Next index: 10
+  // Once a TypeProto is defined here, it must not be removed and its value
+  // must not be changed. Additions are permitted at the end of enum. Data may
+  // be persisted using these values, so incompatible changes may result in
+  // corruption during deserialization.
+  // Next index: 12
   enum TypeProto {
     UNKNOWN = 0;
     BOOLEAN = 1;
@@ -76,6 +92,8 @@ message TypedValueProto {
     LONG = 7;
     DOUBLE = 8;
     STRING = 9;
+    STRING_LIST = 10;
+    INT_LIST = 11;
   }
 
   optional TypeProto type = 1;
@@ -89,5 +107,26 @@ message TypedValueProto {
     int64 long_value = 8;
     double double_value = 9;
     string string_value = 10;
+    StringListProto string_list_value = 11;
+    IntListProto int_list_value = 12;
   }
+}
+
+// Describes a Question
+// Next index: 7
+message QuestionProto {
+  optional int32 question_id = 1;
+  optional string question_type_class = 2;
+  optional string answer_type_class = 3;
+  optional string question_handler_class = 4;
+  optional AccessibilityHierarchyCheckResultProto original_result = 5;
+  optional MetadataProto metadata = 6;
+}
+
+// Describes an Answer
+// Next index: 4
+message AnswerProto {
+  optional string answer_type_class = 1;
+  optional QuestionProto question = 2;
+  optional MetadataProto metadata = 3;
 }

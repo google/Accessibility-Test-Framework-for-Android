@@ -14,9 +14,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import org.checkerframework.checker.nullness.qual.EnsuresNonNullIf;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Used as a local replacement for Android's {@link android.text.TextUtils} */
 public class TextUtils {
@@ -32,24 +31,20 @@ public class TextUtils {
     return (str == null) || (str.length() == 0);
   }
 
-  /**
-   * @see android.text.TextUtils#getTrimmedLength(CharSequence)
-   */
-  public static int getTrimmedLength(@NonNull CharSequence str) {
+  /** See {@link android.text.TextUtils#getTrimmedLength(CharSequence)}. */
+  public static int getTrimmedLength(CharSequence str) {
     return str.toString().trim().length();
   }
 
-  /**
-   * @see android.text.TextUtils#equals(CharSequence, CharSequence)
-   */
-  public static boolean equals(CharSequence s1, CharSequence s2) {
+  /** See {@link android.text.TextUtils#equals(CharSequence, CharSequence)}. */
+  public static boolean equals(@Nullable CharSequence s1, @Nullable CharSequence s2) {
     if (s1 == s2) {
       return true;
     }
 
     if ((s1 != null) && (s2 != null) && (s1.length() == s2.length())) {
       if (s1 instanceof String && s2 instanceof String) {
-        return s1.equals(s2);
+        return ((String) s1).equals((String) s2);
       } else {
         for (int i = 0; i < s1.length(); i++) {
           if (s1.charAt(i) != s2.charAt(i)) {

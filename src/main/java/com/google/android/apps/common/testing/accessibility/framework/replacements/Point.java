@@ -14,14 +14,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Point} */
-public class Point implements Replaceable<android.graphics.Point>, Parcelable {
+public final class Point {
 
   private final int x;
   private final int y;
@@ -29,10 +25,6 @@ public class Point implements Replaceable<android.graphics.Point>, Parcelable {
   public Point(int x, int y) {
     this.x = x;
     this.y = y;
-  }
-
-  public Point(android.graphics.Point point) {
-    this(checkNotNull(point).x, checkNotNull(point).y);
   }
 
   /** @see android.graphics.Point#x */
@@ -43,28 +35,6 @@ public class Point implements Replaceable<android.graphics.Point>, Parcelable {
   /** @see android.graphics.Point#y */
   public final int getY() {
     return y;
-  }
-
-  @Override
-  public android.graphics.Point getAndroidInstance() {
-    return new android.graphics.Point(x, y);
-  }
-
-  @Override
-  public int describeContents() {
-    return 0;
-  }
-
-  @Override
-  public void writeToParcel(Parcel out, int flags) {
-    out.writeInt(x);
-    out.writeInt(y);
-  }
-
-  private static Point readFromParcel(Parcel in) {
-    int x = in.readInt();
-    int y = in.readInt();
-    return new Point(x, y);
   }
 
   @Override
@@ -98,17 +68,4 @@ public class Point implements Replaceable<android.graphics.Point>, Parcelable {
     sb.append(")");
     return sb.toString();
   }
-
-  public static final Parcelable.Creator<Point> CREATOR =
-      new Parcelable.Creator<Point>() {
-        @Override
-        public Point createFromParcel(Parcel in) {
-          return readFromParcel(in);
-        }
-
-        @Override
-        public Point[] newArray(int size) {
-          return new Point[size];
-        }
-      };
 }

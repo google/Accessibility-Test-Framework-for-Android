@@ -17,30 +17,30 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.graphics.Rect;
-import android.os.Build;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.ResultTypeProto;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * The result of an accessibility check. The results are "interesting" in the sense that they
  * indicate some sort of accessibility issue. {@code AccessibilityCheck}s return lists of classes
  * that extend this one. There is no "passing" result; checks that return lists that contain no
- * {@code AccessibilityCheckResultType.ERROR}s have passed.
- * <p>
- * NOTE: Some subtypes of this class retain copies of resources that should be explicitly recycled.
- * Callers should use {@link #recycle()} to dispose of data in this object and release these
- * resources.
+ * {@code AccessibilityCheckResult}s have passed.
+ *
+ * <p>NOTE: Some subtypes of this class retain copies of resources that should be explicitly
+ * recycled. Callers should use {@link #recycle()} to dispose of data in this object and release
+ * these resources.
  */
 public abstract class AccessibilityCheckResult {
   /**
    * Types of results. This must be kept consistent (other than UNKNOWN) with the ResultTypeProto
    * enum in {@code AccessibilityEvaluation.proto}
+   *
+   * <p>CONTRACT: These values must be defined in order of decreasing severity, such that any Type
+   * more severe than another has a lower ordinal value.
    *
    * <p>CONTRACT: Once a value is defined here, it must not be removed and its tag number as defined
    * in the protocol buffer representation cannot change. Data may be persisted using these values,
@@ -98,11 +98,9 @@ public abstract class AccessibilityCheckResult {
     }
   }
 
-  protected Class<? extends AccessibilityCheck> checkClass;
-
-  protected AccessibilityCheckResultType type;
-
-  protected @Nullable CharSequence message;
+  private final Class<? extends AccessibilityCheck> checkClass;
+  private final AccessibilityCheckResultType type;
+  private final @Nullable CharSequence message;
 
   /**
    * @param checkClass The class of the check that generated the error
@@ -134,27 +132,23 @@ public abstract class AccessibilityCheckResult {
   }
 
   /**
-   * @param type The type of the result.
+   * Returns a human-readable message in English explaining the result.
+   *
+   * @deprecated Use {@link #getMessage(Locale)}
    */
-  /* package */ void setType(AccessibilityCheckResultType type) {
-    this.type = type;
-  }
-
-  /**
-   * @return A human-readable message explaining the result.
-   */
+  @Deprecated
   public CharSequence getMessage() {
-    return checkNotNull(message, "No message was provided");
+    return getMessage(Locale.ENGLISH);
   }
 
   /**
-   * @return A human-readable message explaining the result.
+   * Returns a human-readable message explaining the result.
    *
    * @param locale desired locale for the message
    */
-  @SuppressWarnings("unused") // locale is provided for possible future use
+  @SuppressWarnings("unused") // locale may be used in some subclasses
   public CharSequence getMessage(Locale locale) {
-    return getMessage();
+    return checkNotNull(message, "No message was provided");
   }
 
   // For debugging
@@ -164,10 +158,13 @@ public abstract class AccessibilityCheckResult {
   }
 
   /**
-   * An object that describes an {@link AccessibilityCheckResult}. This can be extended to provide
-   * descriptions of the result and their contents in a form that is localized to the environment in
-   * which checks are being run.
+   * @deprecated use top-level AccessibilityCheckResultDescriptor instead.
+   *     <p>An object that describes an {@link AccessibilityCheckResult}. This can be extended to
+   *     provide descriptions of the result and their contents in a form that is localized to the
+   *     environment in which checks are being run.
    */
+
+  @Deprecated
   public static class AccessibilityCheckResultDescriptor {
 
     /**
@@ -181,11 +178,8 @@ public abstract class AccessibilityCheckResult {
       if (result instanceof AccessibilityViewCheckResult) {
         message.append(describeView(((AccessibilityViewCheckResult) result).getView()));
         message.append(": ");
-      } else if (result instanceof AccessibilityInfoCheckResult) {
-        message.append(describeInfo(((AccessibilityInfoCheckResult) result).getInfo()));
-        message.append(": ");
       }
-      message.append(result.getMessage());
+      message.append(result.getMessage(Locale.ENGLISH));
       Class<? extends AccessibilityCheck> checkClass = result.getSourceCheckClass();
       if (checkClass != null) {
         message.append(" Reported by ");
@@ -203,7 +197,10 @@ public abstract class AccessibilityCheckResult {
      */
     public String describeView(@Nullable View view) {
       StringBuilder message = new StringBuilder();
-      if ((view != null) && (view.getId() != View.NO_ID) && (view.getResources() != null)) {
+      if ((view != null
+          && view.getId() != View.NO_ID
+          && view.getResources() != null
+          && !ViewAccessibilityUtils.isViewIdGenerated(view.getId()))) {
         message.append("View ");
         try {
           message.append(view.getResources().getResourceEntryName(view.getId()));
@@ -213,31 +210,6 @@ public abstract class AccessibilityCheckResult {
         }
       } else {
         message.append("View with no valid resource name");
-      }
-      return message.toString();
-    }
-
-    /**
-     * Returns a String description of the given {@link AccessibilityNodeInfo}. The default is to
-     * return the view's resource entry name.
-     *
-     * @param info the {@link AccessibilityNodeInfo} to describe
-     * @return a String description of the given {@link AccessibilityNodeInfo}
-     */
-    public String describeInfo(@Nullable AccessibilityNodeInfo info) {
-      if (info == null) {
-        return "<null>";
-      }
-      StringBuilder message = new StringBuilder();
-      message.append("View ");
-      if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-          && (info != null) && (info.getViewIdResourceName() != null)) {
-        message.append(info.getViewIdResourceName());
-      } else {
-        message.append("with bounds: ");
-        Rect bounds = new Rect();
-        info.getBoundsInScreen(bounds);
-        message.append(bounds.toShortString());
       }
       return message.toString();
     }

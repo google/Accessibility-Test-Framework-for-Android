@@ -2,15 +2,17 @@ package com.google.android.apps.common.testing.accessibility.framework;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.support.annotation.Nullable;
-import android.text.Html;
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.AccessibilityHierarchyCheckResultProto;
+import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.AnswerProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.common.annotations.Beta;
+import com.google.common.collect.ImmutableList;
 import java.util.Locale;
 import java.util.Objects;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.dataflow.qual.Pure;
+import org.jsoup.Jsoup;
 
 /**
  * Result generated when an accessibility check runs on a {@code ViewHierarchyElement}.
@@ -20,13 +22,39 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   private final int resultId;
   private final @Nullable ViewHierarchyElement element;
   private final @Nullable ResultMetadata metadata;
+  private final ImmutableList<Answer> answers;
+
+  /**
+   * Constructor when there are {@link Answer} elements associated with this result
+   *
+   * @param checkClass The class of the check reporting the error
+   * @param type The type of result
+   * @param element The element that the result pertains to
+   * @param resultId an integer unique to all results emitted from a single class
+   * @param metadata extra data about this result
+   * @param answers the answers about this result
+   */
+  @Beta
+  public AccessibilityHierarchyCheckResult(
+      Class<? extends AccessibilityHierarchyCheck> checkClass,
+      AccessibilityCheckResultType type,
+      @Nullable ViewHierarchyElement element,
+      int resultId,
+      @Nullable ResultMetadata metadata,
+      ImmutableList<Answer> answers) {
+    super(checkNotNull(checkClass), checkNotNull(type), null);
+    this.element = element;
+    this.resultId = resultId;
+    this.metadata = metadata;
+    this.answers = answers;
+  }
 
   /**
    * @param checkClass The class of the check reporting the error
    * @param type The type of result
    * @param element The element that the result pertains to
    * @param resultId an integer unique to all results emitted from a single class
-   * @param metadata a {@link Metadata} of extra data about this result
+   * @param metadata extra data about this result
    */
   public AccessibilityHierarchyCheckResult(
       Class<? extends AccessibilityHierarchyCheck> checkClass,
@@ -34,10 +62,20 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
       @Nullable ViewHierarchyElement element,
       int resultId,
       @Nullable ResultMetadata metadata) {
-    super(checkNotNull(checkClass), checkNotNull(type), null);
-    this.element = element;
-    this.resultId = resultId;
-    this.metadata = metadata;
+    this(checkClass, type, element, resultId, metadata, ImmutableList.of());
+  }
+
+  /**
+   * Returns a copy of this result, but with the AccessibilityCheckResultType changed to SUPPRESSED.
+   */
+  public AccessibilityHierarchyCheckResult getSuppressedResultCopy() {
+    return new AccessibilityHierarchyCheckResult(
+        getSourceCheckClass().asSubclass(AccessibilityHierarchyCheck.class),
+        AccessibilityCheckResultType.SUPPRESSED,
+        getElement(),
+        resultId,
+        metadata,
+        answers);
   }
 
   /**
@@ -47,27 +85,28 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    * @param associatedHierarchy The {@link AccessibilityHierarchy} that was evaluated to produce
    *     this result
    */
-  @SuppressWarnings("unchecked") // all Hierarchy result protos have Hierarchy check classes
   public static AccessibilityHierarchyCheckResult fromProto(
       AccessibilityHierarchyCheckResultProto proto, AccessibilityHierarchy associatedHierarchy) {
-    Class<? extends AccessibilityHierarchyCheck> clazz;
-    try {
-      clazz =
-          (Class<? extends AccessibilityHierarchyCheck>) Class.forName(proto.getSourceCheckClass());
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(
-          String.format("Failed to resolve check class: %1$s", proto.getSourceCheckClass()));
-    }
+    AccessibilityHierarchyCheck check =
+        AccessibilityCheckPreset.getHierarchyCheckForClassName(proto.getSourceCheckClass());
+    checkNotNull(check, "Failed to resolve check class: %s", proto.getSourceCheckClass());
     int resultId = proto.getResultId();
     AccessibilityCheckResultType type =
         AccessibilityCheckResultType.fromProto(proto.getResultType());
-    Metadata metadata = (proto.hasMetadata()) ? Metadata.fromProto(proto.getMetadata()) : null;
+    HashMapResultMetadata metadata =
+        proto.hasMetadata() ? HashMapResultMetadata.fromProto(proto.getMetadata()) : null;
     ViewHierarchyElement element =
         proto.hasHierarchySourceId()
             ? associatedHierarchy.getViewById(proto.getHierarchySourceId())
             : null;
+    ImmutableList.Builder<Answer> answersBuilder = ImmutableList.builder();
 
-    return new AccessibilityHierarchyCheckResult(clazz, type, element, resultId, metadata);
+    for (AnswerProto answer : proto.getAnswersList()) {
+      answersBuilder.add(Answer.fromProto(answer, associatedHierarchy));
+    }
+
+    return new AccessibilityHierarchyCheckResult(
+        check.getClass(), type, element, resultId, metadata, answersBuilder.build());
   }
 
   /**
@@ -76,13 +115,8 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    *
    * @param locale desired locale for the message
    */
-  @SuppressWarnings("unchecked") // all Hierarchy results have Hierarchy check classes
   public String getRawTitleMessage(Locale locale) {
-    AccessibilityHierarchyCheck check =
-        AccessibilityCheckPreset.getHierarchyCheckForClass(
-            (Class<? extends AccessibilityHierarchyCheck>) checkClass);
-    checkNotNull(check, "Failed to resolve check class.");
-    return check.getTitleMessage(locale);
+    return getCheck().getTitleMessage(locale);
   }
 
   /**
@@ -92,7 +126,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    * @param locale desired locale for the message
    */
   public CharSequence getTitleMessage(Locale locale) {
-    return Html.fromHtml(getRawTitleMessage(locale));
+    return Jsoup.parse(getRawTitleMessage(locale)).text();
   }
 
   /**
@@ -101,23 +135,13 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    *
    * @param locale desired locale for the message
    */
-  @SuppressWarnings("unchecked") // all Hierarchy results have Hierarchy check classes
   public String getRawMessage(Locale locale) {
-    AccessibilityHierarchyCheck check =
-        AccessibilityCheckPreset.getHierarchyCheckForClass(
-            (Class<? extends AccessibilityHierarchyCheck>) checkClass);
-    checkNotNull(check, "Failed to resolve check class.");
-    return check.getMessageForResult(locale, this);
-  }
-
-  @Override
-  public CharSequence getMessage() {
-    return getMessage(Locale.getDefault());
+    return getCheck().getMessageForResult(locale, this);
   }
 
   @Override
   public CharSequence getMessage(Locale locale) {
-    return Html.fromHtml(getRawMessage(locale));
+    return Jsoup.parse(getRawMessage(locale)).text();
   }
 
   /**
@@ -126,13 +150,8 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    *
    * @param locale desired locale for the message
    */
-  @SuppressWarnings("unchecked") // all Hierarchy results have Hierarchy check classes
   public String getRawShortMessage(Locale locale) {
-    AccessibilityHierarchyCheck check =
-        AccessibilityCheckPreset.getHierarchyCheckForClass(
-            (Class<? extends AccessibilityHierarchyCheck>) checkClass);
-    checkNotNull(check, "Failed to resolve check class.");
-    return check.getShortMessageForResult(locale, this);
+    return getCheck().getShortMessageForResult(locale, this);
   }
 
   /**
@@ -142,7 +161,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    * @param locale desired locale for the message
    */
   public CharSequence getShortMessage(Locale locale) {
-    return Html.fromHtml(getRawShortMessage(locale));
+    return Jsoup.parse(getRawShortMessage(locale)).text();
   }
 
   /**
@@ -156,13 +175,23 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   }
 
   /**
+   * Returns the list of {@link Answer} to questions asked and answered for this result.
+   *
+   * @return the list of answers to asked questions
+   */
+  @Beta
+  public ImmutableList<Answer> getAnswers() {
+    return answers;
+  }
+
+  /**
    * Retrieve the metadata stored in this result. This metadata is data computed during check
    * execution and is used to describe the specifics of a result or provide additional details about
    * a particular finding. The metadata keys for a given {@link AccessibilityHierarchyCheck} are
    * defined as constants in each {@code AccessibilityHierarchyCheck} class, and are unique within
    * that class.
    *
-   * @return a {@link Metadata} for this result, or {@code null} if none was provided
+   * @return a metadata for this result, or {@code null} if none was provided
    */
   @Pure
   public @Nullable ResultMetadata getMetadata() {
@@ -180,6 +209,15 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
     return element;
   }
 
+  /**
+   * Gets a secondary priority for the result.
+   *
+   * @see AccessibilityHierarchyCheck#getSecondaryPriority
+   */
+  public @Nullable Double getSecondaryPriority() {
+    return getCheck().getSecondaryPriority(this);
+  }
+
   public AccessibilityHierarchyCheckResultProto toProto() {
     AccessibilityHierarchyCheckResultProto.Builder builder =
         AccessibilityHierarchyCheckResultProto.newBuilder();
@@ -190,11 +228,14 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
     if (getType() != null) {
       builder.setResultType(getType().toProto());
     }
-    if (getMetadata() instanceof Metadata) {
-      builder.setMetadata(((Metadata) getMetadata()).toProto());
+    if (getMetadata() instanceof HashMapResultMetadata) {
+      builder.setMetadata(((HashMapResultMetadata) getMetadata()).toProto());
     }
     if (getElement() != null) {
       builder.setHierarchySourceId(getElement().getCondensedUniqueId());
+    }
+    for (Answer answer : getAnswers()) {
+      builder.addAnswers(answer.toProto());
     }
 
     return builder.build();
@@ -205,7 +246,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
     if (this == o) {
       return true;
     }
-    if ((o == null) || (getClass() != o.getClass())) {
+    if (!(o instanceof AccessibilityHierarchyCheckResult)) {
       return false;
     }
 
@@ -229,13 +270,36 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
     } else if (thatElement != null) {
       return false;
     }
-
-    return Objects.equals(getMetadata(), that.getMetadata());
+    if (!Objects.equals(getMetadata(), that.getMetadata())) {
+      return false;
+    }
+    return getAnswers().equals(that.getAnswers());
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(
-        getType(), getResultId(), getSourceCheckClass(), getElement(), getMetadata());
+        getType(), getResultId(), getSourceCheckClass(), getElement(), getMetadata(), getAnswers());
+  }
+
+  // For debugging
+  @Override
+  public String toString() {
+    return String.format(
+        "AccessibilityHierarchyCheckResult %s %s %s %s %s num_answers:%d",
+        getType(),
+        getSourceCheckClass().getSimpleName(),
+        getResultId(),
+        getElement(),
+        getMetadata(),
+        getAnswers().size());
+  }
+
+  @SuppressWarnings("unchecked") // all Hierarchy results have Hierarchy check classes
+  private AccessibilityHierarchyCheck getCheck() {
+    AccessibilityHierarchyCheck check =
+        AccessibilityCheckPreset.getHierarchyCheckForClass(
+            (Class<? extends AccessibilityHierarchyCheck>) getSourceCheckClass());
+    return checkNotNull(check, "Failed to resolve check class: %s", getSourceCheckClass());
   }
 }

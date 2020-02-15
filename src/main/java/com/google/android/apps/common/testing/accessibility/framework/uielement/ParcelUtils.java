@@ -1,7 +1,15 @@
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import android.os.Parcel;
-import android.support.annotation.Nullable;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.Span;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.Spans;
+import java.util.ArrayList;
+import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Utility class for writing to and reading from Parcels
@@ -10,6 +18,12 @@ final class ParcelUtils {
 
   private static final int ABSENT = 0;
   private static final int PRESENT = 1;
+
+  private static final int SPAN_TYPE_UNKNOWN = 0;
+  private static final int SPAN_TYPE_CLICKABLE = 1;
+  private static final int SPAN_TYPE_URL = 2;
+  private static final int SPAN_TYPE_STYLE = 3;
+  private static final int SPAN_TYPE_UNDERLINE = 4;
 
   private ParcelUtils() {}
 
@@ -184,5 +198,83 @@ final class ParcelUtils {
     } else {
       throw new IllegalStateException("Parcel contained unexpected Boolean byte.");
     }
+  }
+
+  public static void writeSpannableStringToParcel(SpannableString spannableString, Parcel out) {
+    List<Span> spans = spannableString.getSpans();
+    out.writeString(spannableString.toString());
+    out.writeInt(spans.size());
+    for (Span span : spans) {
+      out.writeString(span.getSpanClassName());
+      out.writeInt(span.getStart());
+      out.writeInt(span.getEnd());
+      out.writeInt(span.getFlags());
+
+      if (span instanceof Spans.URLSpan) {
+        out.writeInt(SPAN_TYPE_URL);
+        out.writeString(((Spans.URLSpan) span).getUrl());
+      } else if (span instanceof Spans.ClickableSpan) {
+        out.writeInt(SPAN_TYPE_CLICKABLE);
+      } else if (span instanceof Spans.StyleSpan) {
+        out.writeInt(SPAN_TYPE_STYLE);
+        out.writeInt(((Spans.StyleSpan) span).getStyle());
+      } else if (span instanceof Spans.UnderlineSpan) {
+        out.writeInt(SPAN_TYPE_UNDERLINE);
+      } else {
+        out.writeInt(SPAN_TYPE_UNKNOWN);
+      }
+    }
+  }
+
+  public static SpannableString readSpannableStringFromParcel(Parcel in) {
+    String rawString = checkNotNull(in.readString());
+    int spanSize = in.readInt();
+    List<Span> spans = new ArrayList<>(spanSize);
+    for (int i = 0; i < spanSize; ++i) {
+      String spanClassName = checkNotNull(in.readString());
+      int start = in.readInt();
+      int end = in.readInt();
+      int flags = in.readInt();
+      int spanType = in.readInt();
+      switch (spanType) {
+        case SPAN_TYPE_UNKNOWN:
+          spans.add(new Span(spanClassName, start, end, flags));
+          break;
+        case SPAN_TYPE_CLICKABLE:
+          spans.add(new Spans.ClickableSpan(spanClassName, start, end, flags));
+          break;
+        case SPAN_TYPE_URL:
+          spans.add(new Spans.URLSpan(spanClassName, start, end, flags, in.readString()));
+          break;
+        case SPAN_TYPE_STYLE:
+          spans.add(new Spans.StyleSpan(spanClassName, start, end, flags, in.readInt()));
+          break;
+        case SPAN_TYPE_UNDERLINE:
+          spans.add(new Spans.UnderlineSpan(spanClassName, start, end, flags));
+          break;
+        default:
+          break;
+      }
+    }
+    return new SpannableString(rawString, spans);
+  }
+
+  public static void writeRectToParcel(Rect rect, Parcel out) {
+    out.writeInt(rect.getLeft());
+    out.writeInt(rect.getTop());
+    out.writeInt(rect.getRight());
+    out.writeInt(rect.getBottom());
+  }
+
+  public static Rect readRectFromParcel(Parcel in) {
+    return new Rect(
+        /** left = */
+        in.readInt(),
+        /** top = */
+        in.readInt(),
+        /** right = */
+        in.readInt(),
+        /** bottom = */
+        in.readInt());
   }
 }

@@ -7,10 +7,7 @@ contentDescription. Other rules require human judgment, such as whether or not
 a contentDescription makes sense to all users.
 
 For more information about Mobile Accessibility, see:
-https://www.w3.org/WAI/mobile/
-
-For more information about accessibility testing for Android applications, see:
-https://developer.android.com/training/accessibility/testing.html
+http://www.w3.org/WAI/mobile/
 
 This library collects various accessibility-related checks on View objects as
 well as AccessibilityNodeInfo objects (which the Android framework derives from
@@ -30,7 +27,7 @@ hierarchy rooted at that view and throws an exception if any errors are found:
 Set<AccessibilityHierarchyCheck> checks =
     AccessibilityCheckPreset.getAccessibilityHierarchyChecksForPreset(
         AccessibilityCheckPreset.LATEST);
-AccessibilityHierarchy hierarchy = AccessibilityHierarchy.newBuilder(node, context).build();
+AccessibilityHierarchyAndroid hierarchy = AccessibilityHierarchyAndroid.newBuilder(view).build();
 List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 for (AccessibilityHierarchyCheck check : checks) {
   results.addAll(check.runCheckOnHierarchy(hierarchy));

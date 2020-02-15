@@ -3,20 +3,22 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.Boolean.TRUE;
 
-import android.support.annotation.Nullable;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck.Category;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResult;
-import com.google.android.apps.common.testing.accessibility.framework.Metadata;
+import com.google.android.apps.common.testing.accessibility.framework.HashMapResultMetadata;
+import com.google.android.apps.common.testing.accessibility.framework.Parameters;
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Checks that the {@link ViewHierarchyElement#getAccessibilityClassName()} is supported by the
@@ -44,17 +46,16 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
    */
   public static final String KEY_ACCESSIBILITY_CLASS_NAME = "KEY_ACCESSIBILITY_CLASS_NAME";
 
-  private static final List<String> VALID_UI_PACKAGE_NAMES = new ArrayList<>(11);
-
-  static {
-    VALID_UI_PACKAGE_NAMES.add("android.app");
-    VALID_UI_PACKAGE_NAMES.add("android.appwidget");
-    VALID_UI_PACKAGE_NAMES.add("android.inputmethodservice");
-    VALID_UI_PACKAGE_NAMES.add("android.support");
-    VALID_UI_PACKAGE_NAMES.add("android.view");
-    VALID_UI_PACKAGE_NAMES.add("android.webkit");
-    VALID_UI_PACKAGE_NAMES.add("android.widget");
-  }
+  private static final ImmutableSet<String> VALID_UI_PACKAGE_NAME_PREFIXES =
+      ImmutableSet.of(
+          "android.app",
+          "android.appwidget",
+          "android.inputmethodservice",
+          "android.support",
+          "android.view",
+          "android.webkit",
+          "android.widget",
+          "androidx");
 
   @Override
   protected @Nullable String getHelpTopic() {
@@ -70,10 +71,10 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
       @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Metadata metadata) {
+      @Nullable Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
-    List<ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
+    List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
     for (ViewHierarchyElement view : viewsToEval) {
       if (!view.isImportantForAccessibility()) {
         results.add(
@@ -86,7 +87,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
         continue;
       }
 
-      if (!(TRUE.equals(view.isVisibleToUser()))) {
+      if (!TRUE.equals(view.isVisibleToUser())) {
         results.add(
             new AccessibilityHierarchyCheckResult(
                 this.getClass(),
@@ -121,7 +122,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
       }
 
       boolean isValidUiClass = false;
-      for (String packageName : VALID_UI_PACKAGE_NAMES) {
+      for (String packageName : VALID_UI_PACKAGE_NAME_PREFIXES) {
         if (className.toString().startsWith(packageName)) {
           isValidUiClass = true;
           break;
@@ -129,7 +130,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
       }
 
       if (!isValidUiClass) {
-        Metadata resultMetadata = new Metadata();
+        ResultMetadata resultMetadata = new HashMapResultMetadata();
         resultMetadata.putString(KEY_ACCESSIBILITY_CLASS_NAME, className.toString());
         results.add(
             new AccessibilityHierarchyCheckResult(

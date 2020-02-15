@@ -14,10 +14,10 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Check to ensure that a view has a touch target that is at least 48x48dp.
@@ -31,7 +31,7 @@ public class TouchTargetSizeViewCheck extends AccessibilityViewHierarchyCheck {
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Metadata metadata) {
-    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
+      View root, @Nullable Parameters parameters) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

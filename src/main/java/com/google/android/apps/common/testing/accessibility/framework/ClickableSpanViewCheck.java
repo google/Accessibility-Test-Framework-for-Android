@@ -16,11 +16,11 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.ClickableSpanCheck;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Check to ensure that {@code ClickableSpan} is not being used in a TextView.
@@ -41,7 +41,7 @@ public class ClickableSpanViewCheck extends AccessibilityViewHierarchyCheck {
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Metadata metadata) {
-    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, metadata);
+      View root, @Nullable Parameters parameters) {
+    return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

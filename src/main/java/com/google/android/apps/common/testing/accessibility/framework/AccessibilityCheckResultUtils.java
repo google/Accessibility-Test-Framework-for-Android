@@ -16,10 +16,19 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
-import android.support.annotation.Nullable;
+import static org.hamcrest.Matchers.equalTo;
+
 import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
+import com.google.android.apps.common.testing.accessibility.framework.checks.ClickableSpanCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateClickableBoundsCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateSpeakableTextCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.EditableContentDescCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.RedundantDescriptionCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;
+import com.google.common.collect.ImmutableBiMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -32,6 +41,23 @@ import org.hamcrest.TypeSafeMatcher;
  * Utility class for dealing with {@code AccessibilityCheckResult}s
  */
 public final class AccessibilityCheckResultUtils {
+
+  /**
+   * Mapping from deprecated AccessibilityViewHierarchyCheck to the AccessibilityHierarchyCheck to
+   * which it delegates.
+   */
+  @SuppressWarnings("deprecation")
+  private static final ImmutableBiMap<?, ?> VIEW_CHECK_ALIASES =
+      ImmutableBiMap.builder()
+          .put(ClickableSpanViewCheck.class, ClickableSpanCheck.class)
+          .put(DuplicateClickableBoundsViewCheck.class, DuplicateClickableBoundsCheck.class)
+          .put(DuplicateSpeakableTextViewHierarchyCheck.class, DuplicateSpeakableTextCheck.class)
+          .put(EditableContentDescViewCheck.class, EditableContentDescCheck.class)
+          .put(RedundantContentDescViewCheck.class, RedundantDescriptionCheck.class)
+          .put(SpeakableTextPresentViewCheck.class, SpeakableTextPresentCheck.class)
+          .put(TextContrastViewCheck.class, TextContrastCheck.class)
+          .put(TouchTargetSizeViewCheck.class, TouchTargetSizeCheck.class)
+          .build();
 
   private AccessibilityCheckResultUtils() {
   }
@@ -50,13 +76,8 @@ public final class AccessibilityCheckResultUtils {
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForCheck(
       Iterable<T> results, Class<? extends AccessibilityCheck> checkClass) {
-    List<T> resultsForCheck = new ArrayList<T>();
-    for (T result : results) {
-      if (checkClass.equals(result.getSourceCheckClass())) {
-        resultsForCheck.add(result);
-      }
-    }
-    return resultsForCheck;
+    return AccessibilityCheckResultBaseUtils.getResultsForCheck(
+        results, checkClass, VIEW_CHECK_ALIASES);
   }
 
   /**
@@ -70,13 +91,7 @@ public final class AccessibilityCheckResultUtils {
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForType(
       Iterable<T> results, AccessibilityCheckResultType type) {
-    List<T> resultsForType = new ArrayList<T>();
-    for (T result : results) {
-      if (result.getType() == type) {
-        resultsForType.add(result);
-      }
-    }
-    return resultsForType;
+    return AccessibilityCheckResultBaseUtils.getResultsForType(results, type);
   }
 
   /**
@@ -91,13 +106,7 @@ public final class AccessibilityCheckResultUtils {
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForTypes(
       Iterable<T> results, Set<AccessibilityCheckResultType> types) {
-    List<T> resultsForTypes = new ArrayList<T>();
-    for (T result : results) {
-      if (types.contains(result.getType())) {
-        resultsForTypes.add(result);
-      }
-    }
-    return resultsForTypes;
+    return AccessibilityCheckResultBaseUtils.getResultsForTypes(results, types);
   }
 
   /**
@@ -120,26 +129,6 @@ public final class AccessibilityCheckResultUtils {
   }
 
   /**
-   * Takes a list of {@code AccessibilityCheckResult}s and returns a list with only results
-   * pertaining to the given {@code AccessibilityNodeInfo}.
-   *
-   * @param results a list of {@code AccessibilityCheckResult}s
-   * @param info the {@code AccessibilityNodeInfo} to get results for
-   * @return a list of {@code AccessibilityCheckResult}s pertaining to the given
-   *         {@code AccessibilityNodeInfo}.
-   */
-  public static List<AccessibilityInfoCheckResult> getResultsForInfo(
-      Iterable<AccessibilityInfoCheckResult> results, AccessibilityNodeInfo info) {
-    List<AccessibilityInfoCheckResult> resultsForInfo = new ArrayList<>();
-    for (AccessibilityInfoCheckResult result : results) {
-      if (info.equals(result.getInfo())) {
-        resultsForInfo.add(result);
-      }
-    }
-    return resultsForInfo;
-  }
-
-  /**
    * Returns a {@link Matcher} for an {@link AccessibilityCheckResult} whose result type matches the
    * given matcher for {@link AccessibilityCheckResultType}.
    *
@@ -148,12 +137,18 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityCheckResult> matchesTypes(
       final Matcher<? super AccessibilityCheckResultType> typeMatcher) {
-    return new TypeSafeMemberMatcher<AccessibilityCheckResult>("result type", typeMatcher) {
-      @Override
-      public boolean matchesSafely(AccessibilityCheckResult result) {
-        return typeMatcher.matches(result.getType());
-      }
-    };
+    return AccessibilityCheckResultBaseUtils.matchesTypes(typeMatcher);
+  }
+
+  /**
+   * Returns a {@link Matcher} for an {@link AccessibilityCheckResult} whose source check class is
+   * equal to the given check class.
+   *
+   * <p>This is syntactic sugar for {@code matchesChecks(equalTo(checkClass))}.
+   */
+  public static Matcher<AccessibilityCheckResult> matchesCheck(
+      Class<? extends AccessibilityCheck> checkClass) {
+    return matchesChecks(equalTo(checkClass));
   }
 
   /**
@@ -169,12 +164,7 @@ public final class AccessibilityCheckResultUtils {
    * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
    */
   public static Matcher<AccessibilityCheckResult> matchesChecks(final Matcher<?> classMatcher) {
-    return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check", classMatcher) {
-      @Override
-      public boolean matchesSafely(AccessibilityCheckResult result) {
-        return classMatcher.matches(result.getSourceCheckClass());
-      }
-    };
+    return AccessibilityCheckResultBaseUtils.matchesChecks(classMatcher, VIEW_CHECK_ALIASES);
   }
 
   /**
@@ -186,13 +176,8 @@ public final class AccessibilityCheckResultUtils {
    */
   public static Matcher<AccessibilityCheckResult> matchesCheckNames(
       final Matcher<? super String> classNameMatcher) {
-    return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check name",
-        classNameMatcher) {
-      @Override
-      public boolean matchesSafely(AccessibilityCheckResult result) {
-        return classNameMatcher.matches(result.getSourceCheckClass().getSimpleName());
-      }
-    };
+    return AccessibilityCheckResultBaseUtils.matchesCheckNames(
+        classNameMatcher, VIEW_CHECK_ALIASES);
   }
 
   /**
@@ -211,49 +196,6 @@ public final class AccessibilityCheckResultUtils {
         return (view != null) && viewMatcher.matches(view);
       }
     };
-  }
-
-  /**
-   * Returns a {@link Matcher} for an {@link AccessibilityNodeInfo} whose
-   * {@link AccessibilityNodeInfo} matches the given matcher.
-   *
-   * @param infoMatcher a {@code Matcher} for a {@code AccessibilityNodeInfo}
-   * @return a {@code Matcher} for an {@code AccessibilityCheckResult}
-   */
-  public static Matcher<AccessibilityInfoCheckResult> matchesInfos(
-      final Matcher<? super AccessibilityNodeInfo> infoMatcher) {
-    return new TypeSafeMemberMatcher<AccessibilityInfoCheckResult>("AccessibilityNodeInfo",
-        infoMatcher) {
-      @Override
-      public boolean matchesSafely(AccessibilityInfoCheckResult result) {
-        AccessibilityNodeInfo info = result.getInfo();
-        return (info != null) && infoMatcher.matches(info);
-      }
-    };
-  }
-
-  /**
-   * Change the result type to {@code SUPPRESSED} for all results in the given list that match the
-   * given matcher.
-   *
-   * @param results a list of {@code AccessibilityCheckResult}s to be matched against
-   * @param matcher a Matcher that determines whether a given {@code AccessibilityCheckResult}
-   *        should be suppressed
-   */
-  public static <T extends AccessibilityCheckResult> void suppressMatchingResults(
-      List<T> results, @Nullable Matcher<? super T> matcher) {
-    if (matcher != null) {
-      modifyResultType(results, matcher, AccessibilityCheckResultType.SUPPRESSED);
-    }
-  }
-
-  private static <T extends AccessibilityCheckResult> void modifyResultType(
-      List<T> results, Matcher<? super T> matcher, AccessibilityCheckResultType newType) {
-    for (T result : results) {
-      if (matcher.matches(result)) {
-        result.setType(newType);
-      }
-    }
   }
 
   private abstract static class TypeSafeMemberMatcher<T> extends TypeSafeMatcher<T> {

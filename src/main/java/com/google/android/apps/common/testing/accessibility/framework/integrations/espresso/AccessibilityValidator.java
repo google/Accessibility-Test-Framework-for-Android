@@ -13,21 +13,28 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.integrations.espresso;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPreset;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPresetAndroid;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultUtils;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewHierarchyCheck;
-import com.google.android.apps.common.testing.accessibility.framework.integrations.AccessibilityViewCheckException;
+import com.google.android.apps.common.testing.accessibility.framework.Parameters;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hamcrest.Matcher;
 
 /**
@@ -40,27 +47,41 @@ public final class AccessibilityValidator {
   private static final String TAG = "AccessibilityValidator";
   private AccessibilityCheckPreset preset = AccessibilityCheckPreset.LATEST;
   private boolean runChecksFromRootView = false;
-  private boolean throwExceptionForErrors = true;
+
+  @Nullable
+  private AccessibilityCheckResultType throwExceptionFor = AccessibilityCheckResultType.ERROR;
+
   private AccessibilityCheckResultDescriptor resultDescriptor =
       new AccessibilityCheckResultDescriptor();
-  private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
+  @Nullable private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
   private final List<AccessibilityCheckListener> checkListeners = new ArrayList<>();
 
   public AccessibilityValidator() {
   }
 
   /**
-   * Runs accessibility checks and returns the list of results.
+   * Runs accessibility checks.
    *
    * @param view the {@link View} to check
-   * @return the resulting list of {@link AccessibilityViewCheckResult}
+   */
+  public final void check(View view) {
+    checkNotNull(view);
+    checkAndReturnResults(view);
+  }
+
+  /**
+   * Runs accessibility checks and returns the list of results. If the result is not needed, call
+   * {@link #check(View)} instead.
+   *
+   * @param view the {@link View} to check
+   * @return an immutable list of the resulting {@link AccessibilityViewCheckResult}s
    */
   public final List<AccessibilityViewCheckResult> checkAndReturnResults(View view) {
     if (view != null) {
       View viewToCheck = runChecksFromRootView ? view.getRootView() : view;
       return runAccessibilityChecks(viewToCheck);
     }
-    return Collections.<AccessibilityViewCheckResult>emptyList();
+    return ImmutableList.<AccessibilityViewCheckResult>of();
   }
 
   /**
@@ -85,28 +106,61 @@ public final class AccessibilityValidator {
     return this;
   }
 
+
   /**
-   * Suppresses all results that match the given matcher. Suppressed results will not be included
-   * in any logs or cause any {@code Exception} to be thrown
+   * Suppresses all results that match the given matcher. Suppressed results will not be included in
+   * any logs or cause any {@code Exception} to be thrown
    *
-   * @param resultMatcher a matcher to match a {@link AccessibilityViewCheckResult}
+   * @param resultMatcher a matcher that specifies result to be suppressed. If {@code null}, then
+   *     any previously set matcher will be removed and the default behavior will be restored.
    * @return this
    */
   public AccessibilityValidator setSuppressingResultMatcher(
-      Matcher<? super AccessibilityViewCheckResult> resultMatcher) {
+      @Nullable Matcher<? super AccessibilityViewCheckResult> resultMatcher) {
       suppressingMatcher = resultMatcher;
     return this;
   }
 
   /**
    * @param throwExceptionForErrors {@code true} to throw an {@code Exception} when there is at
-   *        least one error result, {@code false} to just log the error results to logcat.
-   *        Default: {@code true}
+   *     least one error result, {@code false} to just log the error results to logcat. Default:
+   *     {@code true}
+   * @return this
+   * @deprecated Use {@link #setThrowExceptionFor}
+   */
+  @Deprecated
+  public AccessibilityValidator setThrowExceptionForErrors(boolean throwExceptionForErrors) {
+    return setThrowExceptionFor(
+        throwExceptionForErrors ? AccessibilityCheckResultType.ERROR : null);
+  }
+
+  /**
+   * Specifies the types of results that should produce a thrown exception.
+   *
+   * <ul>
+   *   If the value is:
+   *   <li>{@link AccessibilityCheckResultType#ERROR}, an exception will be thrown for any ERROR
+   *   <li>{@link AccessibilityCheckResultType#WARNING}, an exception will be thrown for any ERROR
+   *       or WARNING
+   *   <li>{@link AccessibilityCheckResultType#INFO}, an exception will be thrown for any ERROR,
+   *       WARNING or INFO
+   *   <li>{@code null}, no exception will be thrown
+   * </ul>
+   *
+   * The default is {@code ERROR}.
+   *
    * @return this
    */
-  public AccessibilityValidator setThrowExceptionForErrors(
-      boolean throwExceptionForErrors) {
-    this.throwExceptionForErrors = throwExceptionForErrors;
+  public AccessibilityValidator setThrowExceptionFor(
+      @Nullable AccessibilityCheckResultType throwFor) {
+    checkArgument(
+        (throwFor == AccessibilityCheckResultType.ERROR)
+            || (throwFor == AccessibilityCheckResultType.WARNING)
+            || (throwFor == AccessibilityCheckResultType.INFO)
+            || (throwFor == null),
+        "Argument was %s but expected ERROR, WARNING, INFO or null.",
+        throwFor);
+    throwExceptionFor = throwFor;
     return this;
   }
 
@@ -138,54 +192,130 @@ public final class AccessibilityValidator {
   /**
    * Runs accessibility checks on a {@code View} hierarchy
    *
-   * @param root the root {@code View} of the hierarchy
+   * @param view the {@link View} to check
    * @return a list of the results of the checks
    */
-  private List<AccessibilityViewCheckResult> runAccessibilityChecks(
-      View root) {
-    List<AccessibilityViewHierarchyCheck> viewHierarchyChecks = new ArrayList<>(
-        AccessibilityCheckPreset.getViewChecksForPreset(preset));
+  private ImmutableList<AccessibilityViewCheckResult> runAccessibilityChecks(View view) {
+    List<AccessibilityViewHierarchyCheck> viewHierarchyChecks =
+        new ArrayList<>(AccessibilityCheckPresetAndroid.getViewChecksForPreset(preset));
+    Parameters parameters = new Parameters();
     List<AccessibilityViewCheckResult> results = new ArrayList<>();
     for (AccessibilityViewHierarchyCheck check : viewHierarchyChecks) {
-      results.addAll(check.runCheckOnViewHierarchy(root));
-    }
-    AccessibilityCheckResultUtils.suppressMatchingResults(results, suppressingMatcher);
-
-    for (AccessibilityCheckListener checkListener : checkListeners) {
-      checkListener.onResults(root.getContext(), results);
+      results.addAll(check.runCheckOnViewHierarchy(view, parameters));
     }
 
-    processResults(results);
-    return results;
+    return processResults(view.getContext(), results);
   }
 
+
   /**
-   * Reports the given results to the user using logcat and/or exceptions depending on the options
-   * set for this {@code AccessibilityValidator}. Results of type {@code INFO} and {@code WARNING}
-   * will be logged to logcat, and results of type {@code ERROR} will be logged to logcat or
-   * a single {@link AccessibilityViewCheckException} will be thrown containing all {@code ERROR}
-   * results, depending on the value of {@link #throwExceptionForErrors}.
+   * Reports the given check results. Any result matching {@link #suppressingMatcher} is replaced
+   * with a copy whose type is set to SUPPRESSED.
+   *
+   * <ol>
+   *   <li>Calls {@link AccessibilityCheckListener#onResults} for any registered listeners.
+   *   <li>Throws an {@link AccessibilityViewCheckException} containing all severe results,
+   *       depending on the value of {@link #throwExceptionFor}.
+   *   <li>Results of type {@code INFO}, {@code WARNING} and {@code ERROR} will be logged to logcat.
+   * </ol>
+   *
+   * @return The same values as in {@code results}, except that any result that matches {@link
+   *     #suppressingMatcher} will be replaced with a copy whose type is SUPPRESSED.
    */
-  private void processResults(Iterable<AccessibilityViewCheckResult> results) {
-    List<AccessibilityViewCheckResult> infos = AccessibilityCheckResultUtils.getResultsForType(
-        results, AccessibilityCheckResultType.INFO);
-    List<AccessibilityViewCheckResult> warnings = AccessibilityCheckResultUtils.getResultsForType(
-        results, AccessibilityCheckResultType.WARNING);
-    List<AccessibilityViewCheckResult> errors = AccessibilityCheckResultUtils.getResultsForType(
-        results, AccessibilityCheckResultType.ERROR);
+  @VisibleForTesting
+  ImmutableList<AccessibilityViewCheckResult> processResults(
+      Context context, List<AccessibilityViewCheckResult> results) {
+    ImmutableList<AccessibilityViewCheckResult> processedResults =
+        suppressMatchingResults(results, suppressingMatcher);
+    for (AccessibilityCheckListener checkListener : checkListeners) {
+      checkListener.onResults(context, processedResults);
+    }
+
+    List<AccessibilityViewCheckResult> infos =
+        AccessibilityCheckResultUtils.getResultsForType(
+            processedResults, AccessibilityCheckResultType.INFO);
+    List<AccessibilityViewCheckResult> warnings =
+        AccessibilityCheckResultUtils.getResultsForType(
+            processedResults, AccessibilityCheckResultType.WARNING);
+    List<AccessibilityViewCheckResult> errors =
+        AccessibilityCheckResultUtils.getResultsForType(
+            processedResults, AccessibilityCheckResultType.ERROR);
+
+    List<AccessibilityViewCheckResult> severeResults = getSevereResults(errors, warnings, infos);
+
+    if (!severeResults.isEmpty()) {
+      throw new AccessibilityViewCheckException(severeResults, resultDescriptor);
+    }
+
     for (AccessibilityViewCheckResult result : infos) {
       Log.i(TAG, resultDescriptor.describeResult(result));
     }
     for (AccessibilityViewCheckResult result : warnings) {
       Log.w(TAG, resultDescriptor.describeResult(result));
     }
-    if (!errors.isEmpty() && throwExceptionForErrors) {
-      throw new AccessibilityViewCheckException(errors, resultDescriptor);
-    } else {
-      for (AccessibilityViewCheckResult result : errors) {
-        Log.e(TAG, resultDescriptor.describeResult(result));
+    for (AccessibilityViewCheckResult result : errors) {
+      Log.e(TAG, resultDescriptor.describeResult(result));
+    }
+    return processedResults;
+  }
+
+  /**
+   * Returns a copy of the list where any result that matches the given matcher is replaced by a
+   * copy of the result with the type set to {@code SUPPRESSED}.
+   *
+   * @param results a list of {@code AccessibilityCheckResult}s to be matched against
+   * @param matcher a Matcher that determines whether a given {@code AccessibilityCheckResult}
+   *     should be suppressed
+   */
+  @VisibleForTesting
+  static ImmutableList<AccessibilityViewCheckResult> suppressMatchingResults(
+      List<AccessibilityViewCheckResult> results,
+      @Nullable Matcher<? super AccessibilityViewCheckResult> matcher) {
+    if (matcher == null) {
+      return ImmutableList.copyOf(results);
+    }
+
+    return FluentIterable.from(results)
+        .transform(result -> matcher.matches(result) ? result.getSuppressedResultCopy() : result)
+        .toList();
+  }
+
+  /**
+   * Returns the list of those results that should cause an exception to be thrown, depending upon
+   * the value of {@link #throwExceptionFor}.
+   */
+  private List<AccessibilityViewCheckResult> getSevereResults(
+      List<AccessibilityViewCheckResult> errors,
+      List<AccessibilityViewCheckResult> warnings,
+      List<AccessibilityViewCheckResult> infos) {
+    if (throwExceptionFor != null) {
+      switch (throwExceptionFor) {
+        case ERROR:
+          if (!errors.isEmpty()) {
+            return errors;
+          }
+          break;
+        case WARNING:
+          if (!(errors.isEmpty() && warnings.isEmpty())) {
+            return new ImmutableList.Builder<AccessibilityViewCheckResult>()
+                .addAll(errors)
+                .addAll(warnings)
+                .build();
+          }
+          break;
+        case INFO:
+          if (!(errors.isEmpty() && warnings.isEmpty() && infos.isEmpty())) {
+            return new ImmutableList.Builder<AccessibilityViewCheckResult>()
+                .addAll(errors)
+                .addAll(warnings)
+                .addAll(infos)
+                .build();
+          }
+          break;
+        default:
       }
     }
+    return ImmutableList.<AccessibilityViewCheckResult>of();
   }
 
   /**
