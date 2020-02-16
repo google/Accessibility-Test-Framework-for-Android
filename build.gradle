@@ -4,9 +4,9 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
-        classpath 'digital.wup:android-maven-publish:3.6.2'
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.11'
+        classpath 'digital.wup:android-maven-publish:3.6.3'
     }
 }
 
@@ -19,13 +19,10 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.google.protobuf'
-apply plugin: 'digital.wup.android-maven-publish'
-apply plugin: 'maven-publish'
 
 android {
-    compileSdkVersion "android-29"
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
@@ -39,9 +36,11 @@ android {
     }
 }
 
+apply plugin: 'com.google.protobuf'
+
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.7.1'
+        artifact = 'com.google.protobuf:protoc:3.11.4'
     }
     plugins {
         javalite {
@@ -81,6 +80,8 @@ task javadocJar(type: Jar) {
     classifier "javadoc"
     from javadoc
 }
+apply plugin: 'digital.wup.android-maven-publish'
+apply plugin: 'maven-publish'
 
 // Creates the artifacts for release to maven central.
 publishing {
@@ -124,11 +125,11 @@ publishing {
 dependencies {
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
     implementation 'androidx.core:core:1.0.0'
-    implementation 'com.google.guava:guava:27.1-android'
-    implementation 'org.checkerframework:checker:2.8.0'
-    implementation 'org.hamcrest:hamcrest-library:2.1'
-    implementation 'org.hamcrest:hamcrest-core:2.1'
-    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'com.google.guava:guava:28.2-android'
+    implementation 'org.checkerframework:checker:3.1.1'
+    implementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation 'org.hamcrest:hamcrest-core:2.2'
+    implementation 'org.jsoup:jsoup:1.12.2'
 }
 
 clean {
