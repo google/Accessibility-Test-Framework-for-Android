@@ -15,9 +15,10 @@ Views and sends to AccessibilityServices).
 
 Building the Library
 --------------------
-The supplied build.gradle file can be used to build the Accessibility Test
-Framework with gradle. The build.gradle file can also be used to import the
-project to Android Studio.
+The supplied gradle wrapper and build.gradle file can be used to build the
+Accessibility Test Framework or import the project into Android Studio.
+
+$ ./gradlew build
 
 Sample Usage
 ------------
