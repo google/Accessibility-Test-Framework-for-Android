@@ -35,6 +35,7 @@ public class AccessibilityCheckResultDescriptor {
    * @param result the {@link AccessibilityCheckResult} to describe
    * @return a String description of the result
    */
+  @SuppressWarnings("deprecation") // Needed to support AccessibilityViewCheckResult.
   public String describeResult(AccessibilityCheckResult result) {
     StringBuilder message = new StringBuilder();
     if (result instanceof AccessibilityViewCheckResult) {

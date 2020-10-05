@@ -108,7 +108,8 @@ public class ContrastSwatch {
     }
     // Sort colors with a max heap.
     final PriorityQueue<Map.Entry<Integer, Integer>> frequencyMaxHeap =
-        new PriorityQueue<>((a, b) -> (b.getValue() - a.getValue()));
+        new PriorityQueue<>(
+            dominantColorHistogram.getColors().size(), (a, b) -> (b.getValue() - a.getValue()));
     for (Map.Entry<Integer, Integer> entry : dominantColorHistogram.entrySet()) {
       frequencyMaxHeap.offer(entry);
     }

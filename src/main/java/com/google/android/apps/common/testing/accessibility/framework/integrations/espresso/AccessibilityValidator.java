@@ -23,8 +23,8 @@ import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPreset;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPresetAndroid;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult;
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultUtils;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewHierarchyCheck;
@@ -39,9 +39,10 @@ import org.hamcrest.Matcher;
 
 /**
  * A configurable executor for the {@link AccessibilityViewHierarchyCheck}s designed for use with
- * Espresso. Clients can call {@link #checkAndReturnResults} on a {@link View}
- * to run all of the checks with the options specified in this object.
+ * Espresso. Clients can call {@link #checkAndReturnResults} on a {@link View} to run all of the
+ * checks with the options specified in this object.
  */
+@SuppressWarnings("deprecation")
 public final class AccessibilityValidator {
 
   private static final String TAG = "AccessibilityValidator";
@@ -51,8 +52,12 @@ public final class AccessibilityValidator {
   @Nullable
   private AccessibilityCheckResultType throwExceptionFor = AccessibilityCheckResultType.ERROR;
 
-  private AccessibilityCheckResultDescriptor resultDescriptor =
+  // Either resultDescriptor or deprecatedResultDescriptor must have a non-null value, but not both.
+  private AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
+      deprecatedResultDescriptor = null;
+  private @Nullable AccessibilityCheckResultDescriptor resultDescriptor =
       new AccessibilityCheckResultDescriptor();
+
   @Nullable private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
   private final List<AccessibilityCheckListener> checkListeners = new ArrayList<>();
 
@@ -165,6 +170,21 @@ public final class AccessibilityValidator {
   }
 
   /**
+   * Sets the {@link AccessibilityCheckResult.AccessibilityCheckResultDescriptor} that is used to
+   * convert results to readable messages in exceptions and logcat statements.
+   *
+   * @return this
+   * @deprecated Use {@link #setResultDescriptor(AccessibilityCheckResultDescriptor)} instead.
+   */
+  @Deprecated
+  public AccessibilityValidator setResultDescriptor(
+      AccessibilityCheckResult.AccessibilityCheckResultDescriptor deprecatedResultDescriptor) {
+    this.deprecatedResultDescriptor = checkNotNull(deprecatedResultDescriptor);
+    this.resultDescriptor = null;
+    return this;
+  }
+
+  /**
    * Sets the {@link AccessibilityCheckResultDescriptor} that is used to convert results to readable
    * messages in exceptions and logcat statements.
    *
@@ -172,7 +192,8 @@ public final class AccessibilityValidator {
    */
   public AccessibilityValidator setResultDescriptor(
       AccessibilityCheckResultDescriptor resultDescriptor) {
-    this.resultDescriptor = resultDescriptor;
+    this.deprecatedResultDescriptor = null;
+    this.resultDescriptor = checkNotNull(resultDescriptor);
     return this;
   }
 
@@ -244,19 +265,30 @@ public final class AccessibilityValidator {
     List<AccessibilityViewCheckResult> severeResults = getSevereResults(errors, warnings, infos);
 
     if (!severeResults.isEmpty()) {
-      throw new AccessibilityViewCheckException(severeResults, resultDescriptor);
+      if (deprecatedResultDescriptor != null) {
+        throw new AccessibilityViewCheckException(
+            severeResults, checkNotNull(deprecatedResultDescriptor));
+      }
+      throw new AccessibilityViewCheckException(severeResults, checkNotNull(resultDescriptor));
     }
 
     for (AccessibilityViewCheckResult result : infos) {
-      Log.i(TAG, resultDescriptor.describeResult(result));
+      Log.i(TAG, describeResult(result));
     }
     for (AccessibilityViewCheckResult result : warnings) {
-      Log.w(TAG, resultDescriptor.describeResult(result));
+      Log.w(TAG, describeResult(result));
     }
     for (AccessibilityViewCheckResult result : errors) {
-      Log.e(TAG, resultDescriptor.describeResult(result));
+      Log.e(TAG, describeResult(result));
     }
     return processedResults;
+  }
+
+  private String describeResult(AccessibilityViewCheckResult result) {
+    if (deprecatedResultDescriptor != null) {
+      return checkNotNull(deprecatedResultDescriptor).describeResult(result);
+    }
+    return checkNotNull(resultDescriptor).describeResult(result);
   }
 
   /**

@@ -23,6 +23,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResultWithImage;
 import com.google.android.apps.common.testing.accessibility.framework.HashMapResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.Parameters;
+import com.google.android.apps.common.testing.accessibility.framework.QuestionHandler;
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
@@ -92,7 +93,7 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
   public static final String KEY_ADDITIONAL_CONTRAST_RATIOS = "KEY_ADDITIONAL_CONTRAST_RATIOS";
 
   /** The amount by which a view's computed contrast ratio may fall below defined thresholds */
-  private static final double CONTRAST_TOLERANCE = 0.01;
+  public static final double CONTRAST_TOLERANCE = 0.01;
 
   private static final Class<? extends AccessibilityHierarchyCheck> CHECK_CLASS =
       ImageContrastCheck.class;
@@ -231,7 +232,7 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
     // Lower confidence in heuristics for ImageViews, so we'll report only warnings and use the
     // more permissive threshold ratio since images are generally large.
     Double customizedHeuristicContrastRatio =
-        (parameters == null) ? null : parameters.getCustomContrastRatio();
+        (parameters == null) ? null : parameters.getCustomImageContrastRatio();
     if (customizedHeuristicContrastRatio != null) {
 
       for (int i = 0; i < contrastRatios.size(); i++) {

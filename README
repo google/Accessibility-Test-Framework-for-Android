@@ -25,7 +25,7 @@ Sample Usage
 Given a view, the following code runs all accessibility checks on all views in the
 hierarchy rooted at that view and throws an exception if any errors are found:
 
-Set<AccessibilityHierarchyCheck> checks =
+ImmutableSet<AccessibilityHierarchyCheck> checks =
     AccessibilityCheckPreset.getAccessibilityHierarchyChecksForPreset(
         AccessibilityCheckPreset.LATEST);
 AccessibilityHierarchyAndroid hierarchy = AccessibilityHierarchyAndroid.newBuilder(view).build();

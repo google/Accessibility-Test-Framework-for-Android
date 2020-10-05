@@ -58,3 +58,10 @@ message SpanProto {
     UNDERLINE = 4;
   }
 }
+
+// Proto representation of LayoutParams
+// Next index: 3
+message LayoutParamsProto {
+  optional int32 width = 1;
+  optional int32 height = 2;
+}

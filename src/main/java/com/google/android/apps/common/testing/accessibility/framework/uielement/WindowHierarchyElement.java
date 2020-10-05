@@ -349,7 +349,7 @@ public class WindowHierarchyElement {
     }
 
     /** Set backpointers from the window's views to the window. */
-    private void setWindow(WindowHierarchyElement window) {
+    private static void setWindow(WindowHierarchyElement window) {
       if (window.viewHierarchyElements != null) {
         for (ViewHierarchyElement view : window.viewHierarchyElements) {
           view.setWindow(window);

@@ -28,18 +28,30 @@ import com.google.android.apps.common.testing.accessibility.framework.strings.St
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.DeviceState;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
-import com.google.common.base.Ascii;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * Checks to ensure that speakable text does not contain redundant information about the view's
- * type. Accessibility services are aware of the view's type and can use that information as needed
- * (ex: Screen readers may append "button" to the speakable text of a {@link
- * android.widged.Button}).
+ * Checks for speakable text that may contain redundant or inappropriate information:
+ *
+ * <ul>
+ *   <li>The view's type. Accessibility services are aware of the view's type and can use that
+ *       information as needed. Ex: Screen readers may append "button" to the speakable text of an
+ *       {@link android.widget.Button}).
+ *   <li>The view's state. Accessibility services should be aware of the view's current state and
+ *       can report it. Ex: Screen readers may report that an {@link android.widget.CheckBox} is
+ *       "checked" or "not checked".
+ *   <li>The actions to which a view responds. Screen readers may announce the available actions.
+ *       And the actions available to some users may differ based upon assistive technology being
+ *       used.
+ * </ul>
+ *
+ * <p>The name of this class is a misnomer because it now checks for more than just redundant
+ * information.
  */
 public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
 
@@ -47,32 +59,48 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_ENGLISH_LOCALE_ONLY = 1;
   /** Result when the view is not {@code importantForAccessibility}. */
   public static final int RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY = 2;
-  /** Result when the view does not have a {@code contentDescription}*/
+  /** Result when the view does not have a {@code contentDescription} */
   public static final int RESULT_ID_NO_CONTENT_DESC = 3;
   /** [Legacy] Result when the view's {@code contentDescription} ends with the view's type. */
   public static final int RESULT_ID_CONTENT_DESC_ENDS_WITH_VIEW_TYPE = 4;
   /** Result when the view's {@code contentDescription} contains the view's type. */
-  public static final int RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD = 5;
+  public static final int RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE = 5;
   /** Result when thew view is not visible. */
   public static final int RESULT_ID_NOT_VISIBLE = 6;
+  /** Result when the view's {@code contentDescription} contains a term indicating state. */
+  public static final int RESULT_ID_CONTENT_DESC_CONTAINS_STATE = 7;
+  /** Result when the view's {@code contentDescription} contains the name of an action. */
+  public static final int RESULT_ID_CONTENT_DESC_CONTAINS_ACTION = 8;
 
   /**
    * Result metadata key for a view's content description as a {@code String}. Populated in results
-   * with {@link #RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD} or {@link
-   * #RESULT_ID_CONTENT_DESC_ENDS_WITH_VIEW_TYPE}.
+   * with {@link #RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE}, {@link
+   * #RESULT_ID_CONTENT_DESC_ENDS_WITH_VIEW_TYPE}, {@link #RESULT_ID_CONTENT_DESC_CONTAINS_STATE} or
+   * {@link #RESULT_ID_CONTENT_DESC_CONTAINS_ACTION}.
    */
   public static final String KEY_CONTENT_DESCRIPTION = "KEY_CONTENT_DESCRIPTION";
 
   /**
-   * Result metadata key for a possibly redundant word in the view's content description, as a
-   * {@code String}. Populated in results with {@link
-   * #RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD}.
+   * Result metadata key for a possibly inappropriate word in the view's content description, as a
+   * {@code String}. Populated in results with {@link #RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE},
+   * {@link #RESULT_ID_CONTENT_DESC_CONTAINS_STATE} or {@link
+   * #RESULT_ID_CONTENT_DESC_CONTAINS_ACTION}.
    */
   public static final String KEY_REDUNDANT_WORD = "KEY_REDUNDANT_WORD";
 
-  /** Keys of String resources. */
-  private static final ImmutableList<String> redundantWordKeys =
-      ImmutableList.of("button_item_type");
+  /** Keys of String resources that are item types. */
+  private static final ImmutableList<String> ITEM_TYPE_WORD_KEYS =
+      ImmutableList.of(
+          "button_item_type", "checkbox_item_type", "checkbox_item_type_separate_words");
+
+  /** Keys of String resources that are item states. */
+  private static final ImmutableList<String> STATE_WORD_KEYS =
+
+      ImmutableList.of("checked_state", "unchecked_state", "selected_state", "unselected_state");
+
+  /** Keys of String resources that are names of actions. */
+  private static final ImmutableList<String> ACTION_WORD_KEYS =
+      ImmutableList.of("click_action", "swipe_action", "tap_action");
 
   @Override
   protected String getHelpTopic() {
@@ -105,42 +133,69 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
         continue;
       }
       if (!view.isImportantForAccessibility()) {
-        results.add(new AccessibilityHierarchyCheckResult(
-            this.getClass(),
-            AccessibilityCheckResultType.NOT_RUN,
-            view,
-            RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY,
-            null));
+        results.add(
+            new AccessibilityHierarchyCheckResult(
+                this.getClass(),
+                AccessibilityCheckResultType.NOT_RUN,
+                view,
+                RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY,
+                null));
         continue;
       }
 
       CharSequence contentDescription = view.getContentDescription();
       if (TextUtils.isEmpty(contentDescription)) {
-        results.add(new AccessibilityHierarchyCheckResult(
-            this.getClass(),
-            AccessibilityCheckResultType.NOT_RUN,
-            view,
-            RESULT_ID_NO_CONTENT_DESC,
-            null));
+        results.add(
+            new AccessibilityHierarchyCheckResult(
+                this.getClass(),
+                AccessibilityCheckResultType.NOT_RUN,
+                view,
+                RESULT_ID_NO_CONTENT_DESC,
+                null));
         continue;
       }
-      for (String redundantWordKey : redundantWordKeys) {
-        CharSequence redundantWord = StringManager.getString(recordedLocale, redundantWordKey);
-        if (containsIgnoreCase(contentDescription, redundantWord)) {
-          ResultMetadata resultMetadata = new HashMapResultMetadata();
-          resultMetadata.putString(KEY_CONTENT_DESCRIPTION, contentDescription.toString());
-          resultMetadata.putString(KEY_REDUNDANT_WORD, redundantWord.toString());
-          results.add(
-              new AccessibilityHierarchyCheckResult(
-                  this.getClass(),
-                  AccessibilityCheckResultType.WARNING,
-                  view,
-                  RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD,
-                  resultMetadata));
-        }
-      }
+      // This can potentially produce multiple results for one element.
+      checkForWords(
+          RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE,
+          ITEM_TYPE_WORD_KEYS,
+          recordedLocale,
+          view,
+          results);
+      checkForWords(
+          RESULT_ID_CONTENT_DESC_CONTAINS_STATE, STATE_WORD_KEYS, recordedLocale, view, results);
+      checkForWords(
+          RESULT_ID_CONTENT_DESC_CONTAINS_ACTION, ACTION_WORD_KEYS, recordedLocale, view, results);
     }
     return results;
+  }
+
+  /**
+   * Checks to see if the view's {@code contentDescription} contains any of the localized words
+   * indicated by {@code wordKeys}. If found, a WARNING is added to {@code results} with the
+   * specified result ID.
+   */
+  private void checkForWords(
+      int resultId,
+      ImmutableList<String> wordKeys,
+      Locale locale,
+      ViewHierarchyElement view,
+      List<AccessibilityHierarchyCheckResult> results) {
+    CharSequence contentDescription = checkNotNull(view.getContentDescription());
+    for (String wordKey : wordKeys) {
+      CharSequence word = StringManager.getString(locale, wordKey);
+      if (containsWordIgnoreCase(contentDescription, word)) {
+        ResultMetadata resultMetadata = new HashMapResultMetadata();
+        resultMetadata.putString(KEY_CONTENT_DESCRIPTION, contentDescription.toString());
+        resultMetadata.putString(KEY_REDUNDANT_WORD, word.toString());
+        results.add(
+            new AccessibilityHierarchyCheckResult(
+                this.getClass(),
+                AccessibilityCheckResultType.WARNING,
+                view,
+                resultId,
+                resultMetadata));
+      }
+    }
   }
 
   @Override
@@ -157,11 +212,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
             KEY_CONTENT_DESCRIPTION, checkNotNull(culprit.getContentDescription()).toString());
         AccessibilityHierarchyCheckResult updatedResult =
             new AccessibilityHierarchyCheckResult(
-                this.getClass(),
-                result.getType(),
-                culprit,
-                result.getResultId(),
-                updatedMetadata);
+                this.getClass(), result.getType(), culprit, result.getResultId(), updatedMetadata);
         return super.getMessageForResult(locale, updatedResult);
       }
     }
@@ -180,7 +231,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
     // Metadata will have been set for these result IDs.
     checkNotNull(metadata);
     switch (resultId) {
-      case RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD:
+      case RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE:
         return String.format(
             locale,
             StringManager.getString(locale, "result_message_content_desc_contains_redundant_word"),
@@ -191,6 +242,18 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
             locale,
             StringManager.getString(locale, "result_message_content_desc_ends_with_view_type"),
             metadata.getString(KEY_CONTENT_DESCRIPTION));
+      case RESULT_ID_CONTENT_DESC_CONTAINS_STATE:
+        return String.format(
+            locale,
+            StringManager.getString(locale, "result_message_content_desc_contains_state"),
+            metadata.getString(KEY_CONTENT_DESCRIPTION),
+            metadata.getString(KEY_REDUNDANT_WORD));
+      case RESULT_ID_CONTENT_DESC_CONTAINS_ACTION:
+        return String.format(
+            locale,
+            StringManager.getString(locale, "result_message_content_desc_contains_action"),
+            metadata.getString(KEY_CONTENT_DESCRIPTION),
+            metadata.getString(KEY_REDUNDANT_WORD));
       default:
         throw new IllegalStateException("Unsupported result id");
     }
@@ -205,8 +268,10 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
     }
 
     switch (resultId) {
-      case RESULT_ID_CONTENT_DESC_CONTAINS_REDUNDANT_WORD:
+      case RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE:
       case RESULT_ID_CONTENT_DESC_ENDS_WITH_VIEW_TYPE:
+      case RESULT_ID_CONTENT_DESC_CONTAINS_STATE:
+      case RESULT_ID_CONTENT_DESC_CONTAINS_ACTION:
         return StringManager.getString(
             locale, "result_message_brief_content_desc_contains_redundant_word");
       default:
@@ -219,8 +284,11 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
     return StringManager.getString(locale, "check_title_redundant_description");
   }
 
-  private static boolean containsIgnoreCase(CharSequence sequence, CharSequence subSequence) {
-    return Ascii.toLowerCase(sequence.toString()).contains(Ascii.toLowerCase(subSequence));
+  private static boolean containsWordIgnoreCase(CharSequence sequence, CharSequence word) {
+    // Dot . generally matches any character, but it excludes \n, \r, \u0085, \u2028, and \u2029.
+    // (?s) at the beginning makes . matches any character without exception.
+    // (?i) is used for ignore case match. \b matches word boundary.
+    return Pattern.matches("(?s).*\\b(?i)" + word + "\\b.*", sequence.toString());
   }
 
   /** Indicates the locale recorded in the {@link DeviceState}. */
@@ -230,6 +298,8 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
 
   private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
+      case RESULT_ID_NOT_VISIBLE:
+        return StringManager.getString(locale, "result_message_not_visible");
       case RESULT_ID_ENGLISH_LOCALE_ONLY:
         return StringManager.getString(locale, "result_message_english_locale_only");
       case RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY:

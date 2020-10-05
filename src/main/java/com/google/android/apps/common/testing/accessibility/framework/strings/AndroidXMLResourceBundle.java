@@ -19,6 +19,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -28,7 +29,7 @@ import org.xml.sax.SAXException;
  * A {@link ResourceBundle} that reads strings from Android-style resource files.
  */
 public class AndroidXMLResourceBundle extends ResourceBundle {
-  private static final String ANDORID_STRING_TAG_NAME = "string";
+  private static final String ANDROID_STRING_TAG_NAME = "string";
   private static final String ANDROID_STRING_NAME_ATTRIBUTE = "name";
 
   private final Properties properties = new Properties();
@@ -79,30 +80,49 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
    * @param document a {@link Document} containing android style <string> tags
    * @param properties a {@link Properties} to add strings found in the given {@link Document} to
    */
-  // dereference of possibly-null reference value
-  // incompatible types in argument.
-  @SuppressWarnings({"nullness:dereference.of.nullable", "nullness:argument.type.incompatible"})
   private static void addStringsToProperties(Document document, Properties properties) {
-    NodeList stringNodes = document.getElementsByTagName(ANDORID_STRING_TAG_NAME);
+    NodeList stringNodes = document.getElementsByTagName(ANDROID_STRING_TAG_NAME);
     for (int i = 0; i < stringNodes.getLength(); i++) {
       Node node = stringNodes.item(i);
-      // dereference of possibly-null reference node
-      // dereference of possibly-null reference node.getAttributes()
-      // dereference of possibly-null reference
-      // node.getAttributes().getNamedItem(ANDROID_STRING_NAME_ATTRIBUTE)
-      @SuppressWarnings("nullness:dereference.of.nullable")
-      String key = node.getAttributes().getNamedItem(ANDROID_STRING_NAME_ATTRIBUTE).getNodeValue();
 
-      String value = node.getTextContent();
-      // Android trims whitespace throughout (getTextContent does it internally but not at the ends)
-      // so we trim for parity
-      value = value.trim();
-      // The XML parser does not unescape quotes, so we replace \" with " here for Android parity
-      value = value.replace("\\\"", "\"");
-      // The XML parser does not unescape quotes, so we replace \' with ' here for Android parity
-      value = value.replace("\\'", "'");
-      properties.setProperty(key, value);
+      if (node != null) {
+        String key = getStringName(node);
+        String value = getStringValue(node);
+        if ((key != null) && (value != null)) {
+          properties.setProperty(key, value);
+        }
+      }
     }
+  }
+
+  /** Gets the value of 'name' attribute of an Android style {@code <string>} element. */
+  private static @Nullable String getStringName(Node node) {
+    NamedNodeMap attributes = node.getAttributes();
+    if (attributes != null) {
+      Node nameNode = attributes.getNamedItem(ANDROID_STRING_NAME_ATTRIBUTE);
+      if (nameNode != null) {
+        return nameNode.getNodeValue();
+      }
+    }
+    return null;
+  }
+
+  /** Gets the value of an Android style {@code <string>} element. */
+  private static @Nullable String getStringValue(Node node) {
+    String value = node.getTextContent();
+    if (value == null) {
+      return null;
+    }
+    return value
+        // Android trims whitespace throughout (getTextContent does it internally but not at the
+        // ends) so we trim for parity
+        .trim()
+        // The XML parser does not unescape quotes, so we replace \" with " here for Android
+        // parity
+        .replace("\\\"", "\"")
+        // The XML parser does not unescape quotes, so we replace \' with ' here for Android
+        // parity
+        .replace("\\'", "'");
   }
 
   /**
@@ -171,7 +191,14 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
       int packageNameDividerIndex = baseName.lastIndexOf('.');
       String packageName = baseName.substring(0, packageNameDividerIndex);
       String fileName = baseName.substring(packageNameDividerIndex + 1);
-      return String.format("%s.res.values%s.%s", packageName, localeName, fileName);
+
+      // Example:
+      // assets.assets-el.strings.xml
+      // or
+      // com.google.android.apps.common.testing.accessibility.framework.assets-el.strings.xml
+      return packageName.isEmpty()
+          ? String.format("assets.assets%s.%s", localeName, fileName)
+          : String.format("%s.assets%s.%s", packageName, localeName, fileName);
     }
 
     /**

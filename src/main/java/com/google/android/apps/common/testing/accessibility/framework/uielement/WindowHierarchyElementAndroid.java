@@ -280,24 +280,31 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    * @param elementToNodeInfoMap A {@link Map} to populate with the {@link
    *     ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to their
    *     originating {@link AccessibilityNodeInfo}s
+   * @param extraDataExtractor The {@link AccessibilityNodeInfoExtraDataExtractor} for extracting
+   *     extra rendering data
    * @return The newly created element
    */
   private static ViewHierarchyElementAndroid buildViewHierarchy(
       AccessibilityNodeInfo forInfo,
       List<ViewHierarchyElementAndroid> elementList,
       @Nullable ViewHierarchyElementAndroid parent,
-      Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap) {
+      Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
+      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     checkNotNull(forInfo, "Attempted to build hierarchy from null root node");
 
     ViewHierarchyElementAndroid element =
-        ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, forInfo).build();
+        ViewHierarchyElementAndroid.newBuilder(
+                elementList.size(), parent, forInfo, extraDataExtractor)
+            .build();
     elementList.add(element);
     elementToNodeInfoMap.put(element, AccessibilityNodeInfo.obtain(forInfo));
 
     for (int i = 0; i < forInfo.getChildCount(); ++i) {
       AccessibilityNodeInfo child = forInfo.getChild(i);
       if (child != null) {
-        element.addChild(buildViewHierarchy(child, elementList, element, elementToNodeInfoMap));
+        element.addChild(
+            buildViewHierarchy(
+                child, elementList, element, elementToNodeInfoMap, extraDataExtractor));
         child.recycle();
       }
     }
@@ -368,9 +375,13 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    * Returns a new builder that can build a WindowHierarchyElementAndroid from an
    * AccessibilityWindowInfo.
    */
-  static BuilderAndroid newBuilder(int id, AccessibilityWindowInfo window) {
+  static BuilderAndroid newBuilder(
+      int id,
+      AccessibilityWindowInfo window,
+      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     BuilderAndroid builder = new BuilderAndroid(id);
     builder.fromWindowInfo = checkNotNull(window);
+    builder.extraDataExtractor = extraDataExtractor;
     return builder;
   }
 
@@ -378,9 +389,13 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    * Returns a new builder that can build a WindowHierarchyElementAndroid from an
    * AccessibilityNodeInfo.
    */
-  static BuilderAndroid newBuilder(int id, AccessibilityNodeInfo nodeInfo) {
+  static BuilderAndroid newBuilder(
+      int id,
+      AccessibilityNodeInfo nodeInfo,
+      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     BuilderAndroid builder = new BuilderAndroid(id);
     builder.fromNodeInfo = checkNotNull(nodeInfo);
+    builder.extraDataExtractor = extraDataExtractor;
     return builder;
   }
 
@@ -408,6 +423,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     private @Nullable View fromRootView;
     private @Nullable AccessibilityWindowInfo fromWindowInfo;
     private @Nullable AccessibilityNodeInfo fromNodeInfo;
+    private @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor;
     private @Nullable Parcel in;
     private @Nullable WindowHierarchyElementAndroid parent;
     private @MonotonicNonNull Map<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
@@ -455,10 +471,10 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
         result = construct(id, parent, fromRootView, elementToViewMap);
       } else if (fromWindowInfo != null) {
         elementToNodeInfoMap = new HashMap<>();
-        result = construct(id, parent, fromWindowInfo, elementToNodeInfoMap);
+        result = construct(id, parent, fromWindowInfo, elementToNodeInfoMap, extraDataExtractor);
       } else if (fromNodeInfo != null) {
         elementToNodeInfoMap = new HashMap<>();
-        result = construct(id, parent, fromNodeInfo, elementToNodeInfoMap);
+        result = construct(id, parent, fromNodeInfo, elementToNodeInfoMap, extraDataExtractor);
       } else if (in != null) {
         result = construct(id, parent, in);
       } else if (proto != null) {
@@ -478,7 +494,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
         int id,
         @Nullable WindowHierarchyElementAndroid parent,
         AccessibilityWindowInfo fromWindow,
-        Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap) {
+        Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
+        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -499,7 +516,11 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
       this.viewHierarchyElements = new ArrayList<>(); // The ultimate size is unknown
       if (rootInfo != null) {
         buildViewHierarchy(
-            rootInfo, viewHierarchyElements, null /* no parent */, elementToNodeInfoMap);
+            rootInfo,
+            viewHierarchyElements,
+            null /* no parent */,
+            elementToNodeInfoMap,
+            extraDataExtractor);
         rootInfo.recycle();
       } else {
         // This could occur in the case where the application state changes between the time that
@@ -525,7 +546,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
         int id,
         @Nullable WindowHierarchyElementAndroid parent,
         AccessibilityNodeInfo fromRootNode,
-        Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap) {
+        Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
+        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -548,7 +570,11 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
       // Build the window's view hierarchy
       this.viewHierarchyElements = new ArrayList<>(); // The ultimate size is unknown
       buildViewHierarchy(
-          fromRootNode, viewHierarchyElements, null /* no parent */, elementToNodeInfoMap);
+          fromRootNode,
+          viewHierarchyElements,
+          null /* no parent */,
+          elementToNodeInfoMap,
+          extraDataExtractor);
       return new WindowHierarchyElementAndroid(
           id,
           parentId,

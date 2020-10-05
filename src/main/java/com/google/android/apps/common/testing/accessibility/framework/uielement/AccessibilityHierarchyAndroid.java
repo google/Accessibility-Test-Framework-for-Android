@@ -27,11 +27,12 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.StrictMode;
-import androidx.annotation.RequiresApi;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.TouchDelegateInfo;
 import android.view.accessibility.AccessibilityWindowInfo;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 import com.google.android.apps.common.testing.accessibility.framework.ViewAccessibilityUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.AccessibilityHierarchyProto;
@@ -65,8 +66,8 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
 
   private static final boolean AT_29 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
   private static final boolean AT_22 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1);
-  private static final boolean AT_17 = (Build.VERSION.SDK_INT
-      >= Build.VERSION_CODES.JELLY_BEAN_MR1);
+  private static final boolean AT_17 =
+      (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1);
 
   private final DeviceStateAndroid deviceState;
 
@@ -270,15 +271,18 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
    *     ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to their
    *     originating {@link AccessibilityNodeInfo}s, or {@code null} if no such map should be
    *     populated
+   * @param extraDataExtractor The {@link AccessibilityNodeInfoExtraDataExtractor} for extracting
+   *     extra rendering data
    * @return The newly created element
    */
   private static WindowHierarchyElementAndroid buildWindowHierarchy(
       AccessibilityWindowInfo info,
       List<WindowHierarchyElementAndroid> elementList,
       @Nullable WindowHierarchyElementAndroid parent,
-      BiMap<Long, AccessibilityNodeInfo> originMap) {
+      BiMap<Long, AccessibilityNodeInfo> originMap,
+      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     WindowHierarchyElementAndroid element =
-        WindowHierarchyElementAndroid.newBuilder(elementList.size(), info)
+        WindowHierarchyElementAndroid.newBuilder(elementList.size(), info, extraDataExtractor)
             .setParent(parent)
             .setNodeInfoOriginMap(originMap)
             .build();
@@ -287,7 +291,8 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     for (int i = 0; i < info.getChildCount(); ++i) {
       AccessibilityWindowInfo child = info.getChild(i);
       if (child != null) {
-        element.addChild(buildWindowHierarchy(child, elementList, element, originMap));
+        element.addChild(
+            buildWindowHierarchy(child, elementList, element, originMap, extraDataExtractor));
         child.recycle();
       }
     }
@@ -427,8 +432,11 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
   private void resolveTouchDelegateRelationshipsAmongInfos(
       BiMap<Long, AccessibilityNodeInfo> originMap) {
     for (Map.Entry<Long, AccessibilityNodeInfo> entry : originMap.entrySet()) {
-      TouchDelegateInfo delegateInfo = entry.getValue().getTouchDelegateInfo();
+      AccessibilityNodeInfo nodeInfo = entry.getValue();
+      TouchDelegateInfo delegateInfo = nodeInfo.getTouchDelegateInfo();
       if (delegateInfo != null) {
+        android.graphics.Rect boundsInScreen = new android.graphics.Rect();
+        nodeInfo.getBoundsInScreen(boundsInScreen);
         for (int i = 0; i < delegateInfo.getRegionCount(); ++i) {
           Region hitRegion = delegateInfo.getRegionAt(i);
           if ((hitRegion != null) && hitRegion.isRect()) {
@@ -436,9 +444,14 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
             ViewHierarchyElement delegatee =
                 (delegateeNode != null) ? findElementByNodeInfo(delegateeNode, originMap) : null;
             if (delegatee != null) {
+              // The region is in view coordinates
               android.graphics.Rect hitRect = hitRegion.getBounds();
               delegatee.addTouchDelegateBounds(
-                  new Rect(hitRect.left, hitRect.top, hitRect.right, hitRect.bottom));
+                  new Rect(
+                      hitRect.left + boundsInScreen.left,
+                      hitRect.top + boundsInScreen.top,
+                      hitRect.right + boundsInScreen.left,
+                      hitRect.bottom + boundsInScreen.top));
             }
           }
         }
@@ -682,6 +695,18 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private @Nullable BiMap<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
     private @Nullable BiMap<Long, View> viewOriginMap;
     private boolean disposeInstances = false;
+    private boolean obtainCharacterLocations = false;
+
+    /**
+     * Indicates whether text character locations should be requested.
+     *
+     * @param obtainCharacterLocations The value to which the flag should be set.
+     * @return this
+     */
+    public BuilderAndroid setObtainCharacterLocations(boolean obtainCharacterLocations) {
+      this.obtainCharacterLocations = obtainCharacterLocations;
+      return this;
+    }
 
     /**
      * Set a map to populate with the condensed unique IDs of the {@link
@@ -712,9 +737,13 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       if (fromRootView != null) {
         result = buildHierarchyFromView(fromRootView);
       } else if ((fromRootNode != null) && (context != null)) {
-        result = buildHierarchyFromNodeInfo(fromRootNode, context);
+        result =
+            buildHierarchyFromNodeInfo(
+                fromRootNode, context, getAccessibilityNodeInfoExtraDataExtractor());
       } else if ((fromWindowList != null) && (context != null)) {
-        result = buildHierarchyFromWindowList(fromWindowList, context);
+        result =
+            buildHierarchyFromWindowList(
+                fromWindowList, context, getAccessibilityNodeInfoExtraDataExtractor());
       } else if (proto != null) {
         result = buildHierarchyFromProto(proto);
       } else {
@@ -722,6 +751,12 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       }
       disposeOfMaps();
       return result;
+    }
+
+    @VisibleForTesting
+    @Nullable
+    AccessibilityNodeInfoExtraDataExtractor getAccessibilityNodeInfoExtraDataExtractor() {
+      return obtainCharacterLocations ? new AccessibilityNodeInfoExtraDataExtractor() : null;
     }
 
     private AccessibilityHierarchyAndroid buildHierarchyFromView(View fromRootView) {
@@ -760,7 +795,9 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     }
 
     private AccessibilityHierarchyAndroid buildHierarchyFromNodeInfo(
-        AccessibilityNodeInfo fromRootNode, Context context) {
+        AccessibilityNodeInfo fromRootNode,
+        Context context,
+        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions
@@ -769,7 +806,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       }
 
       WindowHierarchyElementAndroid activeWindow =
-          WindowHierarchyElementAndroid.newBuilder(0, fromRootNode)
+          WindowHierarchyElementAndroid.newBuilder(0, fromRootNode, extraDataExtractor)
               .setNodeInfoOriginMap(checkNotNull(nodeInfoOriginMap))
               .build();
       List<WindowHierarchyElementAndroid> windowHierarchyElements =
@@ -799,7 +836,9 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private AccessibilityHierarchyAndroid buildHierarchyFromWindowList(
-        List<AccessibilityWindowInfo> fromWindowList, Context context) {
+        List<AccessibilityWindowInfo> fromWindowList,
+        Context context,
+        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions
@@ -819,7 +858,11 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
            * structure provides no such guarantee.
            */
           buildWindowHierarchy(
-              window, windowHierarchyElements, /* parent= */ null, checkNotNull(nodeInfoOriginMap));
+              window,
+              windowHierarchyElements,
+              /* parent= */ null,
+              checkNotNull(nodeInfoOriginMap),
+              extraDataExtractor);
         }
       }
 
@@ -867,8 +910,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
         windowHierarchyElements.add(WindowHierarchyElementAndroid.newBuilder(windowProto).build());
       }
       checkState(
-          !windowHierarchyElements.isEmpty(),
-          "Hierarchies must contain at least one window.");
+          !windowHierarchyElements.isEmpty(), "Hierarchies must contain at least one window.");
       WindowHierarchyElementAndroid activeWindow = windowHierarchyElements.get(activeWindowId);
       ViewElementClassNamesAndroid viewElementClassNames =
           new ViewElementClassNamesAndroid(proto.getViewElementClassNames());

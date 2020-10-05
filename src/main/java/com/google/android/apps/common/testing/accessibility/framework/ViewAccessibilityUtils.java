@@ -17,8 +17,6 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
-import androidx.core.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +28,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import androidx.annotation.RequiresApi;
 import com.google.android.libraries.accessibility.utils.log.LogUtils;
 import java.util.HashSet;
 import java.util.Set;
@@ -95,8 +94,7 @@ public final class ViewAccessibilityUtils {
           || isActionableForAccessibility(view)
           || hasListenersForAccessibility(view)
           || (view.getAccessibilityNodeProvider() != null)
-          || (ViewCompat.getAccessibilityLiveRegion(view)
-              != ViewCompat.ACCESSIBILITY_LIVE_REGION_NONE);
+          || isAccessibilityLiveRegion(view);
     }
   }
 
@@ -245,7 +243,10 @@ public final class ViewAccessibilityUtils {
    *     resolved.
    */
   public static @Nullable String getResourceNameForView(View view) {
-    if ((view == null) || (view.getId() == View.NO_ID) || (view.getResources() == null)) {
+    if (view == null
+        || view.getId() == 0
+        || view.getId() == View.NO_ID
+        || view.getResources() == null) {
       return null;
     }
 
@@ -336,6 +337,11 @@ public final class ViewAccessibilityUtils {
     // OnKeyListener, OnTouchListener, OnGenericMotionListener, OnHoverListener, OnDragListener
     // aren't accessible to us.
     return result;
+  }
+
+  private static boolean isAccessibilityLiveRegion(View view) {
+    return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        && (view.getAccessibilityLiveRegion() != View.ACCESSIBILITY_LIVE_REGION_NONE);
   }
 
   /**
@@ -484,16 +490,17 @@ public final class ViewAccessibilityUtils {
   }
 
   /**
-   * Determines if the supplied {@link View} has a contentDescription or text.
+   * Determines if the supplied {@link View} has some form of a text description.
    *
    * @param view The {@link View} to evaluate
-   * @return {@code true} if {@code view} has a contentDescription or text.
+   * @return {@code true} if {@code view} has a contentDescription, text or hint.
    */
   private static boolean hasText(View view) {
     if (!TextUtils.isEmpty(view.getContentDescription())) {
       return true;
     } else if (view instanceof TextView) {
-      return !TextUtils.isEmpty(((TextView) view).getText());
+      TextView textView = (TextView) view;
+      return !TextUtils.isEmpty(textView.getText()) || !TextUtils.isEmpty(textView.getHint());
     }
 
     return false;

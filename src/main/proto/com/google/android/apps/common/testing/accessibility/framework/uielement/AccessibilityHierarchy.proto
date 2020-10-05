@@ -85,10 +85,14 @@ message WindowHierarchyElementProto {
   optional bool accessibility_focused = 9;
   optional bool active = 10;
   optional RectProto bounds_in_screen = 11;
+
+  // Extra protos to save with each window node.
+  // max is 536,870,911
+  extensions 400000 to max;
 }
 
 // Wire format for a ViewHierarchyElement
-// Next index: 37
+// Next index: 41
 message ViewHierarchyElementProto {
   // Bookkeeping
   optional int32 id = 1 [default = -1];
@@ -133,6 +137,14 @@ message ViewHierarchyElementProto {
 
   // Accessibility actions exposed by the view.
   repeated ViewHierarchyActionProto actions = 36;
+  optional LayoutParamsProto layout_params = 37;
+  optional CharSequenceProto hint_text = 38;
+  optional int32 hint_text_color = 39;
+  repeated RectProto text_character_locations = 40;
+
+  // Extra protos to save with each view node.
+  // max is 536,870,911
+  extensions 400000 to max;
 }
 
 // Wire format for a ViewHierarchyAction

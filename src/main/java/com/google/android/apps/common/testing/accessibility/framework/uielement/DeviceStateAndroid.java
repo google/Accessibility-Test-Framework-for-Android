@@ -135,6 +135,8 @@ public class DeviceStateAndroid extends DeviceState {
     private final Locale locale;
     private final DisplayInfoAndroid defaultDisplayInfo;
 
+    // dereference of possibly-null reference wm
+    @SuppressWarnings("nullness:dereference.of.nullable")
     Builder(Context context) {
       WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
       defaultDisplayInfo = new DisplayInfoAndroid(wm.getDefaultDisplay());

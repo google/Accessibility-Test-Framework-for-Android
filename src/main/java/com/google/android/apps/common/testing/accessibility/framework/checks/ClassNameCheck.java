@@ -21,8 +21,30 @@ import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * Checks that the {@link ViewHierarchyElement#getAccessibilityClassName()} is supported by the
- * accessibility service.
+ * Checks that the {@link ViewHierarchyElement#getAccessibilityClassName()} is supported by
+ * accessibility services.
+ *
+ * <p>Screen readers and other accessibility services may announce information about the type of an
+ * interface element. For example, a screen reader may speak "checkbox" or "button" after the label
+ * associated with one of these controls. These types are conveyed by the class name reported to
+ * services by the {@code AccessibilityNodeInfo}'s {@code className} field. However, apps sometimes
+ * use custom views, and accessibility services may not handle these views correctly if they do not
+ * recognize their types.
+ *
+ * <p>When an {@link AccessibilityHierarchy} is constructed from {@code AccessibilityNodeInfo} data,
+ * the {@link ViewHierarchyElement}'s' {@code accessibilityClassName} is populated with a reliable
+ * class name. So when an element is visible and important for accessibility, and if the {@code
+ * accessibilityClassName} is empty, or if the name does belong to one of the standard, supported UI
+ * packages, then this check will produce a {@link AccessibilityCheckResultType#WARNING WARNING}.
+ *
+ * <p>When an {@code AccessibilityHierarchy} is constructed from {@code View} data, the {@code
+ * className} that would be populated within its {@code AccessibilityNodeInfo} representation cannot
+ * be determined reliably, so the {@code ViewHierarchyElement}'s {@code accessibilityClassName} is
+ * set to {@code null}, and this check will produce only {@link AccessibilityCheckResultType#NOT_RUN
+ * NOT_RUN} results, essentially making this check a no-op.
+ *
+ * @see <a href="https://support.google.com/accessibility/android/answer/7661305">Unsupported item
+ *     type</a>
  */
 public class ClassNameCheck extends AccessibilityHierarchyCheck {
 

@@ -60,8 +60,11 @@ public abstract class AccessibilityCheckResult {
      */
     INFO(ResultTypeProto.INFO),
     /**
-     * A signal that the check was not run at all (ex. because the API level was too low)
+     * Indication that a potential issue was identified, but it was resolved as not an accessibility
+     * problem.
      */
+    RESOLVED(ResultTypeProto.RESOLVED),
+    /** A signal that the check was not run at all (ex. because the API level was too low) */
     NOT_RUN(ResultTypeProto.NOT_RUN),
     /**
      * A result that has been explicitly suppressed from throwing any Exceptions, used to allow for

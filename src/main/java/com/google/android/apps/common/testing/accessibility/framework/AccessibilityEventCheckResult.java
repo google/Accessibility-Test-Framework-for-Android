@@ -77,7 +77,7 @@ public final class AccessibilityEventCheckResult extends AccessibilityCheckResul
       }
     } catch (ClassNotFoundException e) {
       throw new RuntimeException(
-          String.format("Failed to resolve check class: %1$s", checkClassName));
+          String.format("Failed to resolve check class: %1$s", checkClassName), e);
     }
 
     // Type

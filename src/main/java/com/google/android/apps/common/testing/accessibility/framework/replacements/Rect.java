@@ -14,6 +14,9 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.RectProto;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -29,10 +32,10 @@ public final class Rect {
 
   public Rect(int left, int top, int right, int bottom) {
     // Ensure coordinate ordering is sensible
-    this.left = Math.min(left, right);
-    this.top = Math.min(top, bottom);
-    this.right = Math.max(left, right);
-    this.bottom = Math.max(top, bottom);
+    this.left = min(left, right);
+    this.top = min(top, bottom);
+    this.right = max(left, right);
+    this.bottom = max(top, bottom);
   }
 
   public Rect(RectProto rectProto) {
@@ -78,18 +81,64 @@ public final class Rect {
         && (this.bottom >= r.bottom);
   }
 
+  /** See {@link android.graphics.Rect#contains(int, int)} */
+  public boolean contains(int x, int y) {
+    return !isEmpty() && x >= left && x < right && y >= top && y < bottom;
+  }
+
   /** See {@link android.graphics.Rect#isEmpty()} */
   public boolean isEmpty() {
     return (left == right) || (top == bottom);
   }
 
+  /**
+   * Returns a {@link Rect} which encloses this rectangle and the specified rectangle. If the
+   * specified rectangle is empty, return {@code this}. If this rectangle is empty, return the
+   * specified rectangle.
+   *
+   * <p>See {@link android.graphics.Rect#union(android.graphics.Rect)}
+   *
+   * @param r The rectangle being unioned with this rectangle
+   */
+  public Rect union(Rect r) {
+    return isEmpty() ? r : union(r.left, r.top, r.right, r.bottom);
+  }
+
+  /**
+   * Returns a {@link Rect} which encloses this rectangle and the specified rectangle. If the
+   * specified rectangle is empty, return {@code this}. If this rectangle is empty, return the
+   * specified rectangle.
+   *
+   * <p>See {@link android.graphics.Rect#union(int, int, int, int)}
+   *
+   * @param left The left edge being unioned with this rectangle
+   * @param top The top edge being unioned with this rectangle
+   * @param right The right edge being unioned with this rectangle
+   * @param bottom The bottom edge being unioned with this rectangle
+   */
+  public Rect union(int left, int top, int right, int bottom) {
+    if ((right <= left) || (bottom <= top)) {
+      return this;
+    }
+
+    if (isEmpty()) {
+      return new Rect(left, top, right, bottom);
+    } else {
+      return new Rect(
+          min(left, this.left),
+          min(top, this.top),
+          max(right, this.right),
+          max(bottom, this.bottom));
+    }
+  }
+
   public RectProto toProto() {
-    RectProto.Builder builder = RectProto.newBuilder();
-    builder.setLeft(left);
-    builder.setTop(top);
-    builder.setRight(right);
-    builder.setBottom(bottom);
-    return builder.build();
+    return RectProto.newBuilder()
+        .setLeft(left)
+        .setTop(top)
+        .setRight(right)
+        .setBottom(bottom)
+        .build();
   }
 
   @Override

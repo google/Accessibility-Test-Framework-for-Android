@@ -7,6 +7,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Span;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Spans;
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -276,5 +277,36 @@ final class ParcelUtils {
         in.readInt(),
         /** bottom = */
         in.readInt());
+  }
+
+  /**
+   * Writes values to the provided {@link Parcel} to represent a list of {@link Rect}.
+   *
+   * @param out a {@link Parcel} to which to write
+   * @param rects a list of {@link Rect} to represent
+   */
+  public static void writeRectList(Parcel out, List<Rect> rects) {
+    out.writeInt(rects.size());
+    for (Rect rect : rects) {
+      ParcelUtils.writeRectToParcel(rect, out);
+    }
+  }
+
+  /**
+   * Reads values from the provided {@link Parcel} representing a list of {@link Rect}.
+   *
+   * @param in a {@link Parcel} from which to read
+   * @return the represented value
+   */
+  public static ImmutableList<Rect> readRectList(Parcel in) {
+    int size = in.readInt();
+    if (size > 0) {
+      ImmutableList.Builder<Rect> rects = new ImmutableList.Builder<>();
+      for (int i = 0; i < size; ++i) {
+        rects.add(ParcelUtils.readRectFromParcel(in));
+      }
+      return rects.build();
+    }
+    return ImmutableList.of();
   }
 }

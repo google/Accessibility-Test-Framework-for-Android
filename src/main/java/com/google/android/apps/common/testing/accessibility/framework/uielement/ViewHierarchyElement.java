@@ -17,6 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.Boolean.TRUE;
 
+import com.google.android.apps.common.testing.accessibility.framework.replacements.LayoutParams;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
@@ -81,6 +82,10 @@ public class ViewHierarchyElement {
   protected final boolean enabled;
   protected final @Nullable Integer drawingOrder;
   protected final ImmutableList<ViewHierarchyAction> actionList;
+  protected final @Nullable LayoutParams layoutParams;
+  protected final @Nullable SpannableString hintText; // only for TextView
+  protected final @Nullable Integer hintTextColor; // only for TextView
+  protected final List<Rect> textCharacterLocations;
 
   // Populated only after a hierarchy is constructed
   protected @Nullable Long labeledById;
@@ -127,7 +132,11 @@ public class ViewHierarchyElement {
       @Nullable Long accessibilityTraversalAfterId,
       @Nullable Integer drawingOrder,
       List<Integer> superclassViews,
-      List<? extends ViewHierarchyAction> actionList) {
+      List<? extends ViewHierarchyAction> actionList,
+      @Nullable LayoutParams layoutParams,
+      @Nullable SpannableString hintText,
+      @Nullable Integer hintTextColor,
+      List<Rect> textCharacterLocations) {
     this.id = id;
     this.parentId = parentId;
     if (!childIds.isEmpty()) {
@@ -171,6 +180,10 @@ public class ViewHierarchyElement {
     } else {
       this.actionList = ImmutableList.of();
     }
+    this.layoutParams = layoutParams;
+    this.hintText = hintText;
+    this.hintTextColor = hintTextColor;
+    this.textCharacterLocations = textCharacterLocations;
   }
 
   ViewHierarchyElement(ViewHierarchyElementProto proto) {
@@ -213,7 +226,7 @@ public class ViewHierarchyElement {
     } else {
       touchDelegateBounds = ImmutableList.of();
     }
-    this.boundsInScreen = proto.hasBoundsInScreen() ? new Rect(proto.getBoundsInScreen()) : null;
+    boundsInScreen = proto.hasBoundsInScreen() ? new Rect(proto.getBoundsInScreen()) : null;
     nonclippedHeight = proto.hasNonclippedHeight() ? proto.getNonclippedHeight() : null;
     nonclippedWidth = proto.hasNonclippedWidth() ? proto.getNonclippedWidth() : null;
     textSize = proto.hasTextSize() ? proto.getTextSize() : null;
@@ -229,18 +242,28 @@ public class ViewHierarchyElement {
             : null;
     accessibilityTraversalAfterId =
         proto.hasAccessibilityTraversalAfterId() ? proto.getAccessibilityTraversalAfterId() : null;
-    this.superclassViews = proto.getSuperclassesList();
+    superclassViews = proto.getSuperclassesList();
     drawingOrder = proto.hasDrawingOrder() ? proto.getDrawingOrder() : null;
     ImmutableList.Builder<ViewHierarchyAction> actionBuilder = new ImmutableList.Builder<>();
     for (ViewHierarchyActionProto actionProto : proto.getActionsList()) {
       actionBuilder.add(new ViewHierarchyAction(actionProto));
     }
-    this.actionList = actionBuilder.build();
+    actionList = actionBuilder.build();
+    layoutParams = proto.hasLayoutParams() ? new LayoutParams(proto.getLayoutParams()) : null;
+    hintText = proto.hasHintText() ? new SpannableString(proto.getHintText()) : null;
+    hintTextColor = proto.hasHintTextColor() ? proto.getHintTextColor() : null;
+    ImmutableList.Builder<Rect> characterLocations = ImmutableList.<Rect>builder();
+    if (proto.getTextCharacterLocationsCount() > 0) {
+      for (int i = 0; i < proto.getTextCharacterLocationsCount(); ++i) {
+        characterLocations.add(new Rect(proto.getTextCharacterLocations(i)));
+      }
+    }
+    textCharacterLocations = characterLocations.build();
   }
 
   /**
-   * @return The value uniquely identifying this window within the context of its containing
-   *         {@link WindowHierarchyElement}
+   * Returns the value uniquely identifying this window within the context of its containing {@link
+   * WindowHierarchyElement}.
    */
   public int getId() {
     return id;
@@ -367,7 +390,7 @@ public class ViewHierarchyElement {
    * @param referenceClassNameList the list of names of classes to check against the class of this
    *     element.
    * @return true if the {@code android.view.View} this element represents is an instance of at
-   *     least one of the class whose name is {@code referenceClassName}. False if it does not.
+   *     least one of the class names in {@code referenceClassNameList}. False if it does not.
    */
   public boolean checkInstanceOfAny(List<String> referenceClassNameList) {
     for (String referenceClassName : referenceClassNameList) {
@@ -522,6 +545,11 @@ public class ViewHierarchyElement {
     return touchDelegateBounds;
   }
 
+  /** Returns a list of character locations in screen coordinates. */
+  public List<Rect> getTextCharacterLocations() {
+    return textCharacterLocations;
+  }
+
   /**
    * Retrieves the visible bounds of this element in absolute screen coordinates.
    *
@@ -662,6 +690,36 @@ public class ViewHierarchyElement {
   }
 
   /**
+   * Returns how the element wants to be laid out in its parent, or {@code null} if the info is not
+   * available.
+   *
+   * @see android.view.ViewGroup.LayoutParams
+   */
+  public @Nullable LayoutParams getLayoutParams() {
+    return layoutParams;
+  }
+
+  /**
+   * Returns the hint that is displayed when this view is a TextView and the text of the TextView is
+   * empty, or {@code null} if the view is not a TextView, or if the info in not available.
+   *
+   * @see android.widget.TextView#getHint()
+   */
+  public @Nullable SpannableString getHintText() {
+    return hintText;
+  }
+
+  /**
+   * Returns the current color selected to paint the hint text, or {@code null} if this cannot be
+   * determined.
+   *
+   * @see android.widget.TextView#getCurrentHintTextColor()
+   */
+  public @Nullable Integer getHintTextColor() {
+    return hintTextColor;
+  }
+
+  /**
    * Returns {@code true} if this element {@link #isVisibleToUser} and its visible bounds are
    * adjacent to the scrollable edge of a scrollable container. This would indicate that the element
    * may be partially obscured by the container.
@@ -779,9 +837,7 @@ public class ViewHierarchyElement {
     if (visibleToUser != null) {
       builder.setVisibleToUser(visibleToUser);
     }
-    builder.setClickable(clickable);
-    builder.setLongClickable(longClickable);
-    builder.setFocusable(focusable);
+    builder.setClickable(clickable).setLongClickable(longClickable).setFocusable(focusable);
     if (editable != null) {
       builder.setEditable(editable);
     }
@@ -843,10 +899,22 @@ public class ViewHierarchyElement {
     if (drawingOrder != null) {
       builder.setDrawingOrder(drawingOrder);
     }
+    if (layoutParams != null) {
+      builder.setLayoutParams(layoutParams.toProto());
+    }
+    if (!TextUtils.isEmpty(hintText)) {
+      builder.setHintText(hintText.toProto());
+    }
+    if (hintTextColor != null) {
+      builder.setHintTextColor(hintTextColor);
+    }
 
     builder.addAllSuperclasses(superclassViews);
     for (ViewHierarchyAction action : actionList) {
       builder.addActions(action.toProto());
+    }
+    for (Rect rect : textCharacterLocations) {
+      builder.addTextCharacterLocations(rect.toProto());
     }
     return builder.build();
   }
@@ -943,7 +1011,10 @@ public class ViewHierarchyElement {
             getAccessibilityTraversalAfter(), element.getAccessibilityTraversalAfter())
         && condensedUniqueIdEquals(
             getAccessibilityTraversalBefore(), element.getAccessibilityTraversalBefore())
-        && Objects.equals(getDrawingOrder(), element.getDrawingOrder());
+        && Objects.equals(getDrawingOrder(), element.getDrawingOrder())
+        && Objects.equals(getLayoutParams(), element.getLayoutParams())
+        && TextUtils.equals(getHintText(), element.getHintText())
+        && Objects.equals(getHintTextColor(), element.getHintTextColor());
   }
 
   private static boolean condensedUniqueIdEquals(

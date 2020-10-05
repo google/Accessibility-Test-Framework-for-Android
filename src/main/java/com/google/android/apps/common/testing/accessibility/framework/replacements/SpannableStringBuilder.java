@@ -1,5 +1,6 @@
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,46 +17,41 @@ public class SpannableStringBuilder implements CharSequence {
 
   public SpannableStringBuilder() {}
 
-  public void append(@Nullable SpannableString string) {
-    if (TextUtils.isEmpty(string)) {
-      return;
+  public SpannableStringBuilder append(@Nullable SpannableString string) {
+    if (!TextUtils.isEmpty(string)) {
+      copyAndAppendAdjustedSpans(string.getSpans(), 0);
+      append(string.toString());
     }
-
-    copyAndAppendAdjustedSpans(string.getSpans(), 0);
-    append(string.toString());
+    return this;
   }
 
-  public void append(@Nullable String string) {
-    if (TextUtils.isEmpty(string)) {
-      return;
+  public SpannableStringBuilder append(@Nullable String string) {
+    if (!TextUtils.isEmpty(string)) {
+      rawTextBuilder.append(string);
     }
-
-    rawTextBuilder.append(string);
+    return this;
   }
 
-  public void appendWithSeparator(@Nullable SpannableString string) {
-    if (TextUtils.isEmpty(string)) {
-      return;
+  public SpannableStringBuilder appendWithSeparator(@Nullable SpannableString string) {
+    if (!TextUtils.isEmpty(string)) {
+      copyAndAppendAdjustedSpans(string.getSpans(), (needsSeparator() ? SEPARATOR.length() : 0));
+      appendWithSeparator(string.toString());
     }
-
-    copyAndAppendAdjustedSpans(string.getSpans(), (needsSeparator() ? SEPARATOR.length() : 0));
-    appendWithSeparator(string.toString());
+    return this;
   }
 
-  public void appendWithSeparator(@Nullable String string) {
-    if (TextUtils.isEmpty(string)) {
-      return;
+  public SpannableStringBuilder appendWithSeparator(@Nullable String string) {
+    if (!TextUtils.isEmpty(string)) {
+      if (needsSeparator()) {
+        append(SEPARATOR);
+      }
+      append(string);
     }
-
-    if (needsSeparator()) {
-      append(SEPARATOR);
-    }
-
-    append(string);
+    return this;
   }
 
   public List<Span> getSpans() {
-    return (spans == null) ? Collections.emptyList() : Collections.unmodifiableList(spans);
+    return (spans == null) ? ImmutableList.of() : Collections.unmodifiableList(spans);
   }
 
   public SpannableString build() {

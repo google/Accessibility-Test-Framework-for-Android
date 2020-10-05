@@ -183,7 +183,7 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
    *
    * @throws CycleException if a loop is detected
    */
-  private List<ViewHierarchyElement> buildNodeChain(
+  private static List<ViewHierarchyElement> buildNodeChain(
       ViewHierarchyElement start, NextElementFunction nextElementFunction) throws CycleException {
     List<ViewHierarchyElement> chain = new ArrayList<>();
     chain.add(start);

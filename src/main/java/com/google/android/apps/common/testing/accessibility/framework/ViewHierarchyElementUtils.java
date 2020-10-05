@@ -66,14 +66,17 @@ public final class ViewHierarchyElementUtils {
       // Content descriptions override everything else -- including children
       SpannableString contentDescription = element.getContentDescription();
       if (!TextUtils.isEmpty(contentDescription)) {
-        returnStringBuilder.appendWithSeparator(contentDescription);
-        return returnStringBuilder.build();
+        return returnStringBuilder.appendWithSeparator(contentDescription).build();
       }
 
       SpannableString text = element.getText();
-
       if (!TextUtils.isEmpty(text) && (TextUtils.getTrimmedLength(text) > 0)) {
         returnStringBuilder.appendWithSeparator(text);
+      } else {
+        SpannableString hint = element.getHintText();
+        if (!TextUtils.isEmpty(hint) && (TextUtils.getTrimmedLength(hint) > 0)) {
+          returnStringBuilder.appendWithSeparator(hint);
+        }
       }
 
       if (TRUE.equals(element.isCheckable())) {
@@ -180,7 +183,7 @@ public final class ViewHierarchyElementUtils {
    *
    * @param view The {@link ViewHierarchyElement} to evaluate
    * @return {@code true} if it is possible for {@code view} to gain accessibility focus, {@code
-   * false} otherwise.
+   *     false} otherwise.
    */
   private static boolean isAccessibilityFocusable(ViewHierarchyElement view) {
     if (!TRUE.equals(view.isVisibleToUser())) {
@@ -278,13 +281,16 @@ public final class ViewHierarchyElementUtils {
   }
 
   /**
-   * Determines if the supplied {@link ViewHierarchyElement} has a contentDescription or text.
+   * Determines if the supplied {@link ViewHierarchyElement} has a contentDescription, text or hint.
    *
    * @param view The {@link ViewHierarchyElement} to evaluate
-   * @return {@code true} if {@code view} has a contentDescription or text, {@code false} otherwise.
+   * @return {@code true} if {@code view} has a contentDescription, text or hint, {@code false}
+   *     otherwise.
    */
   private static boolean hasText(ViewHierarchyElement view) {
-    return !TextUtils.isEmpty(view.getText()) || !TextUtils.isEmpty(view.getContentDescription());
+    return !TextUtils.isEmpty(view.getText())
+        || !TextUtils.isEmpty(view.getContentDescription())
+        || !TextUtils.isEmpty(view.getHintText());
   }
 
   /**

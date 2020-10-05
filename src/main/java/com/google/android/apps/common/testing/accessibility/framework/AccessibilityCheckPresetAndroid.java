@@ -28,15 +28,17 @@ import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Provides deprecated methods for {@link AccessibilityCheckPreset}. */
+@SuppressWarnings("deprecation") // Need to support AccessibilityViewHierarchyCheck..
 public final class AccessibilityCheckPresetAndroid {
+
   /**
    * Retrieve checks for {@code View}s based on a desired preset.
    *
    * @param preset The preset of interest
    * @return A set of all checks for {@code View}s with scopes for the preset
    * @deprecated ATF integrations should now use {@link
-   *     #getAccessibilityHierarchyChecksForPreset(AccessibilityCheckPreset)} for the most up to
-   *     date set of accessibility checks.
+   *     AccessibilityCheckPreset#getAccessibilityHierarchyChecksForPreset(AccessibilityCheckPreset)}
+   *     for the most up to date set of accessibility checks.
    */
   @Deprecated
   public static ImmutableSet<AccessibilityViewHierarchyCheck> getViewChecksForPreset(

@@ -37,16 +37,14 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 
-/**
- * Utility class for dealing with {@code AccessibilityCheckResult}s
- */
+/** Utility class for dealing with {@code AccessibilityCheckResult}s */
+@SuppressWarnings("deprecation") // Need to support AccessibilityViewCheckResult.
 public final class AccessibilityCheckResultUtils {
 
   /**
    * Mapping from deprecated AccessibilityViewHierarchyCheck to the AccessibilityHierarchyCheck to
    * which it delegates.
    */
-  @SuppressWarnings("deprecation")
   private static final ImmutableBiMap<?, ?> VIEW_CHECK_ALIASES =
       ImmutableBiMap.builder()
           .put(ClickableSpanViewCheck.class, ClickableSpanCheck.class)

@@ -16,6 +16,8 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 
 import static com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils.isPotentiallyObscured;
 import static com.google.common.base.Preconditions.checkNotNull;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
@@ -42,9 +44,7 @@ import java.util.List;
 import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-/**
- * Check that ensures text content has sufficient contrast against its background
- */
+/** Check that ensures text content has sufficient contrast against its background */
 public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
   /** Result when the view is not visible. */
@@ -162,9 +162,10 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       }
 
       if (!view.checkInstanceOf(ViewHierarchyElementUtils.TEXT_VIEW_CLASS_NAME)
-          || view.checkInstanceOf(ViewHierarchyElementUtils.SWITCH_CLASS_NAME)) {
-        // Only evaluate TextView subclasses, but exclude Switch, which has not displayed text by
-        // default since API 21.
+          || (view.checkInstanceOf(ViewHierarchyElementUtils.SWITCH_CLASS_NAME)
+              && view.getTextCharacterLocations().isEmpty())) {
+        // Only evaluate contrast for instances of TextView, or instances of Switch when character
+        // locations are known.
         results.add(
             new AccessibilityHierarchyCheckResult(
                 CHECK_CLASS,
@@ -175,7 +176,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
         continue;
       }
 
-      if (TextUtils.isEmpty(view.getText())) {
+      if (TextUtils.isEmpty(view.getText()) && TextUtils.isEmpty(view.getHintText())) {
         results.add(
             new AccessibilityHierarchyCheckResult(
                 CHECK_CLASS,
@@ -404,11 +405,11 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    *
    * @param view The {@link ViewHierarchyElement} to evaluate
    * @return an {@link AccessibilityHierarchyCheckResult} describing the result of the lightweight
-   *         evaluation, or {@code null} if there is sufficient text contrast.
+   *     evaluation, or {@code null} if there is sufficient text contrast.
    */
   private @Nullable AccessibilityHierarchyCheckResult attemptLightweightEval(
       ViewHierarchyElement view) {
-    Integer textColor = view.getTextColor();
+    Integer textColor = getForegroundColor(view);
     Integer backgroundDrawableColor = view.getBackgroundDrawableColor();
     if (textColor == null) {
       return new AccessibilityHierarchyCheckResult(
@@ -455,8 +456,10 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
     }
 
     double contrastRatio = ContrastUtils.calculateContrastRatio(textColor, backgroundDrawableColor);
-    double requiredContrast = isLargeText(view) ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
-        : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+    double requiredContrast =
+        isLargeText(view)
+            ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
+            : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
     if ((requiredContrast - contrastRatio) > CONTRAST_TOLERANCE) {
       ResultMetadata resultMetadata = new HashMapResultMetadata();
       resultMetadata.putDouble(KEY_REQUIRED_CONTRAST_RATIO, requiredContrast);
@@ -499,6 +502,12 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
     }
     Rect screenCaptureBounds = new Rect(0, 0, screenCapture.getWidth(), screenCapture.getHeight());
     Rect viewBounds = view.getBoundsInScreen();
+    Rect textCharacterBounds = getTextCharacterBounds(view);
+    if (!textCharacterBounds.isEmpty() && screenCaptureBounds.contains(textCharacterBounds)) {
+      // Extracts foreground/background colors from the region which contains the text characters.
+      viewBounds = textCharacterBounds;
+    }
+
     if (viewBounds.isEmpty() || !screenCaptureBounds.contains(viewBounds)) {
       // If an off-screen view reports itself as visible, we shouldn't evaluate it.
       ResultMetadata resultMetadata = new HashMapResultMetadata();
@@ -546,7 +555,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
     ArrayList<Double> lowContrastRatios = new ArrayList<>();
 
     Double customizedHeuristicContrastRatio =
-        (parameters == null) ? null : parameters.getCustomContrastRatio();
+        (parameters == null) ? null : parameters.getCustomTextContrastRatio();
     if (customizedHeuristicContrastRatio != null) {
       for (int i = 0; i < contrastRatios.size(); i++) {
         if (customizedHeuristicContrastRatio - contrastRatios.get(i) > CONTRAST_TOLERANCE) {
@@ -629,9 +638,26 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   @VisibleForTesting
   ContrastSwatch getContrastSwatch(
       Image image, @Nullable Boolean enableEnhancedContrastEvaluation) {
-    return new ContrastSwatch(
-        image,
-        (enableEnhancedContrastEvaluation == null) ? false : enableEnhancedContrastEvaluation);
+    return new ContrastSwatch(image, Boolean.TRUE.equals(enableEnhancedContrastEvaluation));
+  }
+
+  private Rect getTextCharacterBounds(ViewHierarchyElement view) {
+    List<Rect> characterLocations = view.getTextCharacterLocations();
+    if (characterLocations.isEmpty()) {
+      return Rect.EMPTY;
+    }
+
+    int minLeft = Integer.MAX_VALUE;
+    int minTop = Integer.MAX_VALUE;
+    int maxRight = Integer.MIN_VALUE;
+    int maxBottom = Integer.MIN_VALUE;
+    for (Rect rect : characterLocations) {
+      minLeft = min(minLeft, rect.getLeft());
+      minTop = min(minTop, rect.getTop());
+      maxRight = max(maxRight, rect.getRight());
+      maxBottom = max(maxBottom, rect.getBottom());
+    }
+    return new Rect(minLeft, minTop, maxRight, maxBottom);
   }
 
   private Image crop(Image screenCapture, Rect viewBounds) {
@@ -728,13 +754,26 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   }
 
   private static boolean isLargeText(ViewHierarchyElement view) {
-    float density = view.getWindow().getAccessibilityHierarchy().getDeviceState()
-        .getDefaultDisplayInfo().getMetricsWithoutDecoration().getScaledDensity();
+    float density =
+        view.getWindow()
+            .getAccessibilityHierarchy()
+            .getDeviceState()
+            .getDefaultDisplayInfo()
+            .getMetricsWithoutDecoration()
+            .getScaledDensity();
     Float textSize = view.getTextSize();
     float dpSize = (textSize != null) ? textSize / density : 0;
     int style = (view.getTypefaceStyle() != null) ? view.getTypefaceStyle() : TYPEFACE_NORMAL;
     return (dpSize >= ContrastUtils.WCAG_LARGE_TEXT_MIN_SIZE)
         || ((dpSize >= ContrastUtils.WCAG_LARGE_BOLD_TEXT_MIN_SIZE)
             && ((style & TYPEFACE_BOLD) != 0));
+  }
+
+  /**
+   * Returns the current color selected to paint the text or the hint of the given {@link
+   * ViewHierarchyElement}.
+   */
+  private static @Nullable Integer getForegroundColor(ViewHierarchyElement view) {
+    return TextUtils.isEmpty(view.getText()) ? view.getHintTextColor() : view.getTextColor();
   }
 }

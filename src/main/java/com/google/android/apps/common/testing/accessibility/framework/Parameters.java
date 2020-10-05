@@ -9,7 +9,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public class Parameters {
 
   @Nullable private Image screenCapture;
-  @Nullable private Double customContrastRatio;
+  @Nullable private Double customTextContrastRatio;
+  @Nullable private Double customImageContrastRatio;
   @Nullable private Integer customTouchTargetSize;
   @Nullable private Boolean enableEnhancedContrastEvaluation;
   @Nullable private Boolean saveViewImage;
@@ -66,9 +67,33 @@ public class Parameters {
    * @return The user-defined minimum contrast ratio, or {@code null} if a user-defined value has
    *     not been set.
    * @see #putCustomContrastRatio(double)
+   * @deprecated Use {@link #getCustomTextContrastRatio} and {@link #getCustomImageContrastRatio}
    */
+  @Deprecated
   public @Nullable Double getCustomContrastRatio() {
-    return customContrastRatio;
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * Gets a user-defined minimum text contrast ratio.
+   *
+   * @return The user-defined minimum text contrast ratio, or {@code null} if a user-defined value
+   *     has not been set.
+   * @see #putCustomTextContrastRatio(double)
+   */
+  public @Nullable Double getCustomTextContrastRatio() {
+    return customTextContrastRatio;
+  }
+
+  /**
+   * Gets a user-defined minimum image contrast ratio.
+   *
+   * @return The user-defined minimum image contrast ratio, or {@code null} if a user-defined value
+   *     has not been set.
+   * @see #putCustomImageContrastRatio(double)
+   */
+  public @Nullable Double getCustomImageContrastRatio() {
+    return customImageContrastRatio;
   }
 
   /**
@@ -79,9 +104,35 @@ public class Parameters {
    * value set here should override the default value used by those checks.
    *
    * @param contrastRatio a user-defined minimum contrast ratio
+   * @deprecated Use {@link #putCustomTextContrastRatio(double)} and {@link
+   *     #putCustomImageContrastRatio(double)}
    */
+  @Deprecated
   public void putCustomContrastRatio(double contrastRatio) {
-    customContrastRatio = contrastRatio;
+    putCustomTextContrastRatio(contrastRatio);
+    putCustomImageContrastRatio(contrastRatio);
+  }
+
+  /**
+   * Sets a user-defined minimum text contrast ratio for use by {@link
+   * com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck}. A
+   * value set here should override the default value used by this check.
+   *
+   * @param textContrastRatio a user-defined minimum text contrast ratio
+   */
+  public void putCustomTextContrastRatio(double textContrastRatio) {
+    customTextContrastRatio = textContrastRatio;
+  }
+
+  /**
+   * Sets a user-defined minimum contrast ratio for use by {@link
+   * com.google.android.apps.common.testing.accessibility.framework.checks.ImageContrastCheck}. A
+   * value set here should override the default value used by this check.
+   *
+   * @param imageContrastRatio a user-defined minimum image contrast ratio
+   */
+  public void putCustomImageContrastRatio(double imageContrastRatio) {
+    customImageContrastRatio = imageContrastRatio;
   }
 
   /**

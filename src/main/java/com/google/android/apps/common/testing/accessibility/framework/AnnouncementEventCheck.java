@@ -37,8 +37,8 @@ public class AnnouncementEventCheck extends AccessibilityEventCheck {
   @Override
   public List<AccessibilityEventCheckResult> runCheckOnEvent(AccessibilityEvent event) {
 
-    String message = StringManager.getString(
-        Locale.getDefault(), "result_message_disruptive_announcement");
+    String message =
+        StringManager.getString(Locale.getDefault(), "result_message_disruptive_announcement");
     return ImmutableList.<AccessibilityEventCheckResult>of(
         new AccessibilityEventCheckResult(
             this.getClass(), AccessibilityCheckResultType.WARNING, message, event));

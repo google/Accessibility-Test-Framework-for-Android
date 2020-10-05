@@ -25,7 +25,7 @@ public class Question {
    * @param questionId the question identifier
    * @param questionTypeClass the class of the type of information needed to answer this question
    * @param answerTypeClass the class of the answer type expected for this question
-   * @param questionHandler the {@link QuestionHandler} that created this quesiton
+   * @param questionHandler the {@link QuestionHandler} that created this question
    * @param originalResult the {@link AccessibilityHierarchyCheckResult} that this question is about
    * @param metadata extra data needed to answer this question
    */
