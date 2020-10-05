@@ -44,12 +44,13 @@ message AccessibilityHierarchyCheckResultProto {
 
 // Other than UNKNOWN, this should mirror
 // AccessibilityCheckResult.AccessibilityCheckResultType
-// Next index: 6
+// Next index: 7
 enum ResultTypeProto {
   UNKNOWN = 0;
   ERROR = 1;
   WARNING = 2;
   INFO = 3;
+  RESOLVED = 6;
   NOT_RUN = 4;
   SUPPRESSED = 5;
 }
