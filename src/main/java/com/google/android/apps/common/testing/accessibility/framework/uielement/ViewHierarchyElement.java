@@ -30,8 +30,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullDecl;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.checkerframework.dataflow.qual.Pure;
 
 /**
@@ -46,51 +46,51 @@ import org.checkerframework.dataflow.qual.Pure;
  */
 public class ViewHierarchyElement {
   protected final int id;
-  protected final @Nullable Integer parentId;
+  protected final @NullableDecl Integer parentId;
 
   // Created lazily, because many views are leafs.
-  protected @MonotonicNonNull List<Integer> childIds;
+  protected @MonotonicNonNullDecl List<Integer> childIds;
 
   // This field is set to a non-null value after construction.
-  private @MonotonicNonNull WindowHierarchyElement windowElement;
+  private @MonotonicNonNullDecl WindowHierarchyElement windowElement;
 
-  protected final @Nullable CharSequence packageName;
-  protected final @Nullable CharSequence className;
-  protected final @Nullable CharSequence accessibilityClassName;
-  protected final @Nullable String resourceName;
-  protected final @Nullable SpannableString contentDescription;
-  protected final @Nullable SpannableString text;
+  protected final @NullableDecl CharSequence packageName;
+  protected final @NullableDecl CharSequence className;
+  protected final @NullableDecl CharSequence accessibilityClassName;
+  protected final @NullableDecl String resourceName;
+  protected final @NullableDecl SpannableString contentDescription;
+  protected final @NullableDecl SpannableString text;
   protected final boolean importantForAccessibility;
-  protected final @Nullable Boolean visibleToUser;
+  protected final @NullableDecl Boolean visibleToUser;
   protected final boolean clickable;
   protected final boolean longClickable;
   protected final boolean focusable;
-  protected final @Nullable Boolean editable;
-  protected final @Nullable Boolean scrollable;
-  protected final @Nullable Boolean canScrollForward;
-  protected final @Nullable Boolean canScrollBackward;
-  protected final @Nullable Boolean checkable;
-  protected final @Nullable Boolean checked;
-  protected final @Nullable Boolean hasTouchDelegate;
-  protected final @Nullable Rect boundsInScreen;
-  protected final @Nullable Integer nonclippedHeight;
-  protected final @Nullable Integer nonclippedWidth;
-  protected final @Nullable Float textSize;
-  protected final @Nullable Integer textColor;
-  protected final @Nullable Integer backgroundDrawableColor;
-  protected final @Nullable Integer typefaceStyle;
+  protected final @NullableDecl Boolean editable;
+  protected final @NullableDecl Boolean scrollable;
+  protected final @NullableDecl Boolean canScrollForward;
+  protected final @NullableDecl Boolean canScrollBackward;
+  protected final @NullableDecl Boolean checkable;
+  protected final @NullableDecl Boolean checked;
+  protected final @NullableDecl Boolean hasTouchDelegate;
+  protected final @NullableDecl Rect boundsInScreen;
+  protected final @NullableDecl Integer nonclippedHeight;
+  protected final @NullableDecl Integer nonclippedWidth;
+  protected final @NullableDecl Float textSize;
+  protected final @NullableDecl Integer textColor;
+  protected final @NullableDecl Integer backgroundDrawableColor;
+  protected final @NullableDecl Integer typefaceStyle;
   protected final boolean enabled;
-  protected final @Nullable Integer drawingOrder;
+  protected final @NullableDecl Integer drawingOrder;
   protected final ImmutableList<ViewHierarchyAction> actionList;
-  protected final @Nullable LayoutParams layoutParams;
-  protected final @Nullable SpannableString hintText; // only for TextView
-  protected final @Nullable Integer hintTextColor; // only for TextView
+  protected final @NullableDecl LayoutParams layoutParams;
+  protected final @NullableDecl SpannableString hintText; // only for TextView
+  protected final @NullableDecl Integer hintTextColor; // only for TextView
   protected final List<Rect> textCharacterLocations;
 
   // Populated only after a hierarchy is constructed
-  protected @Nullable Long labeledById;
-  protected @Nullable Long accessibilityTraversalBeforeId;
-  protected @Nullable Long accessibilityTraversalAfterId;
+  protected @NullableDecl Long labeledById;
+  protected @NullableDecl Long accessibilityTraversalBeforeId;
+  protected @NullableDecl Long accessibilityTraversalAfterId;
   protected List<Rect> touchDelegateBounds;
 
   // A list of identifiers that represents all the superclasses of the corresponding view element.
@@ -98,44 +98,44 @@ public class ViewHierarchyElement {
 
   protected ViewHierarchyElement(
       int id,
-      @Nullable Integer parentId,
+      @NullableDecl Integer parentId,
       List<Integer> childIds,
-      @Nullable CharSequence packageName,
-      @Nullable CharSequence className,
-      @Nullable CharSequence accessibilityClassName,
-      @Nullable String resourceName,
-      @Nullable SpannableString contentDescription,
-      @Nullable SpannableString text,
+      @NullableDecl CharSequence packageName,
+      @NullableDecl CharSequence className,
+      @NullableDecl CharSequence accessibilityClassName,
+      @NullableDecl String resourceName,
+      @NullableDecl SpannableString contentDescription,
+      @NullableDecl SpannableString text,
       boolean importantForAccessibility,
-      @Nullable Boolean visibleToUser,
+      @NullableDecl Boolean visibleToUser,
       boolean clickable,
       boolean longClickable,
       boolean focusable,
-      @Nullable Boolean editable,
-      @Nullable Boolean scrollable,
-      @Nullable Boolean canScrollForward,
-      @Nullable Boolean canScrollBackward,
-      @Nullable Boolean checkable,
-      @Nullable Boolean checked,
-      @Nullable Boolean hasTouchDelegate,
+      @NullableDecl Boolean editable,
+      @NullableDecl Boolean scrollable,
+      @NullableDecl Boolean canScrollForward,
+      @NullableDecl Boolean canScrollBackward,
+      @NullableDecl Boolean checkable,
+      @NullableDecl Boolean checked,
+      @NullableDecl Boolean hasTouchDelegate,
       List<Rect> touchDelegateBounds,
-      @Nullable Rect boundsInScreen,
-      @Nullable Integer nonclippedHeight,
-      @Nullable Integer nonclippedWidth,
-      @Nullable Float textSize,
-      @Nullable Integer textColor,
-      @Nullable Integer backgroundDrawableColor,
-      @Nullable Integer typefaceStyle,
+      @NullableDecl Rect boundsInScreen,
+      @NullableDecl Integer nonclippedHeight,
+      @NullableDecl Integer nonclippedWidth,
+      @NullableDecl Float textSize,
+      @NullableDecl Integer textColor,
+      @NullableDecl Integer backgroundDrawableColor,
+      @NullableDecl Integer typefaceStyle,
       boolean enabled,
-      @Nullable Long labeledById,
-      @Nullable Long accessibilityTraversalBeforeId,
-      @Nullable Long accessibilityTraversalAfterId,
-      @Nullable Integer drawingOrder,
+      @NullableDecl Long labeledById,
+      @NullableDecl Long accessibilityTraversalBeforeId,
+      @NullableDecl Long accessibilityTraversalAfterId,
+      @NullableDecl Integer drawingOrder,
       List<Integer> superclassViews,
       List<? extends ViewHierarchyAction> actionList,
-      @Nullable LayoutParams layoutParams,
-      @Nullable SpannableString hintText,
-      @Nullable Integer hintTextColor,
+      @NullableDecl LayoutParams layoutParams,
+      @NullableDecl SpannableString hintText,
+      @NullableDecl Integer hintTextColor,
       List<Rect> textCharacterLocations) {
     this.id = id;
     this.parentId = parentId;
@@ -285,7 +285,7 @@ public class ViewHierarchyElement {
    * @see android.view.View#getParent()
    */
   @Pure
-  public @Nullable ViewHierarchyElement getParentView() {
+  public @NullableDecl ViewHierarchyElement getParentView() {
     Integer parentIdtmp = parentId;
     return (parentIdtmp != null) ? getWindow().getViewById(parentIdtmp) : null;
   }
@@ -333,8 +333,8 @@ public class ViewHierarchyElement {
    */
   public WindowHierarchyElement getWindow() {
 
-    // The type is explicit because the @MonotonicNonNull field is not read as @Nullable.
-    return Preconditions.<@Nullable WindowHierarchyElement>checkNotNull(windowElement);
+    // The type is explicit because the @MonotonicNonNull field is not read as @NullableDecl.
+    return Preconditions.<WindowHierarchyElement>checkNotNull(windowElement);
   }
 
   /**
@@ -343,7 +343,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getPackageName()
    * @see android.content.Context#getPackageName()
    */
-  public @Nullable CharSequence getPackageName() {
+  public @NullableDecl CharSequence getPackageName() {
     return packageName;
   }
 
@@ -352,7 +352,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getPackageName()
    * @see android.view.View#getClass()
    */
-  public @Nullable CharSequence getClassName() {
+  public @NullableDecl CharSequence getClassName() {
     return className;
   }
 
@@ -363,8 +363,8 @@ public class ViewHierarchyElement {
    * @see android.view.View#getId()
    * @see android.content.res.Resources#getResourceName(int)
    */
-  @Pure
-  public @Nullable String getResourceName() {
+  //@Pure
+  public @NullableDecl String getResourceName() {
     return resourceName;
   }
 
@@ -406,7 +406,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getContentDescription()
    * @see android.view.View#getContentDescription()
    */
-  public @Nullable SpannableString getContentDescription() {
+  public @NullableDecl SpannableString getContentDescription() {
     return contentDescription;
   }
 
@@ -426,7 +426,7 @@ public class ViewHierarchyElement {
    * @see android.widget.TextView#getText()
    * @see android.widget.TextView#getHint()
    */
-  public @Nullable SpannableString getText() {
+  public @NullableDecl SpannableString getText() {
     return text;
   }
 
@@ -435,7 +435,7 @@ public class ViewHierarchyElement {
    *     not, or {@code null} if this cannot be determined.
    * @see android.view.accessibility.AccessibilityNodeInfo#isVisibleToUser()
    */
-  public @Nullable Boolean isVisibleToUser() {
+  public @NullableDecl Boolean isVisibleToUser() {
     return visibleToUser;
   }
 
@@ -473,7 +473,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is editable, {@link Boolean#FALSE} if not, or
    *     {@code null} if this cannot be determined.
    */
-  public @Nullable Boolean isEditable() {
+  public @NullableDecl Boolean isEditable() {
     return editable;
   }
 
@@ -485,7 +485,7 @@ public class ViewHierarchyElement {
    *     determine if an element is actually scrollable based on contents use {@link
    *     #canScrollForward} or {@link #canScrollBackward}.
    */
-  public @Nullable Boolean isScrollable() {
+  public @NullableDecl Boolean isScrollable() {
     return scrollable;
   }
 
@@ -494,7 +494,7 @@ public class ViewHierarchyElement {
    *         meaning either vertically downward or horizontally to the right (in left-to-right
    *         locales), {@link Boolean#FALSE} if not, or {@code null if this cannot be determined.
    */
-  public @Nullable Boolean canScrollForward() {
+  public @NullableDecl Boolean canScrollForward() {
     return canScrollForward;
   }
 
@@ -504,7 +504,7 @@ public class ViewHierarchyElement {
    *         left-to-right locales), {@link Boolean#FALSE} if not, or {@code null if this cannot be
    *         determined.
    */
-  public @Nullable Boolean canScrollBackward() {
+  public @NullableDecl Boolean canScrollBackward() {
     return canScrollBackward;
   }
 
@@ -512,7 +512,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is checkable, {@link Boolean#FALSE} if not, or
    *     {@code null} if this cannot be determined.
    */
-  public @Nullable Boolean isCheckable() {
+  public @NullableDecl Boolean isCheckable() {
     return checkable;
   }
 
@@ -520,7 +520,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is checked, {@link Boolean#FALSE} if not, or {@code
    *     null} if this cannot be determined.
    */
-  public @Nullable Boolean isChecked() {
+  public @NullableDecl Boolean isChecked() {
     return checked;
   }
 
@@ -529,7 +529,7 @@ public class ViewHierarchyElement {
    * Boolean#FALSE} if not, or {@code null} if this cannot be determined. This indicates only that
    * this element may be responsible for delegating its touches to another element.
    */
-  public @Nullable Boolean hasTouchDelegate() {
+  public @NullableDecl Boolean hasTouchDelegate() {
     return hasTouchDelegate;
   }
 
@@ -571,7 +571,7 @@ public class ViewHierarchyElement {
    *     applied by parent elements.
    * @see android.view.View#getHeight()
    */
-  public @Nullable Integer getNonclippedHeight() {
+  public @NullableDecl Integer getNonclippedHeight() {
     return nonclippedHeight;
   }
 
@@ -580,7 +580,7 @@ public class ViewHierarchyElement {
    *     applied by parent elements.
    * @see android.view.View#getWidth()
    */
-  public @Nullable Integer getNonclippedWidth() {
+  public @NullableDecl Integer getNonclippedWidth() {
     return nonclippedWidth;
   }
 
@@ -589,7 +589,7 @@ public class ViewHierarchyElement {
    *     this cannot be determined
    * @see android.widget.TextView#getTextSize()
    */
-  public @Nullable Float getTextSize() {
+  public @NullableDecl Float getTextSize() {
     return textSize;
   }
 
@@ -598,7 +598,7 @@ public class ViewHierarchyElement {
    *     determined
    * @see android.widget.TextView#getCurrentTextColor()
    */
-  public @Nullable Integer getTextColor() {
+  public @NullableDecl Integer getTextColor() {
     return textColor;
   }
 
@@ -608,7 +608,7 @@ public class ViewHierarchyElement {
    * @see android.view.View#getBackground()
    * @see android.graphics.drawable.ColorDrawable#getColor()
    */
-  public @Nullable Integer getBackgroundDrawableColor() {
+  public @NullableDecl Integer getBackgroundDrawableColor() {
     return backgroundDrawableColor;
   }
 
@@ -624,7 +624,7 @@ public class ViewHierarchyElement {
    * @see android.graphics.Typeface#BOLD_ITALIC
    */
   @Pure
-  public @Nullable Integer getTypefaceStyle() {
+  public @NullableDecl Integer getTypefaceStyle() {
     return typefaceStyle;
   }
 
@@ -644,7 +644,7 @@ public class ViewHierarchyElement {
    *     <p>NOTE: Unavailable for instances originally created from a {@link android.view.View}
    * @see android.view.accessibility.AccessibilityNodeInfo#getClassName()
    */
-  public @Nullable CharSequence getAccessibilityClassName() {
+  public @NullableDecl CharSequence getAccessibilityClassName() {
     return accessibilityClassName;
   }
 
@@ -657,7 +657,7 @@ public class ViewHierarchyElement {
    * @see android.view.View#getLabelFor()
    */
   @Pure
-  public @Nullable ViewHierarchyElement getLabeledBy() {
+  public @NullableDecl ViewHierarchyElement getLabeledBy() {
     return getViewHierarchyElementById(labeledById);
   }
 
@@ -666,7 +666,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getTraversalBefore()
    * @see android.view.View#getAccessibilityTraversalBefore()
    */
-  public @Nullable ViewHierarchyElement getAccessibilityTraversalBefore() {
+  public @NullableDecl ViewHierarchyElement getAccessibilityTraversalBefore() {
     return getViewHierarchyElementById(accessibilityTraversalBeforeId);
   }
 
@@ -675,7 +675,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getTraversalAfter()
    * @see android.view.View#getAccessibilityTraversalAfter()
    */
-  public @Nullable ViewHierarchyElement getAccessibilityTraversalAfter() {
+  public @NullableDecl ViewHierarchyElement getAccessibilityTraversalAfter() {
     return getViewHierarchyElementById(accessibilityTraversalAfterId);
   }
 
@@ -685,7 +685,7 @@ public class ViewHierarchyElement {
    *
    * @see android.view.accessibility.AccessibilityNodeInfo#getDrawingOrder()
    */
-  public @Nullable Integer getDrawingOrder() {
+  public @NullableDecl Integer getDrawingOrder() {
     return drawingOrder;
   }
 
@@ -695,7 +695,7 @@ public class ViewHierarchyElement {
    *
    * @see android.view.ViewGroup.LayoutParams
    */
-  public @Nullable LayoutParams getLayoutParams() {
+  public @NullableDecl LayoutParams getLayoutParams() {
     return layoutParams;
   }
 
@@ -705,7 +705,7 @@ public class ViewHierarchyElement {
    *
    * @see android.widget.TextView#getHint()
    */
-  public @Nullable SpannableString getHintText() {
+  public @NullableDecl SpannableString getHintText() {
     return hintText;
   }
 
@@ -715,7 +715,7 @@ public class ViewHierarchyElement {
    *
    * @see android.widget.TextView#getCurrentHintTextColor()
    */
-  public @Nullable Integer getHintTextColor() {
+  public @NullableDecl Integer getHintTextColor() {
     return hintTextColor;
   }
 
@@ -768,7 +768,7 @@ public class ViewHierarchyElement {
   }
 
   @Override
-  public boolean equals(@Nullable Object object) {
+  public boolean equals(@NullableDecl Object object) {
     if (object == this) {
       return true;
     }
@@ -972,7 +972,7 @@ public class ViewHierarchyElement {
     touchDelegateBounds.add(bounds);
   }
 
-  private @Nullable ViewHierarchyElement getViewHierarchyElementById(@Nullable Long id) {
+  private @NullableDecl ViewHierarchyElement getViewHierarchyElementById(@NullableDecl Long id) {
     return (id != null) ? getWindow().getAccessibilityHierarchy().getViewById(id) : null;
   }
 
@@ -1018,7 +1018,7 @@ public class ViewHierarchyElement {
   }
 
   private static boolean condensedUniqueIdEquals(
-      @Nullable ViewHierarchyElement ve1, @Nullable ViewHierarchyElement ve2) {
+      @NullableDecl ViewHierarchyElement ve1, @NullableDecl ViewHierarchyElement ve2) {
     return (ve1 == null)
         ? (ve2 == null)
         : ((ve2 != null) && (ve1.getCondensedUniqueId() == ve2.getCondensedUniqueId()));

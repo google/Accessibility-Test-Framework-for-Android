@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 import javax.annotation.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** An implementation of {@link ResultMetadata} backed by a {@link HashMap} */
 public class HashMapResultMetadata implements ResultMetadata {
@@ -382,7 +383,7 @@ public class HashMapResultMetadata implements ResultMetadata {
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }
@@ -407,7 +408,7 @@ public class HashMapResultMetadata implements ResultMetadata {
   }
 
   @SuppressWarnings("unchecked") // Safe specification in TypedValue
-  private <T> T getValue(String key, TypedValue.Type type, @Nullable T defaultValue) {
+  private <T> T getValue(String key, TypedValue.Type type, @NullableDecl T defaultValue) {
     TypedValue tv = map.get(key);
     if (tv == null) {
       if (defaultValue != null) {
@@ -597,7 +598,7 @@ public class HashMapResultMetadata implements ResultMetadata {
     }
 
     @Override
-    public boolean equals(@Nullable Object o) {
+    public boolean equals(@NullableDecl Object o) {
       if (this == o) {
         return true;
       }

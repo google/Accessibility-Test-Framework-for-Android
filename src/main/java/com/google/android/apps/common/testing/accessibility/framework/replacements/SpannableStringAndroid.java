@@ -17,7 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework.replaceme
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.collect.ImmutableList;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Used as a local replacement for Android's {@link android.text.SpannableString} */
 public class SpannableStringAndroid extends SpannableString {
@@ -42,8 +42,8 @@ public class SpannableStringAndroid extends SpannableString {
    * @return A {@link SpannableStringAndroid} with data matching {@code source}, or {@code null} if
    *     {@code source} is {@code null} or empty.
    */
-  @Nullable
-  public static SpannableStringAndroid valueOf(@Nullable CharSequence source) {
+  @NullableDecl
+  public static SpannableStringAndroid valueOf(@NullableDecl CharSequence source) {
     if (TextUtils.isEmpty(source)) {
       return null;
     }

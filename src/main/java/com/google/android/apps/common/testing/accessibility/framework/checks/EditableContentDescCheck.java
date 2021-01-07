@@ -30,7 +30,7 @@ import com.google.android.apps.common.testing.accessibility.framework.uielement.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Check to ensure that an editable TextView is not labeled by a contentDescription
@@ -57,8 +57,8 @@ public class EditableContentDescCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
     for (ViewHierarchyElement view : viewsToEval) {
@@ -95,13 +95,13 @@ public class EditableContentDescCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     return generateMessageForResultId(locale, resultId);
   }
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     return generateMessageForResultId(locale, resultId);
   }
 

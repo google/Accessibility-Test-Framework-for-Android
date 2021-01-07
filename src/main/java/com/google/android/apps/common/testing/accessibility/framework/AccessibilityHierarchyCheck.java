@@ -20,7 +20,7 @@ import com.google.android.apps.common.testing.accessibility.framework.uielement.
 import com.google.common.annotations.Beta;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Base class to check the accessibility of {@code ViewHierarchyElement}s.
@@ -35,14 +35,14 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    * Returns the identifier of a Google Accessibility Help article related to the issues identified
    * by this check, or {@code null} if there is not yet an article on these issues.
    */
-  protected abstract @Nullable String getHelpTopic();
+  protected abstract @NullableDecl String getHelpTopic();
 
   /**
    * Returns the string representation of a URL for a Google Accessibility Help article related to
    * the issues identified by this check, or {@code null} if there is not yet an article on these
    * issues.
    */
-  public @Nullable String getHelpUrl() {
+  public @NullableDecl String getHelpUrl() {
     String topic = getHelpTopic();
     return (topic == null) ? null : String.format(ANDROID_A11Y_HELP_URL, getHelpTopic());
   }
@@ -55,7 +55,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    * no QuestionHandler has been declared for this check
    */
   @Beta
-  public @Nullable QuestionHandler getQuestionHandler() {
+  public @NullableDecl QuestionHandler getQuestionHandler() {
     return null;
   }
 
@@ -98,7 +98,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    * @return a localized message for the result data
    */
   public abstract String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata);
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata);
 
   /**
    * Generates a concise human-readable message describing a given result, supporting standard HTML
@@ -132,7 +132,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    * @return a localized {@link CharSequence} of the abbreviated message for the result datq
    */
   public abstract String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata);
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata);
 
   /**
    * Run the check on a hierarchy of ViewHierarchyElements. Because these elements support partial
@@ -158,8 +158,8 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    */
   public abstract List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters);
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters);
 
   /**
    * @see AccessibilityHierarchyCheck#runCheckOnHierarchy(AccessibilityHierarchy,
@@ -175,7 +175,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    *      ViewHierarchyElement, Metadata)
    */
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
-      AccessibilityHierarchy hierarchy, @Nullable ViewHierarchyElement fromRoot) {
+      AccessibilityHierarchy hierarchy, @NullableDecl ViewHierarchyElement fromRoot) {
     return runCheckOnHierarchy(hierarchy, fromRoot, null);
   }
 
@@ -185,7 +185,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    * AccessibilityCheckResult.AccessibilityCheckResultType}. Larger values have a greater
    * importance.
    */
-  public @Nullable Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
+  public @NullableDecl Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
     return null;
   }
 
@@ -203,7 +203,7 @@ public abstract class AccessibilityHierarchyCheck extends AccessibilityCheck {
    *     depth-first ordering
    */
   protected static List<? extends ViewHierarchyElement> getElementsToEvaluate(
-      @Nullable ViewHierarchyElement fromRoot, AccessibilityHierarchy hierarchy) {
+      @NullableDecl ViewHierarchyElement fromRoot, AccessibilityHierarchy hierarchy) {
     return (fromRoot != null) ? fromRoot.getSelfAndAllDescendants()
         : hierarchy.getActiveWindow().getAllViews();
   }

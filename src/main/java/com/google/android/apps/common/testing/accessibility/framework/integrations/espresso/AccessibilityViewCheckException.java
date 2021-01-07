@@ -22,7 +22,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** An exception class to be used for throwing exceptions with accessibility results. */
 @SuppressWarnings("deprecation")
@@ -31,8 +31,8 @@ public final class AccessibilityViewCheckException
         .AccessibilityViewCheckException {
 
   // Either resultDescriptor or deprecatedResultDescriptor must have a non-null value, but not both.
-  private final @Nullable AccessibilityCheckResultDescriptor resultDescriptor;
-  private final AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
+  private final @NullableDecl AccessibilityCheckResultDescriptor resultDescriptor;
+  private final @NullableDecl  AccessibilityCheckResult.AccessibilityCheckResultDescriptor
       deprecatedResultDescriptor;
 
   /** Create an instance with the default {@link AccessibilityCheckResultDescriptor} */
@@ -69,8 +69,8 @@ public final class AccessibilityViewCheckException
 
   private AccessibilityViewCheckException(
       List<AccessibilityViewCheckResult> results,
-      @Nullable AccessibilityCheckResultDescriptor resultDescriptor,
-      AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
+      @NullableDecl AccessibilityCheckResultDescriptor resultDescriptor,
+      AccessibilityCheckResult.AccessibilityCheckResultDescriptor
           deprecatedResultDescriptor) {
     super(results);
     checkArgument(

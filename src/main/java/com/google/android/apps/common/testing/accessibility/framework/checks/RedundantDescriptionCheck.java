@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Checks for speakable text that may contain redundant or inappropriate information:
@@ -115,8 +115,8 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     Locale recordedLocale = getRecordedLocale(hierarchy);
 
@@ -222,7 +222,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -261,7 +261,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -296,7 +296,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
     return hierarchy.getDeviceState().getLocale();
   }
 
-  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
+  private static @NullableDecl String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");

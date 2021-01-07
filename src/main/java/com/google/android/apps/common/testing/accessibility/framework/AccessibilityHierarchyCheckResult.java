@@ -10,7 +10,7 @@ import com.google.common.annotations.Beta;
 import com.google.common.collect.ImmutableList;
 import java.util.Locale;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.checkerframework.dataflow.qual.Pure;
 import org.jsoup.Jsoup;
 
@@ -20,8 +20,8 @@ import org.jsoup.Jsoup;
 public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult {
 
   private final int resultId;
-  private final @Nullable ViewHierarchyElement element;
-  private final @Nullable ResultMetadata metadata;
+  private final @NullableDecl ViewHierarchyElement element;
+  private final @NullableDecl ResultMetadata metadata;
   private final ImmutableList<Answer> answers;
 
   /**
@@ -38,9 +38,9 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   public AccessibilityHierarchyCheckResult(
       Class<? extends AccessibilityHierarchyCheck> checkClass,
       AccessibilityCheckResultType type,
-      @Nullable ViewHierarchyElement element,
+      @NullableDecl ViewHierarchyElement element,
       int resultId,
-      @Nullable ResultMetadata metadata,
+      @NullableDecl ResultMetadata metadata,
       ImmutableList<Answer> answers) {
     super(checkNotNull(checkClass), checkNotNull(type), null);
     this.element = element;
@@ -59,10 +59,10 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   public AccessibilityHierarchyCheckResult(
       Class<? extends AccessibilityHierarchyCheck> checkClass,
       AccessibilityCheckResultType type,
-      @Nullable ViewHierarchyElement element,
+      @NullableDecl ViewHierarchyElement element,
       int resultId,
-      @Nullable ResultMetadata metadata) {
-    this(checkClass, type, element, resultId, metadata, ImmutableList.of());
+      @NullableDecl ResultMetadata metadata) {
+    this(checkClass, type, element, resultId, metadata, ImmutableList.<Answer>of());
   }
 
   /**
@@ -194,7 +194,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    * @return a metadata for this result, or {@code null} if none was provided
    */
   @Pure
-  public @Nullable ResultMetadata getMetadata() {
+  public @NullableDecl ResultMetadata getMetadata() {
     return metadata;
   }
 
@@ -205,7 +205,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    *     to a specific element within a view hierarchy.
    */
   @Pure
-  public @Nullable ViewHierarchyElement getElement() {
+  public @NullableDecl ViewHierarchyElement getElement() {
     return element;
   }
 
@@ -214,7 +214,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
    *
    * @see AccessibilityHierarchyCheck#getSecondaryPriority
    */
-  public @Nullable Double getSecondaryPriority() {
+  public @NullableDecl Double getSecondaryPriority() {
     return getCheck().getSecondaryPriority(this);
   }
 
@@ -242,7 +242,7 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }

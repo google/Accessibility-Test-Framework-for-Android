@@ -3,17 +3,17 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Supplemental input data or preferences for an {@link AccessibilityHierarchyCheck}. */
 public class Parameters {
 
-  @Nullable private Image screenCapture;
-  @Nullable private Double customTextContrastRatio;
-  @Nullable private Double customImageContrastRatio;
-  @Nullable private Integer customTouchTargetSize;
-  @Nullable private Boolean enableEnhancedContrastEvaluation;
-  @Nullable private Boolean saveViewImage;
+  @NullableDecl private Image screenCapture;
+  @NullableDecl private Double customTextContrastRatio;
+  @NullableDecl private Double customImageContrastRatio;
+  @NullableDecl private Integer customTouchTargetSize;
+  @NullableDecl private Boolean enableEnhancedContrastEvaluation;
+  @NullableDecl private Boolean saveViewImage;
 
   public Parameters() {
     super();
@@ -26,7 +26,7 @@ public class Parameters {
    *     was set.
    * @see #putScreenCapture(Image)
    */
-  public @Nullable Image getScreenCapture() {
+  public @NullableDecl Image getScreenCapture() {
     return screenCapture;
   }
 
@@ -57,7 +57,7 @@ public class Parameters {
   }
 
   /** Gets the preference for whether images of the subject Views should be preserved. */
-  public @Nullable Boolean getSaveViewImages() {
+  public @NullableDecl Boolean getSaveViewImages() {
     return saveViewImage;
   }
 
@@ -70,7 +70,7 @@ public class Parameters {
    * @deprecated Use {@link #getCustomTextContrastRatio} and {@link #getCustomImageContrastRatio}
    */
   @Deprecated
-  public @Nullable Double getCustomContrastRatio() {
+  public @NullableDecl Double getCustomContrastRatio() {
     throw new UnsupportedOperationException();
   }
 
@@ -81,7 +81,7 @@ public class Parameters {
    *     has not been set.
    * @see #putCustomTextContrastRatio(double)
    */
-  public @Nullable Double getCustomTextContrastRatio() {
+  public @NullableDecl Double getCustomTextContrastRatio() {
     return customTextContrastRatio;
   }
 
@@ -92,7 +92,7 @@ public class Parameters {
    *     has not been set.
    * @see #putCustomImageContrastRatio(double)
    */
-  public @Nullable Double getCustomImageContrastRatio() {
+  public @NullableDecl Double getCustomImageContrastRatio() {
     return customImageContrastRatio;
   }
 
@@ -142,7 +142,7 @@ public class Parameters {
    *     not been set.
    * @see #putCustomTouchTargetSize(int)
    */
-  public @Nullable Integer getCustomTouchTargetSize() {
+  public @NullableDecl Integer getCustomTouchTargetSize() {
     return customTouchTargetSize;
   }
 
@@ -165,7 +165,7 @@ public class Parameters {
    *     a user-defined value has not been set.
    * @see #putEnhancedContrastEvaluationMode(boolean)
    */
-  public @Nullable Boolean getEnableEnhancedContrastEvaluation() {
+  public @NullableDecl Boolean getEnableEnhancedContrastEvaluation() {
     return enableEnhancedContrastEvaluation;
   }
 

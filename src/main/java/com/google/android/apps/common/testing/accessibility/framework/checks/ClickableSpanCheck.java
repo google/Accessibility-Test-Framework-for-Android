@@ -33,7 +33,7 @@ import com.google.android.apps.common.testing.accessibility.framework.uielement.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Check to ensure that {@code ClickableSpan} is not being used in a TextView.
@@ -78,8 +78,8 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     if (hierarchy.getDeviceState().getSdkVersion() >= APPLICABLE_UNTIL_ANDROID_SDK_VERSION) {
       results.add(
@@ -128,13 +128,13 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     return generateMessageForResult(locale, resultId);
   }
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     return generateMessageForResult(locale, resultId);
   }
 

@@ -12,7 +12,7 @@ import com.google.android.apps.common.testing.accessibility.framework.uielement.
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.WindowHierarchyElement;
 import com.google.common.collect.ImmutableList;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Utility class for initialization and evaluation of ViewHierarchyElements
@@ -301,7 +301,7 @@ public final class ViewHierarchyElementUtils {
    * @return The first important for accessibility {@link ViewHierarchyElement} in {@code view}'s
    * lineage, or {@code null} if no such ancestor exists.
    */
-  private static @Nullable ViewHierarchyElement getImportantForAccessibilityAncestor(
+  private static @NullableDecl ViewHierarchyElement getImportantForAccessibilityAncestor(
       ViewHierarchyElement view) {
     ViewHierarchyElement parent = view.getParentView();
     while ((parent != null) && !view.isImportantForAccessibility()) {

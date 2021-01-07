@@ -22,7 +22,7 @@ import com.google.android.apps.common.testing.accessibility.framework.proto.Acce
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * The result of an accessibility check. The results are "interesting" in the sense that they
@@ -103,7 +103,7 @@ public abstract class AccessibilityCheckResult {
 
   private final Class<? extends AccessibilityCheck> checkClass;
   private final AccessibilityCheckResultType type;
-  private final @Nullable CharSequence message;
+  private final @NullableDecl CharSequence message;
 
   /**
    * @param checkClass The class of the check that generated the error
@@ -114,7 +114,7 @@ public abstract class AccessibilityCheckResult {
   public AccessibilityCheckResult(
       Class<? extends AccessibilityCheck> checkClass,
       AccessibilityCheckResultType type,
-      @Nullable CharSequence message) {
+      @NullableDecl CharSequence message) {
     this.checkClass = checkClass;
     this.type = type;
     this.message = message;
@@ -198,7 +198,7 @@ public abstract class AccessibilityCheckResult {
      * @param view the {@link View} to describe
      * @return a String description of the given {@link View}
      */
-    public String describeView(@Nullable View view) {
+    public String describeView(@NullableDecl View view) {
       StringBuilder message = new StringBuilder();
       if ((view != null
           && view.getId() != View.NO_ID

@@ -32,7 +32,7 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import java.util.Map;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Pre-sets for check configurations used with {@code getConfigForPreset}
@@ -83,7 +83,7 @@ public enum AccessibilityCheckPreset {
       CLASS_NAME_TO_HIERARCHY_CHECK = mapClassNameToInstance(CLASS_TO_HIERARCHY_CHECK);
 
   /** @return an instance of a {@link AccessibilityHierarchyCheck} of the given class type. */
-  public static @Nullable AccessibilityHierarchyCheck getHierarchyCheckForClass(
+  public static @NullableDecl AccessibilityHierarchyCheck getHierarchyCheckForClass(
       Class<? extends AccessibilityHierarchyCheck> clazz) {
     return CLASS_TO_HIERARCHY_CHECK.get(clazz);
   }
@@ -92,7 +92,7 @@ public enum AccessibilityCheckPreset {
    * @return an instance of the class with the given name if it extends from {@link
    *     AccessibilityHierarchyCheck}.
    */
-  public static @Nullable AccessibilityHierarchyCheck getHierarchyCheckForClassName(
+  public static @NullableDecl AccessibilityHierarchyCheck getHierarchyCheckForClassName(
       String className) {
     return CLASS_NAME_TO_HIERARCHY_CHECK.get(className);
   }

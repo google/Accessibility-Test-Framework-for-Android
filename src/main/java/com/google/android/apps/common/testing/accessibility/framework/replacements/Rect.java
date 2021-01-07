@@ -18,7 +18,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.RectProto;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Rect} */
 public final class Rect {
@@ -142,7 +142,7 @@ public final class Rect {
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }

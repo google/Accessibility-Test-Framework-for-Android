@@ -18,7 +18,7 @@ import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Checks that the {@link ViewHierarchyElement#getAccessibilityClassName()} is supported by
@@ -80,7 +80,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
           "androidx");
 
   @Override
-  protected @Nullable String getHelpTopic() {
+  protected @NullableDecl String getHelpTopic() {
     return "7661305";
   }
 
@@ -92,8 +92,8 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
@@ -168,7 +168,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
@@ -191,7 +191,7 @@ public class ClassNameCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");

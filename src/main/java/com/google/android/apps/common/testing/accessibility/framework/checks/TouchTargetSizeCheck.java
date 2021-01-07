@@ -35,7 +35,7 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Check ensuring touch targets have a minimum size, 48x48dp by default
@@ -172,8 +172,8 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     DisplayInfo defaultDisplay = hierarchy.getDeviceState().getDefaultDisplayInfo();
@@ -335,7 +335,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -405,7 +405,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -440,7 +440,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    */
 
   @Override
-  public @Nullable Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
+  public @NullableDecl Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
     ResultMetadata meta = result.getMetadata();
     if (meta == null) {
       return null;
@@ -462,7 +462,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
     return StringManager.getString(locale, "check_title_touch_target_size");
   }
 
-  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
+  private static @NullableDecl String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
       case RESULT_ID_NOT_CLICKABLE:
         return StringManager.getString(locale, "result_message_not_clickable");
@@ -481,7 +481,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    * @return a {@link Point} representing the minimum allowable size for {@code view} in dp units
    */
   private static Point getMinimumAllowableSizeForView(
-      ViewHierarchyElement view, @Nullable Parameters parameters) {
+      ViewHierarchyElement view, @NullableDecl Parameters parameters) {
     Rect bounds = view.getBoundsInScreen();
     Metrics realMetrics = view.getWindow().getAccessibilityHierarchy().getDeviceState()
         .getDefaultDisplayInfo().getRealMetrics();
@@ -579,7 +579,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    * Returns the largest hit-Rect (by area) in screen coordinates (px units) associated with {@code
    * view}, or {@code null} if no hit-Rects are used
    */
-  @Nullable
+  @NullableDecl
   private static Rect getLargestTouchDelegateHitRect(ViewHierarchyElement view) {
     int largestArea = -1;
     Rect largestHitRect = null;
@@ -621,7 +621,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    *     long-clickable and meets its minimum allowable size.
    */
   private static boolean hasQualifyingClickableAncestor(
-      ViewHierarchyElement view, @Nullable Parameters parameters) {
+      ViewHierarchyElement view, @NullableDecl Parameters parameters) {
     boolean isTargetClickable = TRUE.equals(view.isClickable());
     boolean isTargetLongClickable = TRUE.equals(view.isLongClickable());
     ViewHierarchyElement evalView = view.getParentView();

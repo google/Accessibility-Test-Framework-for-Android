@@ -2,7 +2,7 @@ package com.google.android.apps.common.testing.accessibility.framework.replaceme
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.SpanProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.SpanProto.SpanType;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Types of spans that are known and usable within {@link
@@ -54,9 +54,9 @@ public final class Spans {
 
     public static final String ANDROID_CLASS_NAME = "android.text.style.URLSpan";
 
-    private final @Nullable String url;
+    private final @NullableDecl String url;
 
-    public URLSpan(String spanClass, int start, int end, int flags, @Nullable String url) {
+    public URLSpan(String spanClass, int start, int end, int flags, @NullableDecl String url) {
       super(spanClass, start, end, flags);
       this.url = url;
     }
@@ -67,7 +67,7 @@ public final class Spans {
     }
 
     /** @see android.text.style.URLSpan#getURL() */
-    public @Nullable String getUrl() {
+    public @NullableDecl String getUrl() {
       return url;
     }
 

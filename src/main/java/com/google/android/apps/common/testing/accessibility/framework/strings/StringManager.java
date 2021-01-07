@@ -5,7 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Manager for obtaining localized strings.
@@ -15,7 +15,7 @@ public final class StringManager {
   private static final String STRINGS_PACKAGE_NAME =
       "com.google.android.apps.common.testing.accessibility.framework";
   private static final String STRINGS_FILE_NAME = "strings";
-  private static @Nullable ResourceBundleProvider resourceBundleProvider;
+  private static @NullableDecl ResourceBundleProvider resourceBundleProvider;
 
   private StringManager() {
   }

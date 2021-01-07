@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * If two Views in a hierarchy have the same speakable text, that could be confusing for users. Two
@@ -70,8 +70,8 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     /* Find all text and the views that have that text throughout the full hierarchy */
@@ -136,7 +136,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     // For each of the following result IDs, metadata will have been set on the result.
     checkNotNull(metadata);
     switch (resultId) {
@@ -170,7 +170,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     switch (resultId) {
       case RESULT_ID_CLICKABLE_SAME_SPEAKABLE_TEXT:
       case RESULT_ID_NON_CLICKABLE_SAME_SPEAKABLE_TEXT:
@@ -189,7 +189,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
    * repetitions, the higher the priority.
    */
   @Override
-  public @Nullable Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
+  public @NullableDecl Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
     ResultMetadata metadata = result.getMetadata();
     switch (result.getResultId()) {
       case RESULT_ID_CLICKABLE_SAME_SPEAKABLE_TEXT:

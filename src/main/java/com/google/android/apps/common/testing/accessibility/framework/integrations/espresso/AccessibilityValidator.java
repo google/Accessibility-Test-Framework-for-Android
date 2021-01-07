@@ -30,11 +30,12 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.Parameters;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.hamcrest.Matcher;
 
 /**
@@ -49,16 +50,16 @@ public final class AccessibilityValidator {
   private AccessibilityCheckPreset preset = AccessibilityCheckPreset.LATEST;
   private boolean runChecksFromRootView = false;
 
-  @Nullable
+  @NullableDecl 
   private AccessibilityCheckResultType throwExceptionFor = AccessibilityCheckResultType.ERROR;
 
   // Either resultDescriptor or deprecatedResultDescriptor must have a non-null value, but not both.
-  private AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
+  private @NullableDecl  AccessibilityCheckResult. AccessibilityCheckResultDescriptor
       deprecatedResultDescriptor = null;
-  private @Nullable AccessibilityCheckResultDescriptor resultDescriptor =
+  private @NullableDecl  AccessibilityCheckResultDescriptor resultDescriptor =
       new AccessibilityCheckResultDescriptor();
 
-  @Nullable private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
+  @NullableDecl  private Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
   private final List<AccessibilityCheckListener> checkListeners = new ArrayList<>();
 
   public AccessibilityValidator() {
@@ -121,7 +122,7 @@ public final class AccessibilityValidator {
    * @return this
    */
   public AccessibilityValidator setSuppressingResultMatcher(
-      @Nullable Matcher<? super AccessibilityViewCheckResult> resultMatcher) {
+      @NullableDecl Matcher<? super AccessibilityViewCheckResult> resultMatcher) {
       suppressingMatcher = resultMatcher;
     return this;
   }
@@ -157,7 +158,7 @@ public final class AccessibilityValidator {
    * @return this
    */
   public AccessibilityValidator setThrowExceptionFor(
-      @Nullable AccessibilityCheckResultType throwFor) {
+      @NullableDecl AccessibilityCheckResultType throwFor) {
     checkArgument(
         (throwFor == AccessibilityCheckResultType.ERROR)
             || (throwFor == AccessibilityCheckResultType.WARNING)
@@ -302,13 +303,19 @@ public final class AccessibilityValidator {
   @VisibleForTesting
   static ImmutableList<AccessibilityViewCheckResult> suppressMatchingResults(
       List<AccessibilityViewCheckResult> results,
-      @Nullable Matcher<? super AccessibilityViewCheckResult> matcher) {
+      final @NullableDecl Matcher<? super AccessibilityViewCheckResult> matcher) {
     if (matcher == null) {
       return ImmutableList.copyOf(results);
     }
 
-    return FluentIterable.from(results)
-        .transform(result -> matcher.matches(result) ? result.getSuppressedResultCopy() : result)
+    return FluentIterable.<AccessibilityViewCheckResult>from(results)
+        .transform(new Function<AccessibilityViewCheckResult, AccessibilityViewCheckResult>() {
+          @NullableDecl
+          @Override
+          public AccessibilityViewCheckResult apply(@NullableDecl AccessibilityViewCheckResult result) {
+            return matcher.matches(result) ? result.getSuppressedResultCopy() : result;
+          }
+        })
         .toList();
   }
 

@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullDecl;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a {@link android.view.Window} hierarchy for accessibility checking
@@ -46,31 +46,31 @@ public class WindowHierarchyElement {
   private final List<ViewHierarchyElement> viewHierarchyElements;
 
   protected final int id;
-  protected final @Nullable Integer parentId;
+  protected final @NullableDecl Integer parentId;
   protected final List<Integer> childIds = new ArrayList<>();
 
   // This field is set to a non-null value after construction.
-  private @MonotonicNonNull AccessibilityHierarchy accessibilityHierarchy;
+  private @MonotonicNonNullDecl AccessibilityHierarchy accessibilityHierarchy;
 
-  protected final @Nullable Integer windowId;
-  protected final @Nullable Integer layer;
-  protected final @Nullable Integer type;
-  protected final @Nullable Boolean focused;
-  protected final @Nullable Boolean accessibilityFocused;
-  protected final @Nullable Boolean active;
-  protected final @Nullable Rect boundsInScreen;
+  protected final @NullableDecl Integer windowId;
+  protected final @NullableDecl Integer layer;
+  protected final @NullableDecl Integer type;
+  protected final @NullableDecl Boolean focused;
+  protected final @NullableDecl Boolean accessibilityFocused;
+  protected final @NullableDecl Boolean active;
+  protected final @NullableDecl Rect boundsInScreen;
 
   protected WindowHierarchyElement(
       int id,
-      @Nullable Integer parentId,
+      @NullableDecl Integer parentId,
       List<Integer> childIds,
-      @Nullable Integer windowId,
-      @Nullable Integer layer,
-      @Nullable Integer type,
-      @Nullable Boolean focused,
-      @Nullable Boolean accessibilityFocused,
-      @Nullable Boolean active,
-      @Nullable Rect boundsInScreen) {
+      @NullableDecl Integer windowId,
+      @NullableDecl Integer layer,
+      @NullableDecl Integer type,
+      @NullableDecl Boolean focused,
+      @NullableDecl Boolean accessibilityFocused,
+      @NullableDecl Boolean active,
+      @NullableDecl Rect boundsInScreen) {
     this.viewHierarchyElements = new ArrayList<>();
     this.id = id;
     this.parentId = parentId;
@@ -121,7 +121,7 @@ public class WindowHierarchyElement {
    *     does not have a root view.
    * @see android.view.accessibility.AccessibilityWindowInfo#getRoot()
    */
-  public @Nullable ViewHierarchyElement getRootView() {
+  public @NullableDecl ViewHierarchyElement getRootView() {
     if (viewHierarchyElements.isEmpty()) {
       return null;
     }
@@ -145,7 +145,7 @@ public class WindowHierarchyElement {
    *     window is a root window.
    * @see android.view.accessibility.AccessibilityWindowInfo#getParent()
    */
-  public @Nullable WindowHierarchyElement getParentWindow() {
+  public @NullableDecl WindowHierarchyElement getParentWindow() {
     Integer parentIdTmp = parentId;
     return (parentIdTmp != null) ? getAccessibilityHierarchy().getWindowById(parentIdTmp) : null;
   }
@@ -190,8 +190,8 @@ public class WindowHierarchyElement {
    */
   public AccessibilityHierarchy getAccessibilityHierarchy() {
 
-    // The type is explicit because the @MonotonicNonNull field is not read as @Nullable.
-    return Preconditions.<@Nullable AccessibilityHierarchy>checkNotNull(accessibilityHierarchy);
+    // The type is explicit because the @MonotonicNonNull field is not read as @NullableDecl.
+    return Preconditions.<AccessibilityHierarchy>checkNotNull(accessibilityHierarchy);
   }
 
   /**
@@ -200,7 +200,7 @@ public class WindowHierarchyElement {
    * @see android.view.accessibility.AccessibilityWindowInfo#getId()
    * @see android.view.accessibility.AccessibilityNodeInfo#getWindowId()
    */
-  public @Nullable Integer getWindowId() {
+  public @NullableDecl Integer getWindowId() {
     return windowId;
   }
 
@@ -209,7 +209,7 @@ public class WindowHierarchyElement {
    *     determined
    * @see android.view.accessibility.AccessibilityWindowInfo#getLayer()
    */
-  public @Nullable Integer getLayer() {
+  public @NullableDecl Integer getLayer() {
     return layer;
   }
 
@@ -219,7 +219,7 @@ public class WindowHierarchyElement {
    *     determined
    * @see android.view.accessibility.AccessibilityWindowInfo#getType()
    */
-  public @Nullable Integer getType() {
+  public @NullableDecl Integer getType() {
     return type;
   }
 
@@ -228,7 +228,7 @@ public class WindowHierarchyElement {
    *     if not, or {@code null} if this cannot be determined
    * @see android.view.accessibility.AccessibilityWindowInfo#isFocused()
    */
-  public @Nullable Boolean isFocused() {
+  public @NullableDecl Boolean isFocused() {
     return focused;
   }
 
@@ -237,7 +237,7 @@ public class WindowHierarchyElement {
    *     Boolean#FALSE} if not, or {@code null} if this cannot be determined
    * @see android.view.accessibility.AccessibilityWindowInfo#isAccessibilityFocused()
    */
-  public @Nullable Boolean isAccessibilityFocused() {
+  public @NullableDecl Boolean isAccessibilityFocused() {
     return accessibilityFocused;
   }
 
@@ -246,7 +246,7 @@ public class WindowHierarchyElement {
    *     not, or {@code null} if this cannot be determined
    * @see android.view.accessibility.AccessibilityWindowInfo#isActive()
    */
-  public @Nullable Boolean isActive() {
+  public @NullableDecl Boolean isActive() {
     return active;
   }
 
@@ -328,7 +328,7 @@ public class WindowHierarchyElement {
    * WindowHierarchyElement#builder}.
    */
   public static class Builder {
-    protected @Nullable WindowHierarchyElementProto proto;
+    protected @NullableDecl WindowHierarchyElementProto proto;
 
     Builder() {}
 

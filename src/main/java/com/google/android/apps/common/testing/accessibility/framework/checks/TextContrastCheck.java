@@ -38,11 +38,12 @@ import com.google.android.apps.common.testing.accessibility.framework.utils.cont
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.ContrastUtils;
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Check that ensures text content has sufficient contrast against its background */
 public class TextContrastCheck extends AccessibilityHierarchyCheck {
@@ -145,8 +146,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
     for (ViewHierarchyElement view : viewsToEval) {
@@ -218,7 +219,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -322,7 +323,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -352,7 +353,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * for a given required contrast ratio, decreasing contrast gives a higher priority.
    */
   @Override
-  public @Nullable Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
+  public @NullableDecl Double getSecondaryPriority(AccessibilityHierarchyCheckResult result) {
     ResultMetadata metadata = result.getMetadata();
     switch (result.getResultId()) {
       case RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT:
@@ -373,7 +374,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
     return StringManager.getString(locale, "check_title_text_contrast");
   }
 
-  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
+  private static @NullableDecl String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
@@ -407,7 +408,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * @return an {@link AccessibilityHierarchyCheckResult} describing the result of the lightweight
    *     evaluation, or {@code null} if there is sufficient text contrast.
    */
-  private @Nullable AccessibilityHierarchyCheckResult attemptLightweightEval(
+  private @NullableDecl AccessibilityHierarchyCheckResult attemptLightweightEval(
       ViewHierarchyElement view) {
     Integer textColor = getForegroundColor(view);
     Integer backgroundDrawableColor = view.getBackgroundDrawableColor();
@@ -489,8 +490,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * @return an {@link AccessibilityHierarchyCheckResult} describing the results of the heavyweight
    *     evaluation, or {@code null} if there is sufficient text contrast.
    */
-  private @Nullable AccessibilityHierarchyCheckResult attemptHeavyweightEval(
-      ViewHierarchyElement view, @Nullable Parameters parameters) {
+  private @NullableDecl AccessibilityHierarchyCheckResult attemptHeavyweightEval(
+      ViewHierarchyElement view, @NullableDecl Parameters parameters) {
     Image screenCapture = (parameters == null) ? null : parameters.getScreenCapture();
     if (screenCapture == null) {
       return new AccessibilityHierarchyCheckResult(
@@ -637,7 +638,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
   @VisibleForTesting
   ContrastSwatch getContrastSwatch(
-      Image image, @Nullable Boolean enableEnhancedContrastEvaluation) {
+      Image image, @NullableDecl Boolean enableEnhancedContrastEvaluation) {
     return new ContrastSwatch(image, Boolean.TRUE.equals(enableEnhancedContrastEvaluation));
   }
 
@@ -675,8 +676,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       ViewHierarchyElement view,
       int resultId,
       ResultMetadata metadata,
-      @Nullable Parameters parameters,
-      @Nullable Image viewImage) {
+      @NullableDecl Parameters parameters,
+      @NullableDecl Image viewImage) {
     if ((viewImage != null)
         && (parameters != null)
         && Boolean.TRUE.equals(parameters.getSaveViewImages())) {
@@ -710,7 +711,14 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       resultMetadata.putStringList(
           KEY_ADDITIONAL_FOREGROUND_COLORS,
           Lists.transform(
-              foregroundColors.subList(1, foregroundColors.size()), integer -> integer.toString()));
+              foregroundColors.subList(1, foregroundColors.size()),
+              new Function<Integer, String>() {
+                @NullableDecl
+                @Override
+                public String apply(@NullableDecl Integer integer) {
+                  return integer.toString();
+                }
+              }));
     }
   }
 
@@ -725,7 +733,13 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       resultMetadata.putStringList(
           KEY_ADDITIONAL_CONTRAST_RATIOS,
           Lists.transform(
-              contrastRatios.subList(1, contrastRatios.size()), ratio -> ratio.toString()));
+              contrastRatios.subList(1, contrastRatios.size()), new Function<Double, String>() {
+                @NullableDecl
+                @Override
+                public String apply(@NullableDecl Double ratio) {
+                  return ratio.toString();
+                }
+              }));
     }
   }
 
@@ -773,7 +787,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * Returns the current color selected to paint the text or the hint of the given {@link
    * ViewHierarchyElement}.
    */
-  private static @Nullable Integer getForegroundColor(ViewHierarchyElement view) {
+  private static @NullableDecl Integer getForegroundColor(ViewHierarchyElement view) {
     return TextUtils.isEmpty(view.getText()) ? view.getHintTextColor() : view.getTextColor();
   }
 }

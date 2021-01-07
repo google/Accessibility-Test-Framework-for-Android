@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullDecl;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** A fairly lightweight local replacement for {@link android.text.SpannableStringBuilder} */
 public class SpannableStringBuilder implements CharSequence {
@@ -13,11 +13,11 @@ public class SpannableStringBuilder implements CharSequence {
   private static final String SEPARATOR = ", ";
 
   private final StringBuilder rawTextBuilder = new StringBuilder();
-  private @MonotonicNonNull List<Span> spans;
+  private @MonotonicNonNullDecl List<Span> spans;
 
   public SpannableStringBuilder() {}
 
-  public SpannableStringBuilder append(@Nullable SpannableString string) {
+  public SpannableStringBuilder append(@NullableDecl SpannableString string) {
     if (!TextUtils.isEmpty(string)) {
       copyAndAppendAdjustedSpans(string.getSpans(), 0);
       append(string.toString());
@@ -25,14 +25,14 @@ public class SpannableStringBuilder implements CharSequence {
     return this;
   }
 
-  public SpannableStringBuilder append(@Nullable String string) {
+  public SpannableStringBuilder append(@NullableDecl String string) {
     if (!TextUtils.isEmpty(string)) {
       rawTextBuilder.append(string);
     }
     return this;
   }
 
-  public SpannableStringBuilder appendWithSeparator(@Nullable SpannableString string) {
+  public SpannableStringBuilder appendWithSeparator(@NullableDecl SpannableString string) {
     if (!TextUtils.isEmpty(string)) {
       copyAndAppendAdjustedSpans(string.getSpans(), (needsSeparator() ? SEPARATOR.length() : 0));
       appendWithSeparator(string.toString());
@@ -40,7 +40,7 @@ public class SpannableStringBuilder implements CharSequence {
     return this;
   }
 
-  public SpannableStringBuilder appendWithSeparator(@Nullable String string) {
+  public SpannableStringBuilder appendWithSeparator(@NullableDecl String string) {
     if (!TextUtils.isEmpty(string)) {
       if (needsSeparator()) {
         append(SEPARATOR);
@@ -51,7 +51,7 @@ public class SpannableStringBuilder implements CharSequence {
   }
 
   public List<Span> getSpans() {
-    return (spans == null) ? ImmutableList.of() : Collections.unmodifiableList(spans);
+    return (spans == null) ? ImmutableList.<Span>of() : Collections.unmodifiableList(spans);
   }
 
   public SpannableString build() {

@@ -14,8 +14,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
-import org.checkerframework.checker.nullness.qual.EnsuresNonNullIf;
-import org.checkerframework.checker.nullness.qual.Nullable;
+
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Used as a local replacement for Android's {@link android.text.TextUtils} */
 public class TextUtils {
@@ -26,8 +26,8 @@ public class TextUtils {
   /**
    * @see android.text.TextUtils#isEmpty(CharSequence)
    */
-  @EnsuresNonNullIf(expression = "#1", result = false)
-  public static boolean isEmpty(@Nullable CharSequence str) {
+  //@EnsuresNonNullIf(expression = "#1", result = false)
+  public static boolean isEmpty(@NullableDecl CharSequence str) {
     return (str == null) || (str.length() == 0);
   }
 
@@ -37,7 +37,7 @@ public class TextUtils {
   }
 
   /** See {@link android.text.TextUtils#equals(CharSequence, CharSequence)}. */
-  public static boolean equals(@Nullable CharSequence s1, @Nullable CharSequence s2) {
+  public static boolean equals(@NullableDecl CharSequence s1, @NullableDecl CharSequence s2) {
     if (s1 == s2) {
       return true;
     }

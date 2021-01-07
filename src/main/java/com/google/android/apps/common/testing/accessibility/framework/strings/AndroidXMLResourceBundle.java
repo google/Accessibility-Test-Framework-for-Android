@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -42,7 +42,7 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
   }
 
   @Override
-  protected @Nullable Object handleGetObject(String key) {
+  protected @NullableDecl Object handleGetObject(String key) {
     return properties.getProperty(key);
   }
 
@@ -96,7 +96,7 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
   }
 
   /** Gets the value of 'name' attribute of an Android style {@code <string>} element. */
-  private static @Nullable String getStringName(Node node) {
+  private static @NullableDecl String getStringName(Node node) {
     NamedNodeMap attributes = node.getAttributes();
     if (attributes != null) {
       Node nameNode = attributes.getNamedItem(ANDROID_STRING_NAME_ATTRIBUTE);
@@ -108,7 +108,7 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
   }
 
   /** Gets the value of an Android style {@code <string>} element. */
-  private static @Nullable String getStringValue(Node node) {
+  private static @NullableDecl String getStringValue(Node node) {
     String value = node.getTextContent();
     if (value == null) {
       return null;
@@ -141,7 +141,7 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
     }
 
     @Override
-    public @Nullable ResourceBundle newBundle(
+    public @NullableDecl ResourceBundle newBundle(
         String baseName, Locale locale, String format, ClassLoader loader, boolean reload)
         throws IllegalAccessException, InstantiationException, IOException {
       String resource = toResourceName(toBundleName(baseName, locale), XML_FORMAT);
@@ -166,7 +166,7 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
     }
 
     @Override
-    public @Nullable Locale getFallbackLocale(String baseName, Locale locale) {
+    public @NullableDecl Locale getFallbackLocale(String baseName, Locale locale) {
       // When android has no corresponding locale, it falls back to the ROOT (values/), so this
       // should not fall back to Locale.getDefault() for parity
       return null;

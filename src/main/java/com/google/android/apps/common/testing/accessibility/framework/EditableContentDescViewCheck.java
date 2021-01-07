@@ -19,7 +19,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.EditableContentDescCheck;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Check to ensure that an editable TextView is not labeled by a contentDescription
@@ -33,7 +33,7 @@ public class EditableContentDescViewCheck extends AccessibilityViewHierarchyChec
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Parameters parameters) {
+      View root, @NullableDecl Parameters parameters) {
     return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

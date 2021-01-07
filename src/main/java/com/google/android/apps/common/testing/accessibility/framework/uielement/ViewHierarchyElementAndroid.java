@@ -32,6 +32,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableStringAndroid;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyElementProto;
 import com.google.android.material.button.MaterialButton;
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -39,9 +40,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
-import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullDecl;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullType;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
+//import org.checkerframework.dataflow.compatqual.Pure;
 
 /**
  * Representation of a {@link View} hierarchy for accessibility checking
@@ -66,48 +68,49 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
   private static final boolean AT_11 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
 
   // This field is set to a non-null value after construction.
-  private @MonotonicNonNull WindowHierarchyElementAndroid windowElement;
+  private @MonotonicNonNullDecl
+  WindowHierarchyElementAndroid windowElement;
 
   private ViewHierarchyElementAndroid(
       int id,
-      @Nullable Integer parentId,
+      @NullableDecl Integer parentId,
       List<Integer> childIds,
-      @Nullable CharSequence packageName,
-      @Nullable CharSequence className,
-      @Nullable CharSequence accessibilityClassName,
-      @Nullable String resourceName,
-      @Nullable SpannableString contentDescription,
-      @Nullable SpannableString text,
+      @NullableDecl CharSequence packageName,
+      @NullableDecl CharSequence className,
+      @NullableDecl CharSequence accessibilityClassName,
+      @NullableDecl String resourceName,
+      @NullableDecl SpannableString contentDescription,
+      @NullableDecl SpannableString text,
       boolean importantForAccessibility,
-      @Nullable Boolean visibleToUser,
+      @NullableDecl Boolean visibleToUser,
       boolean clickable,
       boolean longClickable,
       boolean focusable,
-      @Nullable Boolean editable,
-      @Nullable Boolean scrollable,
-      @Nullable Boolean canScrollForward,
-      @Nullable Boolean canScrollBackward,
-      @Nullable Boolean checkable,
-      @Nullable Boolean checked,
-      @Nullable Boolean hasTouchDelegate,
+      @NullableDecl Boolean editable,
+      @NullableDecl Boolean scrollable,
+      @NullableDecl Boolean canScrollForward,
+      @NullableDecl Boolean canScrollBackward,
+      @NullableDecl Boolean checkable,
+      @NullableDecl Boolean checked,
+      @NullableDecl Boolean hasTouchDelegate,
       List<Rect> touchDelegateBounds,
-      @Nullable Rect boundsInScreen,
-      @Nullable Integer nonclippedHeight,
-      @Nullable Integer nonclippedWidth,
-      @Nullable Float textSize,
-      @Nullable Integer textColor,
-      @Nullable Integer backgroundDrawableColor,
-      @Nullable Integer typefaceStyle,
+      @NullableDecl Rect boundsInScreen,
+      @NullableDecl Integer nonclippedHeight,
+      @NullableDecl Integer nonclippedWidth,
+      @NullableDecl Float textSize,
+      @NullableDecl Integer textColor,
+      @NullableDecl Integer backgroundDrawableColor,
+      @NullableDecl Integer typefaceStyle,
       boolean enabled,
-      @Nullable Long labeledById,
-      @Nullable Long accessibilityTraversalBeforeId,
-      @Nullable Long accessibilityTraversalAfterId,
-      @Nullable Integer drawingOrder,
+      @NullableDecl Long labeledById,
+      @NullableDecl Long accessibilityTraversalBeforeId,
+      @NullableDecl Long accessibilityTraversalAfterId,
+      @NullableDecl Integer drawingOrder,
       List<Integer> superclassViews,
       List<ViewHierarchyActionAndroid> actionList,
-      @Nullable LayoutParams layoutParams,
-      @Nullable SpannableString hintText,
-      @Nullable Integer hintTextColor,
+      @NullableDecl LayoutParams layoutParams,
+      @NullableDecl SpannableString hintText,
+      @NullableDecl Integer hintTextColor,
       List<Rect> textCharacterLocations) {
     super(
         id,
@@ -158,9 +161,9 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    * @see AccessibilityNodeInfo#getParent()
    * @see View#getParent()
    */
-  @Pure
+  //@Pure
   @Override
-  public @Nullable ViewHierarchyElementAndroid getParentView() {
+  public @NullableDecl ViewHierarchyElementAndroid getParentView() {
     Integer parentIdTmp = parentId;
     return (parentIdTmp != null) ? getWindow().getViewById(parentIdTmp) : null;
   }
@@ -200,8 +203,8 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
   @Override
   public WindowHierarchyElementAndroid getWindow() {
 
-    // The type is explicit because the @MonotonicNonNull field is not read as @Nullable.
-    return Preconditions.<@Nullable WindowHierarchyElementAndroid>checkNotNull(windowElement);
+    // The type is explicit because the @MonotonicNonNull field is not read as @NullableDecl.
+    return Preconditions.<WindowHierarchyElementAndroid>checkNotNull(windowElement);
   }
 
   /**
@@ -211,9 +214,9 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    * @see AccessibilityNodeInfo#getLabelFor()
    * @see View#getLabelFor()
    */
-  @Pure
+  //@Pure
   @Override
-  public @Nullable ViewHierarchyElementAndroid getLabeledBy() {
+  public @NullableDecl ViewHierarchyElementAndroid getLabeledBy() {
     return getViewHierarchyElementById(labeledById);
   }
 
@@ -223,7 +226,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    * @see View#getAccessibilityTraversalBefore()
    */
   @Override
-  public @Nullable ViewHierarchyElementAndroid getAccessibilityTraversalBefore() {
+  public @NullableDecl ViewHierarchyElementAndroid getAccessibilityTraversalBefore() {
     return getViewHierarchyElementById(accessibilityTraversalBeforeId);
   }
 
@@ -233,7 +236,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    * @see View#getAccessibilityTraversalAfter()
    */
   @Override
-  public @Nullable ViewHierarchyElementAndroid getAccessibilityTraversalAfter() {
+  public @NullableDecl ViewHierarchyElementAndroid getAccessibilityTraversalAfter() {
     return getViewHierarchyElementById(accessibilityTraversalAfterId);
   }
 
@@ -379,12 +382,12 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     accessibilityTraversalAfterId = element.getCondensedUniqueId();
   }
 
-  private @Nullable ViewHierarchyElementAndroid getViewHierarchyElementById(@Nullable Long id) {
+  private @NullableDecl ViewHierarchyElementAndroid getViewHierarchyElementById(@NullableDecl Long id) {
     return (id != null) ? getWindow().getAccessibilityHierarchy().getViewById(id) : null;
   }
 
   /** Returns a new builder that can build a ViewHierarchyElementAndroid from a View. */
-  static Builder newBuilder(int id, @Nullable ViewHierarchyElementAndroid parent, View fromView) {
+  static Builder newBuilder(int id, @NullableDecl ViewHierarchyElementAndroid parent, View fromView) {
     return new Builder(id, parent, fromView);
   }
 
@@ -394,9 +397,9 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    */
   static Builder newBuilder(
       int id,
-      @Nullable ViewHierarchyElementAndroid parent,
+      @NullableDecl ViewHierarchyElementAndroid parent,
       AccessibilityNodeInfo fromInfo,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     return new Builder(id, parent, fromInfo, extraDataExtractor);
   }
 
@@ -406,7 +409,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
   }
 
   /** Returns a new builder that can build a ViewHierarchyElementAndroid from a Parcel. */
-  static Builder newBuilder(int id, @Nullable ViewHierarchyElementAndroid parent, Parcel in) {
+  static Builder newBuilder(int id, @NullableDecl ViewHierarchyElementAndroid parent, Parcel in) {
     return new Builder(id, parent, in);
   }
 
@@ -416,51 +419,51 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
    */
   public static class Builder {
     private final int id;
-    private final @Nullable Integer parentId;
+    private final @NullableDecl Integer parentId;
     private List<Integer> childIds = new ArrayList<>();
-    private final @Nullable CharSequence packageName;
-    private final @Nullable CharSequence className;
-    private final @Nullable CharSequence accessibilityClassName;
-    private final @Nullable String resourceName;
-    private final @Nullable SpannableString contentDescription;
-    private final @Nullable SpannableString text;
+    private final @NullableDecl CharSequence packageName;
+    private final @NullableDecl CharSequence className;
+    private final @NullableDecl CharSequence accessibilityClassName;
+    private final @NullableDecl String resourceName;
+    private final @NullableDecl SpannableString contentDescription;
+    private final @NullableDecl SpannableString text;
     private final boolean importantForAccessibility;
-    private final @Nullable Boolean visibleToUser;
+    private final @NullableDecl Boolean visibleToUser;
     private final boolean clickable;
     private final boolean longClickable;
     private final boolean focusable;
-    private final @Nullable Boolean editable;
-    private final @Nullable Boolean scrollable;
-    private final @Nullable Boolean canScrollForward;
-    private final @Nullable Boolean canScrollBackward;
-    private final @Nullable Boolean checkable;
-    private final @Nullable Boolean checked;
-    private final @Nullable Boolean hasTouchDelegate;
+    private final @NullableDecl Boolean editable;
+    private final @NullableDecl Boolean scrollable;
+    private final @NullableDecl Boolean canScrollForward;
+    private final @NullableDecl Boolean canScrollBackward;
+    private final @NullableDecl Boolean checkable;
+    private final @NullableDecl Boolean checked;
+    private final @NullableDecl Boolean hasTouchDelegate;
     private final List<Rect> touchDelegateBounds;
-    private final @Nullable Rect boundsInScreen;
-    private final @Nullable Integer nonclippedHeight;
-    private final @Nullable Integer nonclippedWidth;
-    private final @Nullable Float textSize;
-    private final @Nullable Integer textColor;
-    private final @Nullable Integer backgroundDrawableColor;
-    private final @Nullable Integer typefaceStyle;
+    private final @NullableDecl Rect boundsInScreen;
+    private final @NullableDecl Integer nonclippedHeight;
+    private final @NullableDecl Integer nonclippedWidth;
+    private final @NullableDecl Float textSize;
+    private final @NullableDecl Integer textColor;
+    private final @NullableDecl Integer backgroundDrawableColor;
+    private final @NullableDecl Integer typefaceStyle;
     private final boolean enabled;
-    private @Nullable Long labeledById;
-    private @Nullable Long accessibilityTraversalBeforeId;
-    private @Nullable Long accessibilityTraversalAfterId;
+    private @NullableDecl Long labeledById;
+    private @NullableDecl Long accessibilityTraversalBeforeId;
+    private @NullableDecl Long accessibilityTraversalAfterId;
     private final List<Integer> superclassViews = new ArrayList<>();
-    private final @Nullable Integer drawingOrder;
+    private final @NullableDecl Integer drawingOrder;
     private ImmutableList<ViewHierarchyActionAndroid> actionList;
-    private final @Nullable LayoutParams layoutParams;
-    private final @Nullable SpannableString hintText;
-    private final @Nullable Integer hintTextColor;
+    private final @NullableDecl LayoutParams layoutParams;
+    private final @NullableDecl SpannableString hintText;
+    private final @NullableDecl Integer hintTextColor;
     private final List<Rect> textCharacterLocations;
 
     Builder(
         int id,
-        @Nullable ViewHierarchyElementAndroid parent,
+        @NullableDecl ViewHierarchyElementAndroid parent,
         AccessibilityNodeInfo fromInfo,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
@@ -479,7 +482,13 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
         actionBuilder.addAll(
             Lists.transform(
                 fromInfo.getActionList(),
-                action -> ViewHierarchyActionAndroid.newBuilder(action).build()));
+                new Function<AccessibilityAction, ViewHierarchyActionAndroid>() {
+                  @NullableDecl
+                  @Override
+                  public ViewHierarchyActionAndroid apply(@NullableDecl AccessibilityAction action) {
+                    return ViewHierarchyActionAndroid.newBuilder(action).build();
+                  }
+                }));
         this.actionList = actionBuilder.build();
       }
 
@@ -535,10 +544,10 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       this.textCharacterLocations =
           (AT_26 && (extraDataExtractor != null))
               ? extraDataExtractor.getTextCharacterLocations(fromInfo)
-              : ImmutableList.of();
+              : ImmutableList.<Rect>of();
     }
 
-    Builder(int id, @Nullable ViewHierarchyElementAndroid parent, View fromView) {
+    Builder(int id, @NullableDecl ViewHierarchyElementAndroid parent, View fromView) {
       // Bookkeeping
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
@@ -610,7 +619,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       this.textCharacterLocations = ImmutableList.of();
     }
 
-    Builder(int id, @Nullable ViewHierarchyElementAndroid parent, Parcel in) {
+    Builder(int id, @NullableDecl ViewHierarchyElementAndroid parent, Parcel in) {
       // Bookkeeping
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
@@ -804,7 +813,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
      * <p>There may be subtle differences between the bounds from a View instance compared to that
      * of its AccessibilityNodeInfo. The latter uses View#getBoundsOnScreen method.
      */
-    private static @Nullable Rect getBoundsInScreen(View fromView) {
+    private static @NullableDecl Rect getBoundsInScreen(View fromView) {
       android.graphics.Rect tempRect = new android.graphics.Rect();
       if (!fromView.getGlobalVisibleRect(tempRect)) {
         return null;

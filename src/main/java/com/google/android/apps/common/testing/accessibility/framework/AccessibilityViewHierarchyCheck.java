@@ -24,7 +24,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import java.util.ArrayList;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Base class to check the accessibility of all {@link View}s in a hierarchy.
@@ -53,7 +53,7 @@ public abstract class AccessibilityViewHierarchyCheck extends AccessibilityCheck
    *     empty if the check passes without incident.
    */
   public abstract List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Parameters parameters);
+      View root, @NullableDecl Parameters parameters);
 
   /** @see AccessibilityViewHierarchyCheck#runCheckOnViewHierarchy(View, Parameters) */
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(View root) {
@@ -75,7 +75,7 @@ public abstract class AccessibilityViewHierarchyCheck extends AccessibilityCheck
       View root,
       AccessibilityCheck fromCheck,
       AccessibilityHierarchyCheck toCheck,
-      @Nullable Parameters parameters) {
+      @NullableDecl Parameters parameters) {
 
     // Construct the AccessibilityHierarchyAndroid from the actual view root, as to capture all
     // available information within the view hierarchy.

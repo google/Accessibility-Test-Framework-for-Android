@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Check to warn about a link (ClickableSpan) whose purpose is unclear. */
 public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
@@ -64,7 +64,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
   private static final Pattern WORD_PATTERN = Pattern.compile("\\w+");
 
   @Override
-  @Nullable
+  @NullableDecl
   protected String getHelpTopic() {
     return "9663312"; // Link purpose unclear
   }
@@ -77,8 +77,8 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     if (!isEnglish(hierarchy)) {
@@ -153,7 +153,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -174,7 +174,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     String generated = generateMessageForResultId(locale, resultId);
     if (generated != null) {
       return generated;
@@ -193,7 +193,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
     return StringManager.getString(locale, "check_title_link_test");
   }
 
-  @Nullable
+  @NullableDecl
   private static String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
       case RESULT_ID_ENGLISH_LOCALE_ONLY:

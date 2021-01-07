@@ -10,7 +10,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Utility class for writing to and reading from Parcels
@@ -36,7 +36,7 @@ final class ParcelUtils {
    * @param out a {@link Parcel} to which to write
    * @param val a value to represent
    */
-  public static void writeNullableInteger(Parcel out, @Nullable Integer val) {
+  public static void writeNullableInteger(Parcel out, @NullableDecl Integer val) {
     if (val == null) {
       out.writeInt(ABSENT);
     } else {
@@ -51,7 +51,7 @@ final class ParcelUtils {
    * @param in a {@link Parcel} from which to read
    * @return the represented value
    */
-  public static @Nullable Integer readNullableInteger(Parcel in) {
+  public static @NullableDecl Integer readNullableInteger(Parcel in) {
     int marker = in.readInt();
     if (marker == ABSENT) {
       return null;
@@ -70,7 +70,7 @@ final class ParcelUtils {
    * @param out a {@link Parcel} to which to write
    * @param val a value to represent
    */
-  public static void writeNullableLong(Parcel out, @Nullable Long val) {
+  public static void writeNullableLong(Parcel out, @NullableDecl Long val) {
     if (val == null) {
       out.writeInt(ABSENT);
     } else {
@@ -85,7 +85,7 @@ final class ParcelUtils {
    * @param in a {@link Parcel} from which to read
    * @return the represented value
    */
-  public static @Nullable Long readNullableLong(Parcel in) {
+  public static @NullableDecl Long readNullableLong(Parcel in) {
     int marker = in.readInt();
     if (marker == ABSENT) {
       return null;
@@ -104,7 +104,7 @@ final class ParcelUtils {
    * @param out a {@link Parcel} to which to write
    * @param val a value to represent
    */
-  public static void writeNullableFloat(Parcel out, @Nullable Float val) {
+  public static void writeNullableFloat(Parcel out, @NullableDecl Float val) {
     if (val == null) {
       out.writeInt(ABSENT);
     } else {
@@ -119,7 +119,7 @@ final class ParcelUtils {
    * @param in a {@link Parcel} from which to read
    * @return the represented value
    */
-  public static @Nullable Float readNullableFloat(Parcel in) {
+  public static @NullableDecl Float readNullableFloat(Parcel in) {
     int marker = in.readInt();
     if (marker == ABSENT) {
       return null;
@@ -138,7 +138,7 @@ final class ParcelUtils {
    * @param out a {@link Parcel} to which to write
    * @param val a value to represent
    */
-  public static void writeNullableString(Parcel out, @Nullable String val) {
+  public static void writeNullableString(Parcel out, @NullableDecl String val) {
     if (val == null) {
       out.writeInt(ABSENT);
     } else {
@@ -153,7 +153,7 @@ final class ParcelUtils {
    * @param in a {@link Parcel} from which to read
    * @return the represented value
    */
-  public static @Nullable String readNullableString(Parcel in) {
+  public static @NullableDecl String readNullableString(Parcel in) {
     int marker = in.readInt();
     if (marker == ABSENT) {
       return null;
@@ -172,7 +172,7 @@ final class ParcelUtils {
    * @param out a {@link Parcel} to which to write
    * @param val a value to represent
    */
-  public static void writeNullableBoolean(Parcel out, @Nullable Boolean val) {
+  public static void writeNullableBoolean(Parcel out, @NullableDecl Boolean val) {
     byte byteValue;
     if (val == null) {
       byteValue = -1;
@@ -188,7 +188,7 @@ final class ParcelUtils {
    * @param in a {@link Parcel} from which to read
    * @return the represented value
    */
-  public static @Nullable Boolean readNullableBoolean(Parcel in) {
+  public static @NullableDecl Boolean readNullableBoolean(Parcel in) {
     byte byteValue = in.readByte();
     if (byteValue == (byte) -1) {
       return null;

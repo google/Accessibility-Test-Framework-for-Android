@@ -3,7 +3,7 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 import android.os.Parcel;
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyActionProto;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of {@code AccessibilityNodeInfo.AccessibilityAction} in a {@code View}.
@@ -13,7 +13,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public class ViewHierarchyActionAndroid extends ViewHierarchyAction {
 
-  private ViewHierarchyActionAndroid(int actionId, @Nullable CharSequence actionLabel) {
+  private ViewHierarchyActionAndroid(int actionId, @NullableDecl CharSequence actionLabel) {
     super(actionId, actionLabel);
   }
 
@@ -41,7 +41,7 @@ public class ViewHierarchyActionAndroid extends ViewHierarchyAction {
   /** Builder for {@code ViewHierarchyElementAndroid} */
   static class Builder {
     private final int actionId;
-    private final @Nullable CharSequence actionLabel;
+    private final @NullableDecl CharSequence actionLabel;
 
     Builder(AccessibilityAction action) {
       this.actionId = action.getId();

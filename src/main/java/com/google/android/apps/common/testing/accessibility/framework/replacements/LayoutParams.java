@@ -1,7 +1,7 @@
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.LayoutParamsProto;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Used as a local immutable replacement for Android's {@link android.view.ViewGroup.LayoutParams}
@@ -42,7 +42,7 @@ public final class LayoutParams {
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }

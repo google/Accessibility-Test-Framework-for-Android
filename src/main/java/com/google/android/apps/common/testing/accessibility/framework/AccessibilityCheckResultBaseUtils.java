@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableBiMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -64,7 +64,7 @@ public final class AccessibilityCheckResultBaseUtils {
   static <T extends AccessibilityCheckResult> List<T> getResultsForCheck(
       Iterable<T> results,
       Class<? extends AccessibilityCheck> checkClass,
-      @Nullable ImmutableBiMap<?, ?> aliases) {
+      @NullableDecl ImmutableBiMap<?, ?> aliases) {
     List<T> resultsForCheck = new ArrayList<T>();
     for (T result : results) {
       Class<? extends AccessibilityCheck> resultCheckClass = result.getSourceCheckClass();
@@ -164,7 +164,7 @@ public final class AccessibilityCheckResultBaseUtils {
    * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
    */
   static Matcher<AccessibilityCheckResult> matchesChecks(
-      final Matcher<?> classMatcher, final @Nullable ImmutableBiMap<?, ?> aliases) {
+      final Matcher<?> classMatcher, final @NullableDecl ImmutableBiMap<?, ?> aliases) {
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check", classMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityCheckResult result) {
@@ -200,7 +200,7 @@ public final class AccessibilityCheckResultBaseUtils {
    */
   static Matcher<AccessibilityCheckResult> matchesCheckNames(
       final Matcher<? super String> classNameMatcher,
-      final @Nullable ImmutableBiMap<?, ?> aliases) {
+      final @NullableDecl ImmutableBiMap<?, ?> aliases) {
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>(
         "source check name", classNameMatcher) {
       @Override
@@ -223,7 +223,7 @@ public final class AccessibilityCheckResultBaseUtils {
    * class can match a result with an old check class. Or a Matcher that specifies an old check
    * class can match a result with a new check class.
    */
-  private static @Nullable Object getAlias(Object obj, @Nullable ImmutableBiMap<?, ?> aliases) {
+  private static @NullableDecl Object getAlias(Object obj, @NullableDecl ImmutableBiMap<?, ?> aliases) {
     if (aliases == null) {
       return null;
     }

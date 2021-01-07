@@ -4,7 +4,7 @@ import com.google.android.apps.common.testing.accessibility.framework.proto.Acce
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.common.annotations.Beta;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** A response to a {@link Question} about an {@link AccessibilityHierarchyCheckResult} */
 @Beta
@@ -78,7 +78,7 @@ public class Answer {
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }

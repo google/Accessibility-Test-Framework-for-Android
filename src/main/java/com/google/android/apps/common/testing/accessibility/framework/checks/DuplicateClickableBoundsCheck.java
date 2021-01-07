@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Developers sometimes have containers marked clickable when they don't process click events. This
@@ -93,8 +93,8 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     /* Find all bounds and the clickable views that have those bounds within the full hierarchy */
@@ -159,7 +159,7 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     // For each of the following result IDs, metadata will have been set on the result, and metadata
     // will contain bounds.
     checkNotNull(metadata);
@@ -186,7 +186,7 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     // For each of the following result IDs, metadata will have been set on the result.
     checkNotNull(metadata);
     String actionString = getShortActionString(
@@ -268,7 +268,7 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
     metadata.putInt(KEY_CONFLICTING_LOCATION_BOTTOM, rect.getBottom());
   }
 
-  private static @Nullable Rect getBoundsFromMetadata(@Nullable ResultMetadata metadata) {
+  private static @NullableDecl Rect getBoundsFromMetadata(@NullableDecl ResultMetadata metadata) {
     if ((metadata != null)
         && metadata.containsKey(KEY_CONFLICTING_LOCATION_LEFT)
         && metadata.containsKey(KEY_CONFLICTING_LOCATION_TOP)
@@ -302,7 +302,7 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
     }
 
     @Override
-    public boolean equals(@Nullable Object obj) {
+    public boolean equals(@NullableDecl Object obj) {
       if (this == obj) {
         return true;
       }

@@ -34,8 +34,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.MonotonicNonNullDecl;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a {@link Window} hierarchy for accessibility checking
@@ -53,19 +53,19 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   private final List<ViewHierarchyElementAndroid> viewHierarchyElements;
 
   // This field is set to a non-null value after construction.
-  private @MonotonicNonNull AccessibilityHierarchyAndroid accessibilityHierarchy;
+  private @MonotonicNonNullDecl AccessibilityHierarchyAndroid accessibilityHierarchy;
 
   private WindowHierarchyElementAndroid(
       int id,
-      @Nullable Integer parentId,
+      @NullableDecl Integer parentId,
       List<Integer> childIds,
-      @Nullable Integer windowId,
-      @Nullable Integer layer,
-      @Nullable Integer type,
-      @Nullable Boolean focused,
-      @Nullable Boolean accessibilityFocused,
-      @Nullable Boolean active,
-      @Nullable Rect boundsInScreen,
+      @NullableDecl Integer windowId,
+      @NullableDecl Integer layer,
+      @NullableDecl Integer type,
+      @NullableDecl Boolean focused,
+      @NullableDecl Boolean accessibilityFocused,
+      @NullableDecl Boolean active,
+      @NullableDecl Rect boundsInScreen,
       List<ViewHierarchyElementAndroid> viewHierarchyElements) {
     super(
         id,
@@ -87,7 +87,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    * @see AccessibilityWindowInfo#getRoot()
    */
   @Override
-  public @Nullable ViewHierarchyElementAndroid getRootView() {
+  public @NullableDecl ViewHierarchyElementAndroid getRootView() {
     if (viewHierarchyElements.isEmpty()) {
       return null;
     }
@@ -111,7 +111,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    * @see AccessibilityWindowInfo#getParent()
    */
   @Override
-  public @Nullable WindowHierarchyElementAndroid getParentWindow() {
+  public @NullableDecl WindowHierarchyElementAndroid getParentWindow() {
     Integer parentIdTmp = parentId;
     return (parentIdTmp != null) ? getAccessibilityHierarchy().getWindowById(parentIdTmp) : null;
   }
@@ -149,8 +149,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   @Override
   public AccessibilityHierarchyAndroid getAccessibilityHierarchy() {
 
-    // The type is explicit because the @MonotonicNonNull field is not read as @Nullable.
-    return Preconditions.<@Nullable AccessibilityHierarchyAndroid>checkNotNull(
+    // The type is explicit because the @MonotonicNonNull field is not read as @NullableDecl.
+    return Preconditions.<AccessibilityHierarchyAndroid>checkNotNull(
         accessibilityHierarchy);
   }
 
@@ -287,9 +287,9 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   private static ViewHierarchyElementAndroid buildViewHierarchy(
       AccessibilityNodeInfo forInfo,
       List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent,
+      @NullableDecl ViewHierarchyElementAndroid parent,
       Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     checkNotNull(forInfo, "Attempted to build hierarchy from null root node");
 
     ViewHierarchyElementAndroid element =
@@ -329,7 +329,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   private static ViewHierarchyElementAndroid buildViewHierarchy(
       View forView,
       List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent,
+      @NullableDecl ViewHierarchyElementAndroid parent,
       Map<ViewHierarchyElementAndroid, View> elementToViewMap) {
     ViewHierarchyElementAndroid element =
         ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, forView).build();
@@ -351,7 +351,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   private static ViewHierarchyElementAndroid buildViewHierarchy(
       Parcel fromParcel,
       List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent) {
+      @NullableDecl ViewHierarchyElementAndroid parent) {
     ViewHierarchyElementAndroid element =
         ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, fromParcel).build();
     elementList.add(element);
@@ -378,7 +378,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   static BuilderAndroid newBuilder(
       int id,
       AccessibilityWindowInfo window,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     BuilderAndroid builder = new BuilderAndroid(id);
     builder.fromWindowInfo = checkNotNull(window);
     builder.extraDataExtractor = extraDataExtractor;
@@ -392,7 +392,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   static BuilderAndroid newBuilder(
       int id,
       AccessibilityNodeInfo nodeInfo,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     BuilderAndroid builder = new BuilderAndroid(id);
     builder.fromNodeInfo = checkNotNull(nodeInfo);
     builder.extraDataExtractor = extraDataExtractor;
@@ -420,24 +420,24 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
    */
   public static class BuilderAndroid extends Builder {
     private final int id;
-    private @Nullable View fromRootView;
-    private @Nullable AccessibilityWindowInfo fromWindowInfo;
-    private @Nullable AccessibilityNodeInfo fromNodeInfo;
-    private @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor;
-    private @Nullable Parcel in;
-    private @Nullable WindowHierarchyElementAndroid parent;
-    private @MonotonicNonNull Map<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
-    private @MonotonicNonNull Map<Long, View> viewOriginMap;
+    private @NullableDecl View fromRootView;
+    private @NullableDecl AccessibilityWindowInfo fromWindowInfo;
+    private @NullableDecl AccessibilityNodeInfo fromNodeInfo;
+    private @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor;
+    private @NullableDecl Parcel in;
+    private @NullableDecl WindowHierarchyElementAndroid parent;
+    private @MonotonicNonNullDecl Map<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
+    private @MonotonicNonNullDecl Map<Long, View> viewOriginMap;
 
-    private @Nullable Integer parentId;
+    private @NullableDecl Integer parentId;
     private final List<Integer> childIds = new ArrayList<>();
-    private @Nullable Integer windowId;
-    private @Nullable Integer layer;
-    private @Nullable Integer type;
-    private @Nullable Boolean focused;
-    private @Nullable Boolean accessibilityFocused;
-    private @Nullable Boolean active;
-    private @Nullable Rect boundsInScreen;
+    private @NullableDecl Integer windowId;
+    private @NullableDecl Integer layer;
+    private @NullableDecl Integer type;
+    private @NullableDecl Boolean focused;
+    private @NullableDecl Boolean accessibilityFocused;
+    private @NullableDecl Boolean active;
+    private @NullableDecl Rect boundsInScreen;
     private List<ViewHierarchyElementAndroid> viewHierarchyElements;
 
     BuilderAndroid(int id) {
@@ -445,7 +445,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
       this.id = id;
     }
 
-    public BuilderAndroid setParent(@Nullable WindowHierarchyElementAndroid parent) {
+    public BuilderAndroid setParent(@NullableDecl WindowHierarchyElementAndroid parent) {
       this.parent = parent;
       return this;
     }
@@ -492,10 +492,10 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
 
     private WindowHierarchyElementAndroid construct(
         int id,
-        @Nullable WindowHierarchyElementAndroid parent,
+        @NullableDecl WindowHierarchyElementAndroid parent,
         AccessibilityWindowInfo fromWindow,
         Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -544,10 +544,10 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
 
     private WindowHierarchyElementAndroid construct(
         int id,
-        @Nullable WindowHierarchyElementAndroid parent,
+        @NullableDecl WindowHierarchyElementAndroid parent,
         AccessibilityNodeInfo fromRootNode,
         Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -591,7 +591,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
 
     private WindowHierarchyElementAndroid construct(
         int id,
-        @Nullable WindowHierarchyElementAndroid parent,
+        @NullableDecl WindowHierarchyElementAndroid parent,
         View fromRootView,
         Map<ViewHierarchyElementAndroid, View> elementToViewMap) {
       // Bookkeeping
@@ -631,7 +631,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     }
 
     private WindowHierarchyElementAndroid construct(
-        int id, @Nullable WindowHierarchyElementAndroid parent, Parcel in) {
+        int id, @NullableDecl WindowHierarchyElementAndroid parent, Parcel in) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -716,8 +716,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     }
 
     private void populateOriginMaps(
-        @Nullable Map<ViewHierarchyElementAndroid, View> elementToViewMap,
-        @Nullable Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap) {
+        @NullableDecl Map<ViewHierarchyElementAndroid, View> elementToViewMap,
+        @NullableDecl Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap) {
       if (viewOriginMap != null) {
         for (Map.Entry<ViewHierarchyElementAndroid, View> entry :
             checkNotNull(elementToViewMap).entrySet()) {

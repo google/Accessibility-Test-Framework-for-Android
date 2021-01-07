@@ -19,7 +19,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * An object that describes an {@link AccessibilityCheckResult}. This can be extended to provide
@@ -61,7 +61,7 @@ public class AccessibilityCheckResultDescriptor {
    * @param view the {@link View} to describe
    * @return a String description of the given {@link View}
    */
-  public String describeView(@Nullable View view) {
+  public String describeView(@NullableDecl View view) {
     StringBuilder message = new StringBuilder();
     if ((view != null
         && view.getId() != View.NO_ID
@@ -88,7 +88,7 @@ public class AccessibilityCheckResultDescriptor {
    * @param element the {@link ViewHierarchyElement} to describe
    * @return a String description of the given {@link ViewHierarchyElement}
    */
-  public String describeElement(@Nullable ViewHierarchyElement element) {
+  public String describeElement(@NullableDecl ViewHierarchyElement element) {
     if (element == null) {
       return "<null>";
     }

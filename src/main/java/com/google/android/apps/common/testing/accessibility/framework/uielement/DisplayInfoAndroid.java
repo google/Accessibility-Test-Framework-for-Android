@@ -19,7 +19,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoProto;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a {@link Display}
@@ -30,7 +30,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 public class DisplayInfoAndroid extends DisplayInfo {
 
   private final MetricsAndroid metricsWithoutDecoration;
-  @Nullable private final MetricsAndroid realMetrics;
+  @NullableDecl private final MetricsAndroid realMetrics;
 
   /**
    * Derives an instance from a {@link Display}
@@ -83,7 +83,7 @@ public class DisplayInfoAndroid extends DisplayInfo {
    *     don't support resolution of real metrics.
    */
   @Override
-  public @Nullable MetricsAndroid getRealMetrics() {
+  public @NullableDecl MetricsAndroid getRealMetrics() {
     return realMetrics;
   }
 

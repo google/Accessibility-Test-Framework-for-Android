@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.checkerframework.dataflow.qual.Pure;
 
 /**
@@ -59,7 +59,7 @@ public class ClusteringUtils {
 
   public interface ResourceIdGenerator {
     /** Returns a resource identifier for the given element. */
-    @Nullable String apply(ViewHierarchyElement vhe);
+    @NullableDecl String apply(ViewHierarchyElement vhe);
   }
 
   /**
@@ -71,7 +71,13 @@ public class ClusteringUtils {
    * resource name.
    */
   public static final Similarity<AccessibilityHierarchyCheckResult> SIMILAR_RESULTS =
-      new ResultSimilarity(ViewHierarchyElement::getResourceName);
+      new ResultSimilarity(new ResourceIdGenerator() {
+        @NullableDecl
+        @Override
+        public String apply(ViewHierarchyElement vhe) {
+          return vhe.getResourceName();
+        }
+      });
 
   /**
    * A predicate indicating similarity between two {@link AccessibilityHierarchyCheckResult}s.
@@ -89,7 +95,13 @@ public class ClusteringUtils {
    */
   public static final Similarity<AccessibilityHierarchyCheckResult>
       SIMILAR_RESULTS_NEAREST_ANCESTOR_RELATION =
-      new ResultSimilarity(vhe -> getPseudoResourceId(vhe, /* includeIndices= */ true));
+      new ResultSimilarity(new ResourceIdGenerator() {
+        @NullableDecl
+        @Override
+        public String apply(ViewHierarchyElement vhe) {
+          return getPseudoResourceId(vhe, /* includeIndices= */ true);
+        }
+      });
 
   /**
    * A predicate indicating similarity between two {@link AccessibilityHierarchyCheckResult}s.
@@ -108,7 +120,13 @@ public class ClusteringUtils {
    */
   public static final Similarity<AccessibilityHierarchyCheckResult>
       SIMILAR_RESULTS_NEAREST_ANCESTOR_CHAIN =
-      new ResultSimilarity(vhe -> getPseudoResourceId(vhe, /* includeIndices= */ false));
+      new ResultSimilarity(new ResourceIdGenerator() {
+        @NullableDecl
+        @Override
+        public String apply(ViewHierarchyElement vhe) {
+          return getPseudoResourceId(vhe, /* includeIndices= */ false);
+        }
+      });
 
   /**
    * A generalized predicate indicating similarity between two
@@ -202,7 +220,7 @@ public class ClusteringUtils {
    *     has a resource name.
    */
   @Pure
-  public static @Nullable String getPseudoResourceId(
+  public static @NullableDecl String getPseudoResourceId(
       ViewHierarchyElement vhe, boolean includeIndices) {
     if (vhe.getResourceName() != null) {
       return vhe.getResourceName();
@@ -212,7 +230,7 @@ public class ClusteringUtils {
   }
 
   @SuppressWarnings("ReferenceEquality")
-  private static @Nullable StringBuilder getResourceIdBuilder(
+  private static @NullableDecl StringBuilder getResourceIdBuilder(
       ViewHierarchyElement vhe, boolean includeIndices) {
     String resourceName = vhe.getResourceName();
     if (resourceName != null) {
@@ -250,7 +268,7 @@ public class ClusteringUtils {
    * Returns the simple name of the class to which the given view belongs, or {@code null} if one
    * cannot be determined.
    */
-  private static @Nullable CharSequence getShortClassName(ViewHierarchyElement vhe) {
+  private static @NullableDecl CharSequence getShortClassName(ViewHierarchyElement vhe) {
     CharSequence className = vhe.getClassName();
     if (className != null) {
       return simpleClassName(className);

@@ -52,7 +52,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a UI hierarchy for accessibility checking
@@ -278,9 +278,9 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
   private static WindowHierarchyElementAndroid buildWindowHierarchy(
       AccessibilityWindowInfo info,
       List<WindowHierarchyElementAndroid> elementList,
-      @Nullable WindowHierarchyElementAndroid parent,
+      @NullableDecl WindowHierarchyElementAndroid parent,
       BiMap<Long, AccessibilityNodeInfo> originMap,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     WindowHierarchyElementAndroid element =
         WindowHierarchyElementAndroid.newBuilder(elementList.size(), info, extraDataExtractor)
             .setParent(parent)
@@ -303,7 +303,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
   private static WindowHierarchyElementAndroid buildWindowHierarchy(
       Parcel fromParcel,
       List<WindowHierarchyElementAndroid> elementList,
-      @Nullable WindowHierarchyElementAndroid parent) {
+      @NullableDecl WindowHierarchyElementAndroid parent) {
     WindowHierarchyElementAndroid element =
         WindowHierarchyElementAndroid.newBuilder(elementList.size(), fromParcel)
             .setParent(parent)
@@ -467,7 +467,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
    *     AccessibilityNodeInfo} structures from which a {@link ViewHierarchyElementAndroid} was
    *     constructed, as populated by {@link AccessibilityHierarchyAndroid} constructors.
    */
-  private @Nullable ViewHierarchyElementAndroid findElementByNodeInfo(
+  private @NullableDecl ViewHierarchyElementAndroid findElementByNodeInfo(
       AccessibilityNodeInfo targetNode, BiMap<Long, AccessibilityNodeInfo> originMap) {
     Long viewId = originMap.inverse().get(targetNode);
     if (viewId == null) {
@@ -480,7 +480,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
    * Find the element corresponding to the View in value of {@code originMap} whose ID is {@code
    * targetViewId}, or {@code null} if no view is found with that ID.
    */
-  private @Nullable ViewHierarchyElementAndroid findElementByViewId(
+  private @NullableDecl ViewHierarchyElementAndroid findElementByViewId(
       int targetViewId, BiMap<Long, View> originMap) {
     for (Map.Entry<Long, View> matchingEntry : originMap.entrySet()) {
       if (matchingEntry.getValue().getId() == targetViewId) {
@@ -663,7 +663,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       }
     }
 
-    private static @Nullable Class<?> getClassByName(
+    private static @NullableDecl Class<?> getClassByName(
         ViewHierarchyElementAndroid view, String className) {
 
       StrictMode.ThreadPolicy oldPolicy = StrictMode.allowThreadDiskReads();
@@ -688,12 +688,12 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
    * AccessibilityHierarchyAndroid#builder}.
    */
   public static class BuilderAndroid extends Builder {
-    private @Nullable View fromRootView;
-    private @Nullable List<AccessibilityWindowInfo> fromWindowList;
-    private @Nullable AccessibilityNodeInfo fromRootNode;
-    private @Nullable Context context;
-    private @Nullable BiMap<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
-    private @Nullable BiMap<Long, View> viewOriginMap;
+    private @NullableDecl View fromRootView;
+    private @NullableDecl List<AccessibilityWindowInfo> fromWindowList;
+    private @NullableDecl AccessibilityNodeInfo fromRootNode;
+    private @NullableDecl Context context;
+    private @NullableDecl BiMap<Long, AccessibilityNodeInfo> nodeInfoOriginMap;
+    private @NullableDecl BiMap<Long, View> viewOriginMap;
     private boolean disposeInstances = false;
     private boolean obtainCharacterLocations = false;
 
@@ -754,7 +754,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     }
 
     @VisibleForTesting
-    @Nullable
+    @NullableDecl
     AccessibilityNodeInfoExtraDataExtractor getAccessibilityNodeInfoExtraDataExtractor() {
       return obtainCharacterLocations ? new AccessibilityNodeInfoExtraDataExtractor() : null;
     }
@@ -797,7 +797,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private AccessibilityHierarchyAndroid buildHierarchyFromNodeInfo(
         AccessibilityNodeInfo fromRootNode,
         Context context,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions
@@ -838,7 +838,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private AccessibilityHierarchyAndroid buildHierarchyFromWindowList(
         List<AccessibilityWindowInfo> fromWindowList,
         Context context,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        @NullableDecl AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions

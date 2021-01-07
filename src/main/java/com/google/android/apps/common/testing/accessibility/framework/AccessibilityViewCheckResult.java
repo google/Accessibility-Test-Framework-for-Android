@@ -20,7 +20,7 @@ import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.checkerframework.dataflow.qual.Pure;
 
 /**
@@ -34,9 +34,9 @@ import org.checkerframework.dataflow.qual.Pure;
 @Deprecated
 public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
 
-  private final @Nullable View view;
-  private final @Nullable Image viewImage;
-  private final @Nullable AccessibilityHierarchyCheckResult hierarchyCheckResult;
+  private final @NullableDecl View view;
+  private final @NullableDecl Image viewImage;
+  private final @NullableDecl AccessibilityHierarchyCheckResult hierarchyCheckResult;
 
   /**
    * @param checkClass The check that generated the error
@@ -52,8 +52,8 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
       Class<? extends AccessibilityCheck> checkClass,
       AccessibilityCheckResultType type,
       CharSequence message,
-      @Nullable View view,
-      @Nullable Image viewImage) {
+      @NullableDecl View view,
+      @NullableDecl Image viewImage) {
     super(checkClass, type, message);
     this.view = view;
     this.viewImage = viewImage;
@@ -65,7 +65,7 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
       Class<? extends AccessibilityCheck> checkClass,
       AccessibilityCheckResultType type,
       CharSequence message,
-      @Nullable View view) {
+      @NullableDecl View view) {
     this(checkClass, type, message, view, /* viewImage= */ null);
   }
 
@@ -77,7 +77,7 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
   /* package */ AccessibilityViewCheckResult(
       Class<? extends AccessibilityCheck> checkClass,
       AccessibilityHierarchyCheckResult hierarchyCheckResult,
-      @Nullable View view) {
+      @NullableDecl View view) {
     super(checkClass, hierarchyCheckResult.getType(), /* message= */ null);
     this.view = view;
     viewImage =
@@ -107,12 +107,12 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
    * Returns the view to which the result applies, or {@code null} if the result does not apply to a
    * specific {@code View}.
    */
-  public @Nullable View getView() {
+  public @NullableDecl View getView() {
     return view;
   }
 
   /** Returns an image of the view to which the result applies, in some cases, or {@code null}. */
-  public @Nullable Image getViewImage() {
+  public @NullableDecl Image getViewImage() {
     return viewImage;
   }
 
@@ -147,7 +147,7 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
    *     AccessibilityHierarchyCheckResult
    */
   @Pure
-  public @Nullable ResultMetadata getMetadata() {
+  public @NullableDecl ResultMetadata getMetadata() {
     return checkNotNull(hierarchyCheckResult).getMetadata();
   }
 

@@ -30,7 +30,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Check to detect problems in the developer specified accessibility traversal ordering. */
 public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
@@ -47,7 +47,7 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_TRAVERSAL_OVER_CONSTRAINED = 5;
 
   @Override
-  protected @Nullable String getHelpTopic() {
+  protected @NullableDecl String getHelpTopic() {
     return "7664232";
   }
 
@@ -59,8 +59,8 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   @Override
   public List<AccessibilityHierarchyCheckResult> runCheckOnHierarchy(
       AccessibilityHierarchy hierarchy,
-      @Nullable ViewHierarchyElement fromRoot,
-      @Nullable Parameters parameters) {
+      @NullableDecl ViewHierarchyElement fromRoot,
+      @NullableDecl Parameters parameters) {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
     List<? extends ViewHierarchyElement> viewsToEval = getElementsToEvaluate(fromRoot, hierarchy);
     for (ViewHierarchyElement view : viewsToEval) {
@@ -89,7 +89,13 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
       List<ViewHierarchyElement> beforeChain;
       List<ViewHierarchyElement> afterChain;
       try {
-        beforeChain = buildNodeChain(view, (el) -> el.getAccessibilityTraversalBefore());
+        beforeChain = buildNodeChain(view, new NextElementFunction() {
+          @NullableDecl
+          @Override
+          public ViewHierarchyElement apply(ViewHierarchyElement el) {
+            return el.getAccessibilityTraversalBefore();
+          }
+        });
       } catch (CycleException e) {
         results.add(
             new AccessibilityHierarchyCheckResult(
@@ -101,7 +107,13 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
         continue;
       }
       try {
-        afterChain = buildNodeChain(view, (el) -> el.getAccessibilityTraversalAfter());
+        afterChain = buildNodeChain(view, new NextElementFunction() {
+          @NullableDecl
+          @Override
+          public ViewHierarchyElement apply(ViewHierarchyElement el) {
+            return el.getAccessibilityTraversalAfter();
+          }
+        });
       } catch (CycleException e) {
         results.add(
             new AccessibilityHierarchyCheckResult(
@@ -132,13 +144,13 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
 
   @Override
   public String getMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     return generateMessageForResultId(locale, resultId);
   }
 
   @Override
   public String getShortMessageForResultData(
-      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+      Locale locale, int resultId, @NullableDecl ResultMetadata metadata) {
     switch(resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
@@ -208,7 +220,7 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   }
 
   private interface NextElementFunction {
-    @Nullable ViewHierarchyElement apply(ViewHierarchyElement el);
+    @NullableDecl ViewHierarchyElement apply(ViewHierarchyElement el);
   }
 
   private static class CycleException extends Exception {

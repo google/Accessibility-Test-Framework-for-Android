@@ -17,7 +17,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoProto;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a {@link android.view.Display}
@@ -27,8 +27,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 public class DisplayInfo {
 
-  @Nullable private final Metrics metricsWithoutDecoration;
-  @Nullable private final Metrics realMetrics;
+  @NullableDecl private final Metrics metricsWithoutDecoration;
+  @NullableDecl private final Metrics realMetrics;
 
   DisplayInfo(DisplayInfoProto fromProto) {
     this.metricsWithoutDecoration = new Metrics(fromProto.getMetricsWithoutDecoration());
@@ -56,7 +56,7 @@ public class DisplayInfo {
    *     don't support resolution of real metrics.
    * @see android.view.Display#getRealMetrics(android.util.DisplayMetrics)
    */
-  @Nullable
+  @NullableDecl
   public Metrics getRealMetrics() {
     return realMetrics;
   }

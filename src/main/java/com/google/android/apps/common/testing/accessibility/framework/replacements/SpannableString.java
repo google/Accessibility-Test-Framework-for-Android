@@ -63,7 +63,7 @@ public class SpannableString implements CharSequence {
   }
 
   protected SpannableString(CharSequence rawString) {
-    this(rawString, ImmutableList.of());
+    this(rawString, ImmutableList.<Span>of());
   }
 
   /**

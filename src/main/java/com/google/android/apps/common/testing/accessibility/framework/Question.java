@@ -4,7 +4,7 @@ import com.google.android.apps.common.testing.accessibility.framework.proto.Acce
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.common.annotations.Beta;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.checkerframework.dataflow.qual.Pure;
 
 /**
@@ -19,7 +19,7 @@ public class Question {
   private final Class<? extends AnswerType> answerTypeClass;
   private final Class<? extends QuestionHandler> questionHandlerClass;
   private final AccessibilityHierarchyCheckResult originalResult;
-  private final @Nullable ResultMetadata metadata;
+  private final @NullableDecl ResultMetadata metadata;
 
   /**
    * @param questionId the question identifier
@@ -35,7 +35,7 @@ public class Question {
       Class<? extends AnswerType> answerTypeClass,
       QuestionHandler questionHandler,
       AccessibilityHierarchyCheckResult originalResult,
-      @Nullable ResultMetadata metadata) {
+      @NullableDecl ResultMetadata metadata) {
     this.questionId = questionId;
     this.questionTypeClass = questionTypeClass;
     this.answerTypeClass = answerTypeClass;
@@ -58,7 +58,7 @@ public class Question {
       Class<? extends AnswerType> answerTypeClass,
       Class<? extends QuestionHandler> questionHandlerClass,
       AccessibilityHierarchyCheckResult originalResult,
-      @Nullable ResultMetadata metadata) {
+      @NullableDecl ResultMetadata metadata) {
     this.questionId = questionId;
     this.questionTypeClass = questionTypeClass;
     this.answerTypeClass = answerTypeClass;
@@ -102,7 +102,7 @@ public class Question {
    * returns {@code null} if the question id alone is sufficient
    */
   @Pure
-  public @Nullable ResultMetadata getMetadata() {
+  public @NullableDecl ResultMetadata getMetadata() {
     return metadata;
   }
 
@@ -156,7 +156,7 @@ public class Question {
   }
 
   @Override
-  public boolean equals(@Nullable Object o) {
+  public boolean equals(@NullableDecl Object o) {
     if (this == o) {
       return true;
     }

@@ -28,7 +28,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Representation of a UI hierarchy for accessibility checking
@@ -173,13 +173,13 @@ public class AccessibilityHierarchy {
     }
 
     /** Returns an identifier associated with a given class name. Returns null if not found. */
-    @Nullable
+    @NullableDecl
     public Integer getIdentifierForClassName(String className) {
       return uniqueViewElementsClassNames.get(className);
     }
 
     /** Returns a class name associated with a given identifier. Returns null if not found. */
-    @Nullable
+    @NullableDecl
     public String getClassNameForIdentifier(int id) {
       return uniqueViewElementsClassNames.inverse().get(id);
     }
@@ -200,7 +200,7 @@ public class AccessibilityHierarchy {
    * AccessibilityHierarchy#builder}.
    */
   public static class Builder {
-    @Nullable protected AccessibilityHierarchyProto proto;
+    @NullableDecl protected AccessibilityHierarchyProto proto;
 
     public AccessibilityHierarchy build() {
       AccessibilityHierarchy result;

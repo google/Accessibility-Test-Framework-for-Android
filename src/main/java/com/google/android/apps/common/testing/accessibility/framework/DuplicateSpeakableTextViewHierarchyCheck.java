@@ -17,7 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateSpeakableTextCheck;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * If two Views in a hierarchy have the same speakable text, that could be confusing for users. Two
@@ -35,7 +35,7 @@ public class DuplicateSpeakableTextViewHierarchyCheck extends AccessibilityViewH
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Parameters parameters) {
+      View root, @NullableDecl Parameters parameters) {
     return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

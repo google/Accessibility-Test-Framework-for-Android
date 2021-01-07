@@ -17,7 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Check to ensure that a view has a content description for a screen reader
@@ -31,7 +31,7 @@ public class SpeakableTextPresentViewCheck extends AccessibilityViewHierarchyChe
 
   @Override
   public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
-      View root, @Nullable Parameters parameters) {
+      View root, @NullableDecl Parameters parameters) {
     return super.runDelegationCheckOnView(root, this, DELEGATION_CHECK, parameters);
   }
 }

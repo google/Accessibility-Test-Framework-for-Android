@@ -24,11 +24,12 @@ import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /** Represents a section of a screenshot bitmap and its associated color and contrast data. */
 public class ContrastSwatch {
@@ -109,7 +110,13 @@ public class ContrastSwatch {
     // Sort colors with a max heap.
     final PriorityQueue<Map.Entry<Integer, Integer>> frequencyMaxHeap =
         new PriorityQueue<>(
-            dominantColorHistogram.getColors().size(), (a, b) -> (b.getValue() - a.getValue()));
+            dominantColorHistogram.getColors().size(),
+            new Comparator<Map.Entry<Integer, Integer>>() {
+              @Override
+              public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b) {
+                return (b.getValue() - a.getValue());
+              }
+            });
     for (Map.Entry<Integer, Integer> entry : dominantColorHistogram.entrySet()) {
       frequencyMaxHeap.offer(entry);
     }
@@ -183,7 +190,12 @@ public class ContrastSwatch {
         dominantColorsList.add(entry);
       }
     }
-    Collections.sort(dominantColorsList, (a, b) -> (b.getValue() - a.getValue()));
+    Collections.sort(dominantColorsList, new Comparator<Map.Entry<Integer, Integer>>() {
+      @Override
+      public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b) {
+        return (b.getValue() - a.getValue());
+      }
+    });
 
     // Combine similar colors
     for (Map.Entry<Integer, Integer> entry : dominantColorsList) {
@@ -347,7 +359,7 @@ public class ContrastSwatch {
       return colorHistogram.entrySet();
     }
 
-    @Nullable
+    @NullableDecl
     Integer getCount(int color) {
       return colorHistogram.get(color);
     }

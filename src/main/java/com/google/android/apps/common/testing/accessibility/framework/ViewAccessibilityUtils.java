@@ -32,7 +32,7 @@ import androidx.annotation.RequiresApi;
 import com.google.android.libraries.accessibility.utils.log.LogUtils;
 import java.util.HashSet;
 import java.util.Set;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * This class provides a set of utilities used to evaluate accessibility properties and behaviors of
@@ -186,7 +186,7 @@ public final class ViewAccessibilityUtils {
    * @return The {@code View} that is the labelFor the specified view. {@code null} if nothing
    *     labels it.
    */
-  public static @Nullable View getLabelForView(View view) {
+  public static @NullableDecl View getLabelForView(View view) {
     if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)) {
       /* Earlier versions don't support labelFor */
       return null;
@@ -223,7 +223,7 @@ public final class ViewAccessibilityUtils {
    * @return {@link Boolean#TRUE} if {@code view} is considered editable, {@link Boolean#FALSE} if
    *     not, or {@code null} if this information cannot be determined.
    */
-  public static @Nullable Boolean isViewEditable(View view) {
+  public static @NullableDecl Boolean isViewEditable(View view) {
     if (view == null) {
       return null;
     }
@@ -242,7 +242,7 @@ public final class ViewAccessibilityUtils {
    *     "package:type/entry", or {@code null} if a resource name does not exist or cannot be
    *     resolved.
    */
-  public static @Nullable String getResourceNameForView(View view) {
+  public static @NullableDecl String getResourceNameForView(View view) {
     if (view == null
         || view.getId() == 0
         || view.getId() == View.NO_ID
@@ -273,8 +273,8 @@ public final class ViewAccessibilityUtils {
   }
 
   @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1) // Calls View#getLabelFor
-  private static @Nullable View lookForLabelForViewInViewAndChildren(
-      View view, @Nullable View childToSkip, int idToFind) {
+  private static @NullableDecl View lookForLabelForViewInViewAndChildren(
+      View view, @NullableDecl View childToSkip, int idToFind) {
     if (view.getLabelFor() == idToFind) {
       return view;
     }

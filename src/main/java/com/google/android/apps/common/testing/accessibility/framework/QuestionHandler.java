@@ -3,7 +3,7 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import com.google.common.annotations.Beta;
 import com.google.common.collect.ImmutableList;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Manages questions, answers, and updating of results related to an {@link
@@ -20,7 +20,7 @@ public abstract class QuestionHandler {
    * Returns the next {@link Question} if the {@link AccessibilityHierarchyCheckResult} has one,
    * else returns {@code null}
    */
-  public abstract @Nullable Question getNextQuestion(AccessibilityHierarchyCheckResult result);
+  public abstract @NullableDecl Question getNextQuestion(AccessibilityHierarchyCheckResult result);
 
   /**
    * Returns the string for the phrasing of the passed question
@@ -67,7 +67,7 @@ public abstract class QuestionHandler {
    * Return a {@link Answer} that answers the question of questionId, if it has been answered, else
    * returns {@code null}. Assumes answers are kept in an ordered list.
    */
-  protected static @Nullable Answer getFirstAnswerForQuestionId(
+  protected static @NullableDecl Answer getFirstAnswerForQuestionId(
       AccessibilityHierarchyCheckResult result, int questionId) {
     for (Answer answer : result.getAnswers()) {
       if (answer.getQuestion().getQuestionId() == questionId) {
