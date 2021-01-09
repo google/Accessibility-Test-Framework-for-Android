@@ -18,13 +18,16 @@ Building the Library
 The supplied gradle wrapper and build.gradle file can be used to build the
 Accessibility Test Framework or import the project into Android Studio.
 
+```shell
 $ ./gradlew build
+```
 
 Sample Usage
 ------------
 Given a view, the following code runs all accessibility checks on all views in the
 hierarchy rooted at that view and throws an exception if any errors are found:
 
+```java
 ImmutableSet<AccessibilityHierarchyCheck> checks =
     AccessibilityCheckPreset.getAccessibilityHierarchyChecksForPreset(
         AccessibilityCheckPreset.LATEST);
@@ -39,3 +42,4 @@ List<AccessibilityHierarchyCheckResult> errors =
 if (errors.size() > 0) {
   throw new RuntimeException(errors.get(0).getMessage().toString());
 }
+```
