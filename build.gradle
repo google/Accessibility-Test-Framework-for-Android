@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.11'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.13'
         classpath 'digital.wup:android-maven-publish:3.6.3'
     }
 }
