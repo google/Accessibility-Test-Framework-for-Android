@@ -30,8 +30,8 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableStringAndroid;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityNodeInfoExtraDataExtractor.ExtraData;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyElementProto;
-import com.google.android.material.button.MaterialButton;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -68,7 +68,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
   // This field is set to a non-null value after construction.
   private @MonotonicNonNull WindowHierarchyElementAndroid windowElement;
 
-  private ViewHierarchyElementAndroid(
+  protected ViewHierarchyElementAndroid(
       int id,
       @Nullable Integer parentId,
       List<Integer> childIds,
@@ -384,8 +384,12 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
   }
 
   /** Returns a new builder that can build a ViewHierarchyElementAndroid from a View. */
-  static Builder newBuilder(int id, @Nullable ViewHierarchyElementAndroid parent, View fromView) {
-    return new Builder(id, parent, fromView);
+  static Builder newBuilder(
+      int id,
+      @Nullable ViewHierarchyElementAndroid parent,
+      View fromView,
+      CustomViewBuilderAndroid customViewBuilder) {
+    return new Builder(id, parent, fromView, customViewBuilder);
   }
 
   /**
@@ -465,6 +469,9 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
 
+      ExtraData extraData =
+          (extraDataExtractor != null) ? extraDataExtractor.getExtraData(fromInfo) : null;
+
       // API 18+ properties
       this.resourceName = AT_18 ? fromInfo.getViewIdResourceName() : null;
       this.editable = AT_18 ? fromInfo.isEditable() : null;
@@ -485,6 +492,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
 
       // API 24+ properties
       this.drawingOrder = AT_24 ? fromInfo.getDrawingOrder() : null;
+      this.importantForAccessibility = AT_24 ? fromInfo.isImportantForAccessibility() : true;
 
       // API 29+ properties
       this.hasTouchDelegate = AT_29 ? (fromInfo.getTouchDelegateInfo() != null) : null;
@@ -498,8 +506,6 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
           (AT_26 && fromInfo.isShowingHintText())
               ? null
               : SpannableStringAndroid.valueOf(fromInfo.getText());
-
-      this.importantForAccessibility = true;
       this.clickable = fromInfo.isClickable();
       this.longClickable = fromInfo.isLongClickable();
       this.focusable = fromInfo.isFocusable();
@@ -533,12 +539,16 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
               : null;
       this.hintTextColor = null;
       this.textCharacterLocations =
-          (AT_26 && (extraDataExtractor != null))
-              ? extraDataExtractor.getTextCharacterLocations(fromInfo)
+          (extraData != null)
+              ? extraData.getTextCharacterLocations().or(ImmutableList.of())
               : ImmutableList.of();
     }
 
-    Builder(int id, @Nullable ViewHierarchyElementAndroid parent, View fromView) {
+    Builder(
+        int id,
+        @Nullable ViewHierarchyElementAndroid parent,
+        View fromView,
+        CustomViewBuilderAndroid customViewBuilder) {
       // Bookkeeping
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
@@ -590,12 +600,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
           AT_14 && (fromView.canScrollVertically(1) || fromView.canScrollHorizontally(1));
       this.canScrollBackward =
           AT_14 && (fromView.canScrollVertically(-1) || fromView.canScrollHorizontally(-1));
-      if (fromView instanceof MaterialButton) {
-        // Although MaterialButton implements Checkable, it isn't always checkable for accessibility
-        this.checkable = ((MaterialButton) fromView).isCheckable();
-      } else {
-        this.checkable = (fromView instanceof Checkable);
-      }
+      this.checkable = customViewBuilder.isCheckable(fromView);
       this.checked = (fromView instanceof Checkable) ? ((Checkable) fromView).isChecked() : null;
       this.hasTouchDelegate = (fromView.getTouchDelegate() != null);
       this.touchDelegateBounds = ImmutableList.of(); // Unavailable from the View API

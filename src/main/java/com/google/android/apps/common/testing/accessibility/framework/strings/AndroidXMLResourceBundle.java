@@ -193,21 +193,21 @@ public class AndroidXMLResourceBundle extends ResourceBundle {
       String fileName = baseName.substring(packageNameDividerIndex + 1);
 
       // Example:
-      // assets.assets-el.strings.xml
+      // resources-el.strings.xml
       // or
-      // com.google.android.apps.common.testing.accessibility.framework.assets-el.strings.xml
+      // com.google.android.apps.common.testing.accessibility.framework.resources-el.strings.xml
       return packageName.isEmpty()
-          ? String.format("assets.assets%s.%s", localeName, fileName)
-          : String.format("%s.assets%s.%s", packageName, localeName, fileName);
+          ? String.format("resources%s.%s", localeName, fileName)
+          : String.format("%s.resources%s.%s", packageName, localeName, fileName);
     }
 
     /**
-     * Returns a {@link String} name derived from the android package name and file name
-     * that can be passed to any {@link ResourceBundle#getBundle} method for use with this class.
+     * Returns a {@link String} name derived from the android package name and file name that can be
+     * passed to any {@link ResourceBundle#getBundle} method for use with this class.
      *
      * @param packageName the android package where resources can be found
-     * @param fileName the name of the xml strings file without an extension
-     *                 (e.g. for res/values/strings.xml, fileName = "strings")
+     * @param fileName the name of the xml strings file without an extension (e.g. for
+     *     assets/strings.xml, fileName = "strings")
      * @return a {@link String} to be used with {@link ResourceBundle#getBundle}
      */
     static String getBaseName(String packageName, String fileName) {

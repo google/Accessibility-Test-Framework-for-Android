@@ -23,6 +23,7 @@ import "com/google/android/apps/common/testing/accessibility/framework/uielement
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
 option java_outer_classname = "AccessibilityHierarchyProtos";
 
+
 // Wire format for an AccessibilityHierarchy
 // Next index: 5
 message AccessibilityHierarchyProto {

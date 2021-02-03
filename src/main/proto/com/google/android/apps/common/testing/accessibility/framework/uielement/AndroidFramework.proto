@@ -21,6 +21,7 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
 option java_outer_classname = "AndroidFrameworkProtos";
 
+
 // Proto representation of Rect
 // Next index: 5
 message RectProto {
