@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.11'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.14'
         classpath 'digital.wup:android-maven-publish:3.6.3'
     }
 }
@@ -89,7 +89,7 @@ publishing {
         mavenAar(MavenPublication) {
             groupId 'com.google.android.apps.common.testing.accessibility.framework'
             artifactId 'accessibility-test-framework'
-            version '3.1'
+            version '3.1.1'
             from components.android
             artifact sourceJar
             artifact javadocJar
