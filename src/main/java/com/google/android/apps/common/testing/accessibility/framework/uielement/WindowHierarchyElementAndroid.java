@@ -204,7 +204,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     }
   }
 
-  private void writeViewHierarchyToParcel(ViewHierarchyElementAndroid element, Parcel out) {
+  private static void writeViewHierarchyToParcel(ViewHierarchyElementAndroid element, Parcel out) {
     element.writeToParcel(out);
     int children = element.getChildViewCount();
     out.writeInt(children);
@@ -267,107 +267,11 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     childIds.add(child.id);
   }
 
-  /**
-   * Create a new {@link ViewHierarchyElementAndroid} from an {@link AccessibilityNodeInfo} and
-   * appends it and its children to {@code elementList}. The new elements' {@link
-   * ViewHierarchyElementAndroid#getId()} will match their index in {@code elementList}. This also
-   * adds the newly created elements as children to the provided {@code parent} element.
-   *
-   * @param forInfo The non-null {@link AccessibilityNodeInfo} from which to create the elements
-   * @param elementList The list to hold the elements
-   * @param parent The {@link ViewHierarchyElementAndroid} corresponding to {@code forInfo}'s
-   *     parent, or {@code null} if {@code forInfo} is a root view.
-   * @param elementToNodeInfoMap A {@link Map} to populate with the {@link
-   *     ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to their
-   *     originating {@link AccessibilityNodeInfo}s
-   * @param extraDataExtractor The {@link AccessibilityNodeInfoExtraDataExtractor} for extracting
-   *     extra rendering data
-   * @return The newly created element
-   */
-  private static ViewHierarchyElementAndroid buildViewHierarchy(
-      AccessibilityNodeInfo forInfo,
-      List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent,
-      Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
-    checkNotNull(forInfo, "Attempted to build hierarchy from null root node");
-
-    ViewHierarchyElementAndroid element =
-        ViewHierarchyElementAndroid.newBuilder(
-                elementList.size(), parent, forInfo, extraDataExtractor)
-            .build();
-    elementList.add(element);
-    elementToNodeInfoMap.put(element, AccessibilityNodeInfo.obtain(forInfo));
-
-    for (int i = 0; i < forInfo.getChildCount(); ++i) {
-      AccessibilityNodeInfo child = forInfo.getChild(i);
-      if (child != null) {
-        element.addChild(
-            buildViewHierarchy(
-                child, elementList, element, elementToNodeInfoMap, extraDataExtractor));
-        child.recycle();
-      }
-    }
-
-    return element;
-  }
-
-  /**
-   * Create a new {@link ViewHierarchyElementAndroid} from an {@link View} and appends it and its
-   * children to {@code elementList}. The new elements' {@link ViewHierarchyElementAndroid#getId()}
-   * will match their index in {@code elementList}. This also adds the newly created elements as
-   * children to the provided {@code parent} element.
-   *
-   * @param forView The {@link View} from which to create the elements
-   * @param elementList The list to hold the elements
-   * @param parent The {@link ViewHierarchyElementAndroid} corresponding to {@code forView}'s
-   *     parent, or {@code null} if {@code forView} is a root view.
-   * @param elementToViewMap A {@link Map} to populate with the {@link ViewHierarchyElementAndroid}s
-   *     created during construction of the hierarchy mapped to their originating {@link View}s
-   * @return The newly created element
-   */
-  private static ViewHierarchyElementAndroid buildViewHierarchy(
-      View forView,
-      List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent,
-      Map<ViewHierarchyElementAndroid, View> elementToViewMap) {
-    ViewHierarchyElementAndroid element =
-        ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, forView).build();
-    elementList.add(element);
-    elementToViewMap.put(element, forView);
-
-    // Recurse for child views
-    if (forView instanceof ViewGroup) {
-      ViewGroup viewGroup = (ViewGroup) forView;
-      for (int i = 0; i < viewGroup.getChildCount(); ++i) {
-        element.addChild(
-            buildViewHierarchy(viewGroup.getChildAt(i), elementList, element, elementToViewMap));
-      }
-    }
-
-    return element;
-  }
-
-  private static ViewHierarchyElementAndroid buildViewHierarchy(
-      Parcel fromParcel,
-      List<ViewHierarchyElementAndroid> elementList,
-      @Nullable ViewHierarchyElementAndroid parent) {
-    ViewHierarchyElementAndroid element =
-        ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, fromParcel).build();
-    elementList.add(element);
-
-    int childElementCount = fromParcel.readInt();
-    for (int i = 0; i < childElementCount; ++i) {
-      element.addChild(buildViewHierarchy(fromParcel, elementList, element));
-    }
-
-    return element;
-  }
-
   /** Returns a new builder that can build a WindowHierarchyElementAndroid from a View. */
-  static BuilderAndroid newBuilder(int id, View view) {
+  static BuilderAndroid newBuilder(int id, View view, CustomViewBuilderAndroid customViewBuilder) {
     BuilderAndroid builder = new BuilderAndroid(id);
     builder.fromRootView = checkNotNull(view);
+    builder.customViewBuilder = customViewBuilder;
     return builder;
   }
 
@@ -421,6 +325,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
   public static class BuilderAndroid extends Builder {
     private final int id;
     private @Nullable View fromRootView;
+    private @Nullable CustomViewBuilderAndroid customViewBuilder;
+
     private @Nullable AccessibilityWindowInfo fromWindowInfo;
     private @Nullable AccessibilityNodeInfo fromNodeInfo;
     private @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor;
@@ -468,7 +374,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
 
       if (fromRootView != null) {
         elementToViewMap = new HashMap<>();
-        result = construct(id, parent, fromRootView, elementToViewMap);
+        result =
+            construct(id, parent, fromRootView, elementToViewMap, checkNotNull(customViewBuilder));
       } else if (fromWindowInfo != null) {
         elementToNodeInfoMap = new HashMap<>();
         result = construct(id, parent, fromWindowInfo, elementToNodeInfoMap, extraDataExtractor);
@@ -488,6 +395,130 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
       setWindow(result);
       populateOriginMaps(elementToViewMap, elementToNodeInfoMap);
       return result;
+    }
+
+    /**
+     * Creates a {@link ViewHierarchyElementAndroid.Builder} from a {@link View}.
+     *
+     * @param id The identifier for the desired {@link ViewHierarchyElementAndroid}
+     * @param parent The {@link ViewHierarchyElementAndroid} corresponding to {@code forView}'s
+     *     parent, or {@code null} if {@code forView} is a root view.
+     * @param fromView The {@link View} from which to create the elements
+     * @param customViewBuilder The {@link CustomViewBuilderAndroid} which customizes how to build
+     *     an {@link AccessibilityHierarchyAndroid} from {@code forView}
+     */
+    private static ViewHierarchyElementAndroid.Builder createViewHierarchyElementAndroidBuilder(
+        int id,
+        @Nullable ViewHierarchyElementAndroid parent,
+        View fromView,
+        CustomViewBuilderAndroid customViewBuilder) {
+      return ViewHierarchyElementAndroid.newBuilder(id, parent, fromView, customViewBuilder);
+    }
+
+    /**
+     * Create a new {@link ViewHierarchyElementAndroid} from a {@link View} and appends it and its
+     * children to {@code elementList}. The new elements' {@link
+     * ViewHierarchyElementAndroid#getId()} will match their index in {@code elementList}. This also
+     * adds the newly created elements as children to the provided {@code parent} element.
+     *
+     * @param forView The {@link View} from which to create the elements
+     * @param elementList The list to hold the elements
+     * @param parent The {@link ViewHierarchyElementAndroid} corresponding to {@code forView}'s
+     *     parent, or {@code null} if {@code forView} is a root view.
+     * @param elementToViewMap A {@link Map} to populate with the {@link
+     *     ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to
+     *     their originating {@link View}s
+     * @param customViewBuilder The {@link CustomViewBuilderAndroid} which customizes how to build
+     *     an {@link AccessibilityHierarchyAndroid} from {@code forView}
+     * @return The newly created element
+     */
+    private static ViewHierarchyElementAndroid buildViewHierarchyFromView(
+        View forView,
+        List<ViewHierarchyElementAndroid> elementList,
+        @Nullable ViewHierarchyElementAndroid parent,
+        Map<ViewHierarchyElementAndroid, View> elementToViewMap,
+        CustomViewBuilderAndroid customViewBuilder) {
+      ViewHierarchyElementAndroid element =
+          createViewHierarchyElementAndroidBuilder(
+                  elementList.size(), parent, forView, customViewBuilder)
+              .build();
+      elementList.add(element);
+      elementToViewMap.put(element, forView);
+
+      // Recurse for child views
+      if (forView instanceof ViewGroup) {
+        ViewGroup viewGroup = (ViewGroup) forView;
+        for (int i = 0; i < viewGroup.getChildCount(); ++i) {
+          element.addChild(
+              buildViewHierarchyFromView(
+                  viewGroup.getChildAt(i),
+                  elementList,
+                  element,
+                  elementToViewMap,
+                  customViewBuilder));
+        }
+      }
+
+      return element;
+    }
+
+    private static ViewHierarchyElementAndroid buildViewHierarchy(
+        Parcel fromParcel,
+        List<ViewHierarchyElementAndroid> elementList,
+        @Nullable ViewHierarchyElementAndroid parent) {
+      ViewHierarchyElementAndroid element =
+          ViewHierarchyElementAndroid.newBuilder(elementList.size(), parent, fromParcel).build();
+      elementList.add(element);
+
+      int childElementCount = fromParcel.readInt();
+      for (int i = 0; i < childElementCount; ++i) {
+        element.addChild(buildViewHierarchy(fromParcel, elementList, element));
+      }
+
+      return element;
+    }
+
+    /**
+     * Create a new {@link ViewHierarchyElementAndroid} from an {@link AccessibilityNodeInfo} and
+     * appends it and its children to {@code elementList}. The new elements' {@link
+     * ViewHierarchyElementAndroid#getId()} will match their index in {@code elementList}. This also
+     * adds the newly created elements as children to the provided {@code parent} element.
+     *
+     * @param forInfo The non-null {@link AccessibilityNodeInfo} from which to create the elements
+     * @param elementList The list to hold the elements
+     * @param parent The {@link ViewHierarchyElementAndroid} corresponding to {@code forInfo}'s
+     *     parent, or {@code null} if {@code forInfo} is a root view.
+     * @param elementToNodeInfoMap A {@link Map} to populate with the {@link
+     *     ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to
+     *     their originating {@link AccessibilityNodeInfo}s
+     * @param extraDataExtractor The {@link AccessibilityNodeInfoExtraDataExtractor} for extracting
+     *     extra rendering data
+     * @return The newly created element
+     */
+    private static ViewHierarchyElementAndroid buildViewHierarchy(
+        AccessibilityNodeInfo forInfo,
+        List<ViewHierarchyElementAndroid> elementList,
+        @Nullable ViewHierarchyElementAndroid parent,
+        Map<ViewHierarchyElementAndroid, AccessibilityNodeInfo> elementToNodeInfoMap,
+        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      ViewHierarchyElementAndroid element =
+          ViewHierarchyElementAndroid.newBuilder(
+                  elementList.size(), parent, forInfo, extraDataExtractor)
+              .build();
+      elementList.add(element);
+      elementToNodeInfoMap.put(element, AccessibilityNodeInfo.obtain(forInfo));
+
+      for (int i = 0; i < forInfo.getChildCount(); ++i) {
+        AccessibilityNodeInfo child = forInfo.getChild(i);
+        if (child != null) {
+          element.addChild(
+              buildViewHierarchy(
+                  child, elementList, element, elementToNodeInfoMap, extraDataExtractor));
+          child.recycle();
+        }
+      }
+
+      return element;
     }
 
     private WindowHierarchyElementAndroid construct(
@@ -593,7 +624,8 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
         int id,
         @Nullable WindowHierarchyElementAndroid parent,
         View fromRootView,
-        Map<ViewHierarchyElementAndroid, View> elementToViewMap) {
+        Map<ViewHierarchyElementAndroid, View> elementToViewMap,
+        CustomViewBuilderAndroid customViewBuilder) {
       // Bookkeeping
       this.parentId = (parent != null) ? parent.getId() : null;
 
@@ -614,8 +646,12 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
       this.accessibilityFocused = null;
       this.viewHierarchyElements = new ArrayList<>(); // The ultimate size is unknown
 
-      buildViewHierarchy(
-          fromRootView, viewHierarchyElements, null /* no parent */, elementToViewMap);
+      buildViewHierarchyFromView(
+          fromRootView,
+          viewHierarchyElements,
+          null /* no parent */,
+          elementToViewMap,
+          customViewBuilder);
       return new WindowHierarchyElementAndroid(
           id,
           parentId,
@@ -733,7 +769,7 @@ public class WindowHierarchyElementAndroid extends WindowHierarchyElement {
     }
 
     /** Set backpointers from the window's views to the window. */
-    private void setWindow(WindowHierarchyElementAndroid window) {
+    private static void setWindow(WindowHierarchyElementAndroid window) {
       if (window.viewHierarchyElements != null) {
         for (ViewHierarchyElementAndroid view : window.viewHierarchyElements) {
           view.setWindow(window);
