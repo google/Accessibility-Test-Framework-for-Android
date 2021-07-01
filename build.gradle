@@ -127,7 +127,10 @@ dependencies {
     implementation 'androidx.core:core:1.0.0'
     implementation 'com.google.android.material:material:1.2.0-rc01'
     implementation 'com.google.guava:guava:28.2-android'
-    implementation 'org.checkerframework:checker:3.1.1'
+    // use same version of checker framework used in guava android,
+    // to avoid duplicate class and dexing errors
+    // see https://github.com/android/android-test/issues/861
+    implementation 'org.checkerframework:checker-qual:2.5.5'
     implementation 'org.hamcrest:hamcrest-library:2.2'
     implementation 'org.hamcrest:hamcrest-core:2.2'
     implementation 'org.jsoup:jsoup:1.12.2'
