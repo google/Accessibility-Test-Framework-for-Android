@@ -1,10 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:7.0.4'
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.14'
         classpath 'digital.wup:android-maven-publish:3.6.3'
     }
@@ -13,7 +13,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
 }
@@ -21,11 +21,11 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.3'
+    compileSdkVersion 31
+    buildToolsVersion '30.0.3'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 29
+        targetSdkVersion 31
     }
     lintOptions {
         abortOnError false
@@ -124,16 +124,16 @@ publishing {
 
 dependencies {
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
-    implementation 'androidx.core:core:1.0.0'
-    implementation 'com.google.android.material:material:1.2.0-rc01'
+    implementation 'androidx.core:core:1.7.0'
+    implementation 'com.google.android.material:material:1.6.0-alpha02'
     implementation 'com.google.guava:guava:28.2-android'
     // use same version of checker framework used in guava android,
     // to avoid duplicate class and dexing errors
     // see https://github.com/android/android-test/issues/861
-    implementation 'org.checkerframework:checker-qual:2.5.5'
+    implementation 'org.checkerframework:checker-qual:3.21.1'
     implementation 'org.hamcrest:hamcrest-library:2.2'
     implementation 'org.hamcrest:hamcrest-core:2.2'
-    implementation 'org.jsoup:jsoup:1.12.2'
+    implementation 'org.jsoup:jsoup:1.14.3'
 }
 
 clean {
