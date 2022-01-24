@@ -125,7 +125,7 @@ publishing {
 dependencies {
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
     implementation 'androidx.core:core:1.7.0'
-    implementation 'com.google.android.material:material:1.6.0-alpha02'
+    implementation 'com.google.android.material:material:1.5.0'
     implementation 'com.google.guava:guava:28.2-android'
     // use same version of checker framework used in guava android,
     // to avoid duplicate class and dexing errors
