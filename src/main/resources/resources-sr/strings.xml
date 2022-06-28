@@ -21,14 +21,6 @@
   
   <string name="clickable">која подржава клик</string>
   
-  <string name="non_clickable">која не подржава клик</string>
-  
-  <string name="long_clickable">које подржавају дуги клик</string>
-  
-  <string name="clickable_and_long_clickable">која подржава клик и дуги клик</string>
-  
-  <string name="actionable">које подржавају радње</string>
-  
   <string name="result_message_sdk_version_not_applicable">Ова провера није примењива на уређаје који користе Android %1$s и новије верзије.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Ову ставку можда заклања остали садржај на екрану. Не би било лоше да ручно проверите контраст ставке.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Ова ставка %1$s има исти положај на екрану (&lt;tt&gt;%2$s&lt;/tt&gt;) као и остале ставке (%3$d) истих својстава.</string>
   
   <string name="result_message_view_bounds">Ова ставка %1$s има и локацију на екрану &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">која не подржава клик</string>
+  
+  <string name="long_clickable">које подржавају дуги клик</string>
+  
+  <string name="clickable_and_long_clickable">која подржава клик и дуги клик</string>
+  
+  <string name="actionable">које подржавају радње</string>
   
   <string name="check_title_duplicate_speakable_text">Описи ставки</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Однос контраста на слици је %1$.2f. Тај однос се заснива на наведеној боји првог плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и наведеној боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Препоручујемо да повећате контраст на %2$.2f или више.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Контраст слике је %1$.2f. Овај однос је заснован на процењеној боји предњег плана &lt;tt&gt;#%3$06X&lt;/tt&gt; и процењеној боји позадине &lt;tt&gt;#%4$06X&lt;/tt&gt;. Размотрите повећање овог контраста на конфигурисани однос %2$.2f или већи.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Однос контраста на слици је %1$.2f. Контраст текста ставке је заснован на процењеној боји предњег плана &lt;tt&gt;#%3$06X&lt;/tt&gt; и процењеној боји позадине &lt;tt&gt;#%4$06X&lt;/tt&gt;. Не би било лоше да повећате контраст на измењени од %2$.2f или више.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Однос контраста на слици је %1$.2f. Тај однос се заснива на наведеној боји првог плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и наведеној боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Не би било лоше да повећате контраст на конфигурисани од %2$.2f или више.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Однос контраста на слици је %1$.2f. Тај однос се заснива на наведеној боји првог плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и наведеној боји позадине (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Не би било лоше да повећате контраст на измењени од %2$.2f или више.</string>
   
   <string name="check_title_redundant_description">Ознака типа ставке</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Однос контраста текста ове ставке је %1$.2f. Тај однос се заснива на боји текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и боји позадине (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Не би било лоше да повећате однос контраста текста ове ставке бар на %4$.2f.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Текст ове ставке има контраст од %1$.2f. Тај однос се заснива на боји текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и боји позадине (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Не би било лоше да користите боје које имају већи контраст од %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Текст ове ставке има контраст од %1$.2f. Контраст текста ставке је заснован на процењеној боји предњег плана &lt;tt&gt;#%2$06X&lt;/tt&gt; и процењеној боји позадине &lt;tt&gt;#%3$06X&lt;/tt&gt;. Не би било лоше да користите боје које имају већи контраст од %4$.2f за мали текст или %5$.2f за већи текст.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Текст ове ставке има контраст од %1$.2f. Тај однос се заснива на процењеној боји првог плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и процењеној боји позадине (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Препоручујемо да повећате контраст текста ставке бар на %4$.2f.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Текст ове ставке има контраст од %1$.2f. Овај однос заснива се на наведеној боји предњег плана, &lt;tt&gt;#%2$06X&lt;/tt&gt;, и наведеној боји позадине, &lt;tt&gt;#%3$06X&lt;/tt&gt;. Не би било лоше да користите боје које имају већи контраст од %4$.2f за мали текст или %5$.2f за већи текст.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Контраст текста ставке је %1$.2f. Овај однос је заснован на процењеној боји предњег плана &lt;tt&gt;#%2$06X&lt;/tt&gt; и процењеној боји позадине &lt;tt&gt;#%3$06X&lt;/tt&gt;. Размотрите повећање контраста текста ове ставке на конфигурисани однос %4$.2f или већи.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Текст ове ставке има контраст од %1$.2f. Тај однос се заснива на наведеној боји првог плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и наведеној боји позадине (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Препоручујемо да повећате контраст текста ставке бар на %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Текст ове ставке има контраст од %1$.2f. Овај однос заснива се на наведеној боји предњег плана, &lt;tt&gt;#%2$06X&lt;/tt&gt;, и наведеној боји позадине, &lt;tt&gt;#%3$06X&lt;/tt&gt;. Не би било лоше да повећате контраст текста ставке на конфигурисани однос од %4$.2f или више.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Текст ове ставке има контраст од %1$.2f. Контраст текста ставке је заснован на процењеној боји предњег плана &lt;tt&gt;#%2$06X&lt;/tt&gt; и процењеној боји позадине &lt;tt&gt;#%3$06X&lt;/tt&gt;. Не би било лоше да повећате контраст текста ставке на измењени однос од %4$.2f или више.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Текст ове ставке има контраст од %1$.2f. Тај однос се заснива на наведеној боји првог плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и наведеној боји позадине (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Не би било лоше да повећате контраст текста ставке на измењени однос од %4$.2f или више.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Боје предњег плана и позадине ове ставке одговарају предложеном контрасту.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Боје предњег плана и позадине ове ставке одговарају измењеном контрасту.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Да ли су откривене боје предњег плана и позадине тачне?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Ширина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Не би било лоше да ширина ове мете за додир буде бар &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Величина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Размотрите повећање ове мете за додир бар на минималну конфигурисану величину од &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Величина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Размотрите повећање ове мете за додир бар на минималну измењену величину од &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Висина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Размотрите повећање висине ове теме за додир бар на минималну конфигурисану висину од &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Висина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Размотрите повећање висине ове теме за додир бар на минималну измењену висину од &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Ширина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Размотрите повећање ширине ове мете за додир бар на минималну конфигурисану ширину од &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Ширина ове ставке је &lt;tt&gt;%1$ddp&lt;/tt&gt;. Размотрите повећање ширине ове мете за додир бар на минималну измењену ширину од &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">На једном од надређених елемената ове ставке је откривен &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Занемарите ову поруку ако је делегат довољне величине и обрађује додире на ову ставку.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Надређени контејнер можда исеца део ове ставке, која има површину исцртавања од &lt;tt&gt;%1$ddp&lt;/tt&gt;×&lt;tt&gt;%2$ddp&lt;/tt&gt;. Размислите о повећању величине претка ове ставке који је исеца или дозволите већем надређеном контејнеру да манипулише радњама које се тичу те ставке.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Ова ставка је можда само делимично видљива у контејнеру који може да се помера.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Ова ставка потиче од веб-садржаја, препоручујемо додатну верификацију величине мете за додир.</string>
   
   <string name="check_title_class_name_not_supported">Неподржан тип ставке</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Не би било лоше да ставке у овом региону учините доступним услугама приступачности.</string>
   
+  <string name="check_title_text_size">Прилагођавање величине текста</string>
+  
+  <string name="result_message_no_text_size_unit">Јединица величине текста није добијена.</string>
+  
+  <string name="result_message_brief_text_size_unit">Јединица величине текста ове ставке је &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; са јединицом величине текста од &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Овај текст је мали и може да буде тежак за читање неким корисницима. Не би било лоше да повећате текст или да наведете величину текста у прилагођеним пикселима (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Не би било лоше да наведете величину текста у прилагођеним пикселима (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Овај елемент &lt;tt&gt;TextView&lt;/tt&gt; има фиксну ширину и скалабилан текст.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Овај елемент &lt;tt&gt;TextView&lt;/tt&gt; има фиксну висину и скалабилан текст.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Овај елемент &lt;tt&gt;TextView&lt;/tt&gt; има фиксну величину и скалабилан текст.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Овај елемент &lt;tt&gt;ViewGroup&lt;/tt&gt; има фиксну ширину и садржи &lt;tt&gt;TextView&lt;/tt&gt; са скалабилним текстом.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Овај елемент &lt;tt&gt;ViewGroup&lt;/tt&gt; има фиксну висину и садржи &lt;tt&gt;TextView&lt;/tt&gt; са скалабилним текстом.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Овај елемент &lt;tt&gt;ViewGroup&lt;/tt&gt; има фиксну величину и садржи &lt;tt&gt;TextView&lt;/tt&gt; са скалабилним текстом.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Размислите о томе да измените &lt;tt&gt;LayoutParams&lt;/tt&gt; да бисте омогућили проширење текста.</string>
+  
+  <string name="check_title_unexposed_text">Неизложен текст</string>
+  
+  <string name="result_message_unexposed_text">Уверите се да ознака приступачности ове ставке садржи и видљиви текст.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Оптичко препознавање знакова дало је резултате у овом ImageView-у.</string>
+  
+  <string name="result_message_brief_unexposed_text">Откривен је неизложен текст: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Откривени текст: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Овај елемент &lt;tt&gt;SurfaceView&lt;/tt&gt; можда не открива свој садржај услугама приступачности.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Откривено је више неизложених текстова, укључујући „%1$s“.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Ова ставка можда не открива свој садржај услугама приступачности.</string>
+  
+  <string name="result_message_ocr_result_not_available">Резултати оптичког препознавања знакова нису доступни.</string>
+  
+  <string name="result_message_no_matching_ocr_results">У оквиру ове ставке нису откривени резултати оптичког препознавања знакова.</string>
+  
+  <string name="result_message_multiple_best_match_views">Један резултат оптичког препознавања знакова је откривен у оквиру више ставки које могу да се фокусирају.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Откривен је резултат оптичког препознавања знакова са једним знаком, али не постоји текст на тој локацији.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Садржи ли овај екран важне ставке које нису оивичене?</string>
   
   <string name="question_message_identify_unexposed_items">Изаберите регионе екрана са неидентификованим ставкама.</string>
+  
+  <string name="value_checked">означено</string>
+  
+  <string name="value_not_checked">није означено</string>
+  
+  <string name="value_on">укључено</string>
+  
+  <string name="value_off">искључено</string>
+  
+  <string name="template_containers_quantity_other">%1$s приказује следећи број ставки: %2$d.</string>
+  
+  <string name="template_labeled_item">%1$s за %2$s</string>
+  
+  <string name="value_listview">Листа</string>
 
 </resources>

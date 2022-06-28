@@ -21,14 +21,6 @@
   
   <string name="clickable">클릭 가능</string>
   
-  <string name="non_clickable">클릭 불가능</string>
-  
-  <string name="long_clickable">길게 클릭 가능</string>
-  
-  <string name="clickable_and_long_clickable">클릭 가능, 길게 클릭 가능</string>
-  
-  <string name="actionable">작업 가능</string>
-  
   <string name="result_message_sdk_version_not_applicable">이 검사는 Android 버전 %1$s 이상을 실행하는 기기에는 적용되지 않습니다.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">화면의 다른 요소가 이 항목을 가린 것일 수 있습니다. 이 항목의 대비를 직접 테스트해 보세요.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">이 %1$s 항목의 화면 위치(&lt;tt&gt;%2$s&lt;/tt&gt;)가 이러한 속성을 갖는 다른 항목 %3$d개와 동일합니다.</string>
   
   <string name="result_message_view_bounds">이 %1$s 항목의 화면 위치도 &lt;tt&gt;%2$s&lt;/tt&gt;입니다.</string>
+  
+  <string name="non_clickable">클릭 불가능</string>
+  
+  <string name="long_clickable">길게 클릭 가능</string>
+  
+  <string name="clickable_and_long_clickable">클릭 가능, 길게 클릭 가능</string>
+  
+  <string name="actionable">작업 가능</string>
   
   <string name="check_title_duplicate_speakable_text">항목 설명</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">이미지의 대비율이 %1$.2f입니다. 이 대비율은 제공된 전경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%4$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 %2$.2f 이상으로 늘려보세요.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">이미지의 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%4$06X&lt;/tt&gt;에 기반한 수치입니다. 이 값을 구성 비율인 %2$.2f 이상으로 늘려보세요.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">이미지의 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%4$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 수정된 비율인 %2$.2f 이상으로 늘려보세요.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">이미지의 대비율이 %1$.2f입니다. 이 대비율은 제공된 전경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%4$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 구성 비율인 %2$.2f 이상으로 늘려보세요.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">이미지의 대비율이 %1$.2f입니다. 이 대비율은 제공된 전경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%4$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 수정된 비율인 %2$.2f 이상으로 늘려보세요.</string>
   
   <string name="check_title_redundant_description">항목 유형 라벨</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 텍스트 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 %4$.2f 이상으로 늘려보세요.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 텍스트 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 수정된 대비율 %4$.2f보다 대비율이 크게 나오는 색상을 사용해 보세요.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 작은 텍스트에서는 %4$.2f 이상, 큰 텍스트에서는 %5$.2f 이상으로 늘려보세요.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 %4$.2f 이상으로 늘려보세요.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 제공된 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 대비율을 작은 텍스트에서는 %4$.2f 이상, 큰 텍스트에서는 %5$.2f 이상으로 늘려보세요.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 구성 비율인 %4$.2f 이상으로 늘려보세요.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">항목의 텍스트 대비율이 %1$.2f입니다. 이 대비율은 제공된 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 수정된 비율인 %4$.2f 이상으로 늘려보세요.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 제공된 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 구성 비율인 %4$.2f 이상으로 늘려보세요.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">항목의 텍스트 대비율이 %1$.2f입니다. 이 비율은 예상 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 예상 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 수정된 비율인 %4$.2f 이상으로 늘려보세요.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">항목의 텍스트 대비율이 %1$.2f입니다. 이 대비율은 제공된 전경 색상 &lt;tt&gt;#%2$06X&lt;/tt&gt; 및 제공된 배경 색상 &lt;tt&gt;#%3$06X&lt;/tt&gt;에 기반한 수치입니다. 이 항목의 텍스트 대비율을 수정된 비율인 %4$.2f 이상으로 늘려보세요.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">이 항목의 전경 및 배경 색상이 추천 대비율을 충족합니다.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">이 항목의 전경 및 배경 색상이 수정된 대비율을 충족합니다.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">전경 및 배경 색상이 올바르게 감지되었나요?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">이 항목의 폭이 &lt;tt&gt;%1$ddp&lt;/tt&gt;입니다. 터치할 대상의 폭을 &lt;tt&gt;%2$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">이 항목의 크기가 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;입니다. 터치할 대상을 구성된 최소 크기인 &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">이 항목의 크기가 &lt;tt&gt;%1$ddp&lt;/tt&gt;x&lt;tt&gt;%2$ddp&lt;/tt&gt;입니다. 터치 대상을 수정된 최소 크기인 &lt;tt&gt;%3$ddp&lt;/tt&gt;x&lt;tt&gt;%4$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
   
-  <string name="result_message_customized_small_touch_target_height">이 항목의 높이가 &lt;tt&gt;%1$ddp&lt;/tt&gt;입니다. 터치할 대상의 높이를 구성된 최소 높이인 &lt;tt&gt;%2$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
+  <string name="result_message_customized_small_touch_target_height">이 항목의 높이가 &lt;tt&gt;%1$ddp&lt;/tt&gt;입니다. 터치 대상의 높이를 수정된 최소 높이인 &lt;tt&gt;%2$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
   
-  <string name="result_message_customized_small_touch_target_width">이 항목의 폭이 &lt;tt&gt;%1$ddp&lt;/tt&gt;입니다. 터치할 대상의 폭을 구성된 최소 폭인 &lt;tt&gt;%2$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
+  <string name="result_message_customized_small_touch_target_width">이 항목의 너비가 &lt;tt&gt;%1$ddp&lt;/tt&gt;입니다. 터치 대상의 너비를 수정된 최소 너비인 &lt;tt&gt;%2$ddp&lt;/tt&gt; 이상으로 늘려보세요.</string>
   
   <string name="result_message_addendum_touch_delegate">이 항목의 상위 항목 중 하나에서 &lt;tt&gt;TouchDelegate&lt;/tt&gt;이(가) 발견되었습니다. 이 항목의 터치를 처리하는 위임 요소의 크기가 충분하다면 이 메시지를 무시해도 됩니다.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">그리기 영역이 &lt;tt&gt;%1$ddp&lt;/tt&gt;x&lt;tt&gt;%2$ddp&lt;/tt&gt;인 항목 크기에 맞게 상위 컨테이너가 잘릴 수 있습니다. 이 항목의 잘라내기 상위 항목 크기를 늘리거나 이 항목 대신 크기가 더 큰 상위 컨테이너가 작업을 처리하도록 허용해 보세요.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">이 항목은 스크롤 가능한 컨테이너 내에서 일부만 표시될 수도 있습니다.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">이 항목은 웹 콘텐츠에서 제공되며 터치 영역 크기를 추가로 확인하는 것이 좋습니다.</string>
   
   <string name="check_title_class_name_not_supported">지원되지 않는 항목 유형</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">이 지역의 항목을 접근성 서비스에 노출해 보세요.</string>
   
+  <string name="check_title_text_size">텍스트 크기 조정</string>
+  
+  <string name="result_message_no_text_size_unit">텍스트 크기 단위를 가져올 수 없습니다.</string>
+  
+  <string name="result_message_brief_text_size_unit">이 항목의 텍스트 크기 단위는 &lt;tt&gt;%1$s&lt;/tt&gt;입니다.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">텍스트 크기 단위가 &lt;tt&gt;%2$s&lt;/tt&gt;인 &lt;tt&gt;%1$s&lt;/tt&gt;입니다.</string>
+  
+  <string name="result_message_small_fixed_text_size">텍스트가 작아서 일부 사용자가 읽기에 어려울 수 있습니다. 더 큰 크기를 사용하거나 텍스트 크기를 조정된 픽셀(&lt;tt&gt;sp&lt;/tt&gt;)로 지정해 보세요.</string>
+  
+  <string name="result_message_fixed_text_size">텍스트 크기를 조정된 픽셀(&lt;tt&gt;sp&lt;/tt&gt;)로 지정해 보세요.</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">이 &lt;tt&gt;TextView&lt;/tt&gt;에 고정된 너비의 크기 조정 가능한 텍스트가 있습니다.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">이 &lt;tt&gt;TextView&lt;/tt&gt;에 고정된 높이의 크기 조정 가능한 텍스트가 있습니다.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">이 &lt;tt&gt;TextView&lt;/tt&gt;에 고정된 사이즈의 크기 조정 가능한 텍스트가 있습니다.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">이 &lt;tt&gt;ViewGroup&lt;/tt&gt;은 너비가 고정되어 있으며, 크기 조정 가능한 텍스트가 있는 &lt;tt&gt;TextView&lt;/tt&gt;가 포함되어 있습니다.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">이 &lt;tt&gt;ViewGroup&lt;/tt&gt;은 높이가 고정되어 있으며, 크기 조정 가능한 텍스트가 있는 &lt;tt&gt;TextView&lt;/tt&gt;가 포함되어 있습니다.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">이 &lt;tt&gt;ViewGroup&lt;/tt&gt;은 사이즈가 고정되어 있으며, 크기 조정 가능한 텍스트가 있는 &lt;tt&gt;TextView&lt;/tt&gt;가 포함되어 있습니다.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">텍스트 확대를 허용하도록 &lt;tt&gt;LayoutParams&lt;/tt&gt;를 수정해 보세요.</string>
+  
+  <string name="check_title_unexposed_text">노출되지 않은 텍스트</string>
+  
+  <string name="result_message_unexposed_text">이 항목의 접근성 라벨에 보이는 텍스트가 포함되어 있는지 확인하세요.</string>
+  
+  <string name="result_message_text_detected_in_image_view">이 ImageView 내에서 OCR 결과가 감지되었습니다.</string>
+  
+  <string name="result_message_brief_unexposed_text">노출되지 않은 텍스트 감지됨: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">텍스트 감지됨: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">이 &lt;tt&gt;SurfaceView&lt;/tt&gt;가 접근성 서비스에 콘텐츠를 노출하지 않을 수 있습니다.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">\"%1$s\" 등 노출되지 않은 여러 텍스트가 감지되었습니다.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">접근성 서비스에 콘텐츠를 노출하지 않는 항목일 수 있습니다.</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR 결과를 사용할 수 없습니다.</string>
+  
+  <string name="result_message_no_matching_ocr_results">이 항목에서 감지된 OCR 결과가 없습니다.</string>
+  
+  <string name="result_message_multiple_best_match_views">여러 포커스 가능 항목에서 1개의 OCR 결과가 감지되었습니다.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">단일 문자가 포함된 OCR 결과가 감지되었지만 해당 위치에 텍스트가 없습니다.</string>
+  
   <string name="question_message_screen_has_unexposed_items">이 화면에 윤곽선이 표시되지 않은 중요한 항목이 포함되어 있나요?</string>
   
   <string name="question_message_identify_unexposed_items">식별되지 않은 항목이 있는 화면의 지역을 선택하세요.</string>
+  
+  <string name="value_checked">선택됨</string>
+  
+  <string name="value_not_checked">선택되지 않음</string>
+  
+  <string name="value_on">사용</string>
+  
+  <string name="value_off">사용 안함</string>
+  
+  <string name="template_containers_quantity_other">%1$s에서 항목 %2$d개를 표시합니다.</string>
+  
+  <string name="template_labeled_item">%2$s의 %1$s</string>
+  
+  <string name="value_listview">목록</string>
 
 </resources>

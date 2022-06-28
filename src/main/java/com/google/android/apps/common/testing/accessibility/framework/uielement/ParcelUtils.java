@@ -201,7 +201,41 @@ final class ParcelUtils {
     }
   }
 
-  public static void writeSpannableStringToParcel(SpannableString spannableString, Parcel out) {
+  /**
+   * Writes values to the provided {@link Parcel} to represent a Nullable SpannableString. If {@code
+   * val} is {@code null}, a single Int {@code 0} will be written. Otherwise, an Int {@code 1} will
+   * be written followed by values representing the SpannableString.
+   *
+   * @param out a {@link Parcel} to which to write
+   * @param val a value to represent
+   */
+  static void writeNullableSpannableString(Parcel out, @Nullable SpannableString val) {
+    if (val == null) {
+      out.writeInt(ABSENT);
+    } else {
+      out.writeInt(PRESENT);
+      writeSpannableString(out, val);
+    }
+  }
+
+  /**
+   * Reads values from the provided {@link Parcel} representing a Nullable SpannableString.
+   *
+   * @param in a {@link Parcel} from which to read
+   * @return the represented value
+   */
+  static @Nullable SpannableString readNullableSpannableString(Parcel in) {
+    int marker = in.readInt();
+    if (marker == ABSENT) {
+      return null;
+    } else if (marker == PRESENT) {
+      return readSpannableString(in);
+    } else {
+      throw new IllegalStateException("Parcel contained unexpected marker value.");
+    }
+  }
+
+  private static void writeSpannableString(Parcel out, SpannableString spannableString) {
     List<Span> spans = spannableString.getSpans();
     out.writeString(spannableString.toString());
     out.writeInt(spans.size());
@@ -227,7 +261,7 @@ final class ParcelUtils {
     }
   }
 
-  public static SpannableString readSpannableStringFromParcel(Parcel in) {
+  private static SpannableString readSpannableString(Parcel in) {
     String rawString = checkNotNull(in.readString());
     int spanSize = in.readInt();
     List<Span> spans = new ArrayList<>(spanSize);

@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoProto;
+import com.google.errorprone.annotations.Immutable;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
@@ -27,10 +28,11 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * <p>NOTE: Currently, this class holds only {@link MetricsAndroid}, but will likely have additional
  * fields in the future.
  */
+@Immutable
 public class DisplayInfoAndroid extends DisplayInfo {
 
   private final MetricsAndroid metricsWithoutDecoration;
-  @Nullable private final MetricsAndroid realMetrics;
+  private final @Nullable MetricsAndroid realMetrics;
 
   /**
    * Derives an instance from a {@link Display}
@@ -108,6 +110,7 @@ public class DisplayInfoAndroid extends DisplayInfo {
   }
 
   /** Representation of a {@link DisplayMetrics} */
+  @Immutable
   public static class MetricsAndroid extends Metrics {
     /**
      * Derives an instance from a {@link DisplayMetrics}

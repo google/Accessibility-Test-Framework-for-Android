@@ -14,6 +14,8 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.checks;
 
+import static com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils.ABS_LIST_VIEW_CLASS_NAME;
+import static com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils.WEB_VIEW_CLASS_NAME;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.Boolean.TRUE;
 
@@ -23,7 +25,6 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.HashMapResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.Parameters;
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
-import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Point;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
@@ -105,6 +106,11 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    * result metadata.
    */
   public static final String KEY_IS_CLIPPED_BY_ANCESTOR = "KEY_IS_CLIPPED_BY_ANCESTOR";
+  /**
+   * Result metadata key for a {@code boolean} which is {@code true} when the view is detremined to
+   * originate from web content.
+   */
+  public static final String KEY_IS_WEB_CONTENT = "KEY_IS_WEB_CONTENT";
   /** Result metadata key for the {@code int} height of the view. */
   public static final String KEY_HEIGHT = "KEY_HEIGHT";
   /** Result metadata key for the {@code int} width of the view. */
@@ -239,6 +245,10 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
         // less than the drawing (nonclipped) size, which indicates an ancestor may scroll,
         // expand/collapse, or otherwise constrain the size of the clickable item.
         boolean isClippedByAncestor = hasQualifyingClippingAncestor(view, requiredSize, density);
+        // Web content exposed through an AccessibilityNodeInfo-based hierarchy from WebView cannot
+        // precisely represent the clickable area for DOM elements in a number of cases. We reduce
+        // severity and append a message recommending manual testing when encountering WebView.
+        boolean isWebContent = hasWebViewAncestor(view);
 
         // In each of these cases, with the exception of when we have precise hit-Rect coordinates,
         // we cannot determine how exactly click actions are being handled by the underlying
@@ -246,7 +256,8 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
         AccessibilityCheckResultType resultType =
             ((hasDelegate && (largestDelegateHitRect == null))
                     || hasClickableAncestor
-                    || isClippedByAncestor)
+                    || isClippedByAncestor
+                    || isWebContent)
                 ? AccessibilityCheckResultType.WARNING
                 : AccessibilityCheckResultType.ERROR;
 
@@ -282,6 +293,9 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
           resultMetadata.putBoolean(KEY_IS_CLIPPED_BY_ANCESTOR, true);
           resultMetadata.putInt(KEY_NONCLIPPED_HEIGHT, checkNotNull(view.getNonclippedHeight()));
           resultMetadata.putInt(KEY_NONCLIPPED_WIDTH, checkNotNull(view.getNonclippedWidth()));
+        }
+        if (isWebContent) {
+          resultMetadata.putBoolean(KEY_IS_WEB_CONTENT, true);
         }
 
         Integer customizedTouchTargetSize =
@@ -579,8 +593,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
    * Returns the largest hit-Rect (by area) in screen coordinates (px units) associated with {@code
    * view}, or {@code null} if no hit-Rects are used
    */
-  @Nullable
-  private static Rect getLargestTouchDelegateHitRect(ViewHierarchyElement view) {
+  private static @Nullable Rect getLargestTouchDelegateHitRect(ViewHierarchyElement view) {
     int largestArea = -1;
     Rect largestHitRect = null;
     for (Rect hitRect : view.getTouchDelegateBounds()) {
@@ -631,7 +644,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
           || (TRUE.equals(evalView.isLongClickable()) && isTargetLongClickable)) {
         Point requiredSize = getMinimumAllowableSizeForView(evalView, parameters);
         Rect bounds = evalView.getBoundsInScreen();
-        if (!evalView.checkInstanceOf(ViewHierarchyElementUtils.ABS_LIST_VIEW_CLASS_NAME)
+        if (!evalView.checkInstanceOf(ABS_LIST_VIEW_CLASS_NAME)
             && (bounds.getHeight() >= requiredSize.getY())
             && (bounds.getWidth() >= requiredSize.getX())) {
           return true;
@@ -674,10 +687,23 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
   }
 
   /**
-   * Appends result messages for {@link #KEY_HAS_TOUCH_DELEGATE} and
-   * {@link #KEY_HAS_CLICKABLE_ANCESTOR} to the provided {@code builder} if the relevant keys are
-   * set in the given {@code resultMetadata}.
+   * Identifies web content by checking the ancestors of {@code view} for elements which are WebView
+   * containers.
    *
+   * @param view the {@link ViewHierarchyElement} to evaluate
+   * @return {@code true} if {@code WebView} was identified as an ancestor, {@code false} otherwise
+   */
+  private static boolean hasWebViewAncestor(ViewHierarchyElement view) {
+    ViewHierarchyElement parent = view.getParentView();
+    return (parent != null)
+        && (parent.checkInstanceOf(WEB_VIEW_CLASS_NAME) || hasWebViewAncestor(parent));
+  }
+
+  /**
+   * Appends result messages for additional metadata fields to the provided {@code builder} if the
+   * relevant keys are set in the given {@code resultMetadata}.
+   *
+   * @param resultMetadata the metadata for the result which should be evaluated
    * @param builder the {@link StringBuilder} to which result messages should be appended
    */
   private static void appendMetadataStringsToMessageIfNeeded(
@@ -689,6 +715,7 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
     boolean isClippedByAncestor = resultMetadata.getBoolean(KEY_IS_CLIPPED_BY_ANCESTOR, false);
     boolean isAgainstScrollableEdge =
         resultMetadata.getBoolean(KEY_IS_AGAINST_SCROLLABLE_EDGE, false);
+    boolean isWebContent = resultMetadata.getBoolean(KEY_IS_WEB_CONTENT, false);
 
     if (hasDelegateWithHitRect) {
       builder
@@ -704,8 +731,13 @@ public class TouchTargetSizeCheck extends AccessibilityHierarchyCheck {
       builder.append(' ')
           .append(StringManager.getString(locale, "result_message_addendum_touch_delegate"));
     }
-    if (hasClickableAncestor) {
+    if (isWebContent) {
       builder.append(' ')
+          .append(StringManager.getString(locale, "result_message_addendum_web_touch_target_size"));
+    } else if (hasClickableAncestor) {
+      // The Web content addendum should supersede more-generic ancestor clickability information
+      builder
+          .append(' ')
           .append(StringManager.getString(locale, "result_message_addendum_clickable_ancestor"));
     }
     if (isClippedByAncestor) {

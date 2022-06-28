@@ -29,7 +29,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFF5252)
           .put(Shade.ACCENT_400, 0xFF1744)
           .put(Shade.ACCENT_700, 0xD50000)
-          .build()),
+          .buildOrThrow()),
 
   PINK(
       "Pink",
@@ -48,7 +48,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFF4081)
           .put(Shade.ACCENT_400, 0xF50057)
           .put(Shade.ACCENT_700, 0xC51162)
-          .build()),
+          .buildOrThrow()),
 
   PURPLE(
       "Purple",
@@ -67,7 +67,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xE040FB)
           .put(Shade.ACCENT_400, 0xD500F9)
           .put(Shade.ACCENT_700, 0xAA00FF)
-          .build()),
+          .buildOrThrow()),
 
   DEEP_PURPLE(
       "Deep Purple",
@@ -86,7 +86,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x7C4DFF)
           .put(Shade.ACCENT_400, 0x651FFF)
           .put(Shade.ACCENT_700, 0x6200EA)
-          .build()),
+          .buildOrThrow()),
 
   INDIGO(
       "Indigo",
@@ -105,7 +105,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x536DFE)
           .put(Shade.ACCENT_400, 0x3D5AFE)
           .put(Shade.ACCENT_700, 0x304FFE)
-          .build()),
+          .buildOrThrow()),
 
   BLUE(
       "Blue",
@@ -124,7 +124,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x448AFF)
           .put(Shade.ACCENT_400, 0x2979FF)
           .put(Shade.ACCENT_700, 0x2962FF)
-          .build()),
+          .buildOrThrow()),
 
   LIGHT_BLUE(
       "Light Blue",
@@ -143,7 +143,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x40C4FF)
           .put(Shade.ACCENT_400, 0x00B0FF)
           .put(Shade.ACCENT_700, 0x0091EA)
-          .build()),
+          .buildOrThrow()),
 
   CYAN(
       "Cyan",
@@ -162,7 +162,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x18FFFF)
           .put(Shade.ACCENT_400, 0x00E5FF)
           .put(Shade.ACCENT_700, 0x00B8D4)
-          .build()),
+          .buildOrThrow()),
 
   TEAL(
       "Teal",
@@ -181,7 +181,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x64FFDA)
           .put(Shade.ACCENT_400, 0x1DE9B6)
           .put(Shade.ACCENT_700, 0x00BFA5)
-          .build()),
+          .buildOrThrow()),
 
   GREEN(
       "Green",
@@ -200,7 +200,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0x69F0AE)
           .put(Shade.ACCENT_400, 0x00E676)
           .put(Shade.ACCENT_700, 0x00C853)
-          .build()),
+          .buildOrThrow()),
 
   LIGHT_GREEN(
       "Light Green",
@@ -219,7 +219,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xB2FF59)
           .put(Shade.ACCENT_400, 0x76FF03)
           .put(Shade.ACCENT_700, 0x64DD17)
-          .build()),
+          .buildOrThrow()),
 
   LIME(
       "Lime",
@@ -238,7 +238,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xEEFF41)
           .put(Shade.ACCENT_400, 0xC6FF00)
           .put(Shade.ACCENT_700, 0xAEEA00)
-          .build()),
+          .buildOrThrow()),
 
   YELLOW(
       "Yellow",
@@ -257,7 +257,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFFFF00)
           .put(Shade.ACCENT_400, 0xFFEA00)
           .put(Shade.ACCENT_700, 0xFFD600)
-          .build()),
+          .buildOrThrow()),
 
   AMBER(
       "Amber",
@@ -276,7 +276,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFFD740)
           .put(Shade.ACCENT_400, 0xFFC400)
           .put(Shade.ACCENT_700, 0xFFAB00)
-          .build()),
+          .buildOrThrow()),
 
   ORANGE(
       "Orange",
@@ -295,7 +295,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFFAB40)
           .put(Shade.ACCENT_400, 0xFF9100)
           .put(Shade.ACCENT_700, 0xFF6D00)
-          .build()),
+          .buildOrThrow()),
 
   DEEP_ORANGE(
       "Deep Orange",
@@ -314,7 +314,7 @@ public enum MaterialDesignColor {
           .put(Shade.ACCENT_200, 0xFF6E40)
           .put(Shade.ACCENT_400, 0xFF3D00)
           .put(Shade.ACCENT_700, 0xDD2C00)
-          .build()),
+          .buildOrThrow()),
 
   BROWN(
       "Brown",
@@ -329,7 +329,7 @@ public enum MaterialDesignColor {
           .put(Shade.PRIMARY_700, 0x5D4037)
           .put(Shade.PRIMARY_800, 0x4E342E)
           .put(Shade.PRIMARY_900, 0x3E2723)
-          .build()),
+          .buildOrThrow()),
 
   GREY(
       "Grey",
@@ -344,7 +344,7 @@ public enum MaterialDesignColor {
           .put(Shade.PRIMARY_700, 0x616161)
           .put(Shade.PRIMARY_800, 0x424242)
           .put(Shade.PRIMARY_900, 0x212121)
-          .build()),
+          .buildOrThrow()),
 
   BLUE_GREY(
       "Blue Grey",
@@ -359,7 +359,7 @@ public enum MaterialDesignColor {
           .put(Shade.PRIMARY_700, 0x455A64)
           .put(Shade.PRIMARY_800, 0x37474F)
           .put(Shade.PRIMARY_900, 0x263238)
-          .build()),
+          .buildOrThrow()),
 
   BLACK("Black", ImmutableBiMap.of(Shade.PRIMARY_500, 0x000000)),
 

@@ -169,8 +169,7 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
    * @return an {@link AccessibilityHierarchyCheckResult} describing the results of the heavyweight
    *     evaluation, or {@code null} if there is no problem detected.
    */
-  @Nullable
-  private AccessibilityHierarchyCheckResult attemptHeavyweightEval(
+  private @Nullable AccessibilityHierarchyCheckResult attemptHeavyweightEval(
       ViewHierarchyElement view, @Nullable Parameters parameters) {
     Image screenCapture = (parameters == null) ? null : parameters.getScreenCapture();
     if (screenCapture == null) {

@@ -75,8 +75,9 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
     List<AccessibilityHierarchyCheckResult> results = new ArrayList<>();
 
     /* Find all text and the views that have that text throughout the full hierarchy */
-    Map<String, List<ViewHierarchyElement>> textToViewMap = getSpeakableTextToViewMap(
-        hierarchy.getActiveWindow().getAllViews());
+    Map<String, List<ViewHierarchyElement>> textToViewMap =
+        getSpeakableTextToViewMap(
+            hierarchy.getActiveWindow().getAllViews(), hierarchy.getDeviceState().getLocale());
 
     /* Deal with any duplicated text */
     for (String speakableText : textToViewMap.keySet()) {
@@ -210,7 +211,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
    * @return map from speakable text to all views with that speakable text
    */
   private Map<String, List<ViewHierarchyElement>> getSpeakableTextToViewMap(
-      Collection<? extends ViewHierarchyElement> allViews) {
+      Collection<? extends ViewHierarchyElement> allViews, Locale locale) {
     Map<String, List<ViewHierarchyElement>> textToViewMap = new HashMap<>();
 
     for (ViewHierarchyElement view : allViews) {
@@ -220,7 +221,7 @@ public class DuplicateSpeakableTextCheck extends AccessibilityHierarchyCheck {
       }
 
       String speakableText =
-          ViewHierarchyElementUtils.getSpeakableTextForElement(view).toString().trim();
+          ViewHierarchyElementUtils.getSpeakableTextForElement(view, locale).toString().trim();
       if (TextUtils.isEmpty(speakableText)) {
         continue;
       }

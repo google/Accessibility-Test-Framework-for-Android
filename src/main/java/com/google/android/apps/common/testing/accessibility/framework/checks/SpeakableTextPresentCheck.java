@@ -107,7 +107,9 @@ public class SpeakableTextPresentCheck extends AccessibilityHierarchyCheck {
         continue;
       }
 
-      if (TextUtils.isEmpty(ViewHierarchyElementUtils.getSpeakableTextForElement(element))) {
+      if (TextUtils.isEmpty(
+          ViewHierarchyElementUtils.getSpeakableTextForElement(
+              element, hierarchy.getDeviceState().getLocale()))) {
         results.add(new AccessibilityHierarchyCheckResult(
             this.getClass(),
             AccessibilityCheckResultType.ERROR,

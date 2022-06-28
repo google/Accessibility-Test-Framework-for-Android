@@ -21,14 +21,6 @@
   
   <string name="clickable">με δυνατότητα κλικ</string>
   
-  <string name="non_clickable">χωρίς δυνατότητα κλικ</string>
-  
-  <string name="long_clickable">με δυνατότητα παρατεταμένου κλικ</string>
-  
-  <string name="clickable_and_long_clickable">με δυνατότητα κλικ και παρατεταμένου κλικ</string>
-  
-  <string name="actionable">με δυνατότητα ενέργειας</string>
-  
   <string name="result_message_sdk_version_not_applicable">Αυτός ο έλεγχος δεν ισχύει σε συσκευές με έκδοση Android %1$s και μεταγενέστερη.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Αυτό το στοιχείο μπορεί να κρύβεται από άλλο περιεχόμενο στην οθόνη. Σκεφτείτε να δοκιμάσετε μη αυτόματα την αντίθεση αυτού του στοιχείου.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Αυτό το στοιχείο %1$s έχει την ίδια θέση στην οθόνη (&lt;tt&gt;%2$s&lt;/tt&gt;) με άλλα %3$d στοιχεία με αυτές τις ιδιότητες</string>
   
   <string name="result_message_view_bounds">Αυτό το στοιχείο %1$s έχει επίσης μια θέση στην οθόνη &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">χωρίς δυνατότητα κλικ</string>
+  
+  <string name="long_clickable">με δυνατότητα παρατεταμένου κλικ</string>
+  
+  <string name="clickable_and_long_clickable">με δυνατότητα κλικ και παρατεταμένου κλικ</string>
+  
+  <string name="actionable">με δυνατότητα ενέργειας</string>
   
   <string name="check_title_duplicate_speakable_text">Περιγραφές στοιχείων</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης της εικόνας είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt; και το παρεχόμενο χρώμα φόντου &lt;tt&gt;#%4$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε αυτήν την αναλογία σε%2$.2f ή μεγαλύτερη.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Η αναλογία αντίθεσης της εικόνας είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt; και σε ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%4$06X&lt;/tt&gt;. Αυξήστε αυτήν την αναλογία στη διαμορφωμένη αναλογία %2$.2f ή μεγαλύτερη.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Η αναλογία αντίθεσης της εικόνας είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt; κι ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%4$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε αυτήν την αναλογία στην τροποποιημένη αναλογία %2$.2f ή μεγαλύτερη.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης της εικόνας είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt; και το παρεχόμενο χρώμα φόντου &lt;tt&gt;#%4$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε αυτήν την αναλογία στη διαμορφωμένη αναλογία %2$.2f ή μεγαλύτερη.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης της εικόνας είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt; και το παρεχόμενο χρώμα παρασκηνίου &lt;tt&gt;#%4$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε αυτήν την αναλογία στην τροποποιημένη αναλογία %2$.2f ή μεγαλύτερη.</string>
   
   <string name="check_title_redundant_description">Ετικέτα τύπου στοιχείου</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Ο λόγος αντίθεσης του κειμένου του στοιχείου είναι %1$.2f. Αυτός ο λόγος βασίζεται στο χρώμα κειμένου &lt;tt&gt;#%2$06X&lt;/tt&gt; και το χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Αυξήστε το λόγο αντίθεσης του κειμένου του στοιχείου σε %4$.2f και πάνω.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται σε χρώμα κειμένου &lt;tt&gt;#%2$06X&lt;/tt&gt; και χρώμα φόντου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να χρησιμοποιήσετε χρώματα που οδηγούν σε αναλογία αντίθεσης μεγαλύτερη από την τροποποιημένη αναλογία %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; κι ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να χρησιμοποιήσετε χρώματα που οδηγούν σε αναλογία αντίθεσης μεγαλύτερη από %4$.2f για μικρό κείμενο ή %5$.2f για μεγάλο κείμενο.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Η αναλογία αντίθεσης του κειμένου στοιχείου είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και σε ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Αυξήστε την αναλογία αντίθεσης αυτού του κειμένου στοιχείου στην αναλογία %4$.2f ή μεγαλύτερη.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και το παρεχόμενο χρώμα φόντου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να χρησιμοποιήσετε χρώματα που οδηγούν σε αναλογία αντίθεσης μεγαλύτερη από %4$.2f για μικρό κείμενο ή %5$.2f για μεγάλο κείμενο.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Η αναλογία αντίθεσης του κειμένου στοιχείου είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και σε ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Αυξήστε την αναλογία αντίθεσης αυτού του κειμένου στοιχείου στη διαμορφωμένη αναλογία %4$.2f ή μεγαλύτερη.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και το παρεχόμενο χρώμα φόντου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Αυξήστε την αναλογία αντίθεσης αυτού του κειμένου στοιχείου στην αναλογία %4$.2f ή μεγαλύτερη.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και το παρεχόμενο χρώμα φόντου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε την αναλογία αντίθεσης κειμένου αυτού του στοιχείου στην προσαρμοσμένη αναλογία %4$.2f ή μεγαλύτερη.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται σε ένα εκτιμώμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; κι ένα εκτιμώμενο χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε την αναλογία αντίθεσης κειμένου αυτού του στοιχείου στην τροποιημένη αναλογία %4$.2f ή μεγαλύτερη.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Η αναλογία αντίθεσης του κειμένου στο στοιχείο είναι %1$.2f. Αυτή η αναλογία βασίζεται στο παρεχόμενο χρώμα προσκηνίου &lt;tt&gt;#%2$06X&lt;/tt&gt; και το παρεχόμενο χρώμα παρασκηνίου &lt;tt&gt;#%3$06X&lt;/tt&gt;. Μπορείτε να αυξήσετε την αναλογία αντίθεσης κειμένου αυτού του στοιχείου στην τροποιημένη αναλογία %4$.2f ή μεγαλύτερη.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Τα χρώματα στο προσκήνιο και παρασκήνιο αυτού του στοιχείου ανταποκρίνονται στην προτεινόμενη αναλογία αντίθεσης.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Τα χρώματα στο προσκήνιο και παρασκήνιο αυτού του στοιχείου ανταποκρίνονται στην τροποποιημένη αναλογία αντίθεσης.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Είναι σωστά τα χρώματα προσκηνίου και φόντου που εντοπίστηκαν;</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Το πλάτος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt;. Αυξήστε το πλάτος αυτού του στόχου αφής σε &lt;tt&gt;%2$ddp&lt;/tt&gt; και πάνω.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Το μέγεθος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Αυξήστε αυτόν τον στόχο αφής τουλάχιστον στο διαμορφωμένο ελάχιστο μέγεθος &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Το μέγεθος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Αυξήστε αυτόν τον στόχο αφής τουλάχιστον στο τροποποιημένο ελάχιστο μέγεθος &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Το ύψος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt;. Αυξήστε το ύψος αυτού του στόχου αφής τουλάχιστον στο διαμορφωμένο ελάχιστο ύψος &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Το ύψος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt;. Αυξήστε το ύψος αυτού του στόχου αφής τουλάχιστον στο τροποποιημένο ελάχιστο ύψος &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Το πλάτος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt;. Αυξήστε το πλάτος αυτού του στόχου αφής τουλάχιστον στο διαμορφωμένο ελάχιστο πλάτος &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Το πλάτος αυτού του στοιχείου είναι &lt;tt&gt;%1$ddp&lt;/tt&gt;. Αυξήστε το πλάτος αυτού του στόχου αφής τουλάχιστον στο τροποποιημένο ελάχιστο πλάτος &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Εντοπίστηκε &lt;tt&gt;TouchDelegate&lt;/tt&gt; σε ένα από τα γονικά στοιχεία αυτού του στοιχείου. Αυτό το μήνυμα μπορεί να αγνοηθεί αν η παραπομπή δεν έχει επαρκές μέγεθος και χειρίζεται αγγίγματα για αυτό το στοιχείο.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Ένα μητρικό κοντέινερ μπορεί να μειώσει το μέγεθος αυτού του στοιχείου, το οποίο διαθέτει μια περιοχή σχεδίασης &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Σκεφτείτε να αυξήσετε το μέγεθος αυτού του αρχικού κοντέινερ μείωσης μεγέθους ή επιτρέψτε σε ένα μεγαλύτερο μητρικό κοντέινερ να διαχειριστεί τις ενέργειες για αυτό το στοιχείο.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Αυτό το στοιχείο μπορεί να είναι μόνο εν μέρει ορατό σε ένα κοντέινερ με δυνατότητα κύλισης.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Αυτό το στοιχείο προέρχεται από περιεχόμενο ιστού και συνιστάται πρόσθετη επαλήθευση του μεγέθους του στόχου αφής.</string>
   
   <string name="check_title_class_name_not_supported">Μη υποστηριζόμενος τύπος στοιχείου</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Σκεφτείτε το ενδεχόμενο να εκθέσετε στοιχεία σε αυτήν την περιοχή στις υπηρεσίες προσβασιμότητας.</string>
   
+  <string name="check_title_text_size">Προσαρμογή κειμένου σε κλίμακα</string>
+  
+  <string name="result_message_no_text_size_unit">Δεν ήταν δυνατή η ανάκτηση της μονάδας μεγέθους κειμένου.</string>
+  
+  <string name="result_message_brief_text_size_unit">Η μονάδα μεγέθους κειμένου αυτού του στοιχείου είναι &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; με μονάδα μεγέθους κειμένου &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Αυτό το κείμενο είναι μικρό και μπορεί να είναι δύσκολη η ανάγνωσή του από κάποιους χρήστες. Εξετάστε το ενδεχόμενο να χρησιμοποιήσετε μεγαλύτερο μέγεθος ή να προσδιορίσετε το μέγεθος κειμένου σε pixel σε κλίμακα (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Εξετάστε το ενδεχόμενο να προσδιορίσετε το μέγεθος κειμένου σε pixel σε κλίμακα (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; έχει σταθερό πλάτος και επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; έχει σταθερό ύψος και επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; έχει σταθερό μέγεθος και επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;ViewGroup&lt;/tt&gt; έχει σταθερό πλάτος και περιλαμβάνει ένα στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; με επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;ViewGroup&lt;/tt&gt; έχει σταθερό ύψος και περιλαμβάνει ένα στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; με επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Αυτό το στοιχείο &lt;tt&gt;ViewGroup&lt;/tt&gt; έχει σταθερό μέγεθος και περιλαμβάνει ένα στοιχείο &lt;tt&gt;TextView&lt;/tt&gt; με επεκτάσιμο κείμενο.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Σκεφτείτε να τροποποιήσετε την παράμετρο &lt;tt&gt;LayoutParams&lt;/tt&gt; για να επιτρέψετε την επέκταση κειμένου.</string>
+  
+  <string name="check_title_unexposed_text">Μη εκτεθειμένο κείμενο</string>
+  
+  <string name="result_message_unexposed_text">Βεβαιωθείτε ότι η ετικέτα προσβασιμότητας αυτού του στοιχείου περιλαμβάνει το ορατό κείμενο.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Εντοπίστηκαν αποτελέσματα OCR σε αυτό το ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Εντοπίστηκε μη εκτεθειμένο κείμενο: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Εντοπίστηκε κείμενο: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Αυτό το &lt;tt&gt;SurfaceView&lt;/tt&gt; μπορεί να μην εκθέτει το περιεχόμενό του σε υπηρεσίες προσβασιμότητας.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Ανιχνεύτηκαν πολλά μη εκτεθειμένα κείμενα όπως \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Αυτό το στοιχείο μπορεί να μην εκθέτει το περιεχόμενό του σε υπηρεσίες προσβασιμότητας</string>
+  
+  <string name="result_message_ocr_result_not_available">Τα αποτελέσματα OCR δεν είναι διαθέσιμα.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Δεν ανιχνεύτηκαν αποτελέσματα OCR σε αυτό το στοιχείο.</string>
+  
+  <string name="result_message_multiple_best_match_views">Ένα αποτέλεσμα OCR ανιχνεύτηκε σε πολλά εστιασμένα στοιχεία.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Εντοπίστηκε αποτέλεσμα OCR με έναν μόνο χαρακτήρα, αλλά δεν υπάρχει κείμενο στη συγκεκριμένη τοποθεσία.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Αυτή η οθόνη περιέχει σημαντικά στοιχεία που δεν επισημαίνονται;</string>
   
   <string name="question_message_identify_unexposed_items">Επιλέξτε περιοχές της οθόνης με μη προσδιορισμένα στοιχεία.</string>
+  
+  <string name="value_checked">επιλεγμένο</string>
+  
+  <string name="value_not_checked">μη επιλεγμένο</string>
+  
+  <string name="value_on">ενεργοποιήθηκε</string>
+  
+  <string name="value_off">απενεργοποιήθηκε</string>
+  
+  <string name="template_containers_quantity_other">%1$s που δείχνει %2$d στοιχεία.</string>
+  
+  <string name="template_labeled_item">%1$s για %2$s</string>
+  
+  <string name="value_listview">Λίστα</string>
 
 </resources>

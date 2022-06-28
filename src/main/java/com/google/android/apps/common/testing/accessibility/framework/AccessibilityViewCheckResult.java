@@ -117,13 +117,23 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
   }
 
   /**
+   * Returns the AccessibilityHierarchyCheckResult with which this result was constructed.
+   *
+   * @throws NullPointerException if this result was not constructed with an
+   *     AccessibilityHierarchyCheckResult
+   */
+  public AccessibilityHierarchyCheckResult getAccessibilityHierarchyCheckResult() {
+    return checkNotNull(hierarchyCheckResult);
+  }
+
+  /**
    * Returns the type of AccessibilityHierarchyCheck that detected this result.
    *
    * @throws NullPointerException if this result was not constructed with an
    *     AccessibilityHierarchyCheckResult
    */
   public Class<? extends AccessibilityHierarchyCheck> getAccessibilityHierarchyCheck() {
-    return checkNotNull(hierarchyCheckResult)
+    return getAccessibilityHierarchyCheckResult()
         .getSourceCheckClass()
         .asSubclass(AccessibilityHierarchyCheck.class);
   }
@@ -136,7 +146,7 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
    *     AccessibilityHierarchyCheckResult
    */
   public int getResultId() {
-    return checkNotNull(hierarchyCheckResult).getResultId();
+    return getAccessibilityHierarchyCheckResult().getResultId();
   }
 
   /**
@@ -148,7 +158,7 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
    */
   @Pure
   public @Nullable ResultMetadata getMetadata() {
-    return checkNotNull(hierarchyCheckResult).getMetadata();
+    return getAccessibilityHierarchyCheckResult().getMetadata();
   }
 
   @Override
@@ -161,5 +171,12 @@ public class AccessibilityViewCheckResult extends AccessibilityCheckResult {
     return (hierarchyCheckResult == null)
         ? super.getMessage(locale)
         : hierarchyCheckResult.getMessage(locale);
+  }
+
+  // For debugging
+  @Override
+  public String toString() {
+    return String.format(
+        "[AccessibilityViewCheckResult check=%s view=%s]", hierarchyCheckResult, view);
   }
 }

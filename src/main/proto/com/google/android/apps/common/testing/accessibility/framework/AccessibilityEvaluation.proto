@@ -19,6 +19,7 @@ syntax = "proto2";
 package com.google.android.apps.common.testing.accessibility.framework.proto;
 
 import "com/google/android/apps/common/testing/accessibility/framework/uielement/AccessibilityHierarchy.proto";
+import "com/google/android/apps/common/testing/accessibility/framework/uielement/AndroidFramework.proto";
 
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.proto";
 option java_outer_classname = "AccessibilityEvaluationProtos";
@@ -130,4 +131,20 @@ message AnswerProto {
   optional string answer_type_class = 1;
   optional QuestionProto question = 2;
   optional MetadataProto metadata = 3;
+}
+
+// Describes an OcrResult
+// Next index: 2
+message OcrResultProto {
+  repeated TextComponentProto texts = 1;
+}
+
+// Describes a text recognized by the OCR engine
+message TextComponentProto {
+  optional string value = 1;
+  optional string language = 2;
+  optional float confidence = 3;
+  optional com.google.android.apps.common.testing.accessibility.framework
+      .uielement.proto.RectProto bounds_in_screen = 4;
+  repeated TextComponentProto components = 5;
 }

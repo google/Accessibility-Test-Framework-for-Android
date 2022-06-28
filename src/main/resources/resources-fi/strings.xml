@@ -21,14 +21,6 @@
   
   <string name="clickable">napautettava</string>
   
-  <string name="non_clickable">ei-napautettava</string>
-  
-  <string name="long_clickable">pitkään painettava</string>
-  
-  <string name="clickable_and_long_clickable">napautettava ja pitkään painettava</string>
-  
-  <string name="actionable">toiminnallinen</string>
-  
   <string name="result_message_sdk_version_not_applicable">Tätä tarkastusta ei sovelleta laitteille, joissa on Android-versio %1$s tai uudempi.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Näytön muu sisältö saattaa peittää tämän kohteen. Kannattaa testata kohteen kontrastia manuaalisesti.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Tämä %1$s kohde on samassa kohtaa näyttöä (&lt;tt&gt;%2$s&lt;/tt&gt;) kuin %3$d muuta kohdetta, joilla on nämä ominaisuudet.</string>
   
   <string name="result_message_view_bounds">Tämä %1$s kohde on myös näytön kohdassa &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">ei-napautettava</string>
+  
+  <string name="long_clickable">pitkään painettava</string>
+  
+  <string name="clickable_and_long_clickable">napautettava ja pitkään painettava</string>
+  
+  <string name="actionable">toiminnallinen</string>
   
   <string name="check_title_duplicate_speakable_text">Kohteen kuvaukset</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Kontrastisuhdetta kannattaa suurentaa vähintään tasolle %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Tämän kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja arvioituun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Suhdetta kannattaa suurentaa vähintään määritettyyn kontrastisuhteeseen %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Kontrastisuhdetta kannattaa suurentaa vähintään määritetylle tasolle %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
   
   <string name="check_title_redundant_description">Kohdetyypin tunniste</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Kannattaa käyttää värejä, joiden kontrastisuhde on suurempi kuin muokattu suhde %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu ilmoitettuun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja ilmoitettuun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja arvioituun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Tämän kohteen tekstin kontrastisuhdetta kannattaa suurentaa vähintään määritettyyn kontrastisuhteeseen %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu ilmoitettuun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja ilmoitettuun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Tämän kohteen tekstin kontrastisuhdetta kannattaa suurentaa vähintään määritettyyn kontrastisuhteeseen %4$.2f.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Tämän elementin etualan ja taustan värit vastaavat suositeltua kontrastisuhdetta.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Tämän elementin etualan ja taustan värit vastaavat muokattua kontrastisuhdetta.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Onko etualan ja taustan värit tunnistettu oikein?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Tämän kohteen leveys on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen leveydeksi kannattaa asettaa vähintään &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Tämän kohteen koko on &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Kosketusalueen kokoa kannattaa suurentaa vähintään määritettyyn vähimmäiskokoon &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Tämän elementin koko on &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Kosketusalueen kokoa kannattaa suurentaa vähintään muokattuun vähimmäiskokoon &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Tämän kohteen korkeus on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen korkeutta kannattaa suurentaa vähintään määritettyyn vähimmäiskorkeuteen &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Tämän elementin korkeus on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen korkeutta kannattaa suurentaa vähintään muokattuun vähimmäiskorkeuteen &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Tämän kohteen leveys on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen leveyttä kannattaa suurentaa vähintään määritettyyn vähimmäisleveyteen &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Tämän elementin leveys on &lt;tt&gt;%1$ddp&lt;/tt&gt;. Kosketusalueen leveyttä kannattaa suurentaa vähintään muokattuun vähimmäisleveyteen &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Tämän kohteen aiemmasta versiosta on tunnistettu &lt;tt&gt;TouchDelegate&lt;/tt&gt;-elementti. Voit jättää tämän viestin huomiotta, jos sen delegaatti on riittävän suuri ja ohjaa tämän kohteen kosketustoimintoja.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Emosäilö voi rajata tämän kohteen kokoa. Kohteen piirtokenttä on &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Kokeile suurentaa sen kohteen kokoa, jonka kentän mukaan tämä kohde leikkautuu, tai salli suuremman emosäilön huolehtia toiminnoista tämän kohteen puolesta.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Tämä kohde saattaa näkyä vieritettävässä säilössä vain osittain.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Kohde on peräisin verkkosisällöstä, ja kosketusalueen koon lisävahvistusta suositellaan.</string>
   
   <string name="check_title_class_name_not_supported">Ei-tuettu kohdetyyppi</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Harkitse tällä alueella olevien kohteiden määrittämistä siten, että esteettömyyspalvelut kattavat ne.</string>
   
+  <string name="check_title_text_size">Tekstin skaalaus</string>
+  
+  <string name="result_message_no_text_size_unit">Tekstin kokoyksikköä ei voitu hakea.</string>
+  
+  <string name="result_message_brief_text_size_unit">Kohteen tekstin kokoyksikkö on &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt;, jonka tekstin kokoyksikkö on &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Tämä teksti on pientä ja sen lukeminen voi olla vaikeaa joillekin käyttäjille. Harkitse suuremman koon käyttämistä tai tekstin koon määrittämistä skaalatuissa pikseleissä (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Harkitse tekstin koon määrittämistä skaalatuissa pikseleissä (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä leveys ja skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä korkeus ja skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä koko ja skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä leveys ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä korkeus ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä koko ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Voit mahdollistaa tekstin laajentumisen muokkaamalla kohtaa &lt;tt&gt;LayoutParams&lt;/tt&gt;.</string>
+  
+  <string name="check_title_unexposed_text">Näkymätöntä tekstiä</string>
+  
+  <string name="result_message_unexposed_text">Varmista, että kohteen esteettömyystunnisteessa on näkyvää tekstiä.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Tekstintunnistus havaitsi tuloksia ImageView\'ssa.</string>
+  
+  <string name="result_message_brief_unexposed_text">Näkymätöntä tekstiä havaittu: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Tekstiä havaittu: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Tämä &lt;tt&gt;alustanäkymä&lt;/tt&gt; ei välttämättä näytä sisältöään saavutettavuuspalveluille.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Useita näkymättömiä tekstejä havaittu, kuten \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Tämän kohteen sisältö ei välttämättä näy kaikille saavutettavuuspalveluille.</string>
+  
+  <string name="result_message_ocr_result_not_available">Tekstintunnistustulokset eivät ole saatavilla.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Ei tekstintunnistustuloksia tälle kohteelle.</string>
+  
+  <string name="result_message_multiple_best_match_views">Yksi tekstintunnistustulos havaittu useissa kohdistettavissa kohteissa.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Tekstintunnistus havaitsi tuloksen, jossa on yksi merkki, mutta kyseisessä sijainnissa ei ole tekstiä.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Onko tässä näytössä tärkeitä kohteita, jotka eivät näy korostettuina?</string>
   
   <string name="question_message_identify_unexposed_items">Valitse ne näytön alueet, joilla on tunnistamattomia kohteita.</string>
+  
+  <string name="value_checked">merkitty</string>
+  
+  <string name="value_not_checked">ei merkitty</string>
+  
+  <string name="value_on">käytössä</string>
+  
+  <string name="value_off">pois käytöstä</string>
+  
+  <string name="template_containers_quantity_other">%1$s näyttää %2$d kohdetta.</string>
+  
+  <string name="template_labeled_item">%1$s – %2$s</string>
+  
+  <string name="value_listview">Luettelo</string>
 
 </resources>

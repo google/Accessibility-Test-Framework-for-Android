@@ -42,8 +42,7 @@ public class SpannableStringAndroid extends SpannableString {
    * @return A {@link SpannableStringAndroid} with data matching {@code source}, or {@code null} if
    *     {@code source} is {@code null} or empty.
    */
-  @Nullable
-  public static SpannableStringAndroid valueOf(@Nullable CharSequence source) {
+  public static @Nullable SpannableStringAndroid valueOf(@Nullable CharSequence source) {
     if (TextUtils.isEmpty(source)) {
       return null;
     }

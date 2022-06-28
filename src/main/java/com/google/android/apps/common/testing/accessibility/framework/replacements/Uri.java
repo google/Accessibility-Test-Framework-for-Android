@@ -14,9 +14,11 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
+import com.google.errorprone.annotations.Immutable;
 import java.net.URI;
 
 /** Used as a local replacement for Android's {@link android.net.Uri} */
+@Immutable
 public final class Uri {
 
   private final URI uri;

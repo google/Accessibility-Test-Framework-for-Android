@@ -45,16 +45,16 @@ public class SetViewAttributeFixSuggestion implements FixSuggestion {
   }
 
   @Override
-  public CharSequence getDescription(Locale locale) {
+  public CharSequence getRawDescription(Locale locale) {
     if (suggestedValue.isEmpty()) {
       return String.format(
           locale,
-          StringManager.getString(locale, "description_set_view_attribute_with_an_empty_string"),
+          StringManager.getString(locale, "suggestion_set_view_attribute_with_an_non_empty_string"),
           viewAttribute.getFullyQualifiedName());
     } else {
       return String.format(
           locale,
-          StringManager.getString(locale, "description_set_view_attribute"),
+          StringManager.getString(locale, "suggestion_set_view_attribute"),
           viewAttribute.getFullyQualifiedName(),
           suggestedValue);
     }

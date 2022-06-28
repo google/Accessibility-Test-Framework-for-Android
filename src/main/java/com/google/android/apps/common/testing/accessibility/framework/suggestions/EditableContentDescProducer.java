@@ -15,9 +15,8 @@ class EditableContentDescProducer
 
   private static final String VIEW_PROPERTY_CONTENT_DESCRIPTION = "contentDescription";
 
-  @Nullable
   @Override
-  public RemoveViewAttributeFixSuggestion produceFixSuggestion(
+  public @Nullable RemoveViewAttributeFixSuggestion produceFixSuggestion(
       AccessibilityHierarchyCheckResult checkResult,
       AccessibilityHierarchy hierarchy,
       @Nullable Parameters parameters) {

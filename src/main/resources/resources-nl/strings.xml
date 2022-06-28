@@ -7,7 +7,7 @@
   
   <string name="result_message_not_visible">Dit item is niet zichtbaar.</string>
   
-  <string name="result_message_not_enabled">Dit item is niet ingeschakeld.</string>
+  <string name="result_message_not_enabled">Dit item staat niet aan.</string>
   
   <string name="result_message_not_text_view">Dit item is geen &lt;tt&gt;TextView&lt;/tt&gt;.</string>
   
@@ -20,14 +20,6 @@
   <string name="result_message_screencapture_uniform_color">De schermopname heeft een uniforme kleur.</string>
   
   <string name="clickable">klikbaar</string>
-  
-  <string name="non_clickable">niet-klikbaar</string>
-  
-  <string name="long_clickable">lang-klikbaar</string>
-  
-  <string name="clickable_and_long_clickable">klikbaar en lang-klikbaar</string>
-  
-  <string name="actionable">uitvoerbaar</string>
   
   <string name="result_message_sdk_version_not_applicable">Deze controle is niet van toepassing op apparaten met Android %1$s en hoger.</string>
   
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Dit %1$s item heeft dezelfde locatie op het scherm (&lt;tt&gt;%2$s&lt;/tt&gt;) als %3$d ander(e) item(s) met die eigenschappen.</string>
   
   <string name="result_message_view_bounds">Dit %1$s item heeft ook de locatie op het scherm &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">niet-klikbaar</string>
+  
+  <string name="long_clickable">lang-klikbaar</string>
+  
+  <string name="clickable_and_long_clickable">klikbaar en lang-klikbaar</string>
+  
+  <string name="actionable">uitvoerbaar</string>
   
   <string name="check_title_duplicate_speakable_text">Itembeschrijvingen</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar %2$.2f of hoger.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">De contrastverhouding van deze afbeelding is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de geconfigureerde verhouding van %2$.2f of hoger.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de geconfigureerde verhouding van %2$.2f of hoger.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
   
   <string name="check_title_redundant_description">Label itemtype</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op een tekstkleur van &lt;tt&gt;#%2$06X&lt;/tt&gt; en een achtergrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de tekstkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een hogere contrastverhouding opleveren dan de aangepaste verhouding %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;#%2$06X&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;#%2$06X&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de geconfigureerde verhouding van %4$.2f of hoger.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de tekst van dit item te verhogen naar de geconfigureerde verhouding van %4$.2f of hoger.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">De voor- en achtergrondkleur van dit item komen overeen met de voorgestelde contrastverhouding.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">De voor- en achtergrondkleur van dit item komen overeen met de aangepaste contrastverhouding.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Zijn de gedetecteerde voor- en achtergrondkleur juist?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">De breedte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overweeg dit tikdoel &lt;tt&gt;%2$ddp&lt;/tt&gt; breed of groter te maken.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">De grootte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de geconfigureerde minimale grootte van &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; te geven.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">De grootte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de aangepaste minimale grootte van &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; te geven.</string>
   
-  <string name="result_message_customized_small_touch_target_height">De hoogte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de geconfigureerde minimale hoogte van &lt;tt&gt;%2$ddp&lt;/tt&gt; te geven.</string>
+  <string name="result_message_customized_small_touch_target_height">De hoogte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de aangepaste minimale hoogte van &lt;tt&gt;%2$ddp&lt;/tt&gt; te geven.</string>
   
-  <string name="result_message_customized_small_touch_target_width">De breedte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de geconfigureerde minimale breedte van &lt;tt&gt;%2$ddp&lt;/tt&gt; te geven.</string>
+  <string name="result_message_customized_small_touch_target_width">De breedte van dit item is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overweeg om dit tikdoel minimaal de aangepaste minimale breedte van &lt;tt&gt;%2$ddp&lt;/tt&gt; te geven.</string>
   
   <string name="result_message_addendum_touch_delegate">Er is een &lt;tt&gt;TouchDelegate&lt;/tt&gt; gedetecteerd in een bovenliggend element van dit item. Dit bericht kan worden genegeerd als de gemachtigde groot genoeg is en tikken kan verwerken voor dit item.</string>
   
@@ -185,9 +195,11 @@
   
   <string name="result_message_addendum_clickable_ancestor">Een bovenliggende container verwerkt mogelijk tikken voor dit item. Als dezelfde actie wordt uitgevoerd bij het selecteren van de grotere container en bij het selecteren van dit item, overweeg dan dit item als niet-klikbaar te definiëren. Als er een andere actie wordt uitgevoerd, kun je dit item groter maken.</string>
   
-  <string name="result_message_addendum_clipped_by_ancestor">Een bovenliggende container beperkt mogelijk de afmetingen van dit item, dat een tekengrootte heeft van &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Je kunt de afmetingen vergroten van de ancestor die deze beperking veroorzaakt of een grotere bovenliggende container de specifieke acties van dit item laten uitvoeren.</string>
+  <string name="result_message_addendum_clipped_by_ancestor">Een bovenliggende container beperkt mogelijk de afmetingen van dit item, dat een lettergrootte heeft van &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Je kunt de afmetingen vergroten van de ancestor die deze beperking veroorzaakt of een grotere bovenliggende container de specifieke acties van dit item laten uitvoeren.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Dit item is mogelijk slechts deels zichtbaar binnen een scollbare container.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Dit item komt oorspronkelijk uit webcontent. We raden je aan om de tikdoelgrootte nog eens te verifiëren.</string>
   
   <string name="check_title_class_name_not_supported">Niet-ondersteund itemtype</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Maak items in dit gedeelte zichtbaar voor toegankelijkheidsservices.</string>
   
+  <string name="check_title_text_size">Tekstgrootte</string>
+  
+  <string name="result_message_no_text_size_unit">Kan eenheid van tekstgrootte niet ophalen.</string>
+  
+  <string name="result_message_brief_text_size_unit">De eenheid van tekstgrootte van dit artikel is &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; met &lt;tt&gt;%2$s&lt;/tt&gt; als eenheid van tekstgrootte.</string>
+  
+  <string name="result_message_small_fixed_text_size">Deze tekst is klein en misschien moeilijk te lezen voor sommige gebruikers. Overweeg om een grotere eenheid te gebruiken of de tekstgrootte te specificeren in geschaalde pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Overweeg de tekstgrootte te specificeren in geschaalde pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste breedte en schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste hoogte en schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste grootte en schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste breedte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste hoogte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste grootte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Je kunt de &lt;tt&gt;LayoutParams&lt;/tt&gt; aanpassen om tekstuitbreiding toe te staan.</string>
+  
+  <string name="check_title_unexposed_text">Onzichtbare tekst</string>
+  
+  <string name="result_message_unexposed_text">Check of het toegankelijkheidslabel van dit item zichtbare tekst bevat.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Er zijn OCR-resultaten gevonden in deze ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Onzichtbare tekst gevonden: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Tekst gevonden: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">De content in deze &lt;tt&gt;SurfaceView&lt;/tt&gt; is misschien niet zichtbaar voor toegankelijkheidsservices.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Meerdere verborgen teksten gevonden, waaronder \'%1$s\'.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">De content in dit item is misschien niet zichtbaar voor toegankelijkheidsservices.</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR-resultaten zijn niet beschikbaar.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Geen OCR-resultaten gevonden in dit item.</string>
+  
+  <string name="result_message_multiple_best_match_views">Eén OCR-resultaat gevonden in meerdere focusbare items.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Er is een OCR-resultaat met 1 teken gevonden, maar dat gebied bevat geen tekst.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Bevat dit scherm belangrijke items die niet zijn beschreven?</string>
   
   <string name="question_message_identify_unexposed_items">Selecteer de gedeelten van het scherm met niet-geïdentificeerde items.</string>
+  
+  <string name="value_checked">aangevinkt</string>
+  
+  <string name="value_not_checked">niet aangevinkt</string>
+  
+  <string name="value_on">aan</string>
+  
+  <string name="value_off">uit</string>
+  
+  <string name="template_containers_quantity_other">%1$s met %2$d getoonde items</string>
+  
+  <string name="template_labeled_item">%1$s voor %2$s</string>
+  
+  <string name="value_listview">Lijst</string>
 
 </resources>

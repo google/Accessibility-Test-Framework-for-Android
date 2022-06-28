@@ -36,11 +36,12 @@ import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
- * Check to ensure that {@code ClickableSpan} is not being used in a TextView.
+ * Check to ensure that {@code ClickableSpan} is not being used in a TextView on a device running
+ * Android prior to O.
  *
- * <p>{@code ClickableSpan} is inaccessible because individual spans cannot be selected
- * independently in a single TextView and because accessibility services are unable to call
- * {@link ClickableSpan#onClick}.
+ * <p>{@code ClickableSpan} was inaccessible because individual spans could not be selected
+ * independently in a single TextView and because accessibility services were unable to call {@link
+ * ClickableSpan#onClick}. This was remedied in Anroid O.
  *
  * <p>The exception to this rule is that {@code URLSpan}s are accessible if they do not contain a
  * relative URI.

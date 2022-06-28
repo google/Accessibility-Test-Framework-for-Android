@@ -23,8 +23,10 @@ import android.os.Parcel;
 import android.view.WindowManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DeviceStateProto;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.errorprone.annotations.Immutable;
 import java.util.List;
 import java.util.Locale;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Representation of the state of a device at the time an {@link AccessibilityHierarchy} is
@@ -33,13 +35,18 @@ import java.util.Locale;
  * <p>Display properties, such as screen resolution and pixel density, are stored within {@link
  * DisplayInfoAndroid} and as fields in the associated {@link DeviceStateProto}.
  */
+@Immutable
 public class DeviceStateAndroid extends DeviceState {
 
   /** @see WindowManager#getDefaultDisplay() */
   private final DisplayInfoAndroid defaultDisplayInfo;
 
-  private DeviceStateAndroid(int sdkVersion, Locale locale, DisplayInfoAndroid defaultDisplayInfo) {
-    super(sdkVersion, locale);
+  private DeviceStateAndroid(
+      int sdkVersion,
+      Locale locale,
+      DisplayInfoAndroid defaultDisplayInfo,
+      @Nullable Float fontScale) {
+    super(sdkVersion, locale, fontScale);
     this.defaultDisplayInfo = defaultDisplayInfo;
   }
 
@@ -53,6 +60,7 @@ public class DeviceStateAndroid extends DeviceState {
     defaultDisplayInfo.writeToParcel(out, flags);
     out.writeInt(sdkVersion);
     out.writeString(getLanguageTag());
+    ParcelUtils.writeNullableFloat(out, fontScale);
   }
 
   @Override
@@ -61,6 +69,9 @@ public class DeviceStateAndroid extends DeviceState {
     builder.setSdkVersion(sdkVersion);
     builder.setDefaultDisplayInfo(defaultDisplayInfo.toProto());
     builder.setLocale(getLanguageTag());
+    if (fontScale != null) {
+      builder.setFontScale(fontScale);
+    }
     return builder.build();
   }
 
@@ -134,6 +145,7 @@ public class DeviceStateAndroid extends DeviceState {
     private final int sdkVersion;
     private final Locale locale;
     private final DisplayInfoAndroid defaultDisplayInfo;
+    private final @Nullable Float fontScale;
 
     // dereference of possibly-null reference wm
     @SuppressWarnings("nullness:dereference.of.nullable")
@@ -142,12 +154,14 @@ public class DeviceStateAndroid extends DeviceState {
       defaultDisplayInfo = new DisplayInfoAndroid(wm.getDefaultDisplay());
       sdkVersion = Build.VERSION.SDK_INT;
       locale = Locale.getDefault();
+      fontScale = context.getResources().getConfiguration().fontScale;
     }
 
     Builder(Parcel fromParcel) {
       defaultDisplayInfo = new DisplayInfoAndroid(fromParcel);
       sdkVersion = fromParcel.readInt();
       locale = getLocaleFromLanguageTag(checkNotNull(fromParcel.readString()));
+      fontScale = ParcelUtils.readNullableFloat(fromParcel);
     }
 
     Builder(DeviceStateProto fromProto) {
@@ -157,10 +171,11 @@ public class DeviceStateAndroid extends DeviceState {
       // Use the default Locale if no locale was recorded in the proto.
       // This is for backward compatibility.
       locale = languageTag.isEmpty() ? Locale.getDefault() : getLocaleFromLanguageTag(languageTag);
+      fontScale = fromProto.hasFontScale() ? fromProto.getFontScale() : null;
     }
 
     public DeviceStateAndroid build() {
-      return new DeviceStateAndroid(sdkVersion, locale, defaultDisplayInfo);
+      return new DeviceStateAndroid(sdkVersion, locale, defaultDisplayInfo, fontScale);
     }
   }
 }

@@ -17,12 +17,10 @@ package com.google.android.apps.common.testing.accessibility.framework.integrati
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import java.util.List;
 import java.util.Locale;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** An exception class to be used for throwing exceptions with accessibility results. */
 @SuppressWarnings("deprecation")
@@ -30,10 +28,7 @@ public final class AccessibilityViewCheckException
     extends com.google.android.apps.common.testing.accessibility.framework.integrations
         .AccessibilityViewCheckException {
 
-  // Either resultDescriptor or deprecatedResultDescriptor must have a non-null value, but not both.
-  private final @Nullable AccessibilityCheckResultDescriptor resultDescriptor;
-  private final AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
-      deprecatedResultDescriptor;
+  private final AccessibilityCheckResultDescriptor resultDescriptor;
 
   /** Create an instance with the default {@link AccessibilityCheckResultDescriptor} */
   public AccessibilityViewCheckException(List<AccessibilityViewCheckResult> results) {
@@ -51,34 +46,11 @@ public final class AccessibilityViewCheckException
   public AccessibilityViewCheckException(
       List<AccessibilityViewCheckResult> results,
       AccessibilityCheckResultDescriptor resultDescriptor) {
-    this(results, checkNotNull(resultDescriptor), /* deprecatedResultDescriptor= */ null);
-  }
-
-  /**
-   * Create an exception with results and a deprecated result descriptor to generate the message.
-   *
-   * @deprecated Use {@link AccessibilityViewCheckException(List<AccessibilityViewCheckResult>,
-   *     AccessibilityCheckResultDescriptor)} instead.
-   */
-  @Deprecated
-  public AccessibilityViewCheckException(
-      List<AccessibilityViewCheckResult> results,
-      AccessibilityCheckResult.AccessibilityCheckResultDescriptor deprecatedResultDescriptor) {
-    this(results, /* resultDescriptor= */ null, checkNotNull(deprecatedResultDescriptor));
-  }
-
-  private AccessibilityViewCheckException(
-      List<AccessibilityViewCheckResult> results,
-      @Nullable AccessibilityCheckResultDescriptor resultDescriptor,
-      AccessibilityCheckResult.@Nullable AccessibilityCheckResultDescriptor
-          deprecatedResultDescriptor) {
     super(results);
     checkArgument(
         results != null && !results.isEmpty(),
         "AccessibilityViewCheckException requires at least 1 AccessibilityViewCheckResult");
-    checkArgument((resultDescriptor != null) || (deprecatedResultDescriptor != null));
-    this.resultDescriptor = resultDescriptor;
-    this.deprecatedResultDescriptor = deprecatedResultDescriptor;
+    this.resultDescriptor = checkNotNull(resultDescriptor);
   }
 
   @Override
@@ -96,11 +68,7 @@ public final class AccessibilityViewCheckException
       if (i > 0) {
         exceptionMessage.append(",\n");
       }
-      AccessibilityViewCheckResult result = results.get(i);
-      exceptionMessage.append(
-          (resultDescriptor != null)
-              ? resultDescriptor.describeResult(result)
-              : checkNotNull(deprecatedResultDescriptor).describeResult(result));
+      exceptionMessage.append(resultDescriptor.describeResult(results.get(i)));
     }
     return exceptionMessage.toString();
   }

@@ -21,14 +21,6 @@
   
   <string name="clickable">možno kliknúť</string>
   
-  <string name="non_clickable">nemožno kliknúť</string>
-  
-  <string name="long_clickable">možno dlho kliknúť</string>
-  
-  <string name="clickable_and_long_clickable">možno kliknúť a možno dlho kliknúť</string>
-  
-  <string name="actionable">možno vykonať akciu</string>
-  
   <string name="result_message_sdk_version_not_applicable">Túto kontrolu nie je možné použiť v zariadeniach s Androidom %1$s a novším.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Táto položka môže byť zakrytá ďalším obsahom na obrazovke. Mali by ste manuálne vyskúšať kontrast tejto položky.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Táto položka, na ktorú %1$s, má rovnakú polohu na obrazovke (&lt;tt&gt;%2$s&lt;/tt&gt;) ako iné položky (%3$d) s danými vlastnosťami.</string>
   
   <string name="result_message_view_bounds">Táto položka, na ktorú %1$s, má na obrazovke aj polohu &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">nemožno kliknúť</string>
+  
+  <string name="long_clickable">možno dlho kliknúť</string>
+  
+  <string name="clickable_and_long_clickable">možno kliknúť a možno dlho kliknúť</string>
+  
+  <string name="actionable">možno vykonať akciu</string>
   
   <string name="check_title_duplicate_speakable_text">Popisy položiek</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na hodnotu %2$.2f alebo vyššiu.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastný pomer tohto obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadovanej farbe pozadia &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zvážte zvýšenie tohto pomeru na konfigurovaný pomer %2$.2f alebo viac.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na konfigurovaný pomer %2$.2f alebo viac.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
   
   <string name="check_title_redundant_description">Štítok typu položky</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu „&lt;tt&gt;#%2$06X&lt;/tt&gt;“ a farbe pozadia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu &lt;tt&gt;#%2$06X&lt;/tt&gt; a farbe pozadia &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvážte použitie farieb, pri ktorých bude kontrastný pomer vyšší ako modifikovaný pomer %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia &lt;tt&gt;#%2$06X&lt;/tt&gt; a odhadovanej farbe pozadia &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvážte zvýšenie kontrastného pomeru textu tejto položky na konfigurovaný pomer %4$.2f alebo viac.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte možnosť zvýšiť kontrastný pomer textu tejto položky na %4$.2f alebo viac.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na konfigurovaný pomer %4$.2f alebo viac.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Farby popredia a pozadia tejto položky vyhovujú navrhnutému kontrastnému pomeru.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Farby popredia a pozadia tejto položky vyhovujú modifikovanému kontrastnému pomeru.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Sú rozpoznané farby popredia a pozadia správne?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">Šírka tejto položky je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie šírky tohto cieľa dotyku na &lt;tt&gt;%2$ddp&lt;/tt&gt; alebo viac.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Táto položka má veľkosť &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie tohto cieľa klepnutia na konfigurovanú minimálnu veľkosť &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Táto položka má veľkosť &lt;tt&gt;%1$ddp&lt;/tt&gt; × &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie tohto cieľa klepnutia na modifikovanú minimálnu veľkosť &lt;tt&gt;%3$ddp&lt;/tt&gt; × &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Táto položka má výšku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie výšky tohto cieľa klepnutia aspoň na konfigurovanú minimálnu výšku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Táto položka má výšku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie výšky tohto cieľa klepnutia aspoň na modifikovanú minimálnu výšku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Táto položka má šírku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie šírky tohto cieľa klepnutia aspoň na konfigurovanú minimálnu šírku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Táto položka má šírku &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zvážte zväčšenie šírky tohto cieľa klepnutia aspoň na modifikovanú minimálnu šírku &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Na jednom z predchodcov tejto položky sa zistil delegát &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Túto správu možno ignorovať, ak má delegát dostatočnú veľkosť a spracúva dotyky pre túto položku.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Nadradený kontajner zrejme obmedzuje veľkosť tejto položky, ktorej vykresľovaná oblasť má veľkosť &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zvážte zväčšenie veľkosti nadradeného kontajnera alebo umožnenie väčšiemu kontajneru spravovať akcie tejto položky.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Táto položka môže byť v posúvateľnom kontajneri viditeľná len čiastočne.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Táto položka pochádza z webového obsahu a odporúča sa ďalšie overenie veľkosti miesta dotyku.</string>
   
   <string name="check_title_class_name_not_supported">Nepodporovaný typ položky</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Zvážte vystavenie položiek v tejto oblasti službám dostupnosti.</string>
   
+  <string name="check_title_text_size">Zmena šírky textu</string>
+  
+  <string name="result_message_no_text_size_unit">Nepodarilo sa zistiť jednotku veľkosti textu.</string>
+  
+  <string name="result_message_brief_text_size_unit">Jednotka veľkosti textu tejto položky je &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; s jednotkou veľkosti textu &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Tento text je malý a pre niektorých používateľov môže byť ťažko čitateľný. Zvážte možnosť použiť väčšiu veľkosť alebo určiť veľkosť textu vo zväčšených pixeloch (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Zvážte možnosť určiť veľkosť textu vo zväčšených pixeloch (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú šírku a rozšíriteľný text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú výšku a rozšíriteľný text.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú veľkosť a rozšíriteľný text.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú šírku a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú výšku a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú veľkosť a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Zvážte úpravu nastavenia &lt;tt&gt;LayoutParams&lt;/tt&gt;, aby sa text mohol zväčšiť.</string>
+  
+  <string name="check_title_unexposed_text">Nezobrazený text</string>
+  
+  <string name="result_message_unexposed_text">Uistite sa, či štítok dostupnosti tejto položky obsahuje jeho viditeľný text.</string>
+  
+  <string name="result_message_text_detected_in_image_view">V tejto položke ImageView boli zistené výsledky OCR.</string>
+  
+  <string name="result_message_brief_unexposed_text">Bol zistený nezobrazený text: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Bol zistený text: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Toto zobrazenie &lt;tt&gt;SurfaceView&lt;/tt&gt; možno nesprístupňuje svoj obsah službám dostupnosti.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Zistili sa viaceré nezobrazené texty, napríklad „%1$s“.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Obsah tejto položky sa zrejme službám dostupnosti nezobrazuje.</string>
+  
+  <string name="result_message_ocr_result_not_available">Výsledky OCR nie sú k dispozícii.</string>
+  
+  <string name="result_message_no_matching_ocr_results">V rámci tejto položky neboli zistené žiadne výsledky OCR.</string>
+  
+  <string name="result_message_multiple_best_match_views">V rámci viacerých označiteľných položiek bol zistený jeden výsledok OCR.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Bol zistený výsledok OCR s jedným znakom, ale na danom mieste nie je žiadny text.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Obsahuje táto obrazovka dôležité položky, ktoré nie sú zobrazené?</string>
   
   <string name="question_message_identify_unexposed_items">Vyberte oblasti obrazovky s neidentifikovanými položkami.</string>
+  
+  <string name="value_checked">začiarknuté</string>
+  
+  <string name="value_not_checked">nezačiarknuté</string>
+  
+  <string name="value_on">zapnuté</string>
+  
+  <string name="value_off">vypnuté</string>
+  
+  <string name="template_containers_quantity_other">%1$s zobrazuje položky (%2$d).</string>
+  
+  <string name="template_labeled_item">%1$s pre %2$s</string>
+  
+  <string name="value_listview">Zoznam</string>
 
 </resources>

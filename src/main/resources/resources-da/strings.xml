@@ -21,14 +21,6 @@
   
   <string name="clickable">klikbart</string>
   
-  <string name="non_clickable">ikke klikbart</string>
-  
-  <string name="long_clickable">klikbart med langt klik</string>
-  
-  <string name="clickable_and_long_clickable">klikbart og klikbart med langt klik</string>
-  
-  <string name="actionable">handlingsrettet</string>
-  
   <string name="result_message_sdk_version_not_applicable">Dette tjek kan ikke udføres på enheder, der kører Android %1$s eller nyere.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Dette element er muligvis skjult af andet indhold på skærmen. Overvej at teste elementets kontrast manuelt.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Dette %1$s element har samme placering på skærmen (&lt;tt&gt;%2$s&lt;/tt&gt;) som %3$d andre elementer med de samme egenskaber.</string>
   
   <string name="result_message_view_bounds">Dette %1$s elements placering på skærmen er også &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">ikke klikbart</string>
+  
+  <string name="long_clickable">klikbart med langt klik</string>
+  
+  <string name="clickable_and_long_clickable">klikbart og klikbart med langt klik</string>
+  
+  <string name="actionable">handlingsrettet</string>
   
   <string name="check_title_duplicate_speakable_text">Elementbeskrivelser</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Billedets kontrastforhold er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet til %2$.2f eller mere.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Billedets kontrastforhold er %1$.2f. Dette forhold er baseret på den estimerede forgrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt; og den estimerede baggrundsfarve &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge forholdet til den konfigurerede værdi på %2$.2f eller mere.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Billedets kontrastforhold er %1$.2f. Dette forhold er udregnet på baggrund af en anslået forgrundsfarve med farvekoden &lt;tt&gt;#%3$06X&lt;/tt&gt; og en anslået baggrundsfarve med farvekoden &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet til den ændrede værdi på %2$.2f eller mere.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Billedets kontrastforhold er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet til den konfigurerede værdi på %2$.2f eller mere.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Billedets kontrastforhold er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet til den ændrede værdi på %2$.2f eller mere.</string>
   
   <string name="check_title_redundant_description">Etiket for elementtype</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Elementets kontrastforhold er %1$.2f. Dette er baseret på tekstfarven &lt;tt&gt;#%2$06X&lt;/tt&gt; og baggrundsfarven &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge tekstens kontrastforhold til %4$.2f eller mere.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er baseret på, at tekstfarven er &lt;tt&gt;#%2$06X&lt;/tt&gt; og baggrundsfarven er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at bruge farver, der giver et kontrastforhold, som er større end den ændrede værdi på %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er udregnet på baggrund af en anslået forgrundsfarve på &lt;tt&gt;#%2$06X&lt;/tt&gt; og en anslået baggrundsfarve på &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at bruge farver, der giver et kontrastforhold, som er større end %4$.2f for små tekststørrelser eller %5$.2f for store tekststørrelser.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastforholdet for elementets tekst er %1$.2f. Dette er baseret på, at den estimerede forgrundsfarve er &lt;tt&gt;#%2$06X&lt;/tt&gt;, og at den estimerede baggrundsfarve er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til %4$.2f eller mere.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%2$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at bruge farver, der giver et kontrastforhold, som er større end %4$.2f for små tekststørrelser eller %5$.2f for store tekststørrelser.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastforholdet for elementets tekst er %1$.2f. Dette er baseret på, at den estimerede forgrundsfarve er &lt;tt&gt;#%2$06X&lt;/tt&gt;, og at den estimerede baggrundsfarve er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til den konfigurerede værdi på %4$.2f eller mere.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%2$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til %4$.2f eller mere.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%2$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til den konfigurerede værdi på %4$.2f eller mere.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er udregnet på baggrund af en anslået forgrundsfarve med farvekoden &lt;tt&gt;#%2$06X&lt;/tt&gt; og en anslået baggrundsfarve med farvekoden &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til den ændrede værdi på %4$.2f eller mere.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastforholdet i elementets tekst er %1$.2f. Dette forhold er baseret på den angivne forgrundsfarve &lt;tt&gt;#%2$06X&lt;/tt&gt; og den angivne baggrundsfarve &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overvej at øge kontrastforholdet for elementets tekst til den ændrede værdi på %4$.2f eller mere.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Dette elements for- og baggrundsfarver svarer til det foreslåede kontrastforhold.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Dette elements for- og baggrundsfarver svarer til det ændrede kontrastforhold.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Er de registrerede forgrunds- og baggrundsfarver korrekte?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Dette element har en bredde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej at give dette berøringselement en bredde på &lt;tt&gt;%2$ddp&lt;/tt&gt; eller mere.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Dette element har en størrelse på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overvej som minimum at øge størrelsen på dette berøringselement til den konfigurerede minimumsstørrelse på &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Dette element har en størrelse på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overvej som minimum at øge størrelsen på dette berøringselement til den ændrede minimumsstørrelse på &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Dette element har en højde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej som minimum at øge højden på dette berøringselement til den konfigurerede minimumshøjde på &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Dette element har en højde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej som minimum at øge højden på dette berøringselement til den ændrede minimumshøjde på &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Dette element har en bredde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej som minimum at øge bredden på dette berøringselement til den konfigurerede minimumsbredde på &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Dette element har en bredde på &lt;tt&gt;%1$ddp&lt;/tt&gt;. Overvej som minimum at øge bredden på dette berøringselement til den ændrede minimumsbredde på &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Der er blevet registreret følgende på en af dette elements forgængere: &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Denne meddelelse kan ignoreres, hvis repræsentanten har en tilstrækkelig størrelse og håndterer berøringer for elementet.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">En overliggende beholder beskærer muligvis størrelsen på dette element, der har et tegningsområde på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Overvej at øge størrelsen på elementets overordnede beskæringstype, eller giv en større overliggende beholder tilladelse til at håndtere begivenheder på vegne af dette element.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Dette element er muligvis kun delvist synligt i en rulbar beholder.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Dette element stammer fra indhold på nettet, og yderligere bekræftelse af berøringsområdets størrelse anbefales.</string>
   
   <string name="check_title_class_name_not_supported">Ikke understøttet elementtype</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Overvej at eksponere elementer i dette område for hjælpefunktionstjenester.</string>
   
+  <string name="check_title_text_size">Skalering af tekst</string>
+  
+  <string name="result_message_no_text_size_unit">Måleenheden for tekststørrelse kunne ikke hentes.</string>
+  
+  <string name="result_message_brief_text_size_unit">Dette elements måleenhed for tekststørrelse er &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; med en måleenhed for tekststørrelse på &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Denne tekst er for lille, og nogle brugere kan derfor have svært ved at læse den. Du kan overveje at bruge en større tekststørrelse eller angive tekststørrelsen i skalerede pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Du kan overveje at angive tekststørrelsen i skalerede pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast bredde og skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast højde og skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast størrelse og skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast bredde og indeholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast højde og indeholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast størrelse og indeholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Overvej at ændre &lt;tt&gt;LayoutParams&lt;/tt&gt; for at give mulighed for tekstudvidelse.</string>
+  
+  <string name="check_title_unexposed_text">Usynlig tekst</string>
+  
+  <string name="result_message_unexposed_text">Sørg for, at dette elements tilgængelighedsetiket indeholder dets synlige tekst.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Der blev registreret OCR-resultater i dette ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Der blev registreret usynlig tekst: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Der blev registreret tekst: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Denne &lt;tt&gt;SurfaceView&lt;/tt&gt; viser muligvis ikke sit indhold til hjælpefunktionstjenester.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Der er registreret flere ikke-eksponerede tekster, bl.a. \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Indholdet af dette element eksponeres muligvis ikke til hjælpefunktionstjenester.</string>
+  
+  <string name="result_message_ocr_result_not_available">Der er ingen tilgængelige resultater for optisk tegngenkendelse.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Der blev ikke registreret nogen resultater for optisk tegngenkendelse i dette element.</string>
+  
+  <string name="result_message_multiple_best_match_views">Der blev fundet ét resultat for optisk tegngenkendelse i flere fokuserbare elementer.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Der blev registreret et resultat for optisk tegngenkendelse (OCR, optical character recognition) med et enkelt tegn, men der findes ingen tekst på det pågældende sted.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Indeholder dette skærmbillede vigtige elementer, der ikke er beskrevet?</string>
   
   <string name="question_message_identify_unexposed_items">Vælg skærmområder med uidentificerede elementer.</string>
+  
+  <string name="value_checked">markeret</string>
+  
+  <string name="value_not_checked">ikke markeret</string>
+  
+  <string name="value_on">til</string>
+  
+  <string name="value_off">fra</string>
+  
+  <string name="template_containers_quantity_other">%1$s indeholder %2$d elementer.</string>
+  
+  <string name="template_labeled_item">%1$s for %2$s</string>
+  
+  <string name="value_listview">Liste</string>
 
 </resources>

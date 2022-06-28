@@ -21,14 +21,6 @@
   
   <string name="clickable">tıklanabilir</string>
   
-  <string name="non_clickable">tıklanamaz</string>
-  
-  <string name="long_clickable">uzun tıklanabilir</string>
-  
-  <string name="clickable_and_long_clickable">tıklanabilir ve uzun tıklanabilir</string>
-  
-  <string name="actionable">işlem yapılabilir</string>
-  
   <string name="result_message_sdk_version_not_applicable">Bu denetim, Android %1$s veya üzeri sürümleri çalıştıran cihazlarda geçerli değildir.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Bu öğenin görünmesi ekrandaki diğer içerikler tarafından engellenebilir. Öğenin karşıtlığını manuel olarak test edin.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Bu %1$s öğe, ekranda bu özellikleri içeren %3$d öğeyle daha aynı konuma (&lt;tt&gt;%2$s&lt;/tt&gt;) sahip.</string>
   
   <string name="result_message_view_bounds">Bu %1$s öğenin ekranda &lt;tt&gt;%2$s&lt;/tt&gt; sınırlarına sahip bir konumu da var.</string>
+  
+  <string name="non_clickable">tıklanamaz</string>
+  
+  <string name="long_clickable">uzun tıklanabilir</string>
+  
+  <string name="clickable_and_long_clickable">tıklanabilir ve uzun tıklanabilir</string>
+  
+  <string name="actionable">işlem yapılabilir</string>
   
   <string name="check_title_duplicate_speakable_text">Öğe açıklamaları</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre hesaplanır. Bu oranı %2$.2f veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Resmin kontrast oranı %1$.2f. Bu oran, tahmini &lt;tt&gt;#%3$06X&lt;/tt&gt; ön plan rengine ve tahmini &lt;tt&gt;#%4$06X&lt;/tt&gt; arka plan rengine dayanır. Bu oranı, %2$.2f veya üzerinde bir yapılandırılmış orana çıkarmanız önerilir.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Resmin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre verilir. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre hesaplanır. Bu oranı yapılandırılan orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre hesaplanır. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
   <string name="check_title_redundant_description">Öğe türü etiketi</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengi (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmayı düşünün.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Değiştirilen orandan (%4$.2f) daha büyük bir kontrast oranı sağlayan renkler kullanılması önerilir.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre verilir. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı: %1$.2f. Bu oran, belirtilen ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini &lt;tt&gt;#%2$06X&lt;/tt&gt; ön plan rengine ve tahmini &lt;tt&gt;#%3$06X&lt;/tt&gt; arka plan rengine dayanır. Bu öğenin metin kontrast oranını, %4$.2f veya üzerinde bir yapılandırılmış orana çıkarmanız önerilir.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı: %1$.2f. Bu oran, belirtilen ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını yapılandırılan orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre verilir. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Bu öğenin ön ve arka plan renkleri, önerilen kontrast oranını karşılıyor.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Bu öğenin ön ve arka plan renkleri, değiştirilen kontrast oranını karşılıyor.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Algılanan ön plan ve arka plan renkleri doğru mu?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">Bu öğenin genişliği &lt;tt&gt;%1$ddp&lt;/tt&gt;. Bu dokunma hedefinin genişliğini &lt;tt&gt;%2$ddp&lt;/tt&gt; veya üzeri yapmayı düşünün.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Bu öğenin boyutu &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Bu dokunma hedefini, en az &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; değerindeki yapılandırılmış minimum boyuta çıkarmanız önerilir.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Bu öğenin boyutu &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Bu dokunma hedefini, değiştirilen minimum boyuta (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;) veya üzerine çıkarmanız önerilir.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Bu öğenin yüksekliği &lt;tt&gt;%1$ddp&lt;/tt&gt;. Bu dokunma hedefinin yüksekliğini, en az &lt;tt&gt;%2$ddp&lt;/tt&gt; değerindeki yapılandırılmış minimum yüksekliğe çıkarmanız önerilir.</string>
+  <string name="result_message_customized_small_touch_target_height">Bu öğenin yüksekliği &lt;tt&gt;%1$ddp&lt;/tt&gt;. Bu dokunma hedefinin yüksekliğini, değiştirilen minimum yüksekliğe (&lt;tt&gt;%2$ddp&lt;/tt&gt;) veya üzerine çıkarmanız önerilir.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Bu öğenin genişliği &lt;tt&gt;%1$ddp&lt;/tt&gt;. Bu dokunma hedefinin genişliğini, en az &lt;tt&gt;%2$ddp&lt;/tt&gt; değerindeki yapılandırılmış minimum genişliğe çıkarmanız önerilir.</string>
+  <string name="result_message_customized_small_touch_target_width">Bu öğenin genişliği &lt;tt&gt;%1$ddp&lt;/tt&gt;. Bu dokunma hedefinin genişliğini, değiştirilen minimum genişliğe (&lt;tt&gt;%2$ddp&lt;/tt&gt;) veya üzerine çıkarmanız önerilir.</string>
   
   <string name="result_message_addendum_touch_delegate">Bu öğenin üst öğelerinden birinde &lt;tt&gt;TouchDelegate&lt;/tt&gt; tespit edildi. Temsilci yeterli boyuttaysa ve bu öğe için dokunma işlemlerini gerçekleştiriyorsa bu ileti görmezden gelinebilir.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Bir üst kapsayıcı, çizim alanı &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; olan bu öğenin boyutunu kırpıyor olabilir. Bu öğenin kırpma üst öğesinin boyutunu artırmayı veya daha büyük bir üst kapsayıcının bu öğe adına işlem yapmasına izin vermeyi düşünün.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Bu öğe, kaydırılabilir container\'larda kısmen görünür olabilir.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Bu öğenin kaynağı web içeriğidir ve dokunma hedefi boyutunun ek olarak doğrulanması önerilir.</string>
   
   <string name="check_title_class_name_not_supported">Desteklenmeyen öğe türü</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Bu bölgedeki öğelere erişilebilirlik hizmeti sunulmasını sağlayabilirsiniz.</string>
   
+  <string name="check_title_text_size">Metin Ölçeklendirme</string>
+  
+  <string name="result_message_no_text_size_unit">Metin boyutu birimi alınamadı.</string>
+  
+  <string name="result_message_brief_text_size_unit">Bu öğenin metin boyutu birimi &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">Metin boyutu birimi &lt;tt&gt;%2$s&lt;/tt&gt; olan &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Bu metin küçük olduğundan bazı kullanıcıların okuması zor olabilir. Daha büyük bir boyut kullanmanız veya metin boyutunu ölçekli pikseller (&lt;tt&gt;sp&lt;/tt&gt;) halinde belirtmeniz önerilir.</string>
+  
+  <string name="result_message_fixed_text_size">Metin boyutunu ölçekli pikseller (&lt;tt&gt;sp&lt;/tt&gt;) halinde belirtmeniz önerilir.</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit genişliğe ve ölçeklenebilir metne sahip.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit yüksekliğe ve ölçeklenebilir metne sahip.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit boyuta ve ölçeklenebilir metne sahip.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit genişliğe sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit yüksekliğe sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit boyuta sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Metni genişletmek için &lt;tt&gt;LayoutParams&lt;/tt&gt; öğesini değiştirebilirsiniz.</string>
+  
+  <string name="check_title_unexposed_text">Gösterilmeyen Metin</string>
+  
+  <string name="result_message_unexposed_text">Bu öğenin erişilebilirlik etiketinde, görünen metin olduğundan emin olun.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Bu ImageView içinde OCR sonuçları algılandı.</string>
+  
+  <string name="result_message_brief_unexposed_text">Gösterilmeyen metin algılandı: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Metin algılandı: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Bu &lt;tt&gt;SurfaceView&lt;/tt&gt; öğesindeki içerikler, erişilebilirlik hizmetlerine gösterilmiyor olabilir.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">\"%1$s\" dahil olmak üzere birden çok gösterilmeyen metin algılandı.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Bu öğedeki içerikler, erişilebilirlik hizmetlerine gösterilmiyor olabilir.</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR sonuçları mevcut değil.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Bu öğenin içinde hiçbir OCR sonucu algılanamadı.</string>
+  
+  <string name="result_message_multiple_best_match_views">Birden çok odaklanılabilir öğenin içinde bir OCR sonucu algılandı.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Tek bir karakter içeren OCR sonucu algılandı, ancak karakterin algılandığı konumda metin yok.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Bu ekran, vurgulanmayan önemli öğeler içeriyor mu?</string>
   
   <string name="question_message_identify_unexposed_items">Ekranda tanımlanmamış öğelerin yer aldığı bölümleri seçin.</string>
+  
+  <string name="value_checked">işaretlendi</string>
+  
+  <string name="value_not_checked">işaretlenmedi</string>
+  
+  <string name="value_on">açık</string>
+  
+  <string name="value_off">kapalı</string>
+  
+  <string name="template_containers_quantity_other">%1$s içinde %2$d öğe gösteriliyor.</string>
+  
+  <string name="template_labeled_item">%2$s için %1$s</string>
+  
+  <string name="value_listview">Liste</string>
 
 </resources>

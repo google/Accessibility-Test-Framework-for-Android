@@ -52,24 +52,10 @@ public final class AccessibilityCheckResultBaseUtils {
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForCheck(
       Iterable<T> results, Class<? extends AccessibilityCheck> checkClass) {
-    return getResultsForCheck(results, checkClass, /* aliases= */ null);
-  }
-
-  /**
-   * Takes a list of {@code AccessibilityCheckResult}s and returns a list with only results obtained
-   * from the given {@code AccessibilityCheck}. If a BiMap of class aliases is provided, the
-   * returned value will also include results obtained from the check class paired with the given
-   * class in the BiMap.
-   */
-  static <T extends AccessibilityCheckResult> List<T> getResultsForCheck(
-      Iterable<T> results,
-      Class<? extends AccessibilityCheck> checkClass,
-      @Nullable ImmutableBiMap<?, ?> aliases) {
     List<T> resultsForCheck = new ArrayList<T>();
     for (T result : results) {
       Class<? extends AccessibilityCheck> resultCheckClass = result.getSourceCheckClass();
-      Object alias = getAlias(resultCheckClass, aliases);
-      if (checkClass.equals(resultCheckClass) || checkClass.equals(alias)) {
+      if (checkClass.equals(resultCheckClass)) {
         resultsForCheck.add(result);
       }
     }
@@ -147,33 +133,10 @@ public final class AccessibilityCheckResultBaseUtils {
    * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
    */
   public static Matcher<AccessibilityCheckResult> matchesChecks(Matcher<?> classMatcher) {
-    return matchesChecks(classMatcher, /* aliases= */ null);
-  }
-
-  /**
-   * Returns a {@link Matcher} for an {@link AccessibilityCheckResult} whose source check class
-   * matches the given matcher. If a BiMap of class aliases is provided, it can also match a class
-   * paired with the source check class in the BiMap.
-   *
-   * <p>Note: Do not use {@link Matchers#is} for a {@link Class}, as the deprecated form will match
-   * only objects of that class instead of the class object itself. Use {@link Matchers#equalTo}
-   * instead.
-   *
-   * @param classMatcher a {@code Matcher} for a {@code Class<? extends AccessibilityCheck>}. Note:
-   *     strict typing not enforced for Java 7 compatibility
-   * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
-   */
-  static Matcher<AccessibilityCheckResult> matchesChecks(
-      final Matcher<?> classMatcher, final @Nullable ImmutableBiMap<?, ?> aliases) {
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>("source check", classMatcher) {
       @Override
       public boolean matchesSafely(AccessibilityCheckResult result) {
-        Class<? extends AccessibilityCheck> checkClass = result.getSourceCheckClass();
-        if (classMatcher.matches(checkClass)) {
-          return true;
-        }
-        Object alias = getAlias(checkClass, aliases);
-        return (alias != null) && classMatcher.matches(alias);
+        return classMatcher.matches(result.getSourceCheckClass());
       }
     };
   }
@@ -193,14 +156,15 @@ public final class AccessibilityCheckResultBaseUtils {
   /**
    * Returns a {@link Matcher} for an {@link AccessibilityCheckResult} whose source check class has
    * a simple name that matches the given matcher for a {@code String}. If a BiMap of class aliases
-   * is provided, it can also match a class paired with the source check class in the BiMap.
+   * is provided, it can also match if the given matcher matches the simple name of an obsolete
+   * AccessibilityViewHierarchyCheck that the source check replaced.
    *
    * @param classNameMatcher a {@code Matcher} for a {@code String}
    * @return a {@code Matcher} for an {@code AccessibilityCheckResult}
    */
   static Matcher<AccessibilityCheckResult> matchesCheckNames(
       final Matcher<? super String> classNameMatcher,
-      final @Nullable ImmutableBiMap<?, ?> aliases) {
+      final @Nullable ImmutableBiMap<String, Class<?>> aliases) {
     return new TypeSafeMemberMatcher<AccessibilityCheckResult>(
         "source check name", classNameMatcher) {
       @Override
@@ -209,35 +173,27 @@ public final class AccessibilityCheckResultBaseUtils {
         if (classNameMatcher.matches(checkClass.getSimpleName())) {
           return true;
         }
-        Object alias = getAlias(checkClass, aliases);
-        return (alias instanceof Class)
-            && classNameMatcher.matches(((Class<?>) alias).getSimpleName());
+        String obsoleteName = getObsoleteName(checkClass, aliases);
+        return (obsoleteName != null) && classNameMatcher.matches(obsoleteName);
       }
     };
   }
 
   /**
-   * Returns an alias for the given object, if it has one.
-   *
-   * <p>This supports aliasing in both directions. For example, a Matcher that specifies a new check
-   * class can match a result with an old check class. Or a Matcher that specifies an old check
-   * class can match a result with a new check class.
+   * Returns the simple name of an obsolete AccessibilityHierarchyCheck that was replaced by the
+   * given AccessibilityViewHierarchyCheck class, if any.
    */
-  private static @Nullable Object getAlias(Object obj, @Nullable ImmutableBiMap<?, ?> aliases) {
-    if (aliases == null) {
-      return null;
-    }
-    Object alias = aliases.get(obj);
-    return (alias != null) ? alias : aliases.inverse().get(obj);
+  private static @Nullable String getObsoleteName(
+      Class<?> checkClass, @Nullable ImmutableBiMap<String, Class<?>> aliases) {
+    return (aliases != null) ? aliases.inverse().get(checkClass) : null;
   }
 
   abstract static class TypeSafeMemberMatcher<T> extends TypeSafeMatcher<T> {
-    private static final String DESCRIPTION_FORMAT_STRING = "with %s: ";
     private final String memberDescription;
     private final Matcher<?> matcher;
 
     public TypeSafeMemberMatcher(String member, Matcher<?> matcher) {
-      memberDescription = String.format(DESCRIPTION_FORMAT_STRING, member);
+      memberDescription = String.format("with %s: ", member);
       this.matcher = matcher;
     }
 

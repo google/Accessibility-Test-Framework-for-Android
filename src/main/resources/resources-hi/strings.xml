@@ -21,14 +21,6 @@
   
   <string name="clickable">क्लिक करने योग्य</string>
   
-  <string name="non_clickable">क्लिक नहीं करने योग्य</string>
-  
-  <string name="long_clickable">ज़्यादा देर तक क्लिक करने योग्य</string>
-  
-  <string name="clickable_and_long_clickable">क्लिक करने योग्य और ज़्यादा देर तक क्लिक करने योग्य</string>
-  
-  <string name="actionable">कार्रवाई योग्य</string>
-  
   <string name="result_message_sdk_version_not_applicable">Android %1$s और उससे ऊपर के वर्शन चला रहे डिवाइस पर यह चेक लागू नहीं है.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">स्क्रीन पर दिखने वाली दूसरी सामग्री इस आइटम को छुपा सकती है. इस आइटम के कंट्रास्ट की मैन्युअल टेस्टिंग करके देखें.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">इस %1$s आइटम का ऑन-स्क्रीन स्थान (&lt;tt&gt;%2$s&lt;/tt&gt;) वही है, जो उन गुणों वाले %3$d अन्य आइटम (आइटमों) का है.</string>
   
   <string name="result_message_view_bounds">इस %1$s आइटम का भी &lt;tt&gt;%2$s&lt;/tt&gt; का ऑन-स्क्रीन स्थान है.</string>
+  
+  <string name="non_clickable">क्लिक नहीं करने योग्य</string>
+  
+  <string name="long_clickable">ज़्यादा देर तक क्लिक करने योग्य</string>
+  
+  <string name="clickable_and_long_clickable">क्लिक करने योग्य और ज़्यादा देर तक क्लिक करने योग्य</string>
+  
+  <string name="actionable">कार्रवाई योग्य</string>
   
   <string name="check_title_duplicate_speakable_text">आइटम वर्णन</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">इमेज का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%4$06X&lt;/tt&gt; पर आधारित है. इस अनुपात को %2$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">इमेज का कंट्रास्ट अनुपात %1$.2f है. यह अनुपात &lt;tt&gt;#%3$06X&lt;/tt&gt; के अनुमानित अग्रभूमि रंग और &lt;tt&gt;#%4$06X&lt;/tt&gt; के अनुमानित पृष्ठभूमि रंग पर आधारित है. इस अनुपात को कॉन्फ़िगर किए गए अनुपात %2$.2f या इससे ज़्यादा अनुपात तक बढ़ाने पर विचार करें.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">इमेज का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, फ़ोरग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%4$06X&lt;/tt&gt; के अनुमान पर आधारित है. इस अनुपात को, बदले गए अनुपात %2$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">इमेज का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%4$06X&lt;/tt&gt; पर आधारित है. इस अनुपात को, कॉन्फ़िगर किए गए अनुपात %2$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">इमेज का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%4$06X&lt;/tt&gt; पर आधारित है. इस अनुपात को, बदले गए अनुपात %2$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
   
   <string name="check_title_redundant_description">आइटम प्रकार लेबल</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">आइटम का टेक्स्ट कंट्रास्ट अनुपात %1$.2f है. यह अनुपात &lt;tt&gt;#%2$06X&lt;/tt&gt; के टेक्स्ट रंग और &lt;tt&gt;#%3$06X&lt;/tt&gt; के पृष्ठभूमि रंग पर आधारित है. इस आइटम के टेक्स्ट कंट्रास्ट अनुपात को %4$.2f या इससे ज़्यादा अनुपात तक बढ़ाएं.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">आइटम के टेक्स्ट का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, टेक्स्ट के रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; के हिसाब से है. ऐसे रंगों का इस्तेमाल करें जिनके कंट्रास्ट का अनुपात, बदले गए अनुपात %4$.2f से ज़्यादा हो.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">इस आइटम के टेक्स्ट का कंट्रास्ट अनुपात %1$.2f है. यह अनुपात स्क्रीन पर दिखाई देने वाले रंग&lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; के अनुमान पर आधारित होता है. उन रंगों का इस्तेमाल करें जिनसे छोटे टेक्स्ट के लिए%4$.2f से ज़्यादा या बड़े टेक्स्ट के लिए %5$.2f का कंट्रास्ट अनुपात मिलता है.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">आइटम के टेक्स्ट का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात अनुमानित फ़ोरग्राउंड रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और अनुमानित बैकग्राउंड रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; के हिसाब से है. इस आइटम के टेक्स्ट का कंट्रास्ट अनुपात %4$.2f या इससे ज़्यादा करने की कोशिश करें.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">इस आइटम के टेक्स्ट का कंट्रास्ट अनुपात %1$.2f है. यह अनुपात दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; पर आधारित होता है. उन रंगों का इस्तेमाल करें जिनसे छोटे टेक्स्ट के लिए%4$.2f से ज़्यादा या बड़े टेक्स्ट के लिए %5$.2f का कंट्रास्ट अनुपात मिलता है.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">आइटम का टेक्स्ट कंट्रास्ट अनुपात %1$.2f है. यह अनुपात &lt;tt&gt;#%2$06X&lt;/tt&gt; के अनुमानित अग्रभूमि रंग और &lt;tt&gt;#%3$06X&lt;/tt&gt; के अनुमानित पृष्ठभूमि रंग पर आधारित है. इस आइटम के टेक्स्ट कंट्रास्ट अनुपात को कॉन्फ़िगर किए गए अनुपात %4$.2f या इससे ज़्यादा अनुपात तक बढ़ाने पर विचार करें.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">आइटम के टेक्स्ट का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात दिए गए फ़ोरग्राउंड रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; के हिसाब से है. इस आइटम के टेक्स्ट का कंट्रास्ट अनुपात %4$.2f या इससे ज़्यादा करने की कोशिश करें.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">आइटम के टेक्स्ट का कंट्रास्ट अनुपात %1$.2f है. यह अनुपात दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; पर आधारित होता है. इस आइटम के टेक्स्ट का कंट्रास्ट अनुपात कॉन्फ़िगर किए गए अनुपात %4$.2f या इससे ज़्यादा अनुपात तक बढ़ाएं.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">आइटम के टेक्स्ट का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात फ़ोरग्राउंड के रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; के अनुमान पर आधारित है. इस आइटम के टेक्स्ट के कंट्रास्ट अनुपात को, बदले गए अनुपात %4$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">आइटम के टेक्स्ट का कंट्रास्ट %1$.2f के अनुपात में है. यह अनुपात, दिए गए फ़ोरग्राउंड के रंग &lt;tt&gt;#%2$06X&lt;/tt&gt; और बैकग्राउंड के रंग &lt;tt&gt;#%3$06X&lt;/tt&gt; पर आधारित है. इस आइटम के टेक्स्ट के कंट्रास्ट अनुपात को, बदले गए अनुपात %4$.2f या इससे ज़्यादा तक बढ़ाएं.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">इस आइटम के फ़ोरग्राउंड और बैकग्राउंड रंग, सुझाए गए कंट्रास्ट अनुपात की शर्त पूरी करते हैं.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">इस आइटम के फ़ोरग्राउंड और बैकग्राउंड रंग, बदले गए कंट्रास्ट अनुपात की शर्त पूरी करते हैं.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">क्या फ़ोरग्राउंड और बैकग्राउंड के रंग की जानकारी सही है?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">इस आइटम की चौड़ाई &lt;tt&gt;%1$ddp&lt;/tt&gt; है. इस स्पर्श लक्ष्य की चौड़ाई &lt;tt&gt;%2$ddp&lt;/tt&gt; या बड़ी करें.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">इस आइटम का आकार &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; है. इस छूने के लक्ष्य आकार को कम से कम कॉन्फ़िगर किए गए कम से कम &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; तक बढ़ाने पर विचार करें.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">इस आइटम का साइज़ &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; है. इस टच टारगेट के साइज़ को, बदलाव के बाद तय किए गए सबसे कम साइज़ &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; जितना बढ़ाएं.</string>
   
-  <string name="result_message_customized_small_touch_target_height">इस आइटम की ऊंचाई &lt;tt&gt;%1$ddp&lt;/tt&gt; है. इस छूने के लक्ष्य आकार की ऊंचाई को कम से कम कॉन्फ़िगर की कम से कम ऊंचाई &lt;tt&gt;%2$ddp&lt;/tt&gt; तक बढ़ाने पर विचार करें.</string>
+  <string name="result_message_customized_small_touch_target_height">इस आइटम की ऊंचाई &lt;tt&gt;%1$ddp&lt;/tt&gt; है. इस टच टारगेट की ऊंचाई को, बदलाव के बाद तय की गई सबसे कम साइज़ &lt;tt&gt;%2$ddp&lt;/tt&gt; जितना बढ़ाएं.</string>
   
-  <string name="result_message_customized_small_touch_target_width">इस आइटम की चौड़ाई &lt;tt&gt;%1$ddp&lt;/tt&gt; है. इस छूने के लक्ष्य आकार की ऊंचाई को कम से कम कॉन्फ़िगर की कम से कम चौड़ाई &lt;tt&gt;%2$ddp&lt;/tt&gt; तक बढ़ाने पर विचार करें.</string>
+  <string name="result_message_customized_small_touch_target_width">इस आइटम की चौड़ाई &lt;tt&gt;%1$ddp&lt;/tt&gt; है. इस टच टारगेट की चौड़ाई को, बदलाव के बाद तय की गई सबसे कम चौड़ाई &lt;tt&gt;%2$ddp&lt;/tt&gt; जितना बढ़ाएं.</string>
   
   <string name="result_message_addendum_touch_delegate">इस आइटम के किसी ऐनसेस्टर में &lt;tt&gt;TouchDelegate&lt;/tt&gt; का पता चला है. अगर डेलिगेट काफ़ी आकार का है और इस आइटम के लिए स्पर्शों को हैंडल करता है, तो इस संदेश को अनदेखा किया जा सकता है.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">हो सकता है कि पेरेंट कंटेनर इस आइटम के आकार को क्लिप कर रहा हो, जिसका ड्रॉइंग क्षेत्र &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; है. इस आइटम की ओर से कार्रवाई प्रबंधित करने के लिए आइटम के क्लिपिंग ऐन्सेस्टर का आकार बढ़ाने पर विचार करें या एक बड़े पेरेंट कंटेनर की अनुमति दें.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">यह आइटम स्क्रोल किए जाने वाले कंटेनर में शायद पूरा न दिखाई दे.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">यह आइटम मूल रूप से वेब कॉन्टेंट है. हमारी सलाह है कि इस आइटम के लिए, टच टारगेट (स्क्रीन के वे हिस्से जहां छूने पर कोई कार्रवाई होती है) के साइज़ की अलग से पुष्टि की जानी चाहिए.</string>
   
   <string name="check_title_class_name_not_supported">काम नहीं करने वाला आइटम प्रकार</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">इस जगह पर मौजूद आइटम को सुलभता सेवाओं की पहुंच देने के बारे में सोचें.</string>
   
+  <string name="check_title_text_size">टेक्स्ट स्केलिंग</string>
+  
+  <string name="result_message_no_text_size_unit">टेक्स्ट के साइज़ की यूनिट की जानकारी नहीं मिल सकी.</string>
+  
+  <string name="result_message_brief_text_size_unit">इस आइटम के टेक्स्ट के साइज़ की यूनिट &lt;tt&gt;%1$s&lt;/tt&gt; है.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; के टेक्स्ट के साइज़ की यूनिट &lt;tt&gt;%2$s&lt;/tt&gt; है.</string>
+  
+  <string name="result_message_small_fixed_text_size">इस टेक्स्ट का साइज़ बहुत छोटा है. हो सकता है कि कुछ लोगों को इसे पढ़ने में दिक्कत हो. टेक्स्ट का साइज़ बड़ा करें या साइज़ को पिक्सल में बदलें (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">टेक्स्ट के साइज़ को पिक्सल में बदलें (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">इस &lt;tt&gt;TextView&lt;/tt&gt; की तय चौड़ाई है, लेकिन टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">इस &lt;tt&gt;TextView&lt;/tt&gt; की तय ऊंचाई है, लेकिन टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">इस &lt;tt&gt;TextView&lt;/tt&gt; का तय साइज़ है, लेकिन टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">इस &lt;tt&gt;ViewGroup&lt;/tt&gt; की तय चौड़ाई है और इसमें &lt;tt&gt;TextView&lt;/tt&gt; है, जिसके टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">इस &lt;tt&gt;ViewGroup&lt;/tt&gt; की तय ऊंचाई है और इसमें &lt;tt&gt;TextView&lt;/tt&gt; है, जिसके टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">इस &lt;tt&gt;ViewGroup&lt;/tt&gt; का तय साइज़ है और इसमें &lt;tt&gt;TextView&lt;/tt&gt; है, जिसके टेक्स्ट का साइज़ बदला जा सकता है.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">टेक्स्ट को बड़ा करने के लिए, &lt;tt&gt;LayoutParams&lt;/tt&gt; में बदलाव करके देखें.</string>
+  
+  <string name="check_title_unexposed_text">शामिल नहीं किया गया टेक्स्ट</string>
+  
+  <string name="result_message_unexposed_text">पक्का करें कि इस आइटम के सुलभता लेबल में, आइटम में दिखने वाला टेक्स्ट शामिल हो.</string>
+  
+  <string name="result_message_text_detected_in_image_view">इस ImageView में ओसीआर (ऑप्टिकल वर्ण पहचान) नतीजों की पहचान की गई.</string>
+  
+  <string name="result_message_brief_unexposed_text">शामिल नहीं किए गए टेक्स्ट की पहचान की गई: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">टेक्स्ट की पहचान की गई: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">हो सकता है कि इस &lt;tt&gt;SurfaceView&lt;/tt&gt; में, सुलभता सेवाओं को कॉन्टेंट न दिख रहा हो.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">\"%1$s\" सहित शामिल नहीं किए गए कई टेक्स्ट की पहचान की गई.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">हो सकता है कि इस आइटम में, सुलभता सेवाओं को कॉन्टेंट न दिख रहा हो.</string>
+  
+  <string name="result_message_ocr_result_not_available">ओसीआर के नतीजे उपलब्ध नहीं हैं.</string>
+  
+  <string name="result_message_no_matching_ocr_results">इस आइटम में, ओसीआर के किसी नतीजे का पता नहीं चला.</string>
+  
+  <string name="result_message_multiple_best_match_views">फ़ोकस करने लायक कई आइटम में, ओसीआर का एक नतीजा मिला.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">ओसीआर का एक वर्ण वाला नतीजा मिला, लेकिन उस जगह पर कोई टेक्स्ट मौजूद नहीं है.</string>
+  
   <string name="question_message_screen_has_unexposed_items">क्या इस स्क्रीन पर ऐसे ज़रूरी आइटम मौजूद हैं जिन्हें आउटलाइन नहीं किया गया है?</string>
   
   <string name="question_message_identify_unexposed_items">स्क्रीन पर उन जगहों को चुनें जिनमें बिना पहचान वाले आइटम हैं.</string>
+  
+  <string name="value_checked">चुना गया</string>
+  
+  <string name="value_not_checked">नहीं चुना गया</string>
+  
+  <string name="value_on">चालू है</string>
+  
+  <string name="value_off">बंद है</string>
+  
+  <string name="template_containers_quantity_other">%1$s में %2$d आइटम दिख रहे हैं.</string>
+  
+  <string name="template_labeled_item">%2$s के लिए %1$s</string>
+  
+  <string name="value_listview">सूची</string>
 
 </resources>

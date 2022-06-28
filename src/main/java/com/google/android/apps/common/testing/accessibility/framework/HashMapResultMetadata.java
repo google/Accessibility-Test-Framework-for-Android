@@ -460,7 +460,7 @@ public class HashMapResultMetadata implements ResultMetadata {
                 .put(Type.STRING, TypeProto.STRING)
                 .put(Type.STRING_LIST, TypeProto.STRING_LIST)
                 .put(Type.INTEGER_LIST, TypeProto.INT_LIST)
-                .build());
+                .buildOrThrow());
 
     /**
      * The supported types for entries within metadata maps

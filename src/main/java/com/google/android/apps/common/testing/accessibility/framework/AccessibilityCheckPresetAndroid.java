@@ -19,16 +19,14 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.view.View;
-import com.google.android.apps.common.testing.accessibility.framework.checks.ImageContrastCheck;
-import com.google.android.apps.common.testing.accessibility.framework.checks.LinkPurposeUnclearCheck;
-import com.google.android.apps.common.testing.accessibility.framework.checks.TraversalOrderCheck;
-import com.google.common.annotations.VisibleForTesting;
+import com.google.android.apps.common.testing.accessibility.framework.checks.ClassNameCheck;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Provides deprecated methods for {@link AccessibilityCheckPreset}. */
-@SuppressWarnings("deprecation") // Need to support AccessibilityViewHierarchyCheck..
+@SuppressWarnings("deprecation") // Need to support AccessibilityViewHierarchyCheck.
 public final class AccessibilityCheckPresetAndroid {
 
   /**
@@ -43,68 +41,34 @@ public final class AccessibilityCheckPresetAndroid {
   @Deprecated
   public static ImmutableSet<AccessibilityViewHierarchyCheck> getViewChecksForPreset(
       AccessibilityCheckPreset preset) {
-    ImmutableSet.Builder<AccessibilityViewHierarchyCheck> checks = ImmutableSet.builder();
-    if (preset == AccessibilityCheckPreset.NO_CHECKS) {
-      return checks.build();
-    }
 
-    /* Checks included in version 1.0 */
-    checks.add(new TouchTargetSizeViewCheck());
-    checks.add(new TextContrastViewCheck());
-    checks.add(new DuplicateSpeakableTextViewHierarchyCheck());
-    checks.add(new SpeakableTextPresentViewCheck());
-    checks.add(new EditableContentDescViewCheck());
-    if (preset == AccessibilityCheckPreset.VERSION_1_0_CHECKS) {
-      return checks.build();
-    }
-
-    /* Checks included in version 2.0 */
-    checks.add(new ClickableSpanViewCheck());
-    checks.add(new RedundantContentDescViewCheck());
-    checks.add(new DuplicateClickableBoundsViewCheck());
-    if (preset == AccessibilityCheckPreset.VERSION_2_0_CHECKS) {
-      return checks.build();
-    }
-
-    /* No View-based checks added in version 3.0 */
+    // No View-based checks were added in version 3.0. The AccessibilityHierarchyChecks that were
+    // added in 3.0 were did not make it here until 3.1.
     if (preset == AccessibilityCheckPreset.VERSION_3_0_CHECKS) {
-      return checks.build();
+      preset = AccessibilityCheckPreset.VERSION_2_0_CHECKS;
     }
 
-    /* Checks included in version 3.1 */
-    // ClassNameCheck is not included because View-based checks do not have access to the class
-    // names populated into an AccessibilityNodeInfo, making the check a no-op.
-    checks.add(
-        new DelegatedViewHierarchyCheck(
-            checkNotNull(
-                AccessibilityCheckPreset.getHierarchyCheckForClass(TraversalOrderCheck.class))));
-    checks.add(
-        new DelegatedViewHierarchyCheck(
-            checkNotNull(
-                AccessibilityCheckPreset.getHierarchyCheckForClass(ImageContrastCheck.class))));
-    checks.add(
-        new DelegatedViewHierarchyCheck(
-            checkNotNull(
-                AccessibilityCheckPreset.getHierarchyCheckForClass(
-                    LinkPurposeUnclearCheck.class))));
+    ImmutableSet<AccessibilityHierarchyCheck> checks =
+        AccessibilityCheckPreset.getAccessibilityHierarchyChecksForPreset(preset);
+
+    // ClassNameCheck was available in
+    // AccessibilityCheckPreset.getAccessibilityHierarchyChecksForPreset from version 3.0, but not
+    // available here until 4.0 because the accessibility class names that the check requires were
+    // not being obtained from Views until 4.0.
     if (preset == AccessibilityCheckPreset.VERSION_3_1_CHECKS) {
-      return checks.build();
+      checks =
+          Sets.difference(
+                  checks,
+                  ImmutableSet.<AccessibilityHierarchyCheck>of(
+                      AccessibilityCheckPreset.getHierarchyCheckForClass(ClassNameCheck.class)))
+              .immutableCopy();
     }
 
-    /* Checks added since last release */
-    if (preset == AccessibilityCheckPreset.LATEST) {
-      return checks.build();
+    ImmutableSet.Builder<AccessibilityViewHierarchyCheck> viewChecks = ImmutableSet.builder();
+    for (AccessibilityHierarchyCheck check : checks) {
+      viewChecks.add(getDelegatedCheck(check.getClass()));
     }
-
-    if (preset == AccessibilityCheckPreset.PRERELEASE) {
-      return checks.build();
-    }
-
-    /*
-     * Throw an exception if we didn't handle a preset. This code should be unreachable, but it
-     * makes writing a test for unhandled presets trivial.
-     */
-    throw new IllegalArgumentException();
+    return viewChecks.build();
   }
 
   /**
@@ -127,13 +91,10 @@ public final class AccessibilityCheckPresetAndroid {
       return checks.build();
     }
 
-    /* No event-based checks added in version 3.0 */
-    if (preset == AccessibilityCheckPreset.VERSION_3_0_CHECKS) {
-      return checks.build();
-    }
-
-    /* No event-based checks added in version 3.1 */
-    if (preset == AccessibilityCheckPreset.VERSION_3_1_CHECKS) {
+    /* No event-based checks added in version 3.0, 3.1 or 4.0 */
+    if ((preset == AccessibilityCheckPreset.VERSION_3_0_CHECKS)
+        || (preset == AccessibilityCheckPreset.VERSION_3_1_CHECKS)
+        || (preset == AccessibilityCheckPreset.VERSION_4_0_CHECKS)) {
       return checks.build();
     }
 
@@ -152,21 +113,46 @@ public final class AccessibilityCheckPresetAndroid {
     throw new IllegalArgumentException();
   }
 
+  private static AccessibilityViewHierarchyCheck getDelegatedCheck(
+      Class<? extends AccessibilityHierarchyCheck> clazz) {
+    return new DelegatedViewHierarchyCheck(
+        checkNotNull(AccessibilityCheckPreset.getHierarchyCheckForClass(clazz)));
+  }
+
   /** An adapter to present an AccessibilityHierarchyCheck as an AccessibilityViewHierarchyCheck */
-  @VisibleForTesting
   /*package*/ static class DelegatedViewHierarchyCheck extends AccessibilityViewHierarchyCheck {
 
-    @VisibleForTesting /*package*/ final AccessibilityHierarchyCheck toCheck;
+    private final AccessibilityHierarchyCheck toCheck;
 
     DelegatedViewHierarchyCheck(AccessibilityHierarchyCheck toCheck) {
       this.toCheck = toCheck;
     }
 
+    AccessibilityHierarchyCheck getAccessibilityHierarchyCheck() {
+      return toCheck;
+    }
+
     @Override
     public List<AccessibilityViewCheckResult> runCheckOnViewHierarchy(
         View root, @Nullable Parameters parameters) {
-      // We lie about the name of the fromCheck so that this class is not known externally.
-      return super.runDelegationCheckOnView(root, toCheck, toCheck, parameters);
+      return new ViewChecker().runCheckOnView(toCheck, root, parameters);
+    }
+
+    @Override
+    public boolean equals(@Nullable Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof DelegatedViewHierarchyCheck)) {
+        return false;
+      }
+      DelegatedViewHierarchyCheck other = (DelegatedViewHierarchyCheck) o;
+      return toCheck.equals(other.getAccessibilityHierarchyCheck());
+    }
+
+    @Override
+    public int hashCode() {
+      return toCheck.hashCode();
     }
   }
 

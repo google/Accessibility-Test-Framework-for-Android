@@ -1,10 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.5.4'
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.14'
         classpath 'digital.wup:android-maven-publish:3.6.3'
     }
@@ -13,7 +13,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
 }
@@ -21,11 +21,11 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
     buildToolsVersion '29.0.3'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 29
+        targetSdkVersion 31
     }
     lintOptions {
         abortOnError false
@@ -40,26 +40,17 @@ apply plugin: 'com.google.protobuf'
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.11.4'
-    }
-    plugins {
-        javalite {
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
+        artifact = 'com.google.protobuf:protoc:3.19.1'
     }
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-                // In most cases you don't need the full Java output
-                // if you use the lite output.
-                remove java
-            }
-            task.plugins {
-                javalite {}
+            java {
+                option "lite"
             }
         }
     }
+  }
 }
 
 // Creates the source jar for release to maven central.
@@ -71,7 +62,6 @@ task sourceJar(type: Jar) {
 // Creates javadoc for the project.
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
-    exclude "**/AndroidManifest.xml"
     failOnError false // Currently cannot import android sdk javadoc references so we ignore errors.
 }
 
@@ -89,7 +79,7 @@ publishing {
         mavenAar(MavenPublication) {
             groupId 'com.google.android.apps.common.testing.accessibility.framework'
             artifactId 'accessibility-test-framework'
-            version '3.1.2'
+            version '4.0.0'
             from components.android
             artifact sourceJar
             artifact javadocJar
@@ -123,17 +113,19 @@ publishing {
 }
 
 dependencies {
-    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
-    implementation 'androidx.core:core:1.0.0'
+    implementation 'androidx.core:core:1.8.0'
+    implementation 'androidx.test.services:storage:1.4.1'
     implementation 'com.google.android.material:material:1.2.0-rc01'
-    implementation 'com.google.guava:guava:28.2-android'
+    implementation 'com.google.errorprone:error_prone_annotations:2.14.0'
+    implementation 'com.google.guava:guava:31.0.1-android'
+    implementation 'com.google.protobuf:protobuf-javalite:3.19.1'
     // use same version of checker framework used in guava android,
     // to avoid duplicate class and dexing errors
     // see https://github.com/android/android-test/issues/861
-    implementation 'org.checkerframework:checker-qual:2.5.5'
-    implementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation 'org.checkerframework:checker-qual:3.22.1'
     implementation 'org.hamcrest:hamcrest-core:2.2'
-    implementation 'org.jsoup:jsoup:1.12.2'
+    implementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation 'org.jsoup:jsoup:1.15.1'
 }
 
 clean {

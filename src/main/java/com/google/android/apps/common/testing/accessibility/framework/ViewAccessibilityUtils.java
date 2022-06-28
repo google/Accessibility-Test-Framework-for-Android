@@ -121,7 +121,6 @@ public final class ViewAccessibilityUtils {
    * @param view The {@link View} to evaluate
    * @return {@code true} if {@code view} is visible to the user
    */
-  @RequiresApi(Build.VERSION_CODES.HONEYCOMB) // Uses View#getAlpha
   public static boolean isVisibleToUser(View view) {
     if (view == null) {
       return false;

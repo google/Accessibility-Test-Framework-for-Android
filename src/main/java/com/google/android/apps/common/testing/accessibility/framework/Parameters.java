@@ -1,19 +1,24 @@
 package com.google.android.apps.common.testing.accessibility.framework;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 
+import com.google.android.apps.common.testing.accessibility.framework.ocr.OcrEngine;
+import com.google.android.apps.common.testing.accessibility.framework.ocr.OcrResult;
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Supplemental input data or preferences for an {@link AccessibilityHierarchyCheck}. */
 public class Parameters {
 
-  @Nullable private Image screenCapture;
-  @Nullable private Double customTextContrastRatio;
-  @Nullable private Double customImageContrastRatio;
-  @Nullable private Integer customTouchTargetSize;
-  @Nullable private Boolean enableEnhancedContrastEvaluation;
-  @Nullable private Boolean saveViewImage;
+  private @Nullable Image screenCapture;
+  private @Nullable Double customTextContrastRatio;
+  private @Nullable Double customImageContrastRatio;
+  private @Nullable Integer customTouchTargetSize;
+  private @Nullable Boolean enableEnhancedContrastEvaluation;
+  private @Nullable Boolean saveViewImage;
+  private @Nullable OcrEngine ocrEngine;
+  private @Nullable OcrResult ocrResult;
 
   public Parameters() {
     super();
@@ -158,12 +163,12 @@ public class Parameters {
   }
 
   /**
-   * Gets an user-defined boolean value for enabling enhanced contrast evaluation from {@code
+   * Gets a user-defined boolean value for enabling enhanced contrast evaluation from {@code
    * parameters}.
    *
    * @return The boolean value that turns on/off an enhanced contrast evaluation, or {@code null} if
    *     a user-defined value has not been set.
-   * @see #putEnhancedContrastEvaluationMode(boolean)
+   * @see #putEnableEnhancedContrastEvaluation(boolean)
    */
   public @Nullable Boolean getEnableEnhancedContrastEvaluation() {
     return enableEnhancedContrastEvaluation;
@@ -179,7 +184,41 @@ public class Parameters {
    * @param enableEnhancedContrastEvaluation {@code true} to enable enhanced contrast evaluation,
    *     {@code false} to disable.
    */
-  public void putEnableEnhancedContrastEvaluation(boolean enableEnhancedContrastEvaluation) {
+  public void setEnableEnhancedContrastEvaluation(boolean enableEnhancedContrastEvaluation) {
     this.enableEnhancedContrastEvaluation = enableEnhancedContrastEvaluation;
+  }
+
+  /**
+   * Sets an {@link OcrEngine} that can recognize text in a screenshot. Alternatively, an {@link
+   * OcrResult} can instead be set directly using {@link #putOcrResult(OcrResult)}. But an {@code
+   * OcrResult} and {@code OcrEngine} cannot both be provided.
+   *
+   * @param ocrEngine The {@link OcrEngine} which does actual character identification
+   */
+  public void putOcrEngine(OcrEngine ocrEngine) {
+    checkState(ocrResult == null, "An OcrResult has already been provided.");
+    this.ocrEngine = ocrEngine;
+  }
+
+  /**
+   * Sets an {@link OcrResult} with recognized text from the screenshot. Alternatively, an {@link
+   * OcrEngine} that can recoginize text can instead be set using {@link #putOcrEngine(OcrEngine)}.
+   * But an {@code OcrResult} and {@code OcrEngine} cannot both be provided.
+   */
+  public void putOcrResult(OcrResult ocrResult) {
+    checkState(ocrEngine == null, "An OcrEngine has already been provided.");
+    this.ocrResult = ocrResult;
+  }
+
+  /**
+   * Returns the OCR text recognition result from the screenshot, or {@code null} if no result is
+   * available. The result can be set directly using {@link #putOcrResult(OcrResult)}, or it can be
+   * obtained from a provided OCR engine and screenshot.
+   */
+  public synchronized @Nullable OcrResult getOcrResult() {
+    if ((ocrResult == null) && (screenCapture != null) && (ocrEngine != null)) {
+      ocrResult = ocrEngine.detect(screenCapture);
+    }
+    return ocrResult;
   }
 }

@@ -17,7 +17,6 @@ package com.google.android.apps.common.testing.accessibility.framework;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import android.view.View;
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.ResultTypeProto;
 import java.util.HashMap;
 import java.util.Locale;
@@ -96,6 +95,8 @@ public abstract class AccessibilityCheckResult {
       return checkNotNull(type);
     }
 
+    // incompatible types in return.
+    @SuppressWarnings("nullness:return.type.incompatible")
     public ResultTypeProto toProto() {
       return ResultTypeProto.forNumber(protoNumber);
     }
@@ -158,63 +159,5 @@ public abstract class AccessibilityCheckResult {
   @Override
   public String toString() {
     return String.format("AccessibilityCheckResult %s %s \"%s\"", type, checkClass, message);
-  }
-
-  /**
-   * @deprecated use top-level AccessibilityCheckResultDescriptor instead.
-   *     <p>An object that describes an {@link AccessibilityCheckResult}. This can be extended to
-   *     provide descriptions of the result and their contents in a form that is localized to the
-   *     environment in which checks are being run.
-   */
-
-  @Deprecated
-  public static class AccessibilityCheckResultDescriptor {
-
-    /**
-     * Returns a String description of the given {@link AccessibilityCheckResult}.
-     *
-     * @param result the {@link AccessibilityCheckResult} to describe
-     * @return a String description of the result
-     */
-    public String describeResult(AccessibilityCheckResult result) {
-      StringBuilder message = new StringBuilder();
-      if (result instanceof AccessibilityViewCheckResult) {
-        message.append(describeView(((AccessibilityViewCheckResult) result).getView()));
-        message.append(": ");
-      }
-      message.append(result.getMessage(Locale.ENGLISH));
-      Class<? extends AccessibilityCheck> checkClass = result.getSourceCheckClass();
-      if (checkClass != null) {
-        message.append(" Reported by ");
-        message.append(result.getSourceCheckClass().getName());
-      }
-      return message.toString();
-    }
-
-    /**
-     * Returns a String description of the given {@link View}. The default is to return the view's
-     * resource entry name.
-     *
-     * @param view the {@link View} to describe
-     * @return a String description of the given {@link View}
-     */
-    public String describeView(@Nullable View view) {
-      StringBuilder message = new StringBuilder();
-      if ((view != null
-          && view.getId() != View.NO_ID
-          && view.getResources() != null
-          && !ViewAccessibilityUtils.isViewIdGenerated(view.getId()))) {
-        message.append("View ");
-        try {
-          message.append(view.getResources().getResourceEntryName(view.getId()));
-        } catch (Exception e) {
-          /* In some integrations (seen in Robolectric), the resources may behave inconsistently */
-          message.append("with no valid resource name");
-        }
-      } else {
-        message.append("View with no valid resource name");
-      }
-      return message.toString();
-    }
   }
 }

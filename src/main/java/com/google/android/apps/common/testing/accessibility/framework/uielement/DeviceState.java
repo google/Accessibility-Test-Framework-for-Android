@@ -17,7 +17,9 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DeviceStateProto;
 import com.google.common.base.Splitter;
+import com.google.errorprone.annotations.Immutable;
 import java.util.Locale;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Representation of the state of a device at the time an {@link AccessibilityHierarchy} is
@@ -26,6 +28,7 @@ import java.util.Locale;
  * <p>Display properties, such as screen resolution and pixel density, are stored within {@link
  * DisplayInfo} and as fields in the associated {@link DeviceStateProto}.
  */
+@Immutable
 public class DeviceState {
 
   protected static final Splitter HYPHEN_SPLITTER = Splitter.on('-');
@@ -38,6 +41,8 @@ public class DeviceState {
 
   protected final Locale locale;
 
+  protected final @Nullable Float fontScale;
+
   /** Creates a record of the device state at the time of construction. */
   DeviceState(DeviceStateProto fromProto) {
     sdkVersion = fromProto.getSdkVersion();
@@ -45,11 +50,13 @@ public class DeviceState {
     String languageTag = fromProto.getLocale();
     // Use English if no locale was recorded in the proto.
     locale = languageTag.isEmpty() ? Locale.ENGLISH : getLocaleFromLanguageTag(languageTag);
+    fontScale = fromProto.hasFontScale() ? fromProto.getFontScale() : null;
   }
 
-  protected DeviceState(int sdkVersion, Locale locale) {
+  protected DeviceState(int sdkVersion, Locale locale, @Nullable Float fontScale) {
     this.sdkVersion = sdkVersion;
     this.locale = locale;
+    this.fontScale = fontScale;
     defaultDisplayInfo = new DisplayInfo();
   }
 
@@ -71,11 +78,23 @@ public class DeviceState {
     return locale;
   }
 
+  /**
+   * Gets the Accessibility Font scale at the time the device state was captured.
+   *
+   * @see android.content.res.Configuration#fontScale
+   */
+  public @Nullable Float getFontScale() {
+    return fontScale;
+  }
+
   DeviceStateProto toProto() {
     DeviceStateProto.Builder builder = DeviceStateProto.newBuilder();
     builder.setSdkVersion(sdkVersion);
     builder.setDefaultDisplayInfo(getDefaultDisplayInfo().toProto());
     builder.setLocale(getLanguageTag());
+    if (fontScale != null) {
+      builder.setFontScale(fontScale);
+    }
     return builder.build();
   }
 

@@ -21,14 +21,6 @@
   
   <string name="clickable">en el que se puede hacer clic</string>
   
-  <string name="non_clickable">en el que no se puede hacer clic</string>
-  
-  <string name="long_clickable">en el que se puede hacer un clic largo</string>
-  
-  <string name="clickable_and_long_clickable">en el que se puede hacer clic y se puede hacer un clic largo</string>
-  
-  <string name="actionable">que permite una acción</string>
-  
   <string name="result_message_sdk_version_not_applicable">Esta verificación no se puede utilizar en dispositivos que ejecutan Android %1$s y versiones posteriores.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Es posible que otro contenido en pantalla cubra este elemento. Prueba manualmente el contraste de este elemento.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Este elemento %1$s tiene la misma ubicación en pantalla (&lt;tt&gt;%2$s&lt;/tt&gt;) que los otros elementos con esas propiedades (%3$d).</string>
   
   <string name="result_message_view_bounds">Este elemento %1$s también tiene una ubicación en pantalla de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">en el que no se puede hacer clic</string>
+  
+  <string name="long_clickable">en el que se puede hacer un clic largo</string>
+  
+  <string name="clickable_and_long_clickable">en el que se puede hacer clic y se puede hacer un clic largo</string>
+  
+  <string name="actionable">que permite una acción</string>
   
   <string name="check_title_duplicate_speakable_text">Descripciones del elemento</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se basa en el color del primer plano, &lt;tt&gt;#%3$06X&lt;/tt&gt;, y el color de fondo proporcionado, &lt;tt&gt;#%4$06X&lt;/tt&gt;. Te recomendamos que la aumentes a %2$.2f o a un valor mayor.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">La relación de contraste de la imagen es %1$.2f. Esta relación se calcula con un color de primer plano estimado de &lt;tt&gt;#%3$06X&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;#%4$06X&lt;/tt&gt;. Intenta aumentar esta relación a %2$.2f o un valor superior.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se basa en el color del primer plano, &lt;tt&gt;#%3$06X&lt;/tt&gt;, y el color de fondo proporcionado, &lt;tt&gt;#%4$06X&lt;/tt&gt;. Te recomendamos que la aumentes a la relación configurada de %2$.2f o a un valor mayor.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
   
   <string name="check_title_redundant_description">Etiqueta del tipo de elemento</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">La relación de contraste del texto del elemento es %1$.2f. Esta relación se calcula con un color de texto de &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con un color de texto &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Te recomendamos que uses colores que proporcionen una relación de contraste mayor que el valor modificado de %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con un color de primer plano estimado de &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se basa en el color de primer plano de &lt;tt&gt;#%2$06X&lt;/tt&gt; y el color de fondo proporcionado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relación de contraste del texto del elemento es %1$.2f. Esta relación se calcula con un color de primer plano estimado de &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor superior.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se basa en el color de primer plano de &lt;tt&gt;#%2$06X&lt;/tt&gt; y el color de fondo proporcionado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Te recomendamos aumentarla a la relación configurada de %4$.2f o a un valor superior.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Los colores de primer plano y de fondo de este elemento cumplen con el valor sugerido de la relación de contraste.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Los colores de primer plano y de fondo de este elemento cumplen con el valor modificado de la relación de contraste.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">¿Son correctos los colores detectados de primer plano y de fondo?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">El ancho de este elemento es &lt;tt&gt;%1$ddp&lt;/tt&gt;. Prueba un ancho de &lt;tt&gt;%2$ddp&lt;/tt&gt; o mayor para este objetivo táctil.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">El tamaño de este elemento es &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Prueba con un ancho de &lt;tt&gt;%3$ddp&lt;/tt&gt; y un alto de &lt;tt&gt;%4$ddp&lt;/tt&gt; o superior para el objetivo táctil.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">El tamaño de este elemento es de &lt;tt&gt;%1$ddp&lt;/tt&gt; × &lt;tt&gt;%2$ddp&lt;/tt&gt;. Te recomendamos que aumentes el tamaño de este objetivo táctil al valor mínimo modificado de &lt;tt&gt;%3$ddp&lt;/tt&gt; × &lt;tt&gt;%4$ddp&lt;/tt&gt; o a uno mayor.</string>
   
-  <string name="result_message_customized_small_touch_target_height">El alto de este elemento es &lt;tt&gt;%1$ddp&lt;/tt&gt;. Intenta aumentar el alto del objetivo táctil al valor mínimo de &lt;tt&gt;%2$ddp&lt;/tt&gt; o uno superior.</string>
+  <string name="result_message_customized_small_touch_target_height">El alto de este elemento es de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Te recomendamos que aumentes el alto de este objetivo táctil al valor mínimo modificado de &lt;tt&gt;%2$ddp&lt;/tt&gt; o a uno mayor.</string>
   
-  <string name="result_message_customized_small_touch_target_width">El ancho de este elemento es &lt;tt&gt;%1$ddp&lt;/tt&gt;. Intenta aumentar el ancho del objetivo táctil al valor mínimo de &lt;tt&gt;%2$ddp&lt;/tt&gt; o uno superior.</string>
+  <string name="result_message_customized_small_touch_target_width">El ancho de este elemento es de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Te recomendamos que aumentes el ancho de este objetivo táctil al valor mínimo modificado de &lt;tt&gt;%2$ddp&lt;/tt&gt; o a uno mayor.</string>
   
   <string name="result_message_addendum_touch_delegate">Se detectó un &lt;tt&gt;TouchDelegate&lt;/tt&gt; en uno de los antecesores de este elemento. Se puede ignorar este mensaje si el delegado tiene el tamaño y el manejo táctil adecuados para este elemento.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Es posible que un contenedor superior esté reduciendo el tamaño de este elemento, que tiene un área de dibujo de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Aumenta el tamaño del antecesor que está reduciendo el elemento o permite que un contenedor superior más grande administre las acciones en nombre del elemento.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Es posible que este elemento solo se pueda ver parcialmente en un contenedor desplazable.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Este elemento proviene de contenido web. Se recomienda una verificación adicional del tamaño del objetivo táctil.</string>
   
   <string name="check_title_class_name_not_supported">Tipo de elemento no admitido</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Considera exponer los elementos de esta región a los servicios de accesibilidad.</string>
   
+  <string name="check_title_text_size">Escalamiento de texto</string>
+  
+  <string name="result_message_no_text_size_unit">No se pudo obtener la unidad de tamaño del texto.</string>
+  
+  <string name="result_message_brief_text_size_unit">La unidad de tamaño del texto de este elemento es &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; con una unidad de tamaño del texto de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Este texto es pequeño y puede ser difícil de leer para algunos usuarios. Te recomendamos que uses un tamaño más grande o que especifiques el tamaño del texto en píxeles a escala (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Te recomendamos que especifiques el tamaño del texto en píxeles a escala (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene un ancho fijo y texto escalable.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene una altura fija y texto escalable</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene un tamaño fijo y texto escalable.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene un ancho fijo y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene una altura fija y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene un tamaño fijo y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Considera modificar los &lt;tt&gt;LayoutParams&lt;/tt&gt; para permitir la expansión del texto.</string>
+  
+  <string name="check_title_unexposed_text">Texto no visible</string>
+  
+  <string name="result_message_unexposed_text">Asegúrate de que la etiqueta de accesibilidad del elemento incluya su texto visible.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Se detectaron resultados de OCR en este elemento ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Se detectó texto no visible: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Se detectó texto: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Es posible que &lt;tt&gt;SurfaceView&lt;/tt&gt; no permita que los servicios de accesibilidad tengan acceso a su contenido.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Se detectaron varios textos no visibles, incluido “%1$s”.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Es posible que este recurso no esté mostrando su contenido a los servicios de accesibilidad.</string>
+  
+  <string name="result_message_ocr_result_not_available">Los resultados de OCR no están disponibles.</string>
+  
+  <string name="result_message_no_matching_ocr_results">No se detectaron resultados de OCR dentro de este elemento.</string>
+  
+  <string name="result_message_multiple_best_match_views">Se detectó un resultado de OCR dentro de múltiples elementos enfocables.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Se detectó un resultado de OCR con un solo carácter, pero no existe texto en esa ubicación.</string>
+  
   <string name="question_message_screen_has_unexposed_items">¿Esta pantalla contiene elementos importantes que no están expuestos?</string>
   
   <string name="question_message_identify_unexposed_items">Selecciona las regiones de la pantalla con elementos no identificados.</string>
+  
+  <string name="value_checked">elemento marcado</string>
+  
+  <string name="value_not_checked">elemento no marcado</string>
+  
+  <string name="value_on">activado</string>
+  
+  <string name="value_off">desactivado</string>
+  
+  <string name="template_containers_quantity_other">%1$s con %2$d elementos visibles.</string>
+  
+  <string name="template_labeled_item">%1$s de %2$s</string>
+  
+  <string name="value_listview">Lista</string>
 
 </resources>

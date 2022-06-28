@@ -21,14 +21,6 @@
   
   <string name="clickable">element je mogoče klikniti</string>
   
-  <string name="non_clickable">elementa ni mogoče klikniti</string>
-  
-  <string name="long_clickable">mogoč je dolgi klik elementa</string>
-  
-  <string name="clickable_and_long_clickable">mogoča sta klik in dolgi klik elementa</string>
-  
-  <string name="actionable">z elementom je mogoče opraviti dejanje</string>
-  
   <string name="result_message_sdk_version_not_applicable">Tega preverjanja ni mogoče uporabiti v napravah s sistemom Android različice %1$s in novejšimi.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Ta element morda zakriva druga vsebina na zaslonu. Ročno preizkusite kontrast tega elementa.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Ta element z lastnostjo »%1$s« je na isti lokaciji na zaslonu (&lt;tt&gt;%2$s&lt;/tt&gt;) kot toliko drugih elementov z enakimi lastnostmi: %3$d.</string>
   
   <string name="result_message_view_bounds">Ta element z lastnostjo »%1$s« je tudi na tej lokaciji na zaslonu: &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">elementa ni mogoče klikniti</string>
+  
+  <string name="long_clickable">mogoč je dolgi klik elementa</string>
+  
+  <string name="clickable_and_long_clickable">mogoča sta klik in dolgi klik elementa</string>
+  
+  <string name="actionable">z elementom je mogoče opraviti dejanje</string>
   
   <string name="check_title_duplicate_speakable_text">Opisi elementov</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na %2$.2f ali več.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povečanju razmerja na konfigurirano razmerje %2$.2f ali več.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na konfigurirano razmerje %2$.2f ali več.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
   
   <string name="check_title_redundant_description">Oznaka vrste elementa</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;#%2$06X&lt;/tt&gt; in barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;#%2$06X&lt;/tt&gt; in barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od spremenjenega razmerja %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na konfigurirano razmerje %4$.2f ali več.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na konfigurirano razmerje %4$.2f ali več.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Barve ospredja in ozadja elementa so v skladu s predlaganim kontrastnim razmerjem.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Barve ospredja in ozadja elementa so v skladu s spremenjenim kontrastnim razmerjem.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Ali sta zaznani barvi ospredja in ozadja ustrezni?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Širina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju širine tega cilja dotika na &lt;tt&gt;%2$ddp&lt;/tt&gt; ali več.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Velikost tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o povečanju tega cilja dotika najmanj na konfigurirano najmanjšo velikost &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Velikost tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o povečanju tega cilja dotika najmanj na spremenjeno najmanjšo velikost &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Višina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju višine tega cilja dotika najmanj na konfigurirano najmanjšo višino &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Višina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju višine tega cilja dotika najmanj na spremenjeno najmanjšo višino &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Širina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju širine tega cilja dotika najmanj na konfigurirano najmanjšo širino &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Širina tega elementa je &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povečanju širine tega cilja dotika najmanj na spremenjeno najmanjšo širino &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">V enem od nadrejenih razredov tega elementa je bil zaznan element &lt;tt&gt;TouchDelegate&lt;/tt&gt;. To sporočilo lahko prezrete, če je izvedeni element dovolj velik in obravnava dotike za ta element.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Ta element, ki ima območje risanja velikosti &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;, je morda obrezan zaradi nadrejenega vsebnika. Povečajte nadrejeni element za obrezovanje tega elementa ali dovolite, da dejanja v imenu tega elementa obravnava večji nadrejeni vsebnik.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Ta element je morda le delno viden v vsebniku, po katerem se je mogoče pomikati.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Ta element izvira iz spletne vsebine, zato je priporočeno dodatno preverjanje ciljnega območja dotika.</string>
   
   <string name="check_title_class_name_not_supported">Nepodprta vrsta elementa</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Razmislite o tem, da bi elemente v tem območju izpostavili storitvam dostopnosti.</string>
   
+  <string name="check_title_text_size">Prilagajanje velikosti besedila</string>
+  
+  <string name="result_message_no_text_size_unit">Enote velikosti besedila ni bilo mogoče pridobiti.</string>
+  
+  <string name="result_message_brief_text_size_unit">Enota velikosti besedila tega elementa je &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; z enoto velikosti besedila &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Besedilo je majhno, zaradi česar bo morda za nekatere uporabnike težko berljivo. Uporabite večje besedilo ali navedite velikost besedila v prilagojenih slikovnih pikah (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Navedite velikost besedila v prilagojenih slikovnih pikah (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno širino in prilagodljivo velikost pisave.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno višino in prilagodljivo velikost pisave.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno velikost in prilagodljivo velikost pisave.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno širino in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno višino in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno velikost in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Prilagodite parametre &lt;tt&gt;LayoutParams&lt;/tt&gt;, da omogočite razširjanje besedila.</string>
+  
+  <string name="check_title_unexposed_text">Neizpostavljeno besedilo</string>
+  
+  <string name="result_message_unexposed_text">Zagotovite, da oznaka dostopnosti tega elementa vključuje vidno besedilo.</string>
+  
+  <string name="result_message_text_detected_in_image_view">V tem elementu ImageView so bili zaznani rezultati tehnologije OCR.</string>
+  
+  <string name="result_message_brief_unexposed_text">Zaznano je bilo neizpostavljeno besedilo: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Zaznano je bilo besedilo: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Ta &lt;tt&gt;SurfaceView&lt;/tt&gt; morda ne razkriva svoje vsebine storitvam za ljudi s posebnimi potrebami.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Zaznanih je več neizpostavljenih besedil, vključno z naslednjim: »%1$s«.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Ta element morda ne razkriva svoje vsebine storitvam za ljudi s posebnimi potrebami.</string>
+  
+  <string name="result_message_ocr_result_not_available">Rezultati tehnologije OCR niso na voljo.</string>
+  
+  <string name="result_message_no_matching_ocr_results">V tem elementu ni bilo zaznanih rezultatov tehnologije OCR.</string>
+  
+  <string name="result_message_multiple_best_match_views">V več elementih z možnostjo izbire je bil zaznan en rezultat tehnologije OCR.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Zaznan je bil rezultat tehnologije OCR z enim znakom, vendar na tem mestu ni besedila.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Ali so na tem zaslonu pomembni elementi brez orisa?</string>
   
   <string name="question_message_identify_unexposed_items">Na zaslonu izberite območja z neznanimi elementi.</string>
+  
+  <string name="value_checked">potrjeno</string>
+  
+  <string name="value_not_checked">ni potrjeno</string>
+  
+  <string name="value_on">vklopljeno</string>
+  
+  <string name="value_off">izklopljeno</string>
+  
+  <string name="template_containers_quantity_other">%1$s s toliko elementi: %2$d.</string>
+  
+  <string name="template_labeled_item">%1$s za %2$s</string>
+  
+  <string name="value_listview">Seznam</string>
 
 </resources>

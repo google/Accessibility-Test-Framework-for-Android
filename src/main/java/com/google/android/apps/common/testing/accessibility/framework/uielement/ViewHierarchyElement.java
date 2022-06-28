@@ -60,6 +60,7 @@ public class ViewHierarchyElement {
   protected final @Nullable String resourceName;
   protected final @Nullable SpannableString contentDescription;
   protected final @Nullable SpannableString text;
+  protected final @Nullable SpannableString stateDescription;
   protected final boolean importantForAccessibility;
   protected final @Nullable Boolean visibleToUser;
   protected final boolean clickable;
@@ -72,10 +73,12 @@ public class ViewHierarchyElement {
   protected final @Nullable Boolean checkable;
   protected final @Nullable Boolean checked;
   protected final @Nullable Boolean hasTouchDelegate;
+  protected final boolean isScreenReaderFocusable;
   protected final @Nullable Rect boundsInScreen;
   protected final @Nullable Integer nonclippedHeight;
   protected final @Nullable Integer nonclippedWidth;
   protected final @Nullable Float textSize;
+  protected final @Nullable Integer textSizeUnit;
   protected final @Nullable Integer textColor;
   protected final @Nullable Integer backgroundDrawableColor;
   protected final @Nullable Integer typefaceStyle;
@@ -85,7 +88,7 @@ public class ViewHierarchyElement {
   protected final @Nullable LayoutParams layoutParams;
   protected final @Nullable SpannableString hintText; // only for TextView
   protected final @Nullable Integer hintTextColor; // only for TextView
-  protected final List<Rect> textCharacterLocations;
+  protected final ImmutableList<Rect> textCharacterLocations;
 
   // Populated only after a hierarchy is constructed
   protected @Nullable Long labeledById;
@@ -106,6 +109,7 @@ public class ViewHierarchyElement {
       @Nullable String resourceName,
       @Nullable SpannableString contentDescription,
       @Nullable SpannableString text,
+      @Nullable SpannableString stateDescription,
       boolean importantForAccessibility,
       @Nullable Boolean visibleToUser,
       boolean clickable,
@@ -118,11 +122,13 @@ public class ViewHierarchyElement {
       @Nullable Boolean checkable,
       @Nullable Boolean checked,
       @Nullable Boolean hasTouchDelegate,
+      boolean isScreenReaderFocusable,
       List<Rect> touchDelegateBounds,
       @Nullable Rect boundsInScreen,
       @Nullable Integer nonclippedHeight,
       @Nullable Integer nonclippedWidth,
       @Nullable Float textSize,
+      @Nullable Integer textSizeUnit,
       @Nullable Integer textColor,
       @Nullable Integer backgroundDrawableColor,
       @Nullable Integer typefaceStyle,
@@ -149,6 +155,7 @@ public class ViewHierarchyElement {
     this.resourceName = resourceName;
     this.contentDescription = contentDescription;
     this.text = text;
+    this.stateDescription = stateDescription;
     this.importantForAccessibility = importantForAccessibility;
     this.visibleToUser = visibleToUser;
     this.clickable = clickable;
@@ -161,11 +168,13 @@ public class ViewHierarchyElement {
     this.checkable = checkable;
     this.checked = checked;
     this.hasTouchDelegate = hasTouchDelegate;
+    this.isScreenReaderFocusable = isScreenReaderFocusable;
     this.touchDelegateBounds = touchDelegateBounds;
     this.boundsInScreen = boundsInScreen;
     this.nonclippedHeight = nonclippedHeight;
     this.nonclippedWidth = nonclippedWidth;
     this.textSize = textSize;
+    this.textSizeUnit = textSizeUnit;
     this.textColor = textColor;
     this.backgroundDrawableColor = backgroundDrawableColor;
     this.typefaceStyle = typefaceStyle;
@@ -183,7 +192,7 @@ public class ViewHierarchyElement {
     this.layoutParams = layoutParams;
     this.hintText = hintText;
     this.hintTextColor = hintTextColor;
-    this.textCharacterLocations = textCharacterLocations;
+    this.textCharacterLocations = ImmutableList.copyOf(textCharacterLocations);
   }
 
   ViewHierarchyElement(ViewHierarchyElementProto proto) {
@@ -205,6 +214,8 @@ public class ViewHierarchyElement {
     contentDescription =
         proto.hasContentDescription() ? new SpannableString(proto.getContentDescription()) : null;
     text = proto.hasText() ? new SpannableString(proto.getText()) : null;
+    stateDescription =
+        proto.hasStateDescription() ? new SpannableString(proto.getStateDescription()) : null;
     importantForAccessibility = proto.getImportantForAccessibility();
     visibleToUser = proto.hasVisibleToUser() ? proto.getVisibleToUser() : null;
     clickable = proto.getClickable();
@@ -217,6 +228,7 @@ public class ViewHierarchyElement {
     checkable = proto.hasCheckable() ? proto.getCheckable() : null;
     checked = proto.hasChecked() ? proto.getChecked() : null;
     hasTouchDelegate = proto.hasHasTouchDelegate() ? proto.getHasTouchDelegate() : null;
+    isScreenReaderFocusable = proto.getScreenReaderFocusable();
     if (proto.getTouchDelegateBoundsCount() > 0) {
       ImmutableList.Builder<Rect> builder = ImmutableList.<Rect>builder();
       for (int i = 0; i < proto.getTouchDelegateBoundsCount(); ++i) {
@@ -230,6 +242,7 @@ public class ViewHierarchyElement {
     nonclippedHeight = proto.hasNonclippedHeight() ? proto.getNonclippedHeight() : null;
     nonclippedWidth = proto.hasNonclippedWidth() ? proto.getNonclippedWidth() : null;
     textSize = proto.hasTextSize() ? proto.getTextSize() : null;
+    textSizeUnit = proto.hasTextSizeUnit() ? proto.getTextSizeUnit() : null;
     textColor = proto.hasTextColor() ? proto.getTextColor() : null;
     backgroundDrawableColor =
         proto.hasBackgroundDrawableColor() ? proto.getBackgroundDrawableColor() : null;
@@ -265,14 +278,15 @@ public class ViewHierarchyElement {
    * Returns the value uniquely identifying this window within the context of its containing {@link
    * WindowHierarchyElement}.
    */
+  @Pure
   public int getId() {
     return id;
   }
 
   /**
    * @return a value uniquely representing this {@link ViewHierarchyElement} and its containing
-   *         {@link WindowHierarchyElement} in the context of it's containing
-   *         {@link AccessibilityHierarchy}.
+   *     {@link WindowHierarchyElement} in the context of it's containing {@link
+   *     AccessibilityHierarchy}.
    */
   public long getCondensedUniqueId() {
     return (((long) getWindow().getId() << 32) | getId());
@@ -301,11 +315,11 @@ public class ViewHierarchyElement {
 
   /**
    * @param atIndex The index of the child {@link ViewHierarchyElement} to obtain. Must be &ge 0 and
-   *        &lt {@link #getChildViewCount()}.
-   * @return The requested child, or {@code null} if no such child exists at the given
-   *         {@code atIndex}
-   * @throws NoSuchElementException if {@code atIndex} is less than 0 or greater than
-   *         {@code getChildViewCount() - 1}
+   *     &lt {@link #getChildViewCount()}.
+   * @return The requested child, or {@code null} if no such child exists at the given {@code
+   *     atIndex}
+   * @throws NoSuchElementException if {@code atIndex} is less than 0 or greater than {@code
+   *     getChildViewCount() - 1}
    */
   public ViewHierarchyElement getChildView(int atIndex) {
     if ((atIndex < 0) || (childIds == null) || (atIndex >= childIds.size())) {
@@ -369,7 +383,8 @@ public class ViewHierarchyElement {
   }
 
   /**
-   * Check if the {@link android.view.View} this element represents matches a particular class.
+   * Check if the {@link android.view.View} this element represents matches a particular class using
+   * its class name and accessibility class name if available.
    *
    * @param referenceClassName the name of the class to check against the class of this element.
    * @return true if the {@code android.view.View} this element represents is an instance of the
@@ -416,6 +431,7 @@ public class ViewHierarchyElement {
    *
    * @see android.view.View#isImportantForAccessibility()
    */
+  @Pure
   public boolean isImportantForAccessibility() {
     return importantForAccessibility;
   }
@@ -431,10 +447,22 @@ public class ViewHierarchyElement {
   }
 
   /**
+   * Returns the View's state description.
+   *
+   * @see android.view.getStateDescription()
+   * @see android.view.accessibility.AccessibilityNodeInfo#getStateDescription()
+   */
+  @Pure
+  public @Nullable SpannableString getStateDescription() {
+    return stateDescription;
+  }
+
+  /**
    * @return {@link Boolean#TRUE} if the element is visible to the user, {@link Boolean#FALSE} if
    *     not, or {@code null} if this cannot be determined.
    * @see android.view.accessibility.AccessibilityNodeInfo#isVisibleToUser()
    */
+  @Pure
   public @Nullable Boolean isVisibleToUser() {
     return visibleToUser;
   }
@@ -445,6 +473,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#isClickable()
    * @see android.view.View#isClickable()
    */
+  @Pure
   public boolean isClickable() {
     return clickable;
   }
@@ -455,6 +484,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#isLongClickable()
    * @see android.view.View#isLongClickable()
    */
+  @Pure
   public boolean isLongClickable() {
     return longClickable;
   }
@@ -465,6 +495,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#isFocusable()
    * @see android.view.View#isFocusable()
    */
+  @Pure
   public boolean isFocusable() {
     return focusable;
   }
@@ -473,6 +504,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is editable, {@link Boolean#FALSE} if not, or
    *     {@code null} if this cannot be determined.
    */
+  @Pure
   public @Nullable Boolean isEditable() {
     return editable;
   }
@@ -485,25 +517,27 @@ public class ViewHierarchyElement {
    *     determine if an element is actually scrollable based on contents use {@link
    *     #canScrollForward} or {@link #canScrollBackward}.
    */
+  @Pure
   public @Nullable Boolean isScrollable() {
     return scrollable;
   }
 
   /**
    * @return {@link Boolean#TRUE} if the element is scrollable in the "forward" direction, typically
-   *         meaning either vertically downward or horizontally to the right (in left-to-right
-   *         locales), {@link Boolean#FALSE} if not, or {@code null if this cannot be determined.
+   *     meaning either vertically downward or horizontally to the right (in left-to-right locales),
+   *     {@link Boolean#FALSE} if not, or {@code null} if this cannot be determined.
    */
+  @Pure
   public @Nullable Boolean canScrollForward() {
     return canScrollForward;
   }
 
   /**
    * @return {@link Boolean#TRUE} if the element is scrollable in the "backward" direction,
-   *         typically meaning either vertically downward or horizontally to the right (in
-   *         left-to-right locales), {@link Boolean#FALSE} if not, or {@code null if this cannot be
-   *         determined.
+   *     typically meaning either vertically downward or horizontally to the right (in left-to-right
+   *     locales), {@link Boolean#FALSE} if not, or {@code null} if this cannot be determined.
    */
+  @Pure
   public @Nullable Boolean canScrollBackward() {
     return canScrollBackward;
   }
@@ -512,6 +546,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is checkable, {@link Boolean#FALSE} if not, or
    *     {@code null} if this cannot be determined.
    */
+  @Pure
   public @Nullable Boolean isCheckable() {
     return checkable;
   }
@@ -520,6 +555,7 @@ public class ViewHierarchyElement {
    * @return {@link Boolean#TRUE} if the element is checked, {@link Boolean#FALSE} if not, or {@code
    *     null} if this cannot be determined.
    */
+  @Pure
   public @Nullable Boolean isChecked() {
     return checked;
   }
@@ -529,8 +565,20 @@ public class ViewHierarchyElement {
    * Boolean#FALSE} if not, or {@code null} if this cannot be determined. This indicates only that
    * this element may be responsible for delegating its touches to another element.
    */
+  @Pure
   public @Nullable Boolean hasTouchDelegate() {
     return hasTouchDelegate;
+  }
+
+  /**
+   * Returns whether the view should be treated as a focusable unit by screenreaders.
+   *
+   * @see android.view.accessibility.AccessibilityNodeInfo#isScreenReaderFocusable()
+   * @see android.view.View#isScreenReaderFocusable()
+   */
+  @Pure
+  public boolean isScreenReaderFocusable() {
+    return isScreenReaderFocusable;
   }
 
   /**
@@ -546,6 +594,7 @@ public class ViewHierarchyElement {
   }
 
   /** Returns a list of character locations in screen coordinates. */
+  @Pure
   public List<Rect> getTextCharacterLocations() {
     return textCharacterLocations;
   }
@@ -562,6 +611,7 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getBoundsInScreen(android.graphics.Rect)
    * @see android.view.View#getGlobalVisibleRect(android.graphics.Rect)
    */
+  @Pure
   public Rect getBoundsInScreen() {
     return (boundsInScreen != null) ? boundsInScreen : Rect.EMPTY;
   }
@@ -571,6 +621,7 @@ public class ViewHierarchyElement {
    *     applied by parent elements.
    * @see android.view.View#getHeight()
    */
+  @Pure
   public @Nullable Integer getNonclippedHeight() {
     return nonclippedHeight;
   }
@@ -580,6 +631,7 @@ public class ViewHierarchyElement {
    *     applied by parent elements.
    * @see android.view.View#getWidth()
    */
+  @Pure
   public @Nullable Integer getNonclippedWidth() {
     return nonclippedWidth;
   }
@@ -589,8 +641,18 @@ public class ViewHierarchyElement {
    *     this cannot be determined
    * @see android.widget.TextView#getTextSize()
    */
+  @Pure
   public @Nullable Float getTextSize() {
     return textSize;
+  }
+
+  /*
+   * @return the dimension type of the text size unit originally defined.
+   * @see android.util.TypedValue#TYPE_DIMENSION
+   */
+  @Pure
+  public @Nullable Integer getTextSizeUnit() {
+    return textSizeUnit;
   }
 
   /**
@@ -598,6 +660,7 @@ public class ViewHierarchyElement {
    *     determined
    * @see android.widget.TextView#getCurrentTextColor()
    */
+  @Pure
   public @Nullable Integer getTextColor() {
     return textColor;
   }
@@ -608,6 +671,7 @@ public class ViewHierarchyElement {
    * @see android.view.View#getBackground()
    * @see android.graphics.drawable.ColorDrawable#getColor()
    */
+  @Pure
   public @Nullable Integer getBackgroundDrawableColor() {
     return backgroundDrawableColor;
   }
@@ -634,6 +698,7 @@ public class ViewHierarchyElement {
    * @see android.view.View#isEnabled()
    * @see android.view.accessibility.AccessibilityNodeInfo#isEnabled()
    */
+  @Pure
   public boolean isEnabled() {
     return enabled;
   }
@@ -641,9 +706,11 @@ public class ViewHierarchyElement {
   /**
    * @return The class name as reported to accessibility services, or {@code null} if this cannot be
    *     determined
-   *     <p>NOTE: Unavailable for instances originally created from a {@link android.view.View}
+   *     <p>NOTE: Unavailable for instances originally created from a {@link android.view.View} on
+   *     API < 23.
    * @see android.view.accessibility.AccessibilityNodeInfo#getClassName()
    */
+  @Pure
   public @Nullable CharSequence getAccessibilityClassName() {
     return accessibilityClassName;
   }
@@ -656,7 +723,6 @@ public class ViewHierarchyElement {
    * @see android.view.accessibility.AccessibilityNodeInfo#getLabelFor()
    * @see android.view.View#getLabelFor()
    */
-  @Pure
   public @Nullable ViewHierarchyElement getLabeledBy() {
     return getViewHierarchyElementById(labeledById);
   }
@@ -685,6 +751,7 @@ public class ViewHierarchyElement {
    *
    * @see android.view.accessibility.AccessibilityNodeInfo#getDrawingOrder()
    */
+  @Pure
   public @Nullable Integer getDrawingOrder() {
     return drawingOrder;
   }
@@ -695,6 +762,7 @@ public class ViewHierarchyElement {
    *
    * @see android.view.ViewGroup.LayoutParams
    */
+  @Pure
   public @Nullable LayoutParams getLayoutParams() {
     return layoutParams;
   }
@@ -705,6 +773,7 @@ public class ViewHierarchyElement {
    *
    * @see android.widget.TextView#getHint()
    */
+  @Pure
   public @Nullable SpannableString getHintText() {
     return hintText;
   }
@@ -715,6 +784,7 @@ public class ViewHierarchyElement {
    *
    * @see android.widget.TextView#getCurrentHintTextColor()
    */
+  @Pure
   public @Nullable Integer getHintTextColor() {
     return hintTextColor;
   }
@@ -802,6 +872,7 @@ public class ViewHierarchyElement {
   }
 
   /** Returns a list of actions exposed by this view element. */
+  @Pure
   ImmutableList<ViewHierarchyAction> getActionList() {
     return actionList;
   }
@@ -833,6 +904,9 @@ public class ViewHierarchyElement {
     if (!TextUtils.isEmpty(text)) {
       builder.setText(text.toProto());
     }
+    if (!TextUtils.isEmpty(stateDescription)) {
+      builder.setStateDescription(stateDescription.toProto());
+    }
     builder.setImportantForAccessibility(importantForAccessibility);
     if (visibleToUser != null) {
       builder.setVisibleToUser(visibleToUser);
@@ -859,6 +933,7 @@ public class ViewHierarchyElement {
     if (hasTouchDelegate != null) {
       builder.setHasTouchDelegate(hasTouchDelegate);
     }
+    builder.setScreenReaderFocusable(isScreenReaderFocusable);
     for (Rect bounds : touchDelegateBounds) {
       builder.addTouchDelegateBounds(bounds.toProto());
     }
@@ -873,6 +948,9 @@ public class ViewHierarchyElement {
     }
     if (textSize != null) {
       builder.setTextSize(textSize);
+    }
+    if (textSizeUnit != null) {
+      builder.setTextSizeUnit(textSizeUnit);
     }
     if (textColor != null) {
       builder.setTextColor(textColor);
@@ -938,7 +1016,7 @@ public class ViewHierarchyElement {
    * Denotes that {@code labelingElement} acts as a label for this element
    *
    * @param labelingElement The element that labels this element, or {@code null} if this element is
-   *        not labeled by another
+   *     not labeled by another
    */
   void setLabeledBy(ViewHierarchyElement labelingElement) {
     labeledById = (labelingElement != null) ? labelingElement.getCondensedUniqueId() : null;
@@ -985,6 +1063,7 @@ public class ViewHierarchyElement {
         && isImportantForAccessibility() == element.isImportantForAccessibility()
         && TextUtils.equals(getContentDescription(), element.getContentDescription())
         && TextUtils.equals(getText(), element.getText())
+        && TextUtils.equals(getStateDescription(), element.getStateDescription())
         && Objects.equals(getTextColor(), element.getTextColor())
         && Objects.equals(getBackgroundDrawableColor(), element.getBackgroundDrawableColor())
         && Objects.equals(isVisibleToUser(), element.isVisibleToUser())
@@ -998,11 +1077,13 @@ public class ViewHierarchyElement {
         && Objects.equals(isCheckable(), element.isCheckable())
         && Objects.equals(isChecked(), element.isChecked())
         && Objects.equals(hasTouchDelegate(), element.hasTouchDelegate())
+        && (isScreenReaderFocusable() == element.isScreenReaderFocusable())
         && Objects.equals(getTouchDelegateBounds(), element.getTouchDelegateBounds())
         && Objects.equals(getBoundsInScreen(), element.getBoundsInScreen())
         && Objects.equals(getNonclippedWidth(), element.getNonclippedWidth())
         && Objects.equals(getNonclippedHeight(), element.getNonclippedHeight())
         && Objects.equals(getTextSize(), element.getTextSize())
+        && Objects.equals(getTextSizeUnit(), element.getTextSizeUnit())
         && Objects.equals(getTypefaceStyle(), element.getTypefaceStyle())
         && (isEnabled() == element.isEnabled())
         && condensedUniqueIdEquals(getLabeledBy(), element.getLabeledBy())
@@ -1014,7 +1095,8 @@ public class ViewHierarchyElement {
         && Objects.equals(getDrawingOrder(), element.getDrawingOrder())
         && Objects.equals(getLayoutParams(), element.getLayoutParams())
         && TextUtils.equals(getHintText(), element.getHintText())
-        && Objects.equals(getHintTextColor(), element.getHintTextColor());
+        && Objects.equals(getHintTextColor(), element.getHintTextColor())
+        && Objects.equals(getTextCharacterLocations(), element.getTextCharacterLocations());
   }
 
   private static boolean condensedUniqueIdEquals(

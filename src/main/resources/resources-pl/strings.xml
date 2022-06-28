@@ -21,14 +21,6 @@
   
   <string name="clickable">klikalny</string>
   
-  <string name="non_clickable">nieklikalny</string>
-  
-  <string name="long_clickable">wymagający długiego kliknięcia</string>
-  
-  <string name="clickable_and_long_clickable">klikalny i wymagający długiego kliknięcia</string>
-  
-  <string name="actionable">aktywny</string>
-  
   <string name="result_message_sdk_version_not_applicable">Tego sprawdzania nie można przeprowadzić na urządzeniach z Androidem w wersji %1$s i nowszych.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Ten element może być zasłonięty przez inne treści wyświetlane na ekranie. Rozważ ręczne sprawdzenie kontrastu tego elementu.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Ten element oznaczony jako „%1$s” ma taką samą lokalizację na ekranie (&lt;tt&gt;%2$s&lt;/tt&gt;) jak inne elementy (%3$d) o podobnych właściwościach.</string>
   
   <string name="result_message_view_bounds">Ten element oznaczony jako „%1$s” ma również lokalizację na ekranie: &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">nieklikalny</string>
+  
+  <string name="long_clickable">wymagający długiego kliknięcia</string>
+  
+  <string name="clickable_and_long_clickable">klikalny i wymagający długiego kliknięcia</string>
+  
+  <string name="actionable">aktywny</string>
   
   <string name="check_title_duplicate_speakable_text">Opisy elementów</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Współczynnik ten jest oparty na szacowanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz szacowanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do wartości określonej przez użytkownika (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do skonfigurowanej wartości (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
   
   <string name="check_title_redundant_description">Etykieta typu elementu</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na kolorze tekstu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na kolorze tekstu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które pozwolą uzyskać współczynnik kontrastu wyższy niż w przypadku zmienionego współczynnika %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacowanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacowanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do wartości określonej przez użytkownika (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do wartości określonej przez użytkownika (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacowanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacowanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do zmienionej wartości (%4$.2f).</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu tekstu tego elementu co najmniej do zmienionej wartości (%4$.2f).</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Kolory pierwszego planu i tła tego elementu zapewniają sugerowany współczynnik kontrastu.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Kolory pierwszego planu i tła tego elementu zapewniają zmieniony współczynnik kontrastu.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Czy wykryte kolory tła i pierwszego planu są prawidłowe?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">Szerokość tego docelowego elementu dotykowego wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem szerokości co najmniej do &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Rozmiar tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem rozmiaru tego docelowego elementu dotykowego co najmniej do wartości określonej przez użytkownika (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Rozmiar tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem rozmiaru tego docelowego elementu dotykowego co najmniej do zmienionej wartości (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;).</string>
   
-  <string name="result_message_customized_small_touch_target_height">Wysokość tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem wysokości tego docelowego elementu dotykowego co najmniej do wartości określonej przez użytkownika (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_height">Wysokość tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem wysokości tego docelowego elementu dotykowego co najmniej do zmienionej wartości (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
-  <string name="result_message_customized_small_touch_target_width">Szerokość tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem szerokości tego docelowego elementu dotykowego co najmniej do wartości określonej przez użytkownika (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_width">Szerokość tego elementu wynosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Zastanów się nad zwiększeniem szerokości tego docelowego elementu dotykowego co najmniej do zmienionej wartości (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
   <string name="result_message_addendum_touch_delegate">Wśród elementów prowadzących do tego elementu wykryto klasę &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Możesz zignorować tę wiadomość, jeśli ta klasa ma odpowiednie rozmiary i obsługuje dotknięcia tego elementu.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Kontener nadrzędny może przycinać rozmiar tego elementu, który ma obszar rysowania o rozmiarze &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Zwiększ rozmiar przodka, który przycina ten element, albo pozwól, by większy kontener nadrzędny obsługiwał akcje w imieniu tego elementu.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Ten element może być tylko częściowo widoczny w kontenerze, którego zawartość można przewijać.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Ten element pochodzi z treści internetowych. Zalecamy dodatkową weryfikację rozmiaru docelowego elementu dotykowego.</string>
   
   <string name="check_title_class_name_not_supported">Nieobsługiwany typ elementu</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Rozważ udostępnienie elementów znajdujących się na tym obszarze usługom ułatwień dostępu.</string>
   
+  <string name="check_title_text_size">Skalowanie tekstu</string>
+  
+  <string name="result_message_no_text_size_unit">Nie udało się uzyskać jednostki rozmiaru tekstu.</string>
+  
+  <string name="result_message_brief_text_size_unit">Jednostka rozmiaru tekstu w tym elemencie to &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; z jednostką rozmiaru tekstu &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Ten tekst jest mały i niektórym użytkownikom może być trudno go przeczytać. Rozważ zastosowanie większego rozmiaru tekstu lub podanie go w skalowanych pikselach (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Rozważ podanie rozmiaru tekstu w skalowanych pikselach (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stałą szerokość i skalowalny tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stałą wysokość i skalowalny tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stały rozmiar i skalowalny tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stałą szerokość i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stałą wysokość i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stały rozmiar i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Rozważ modyfikację &lt;tt&gt;LayoutParams&lt;/tt&gt;, aby umożliwić zwiększanie rozmiaru tekstu.</string>
+  
+  <string name="check_title_unexposed_text">Nieudostępniony tekst</string>
+  
+  <string name="result_message_unexposed_text">Zadbaj o to, aby etykieta ułatwień dostępu dla tego elementu zawierała jego widoczny tekst.</string>
+  
+  <string name="result_message_text_detected_in_image_view">W tym obiekcie ImageView wykryto wyniki funkcji OCR.</string>
+  
+  <string name="result_message_brief_unexposed_text">Wykryto nieudostępniony tekst: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Wykryto tekst: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Ten obiekt &lt;tt&gt;SurfaceView&lt;/tt&gt; może nie udostępniać swojej zawartości usługom ułatwień dostępu.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Znaleziono nieudostępniane fragmenty tekstu, w tym „%1$s”.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Ten element może nie udostępniać swojej zawartości usługom ułatwień dostępu.</string>
+  
+  <string name="result_message_ocr_result_not_available">Wyniki funkcji OCR nie są dostępne.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Wewnątrz tego elementu nie wykryto żadnych wyników funkcji OCR.</string>
+  
+  <string name="result_message_multiple_best_match_views">Jeden wynik funkcji OCR został wykryty wewnątrz kilku elementów możliwych do zaznaczenia.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Wykryto wynik funkcji OCR z 1 znakiem, ale w tej lokalizacji nie ma tekstu.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Czy na tym ekranie znajdują się ważne elementy, które nie zostały zaznaczone?</string>
   
   <string name="question_message_identify_unexposed_items">Zaznacz obszary ekranu, na których znajdują się elementy, które nie zostały zidentyfikowane.</string>
+  
+  <string name="value_checked">zaznaczono</string>
+  
+  <string name="value_not_checked">nie zaznaczono</string>
+  
+  <string name="value_on">wł.</string>
+  
+  <string name="value_off">wył.</string>
+  
+  <string name="template_containers_quantity_other">%1$s z %2$d widocznymi elementami.</string>
+  
+  <string name="template_labeled_item">%1$s, dotyczy %2$s</string>
+  
+  <string name="value_listview">Lista</string>
 
 </resources>

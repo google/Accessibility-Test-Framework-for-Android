@@ -59,8 +59,9 @@ public class ContrastSwatch {
 
   /** Compute the background and foreground colors and luminance for the image. */
   private static SeparatedColors processSwatch(Image image, boolean multipleForegroundColors) {
-    ColorHistogram colorHistogram = new ColorHistogram(image);
-    int imageSize = image.getWidth() * image.getHeight();
+    int[] pixels = image.getPixels();
+    ColorHistogram colorHistogram = new ColorHistogram(pixels);
+    int imageSize = pixels.length;
     return separateColors(colorHistogram, imageSize, multipleForegroundColors);
   }
 
@@ -330,8 +331,8 @@ public class ContrastSwatch {
 
     private final ImmutableMap<Integer, Integer> colorHistogram;
 
-    ColorHistogram(Image image) {
-      colorHistogram = processLuminanceData(image);
+    ColorHistogram(int[] pixels) {
+      colorHistogram = processLuminanceData(pixels);
     }
 
     private ColorHistogram(Map<Integer, Integer> map) {
@@ -368,13 +369,10 @@ public class ContrastSwatch {
      * @return a map where the keys are colors that are present in the image, and the values are the
      *     number of pixels with each color.
      */
-    private static ImmutableMap<Integer, Integer> processLuminanceData(Image image) {
-      final int width = image.getWidth();
-      final int height = image.getHeight();
-      if ((width * height) == 0) {
+    private static ImmutableMap<Integer, Integer> processLuminanceData(int[] pixels) {
+      if (pixels.length == 0) {
         return ImmutableMap.of();
       }
-      int[] pixels = image.getPixels();
       Arrays.sort(pixels);
 
       ImmutableMap.Builder<Integer, Integer> colorHistogram = ImmutableMap.builder();
@@ -392,7 +390,7 @@ public class ContrastSwatch {
       }
       // Catch the last unprocessed color
       colorHistogram.put(currentColor, currentColorCount);
-      return colorHistogram.build();
+      return colorHistogram.buildOrThrow();
     }
   }
 }

@@ -21,14 +21,6 @@
   
   <string name="clickable">可點擊</string>
   
-  <string name="non_clickable">不可點擊</string>
-  
-  <string name="long_clickable">可長按</string>
-  
-  <string name="clickable_and_long_clickable">可點擊與長按的</string>
-  
-  <string name="actionable">可操作</string>
-  
   <string name="result_message_sdk_version_not_applicable">這項檢查功能不適用於執行 Android %1$s 以上版本的裝置。</string>
   
   <string name="result_message_addendum_view_potentially_obscured">這個項目可能已遭其他螢幕內容遮蓋，建議你手動測試這個項目的對比。</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">這個%1$s項目在畫面上的位置 (&lt;tt&gt;%2$s&lt;/tt&gt;) 與另外 %3$d 個具備這些屬性的項目相同。</string>
   
   <string name="result_message_view_bounds">這個%1$s項目在畫面上的位置同樣是 &lt;tt&gt;%2$s&lt;/tt&gt;。</string>
+  
+  <string name="non_clickable">不可點擊</string>
+  
+  <string name="long_clickable">可長按</string>
+  
+  <string name="clickable_and_long_clickable">可點擊與長按的</string>
+  
+  <string name="actionable">可操作</string>
   
   <string name="check_title_duplicate_speakable_text">項目說明</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%4$06X&lt;/tt&gt; 計算而得。建議將這個對比度提高至 %2$.2f 以上。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比值是根據系統預估的前景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%4$06X&lt;/tt&gt; 計算而得。建議提高對比度，最低值最好不要小於你設定的比值 (%2$.2f)。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%4$06X&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%4$06X&lt;/tt&gt; 計算而得。建議將這個對比度提高至設定的比值 (%2$.2f) 以上。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%4$06X&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
   
   <string name="check_title_redundant_description">項目類型標籤</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比例是根據文字顏色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景顏色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議將項目的文字對比度提高為 %4$.2f 以上。</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比率是依據文字色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓對比度超過修正後的比率 (%4$.2f)。</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是根據系統預估的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">這個項目的文字對比度為 %1$.2f。這個比率是根據系統預估的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是根據系統預估的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於你設定的比值 (%4$.2f)。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">這個項目的文字對比度為 %1$.2f。這個比率是根據既有的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議將這個項目的文字對比度提高至所設比值 (%4$.2f) 以上。</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">這個項目的前景和背景色彩對比度達到建議比值。</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">這個項目的前景和背景色彩對比度達到修正後的比值。</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">系統偵測到的前景和背景色彩是否正確？</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">這個項目的寬度為 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建議將這個觸控目標的寬度設為 &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上。</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">這個項目的大小為 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;。建議增加這個觸控目標的大小，最低值最好不要小於你設定的尺寸下限 (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;)。</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">這個項目的大小為 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;。建議增加這個觸控目標的大小，最好不要小於修正後的尺寸下限 (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;)。</string>
   
-  <string name="result_message_customized_small_touch_target_height">這個項目的高度為 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建議增加這個觸控目標的高度，最低值最好不要小於你設定的高度下限 (&lt;tt&gt;%2$ddp&lt;/tt&gt;)。</string>
+  <string name="result_message_customized_small_touch_target_height">這個項目的高度為 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建議增加這個觸控目標的高度，最好不要小於修正後的高度下限 (&lt;tt&gt;%2$ddp&lt;/tt&gt;)。</string>
   
-  <string name="result_message_customized_small_touch_target_width">這個項目的寬度為 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建議增加這個觸控目標的寬度，最低值最好不要小於你設定的寬度下限 (&lt;tt&gt;%2$ddp&lt;/tt&gt;)。</string>
+  <string name="result_message_customized_small_touch_target_width">這個項目的寬度為 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建議增加這個觸控目標的寬度，最好不要小於修正後的寬度下限 (&lt;tt&gt;%2$ddp&lt;/tt&gt;)。</string>
   
   <string name="result_message_addendum_touch_delegate">系統在這個項目的祖系偵測到 &lt;tt&gt;TouchDelegate&lt;/tt&gt;。如果該委派項目的大小足夠，並且可處理這個項目的觸控活動，則可忽略這項訊息。</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">這個項目可能被某個上層容器裁掉了一部分的大小 (這個項目的繪圖區大小為 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;)。建議您增加這個項目上層容器的大小，或是讓較大的上層容器代為處理這個項目的動作。</string>
   
   <string name="result_message_addendum_against_scrollable_edge">這個項目可能只有部分顯示在可捲動的容器內。</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">這個項目源自網頁內容，建議進行額外的觸控目標大小驗證作業。</string>
   
   <string name="check_title_class_name_not_supported">不支援的項目類型</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">不妨讓無障礙服務偵測出這個區塊中的項目。</string>
   
+  <string name="check_title_text_size">文字比例</string>
+  
+  <string name="result_message_no_text_size_unit">無法取得文字大小單位。</string>
+  
+  <string name="result_message_brief_text_size_unit">這個項目的文字大小單位是「&lt;tt&gt;%1$s&lt;/tt&gt;」。</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">文字大小單位是「&lt;tt&gt;%2$s&lt;/tt&gt;」的&lt;tt&gt;%1$s&lt;/tt&gt;。</string>
+  
+  <string name="result_message_small_fixed_text_size">這段文字很小，部分使用者可能難以閱讀。建議改用較大的文字，或使用可縮放像素 (&lt;tt&gt;sp&lt;/tt&gt;) 指定文字大小。</string>
+  
+  <string name="result_message_fixed_text_size">建議使用可縮放像素 (&lt;tt&gt;sp&lt;/tt&gt;) 指定文字大小。</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定寬度及可縮放比例的文字。</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定高度及可縮放比例的文字。</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定大小及可縮放比例的文字。</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定寬度並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定高度並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定大小並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">請考慮修改 &lt;tt&gt;LayoutParams&lt;/tt&gt; 來放大文字。</string>
+  
+  <string name="check_title_unexposed_text">不含會顯示的文字</string>
+  
+  <string name="result_message_unexposed_text">請確保這個項目的無障礙標籤含有會顯示的文字。</string>
+  
+  <string name="result_message_text_detected_in_image_view">在這個 ImageView 中偵測到 OCR 結果。</string>
+  
+  <string name="result_message_brief_unexposed_text">偵測到標籤不含會顯示的文字：%1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">偵測到文字：%1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">這個 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能不會向無障礙服務顯示其內容。</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">偵測到多個不含可顯示文字的項目，包括「%1$s」。</string>
+  
+  <string name="result_message_multiple_unexposed_texts">這個項目可能不會向無障礙服務顯示其內容。</string>
+  
+  <string name="result_message_ocr_result_not_available">無法提供 OCR 結果。</string>
+  
+  <string name="result_message_no_matching_ocr_results">在這個物品內未偵測到 OCR 結果。</string>
+  
+  <string name="result_message_multiple_best_match_views">在多個可聚焦的物品內偵測到一個 OCR 結果。</string>
+  
+  <string name="result_message_single_ocr_character_without_text">系統偵測到含有一個字元的 OCR 結果，但該位置沒有任何文字。</string>
+  
   <string name="question_message_screen_has_unexposed_items">這個畫面中是否包含任何未偵測出的重要項目？</string>
   
   <string name="question_message_identify_unexposed_items">請選取含有未知項目的畫面區塊。</string>
+  
+  <string name="value_checked">已勾選</string>
+  
+  <string name="value_not_checked">未勾選</string>
+  
+  <string name="value_on">開啟</string>
+  
+  <string name="value_off">關閉</string>
+  
+  <string name="template_containers_quantity_other">%1$s，目前顯示 %2$d 個項目。</string>
+  
+  <string name="template_labeled_item">%1$s (%2$s)</string>
+  
+  <string name="value_listview">清單</string>
 
 </resources>

@@ -40,10 +40,10 @@ public class CompoundFixSuggestions implements FixSuggestion {
   }
 
   @Override
-  public CharSequence getDescription(Locale locale) {
+  public CharSequence getRawDescription(Locale locale) {
     String description = "";
     for (int i = 0; i < fixSuggestions.size(); i++) {
-      description += fixSuggestions.get(i).getDescription(locale);
+      description += fixSuggestions.get(i).getRawDescription(locale);
       if (i < fixSuggestions.size() - 1) {
         description += LINE_SEPARATOR.value();
       }

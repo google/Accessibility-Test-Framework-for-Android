@@ -17,6 +17,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoProto;
+import com.google.errorprone.annotations.Immutable;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
@@ -25,10 +26,11 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * <p>NOTE: Currently, this class holds only {@link Metrics}, but will likely have additional fields
  * in the future.
  */
+@Immutable
 public class DisplayInfo {
 
-  @Nullable private final Metrics metricsWithoutDecoration;
-  @Nullable private final Metrics realMetrics;
+  private final @Nullable Metrics metricsWithoutDecoration;
+  private final @Nullable Metrics realMetrics;
 
   DisplayInfo(DisplayInfoProto fromProto) {
     this.metricsWithoutDecoration = new Metrics(fromProto.getMetricsWithoutDecoration());
@@ -56,8 +58,7 @@ public class DisplayInfo {
    *     don't support resolution of real metrics.
    * @see android.view.Display#getRealMetrics(android.util.DisplayMetrics)
    */
-  @Nullable
-  public Metrics getRealMetrics() {
+  public @Nullable Metrics getRealMetrics() {
     return realMetrics;
   }
 
@@ -72,6 +73,7 @@ public class DisplayInfo {
   }
 
   /** Representation of a {@link android.util.DisplayMetrics} */
+  @Immutable
   public static class Metrics {
 
     protected final float density;

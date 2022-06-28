@@ -59,7 +59,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_COULD_NOT_GET_BACKGROUND_COLOR = 5;
   /** Result when the view's text is not opaque. */
   public static final int RESULT_ID_TEXT_MUST_BE_OPAQUE = 6;
-  /** Result when the view's backgorund is not opaque. */
+  /** Result when the view's background is not opaque. */
   public static final int RESULT_ID_BACKGROUND_MUST_BE_OPAQUE = 7;
   /** Result when the view's contrast is insufficient based on opaque text/background. */
   public static final int RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT = 8;
@@ -82,6 +82,11 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_CUSTOMIZED_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT = 15;
   /** Result when the evaluated element's screen capture has a uniform color */
   public static final int RESULT_ID_SCREENCAPTURE_UNIFORM_COLOR = 16;
+  /**
+   * Result when the view's contrast is insufficient based on opaque text/background using
+   * user-defined contrast ratio.
+   */
+  public static final int RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT = 22;
 
   /** Result metadata key for the {@code int} color of the view's background. */
   public static final String KEY_BACKGROUND_COLOR = "KEY_BACKGROUND_COLOR";
@@ -120,6 +125,11 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   public static final String KEY_ADDITIONAL_CONTRAST_RATIOS = "KEY_ADDITIONAL_CONTRAST_RATIOS";
   /** Result metadata key for whether the view may be obscured by other on-screen content. */
   public static final String KEY_IS_POTENTIALLY_OBSCURED = "KEY_IS_POTENTIALLY_OBSCURED";
+  /**
+   * Result metadata key for a {@code boolean} which is {@code true} iff the view's text size is
+   * available and the text size is considered to be large.
+   */
+  public static final String KEY_IS_LARGE_TEXT = "KEY_IS_LARGE_TEXT";
 
   /** The amount by which a view's computed contrast ratio may fall below defined thresholds */
   public static final double CONTRAST_TOLERANCE = 0.01;
@@ -198,7 +208,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
         continue;
       }
 
-      AccessibilityHierarchyCheckResult lightweightResult = attemptLightweightEval(view);
+      AccessibilityHierarchyCheckResult lightweightResult =
+          attemptLightweightEval(view, parameters);
       if (lightweightResult != null) {
         results.add(lightweightResult);
         if (lightweightResult.getType() == AccessibilityCheckResultType.NOT_RUN) {
@@ -265,6 +276,19 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                     metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT:
+        builder =
+            new StringBuilder(
+                String.format(
+                    locale,
+                    StringManager.getString(
+                        locale, "result_message_customized_textview_contrast_not_sufficient"),
+                    metadata.getDouble(KEY_CONTRAST_RATIO),
+                    metadata.getInt(KEY_TEXT_COLOR) & 0xFFFFFF,
+                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                    metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO)));
+        appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+        return builder.toString();
       case RESULT_ID_VIEW_NOT_WITHIN_SCREENCAPTURE:
         return String.format(
             locale,
@@ -272,18 +296,31 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
             metadata.getString(KEY_VIEW_BOUNDS_STRING),
             metadata.getString(KEY_SCREENSHOT_BOUNDS_STRING));
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
-        builder =
-            new StringBuilder(
-                String.format(
-                    locale,
-                    StringManager.getString(
-                        locale, "result_message_textview_heuristic_contrast_not_sufficient"),
-                    metadata.getDouble(KEY_CONTRAST_RATIO),
-                    metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
-                    ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT, /* Suggested for small text */
-                    metadata.getDouble(
-                        KEY_REQUIRED_CONTRAST_RATIO) /* Suggested for large text */));
+        if (metadata.containsKey(KEY_IS_LARGE_TEXT)) {
+          builder =
+              new StringBuilder(
+                  String.format(
+                      locale,
+                      StringManager.getString(
+                          locale,
+                          "result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available"),
+                      metadata.getDouble(KEY_CONTRAST_RATIO),
+                      metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
+                      metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                      metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
+        } else {
+          builder =
+              new StringBuilder(
+                  String.format(
+                      locale,
+                      StringManager.getString(
+                          locale, "result_message_textview_heuristic_contrast_not_sufficient"),
+                      metadata.getDouble(KEY_CONTRAST_RATIO),
+                      metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
+                      metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                      ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT, /* Suggested for small text */
+                      ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT /* Suggested for large text */));
+        }
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_BORDERLINE:
@@ -336,6 +373,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_VIEW_NOT_WITHIN_SCREENCAPTURE:
         return StringManager.getString(locale, "result_message_no_screencapture"); // Close enough
       case RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT:
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_BORDERLINE:
       case RESULT_ID_CUSTOMIZED_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
@@ -404,11 +442,12 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * component colors.
    *
    * @param view The {@link ViewHierarchyElement} to evaluate
+   * @param parameters Optional check input parameters
    * @return an {@link AccessibilityHierarchyCheckResult} describing the result of the lightweight
    *     evaluation, or {@code null} if there is sufficient text contrast.
    */
   private @Nullable AccessibilityHierarchyCheckResult attemptLightweightEval(
-      ViewHierarchyElement view) {
+      ViewHierarchyElement view, @Nullable Parameters parameters) {
     Integer textColor = getForegroundColor(view);
     Integer backgroundDrawableColor = view.getBackgroundDrawableColor();
     if (textColor == null) {
@@ -457,12 +496,21 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
     double contrastRatio = ContrastUtils.calculateContrastRatio(textColor, backgroundDrawableColor);
     double requiredContrast =
-        isLargeText(view)
+        Boolean.TRUE.equals(isLargeText(view))
             ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
             : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+    Double customizedHeuristicContrastRatio =
+        (parameters == null) ? null : parameters.getCustomTextContrastRatio();
+    if (customizedHeuristicContrastRatio != null) {
+      requiredContrast = customizedHeuristicContrastRatio;
+    }
     if ((requiredContrast - contrastRatio) > CONTRAST_TOLERANCE) {
       ResultMetadata resultMetadata = new HashMapResultMetadata();
-      resultMetadata.putDouble(KEY_REQUIRED_CONTRAST_RATIO, requiredContrast);
+      resultMetadata.putDouble(
+          (customizedHeuristicContrastRatio == null)
+              ? KEY_REQUIRED_CONTRAST_RATIO
+              : KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO,
+          requiredContrast);
       resultMetadata.putDouble(KEY_CONTRAST_RATIO, contrastRatio);
       resultMetadata.putInt(KEY_TEXT_COLOR, textColor);
       resultMetadata.putInt(KEY_BACKGROUND_COLOR, backgroundDrawableColor);
@@ -471,7 +519,9 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
           CHECK_CLASS,
           AccessibilityCheckResultType.ERROR,
           view,
-          RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT,
+          (customizedHeuristicContrastRatio == null)
+              ? RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT
+              : RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT,
           resultMetadata);
     }
 
@@ -580,19 +630,28 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
             viewImage);
       }
     } else {
+      double requiredContrastRatio = ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT;
+      boolean isTextSizeAvailable = (view.getTextSize() != null);
+      if (isTextSizeAvailable) {
+        resultMetadata.putBoolean(KEY_IS_LARGE_TEXT, checkNotNull(isLargeText(view)));
+        requiredContrastRatio =
+            checkNotNull(isLargeText(view))
+                ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
+                : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+      }
+
       for (int i = 0; i < contrastRatios.size(); i++) {
-        if ((ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT - contrastRatios.get(i))
-            > CONTRAST_TOLERANCE) {
+        if (requiredContrastRatio - contrastRatios.get(i) > CONTRAST_TOLERANCE) {
           lowForegroundColors.add(foregroundColors.get(i));
           lowContrastRatios.add(contrastRatios.get(i));
         }
       }
+
       if (!lowContrastRatios.isEmpty()) {
         if (isPotentiallyObscured(view)) {
           resultMetadata.putBoolean(KEY_IS_POTENTIALLY_OBSCURED, true);
         }
-        resultMetadata.putDouble(
-            KEY_REQUIRED_CONTRAST_RATIO, ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT);
+        resultMetadata.putDouble(KEY_REQUIRED_CONTRAST_RATIO, requiredContrastRatio);
         storeColorsAndContrastRatios(
             resultMetadata, background, lowForegroundColors, lowContrastRatios);
         return resultPossiblyWithImage(
@@ -602,7 +661,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
             resultMetadata,
             parameters,
             viewImage);
-      } else {
+      } else if (!isTextSizeAvailable) {
         for (int i = 0; i < contrastRatios.size(); i++) {
           if ((ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT - contrastRatios.get(i))
               > CONTRAST_TOLERANCE) {
@@ -753,7 +812,12 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
     }
   }
 
-  private static boolean isLargeText(ViewHierarchyElement view) {
+  private static @Nullable Boolean isLargeText(ViewHierarchyElement view) {
+    Float textSize = view.getTextSize();
+    if (textSize == null) {
+      return null;
+    }
+
     float density =
         view.getWindow()
             .getAccessibilityHierarchy()
@@ -761,8 +825,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
             .getDefaultDisplayInfo()
             .getMetricsWithoutDecoration()
             .getScaledDensity();
-    Float textSize = view.getTextSize();
-    float dpSize = (textSize != null) ? textSize / density : 0;
+    float dpSize = textSize / density;
     int style = (view.getTypefaceStyle() != null) ? view.getTypefaceStyle() : TYPEFACE_NORMAL;
     return (dpSize >= ContrastUtils.WCAG_LARGE_TEXT_MIN_SIZE)
         || ((dpSize >= ContrastUtils.WCAG_LARGE_BOLD_TEXT_MIN_SIZE)

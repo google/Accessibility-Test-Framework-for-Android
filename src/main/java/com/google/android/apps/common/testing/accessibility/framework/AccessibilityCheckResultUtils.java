@@ -42,20 +42,20 @@ import org.hamcrest.TypeSafeMatcher;
 public final class AccessibilityCheckResultUtils {
 
   /**
-   * Mapping from deprecated AccessibilityViewHierarchyCheck to the AccessibilityHierarchyCheck to
-   * which it delegates.
+   * Mapping from the names of obsolete AccessibilityViewHierarchyCheck to the replacement
+   * AccessibilityHierarchyCheck.
    */
-  private static final ImmutableBiMap<?, ?> VIEW_CHECK_ALIASES =
-      ImmutableBiMap.builder()
-          .put(ClickableSpanViewCheck.class, ClickableSpanCheck.class)
-          .put(DuplicateClickableBoundsViewCheck.class, DuplicateClickableBoundsCheck.class)
-          .put(DuplicateSpeakableTextViewHierarchyCheck.class, DuplicateSpeakableTextCheck.class)
-          .put(EditableContentDescViewCheck.class, EditableContentDescCheck.class)
-          .put(RedundantContentDescViewCheck.class, RedundantDescriptionCheck.class)
-          .put(SpeakableTextPresentViewCheck.class, SpeakableTextPresentCheck.class)
-          .put(TextContrastViewCheck.class, TextContrastCheck.class)
-          .put(TouchTargetSizeViewCheck.class, TouchTargetSizeCheck.class)
-          .build();
+  private static final ImmutableBiMap<String, Class<?>> VIEW_CHECK_ALIASES =
+      ImmutableBiMap.<String, Class<?>>builder()
+          .put("ClickableSpanViewCheck", ClickableSpanCheck.class)
+          .put("DuplicateClickableBoundsViewCheck", DuplicateClickableBoundsCheck.class)
+          .put("DuplicateSpeakableTextViewHierarchyCheck", DuplicateSpeakableTextCheck.class)
+          .put("EditableContentDescViewCheck", EditableContentDescCheck.class)
+          .put("RedundantContentDescViewCheck", RedundantDescriptionCheck.class)
+          .put("SpeakableTextPresentViewCheck", SpeakableTextPresentCheck.class)
+          .put("TextContrastViewCheck", TextContrastCheck.class)
+          .put("TouchTargetSizeViewCheck", TouchTargetSizeCheck.class)
+          .buildOrThrow();
 
   private AccessibilityCheckResultUtils() {
   }
@@ -74,8 +74,7 @@ public final class AccessibilityCheckResultUtils {
    */
   public static <T extends AccessibilityCheckResult> List<T> getResultsForCheck(
       Iterable<T> results, Class<? extends AccessibilityCheck> checkClass) {
-    return AccessibilityCheckResultBaseUtils.getResultsForCheck(
-        results, checkClass, VIEW_CHECK_ALIASES);
+    return AccessibilityCheckResultBaseUtils.getResultsForCheck(results, checkClass);
   }
 
   /**
@@ -162,7 +161,7 @@ public final class AccessibilityCheckResultUtils {
    * @return a {@code Matcher} for a {@code AccessibilityCheckResult}
    */
   public static Matcher<AccessibilityCheckResult> matchesChecks(final Matcher<?> classMatcher) {
-    return AccessibilityCheckResultBaseUtils.matchesChecks(classMatcher, VIEW_CHECK_ALIASES);
+    return AccessibilityCheckResultBaseUtils.matchesChecks(classMatcher);
   }
 
   /**
@@ -179,11 +178,11 @@ public final class AccessibilityCheckResultUtils {
   }
 
   /**
-   * Returns a {@link Matcher} for an {@link AccessibilityViewCheckResult} whose view
-   * matches the given matcher for a {@link View}.
+   * Returns a {@link Matcher} for an {@link AccessibilityViewCheckResult} whose view matches the
+   * given matcher for a {@link View}.
    *
    * @param viewMatcher a {@code Matcher} for a {@code View}
-   * @return a {@code Matcher} for an {@code AccessibilityCheckResult}
+   * @return a {@code Matcher} for an {@code AccessibilityViewCheckResult}
    */
   public static Matcher<AccessibilityViewCheckResult> matchesViews(
       final Matcher<? super View> viewMatcher) {
@@ -196,13 +195,30 @@ public final class AccessibilityCheckResultUtils {
     };
   }
 
+  /**
+   * Returns a {@link Matcher} that matches if the given Integer matcher matches the {@link
+   * AccessibilityViewCheckResult#getResultId()} of the examined {@code
+   * AccessibilityViewCheckResult}.
+   *
+   * @param resultIdMatcher a {@code Matcher} for result ID values
+   * @return a {@code Matcher} for an {@code AccessibilityViewCheckResult}
+   */
+  public static Matcher<AccessibilityViewCheckResult> matchesResultId(
+      final Matcher<Integer> resultIdMatcher) {
+    return new TypeSafeMemberMatcher<AccessibilityViewCheckResult>("result id", resultIdMatcher) {
+      @Override
+      public boolean matchesSafely(AccessibilityViewCheckResult result) {
+        return resultIdMatcher.matches(result.getResultId());
+      }
+    };
+  }
+
   private abstract static class TypeSafeMemberMatcher<T> extends TypeSafeMatcher<T> {
-    private static final String DESCRIPTION_FORMAT_STRING = "with %s: ";
     private final String memberDescription;
     private final Matcher<?> matcher;
 
     public TypeSafeMemberMatcher(String member, Matcher<?> matcher) {
-      memberDescription = String.format(DESCRIPTION_FORMAT_STRING, member);
+      memberDescription = String.format("with %s: ", member);
       this.matcher = matcher;
     }
 

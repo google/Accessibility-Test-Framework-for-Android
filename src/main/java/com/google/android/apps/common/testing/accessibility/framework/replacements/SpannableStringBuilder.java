@@ -1,6 +1,7 @@
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
 import com.google.common.collect.ImmutableList;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,14 +18,16 @@ public class SpannableStringBuilder implements CharSequence {
 
   public SpannableStringBuilder() {}
 
-  public SpannableStringBuilder append(@Nullable SpannableString string) {
+  @CanIgnoreReturnValue
+  public SpannableStringBuilder append(@Nullable CharSequence string) {
     if (!TextUtils.isEmpty(string)) {
-      copyAndAppendAdjustedSpans(string.getSpans(), 0);
+      copyAndAppendAdjustedSpans(string, 0);
       append(string.toString());
     }
     return this;
   }
 
+  @CanIgnoreReturnValue
   public SpannableStringBuilder append(@Nullable String string) {
     if (!TextUtils.isEmpty(string)) {
       rawTextBuilder.append(string);
@@ -32,14 +35,16 @@ public class SpannableStringBuilder implements CharSequence {
     return this;
   }
 
-  public SpannableStringBuilder appendWithSeparator(@Nullable SpannableString string) {
+  @CanIgnoreReturnValue
+  public SpannableStringBuilder appendWithSeparator(@Nullable CharSequence string) {
     if (!TextUtils.isEmpty(string)) {
-      copyAndAppendAdjustedSpans(string.getSpans(), (needsSeparator() ? SEPARATOR.length() : 0));
+      copyAndAppendAdjustedSpans(string, (needsSeparator() ? SEPARATOR.length() : 0));
       appendWithSeparator(string.toString());
     }
     return this;
   }
 
+  @CanIgnoreReturnValue
   public SpannableStringBuilder appendWithSeparator(@Nullable String string) {
     if (!TextUtils.isEmpty(string)) {
       if (needsSeparator()) {
@@ -82,15 +87,22 @@ public class SpannableStringBuilder implements CharSequence {
   }
 
   /**
-   * Copy the provided {@code spans} into the structure for tracking span data while adjusting the
-   * span positional information to match the current state of {@code rawTextBuilder}. Generally,
-   * this should be called prior to appending any associated raw text into {@code rawTextBuilder}.
+   * Copy the spans from the provided {@code string} into the structure for tracking span data while
+   * adjusting the span positional information to match the current state of {@code rawTextBuilder}.
+   * Generally, this should be called prior to appending any associated raw text into {@code
+   * rawTextBuilder}.
    *
-   * @param spans the {@link Span} objects to adjust and copy
+   * @param string a string that may extend SpannableString and provide spans
    * @param adjustment additional value by which to adjust the positional information of the added
    *     spans
    */
-  private void copyAndAppendAdjustedSpans(List<Span> spans, int adjustment) {
+  private void copyAndAppendAdjustedSpans(CharSequence string, int adjustment) {
+    if (!(string instanceof SpannableString)) {
+      return;
+    }
+
+    List<Span> spans = ((SpannableString) string).getSpans();
+
     if (this.spans == null) {
       this.spans = new ArrayList<>();
     }

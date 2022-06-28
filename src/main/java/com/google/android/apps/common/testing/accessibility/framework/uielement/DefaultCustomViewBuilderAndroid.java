@@ -34,7 +34,7 @@ public class DefaultCustomViewBuilderAndroid implements CustomViewBuilderAndroid
   @Override
   public boolean isCheckable(View fromView) {
     if (fromView instanceof MaterialButton) {
-      // Although MaterialButton implements Checkable, it isn't always checkable for accessibility
+      // Although MaterialButton implements Checkable, it isn't always checkable for accessibility.
       return ((MaterialButton) fromView).isCheckable();
     } else {
       return (fromView instanceof Checkable);

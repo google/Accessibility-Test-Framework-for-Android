@@ -21,14 +21,6 @@
   
   <string name="clickable">se poate da clic</string>
   
-  <string name="non_clickable">nu se poate da clic</string>
-  
-  <string name="long_clickable">se poate da clic lung</string>
-  
-  <string name="clickable_and_long_clickable">se poate da clic și clic lung</string>
-  
-  <string name="actionable">se poate acționa</string>
-  
   <string name="result_message_sdk_version_not_applicable">Această verificare nu se aplică pe dispozitive cu Android %1$s sau versiuni ulterioare.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Acest element poate fi acoperit de alt conținut de pe ecran. Vă recomandăm să testați manual contrastul acestui element.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Acest element pe care %1$s are aceeași locație pe ecran (&lt;tt&gt;%2$s&lt;/tt&gt;) ca alte %3$d elemente cu proprietățile respective.</string>
   
   <string name="result_message_view_bounds">Acest element pe care %1$s are și o locație pe ecran de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">nu se poate da clic</string>
+  
+  <string name="long_clickable">se poate da clic lung</string>
+  
+  <string name="clickable_and_long_clickable">se poate da clic și clic lung</string>
+  
+  <string name="actionable">se poate acționa</string>
   
   <string name="check_title_duplicate_speakable_text">Descrierile elementului</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Raportul de contrast al imaginii este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%4$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți raportul la %2$.2f sau la o valoare mai mare.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Raportul de contrast al imaginii este de %1$.2f. Raportul se bazează pe o culoare estimată a prim-planului de &lt;tt&gt;#%3$06X&lt;/tt&gt; și pe o culoare estimată a fundalului de &lt;tt&gt;#%4$06X&lt;/tt&gt;. Vă recomandăm să măriți acest raport la raportul configurat de %2$.2f sau mai mult.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Raportul de contrast al imaginii este %1$.2f. Acest raport se bazează pe o culoare estimată a prim-planului &lt;tt&gt;#%3$06X&lt;/tt&gt; și pe o culoare estimată a fundalului &lt;tt&gt;#%4$06X&lt;/tt&gt;. Vă recomandăm să măriți raportul de contrast la raportul modificat %2$.2f sau la o valoare mai mare.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Raportul de contrast al imaginii este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%4$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți raportul de contrast la raportul configurat %2$.2f sau la o valoare mai mare.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Raportul de contrast al imaginii este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%4$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți raportul de contrast la raportul modificat %2$.2f sau la o valoare mai mare.</string>
   
   <string name="check_title_redundant_description">Eticheta cu tipul de element</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Raportul de contrast al textului elementului este de %1$.2f. Raportul se bazează pe o culoare a textului de &lt;tt&gt;#%2$06X&lt;/tt&gt; și pe o culoare de fundal de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să măriți raportul la %4$.2f sau mai mult.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Raportul de contrast al textului elementului este %1$.2f. Raportul se bazează pe culoarea textului, și anume &lt;tt&gt;#%2$06X&lt;/tt&gt;, și culoarea fundalului, și anume &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să folosiți culori care generează un raport de contrast mai mare decât raportul modificat de %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare estimată a prim-planului &lt;tt&gt;#%2$06X&lt;/tt&gt; și pe o culoare estimată a fundalului &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să folosiți culori care generează un raport de contrast mai mare de %4$.2f pentru text mic sau de %5$.2f pentru text mare.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Raportul de contrast al textului elementului este de %1$.2f. Raportul se bazează pe o culoare estimată a prim-planului de &lt;tt&gt;#%2$06X&lt;/tt&gt; și pe o culoare estimată a fundalului de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să măriți acest raport de contrast al textului elementului la %4$.2f sau mai mult.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%2$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să folosiți culori care generează un raport de contrast mai mare de %4$.2f pentru text mic sau de %5$.2f pentru text mare.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Raportul de contrast al textului elementului este de %1$.2f. Raportul se bazează pe o culoare estimată a prim-planului de &lt;tt&gt;#%2$06X&lt;/tt&gt; și pe o culoare estimată a fundalului de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să măriți acest raport la raportul configurat de %4$.2f sau mai mult.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%2$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți acest raport de contrast al textului elementului la %4$.2f sau mai mult.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%2$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți raportul de contrast al textului elementului la raportul configurat %4$.2f sau la o valoare mai mare.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare estimată a prim-planului &lt;tt&gt;#%2$06X&lt;/tt&gt; și pe o culoare estimată a fundalului &lt;tt&gt;#%3$06X&lt;/tt&gt;. Vă recomandăm să măriți raportul de contrast al textului elementului la raportul modificat %4$.2f sau la o valoare mai mare.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Raportul de contrast al textului elementului este %1$.2f. Acest raport se bazează pe o culoare &lt;tt&gt;#%2$06X&lt;/tt&gt; specificată a prim-planului și pe o culoare &lt;tt&gt;#%3$06X&lt;/tt&gt; specificată a fundalului. Vă recomandăm să măriți raportul de contrast al textului elementului la raportul modificat %4$.2f sau la o valoare mai mare.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Culorile prim-planului și ale fundalului elementului respectă raportul de contrast sugerat.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Culorile prim-planului și ale fundalului elementului respectă raportul de contrast modificat.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Sunt corecte culorile detectate pentru prim-plan și fundal?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Lățimea acestui element este de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Vă recomandăm să folosiți o lățime de &lt;tt&gt;%2$ddp&lt;/tt&gt; sau mai mare pentru ținta de atins.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Dimensiunea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Vă recomandăm să măriți ținta de atins la cel puțin dimensiunea minimă configurată de &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Dimensiunea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Vă recomandăm să măriți ținta de atins la cel puțin dimensiunea minimă modificată de &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Înălțimea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Vă recomandăm să măriți înălțimea țintei de atins la cel puțin dimensiunea minimă configurată de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Înălțimea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Vă recomandăm să măriți înălțimea țintei de atins la cel puțin dimensiunea minimă modificată de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Lățimea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Vă recomandăm să măriți lățimea țintei de atins la cel puțin dimensiunea minimă configurată de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Lățimea elementului este de &lt;tt&gt;%1$ddp&lt;/tt&gt;. Vă recomandăm să măriți lățimea țintei de atins la cel puțin dimensiunea minimă modificată de &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">A fost detectată o clasă &lt;tt&gt;TouchDelegate&lt;/tt&gt; pentru unul dintre predecesorii acestui element. Acest mesaj poate fi ignorat dacă delegatul are dimensiunea necesară și acceptă atingerea pentru acest element.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Un container părinte poate să restrângă dimensiunea acestui element, care are o zonă de desenat de &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Vă recomandăm să măriți dimensiunea precursorului de restrângere a elementului sau să permiteți unui container părinte mai mare să gestioneze acțiunile în locul elementului.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Acest element poate fi parțial vizibil într-un container derulant.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Acest element provine din conținutul web și este recomandată o verificare suplimentară a dimensiunii țintei de atins.</string>
   
   <string name="check_title_class_name_not_supported">Tip de element neacceptat</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Vă recomandăm să afișați elementele din această regiune pentru serviciile de accesibilitate.</string>
   
+  <string name="check_title_text_size">Scalarea textului</string>
+  
+  <string name="result_message_no_text_size_unit">Unitatea de mărime a textului nu poate fi obținută.</string>
+  
+  <string name="result_message_brief_text_size_unit">Mărimea textului acestui articol este &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; cu unitatea de mărime a textului de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Acest text este mic și poate fi dificil pentru unii utilizatori să citească. Vă recomandăm să folosiți o mărime mai mare sau să specificați mărimea textului în pixeli scalați (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Vă recomandăm să specificați mărimea textului în pixeli scalați (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; are o lățime fixă și text scalabil.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; are o înălțime fixă și text scalabil.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; are o mărime fixă și text scalabil.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; are o lățime fixă și conține &lt;tt&gt;TextView&lt;/tt&gt; cu text scalabil.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; are o înălțime fixă și conține &lt;tt&gt;TextView&lt;/tt&gt; cu text scalabil.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; are o mărime fixă și conține &lt;tt&gt;TextView&lt;/tt&gt; cu text scalabil.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Vă recomandăm să modificați &lt;tt&gt;LayoutParams&lt;/tt&gt; pentru a putea extinde textul.</string>
+  
+  <string name="check_title_unexposed_text">Text neexpus</string>
+  
+  <string name="result_message_unexposed_text">Asigurați-vă că această etichetă de accesibilitate a articolului include și textul vizibil.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Rezultatele OCR au fost detectate în acest ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Text neexpus detectat: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Text detectat: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Este posibil ca acest &lt;tt&gt;SurfaceView&lt;/tt&gt; să nu își afișeze conținutul serviciilor de accesibilitate.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Mai multe texte neafișate detectate, inclusiv „%1$s”.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Este posibil ca acest element să nu își afișeze conținutul serviciilor de accesibilitate.</string>
+  
+  <string name="result_message_ocr_result_not_available">Rezultatele OCR nu sunt disponibile.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Niciun rezultat OCR detectat în acest element.</string>
+  
+  <string name="result_message_multiple_best_match_views">A fost detectat un rezultat OCR în mai multe elemente focalizabile.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">A fost detectat un rezultat OCR cu un singur caracter, dar nu există text în acea locație.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Acest ecran conține elemente importante care nu sunt conturate?</string>
   
   <string name="question_message_identify_unexposed_items">Selectați regiunile de pe ecran cu elementele neidentificate.</string>
+  
+  <string name="value_checked">bifată</string>
+  
+  <string name="value_not_checked">nebifată</string>
+  
+  <string name="value_on">activat</string>
+  
+  <string name="value_off">dezactivat</string>
+  
+  <string name="template_containers_quantity_other">%1$s afișează %2$d de elemente.</string>
+  
+  <string name="template_labeled_item">%1$s pentru %2$s</string>
+  
+  <string name="value_listview">Listă</string>
 
 </resources>

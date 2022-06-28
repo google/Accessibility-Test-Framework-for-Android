@@ -15,6 +15,7 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
@@ -34,6 +35,7 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 import com.google.android.apps.common.testing.accessibility.framework.ViewAccessibilityUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.AccessibilityHierarchyProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewElementClassNamesProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.WindowHierarchyElementProto;
@@ -42,6 +44,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -278,7 +281,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       List<WindowHierarchyElementAndroid> elementList,
       @Nullable WindowHierarchyElementAndroid parent,
       BiMap<Long, AccessibilityNodeInfo> originMap,
-      @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+      AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
     WindowHierarchyElementAndroid element =
         WindowHierarchyElementAndroid.newBuilder(elementList.size(), info, extraDataExtractor)
             .setParent(parent)
@@ -645,19 +648,33 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
 
     /**
      * Returns all the superclasses of view element represented by {@link
-     * ViewHierarchyElementAndroid}.
+     * ViewHierarchyElementAndroid}.The result will contain all of the superclasses of view's class
+     * name and accessibility class name, if any.
      */
     private static ImmutableSet<String> getSuperclassSet(
         ViewHierarchyElementAndroid view, CustomViewBuilderAndroid customViewBuilder) {
       CharSequence className = view.getClassName();
-
-      if (className == null) {
+      CharSequence accessibilityClassName = view.getAccessibilityClassName();
+      if ((className == null) && (accessibilityClassName == null)) {
         return ImmutableSet.of();
       }
 
-      Class<?> viewClass = getClassByName(view, className.toString(), customViewBuilder);
+      if ((accessibilityClassName == null) || TextUtils.equals(className, accessibilityClassName)) {
+        return getSuperclassSet(view, className, customViewBuilder);
+      } else {
+        return new ImmutableSet.Builder<String>()
+            .addAll(getSuperclassSet(view, accessibilityClassName, customViewBuilder))
+            .addAll(getSuperclassSet(view, className, customViewBuilder))
+            .build();
+      }
+    }
 
+    private static ImmutableSet<String> getSuperclassSet(
+        ViewHierarchyElementAndroid view,
+        CharSequence className,
+        CustomViewBuilderAndroid customViewBuilder) {
       ImmutableSet.Builder<String> builder = new ImmutableSet.Builder<>();
+      Class<?> viewClass = getClassByName(view, className.toString(), customViewBuilder);
       while ((viewClass != null) && !viewClass.equals(Object.class)) {
         builder.add(viewClass.getName());
         addAllSuperinterfacesRecursivelyToSetBuilder(viewClass, builder);
@@ -694,8 +711,10 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private @Nullable BiMap<Long, View> viewOriginMap;
     private boolean disposeInstances = false;
     private boolean obtainCharacterLocations = false;
+    private boolean obtainRenderingInfo = true;
 
-    private boolean obtainRenderingInfo = false;
+    /** The maximum allowed length of the requested text location data. */
+    private @Nullable Integer characterLocationArgMaxLength;
 
     /**
      * Indicates whether text character locations should be requested.
@@ -703,8 +722,25 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
      * @param obtainCharacterLocations The value to which the flag should be set.
      * @return this
      */
+    @CanIgnoreReturnValue
     public BuilderAndroid setObtainCharacterLocations(boolean obtainCharacterLocations) {
       this.obtainCharacterLocations = obtainCharacterLocations;
+      return this;
+    }
+
+    /**
+     * Sets the maximum allowed length of the requested text location data.
+     *
+     * @param characterLocationArgMaxLength The maximum allowed length of the requested text
+     *     location data. Must be positive.
+     * @throws IllegalArgumentException If the given value is not positive.
+     * @return this
+     */
+    @CanIgnoreReturnValue
+    public BuilderAndroid setCharacterLocationArgMaxLength(int characterLocationArgMaxLength) {
+      checkArgument(
+          characterLocationArgMaxLength > 0, "characterLocationArgMaxLength must be positive.");
+      this.characterLocationArgMaxLength = characterLocationArgMaxLength;
       return this;
     }
 
@@ -712,8 +748,21 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
      * Set a {@link CustomViewBuilderAndroid} which customizes how to build a {@link
      * AccessibilityHierarchyAndroid} from a View.
      */
+    @CanIgnoreReturnValue
     public BuilderAndroid setCustomViewBuilder(CustomViewBuilderAndroid customViewBuilder) {
       this.customViewBuilder = customViewBuilder;
+      return this;
+    }
+
+    /**
+     * Indicates whether rendering info should be requested. This is enabled by default.
+     *
+     * @param enabled whether rendering info should be requested.
+     * @return this
+     */
+    @CanIgnoreReturnValue
+    public BuilderAndroid setObtainRenderingInfo(boolean enabled) {
+      this.obtainRenderingInfo = enabled;
       return this;
     }
 
@@ -721,9 +770,9 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
      * Set a map to populate with the condensed unique IDs of the {@link
      * ViewHierarchyElementAndroid}s created during construction of the hierarchy mapped to their
      * originating {@link AccessibilityNodeInfo}s. This is optional, and is only used when building
-     * a hierarchy from an {@code AccessibilityNodeInfo} or a {@code
-     * List&lt;AccessibilityWindowInfo&gt;}.
+     * a hierarchy from an {@code AccessibilityNodeInfo} or a {@code List<AccessibilityWindowInfo>}.
      */
+    @CanIgnoreReturnValue
     public BuilderAndroid setNodeInfoOriginMap(BiMap<Long, AccessibilityNodeInfo> originMap) {
       this.nodeInfoOriginMap = originMap;
       return this;
@@ -735,6 +784,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
      * originating {@link View}s. This is optional, and is only used when building a hierarchy from
      * a {@code View}.
      */
+    @CanIgnoreReturnValue
     public BuilderAndroid setViewOriginMap(BiMap<Long, View> originMap) {
       this.viewOriginMap = originMap;
       return this;
@@ -744,7 +794,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     public AccessibilityHierarchyAndroid build() {
       AccessibilityHierarchyAndroid result;
       if (fromRootView != null) {
-        result = buildHierarchyFromView(fromRootView);
+        result = buildHierarchyFromView(fromRootView, getAccessibilityNodeInfoExtraDataExtractor());
       } else if ((fromRootNode != null) && (context != null)) {
         result =
             buildHierarchyFromNodeInfo(
@@ -765,10 +815,11 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     @VisibleForTesting
     AccessibilityNodeInfoExtraDataExtractor getAccessibilityNodeInfoExtraDataExtractor() {
       return new AccessibilityNodeInfoExtraDataExtractor(
-          obtainCharacterLocations, obtainRenderingInfo);
+          obtainCharacterLocations, obtainRenderingInfo, characterLocationArgMaxLength);
     }
 
-    private AccessibilityHierarchyAndroid buildHierarchyFromView(View fromRootView) {
+    private AccessibilityHierarchyAndroid buildHierarchyFromView(
+        View fromRootView, AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (this.viewOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions
@@ -777,7 +828,8 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
       }
 
       WindowHierarchyElementAndroid activeWindow =
-          WindowHierarchyElementAndroid.newBuilder(0, fromRootView, customViewBuilder)
+          WindowHierarchyElementAndroid.newBuilder(
+                  0, fromRootView, customViewBuilder, extraDataExtractor)
               .setViewOriginMap(checkNotNull(viewOriginMap))
               .build();
       List<WindowHierarchyElementAndroid> windowHierarchyElements =
@@ -806,7 +858,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private AccessibilityHierarchyAndroid buildHierarchyFromNodeInfo(
         AccessibilityNodeInfo fromRootNode,
         Context context,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions
@@ -847,7 +899,7 @@ public class AccessibilityHierarchyAndroid extends AccessibilityHierarchy implem
     private AccessibilityHierarchyAndroid buildHierarchyFromWindowList(
         List<AccessibilityWindowInfo> fromWindowList,
         Context context,
-        @Nullable AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+        AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       if (nodeInfoOriginMap == null) {
         // If we're not provided with a map to populate with originating structures, create one to
         // be used internally during hierarchy constructions

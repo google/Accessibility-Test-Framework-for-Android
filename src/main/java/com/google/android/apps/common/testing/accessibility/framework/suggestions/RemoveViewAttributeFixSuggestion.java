@@ -28,10 +28,10 @@ public class RemoveViewAttributeFixSuggestion implements FixSuggestion {
   }
 
   @Override
-  public CharSequence getDescription(Locale locale) {
+  public CharSequence getRawDescription(Locale locale) {
     return String.format(
         locale,
-        StringManager.getString(locale, "description_remove_view_attribute"),
+        StringManager.getString(locale, "suggestion_remove_view_attribute"),
         viewAttribute.getFullyQualifiedName());
   }
 }

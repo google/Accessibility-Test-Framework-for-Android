@@ -21,14 +21,6 @@
   
   <string name="clickable">クリック可能</string>
   
-  <string name="non_clickable">クリック不可</string>
-  
-  <string name="long_clickable">クリック可能（長め）</string>
-  
-  <string name="clickable_and_long_clickable">クリック可能 / クリック可能（長め）</string>
-  
-  <string name="actionable">操作可能</string>
-  
   <string name="result_message_sdk_version_not_applicable">このチェックは、Android %1$s 以降が実行されているデバイスには該当しません。</string>
   
   <string name="result_message_addendum_view_potentially_obscured">このアイテムは、画面上の他のコンテンツによって表示が遮られる可能性があります。このアイテムのコントラストを手動でテストすることを検討してください。</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">この%1$sアイテムは、同じプロパティを持つ %3$d 個の他のアイテムと画面上の同じ場所（&lt;tt&gt;%2$s&lt;/tt&gt;）を共有しています。</string>
   
   <string name="result_message_view_bounds">この%1$sアイテムは、画面上の場所 &lt;tt&gt;%2$s&lt;/tt&gt; も保持しています。</string>
+  
+  <string name="non_clickable">クリック不可</string>
+  
+  <string name="long_clickable">クリック可能（長め）</string>
+  
+  <string name="clickable_and_long_clickable">クリック可能 / クリック可能（長め）</string>
+  
+  <string name="actionable">操作可能</string>
   
   <string name="check_title_duplicate_speakable_text">アイテムの説明</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を設定された比率 %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">この画像のコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を設定された比率 %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
   
   <string name="check_title_redundant_description">アイテムタイプのラベル</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %4$.2f 以上に上げることを検討してください。</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色（&lt;tt&gt;#%2$06X&lt;/tt&gt;）と背景色（&lt;tt&gt;#%3$06X&lt;/tt&gt;）に基づいています。修正値の %4$.2f より大きいコントラスト比になるような色を使用することを検討してください。</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を設定された比率 %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を設定された比率 %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">このアイテムの前景色と背景色は、推奨されたコントラスト比を満たしています。</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">このアイテムの前景色と背景色は、修正値のコントラスト比を満たしています。</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">検出された前景色と背景色は正しいですか？</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタッチ ターゲットの幅を &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上にすることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">このアイテムのサイズは &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; です。このタップ ターゲットのサイズを設定された最小サイズ &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">このアイテムのサイズは &lt;tt&gt;%1$ddp&lt;/tt&gt; × &lt;tt&gt;%2$ddp&lt;/tt&gt; です。このタップ ターゲットのサイズを修正値の最小サイズ &lt;tt&gt;%3$ddp&lt;/tt&gt; × &lt;tt&gt;%4$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_height">このアイテムの高さは &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの高さを設定された最小の高さ &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
+  <string name="result_message_customized_small_touch_target_height">このアイテムの高さは &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの高さを修正値の最小の高さ &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
-  <string name="result_message_customized_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの幅を設定された最小の幅 &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
+  <string name="result_message_customized_small_touch_target_width">このアイテムの幅は &lt;tt&gt;%1$ddp&lt;/tt&gt; です。このタップ ターゲットの幅を修正値の最小の幅 &lt;tt&gt;%2$ddp&lt;/tt&gt; 以上に上げることを検討してください。</string>
   
   <string name="result_message_addendum_touch_delegate">このアイテムの祖先のいずれかで &lt;tt&gt;TouchDelegate&lt;/tt&gt; が検出されました。デリゲートが十分なサイズであり、このアイテムに対するタッチを処理する場合、このメッセージは無視できます。</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">親コンテナがこの項目（&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;）のサイズを縮小している可能性があります。この項目を縮小している祖先のサイズを大きくするか、より大きな親コンテナでこの項目のアクションを処理させることを検討してください。</string>
   
   <string name="result_message_addendum_against_scrollable_edge">このアイテムはスクロール可能なコンテナ内で部分的にしか表示されない可能性があります。</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">このアイテムは Web コンテンツの要素であるため、タップ ターゲットのサイズも検証することをおすすめします。</string>
   
   <string name="check_title_class_name_not_supported">サポートされていないアイテムタイプ</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">この領域内のアイテムをユーザー補助機能サービスに対して公開することを検討してください。</string>
   
+  <string name="check_title_text_size">テキストの拡大縮小</string>
+  
+  <string name="result_message_no_text_size_unit">テキストサイズの単位を取得できませんでした。</string>
+  
+  <string name="result_message_brief_text_size_unit">このアイテムのテキストサイズの単位は &lt;tt&gt;%1$s&lt;/tt&gt; です。</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt;のテキストサイズの単位は &lt;tt&gt;%2$s&lt;/tt&gt; です。</string>
+  
+  <string name="result_message_small_fixed_text_size">このテキストは小さいため、一部のユーザーにとっては読みづらい可能性があります。サイズを大きくするか、テキストサイズをスケール非依存ピクセル（&lt;tt&gt;sp&lt;/tt&gt;）で指定することを検討してください。</string>
+  
+  <string name="result_message_fixed_text_size">テキストサイズをスケール非依存ピクセル（&lt;tt&gt;sp&lt;/tt&gt;）で指定することを検討してください。</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; は幅が固定されており、テキストサイズが変更可能です。</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; は高さが固定されており、テキストサイズが変更可能です。</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; はサイズが固定されており、テキストサイズが変更可能です。</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; は幅が固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; は高さが固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; はサイズが固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">テキストを拡大できるようにするには、&lt;tt&gt;LayoutParams&lt;/tt&gt; を変更することを検討してください。</string>
+  
+  <string name="check_title_unexposed_text">表示されないテキスト</string>
+  
+  <string name="result_message_unexposed_text">アイテムのユーザー補助ラベルに目に見えるテキストが含まれるようにしてください。</string>
+  
+  <string name="result_message_text_detected_in_image_view">この ImageView 内で OCR の結果が検出されました。</string>
+  
+  <string name="result_message_brief_unexposed_text">表示されないテキストが検出されました: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">テキストが検出されました: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">この &lt;tt&gt;SurfaceView&lt;/tt&gt; では、ユーザー補助サービスからコンテンツが見られないようになっている可能性があります。</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">表示されないテキスト（「%1$s」など）が検出されました。</string>
+  
+  <string name="result_message_multiple_unexposed_texts">このアイテムでは、ユーザー補助サービスからコンテンツが見られないようになっている可能性があります。</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR 結果がありません。</string>
+  
+  <string name="result_message_no_matching_ocr_results">このアイテム内で OCR 結果は検出されませんでした。</string>
+  
+  <string name="result_message_multiple_best_match_views">複数のフォーカス可能なアイテム内で OCR 結果が 1 件検出されました。</string>
+  
+  <string name="result_message_single_ocr_character_without_text">1 文字を含んだ OCR 結果が検出されましたが、その位置にテキストは存在しません。</string>
+  
   <string name="question_message_screen_has_unexposed_items">この画面には、アウトラインに表示されていない重要なアイテムが含まれていますか？</string>
   
   <string name="question_message_identify_unexposed_items">特定されていないアイテムを含んでいる画面上の領域を選択してください。</string>
+  
+  <string name="value_checked">オン</string>
+  
+  <string name="value_not_checked">オフ</string>
+  
+  <string name="value_on">オン</string>
+  
+  <string name="value_off">オフ</string>
+  
+  <string name="template_containers_quantity_other">%2$d 個のアイテムが表示されている%1$s。</string>
+  
+  <string name="template_labeled_item">%2$s の%1$s</string>
+  
+  <string name="value_listview">リスト</string>
 
 </resources>

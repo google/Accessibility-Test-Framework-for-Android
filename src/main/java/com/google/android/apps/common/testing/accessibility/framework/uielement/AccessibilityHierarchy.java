@@ -173,14 +173,12 @@ public class AccessibilityHierarchy {
     }
 
     /** Returns an identifier associated with a given class name. Returns null if not found. */
-    @Nullable
-    public Integer getIdentifierForClassName(String className) {
+    public @Nullable Integer getIdentifierForClassName(String className) {
       return uniqueViewElementsClassNames.get(className);
     }
 
     /** Returns a class name associated with a given identifier. Returns null if not found. */
-    @Nullable
-    public String getClassNameForIdentifier(int id) {
+    public @Nullable String getClassNameForIdentifier(int id) {
       return uniqueViewElementsClassNames.inverse().get(id);
     }
 
@@ -200,7 +198,7 @@ public class AccessibilityHierarchy {
    * AccessibilityHierarchy#builder}.
    */
   public static class Builder {
-    @Nullable protected AccessibilityHierarchyProto proto;
+    protected @Nullable AccessibilityHierarchyProto proto;
 
     public AccessibilityHierarchy build() {
       AccessibilityHierarchy result;

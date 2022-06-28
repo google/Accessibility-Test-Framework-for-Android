@@ -8,10 +8,14 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableStringBuilder;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
+import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.WindowHierarchyElement;
+import com.google.common.base.Ascii;
 import com.google.common.collect.ImmutableList;
+import java.util.HashSet;
+import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
@@ -29,28 +33,57 @@ public final class ViewHierarchyElementUtils {
   public static final String IMAGE_VIEW_CLASS_NAME = "android.widget.ImageView";
   public static final String WEB_VIEW_CLASS_NAME = "android.webkit.WebView";
   public static final String SWITCH_CLASS_NAME = "android.widget.Switch";
+  public static final String TOGGLE_BUTTON_CLASS_NAME = "android.widget.ToggleButton";
+  private static final String ANDROIDX_SCROLLING_VIEW_CLASS_NAME =
+      "androidx.core.view.ScrollingView";
 
-  static final ImmutableList<String> SCROLLABLE_CONTAINER_CLASS_NAME_LIST =
+  private static final ImmutableList<String> SCROLLABLE_CONTAINER_CLASS_NAME_LIST =
       ImmutableList.of(
-          ADAPTER_VIEW_CLASS_NAME, SCROLL_VIEW_CLASS_NAME, HORIZONTAL_SCROLL_VIEW_CLASS_NAME);
+          ADAPTER_VIEW_CLASS_NAME,
+          SCROLL_VIEW_CLASS_NAME,
+          HORIZONTAL_SCROLL_VIEW_CLASS_NAME,
+          ANDROIDX_SCROLLING_VIEW_CLASS_NAME);
 
   private ViewHierarchyElementUtils() {}
+
+  /** @deprecated Use {@link #getSpeakableTextForElement(ViewHierarchyElement, Locale)} instead */
+  @Deprecated
+  public static SpannableString getSpeakableTextForElement(ViewHierarchyElement element) {
+    return getSpeakableTextForElement(element, Locale.ENGLISH);
+  }
 
   /**
    * Determine what text would be spoken by a screen reader for an element.
    *
    * @param element The element whose spoken text is desired. If it or its children are only
    *     partially initialized, this method may return additional text that would not be spoken.
-   * @return An approximation of what a screen reader would speak for the element
+   * @param locale The that was used to produce labels for the element. This should normally be the
+   *     default Locale at the time that the app was tested.
+   * @return An approximation of what a screen reader would speak for the element. This may not
+   *     include any spans if the element is labeled by another element.
    */
-  public static SpannableString getSpeakableTextForElement(ViewHierarchyElement element) {
+  public static SpannableString getSpeakableTextForElement(
+      ViewHierarchyElement element, Locale locale) {
+    SpannableString speakableText = getSpeakableTextFromElementSubtree(element, locale);
     if (element.isImportantForAccessibility()) {
       // Determine if this element is labeled by another element
-      if (element.getLabeledBy() != null) {
-        return getSpeakableTextFromElementSubtree(element.getLabeledBy());
+      ViewHierarchyElement labeledBy = element.getLabeledBy();
+      if (labeledBy != null) {
+        SpannableString label = getSpeakableElementTextOrLabel(labeledBy);
+        if (!TextUtils.isEmpty(label)) {
+          // Assumes that caller is not interested in any spans that may appear within 'label' or
+          // 'speakableText'.
+          return new SpannableString(
+              String.format(
+                  locale,
+                  StringManager.getString(locale, "template_labeled_item"),
+                  speakableText,
+                  label),
+              ImmutableList.of());
+        }
       }
     }
-    return getSpeakableTextFromElementSubtree(element);
+    return speakableText;
   }
 
   /**
@@ -60,9 +93,20 @@ public final class ViewHierarchyElementUtils {
    * @param element The element whose spoken text is desired
    * @return An approximation of what a screen reader would speak for the element and its subtree
    */
-  private static SpannableString getSpeakableTextFromElementSubtree(ViewHierarchyElement element) {
+  private static SpannableString getSpeakableTextFromElementSubtree(
+      ViewHierarchyElement element, Locale locale) {
+    if (element.checkInstanceOf(TOGGLE_BUTTON_CLASS_NAME)
+        || element.checkInstanceOf(SWITCH_CLASS_NAME)) {
+      return ruleSwitch(element, locale);
+    }
+
     SpannableStringBuilder returnStringBuilder = new SpannableStringBuilder();
     if (element.isImportantForAccessibility()) {
+      CharSequence stateDescription = getDescriptionForTreeStatus(element, locale);
+      if (stateDescription != null) {
+        returnStringBuilder.appendWithSeparator(stateDescription);
+      }
+
       // Content descriptions override everything else -- including children
       SpannableString contentDescription = element.getContentDescription();
       if (!TextUtils.isEmpty(contentDescription)) {
@@ -72,38 +116,119 @@ public final class ViewHierarchyElementUtils {
       SpannableString text = element.getText();
       if (!TextUtils.isEmpty(text) && (TextUtils.getTrimmedLength(text) > 0)) {
         returnStringBuilder.appendWithSeparator(text);
-      } else {
-        SpannableString hint = element.getHintText();
-        if (!TextUtils.isEmpty(hint) && (TextUtils.getTrimmedLength(hint) > 0)) {
-          returnStringBuilder.appendWithSeparator(hint);
-        }
-      }
-
-      if (TRUE.equals(element.isCheckable())) {
-        if (TRUE.equals(element.isChecked())) {
-          returnStringBuilder.appendWithSeparator("Checked");
-        } else if (FALSE.equals(element.isChecked())) {
-          returnStringBuilder.appendWithSeparator("Not checked");
-        }
       }
 
       if (element.checkInstanceOf(ABS_LIST_VIEW_CLASS_NAME) && element.getChildViewCount() == 0) {
-        returnStringBuilder.appendWithSeparator("List showing 0 items");
+        returnStringBuilder.appendWithSeparator(
+            String.format(
+                locale,
+                StringManager.getString(locale, "template_containers_quantity_other"),
+                StringManager.getString(locale, "value_listview"),
+                0));
       }
     }
 
     /* Collect speakable text from children */
     for (int i = 0; i < element.getChildViewCount(); ++i) {
       ViewHierarchyElement child = element.getChildView(i);
-      if (!FALSE.equals(child.isVisibleToUser()) && !isActionableForAccessibility(child)) {
-        SpannableString childDesc = getSpeakableTextFromElementSubtree(child);
+      if (!isFocusableOrClickableForAccessibility(child)) {
+        SpannableString childDesc = getSpeakableTextFromElementSubtree(child, locale);
         if (!TextUtils.isEmpty(childDesc)) {
           returnStringBuilder.appendWithSeparator(childDesc);
         }
       }
     }
 
+    if (element.isImportantForAccessibility()) {
+      SpannableString hint = element.getHintText();
+      if (!TextUtils.isEmpty(hint) && (TextUtils.getTrimmedLength(hint) > 0)) {
+        returnStringBuilder.appendWithSeparator(hint);
+      }
+    }
+
     return returnStringBuilder.build();
+  }
+
+  /** Gets the state description for an element that is not a Switch or ToggleButton. */
+  private static @Nullable CharSequence getDescriptionForTreeStatus(
+      ViewHierarchyElement element, Locale locale) {
+    if (element.getStateDescription() != null) {
+      return element.getStateDescription();
+    }
+
+    if (TRUE.equals(element.isCheckable())) {
+      if (TRUE.equals(element.isChecked())) {
+        return StringManager.getString(locale, "value_checked");
+      } else if (FALSE.equals(element.isChecked())) {
+        return StringManager.getString(locale, "value_not_checked");
+      }
+    }
+    return null;
+  }
+
+  private static SpannableString ruleSwitch(ViewHierarchyElement element, Locale locale) {
+    if (element.isImportantForAccessibility()) {
+      return dedupeJoin(getSwitchState(element, locale), getSwitchContent(element));
+    }
+    return new SpannableString("", ImmutableList.of()); // Empty string
+  }
+
+  private static @Nullable CharSequence getSwitchContent(ViewHierarchyElement element) {
+    SpannableString contentDescription = element.getContentDescription();
+    if (!TextUtils.isEmpty(contentDescription)) {
+      return contentDescription;
+    }
+
+    CharSequence stateDescription = element.getStateDescription();
+    SpannableString text = element.getText();
+    if ((stateDescription != null)
+        && !TextUtils.isEmpty(text)
+        && (TextUtils.getTrimmedLength(text) > 0)) {
+      return text;
+    }
+
+    return null;
+  }
+
+  private static @Nullable CharSequence getSwitchState(
+      ViewHierarchyElement element, Locale locale) {
+    if (element.getStateDescription() != null) {
+      return element.getStateDescription();
+    }
+
+    SpannableString text = element.getText();
+    if (!TextUtils.isEmpty(text) && (TextUtils.getTrimmedLength(text) > 0)) {
+      return text;
+    }
+
+    if (TRUE.equals(element.isChecked())) {
+      return StringManager.getString(locale, "value_on");
+    } else if (FALSE.equals(element.isChecked())) {
+      return StringManager.getString(locale, "value_off");
+    }
+    return null;
+  }
+
+  /**
+   * Determine speakable text for an individual element, suitable for use as a label.
+   *
+   * @param element The element whose spoken text is desired
+   * @return An approximation of what a screen reader would speak for the element
+   */
+  private static @Nullable SpannableString getSpeakableElementTextOrLabel(
+      ViewHierarchyElement element) {
+    if (element.isImportantForAccessibility()) {
+      SpannableString contentDescription = element.getContentDescription();
+      if (!TextUtils.isEmpty(contentDescription)) {
+        return contentDescription;
+      }
+
+      SpannableString text = element.getText();
+      if (!TextUtils.isEmpty(text) && (TextUtils.getTrimmedLength(text) > 0)) {
+        return text;
+      }
+    }
+    return null;
   }
 
   /**
@@ -134,7 +259,9 @@ public final class ViewHierarchyElementUtils {
       return false;
     }
 
-    if (hasText(view) && view.isImportantForAccessibility() && !hasFocusableAncestor(view)) {
+    if ((hasText(view) || !TextUtils.isEmpty(view.getStateDescription()))
+        && view.isImportantForAccessibility()
+        && !hasFocusableAncestor(view)) {
       return true;
     }
 
@@ -142,15 +269,21 @@ public final class ViewHierarchyElementUtils {
   }
 
   /**
-   * Check if an element would correspond to an {@link
-   * android.view.accessibility.AccessibilityNodeInfo} that would be deemed actionable for
-   * accessibility.
+   * Returns the first ancestor of {@code view} that is focusable for accessibility. If no such
+   * ancestor exists, returns {@code null}. First means the ancestor closest to {@code view}, not
+   * the ancestor closest to the root of the view hierarchy. If {@code view} itself is accessibility
+   * focusable, returns {@code view}.
    *
-   * @param element The element to check
-   * @return {@code true} if the element is actionable, {@code false} if not.
+   * @param view The {@link ViewHierarchyElement} to evaluate.
+   * @return The first ancestor of {@code view} that is accessiblity focusable.
    */
-  private static boolean isActionableForAccessibility(ViewHierarchyElement element) {
-    return element.isClickable() || element.isFocusable() || element.isLongClickable();
+  public static @Nullable ViewHierarchyElement getFocusableForAccessibilityAncestor(
+      ViewHierarchyElement view) {
+    ViewHierarchyElement currentView = view;
+    while ((currentView != null) && !isAccessibilityFocusable(currentView)) {
+      currentView = currentView.getParentView();
+    }
+    return currentView;
   }
 
   /**
@@ -194,11 +327,26 @@ public final class ViewHierarchyElementUtils {
       return false;
     }
 
-    if (isActionableForAccessibility(view)) {
+    if (isFocusableOrClickableForAccessibility(view)) {
       return true;
     }
 
     return isChildOfScrollableContainer(view) && isSpeakingView(view);
+  }
+
+  /**
+   * Returns whether a {@link ViewHierarchyElement} is focusable or clickable for accessibility.
+   *
+   * @param view the {@link ViewHierarchyElement} to check
+   * @return {@code true} if the view is focusable or clickable for accessibility
+   */
+  private static boolean isFocusableOrClickableForAccessibility(ViewHierarchyElement view) {
+    return !FALSE.equals(view.isVisibleToUser())
+        && view.isImportantForAccessibility()
+        && (view.isScreenReaderFocusable()
+            || view.isClickable()
+            || view.isFocusable()
+            || view.isLongClickable());
   }
 
   /**
@@ -242,12 +390,16 @@ public final class ViewHierarchyElementUtils {
    * otherwise.
    */
   private static boolean isSpeakingView(ViewHierarchyElement view) {
-    if (hasText(view)) {
-      return true;
-    } else if (TRUE.equals(view.isCheckable())) {
-      // Special case for checkable items, which screen readers may describe without text
-      return true;
-    } else if (hasNonFocusableSpeakingChildren(view)) {
+    if (view.isImportantForAccessibility()) {
+      if (hasText(view)) {
+        return true;
+      } else if (TRUE.equals(view.isCheckable())) {
+        // Special case for checkable items, which screen readers may describe without text
+        return true;
+      }
+    }
+
+    if (hasNonFocusableSpeakingChildren(view)) {
       return true;
     }
 
@@ -272,7 +424,7 @@ public final class ViewHierarchyElementUtils {
         continue;
       }
 
-      if (child.isImportantForAccessibility() && isSpeakingView(child)) {
+      if (isSpeakingView(child)) {
         return true;
       }
     }
@@ -304,7 +456,7 @@ public final class ViewHierarchyElementUtils {
   private static @Nullable ViewHierarchyElement getImportantForAccessibilityAncestor(
       ViewHierarchyElement view) {
     ViewHierarchyElement parent = view.getParentView();
-    while ((parent != null) && !view.isImportantForAccessibility()) {
+    while ((parent != null) && !parent.isImportantForAccessibility()) {
       parent = parent.getParentView();
     }
 
@@ -313,13 +465,13 @@ public final class ViewHierarchyElementUtils {
 
   /**
    * Determines if the provided {@code element} has any descendant, direct or indirect, which is
-   * considered important for accessibility.  This is useful in determining whether or not the
+   * considered important for accessibility. This is useful in determining whether or not the
    * Android framework will attempt to reparent any child in the subtree as a direct descendant of
    * {@code element} while converting the hierarchy to an accessibility API representation.
    *
    * @param element the {@link ViewHierarchyElement} to evaluate
    * @return {@code true} if any child in {@code element}'s subtree is considered important for
-   *         accessibility, {@code false} otherwise
+   *     accessibility, {@code false} otherwise
    */
   private static boolean hasAnyImportantDescendant(ViewHierarchyElement element) {
     for (int i = 0; i < element.getChildViewCount(); ++i) {
@@ -409,5 +561,22 @@ public final class ViewHierarchyElementUtils {
   public static boolean isPotentiallyObscured(ViewHierarchyElement viewHierarchyElement) {
     return isIntersectedByOverlayWindow(viewHierarchyElement)
         || isIntersectedByOverlayView(viewHierarchyElement);
+  }
+
+  private static SpannableString dedupeJoin(@Nullable CharSequence... values) {
+    SpannableStringBuilder returnStringBuilder = new SpannableStringBuilder();
+    HashSet<String> uniqueValues = new HashSet<>();
+    for (CharSequence value : values) {
+      if (TextUtils.isEmpty(value)) {
+        continue;
+      }
+      String lvalue = Ascii.toLowerCase(value.toString());
+      if (uniqueValues.contains(lvalue)) {
+        continue;
+      }
+      uniqueValues.add(lvalue);
+      returnStringBuilder.appendWithSeparator(value);
+    }
+    return returnStringBuilder.build();
   }
 }

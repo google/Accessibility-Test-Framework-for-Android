@@ -32,16 +32,16 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * recognize their types.
  *
  * <p>When an {@link AccessibilityHierarchy} is constructed from {@code AccessibilityNodeInfo} data,
- * the {@link ViewHierarchyElement}'s' {@code accessibilityClassName} is populated with a reliable
+ * the {@link ViewHierarchyElement}'s {@code accessibilityClassName} is populated with a reliable
  * class name. So when an element is visible and important for accessibility, and if the {@code
  * accessibilityClassName} is empty, or if the name does belong to one of the standard, supported UI
  * packages, then this check will produce a {@link AccessibilityCheckResultType#WARNING WARNING}.
  *
- * <p>When an {@code AccessibilityHierarchy} is constructed from {@code View} data, the {@code
- * className} that would be populated within its {@code AccessibilityNodeInfo} representation cannot
- * be determined reliably, so the {@code ViewHierarchyElement}'s {@code accessibilityClassName} is
- * set to {@code null}, and this check will produce only {@link AccessibilityCheckResultType#NOT_RUN
- * NOT_RUN} results, essentially making this check a no-op.
+ * <p>When an {@code AccessibilityHierarchy} is constructed from {@code View} data on API < 23, the
+ * {@code className} that would be populated within its {@code AccessibilityNodeInfo} representation
+ * cannot be determined reliably, so the {@code ViewHierarchyElement}'s {@code
+ * accessibilityClassName} is set to {@code null}, and this check will produce only {@link
+ * AccessibilityCheckResultType#NOT_RUN NOT_RUN} results, essentially making this check a no-op.
  *
  * @see <a href="https://support.google.com/accessibility/android/answer/7661305">Unsupported item
  *     type</a>

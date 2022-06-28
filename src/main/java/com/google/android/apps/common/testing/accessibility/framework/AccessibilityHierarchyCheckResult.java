@@ -165,6 +165,14 @@ public class AccessibilityHierarchyCheckResult extends AccessibilityCheckResult 
   }
 
   /**
+   * Returns the string representation of a URL for a Google Accessibility Help article related to
+   * this issue, or {@code null} if no article is available.
+   */
+  public @Nullable String getHelpUrl() {
+    return getCheck().getHelpUrl();
+  }
+
+  /**
    * Returns the integer id of this result. This id is unique within the class of the
    * {@link AccessibilityHierarchyCheck} class associated with this result, and is used to
    * differentiate different types of issues identified by a single check.

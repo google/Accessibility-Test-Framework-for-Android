@@ -14,9 +14,11 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
+import com.google.errorprone.annotations.Immutable;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Point} */
+@Immutable
 public final class Point {
 
   private final int x;

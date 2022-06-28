@@ -14,16 +14,24 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.replacements;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.RectProto;
+import com.google.errorprone.annotations.Immutable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Used as a local immutable replacement for Android's {@link android.graphics.Rect} */
+@Immutable
 public final class Rect {
 
   public static final Rect EMPTY = new Rect(0, 0, 0, 0);
+
+  private static final Pattern FLATTENED_PATTERN =
+      Pattern.compile("(-?\\d+) (-?\\d+) (-?\\d+) (-?\\d+)");
 
   private final int left;
   private final int top;
@@ -70,6 +78,10 @@ public final class Rect {
   /** See {@link android.graphics.Rect#height()} */
   public final int getHeight() {
     return bottom - top;
+  }
+
+  public final int area() {
+    return getWidth() * getHeight();
   }
 
   /** See {@link android.graphics.Rect#contains(android.graphics.Rect)} */
@@ -132,6 +144,24 @@ public final class Rect {
     }
   }
 
+  /**
+   * Returns a {@link Rect} that represents the intersection of this rectangle and the specific
+   * rectangle. If there is no intersection, an empty rectangle is returned.
+   *
+   * @param r The rectangle being intersected with this rectangle
+   */
+  public Rect intersect(Rect r) {
+    if (!Rect.intersects(this, r)) {
+      return Rect.EMPTY;
+    }
+
+    return new Rect(
+        max(left, r.getLeft()),
+        max(top, r.getTop()),
+        min(right, r.getRight()),
+        min(bottom, r.getBottom()));
+  }
+
   public RectProto toProto() {
     return RectProto.newBuilder()
         .setLeft(left)
@@ -166,32 +196,34 @@ public final class Rect {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder(32);
-    sb.append("Rect(");
-    sb.append(left);
-    sb.append(", ");
-    sb.append(top);
-    sb.append(" - ");
-    sb.append(right);
-    sb.append(", ");
-    sb.append(bottom);
-    sb.append(")");
-    return sb.toString();
+    return "Rect(" + left + ", " + top + " - " + right + ", " + bottom + ")";
   }
 
   /** See {@link android.graphics.Rect#toShortString()} */
   public String toShortString() {
-    StringBuilder sb = new StringBuilder(32);
-    sb.append('[');
-    sb.append(left);
-    sb.append(',');
-    sb.append(top);
-    sb.append("][");
-    sb.append(right);
-    sb.append(',');
-    sb.append(bottom);
-    sb.append(']');
-    return sb.toString();
+    return "[" + left + ',' + top + "][" + right + ',' + bottom + ']';
+  }
+
+  /** See {@link android.graphics.Rect#flattenToString()} */
+  public String flattenToString() {
+    return Integer.toString(left) + ' ' + top + ' ' + right + ' ' + bottom;
+  }
+
+  /** See {@link android.graphics.Rect#unflattenFromString()} */
+  public static @Nullable Rect unflattenFromString(@Nullable String str) {
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+
+    Matcher matcher = FLATTENED_PATTERN.matcher(str);
+    if (matcher.matches()) {
+      return new Rect(
+          Integer.parseInt(checkNotNull(matcher.group(1))),
+          Integer.parseInt(checkNotNull(matcher.group(2))),
+          Integer.parseInt(checkNotNull(matcher.group(3))),
+          Integer.parseInt(checkNotNull(matcher.group(4))));
+    }
+    return null;
   }
 
   /** See {@link android.graphics.Rect#intersects(android.graphics.Rect, android.graphics.Rect)} */

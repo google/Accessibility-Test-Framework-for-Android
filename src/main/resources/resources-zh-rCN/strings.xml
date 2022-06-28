@@ -21,14 +21,6 @@
   
   <string name="clickable">可点按</string>
   
-  <string name="non_clickable">不可点按</string>
-  
-  <string name="long_clickable">可长按</string>
-  
-  <string name="clickable_and_long_clickable">可点按并可长按</string>
-  
-  <string name="actionable">可执行操作</string>
-  
   <string name="result_message_sdk_version_not_applicable">此检查不适用于运行 Android %1$s 及更高版本的设备。</string>
   
   <string name="result_message_addendum_view_potentially_obscured">此项目可能会被屏幕上的其他内容遮挡。请考虑手动测试该项目的对比度。</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">此%1$s的项目在屏幕上的位置 (&lt;tt&gt;%2$s&lt;/tt&gt;) 与其他 %3$d 个具有同样位置属性的项目相同。</string>
   
   <string name="result_message_view_bounds">此%1$s的项目在屏幕上的位置也是 &lt;tt&gt;%2$s&lt;/tt&gt;。</string>
+  
+  <string name="non_clickable">不可点按</string>
+  
+  <string name="long_clickable">可长按</string>
+  
+  <string name="clickable_and_long_clickable">可点按并可长按</string>
+  
+  <string name="actionable">可执行操作</string>
   
   <string name="check_title_duplicate_speakable_text">项目说明</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此对比度提高至 %2$.2f 或更高。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至配置的比率 %2$.2f 或更高。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至配置的比率 %2$.2f 或更高。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
   
   <string name="check_title_redundant_description">项目类型标签</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景颜色 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 计算得出的。建议使用会使对比度高于修改后的比率 (%4$.2f) 的颜色。</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据给定的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和给定的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至配置的比率 %4$.2f 或更高。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据给定的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和给定的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至配置的比率 %4$.2f 或更高。</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">此项目的前景颜色和背景颜色符合建议对比度。</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">此项目的前景颜色和背景颜色符合修改后的对比度。</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">检测到的前景和背景颜色是否正确？</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">此项目的宽度为 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建议将此触摸目标的宽度增加至 &lt;tt&gt;%2$ddp&lt;/tt&gt; 或以上。</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">此项目的大小为 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;。建议将此触摸目标的大小增加至配置的最小值 &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; 或以上。</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">此项目的大小为 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;。建议将此触摸目标的大小增加至修改后的最小值 &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt; 或以上。</string>
   
-  <string name="result_message_customized_small_touch_target_height">此项目的高度为 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建议将此触摸目标的高度增加至配置的最低高度 &lt;tt&gt;%2$ddp&lt;/tt&gt; 或以上。</string>
+  <string name="result_message_customized_small_touch_target_height">此项目的高度为 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建议将此触摸目标的高度增加至修改后的最低高度 &lt;tt&gt;%2$ddp&lt;/tt&gt; 或以上。</string>
   
-  <string name="result_message_customized_small_touch_target_width">此项目的宽度为 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建议将此触摸目标的宽度增加至配置的最小宽度 &lt;tt&gt;%2$ddp&lt;/tt&gt; 或以上。</string>
+  <string name="result_message_customized_small_touch_target_width">此项目的宽度为 &lt;tt&gt;%1$ddp&lt;/tt&gt;。建议将此触摸目标的宽度增加至修改后的最小宽度 &lt;tt&gt;%2$ddp&lt;/tt&gt; 或以上。</string>
   
   <string name="result_message_addendum_touch_delegate">在此项目的一个祖先实体上检测到了 &lt;tt&gt;TouchDelegate&lt;/tt&gt;。如果代理的空间充足，并且用于处理针对此项目的触摸操作，则可忽略此消息。</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">父级容器可能会裁剪此项目的大小（绘图区域为 &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;）。您可以考虑加大裁剪此项目的祖先容器的大小，或允许更大的父级容器代表此项目来处理操作。</string>
   
   <string name="result_message_addendum_against_scrollable_edge">此项目可能无法在可滚动的容器中完全显示。</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">此界面元素来源于网络内容，建议对触摸目标尺寸进行额外的验证。</string>
   
   <string name="check_title_class_name_not_supported">不支持的项目类型</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">请考虑向无障碍服务公开此区域中的内容。</string>
   
+  <string name="check_title_text_size">文字缩放</string>
+  
+  <string name="result_message_no_text_size_unit">无法获取文字字号单位。</string>
+  
+  <string name="result_message_brief_text_size_unit">此内容的文字字号单位是“&lt;tt&gt;%1$s&lt;/tt&gt;”。</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt;，文字字号单位是“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
+  
+  <string name="result_message_small_fixed_text_size">此文本非常小，部分用户阅读起来可能会有困难。可以考虑使用较大的字号或者使用放大像素 (&lt;tt&gt;sp&lt;/tt&gt;) 指定文字字号。</string>
+  
+  <string name="result_message_fixed_text_size">可以考虑使用放大像素 (&lt;tt&gt;sp&lt;/tt&gt;) 指定文字字号。</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的宽度和可缩放的文字。</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的高度和可缩放的文字。</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的尺寸和可缩放的文字。</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的宽度，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的高度，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的尺寸，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">请考虑修改 &lt;tt&gt;LayoutParams&lt;/tt&gt;，以便能够放大文字。</string>
+  
+  <string name="check_title_unexposed_text">不包含可见文本</string>
+  
+  <string name="result_message_unexposed_text">请确保此项目的无障碍功能标签中包含可见文本。</string>
+  
+  <string name="result_message_text_detected_in_image_view">在此 ImageView 中检测到 OCR 结果。</string>
+  
+  <string name="result_message_brief_unexposed_text">经检测不包含可见文本：%1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">检测到文本：%1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">此 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能未向无障碍服务公开其内容。</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">检测到多个不含可显示文字的项目，包括“%1$s”。</string>
+  
+  <string name="result_message_multiple_unexposed_texts">此项目可能不会向无障碍服务公开其内容。</string>
+  
+  <string name="result_message_ocr_result_not_available">无法获得 OCR 结果。</string>
+  
+  <string name="result_message_no_matching_ocr_results">未在此项目中检测到 OCR 结果。</string>
+  
+  <string name="result_message_multiple_best_match_views">在多个可聚焦的项目中检测到一个 OCR 结果。</string>
+  
+  <string name="result_message_single_ocr_character_without_text">检测到包含单个字符的 OCR 结果，但该位置没有任何文字。</string>
+  
   <string name="question_message_screen_has_unexposed_items">此屏幕是否包含未描绘轮廓的重要内容？</string>
   
   <string name="question_message_identify_unexposed_items">选择包含无法识别的内容的屏幕区域。</string>
+  
+  <string name="value_checked">已选中</string>
+  
+  <string name="value_not_checked">未选中</string>
+  
+  <string name="value_on">已开启</string>
+  
+  <string name="value_off">关闭</string>
+  
+  <string name="template_containers_quantity_other">%1$s，显示了 %2$d 个项目</string>
+  
+  <string name="template_labeled_item">%2$s的%1$s</string>
+  
+  <string name="value_listview">列表</string>
 
 </resources>

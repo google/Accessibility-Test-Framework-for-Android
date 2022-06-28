@@ -16,9 +16,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 abstract class BaseTextContrastFixSuggestionProducer
     implements FixSuggestionProducer<SetViewAttributeFixSuggestion> {
 
-  static final int BLACK_COLOR = 0x000000;
-  static final int WHITE_COLOR = 0xFFFFFF;
-
   @Override
   public @Nullable SetViewAttributeFixSuggestion produceFixSuggestion(
       AccessibilityHierarchyCheckResult checkResult,

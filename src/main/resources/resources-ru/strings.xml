@@ -21,14 +21,6 @@
   
   <string name="clickable">на клики</string>
   
-  <string name="non_clickable">на клики</string>
-  
-  <string name="long_clickable">на долгие нажатия</string>
-  
-  <string name="clickable_and_long_clickable">на клики и долгие нажатия</string>
-  
-  <string name="actionable">на действия пользователя</string>
-  
   <string name="result_message_sdk_version_not_applicable">Эта проверка недоступна на устройствах Android версии %1$s и выше.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Советуем вручную проверить, как отображается этот элемент, поскольку он может быть скрыт другим контентом.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Этот элемент, который реагирует %1$s, расположен в той же области экрана, (&lt;tt&gt;%2$s&lt;/tt&gt;) что и другие элементы (%3$d) с теми же свойствами.</string>
   
   <string name="result_message_view_bounds">Этот элемент, реагирующий %1$s, также расположен в области экрана &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">на клики</string>
+  
+  <string name="long_clickable">на долгие нажатия</string>
+  
+  <string name="clickable_and_long_clickable">на клики и долгие нажатия</string>
+  
+  <string name="actionable">на действия пользователя</string>
   
   <string name="check_title_duplicate_speakable_text">Описание элемента</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до %2$.2f или выше.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он рассчитывается путем сопоставления цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, этот коэффициент следует увеличить до %2$.2f или выше.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%4$06X&lt;/tt&gt;) планов. Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до заданного значения (%2$.2f) или выше.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
   
   <string name="check_title_redundant_description">Метка типа элемента</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и его фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент хотя бы до %4$.2f.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента составляет %1$.2f. Чтобы узнать его, мы сопоставили цвет фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и самого текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;). Советуем увеличить коэффициент как минимум до заданного вами значения (%4$.2f).</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до %4$.2f или выше.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до %4$.2f или выше.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Соотношение цветов переднего и заднего плана этого элемента должно соответствовать рекомендуемому коэффициенту контрастности.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Соотношение цветов переднего и заднего плана этого элемента соответствует заданному коэффициенту контрастности.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Правильно ли выбраны цвета для переднего и заднего плана?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">Ширина этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt;. Советуем увеличить ее хотя бы до &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Размер этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Советуем увеличить область прикосновения. Ее ширина должна составлять &lt;tt&gt;%3$ddp&lt;/tt&gt;, а высота хотя бы &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Размер этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Советуем увеличить область прикосновения. Ее ширина должна составлять &lt;tt&gt;%3$ddp&lt;/tt&gt;, а высота – как минимум &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Высота этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt;. Советуем увеличить ее хотя бы до &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Высота этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt;. Советуем увеличить ее как минимум до заданного значения (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
-  <string name="result_message_customized_small_touch_target_width">Ширина этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt;. Советуем увеличить ее хотя бы до &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Ширина этого элемента – &lt;tt&gt;%1$ddp&lt;/tt&gt;. Советуем увеличить ее как минимум до заданного значения (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
   <string name="result_message_addendum_touch_delegate">У одного из предков этого элемента была обнаружена дополнительная область прикосновения &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Если она достаточно большая и принимает все нажатия, соответствующие элементу, сообщение можно игнорировать.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Из-за большого размера полотна (&lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt; пикс.) этот элемент, возможно, будет обрезан родительским контейнером. Чтобы этого избежать, увеличьте размер объекта, который ранее приводил к обрезке, или выберите родительский контейнер большего размера.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Этот элемент может быть частично скрыт при прокрутке контейнера.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Этот элемент взят из веб-контента, поэтому рекомендуем дополнительно проверить размер области прикосновения.</string>
   
   <string name="check_title_class_name_not_supported">Ошибка</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Сделайте элементы, которые расположены в этой области, доступными службам специальных возможностей.</string>
   
+  <string name="check_title_text_size">Масштабирование текста</string>
+  
+  <string name="result_message_no_text_size_unit">Не удалось определить единицу измерения размера текста.</string>
+  
+  <string name="result_message_brief_text_size_unit">Размер текста этого элемента измеряется в &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">Размер текста элемента \"&lt;tt&gt;%1$s&lt;/tt&gt;\" измеряется в &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Этот текст слишком мелкий. Некоторым пользователям будет сложно его прочитать. Попробуйте увеличить шрифт или укажите размер текста в независимых от масштаба пикселях (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Попробуйте указать размер изображения в независимых от масштаба пикселях (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированную ширину и масштабируемый текст.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированную высоту и масштабируемый текст.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированный размер и масштабируемый текст.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Этот &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированную ширину и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Этот &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированную высоту и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Это &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированный размер и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Для расширения границ текста измените &lt;tt&gt;LayoutParams&lt;/tt&gt;.</string>
+  
+  <string name="check_title_unexposed_text">Недоступный текст</string>
+  
+  <string name="result_message_unexposed_text">Убедитесь, что весь видимый текст включен в метку этого элемента.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Внутри этого объекта ImageView был распознан текст.</string>
+  
+  <string name="result_message_brief_unexposed_text">Обнаружен недоступный текст: %1$s.</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Обнаружен текст: %1$s.</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Содержание этого &lt;tt&gt;SurfaceView&lt;/tt&gt; может быть недоступно для службы специальных возможностей.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Обнаружено несколько фрагментов нераспознанного текста, включая \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Распознавание этого объекта может быть недоступно для сервисов специальных возможностей.</string>
+  
+  <string name="result_message_ocr_result_not_available">Результаты оптического распознавания символов недоступны.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Результаты оптического распознавания этого объекта не обнаружены.</string>
+  
+  <string name="result_message_multiple_best_match_views">В нескольких фокусируемых объектах обнаружен один результат оптического распознавания.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Обнаружен односимвольный результат оптического распознавания, но текст в этом месте отсутствует.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Есть ли на этом экране важные элементы, которые не были выделены при проверке?</string>
   
   <string name="question_message_identify_unexposed_items">Выделите области экрана с элементами, которые не удалось идентифицировать.</string>
+  
+  <string name="value_checked">выбрано</string>
+  
+  <string name="value_not_checked">не выбрано</string>
+  
+  <string name="value_on">включено</string>
+  
+  <string name="value_off">выключено</string>
+  
+  <string name="template_containers_quantity_other">%1$s. Число объектов: %2$d.</string>
+  
+  <string name="template_labeled_item">%1$s (%2$s)</string>
+  
+  <string name="value_listview">Список</string>
 
 </resources>

@@ -64,8 +64,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
   private static final Pattern WORD_PATTERN = Pattern.compile("\\w+");
 
   @Override
-  @Nullable
-  protected String getHelpTopic() {
+  protected @Nullable String getHelpTopic() {
     return "9663312"; // Link purpose unclear
   }
 
@@ -193,8 +192,7 @@ public class LinkPurposeUnclearCheck extends AccessibilityHierarchyCheck {
     return StringManager.getString(locale, "check_title_link_test");
   }
 
-  @Nullable
-  private static String generateMessageForResultId(Locale locale, int resultId) {
+  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
     switch (resultId) {
       case RESULT_ID_ENGLISH_LOCALE_ONLY:
         return StringManager.getString(locale, "result_message_english_locale_only");

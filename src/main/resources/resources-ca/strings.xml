@@ -21,14 +21,6 @@
   
   <string name="clickable">clicable</string>
   
-  <string name="non_clickable">no clicable</string>
-  
-  <string name="long_clickable">clicable de manera prolongada</string>
-  
-  <string name="clickable_and_long_clickable">clicable i clicable de manera prolongada</string>
-  
-  <string name="actionable">accionable</string>
-  
   <string name="result_message_sdk_version_not_applicable">Aquesta comprovació no està disponible en dispositius amb Android %1$s o una versió posterior.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">És possible que aquest element s\'oculti sota d\'altres elements en pantalla. Prova manualment el contrast de l\'element.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Aquest element %1$s té la mateixa ubicació a la pantalla (&lt;tt&gt;%2$s&lt;/tt&gt;) que %3$d element(s) més amb aquestes propietats.</string>
   
   <string name="result_message_view_bounds">Aquest element %1$s també té una ubicació a la pantalla de &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">no clicable</string>
+  
+  <string name="long_clickable">clicable de manera prolongada</string>
+  
+  <string name="clickable_and_long_clickable">clicable i clicable de manera prolongada</string>
+  
+  <string name="actionable">accionable</string>
   
   <string name="check_title_duplicate_speakable_text">Descripcions dels elements</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a %2$.2f o a una de superior.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació almenys fins a la relació configurada (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la configurada (%2$.2f) o a una de superior.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
   
   <string name="check_title_redundant_description">Etiqueta de tipus d\'element</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color del text &lt;tt&gt;#%2$06X&lt;/tt&gt; i el color de fons &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pots augmentar aquesta relació a %4$.2f o més.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de text (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Utilitza colors que generin una relació de contrast superior a la modificada (%4$.2f).</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació almenys fins a la relació configurada (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la configurada (%4$.2f) o a una de superior.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Els colors de primer pla i de fons d\'aquest element es corresponen amb la relació de contrast suggerida.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Els colors de primer pla i de fons d\'aquest element es corresponen amb la relació de contrast modificada.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Els colors de primer pla i de fons detectats són correctes?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Amplada d\'aquest element: &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pots canviar l\'amplada d\'aquest objectiu tàctil a &lt;tt&gt;%2$ddp&lt;/tt&gt; o més.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Les dimensions d\'aquest element són &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Et recomanem que augmentis la mida d\'aquest objectiu tàctil almenys fins a la mida mínima configurada (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Les dimensions d\'aquest element són &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Et recomanem que augmentis la mida d\'aquest objectiu tàctil almenys fins a la mida mínima modificada (&lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;).</string>
   
-  <string name="result_message_customized_small_touch_target_height">L\'alçada d\'aquest element és &lt;tt&gt;%1$ddp&lt;/tt&gt;. Et recomanem que augmentis l\'alçada d\'aquest objectiu tàctil almenys fins a l\'alçada mínima configurada (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_height">L\'alçada d\'aquest element és &lt;tt&gt;%1$ddp&lt;/tt&gt;. Et recomanem que augmentis l\'alçada d\'aquest objectiu tàctil almenys fins a l\'alçada mínima modificada (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
-  <string name="result_message_customized_small_touch_target_width">L\'amplada d\'aquest element és &lt;tt&gt;%1$ddp&lt;/tt&gt;. Et recomanem que augmentis l\'amplada d\'aquest objectiu tàctil almenys fins a l\'amplada mínima configurada (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
+  <string name="result_message_customized_small_touch_target_width">L\'amplada d\'aquest element és &lt;tt&gt;%1$ddp&lt;/tt&gt;. Et recomanem que augmentis l\'amplada d\'aquest objectiu tàctil almenys fins a l\'amplada mínima modificada (&lt;tt&gt;%2$ddp&lt;/tt&gt;).</string>
   
   <string name="result_message_addendum_touch_delegate">S\'ha detectat una classe &lt;tt&gt;TouchDelegate&lt;/tt&gt; en un dels antecessors d\'aquest element. Pots ignorar aquest missatge si el delegat és prou gran i gestiona els tocs d\'aquest element.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">És possible que un contenidor principal estigui limitant la mida d\'aquest element, que té una àrea de dibuix de: &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pots provar d\'augmentar la mida de l\'antecessor o bé permetre que un contenidor principal més gran gestioni les accions en nom de l\'element.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">És possible que aquest element només es pugui veure parcialment en un contenidor desplaçable.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Aquest element s\'ha originat a partir del contingut web i es recomana la verificació addicional de la mida de l\'objectiu tàctil.</string>
   
   <string name="check_title_class_name_not_supported">Tipus d\'element no compatible</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Et recomanem que exposis els elements en aquesta regió als serveis d\'accessibilitat.</string>
   
+  <string name="check_title_text_size">Ajust del text</string>
+  
+  <string name="result_message_no_text_size_unit">No s\'ha pogut obtenir la unitat de mida del text.</string>
+  
+  <string name="result_message_brief_text_size_unit">La unitat de mida del text d\'aquest element és &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; amb una unitat de mida del text en &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Aquest text és petit i pot ser difícil de llegir per a alguns usuaris. Et recomanem que utilitzis una mida més gran o que especifiquis la mida del text en píxels escalats (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Et recomanem que especifiquis la mida del text en píxels escalats (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una amplada fixa i text escalable.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una alçada fixa i text escalable.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una mida fixa i text escalable.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una amplada fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una alçada fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una mida fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Prova de modificar &lt;tt&gt;LayoutParams&lt;/tt&gt; per permetre que el text s\'expandeixi.</string>
+  
+  <string name="check_title_unexposed_text">Text no exposat</string>
+  
+  <string name="result_message_unexposed_text">Assegura\'t que l\'etiqueta d\'accessibilitat de l\'element inclogui text visible.</string>
+  
+  <string name="result_message_text_detected_in_image_view">S\'han detectat resultats de ROC dins d\'aquesta ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">S\'ha detectat text no exposat: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">S\'ha detectat text: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">És possible que aquesta &lt;tt&gt;SurfaceView&lt;/tt&gt; no estigui mostrant el seu contingut als serveis d\'accessibilitat.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">S\'han detectat diversos textos no exposats, com ara \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">És possible que aquest element no estigui exposant el seu contingut als serveis d\'accessibilitat.</string>
+  
+  <string name="result_message_ocr_result_not_available">Els resultats d\'OCR no estan disponibles.</string>
+  
+  <string name="result_message_no_matching_ocr_results">No s\'ha detectat cap resultat d\'OCR en aquest element.</string>
+  
+  <string name="result_message_multiple_best_match_views">S\'ha detectat un resultat d\'OCR en diversos elements enfocables.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">S\'ha detectat un resultat d\'OCR amb un sol caràcter, però en aquesta ubicació no hi ha text.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Aquesta pantalla conté elements importants que no estan contornejats?</string>
   
   <string name="question_message_identify_unexposed_items">Selecciona regions de la pantalla amb elements no identificats.</string>
+  
+  <string name="value_checked">marcat</string>
+  
+  <string name="value_not_checked">desmarcat</string>
+  
+  <string name="value_on">activat</string>
+  
+  <string name="value_off">desactivat</string>
+  
+  <string name="template_containers_quantity_other">%1$s que mostra %2$d elements.</string>
+  
+  <string name="template_labeled_item">%1$s per a %2$s</string>
+  
+  <string name="value_listview">Llista</string>
 
 </resources>

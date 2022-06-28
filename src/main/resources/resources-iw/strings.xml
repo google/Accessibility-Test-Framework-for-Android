@@ -21,14 +21,6 @@
   
   <string name="clickable">מאפשר לחיצה</string>
   
-  <string name="non_clickable">לא מאפשר לחיצה</string>
-  
-  <string name="long_clickable">מאפשר לחיצה ארוכה</string>
-  
-  <string name="clickable_and_long_clickable">מאפשר לחיצה רגילה ולחיצה ארוכה</string>
-  
-  <string name="actionable">מאפשר פעולה</string>
-  
   <string name="result_message_sdk_version_not_applicable">בדיקה זו לא רלוונטית למכשירים שמותקנת בהם מערכת Android בגרסה %1$s ואילך.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">פריט זה עשוי להיות מוסתר על ידי תוכן אחר שמוצג במסך. מומלץ לבדוק את הניגודית של הפריט באופן ידני.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">פריט זה ש%1$s נמצא באותו מיקום במסך (&lt;tt&gt;%2$s&lt;/tt&gt;) כמו של %3$d פריטים אחרים בעלי מאפיינים אלה.</string>
   
   <string name="result_message_view_bounds">פריט זה ש%1$s מופיע במסך גם במיקום &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">לא מאפשר לחיצה</string>
+  
+  <string name="long_clickable">מאפשר לחיצה ארוכה</string>
+  
+  <string name="clickable_and_long_clickable">מאפשר לחיצה רגילה ולחיצה ארוכה</string>
+  
+  <string name="actionable">מאפשר פעולה</string>
   
   <string name="check_title_duplicate_speakable_text">תיאורי פריטים</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על צבע החזית, &lt;tt&gt;#%3$06X&lt;/tt&gt;, וצבע הרקע, &lt;tt&gt;#%4$06X&lt;/tt&gt;, שצוינו. כדאי להגדיל את היחס ל-%2$.2f לפחות.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שצבע החזית הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; וצבע הרקע הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. מומלץ להגדיל יחס זה לפחות ליחס הניגודיות שהוגדר, שהוא %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על צבע החזית, &lt;tt&gt;#%3$06X&lt;/tt&gt;, וצבע הרקע, &lt;tt&gt;#%4$06X&lt;/tt&gt;, שצוינו. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%3$06X&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;#%4$06X&lt;/tt&gt;, כפי שצוינו. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
   
   <string name="check_title_redundant_description">תווית סוג פריט</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על צבע טקסט &lt;tt&gt;#%2$06X&lt;/tt&gt; ועל צבע רקע &lt;tt&gt;#%3$06X&lt;/tt&gt;. כדאי להגדיל את יחס הניגודיות של טקסט הפריט ל-%4$.2f לפחות.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. היחס הזה מבוסס על צבע הטקסט &lt;tt&gt;#%2$06X&lt;/tt&gt; ועל צבע הרקע &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ לבחור בצבעים שיחס הניגודיות ביניהם גדול יותר מהיחס ששונה, שהוא %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט בפריט הוא %1$.2f. יחס זה מבוסס על צבע החזית שצוין (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ועל צבע הרקע שצוין (&lt;tt&gt;#%3$06X&lt;/tt&gt;). לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">יחס הניגודיות של הפריט הוא %1$.2f. יחס זה מבוסס על הערכה שצבע החזית הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; וצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ להגדיל יחס זה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%2$06X&lt;/tt&gt;, ועל צבע הרקע &lt;tt&gt;#%3$06X&lt;/tt&gt; שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט בפריט הוא %1$.2f. יחס זה מבוסס על צבע החזית שצוין (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ועל צבע הרקע שצוין (&lt;tt&gt;#%3$06X&lt;/tt&gt;). מומלץ להגדיל את היחס הזה ליחס הניגודיות שהוגדר, שהוא %4$.2f או יותר.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%2$06X&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;#%3$06X&lt;/tt&gt;, כפי שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">הצבע הקדמי וצבע הרקע של הפריט הזה עומדים ביחס הניגודיות המוצע.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">הצבע הקדמי וצבע הרקע של הפריט הזה עומדים ביחס הניגודיות שהשתנה.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">האם צבע החזית וצבע הרקע שזוהו נכונים?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">הרוחב של פריט זה הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הרוחב של יעד מגע זה ל-&lt;tt&gt;%2$ddp&lt;/tt&gt; לפחות.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">גודל הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. מומלץ להגדיל את יעד המגע הזה לפחות לגודל המינימלי שהוגדר, שהוא &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">גודל הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. מומלץ להגדיל את יעד המגע הזה לפחות לגודל המינימלי שהשתנה, שהוא &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">גובה הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הגובה של יעד המגע הזה לפחות לגובה המינימלי שהוגדר, שהוא &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">גובה הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הגובה של יעד המגע הזה לפחות לגובה המינימלי שהשתנה, שהוא &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">רוחב הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הרוחב של יעד המגע הזה לפחות לרוחב המינימלי שהוגדר, שהוא &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">רוחב הפריט הוא &lt;tt&gt;%1$ddp&lt;/tt&gt;. מומלץ להגדיל את הרוחב של יעד המגע הזה לפחות לרוחב המינימלי שהשתנה, שהוא &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">באחד מפריטי האב של פריט זה זוהה &lt;tt&gt;TouchDelegate&lt;/tt&gt;. אם אובייקט ההקצאה (Delegate) גדול מספיק והוא מטפל בנקודות המגע של פריט זה, אפשר להתעלם מההודעה הזו.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">ייתכן שגורם מכיל חותך את הגודל של הפריט הזה, שגודל אזור הציור שלו הוא &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. נסה להגדיל את גודל גורם החיתוך של פריט זה, או לאפשר לגורם מכיל גדול יותר לטפל בפעולות בשם הפריט הזה.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">פריט זה עשוי להיות גלוי באופן חלקי בלבד בתוך מאגר שניתן לגלילה.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">הפריט הזה מגיע מתוכן באינטרנט, ומומלץ לבדוק שוב את גודל משטח המגע.</string>
   
   <string name="check_title_class_name_not_supported">סוג פריט שאינו נתמך</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">רצוי לחשוף את הפריטים באזור הזה לשירותי הנגישות.</string>
   
+  <string name="check_title_text_size">שינוי גודל הטקסט</string>
+  
+  <string name="result_message_no_text_size_unit">לא ניתן היה להשיג את יחידת המידה של גודל הטקסט.</string>
+  
+  <string name="result_message_brief_text_size_unit">יחידת המידה של גודל הטקסט בפריט הזה היא &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; עם יחידת המידה &lt;tt&gt;%2$s&lt;/tt&gt; לגודל הטקסט.</string>
+  
+  <string name="result_message_small_fixed_text_size">גודל הטקסט הזה קטן ויכול להיות שמשתמשים מסוימים יתקשו לקרוא אותו. כדאי לשקול להגדיל את גודל הטקסט או לציין את גודל הטקסט בפיקסלים משוקללים (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">כדאי לשקול לציין את גודל הטקסט בפיקסלים משוקללים (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש רוחב קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש גובה קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש גודל קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש רוחב קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש גובה קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש גודל קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">כדאי לשקול לשנות את &lt;tt&gt;LayoutParams&lt;/tt&gt; כדי לאפשר הרחבה של הטקסט.</string>
+  
+  <string name="check_title_unexposed_text">טקסט לא גלוי</string>
+  
+  <string name="result_message_unexposed_text">צריך לוודא שתווית הנגישות של הפריט הזה כוללת את הטקסט הגלוי שבו.</string>
+  
+  <string name="result_message_text_detected_in_image_view">תוצאות OCR זוהו בתוך ה-ImageView הזה.</string>
+  
+  <string name="result_message_brief_unexposed_text">זוהה טקסט לא גלוי: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">זוהה טקסט: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">יכול להיות שהתוכן ב-&lt;tt&gt;SurfaceView&lt;/tt&gt; לא גלוי לשירותי הנגישות.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">זוהו כמה טקסטים שאינם גלויים לשירותי הנגישות, כולל \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">יכול להיות שתוכן הפריט הזה לא גלוי לשירותי הנגישות.</string>
+  
+  <string name="result_message_ocr_result_not_available">תוצאות OCR לא זמינות.</string>
+  
+  <string name="result_message_no_matching_ocr_results">בפריט הזה לא זוהו תוצאות OCR.</string>
+  
+  <string name="result_message_multiple_best_match_views">תוצאת OCR אחת זוהתה בתוך כמה פריטים שניתנים למיקוד.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">זוהתה תוצאת OCR עם תו אחד, אבל אין טקסט במיקום הזה.</string>
+  
   <string name="question_message_screen_has_unexposed_items">האם המסך הזה כולל פריטים חשובים שאינם חשופים?</string>
   
   <string name="question_message_identify_unexposed_items">יש לבחור אזורים במסך הכוללים פריטים לא מזוהים.</string>
+  
+  <string name="value_checked">בוצע סימון</string>
+  
+  <string name="value_not_checked">לא בוצע סימון</string>
+  
+  <string name="value_on">פועל</string>
+  
+  <string name="value_off">כבוי</string>
+  
+  <string name="template_containers_quantity_other">%2$d פריטים מוצגים ב%1$s.</string>
+  
+  <string name="template_labeled_item">%1$s של %2$s</string>
+  
+  <string name="value_listview">רשימה</string>
 
 </resources>

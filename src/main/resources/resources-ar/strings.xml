@@ -21,14 +21,6 @@
   
   <string name="clickable">قابل للنقر</string>
   
-  <string name="non_clickable">غير قابل للنقر</string>
-  
-  <string name="long_clickable">قابل للنقر المطوّل</string>
-  
-  <string name="clickable_and_long_clickable">قابل للنقر وللنقر المطوّل</string>
-  
-  <string name="actionable">يمكن اتخاذ إجراء بشأنه</string>
-  
   <string name="result_message_sdk_version_not_applicable">لا ينطبق هذا التحديد على الأجهزة التي تعمل بالإصدار %1$s من نظام التشغيل Android والإصدارات الأحدث.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">قد تكون هذه السلعة محجوبة وراء محتوى آخر ظاهر على الشاشة. من الأفضل تجربة تباين هذه السلعة يدويًا.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">يظهر هذا العنصر %1$s على الموقع نفسه على الشاشة (&lt;tt&gt;%2$s&lt;/tt&gt;) حيث يظهر %3$d عنصر آخر بهذه الخصائص.</string>
   
   <string name="result_message_view_bounds">يحتل هذا العنصر %1$s أيضًا موقعًا على الشاشة بحدود &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">غير قابل للنقر</string>
+  
+  <string name="long_clickable">قابل للنقر المطوّل</string>
+  
+  <string name="clickable_and_long_clickable">قابل للنقر وللنقر المطوّل</string>
+  
+  <string name="actionable">يمكن اتخاذ إجراء بشأنه</string>
   
   <string name="check_title_duplicate_speakable_text">أوصاف العناصر</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى %2$.2f أو نسبة أعلى.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">إنّ نسبة تباين الصورة هو %1$.2f. وتستند هذه النسبة إلى لون تقديري للواجهة هو &lt;tt&gt;#%3$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة المعدّل إلى النسبة التي تمّت إعدادها، وهي %2$.2f أو نسبة أعلى.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">تبلغ نسبة تباين الصورة %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة التي تم ضبطها، وهي %2$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
   
   <string name="check_title_redundant_description">تسمية نوع العنصر</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">يبلغ معدل تباين النص %1$.2f. يستند هذا المعدل إلى لون نص &lt;tt&gt;#%2$06X&lt;/tt&gt; ولون خلفية &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة معدل تباين نص هذا العنصر إلى %4$.2f أو أكثر.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون النصّ، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من النسبة المعدّلة، وهي %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">يبلغ معدل تباين النص الخاص بهذا العنصر %1$.2f. يستند المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%2$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تؤدي إلى تحقيق معدل تباين يزيد عن %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون تقديري للمقدّمة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون تقديري للخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">إنّ نسبة تباين نصّ العنصر هو %1$.2f. وتستند هذه النسبة إلى لون تقديري للواجهة هو &lt;tt&gt;#%2$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة معدّل تباين نصّ العنصر إلى النسبة التي تمّت إعدادها، وهي %4$.2f أو نسبة أعلى.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون المقدّمة المحدّد، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية المحدّد، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة التي تم ضبطها، وهي %4$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">يستوفي لونا الواجهة والخلفية لهذا العنصر معايير نسبة التباين المقترَحة.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">يستوفي لونا الواجهة والخلفية لهذا العنصر معايير نسبة التباين المعدّلة.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">هل لونا الواجهة والخلفية اللذين تم رصدهما صحيحان؟</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">يبلغ عرض هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة عرض هدف اللمس هذا إلى &lt;tt&gt;%2$ddp&lt;/tt&gt; أو أكثر.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">يبلغ حجم هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. ننصحك بزيادة ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للحجم الذي تمّت إعداده، وهو &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">يبلغ حجم هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. ننصحك بزيادة ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للحجم المعدّل، وهو &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">يبلغ ارتفاع هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة ارتفاع ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للارتفاع الذي تمّت إعداده، وهو &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">يبلغ ارتفاع هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة ارتفاع ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للارتفاع المعدّل، وهو &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">يبلغ عرض هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة عرض ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للعرض الذي تمّت إعداده، وهو &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">يبلغ عرض هذا العنصر &lt;tt&gt;%1$ddp&lt;/tt&gt;. ننصحك بزيادة عرض ناحية اللمس المستهدَفة هذه لتبلغ على الأقلّ الحدّ الأدنى للعرض المعدّل، وهو &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">تم اكتشاف &lt;tt&gt;TouchDelegate&lt;/tt&gt; على الإصدار السابق من هذا العنصر. يمكنك تجاهل هذه الرسالة إذا كان العنصر المفوض بحجم مناسب ويعالج اللمسات لهذا العنصر.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">يُحتمل أن يتم اقتصاص حجم هذا العنصر، الذي تبلغ منطقة الرسم فيه &lt;tt&gt;%1$ddp&lt;/tt&gt; x ‏&lt;tt&gt;%2$ddp&lt;/tt&gt;، بواسطة حاوية أساسية. ننصحك بزيادة حجم الإصدار السابق من العنصر الذي تسبّب بالاقتصاص أو السماح لحاوية أساسية أكبر بتولي الإجراءات نيابةً عن هذا العنصر.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">يمكنك رؤية هذه السلعة جزئيًا ضمن حاوية يمكن التمرير فيها.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">إنّ مصدر هذا العنصر هو محتوى على الويب، وننصحك بإجراء عملية تحقّق إضافية من حجم مساحة اللمس.</string>
   
   <string name="check_title_class_name_not_supported">نوع عنصرٍ غير مُتاح</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">ننصحك بإظهار السلع في هذه المنطقة لخدمات تمكين الوصول.</string>
   
+  <string name="check_title_text_size">التحقّق من حجم النص</string>
+  
+  <string name="result_message_no_text_size_unit">تعذّر الحصول على وحدة حجم النص.</string>
+  
+  <string name="result_message_brief_text_size_unit">إنّ وحدة حجم النص لهذا العنصر هي &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; بوحدة &lt;tt&gt;%2$s&lt;/tt&gt; لحجم النص</string>
+  
+  <string name="result_message_small_fixed_text_size">هذا النص صغير الحجم وقد تصعب على بعض المستخدمين قراءته. ننصحك باستخدام حجم أكبر أو تحديد حجم النص باستخدام وحدات البكسل المعدَّلة (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">ننصحك بتحديد حجم النص باستخدام وحدات البكسل المعدَّلة (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بعرض ثابت ونص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بارتفاع ثابت ونص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بحجم ثابت ونص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بعرض ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بارتفاع ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بحجم ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">يمكنك تغيير &lt;tt&gt;LayoutParams&lt;/tt&gt; للسماح بتوسيع النص.</string>
+  
+  <string name="check_title_unexposed_text">نص غير ظاهر</string>
+  
+  <string name="result_message_unexposed_text">تأكَّد من أنّ تصنيف تسهيل الاستخدام الخاص بهذه السلعة يشمل النص الظاهر فيها.</string>
+  
+  <string name="result_message_text_detected_in_image_view">تم رصد نتائج التعرّف البصري على الأحرف داخل ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">تم رصد نص غير ظاهر: %1$s.</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">تم رصد نص: %1$s.</string>
+  
+  <string name="result_message_text_detected_in_surface_view">يُحتمَل أنّه لا يتم عرض محتوى &lt;tt&gt;SurfaceView&lt;/tt&gt; هذا لخدمات تسهيل الاستخدام.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">تم رصد عدة نصوص غير معروضة، بما في ذلك \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">يُحتمَل أنّه لا يتم عرض محتوى هذا العنصر لخدمات تسهيل الاستخدام.</string>
+  
+  <string name="result_message_ocr_result_not_available">نتائج التعرّف البصري على الأحرف غير متوفّرة.</string>
+  
+  <string name="result_message_no_matching_ocr_results">لم يتم رصد نتائج التعرّف البصري على الأحرف في هذا العنصر.</string>
+  
+  <string name="result_message_multiple_best_match_views">تم رصد نتيجة واحدة للتعرّف البصري على الأحرف في عدّة عناصر يمكن التركيز عليها.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">رصدت تقنية التعرّف البصري على الأحرف (OCR) نتيجة تتضمّن حرفًا واحدًا، ولكن لا يتوفر أي نص في ذلك الموقع.</string>
+  
   <string name="question_message_screen_has_unexposed_items">هل تتضمّن هذه الشاشة سلعًا مهمة غير معروضة؟</string>
   
   <string name="question_message_identify_unexposed_items">يُرجى اختيار مناطق من الشاشة تتضمن سلعًا غير محددة.</string>
+  
+  <string name="value_checked">تم وضع علامة فيه</string>
+  
+  <string name="value_not_checked">لم يتم وضع علامة فيه</string>
+  
+  <string name="value_on">مفعَّل</string>
+  
+  <string name="value_off">غير مفعّل</string>
+  
+  <string name="template_containers_quantity_other">عدد العناصر التي يتم عرضها في %1$s هو %2$d</string>
+  
+  <string name="template_labeled_item">%1$s لـ %2$s</string>
+  
+  <string name="value_listview">قائمة</string>
 
 </resources>

@@ -21,14 +21,6 @@
   
   <string name="clickable">clickable</string>
   
-  <string name="non_clickable">non-clickable</string>
-  
-  <string name="long_clickable">long clickable</string>
-  
-  <string name="clickable_and_long_clickable">clickable and long clickable</string>
-  
-  <string name="actionable">actionable</string>
-  
   <string name="result_message_sdk_version_not_applicable">This check is not applicable on devices running Android %1$s and above.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">This item may be obscured by other on-screen content. Consider manually testing this item\'s contrast.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">This %1$s item has the same on-screen location (&lt;tt&gt;%2$s&lt;/tt&gt;) as %3$d other item(s) with those properties.</string>
   
   <string name="result_message_view_bounds">This %1$s item also has an on-screen location of &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">non-clickable</string>
+  
+  <string name="long_clickable">long clickable</string>
+  
+  <string name="clickable_and_long_clickable">clickable and long clickable</string>
+  
+  <string name="actionable">actionable</string>
   
   <string name="check_title_duplicate_speakable_text">Item descriptions</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the configured ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
   
   <string name="check_title_redundant_description">Item type label</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than the modified ratio of %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %4$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the configured ratio of %4$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">This item\'s foreground and background colours meet the suggested contrast ratio.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">This item\'s foreground and background colours meet the modified contrast ratio.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Are the detected foreground and background colours correct?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider making the width of this touch target &lt;tt&gt;%2$ddp&lt;/tt&gt; or larger.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the configured minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">This item\'s size is &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing this touch target to at least the modified minimum size of &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the configured minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">This item\'s height is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the height of this touch target to at least the modified minimum height of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the configured minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">This item\'s width is &lt;tt&gt;%1$ddp&lt;/tt&gt;. Consider increasing the width of this touch target to at least the modified minimum width of &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">A &lt;tt&gt;TouchDelegate&lt;/tt&gt; has been detected on one of this item\'s ancestors. This message can be ignored if the delegate is of sufficient size and handles touches for this item.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">A parent container may be clipping the size of this item, which has a drawing area of &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Consider increasing the size of this item\'s clipping ancestor, or allowing a larger parent container to handle actions on behalf of this item.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">This item may be only partially visible within a scrollable container.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">This item originates from web content, and additional verification of touch target size is recommended.</string>
   
   <string name="check_title_class_name_not_supported">Unsupported item type</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Consider exposing items in this region to accessibility services.</string>
   
+  <string name="check_title_text_size">Text scaling</string>
+  
+  <string name="result_message_no_text_size_unit">Text size unit could not be obtained.</string>
+  
+  <string name="result_message_brief_text_size_unit">This item\'s text size unit is &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; with text size unit of &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">This text is small, and may be difficult for some users to read. Consider using a larger size or specifying the text size in scaled pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Consider specifying the text size in scaled pixels (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed width and scalable text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed height and scalable text.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed size and scalable text.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed width and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed height and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed size and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Consider modifying the &lt;tt&gt;LayoutParams&lt;/tt&gt; to allow for text expansion.</string>
+  
+  <string name="check_title_unexposed_text">Unexposed text</string>
+  
+  <string name="result_message_unexposed_text">Ensure that this item\'s accessibility label includes its visible text.</string>
+  
+  <string name="result_message_text_detected_in_image_view">OCR results were detected inside this ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Unexposed text detected: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Text detected: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">This &lt;tt&gt;SurfaceView&lt;/tt&gt; may not be exposing its content to accessibility services.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Multiple unexposed pieces of text detected, including \'%1$s\'.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">This item may not be exposing its content to accessibility services.</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR results are not available.</string>
+  
+  <string name="result_message_no_matching_ocr_results">No OCR results were detected inside this item.</string>
+  
+  <string name="result_message_multiple_best_match_views">One OCR result was detected inside multiple focusable items.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">An OCR result with a single character was detected, but no text exists at that location.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Does this screen contain important items that are not outlined?</string>
   
   <string name="question_message_identify_unexposed_items">Select regions of the screen with unidentified items.</string>
+  
+  <string name="value_checked">ticked</string>
+  
+  <string name="value_not_checked">not ticked</string>
+  
+  <string name="value_on">on</string>
+  
+  <string name="value_off">off</string>
+  
+  <string name="template_containers_quantity_other">%1$s showing %2$d items.</string>
+  
+  <string name="template_labeled_item">%1$s for %2$s</string>
+  
+  <string name="value_listview">List</string>
 
 </resources>

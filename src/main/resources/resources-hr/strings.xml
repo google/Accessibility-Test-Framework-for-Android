@@ -21,14 +21,6 @@
   
   <string name="clickable">namijenjeno za klikanje</string>
   
-  <string name="non_clickable">nije namijenjeno za klikanje</string>
-  
-  <string name="long_clickable">namijenjeno za dugo klikanje</string>
-  
-  <string name="clickable_and_long_clickable">namijenjeno za klikanje i dugo klikanje</string>
-  
-  <string name="actionable">namijenjeno za izvršenje radnje</string>
-  
   <string name="result_message_sdk_version_not_applicable">Ta se provjera ne može primijeniti na uređajima sa sustavom Android %1$s i novijim verzijama.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Drugi sadržaji na zaslonu mogli bi prekriti tu stavku. Razmislite o ručnom testiranju kontrasta za tu stavku.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Ta stavka sa svojstvom %1$s ima istu lokaciju na zaslonu (&lt;tt&gt;%2$s&lt;/tt&gt;) kao i druge stavke s tim svojstvima (broj stavki: %3$d).</string>
   
   <string name="result_message_view_bounds">Ta stavka sa svojstvom %1$s ima i lokaciju na zaslonu &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">nije namijenjeno za klikanje</string>
+  
+  <string name="long_clickable">namijenjeno za dugo klikanje</string>
+  
+  <string name="clickable_and_long_clickable">namijenjeno za klikanje i dugo klikanje</string>
+  
+  <string name="actionable">namijenjeno za izvršenje radnje</string>
   
   <string name="check_title_duplicate_speakable_text">Opisi stavki</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Omjer kontrasta slike iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Razmislite o povećanju omjera na %2$.2f ili više.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Omjer kontrasta slike iznosi %1$.2f. Taj se omjer temelji na procjeni da je boja prednjeg plana &lt;tt&gt;#%3$06X&lt;/tt&gt; i na procjeni da je boja pozadine &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povećanju tog omjera na konfigurirani omjer od %2$.2f ili više.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Omjer kontrasta slike iznosi %1$.2f. Taj se omjer temelji na procijenjenoj boji prednjeg plana (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i na procijenjenoj boji pozadine (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Razmislite o povećanju omjera na izmijenjeni omjer od %2$.2f ili više.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Omjer kontrasta slike iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Razmislite o povećanju omjera na konfigurirani omjer od %2$.2f ili više.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Omjer kontrasta slike iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Razmislite o povećanju omjera na izmijenjeni omjer od %2$.2f ili više.</string>
   
   <string name="check_title_redundant_description">Oznaka vrste stavke</string>
   
@@ -137,13 +137,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na boji teksta koja je &lt;tt&gt;#%2$06X&lt;/tt&gt; i na boji pozadine koja je &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povećanju omjera kontrasta teksta te stavke na %4$.2f ili više.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj omjer temelji se na boji teksta &lt;tt&gt;#%2$06X&lt;/tt&gt; i boji pozadine &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o upotrebi boja koje će dovesti do omjera kontrasta većeg od izmijenjenog omjera od %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Omjer kontrasta teksta te stavke iznosi %1$.2f. Taj se omjer temelji na procjeni da je boja prednjeg plana &lt;tt&gt;#%2$06X&lt;/tt&gt; i na procjeni da je boja pozadine &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o upotrebi boja koje će dovesti do omjera kontrasta iznad %4$.2f za malen tekst ili %5$.2f za velik tekst.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na procjeni da je boja prednjeg plana &lt;tt&gt;#%2$06X&lt;/tt&gt; i na procjeni da je boja pozadine &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povećanju omjera kontrasta teksta te stavke na %4$.2f ili više.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Omjer kontrasta teksta te stavke iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Razmislite o upotrebi boja koje će dovesti do omjera kontrasta iznad %4$.2f za malen tekst ili %5$.2f za velik tekst.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na procjeni da je boja prednjeg plana &lt;tt&gt;#%2$06X&lt;/tt&gt; i na procjeni da je boja pozadine &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povećanju omjera kontrasta teksta te stavke na konfigurirani omjer od %4$.2f ili više.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Razmislite o povećanju omjera kontrasta teksta te stavke na %4$.2f ili više.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i na postavljenoj boji pozadine, (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Razmislite o povećanju omjera kontrasta teksta te stavke na konfigurirani omjer od %4$.2f ili više.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na procijenjenoj boji prednjeg plana (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i na procijenjenoj boji pozadine (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Razmislite o povećanju omjera kontrasta teksta te stavke na izmijenjeni omjer od %4$.2f ili više.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Omjer kontrasta teksta stavke iznosi %1$.2f. Taj se omjer temelji na postavljenoj boji prednjeg plana (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i na postavljenoj boji pozadine (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Razmislite o povećanju omjera kontrasta teksta te stavke na izmijenjeni omjer od %4$.2f ili više.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Boja prednjeg plana i boja pozadine te stavke u skladu su s preporučenim omjerom kontrasta.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Boja prednjeg plana i boja pozadine te stavke u skladu su s izmijenjenim omjerom kontrasta.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Jesu li prepoznate boje prednjeg plana i pozadine pravilne?</string>
   
@@ -173,11 +183,11 @@
   
   <string name="result_message_small_touch_target_width">Širina te stavke iznosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o promjeni širine tog cilja dodira na &lt;tt&gt;%2$ddp&lt;/tt&gt; ili više.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Dimenzije te stavke su &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o povećanju tog cilja dodira na konfigurirane minimalne dimenzije od najmanje &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Dimenzije te stavke su &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o povećanju tog cilja dodira na izmijenjene minimalne dimenzije od najmanje &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Visina te stavke iznosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povećanju visine tog cilja dodira na konfiguriranu minimalnu visinu od najmanje &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Visina te stavke iznosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povećanju visine tog cilja dodira na izmijenjenu minimalnu visinu od najmanje &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Širina te stavke iznosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povećanju širine tog cilja dodira na konfiguriranu minimalnu širinu od najmanje &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Širina te stavke iznosi &lt;tt&gt;%1$ddp&lt;/tt&gt;. Razmislite o povećanju širine tog cilja dodira na izmijenjenu minimalnu širinu od najmanje &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">Na nekoj od prijašnjih verzija te stavke otkriven je delegat &lt;tt&gt;TouchDelegate&lt;/tt&gt;. Ovu poruku možete zanemariti ako delegat ima dostatnu veličinu i može obraditi dodire za tu stavku.</string>
   
@@ -188,6 +198,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Nadređeni spremnik možda smanjuje tu stavku, čije područje za iscrtavanje ima dimenzije &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Razmislite o povećanju izvorne verzije te stavke za smanjivanje ili o omogućavanju većeg nadređenog spremnika za obradu radnji za tu stavku.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Ta će stavka možda biti tek djelomično vidljiva u spremniku s mogućnošću pomicanja.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Ta stavka potječe iz sadržaja na webu i preporučuje se dodatna potvrda veličine cilja dodira.</string>
   
   <string name="check_title_class_name_not_supported">Nepodržana vrsta stavke</string>
   
@@ -253,8 +265,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Razmotrite omogućavanje vidljivosti stavki u tom području uslugama pristupačnosti.</string>
   
+  <string name="check_title_text_size">Skaliranje teksta</string>
+  
+  <string name="result_message_no_text_size_unit">Nije uspjelo dohvaćanje jedinice veličine teksta.</string>
+  
+  <string name="result_message_brief_text_size_unit">Jedinica veličine teksta za tu stavku je &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; s jedinicom veličine teksta &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">To je malen tekst i neki korisnici mogu imati poteškoća pri njegovom čitanju. Razmislite o povećanju veličine ili o navođenju veličine teksta u skaliranim pikselima (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Razmislite o navođenju veličine teksta u skaliranim pikselima (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Ovaj element &lt;tt&gt;TextView&lt;/tt&gt; ima fiksnu širinu i skalabilni tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Ovaj element &lt;tt&gt;TextView&lt;/tt&gt; ima fiksnu visinu i skalabilni tekst.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Ovaj element &lt;tt&gt;TextView&lt;/tt&gt; ima fiksnu veličinu i skalabilni tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ovaj element &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksnu širinu i sadrži element &lt;tt&gt;TextView&lt;/tt&gt; sa skalabilnim tekstom.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ovaj element &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksnu visinu i sadrži element &lt;tt&gt;TextView&lt;/tt&gt; sa skalabilnim tekstom.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ovaj element &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksnu veličinu i sadrži element &lt;tt&gt;TextView&lt;/tt&gt; sa skalabilnim tekstom.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Razmislite o tome da izmijenite element &lt;tt&gt;LayoutParams&lt;/tt&gt; kako bi se omogućilo proširivanje teksta.</string>
+  
+  <string name="check_title_unexposed_text">Neprikazani tekst</string>
+  
+  <string name="result_message_unexposed_text">Provjerite uključuje li oznaka pristupačnosti stavke njezin vidljivi tekst.</string>
+  
+  <string name="result_message_text_detected_in_image_view">U toj klasi ImageView otkriveni su rezultati optičkog prepoznavanja znakova.</string>
+  
+  <string name="result_message_brief_unexposed_text">Otkriven je neprikazani tekst: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Otkriven je tekst: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Taj element &lt;tt&gt;SurfaceView&lt;/tt&gt; možda ne otkriva svoj sadržaj uslugama pristupačnosti.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Pronađeno je više neotkrivenih tekstova, uključujući sljedeći: \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Taj element možda ne otkriva svoj sadržaj uslugama pristupačnosti.</string>
+  
+  <string name="result_message_ocr_result_not_available">Rezultati OCR-a nisu dostupni.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Unutar te stavke nisu otkriveni rezultati OCR-a.</string>
+  
+  <string name="result_message_multiple_best_match_views">Jedan rezultat OCR-a otkriven je u više stavki s mogućnošću fokusiranja.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Otkriven je rezultat OCR-a s jednim znakom, ali na toj lokaciji nema teksta.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Ima li na tom zaslonu važnih stavki koje nisu istaknute?</string>
   
   <string name="question_message_identify_unexposed_items">Odaberite područja zaslona s neidentificiranim stavkama.</string>
+  
+  <string name="value_checked">označeno</string>
+  
+  <string name="value_not_checked">nije označeno</string>
+  
+  <string name="value_on">uključeno</string>
+  
+  <string name="value_off">isključeno</string>
+  
+  <string name="template_containers_quantity_other">%1$s, prikazani broj stavki: %2$d.</string>
+  
+  <string name="template_labeled_item">%1$s za %2$s</string>
+  
+  <string name="value_listview">Popis</string>
 
 </resources>

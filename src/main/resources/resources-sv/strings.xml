@@ -21,14 +21,6 @@
   
   <string name="clickable">klickbar</string>
   
-  <string name="non_clickable">inte klickbar</string>
-  
-  <string name="long_clickable">lång klickbar</string>
-  
-  <string name="clickable_and_long_clickable">klickbar och lång klickbar</string>
-  
-  <string name="actionable">handlingsbar</string>
-  
   <string name="result_message_sdk_version_not_applicable">Kontrollen är inte tillämplig på enheter med Android %1$s eller senare.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Det här objektet kan skymmas av annat innehåll på skärmen. Överväg att manuellt testa kontrasten för det här objektet.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Det här %1$s objektet har samma plats på skärmen (&lt;tt&gt;%2$s&lt;/tt&gt;) som %3$d andra objekt med samma egenskaper.</string>
   
   <string name="result_message_view_bounds">Det här %1$s objektet har också en plats på skärmen på &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">inte klickbar</string>
+  
+  <string name="long_clickable">lång klickbar</string>
+  
+  <string name="clickable_and_long_clickable">klickbar och lång klickbar</string>
+  
+  <string name="actionable">handlingsbar</string>
   
   <string name="check_title_duplicate_speakable_text">Objektsbeskrivningar</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till minst %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Det här förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du kan öka förhållandet till %2$.2f eller större.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det konfigurerade värdet på minst %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
   
   <string name="check_title_redundant_description">Objekttypsbeteckning</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka textens kontrastförhållande till %4$.2f eller större.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Överväg att använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
   
   <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Objektets förgrunds- och bakgrundsfärger uppfyller det föreslagna kontrastförhållandet.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Objektets förgrunds- och bakgrundsfärger uppfyller det ändrade kontrastförhållandet.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Är de identifierade förgrunds- och bakgrundsfärgerna rätt?</string>
   
@@ -177,11 +187,11 @@
   
   <string name="result_message_small_touch_target_width">Objektets bredd är &lt;tt&gt;%1$ddp&lt;/tt&gt;. Du kan göra den tryckbara vyns bredd &lt;tt&gt;%2$ddp&lt;/tt&gt; eller större.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Objektets storlek är &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyn till minst den konfigurerade minimistorleken &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Objektets storlek är &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyn till minst den ändrade minimistorleken &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Objektets höjd är &lt;tt&gt;%1$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyns höjd till minst den konfigurerade minimihöjden &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Objektets höjd är &lt;tt&gt;%1$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyns höjd till minst den ändrade minimihöjden &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Objektets bredd är &lt;tt&gt;%1$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyns bredd till minst den konfigurerade minimibredden &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Objektets bredd är &lt;tt&gt;%1$ddp&lt;/tt&gt;. Du kan öka den tryckbara vyns bredd till minst den ändrade minimibredden &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
   
   <string name="result_message_addendum_touch_delegate">&lt;tt&gt;TouchDelegate&lt;/tt&gt; har identifierats på ett tidigare objekt. Meddelandet kan ignoreras om ytan är tillräckligt stor och hanterar tryckningar för objektet.</string>
   
@@ -192,6 +202,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">En överordnad ruta kan påverka storleken på objektet, som har en rityta på &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Överväg att öka storleken på objektets överordnade element, eller tillåt en större, överordnad ruta att hantera åtgärder åt objektet.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Det kan hända att det här objektet endast är delvis synligt inom en rullningsbar ruta.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Det här objektet kommer från webbinnehåll. Vi rekommenderar ytterligare verifiering av tryckområdets storlek.</string>
   
   <string name="check_title_class_name_not_supported">Objekttyp som inte stöds</string>
   
@@ -257,8 +269,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Överväg att exponera objekt i den här regionen för tillgänglighetstjänster.</string>
   
+  <string name="check_title_text_size">Textskalning</string>
+  
+  <string name="result_message_no_text_size_unit">Textstorleksenhet kunde inte hämtas.</string>
+  
+  <string name="result_message_brief_text_size_unit">Objektets textstorleksenhet är &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; med textstorleksenhet på &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Den här texten är liten och kan vara svår för vissa användare att läsa. Överväg en större storlek eller att ange textstorleken i skalade pixlar (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Överväg att ange textstorleken i skalade pixlar (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast bredd och skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast höjd och skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast storlek och skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast bredd och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast höjd och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast storlek och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Du kan modifiera &lt;tt&gt;LayoutParams&lt;/tt&gt; för att utvidga texten.</string>
+  
+  <string name="check_title_unexposed_text">Synlig text saknas</string>
+  
+  <string name="result_message_unexposed_text">Se till att objektets tillgänglighetsetikett innefattar dess synliga text.</string>
+  
+  <string name="result_message_text_detected_in_image_view">OCR-resultat upptäcktes i ImageView.</string>
+  
+  <string name="result_message_brief_unexposed_text">Text som saknas har identifierats: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Text har identifierats: %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">Denna &lt;tt&gt;SurfaceView&lt;/tt&gt; kanske inte visar sitt innehåll för tillgänglighetstjänster.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Flera texter som saknas har identifierats, inklusive %1$s.</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Denna kanske inte visar sitt innehåll för tillgänglighetstjänster.</string>
+  
+  <string name="result_message_ocr_result_not_available">OCR-resultat är inte tillgängliga.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Inga OCR-resultat upptäcktes i objektet.</string>
+  
+  <string name="result_message_multiple_best_match_views">Ett OCR-resultat upptäcktes i flera fokuserbara objekt.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Ett OCR-resultat med ett tecken hittades, men det finns ingen text på den platsen.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Innehåller skärmen viktiga objekt som inte beskrivs?</string>
   
   <string name="question_message_identify_unexposed_items">Välj regioner på skärmen med oidentifierade objekt.</string>
+  
+  <string name="value_checked">markerad</string>
+  
+  <string name="value_not_checked">inte markerad</string>
+  
+  <string name="value_on">på</string>
+  
+  <string name="value_off">av</string>
+  
+  <string name="template_containers_quantity_other">%1$s visar %2$d objekt.</string>
+  
+  <string name="template_labeled_item">%1$s för %2$s</string>
+  
+  <string name="value_listview">Lista</string>
 
 </resources>

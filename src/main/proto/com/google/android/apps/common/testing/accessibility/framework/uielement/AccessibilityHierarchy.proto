@@ -40,7 +40,7 @@ message ViewElementClassNamesProto {
 }
 
 // Wire format for a DeviceState
-// Next index: 4
+// Next index: 5
 message DeviceStateProto {
   optional DisplayInfoProto default_display_info = 1;
   optional int32 sdk_version = 2;
@@ -48,6 +48,7 @@ message DeviceStateProto {
   // An IETF BCP 47 language tag representing the locale at the time the app
   // was launched.
   optional string locale = 3;
+  optional float font_scale = 4;
 }
 
 // Wire format for a DisplayInfo
@@ -93,7 +94,7 @@ message WindowHierarchyElementProto {
 }
 
 // Wire format for a ViewHierarchyElement
-// Next index: 41
+// Next index: 44
 message ViewHierarchyElementProto {
   // Bookkeeping
   optional int32 id = 1 [default = -1];
@@ -106,6 +107,7 @@ message ViewHierarchyElementProto {
   optional string resource_name = 6;
   optional CharSequenceProto content_description = 7;
   optional CharSequenceProto text = 8;
+  optional CharSequenceProto state_description = 43;
   optional bool important_for_accessibility = 9;
   optional bool visible_to_user = 10;
   optional bool clickable = 11;
@@ -142,6 +144,8 @@ message ViewHierarchyElementProto {
   optional CharSequenceProto hint_text = 38;
   optional int32 hint_text_color = 39;
   repeated RectProto text_character_locations = 40;
+  optional int32 text_size_unit = 41;
+  optional bool screen_reader_focusable = 42;
 
   // Extra protos to save with each view node.
   // max is 536,870,911

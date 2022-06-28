@@ -42,16 +42,16 @@ public class LogUtils {
    * The minimum log level that will be printed to the console. Set this to {@link Log#ERROR} for
    * release or {@link Log#VERBOSE} for debugging.
    */
-  private static int sLogLevel = Log.ERROR;
+  private static int minLogLevel = Log.ERROR;
 
-  private static String sLogTagPrefix = "";
+  private static String logTagPrefix = "";
 
   /**
    * Set the prefix that will be prepended to all logging tags. This is useful for filtering logs
    * specific to a particular application.
    */
   public static void setTagPrefix(String prefix) {
-    sLogTagPrefix = prefix;
+    logTagPrefix = prefix;
   }
 
   /**
@@ -236,11 +236,11 @@ public class LogUtils {
       @Nullable Throwable throwable,
       @Nullable String format,
       @Nullable Object... args) {
-    if (priority < sLogLevel) {
+    if (priority < minLogLevel) {
       return;
     }
 
-    String prefixedTag = sLogTagPrefix + tag;
+    String prefixedTag = logTagPrefix + tag;
 
     // For each argument... replace with custom text.
     if (parameterCustomizer != null) {
@@ -293,12 +293,12 @@ public class LogUtils {
    * @param logLevel The minimum log level that will be printed to the console.
    */
   public static void setLogLevel(int logLevel) {
-    sLogLevel = logLevel;
+    minLogLevel = logLevel;
   }
 
   /** Gets the log display level. */
   public static int getLogLevel() {
-    return sLogLevel;
+    return minLogLevel;
   }
 
   /**
@@ -310,6 +310,6 @@ public class LogUtils {
   public static boolean shouldLog(int logLevel) {
     // Higher levels of verbosity correspond with lower int values.
     // https://developer.android.com/reference/android/util/Log.html#ASSERT
-    return sLogLevel <= logLevel;
+    return minLogLevel <= logLevel;
   }
 }

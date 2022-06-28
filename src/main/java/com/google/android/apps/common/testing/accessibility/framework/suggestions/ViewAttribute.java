@@ -4,19 +4,28 @@ import com.google.common.annotations.Beta;
 import java.util.Objects;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-/** Represents a View attribute which contains a namespace and an attribute name. */
+/** Represents a View attribute in XML files. */
 @Beta
 public class ViewAttribute {
 
   public static final String NAMESPACE_ANDROID = "android";
-
   public static final String NAMESPACE_APP = "app";
+
+  public static final String ANDROID_URI = "http://schemas.android.com/apk/res/android";
+  public static final String APP_URI = "http://schemas.android.com/apk/res-auto";
+
+  /**
+   * Namespace used in XML files for attributes. Android studio uses the URI and the attribute name
+   * to locate an attribute.
+   */
+  private final String namespaceUri;
 
   private final String namespace;
 
   private final String attributeName;
 
-  public ViewAttribute(String namespace, String attributeName) {
+  public ViewAttribute(String namespaceUri, String namespace, String attributeName) {
+    this.namespaceUri = namespaceUri;
     this.namespace = namespace;
     this.attributeName = attributeName;
   }
@@ -27,7 +36,7 @@ public class ViewAttribute {
    * @param attributeName the name of the attribute
    */
   public ViewAttribute(String attributeName) {
-    this(NAMESPACE_ANDROID, attributeName);
+    this(ANDROID_URI, NAMESPACE_ANDROID, attributeName);
   }
 
   /** Returns the name of this attribute. */
@@ -38,6 +47,11 @@ public class ViewAttribute {
   /** Returns the namespace for this View attribute. */
   public String getNamespace() {
     return namespace;
+  }
+
+  /** Returns the namespace used in XML files for this attribute. */
+  public String getNamespaceUri() {
+    return namespaceUri;
   }
 
   /** Returns the fully qualified name of this View attribute such as "android:layout_width". */

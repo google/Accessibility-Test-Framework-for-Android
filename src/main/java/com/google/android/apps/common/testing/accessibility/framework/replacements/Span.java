@@ -2,11 +2,13 @@ package com.google.android.apps.common.testing.accessibility.framework.replaceme
 
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.SpanProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.SpanProto.SpanType;
+import com.google.errorprone.annotations.Immutable;
 
 /**
  * Represents a generic markup span within a {@link CharSequence}. Specific span implementations may
  * be found in {@link Spans}
  */
+@Immutable
 public class Span {
   private final String spanClassName;
   private final int start;

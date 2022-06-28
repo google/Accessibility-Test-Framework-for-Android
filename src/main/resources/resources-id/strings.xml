@@ -21,14 +21,6 @@
   
   <string name="clickable">dapat diklik</string>
   
-  <string name="non_clickable">tidak dapat diklik</string>
-  
-  <string name="long_clickable">dapat diklik lama</string>
-  
-  <string name="clickable_and_long_clickable">dapat diklik dan diklik lama</string>
-  
-  <string name="actionable">dapat ditindaklanjuti</string>
-  
   <string name="result_message_sdk_version_not_applicable">Pemeriksaan ini tidak berlaku pada perangkat yang mengoperasikan Android %1$s dan di atasnya.</string>
   
   <string name="result_message_addendum_view_potentially_obscured">Item ini mungkin tertutup oleh konten lain yang ada di layar. Pertimbangkan menguji kontras item ini secara manual.</string>
@@ -48,6 +40,14 @@
   <string name="result_message_same_view_bounds">Item %1$s ini memiliki lokasi di layar yang sama ( &lt;tt&gt;%2$s&lt;/tt&gt; ) seperti %3$d item lainnya dengan properti tersebut.</string>
   
   <string name="result_message_view_bounds">Item %1$s ini juga memiliki lokasi di layar &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="non_clickable">tidak dapat diklik</string>
+  
+  <string name="long_clickable">dapat diklik lama</string>
+  
+  <string name="clickable_and_long_clickable">dapat diklik dan diklik lama</string>
+  
+  <string name="actionable">dapat ditindaklanjuti</string>
   
   <string name="check_title_duplicate_speakable_text">Deskripsi item</string>
   
@@ -73,9 +73,9 @@
   
   <string name="result_message_image_contrast_not_sufficient_confirmed">Rasio kontras gambar adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%3$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%4$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio ini ke %2$.2f atau lebih besar.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Rasio kontras gambar ini adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%3$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio ini ke rasio terkonfigurasi %2$.2f atau lebih besar.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Rasio kontras gambar adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%3$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio ini ke rasio %2$.2f yang dimodifikasi atau yang lebih besar.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Rasio kontras gambar adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%3$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%4$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio ini ke rasio %2$.2f yang dikonfigurasi atau lebih besar.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Rasio kontras gambar adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%3$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%4$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio ini ke rasio %2$.2f yang dimodifikasi atau yang lebih besar.</string>
   
   <string name="check_title_redundant_description">Label jenis item</string>
   
@@ -141,13 +141,23 @@
   
   <string name="result_message_textview_contrast_not_sufficient">Rasio kontras teks item adalah %1$.2f. Rasio ini didasarkan pada warna teks &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke %4$.2f atau lebih besar.</string>
   
+  <string name="result_message_customized_textview_contrast_not_sufficient">Rasio kontras teks item adalah %1$.2f. Rasio ini didasarkan pada warna teks &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk menggunakan warna yang menghasilkan rasio kontras yang lebih besar dari rasio %4$.2f yang diubah.</string>
+  
   <string name="result_message_textview_heuristic_contrast_not_sufficient">Rasio kontras teks item adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk menggunakan warna yang menghasilkan rasio kontras yang lebih besar daripada %4$.2f untuk teks kecil, atau %5$.2f untuk teks besar.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Rasio kontras teks item adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke %4$.2f atau lebih besar.</string>
   
   <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk menggunakan warna yang menghasilkan rasio kontras yang lebih besar dari %4$.2f untuk teks kecil, atau %5$.2f untuk teks besar.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke rasio terkonfigurasi %4$.2f atau lebih besar.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke %4$.2f atau lebih besar.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke rasio terkonfigurasi %4$.2f atau lebih besar.</string>
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada perkiraan warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan perkiraan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke rasio %4$.2f yang dimodifikasi atau yang lebih besar.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Rasio kontras teks item ini adalah %1$.2f. Rasio ini didasarkan pada warna latar depan &lt;tt&gt;#%2$06X&lt;/tt&gt; dan warna latar belakang &lt;tt&gt;#%3$06X&lt;/tt&gt; yang disediakan. Pertimbangkan untuk meningkatkan rasio kontras teks item ini ke rasio %4$.2f yang dimodifikasi atau yang lebih besar.</string>
+  
+  <string name="result_message_contrast_sufficient_confirmed">Warna latar depan dan latar belakang item ini memenuhi rasio kontras yang disarankan.</string>
+  
+  <string name="result_message_customized_contrast_sufficient_confirmed">Warna latar depan dan latar belakang item ini memenuhi rasio kontras yang dimodifikasi.</string>
   
   <string name="question_id_message_confirm_foreground_background_colors">Apakah warna latar depan dan latar belakang yang terdeteksi benar?</string>
   
@@ -177,11 +187,14 @@
   
   <string name="result_message_small_touch_target_width">Lebar item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pertimbangkan agar lebar target sentuh ini &lt;tt&gt;%2$ddp&lt;/tt&gt; atau lebih besar.</string>
   
-  <string name="result_message_customized_small_touch_target_width_and_height">Ukuran item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan target sentuh ini ke setidaknya ukuran minimum terkonfigurasi &lt;tt&gt;%3$ddp&lt;/tt&gt; x &lt;tt&gt;%4$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width_and_height">Ukuran item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;x&lt;tt&gt;%2$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan target sentuh ini ke setidaknya ukuran minimum &lt;tt&gt;%3$ddp&lt;/tt&gt;x&lt;tt&gt;%4$ddp&lt;/tt&gt; yang dimodifikasi.</string>
   
-  <string name="result_message_customized_small_touch_target_height">Tinggi item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan tinggi target sentuh ini ke setidaknya tinggi minimum terkonfigurasi &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_height">Tinggi item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan tinggi target sentuh ini ke setidaknya tinggi minimum
+&lt;tt&gt;%2$ddp&lt;/tt&gt; yang dimodifikasi.</string>
   
-  <string name="result_message_customized_small_touch_target_width">Lebar item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan lebar target sentuh ini ke setidaknya lebar minimum terkonfigurasi &lt;tt&gt;%2$ddp&lt;/tt&gt;.</string>
+  <string name="result_message_customized_small_touch_target_width">Lebar item ini adalah &lt;tt&gt;%1$ddp&lt;/tt&gt;. Pertimbangkan untuk meningkatkan lebar target sentuh ini ke setidaknya lebar minimum
+&lt;tt&gt;%2$ddp&lt;/tt&gt; yang dimodifikasi
+.</string>
   
   <string name="result_message_addendum_touch_delegate">&lt;tt&gt;TouchDelegate&lt;/tt&gt; terdeteksi di salah satu turunan item ini. Pesan ini dapat diabaikan jika ukuran delegasi cukup dan dapat menangani sentuhan untuk item ini.</string>
   
@@ -192,6 +205,8 @@
   <string name="result_message_addendum_clipped_by_ancestor">Penampung induk mungkin memotong ukuran item ini, yang memiliki area gambar &lt;tt&gt;%1$ddp&lt;/tt&gt; x &lt;tt&gt;%2$ddp&lt;/tt&gt;. Pertimbangkan untuk menambah ukuran potongan dari item sebelumnya atau izinkan penampung induk yang lebih besar untuk menangani tindakan atas nama item ini.</string>
   
   <string name="result_message_addendum_against_scrollable_edge">Item ini mungkin hanya sebagian terlihat dalam container yang dapat digulir.</string>
+  
+  <string name="result_message_addendum_web_touch_target_size">Item ini berasal dari konten web, dan verifikasi tambahan ukuran target sentuh direkomendasikan.</string>
   
   <string name="check_title_class_name_not_supported">Jenis item yang tidak didukung</string>
   
@@ -257,8 +272,72 @@
   
   <string name="result_message_brief_is_unexposed_item_screen_region">Pertimbangkan mengekspos item di region ini ke layanan aksesibilitas.</string>
   
+  <string name="check_title_text_size">Penskalaan Teks</string>
+  
+  <string name="result_message_no_text_size_unit">Unit ukuran teks tidak dapat diperoleh.</string>
+  
+  <string name="result_message_brief_text_size_unit">Unit ukuran teks item ini adalah &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_item_type_with_text_size_unit">&lt;tt&gt;%1$s&lt;/tt&gt; dengan unit ukuran teks &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
+  <string name="result_message_small_fixed_text_size">Teks ini kecil dan mungkin sulit dibaca oleh beberapa pengguna. Pertimbangkan untuk menggunakan ukuran yang lebih besar atau tetapkan ukuran teks dalam piksel yang diskalakan (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_fixed_text_size">Pertimbangkan untuk menetapkan ukuran teks dalam piksel yang diskalakan (&lt;tt&gt;sp&lt;/tt&gt;).</string>
+  
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; ini memiliki lebar tetap dan teks skalabel.</string>
+  
+  <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; ini memiliki tinggi tetap dan teks skalabel.</string>
+  
+  <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; ini memiliki ukuran tetap dan teks skalabel.</string>
+  
+  <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; ini memiliki lebar tetap dan berisi &lt;tt&gt;TextView&lt;/tt&gt; dengan teks skalabel.</string>
+  
+  <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; ini memiliki tinggi tetap dan berisi &lt;tt&gt;TextView&lt;/tt&gt; dengan teks skalabel.</string>
+  
+  <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; ini memiliki ukuran tetap dan berisi &lt;tt&gt;TextView&lt;/tt&gt; dengan teks skalabel.</string>
+  
+  <string name="result_message_fixed_size_text_view_with_scaled_text">Pertimbangkan untuk memodifikasi &lt;tt&gt;LayoutParams&lt;/tt&gt; agar ekspansi teks dapat dilakukan.</string>
+  
+  <string name="check_title_unexposed_text">Teks Tidak Terekspos</string>
+  
+  <string name="result_message_unexposed_text">Pastikan label aksesibilitas item ini menyertakan teks yang terlihat.</string>
+  
+  <string name="result_message_text_detected_in_image_view">Hasil OCR telah terdeteksi dalam ImageView ini.</string>
+  
+  <string name="result_message_brief_unexposed_text">Teks tidak terekspos terdeteksi: %1$s</string>
+  
+  <string name="result_message_brief_text_detected_in_image_view">Teks terdeteksi : %1$s</string>
+  
+  <string name="result_message_text_detected_in_surface_view">&lt;tt&gt;SurfaceView&lt;/tt&gt; ini mungkin tidak memperlihatkan kontennya ke layanan aksesibilitas.</string>
+  
+  <string name="result_message_brief_multiple_unexposed_texts">Terdeteksi beberapa teks yang tidak terlihat, termasuk \"%1$s\".</string>
+  
+  <string name="result_message_multiple_unexposed_texts">Konten item ini mungkin tidak terlihat oleh layanan aksesibilitas.</string>
+  
+  <string name="result_message_ocr_result_not_available">Hasil OCR tidak tersedia.</string>
+  
+  <string name="result_message_no_matching_ocr_results">Tidak ada hasil OCR yang terdeteksi di dalam item ini.</string>
+  
+  <string name="result_message_multiple_best_match_views">Satu hasil OCR terdeteksi di dalam beberapa item yang dapat difokuskan.</string>
+  
+  <string name="result_message_single_ocr_character_without_text">Hasil OCR dengan satu karakter terdeteksi, namun tidak ada teks di lokasi tersebut.</string>
+  
   <string name="question_message_screen_has_unexposed_items">Apakah layar ini berisi item penting yang tidak tergarisbatasi?</string>
   
   <string name="question_message_identify_unexposed_items">Pilih region di layar dengan item yang tidak teridentifikasi.</string>
+  
+  <string name="value_checked">dicentang</string>
+  
+  <string name="value_not_checked">tidak dicentang</string>
+  
+  <string name="value_on">aktif</string>
+  
+  <string name="value_off">nonaktif</string>
+  
+  <string name="template_containers_quantity_other">%1$s menampilkan %2$d item.</string>
+  
+  <string name="template_labeled_item">%1$s untuk %2$s</string>
+  
+  <string name="value_listview">Daftar</string>
 
 </resources>

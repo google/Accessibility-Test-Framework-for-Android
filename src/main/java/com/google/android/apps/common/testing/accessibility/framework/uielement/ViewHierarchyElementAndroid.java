@@ -17,19 +17,23 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
+import android.util.Size;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 import android.widget.Checkable;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.google.android.apps.common.testing.accessibility.framework.ViewAccessibilityUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.LayoutParams;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableStringAndroid;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableStringBuilder;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityNodeInfoExtraDataExtractor.ExtraData;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyElementProto;
 import com.google.common.base.Preconditions;
@@ -54,16 +58,16 @@ import org.checkerframework.dataflow.qual.Pure;
  * #getCondensedUniqueId()}.
  */
 public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
+  private static final boolean AT_30 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R);
   private static final boolean AT_29 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
+  private static final boolean AT_28 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P);
   private static final boolean AT_26 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O);
   private static final boolean AT_24 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N);
+  private static final boolean AT_23 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
   private static final boolean AT_21 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
   private static final boolean AT_18 =
       (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2);
   private static final boolean AT_16 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
-  private static final boolean AT_14 =
-      (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH);
-  private static final boolean AT_11 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
 
   // This field is set to a non-null value after construction.
   private @MonotonicNonNull WindowHierarchyElementAndroid windowElement;
@@ -78,6 +82,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       @Nullable String resourceName,
       @Nullable SpannableString contentDescription,
       @Nullable SpannableString text,
+      @Nullable SpannableString stateDescription,
       boolean importantForAccessibility,
       @Nullable Boolean visibleToUser,
       boolean clickable,
@@ -90,11 +95,13 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       @Nullable Boolean checkable,
       @Nullable Boolean checked,
       @Nullable Boolean hasTouchDelegate,
+      boolean isScreenReaderFocusable,
       List<Rect> touchDelegateBounds,
       @Nullable Rect boundsInScreen,
       @Nullable Integer nonclippedHeight,
       @Nullable Integer nonclippedWidth,
       @Nullable Float textSize,
+      @Nullable Integer textSizeUnit,
       @Nullable Integer textColor,
       @Nullable Integer backgroundDrawableColor,
       @Nullable Integer typefaceStyle,
@@ -119,6 +126,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
         resourceName,
         contentDescription,
         text,
+        stateDescription,
         importantForAccessibility,
         visibleToUser,
         clickable,
@@ -131,11 +139,13 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
         checkable,
         checked,
         hasTouchDelegate,
+        isScreenReaderFocusable,
         touchDelegateBounds,
         boundsInScreen,
         nonclippedHeight,
         nonclippedWidth,
         textSize,
+        textSizeUnit,
         textColor,
         backgroundDrawableColor,
         typefaceStyle,
@@ -268,18 +278,8 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     ParcelUtils.writeNullableString(out, packageName == null ? null : packageName.toString());
     ParcelUtils.writeNullableString(out, className == null ? null : className.toString());
     ParcelUtils.writeNullableString(out, resourceName);
-    if (contentDescription != null) {
-      out.writeInt(1);
-      ParcelUtils.writeSpannableStringToParcel(contentDescription, out);
-    } else {
-      out.writeInt(0);
-    }
-    if (text != null) {
-      out.writeInt(1);
-      ParcelUtils.writeSpannableStringToParcel(text, out);
-    } else {
-      out.writeInt(0);
-    }
+    ParcelUtils.writeNullableSpannableString(out, contentDescription);
+    ParcelUtils.writeNullableSpannableString(out, text);
     out.writeInt(importantForAccessibility ? 1 : 0);
     ParcelUtils.writeNullableBoolean(out, visibleToUser);
     out.writeInt(clickable ? 1 : 0);
@@ -304,6 +304,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     ParcelUtils.writeNullableInteger(out, nonclippedHeight);
     ParcelUtils.writeNullableInteger(out, nonclippedWidth);
     ParcelUtils.writeNullableFloat(out, textSize);
+    ParcelUtils.writeNullableInteger(out, textSizeUnit);
     ParcelUtils.writeNullableInteger(out, textColor);
     ParcelUtils.writeNullableInteger(out, backgroundDrawableColor);
     ParcelUtils.writeNullableInteger(out, typefaceStyle);
@@ -330,14 +331,11 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     } else {
       out.writeInt(0);
     }
-    if (hintText != null) {
-      out.writeInt(1);
-      ParcelUtils.writeSpannableStringToParcel(hintText, out);
-    } else {
-      out.writeInt(0);
-    }
+    ParcelUtils.writeNullableSpannableString(out, hintText);
     ParcelUtils.writeNullableInteger(out, hintTextColor);
     ParcelUtils.writeRectList(out, textCharacterLocations);
+    ParcelUtils.writeNullableBoolean(out, isScreenReaderFocusable);
+    ParcelUtils.writeNullableSpannableString(out, stateDescription);
   }
 
   /** Set the containing {@link WindowHierarchyElementAndroid} of this view. */
@@ -388,8 +386,9 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       int id,
       @Nullable ViewHierarchyElementAndroid parent,
       View fromView,
-      CustomViewBuilderAndroid customViewBuilder) {
-    return new Builder(id, parent, fromView, customViewBuilder);
+      CustomViewBuilderAndroid customViewBuilder,
+      AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
+    return new Builder(id, parent, fromView, customViewBuilder, extraDataExtractor);
   }
 
   /**
@@ -428,6 +427,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     private final @Nullable String resourceName;
     private final @Nullable SpannableString contentDescription;
     private final @Nullable SpannableString text;
+    private final @Nullable SpannableString stateDescription;
     private final boolean importantForAccessibility;
     private final @Nullable Boolean visibleToUser;
     private final boolean clickable;
@@ -440,11 +440,13 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
     private final @Nullable Boolean checkable;
     private final @Nullable Boolean checked;
     private final @Nullable Boolean hasTouchDelegate;
+    private final boolean isScreenReaderFocusable;
     private final List<Rect> touchDelegateBounds;
     private final @Nullable Rect boundsInScreen;
     private final @Nullable Integer nonclippedHeight;
     private final @Nullable Integer nonclippedWidth;
     private final @Nullable Float textSize;
+    private final @Nullable Integer textSizeUnit;
     private final @Nullable Integer textColor;
     private final @Nullable Integer backgroundDrawableColor;
     private final @Nullable Integer typefaceStyle;
@@ -494,8 +496,15 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       this.drawingOrder = AT_24 ? fromInfo.getDrawingOrder() : null;
       this.importantForAccessibility = AT_24 ? fromInfo.isImportantForAccessibility() : true;
 
+      // API 28+ properties
+      this.isScreenReaderFocusable = AT_28 && fromInfo.isScreenReaderFocusable();
+
       // API 29+ properties
       this.hasTouchDelegate = AT_29 ? (fromInfo.getTouchDelegateInfo() != null) : null;
+
+      // API 30+ properties
+      this.stateDescription =
+          AT_30 ? SpannableStringAndroid.valueOf(fromInfo.getStateDescription()) : null;
 
       // Base properties
       this.className = fromInfo.getClassName();
@@ -526,29 +535,35 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       this.boundsInScreen = new Rect(tempRect.left, tempRect.top, tempRect.right, tempRect.bottom);
       this.nonclippedHeight = null;
       this.nonclippedWidth = null;
-      this.textSize = null;
       this.textColor = null;
       this.backgroundDrawableColor = null;
       this.typefaceStyle = null;
       this.enabled = fromInfo.isEnabled();
 
-      this.layoutParams = null;
       this.hintText =
           (AT_26 && fromInfo.isShowingHintText())
               ? SpannableStringAndroid.valueOf(fromInfo.getHintText())
               : null;
       this.hintTextColor = null;
+      ImmutableList<Rect> characterLocations =
+          (extraData != null) ? extraData.getTextCharacterLocations() : null;
       this.textCharacterLocations =
-          (extraData != null)
-              ? extraData.getTextCharacterLocations().or(ImmutableList.of())
-              : ImmutableList.of();
+          (characterLocations != null) ? characterLocations : ImmutableList.of();
+      this.textSize = (extraData != null) ? extraData.getTextSize() : null;
+      this.textSizeUnit = (extraData != null) ? extraData.getTextSizeUnit() : null;
+      Size layoutSize = (extraData != null) ? extraData.getLayoutSize() : null;
+      this.layoutParams =
+          (layoutSize == null)
+              ? null
+              : new LayoutParams(layoutSize.getWidth(), layoutSize.getHeight());
     }
 
-    Builder(
+    private Builder(
         int id,
         @Nullable ViewHierarchyElementAndroid parent,
         View fromView,
-        CustomViewBuilderAndroid customViewBuilder) {
+        CustomViewBuilderAndroid customViewBuilder,
+        AccessibilityNodeInfoExtraDataExtractor extraDataExtractor) {
       // Bookkeeping
       this.id = id;
       this.parentId = (parent != null) ? parent.getId() : null;
@@ -558,51 +573,64 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       // API 16+ properties
       this.scrollable = AT_16 ? fromView.isScrollContainer() : null;
 
-      // API 11+ properties
-      this.backgroundDrawableColor =
-          (AT_11 && (fromView != null) && (fromView.getBackground() instanceof ColorDrawable))
-              ? ((ColorDrawable) fromView.getBackground()).getColor()
-              : null;
-
       // Base properties
       this.visibleToUser = ViewAccessibilityUtils.isVisibleToUser(fromView);
       this.className = fromView.getClass().getName();
-      this.accessibilityClassName = null;
+      this.accessibilityClassName = AT_23 ? fromView.getAccessibilityClassName() : null;
       this.packageName = fromView.getContext().getPackageName();
       this.resourceName = ViewAccessibilityUtils.getResourceNameForView(fromView);
       this.contentDescription = SpannableStringAndroid.valueOf(fromView.getContentDescription());
+      this.stateDescription =
+          AT_30 ? SpannableStringAndroid.valueOf(fromView.getStateDescription()) : null;
       this.enabled = fromView.isEnabled();
       if (fromView instanceof TextView) {
         TextView textView = (TextView) fromView;
         CharSequence text = textView.getText();
-        this.text = SpannableStringAndroid.valueOf(text);
+        // Mimic the way Switch and SwitchCompat initialize AccessibilityNodeInfo.
+        if ((fromView instanceof Switch) && !AT_30) {
+          Switch swtch = (Switch) fromView;
+          CharSequence switchText = swtch.isChecked() ? swtch.getTextOn() : swtch.getTextOff();
+          this.text =
+              new SpannableStringBuilder()
+                  .append(SpannableStringAndroid.valueOf(text))
+                  .appendWithSeparator(SpannableStringAndroid.valueOf(switchText))
+                  .build();
+        } else {
+          this.text = SpannableStringAndroid.valueOf(text);
+        }
         this.textSize = textView.getTextSize();
+        this.textSizeUnit = AT_30 ? textView.getTextSizeUnit() : null;
         this.textColor = textView.getCurrentTextColor();
         this.typefaceStyle =
             (textView.getTypeface() != null) ? textView.getTypeface().getStyle() : null;
         this.hintText = SpannableStringAndroid.valueOf(textView.getHint());
         this.hintTextColor = textView.getCurrentHintTextColor();
+        this.textCharacterLocations = extraDataExtractor.getTextCharacterLocations(textView);
       } else {
         this.text = null;
         this.textSize = null;
+        this.textSizeUnit = null;
         this.textColor = null;
         this.typefaceStyle = null;
         this.hintText = null;
         this.hintTextColor = null;
+        this.textCharacterLocations = ImmutableList.of();
       }
 
       this.importantForAccessibility = ViewAccessibilityUtils.isImportantForAccessibility(fromView);
+      this.backgroundDrawableColor = getBackgroundDrawableColor(fromView);
       this.clickable = fromView.isClickable();
       this.longClickable = fromView.isLongClickable();
       this.focusable = fromView.isFocusable();
       this.editable = ViewAccessibilityUtils.isViewEditable(fromView);
       this.canScrollForward =
-          AT_14 && (fromView.canScrollVertically(1) || fromView.canScrollHorizontally(1));
+          (fromView.canScrollVertically(1) || fromView.canScrollHorizontally(1));
       this.canScrollBackward =
-          AT_14 && (fromView.canScrollVertically(-1) || fromView.canScrollHorizontally(-1));
+          (fromView.canScrollVertically(-1) || fromView.canScrollHorizontally(-1));
       this.checkable = customViewBuilder.isCheckable(fromView);
       this.checked = (fromView instanceof Checkable) ? ((Checkable) fromView).isChecked() : null;
       this.hasTouchDelegate = (fromView.getTouchDelegate() != null);
+      this.isScreenReaderFocusable = AT_28 && fromView.isScreenReaderFocusable();
       this.touchDelegateBounds = ImmutableList.of(); // Unavailable from the View API
       this.boundsInScreen = getBoundsInScreen(fromView);
       this.nonclippedHeight = fromView.getHeight();
@@ -612,7 +640,6 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       ViewGroup.LayoutParams layoutParams = fromView.getLayoutParams();
       this.layoutParams =
           (layoutParams == null) ? null : new LayoutParams(layoutParams.width, layoutParams.height);
-      this.textCharacterLocations = ImmutableList.of();
     }
 
     Builder(int id, @Nullable ViewHierarchyElementAndroid parent, Parcel in) {
@@ -623,9 +650,8 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       packageName = ParcelUtils.readNullableString(in);
       className = ParcelUtils.readNullableString(in);
       resourceName = ParcelUtils.readNullableString(in);
-      contentDescription =
-          (in.readInt() == 1) ? ParcelUtils.readSpannableStringFromParcel(in) : null;
-      text = (in.readInt() == 1) ? ParcelUtils.readSpannableStringFromParcel(in) : null;
+      contentDescription = ParcelUtils.readNullableSpannableString(in);
+      text = ParcelUtils.readNullableSpannableString(in);
       importantForAccessibility = in.readInt() != 0;
       visibleToUser = ParcelUtils.readNullableBoolean(in);
       clickable = in.readInt() != 0;
@@ -653,6 +679,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       nonclippedHeight = ParcelUtils.readNullableInteger(in);
       nonclippedWidth = ParcelUtils.readNullableInteger(in);
       textSize = ParcelUtils.readNullableFloat(in);
+      textSizeUnit = ParcelUtils.readNullableInteger(in);
       textColor = ParcelUtils.readNullableInteger(in);
       backgroundDrawableColor = ParcelUtils.readNullableInteger(in);
       typefaceStyle = ParcelUtils.readNullableInteger(in);
@@ -675,9 +702,11 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       }
       actionList = actionBuilder.build();
       layoutParams = (in.readInt() == 1) ? new LayoutParams(in.readInt(), in.readInt()) : null;
-      hintText = (in.readInt() == 1) ? ParcelUtils.readSpannableStringFromParcel(in) : null;
+      hintText = ParcelUtils.readNullableSpannableString(in);
       hintTextColor = ParcelUtils.readNullableInteger(in);
       textCharacterLocations = ParcelUtils.readRectList(in);
+      isScreenReaderFocusable = Boolean.TRUE.equals(ParcelUtils.readNullableBoolean(in));
+      stateDescription = ParcelUtils.readNullableSpannableString(in);
     }
 
     Builder(ViewHierarchyElementProto proto) {
@@ -697,6 +726,8 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       contentDescription =
           proto.hasContentDescription() ? new SpannableString(proto.getContentDescription()) : null;
       text = proto.hasText() ? new SpannableString(proto.getText()) : null;
+      stateDescription =
+          proto.hasStateDescription() ? new SpannableString(proto.getStateDescription()) : null;
       importantForAccessibility = proto.getImportantForAccessibility();
       visibleToUser = proto.hasVisibleToUser() ? proto.getVisibleToUser() : null;
       clickable = proto.getClickable();
@@ -709,6 +740,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       checkable = proto.hasCheckable() ? proto.getCheckable() : null;
       checked = proto.hasChecked() ? proto.getChecked() : null;
       hasTouchDelegate = proto.hasHasTouchDelegate() ? proto.getHasTouchDelegate() : null;
+      isScreenReaderFocusable = proto.getScreenReaderFocusable();
       if (proto.getTouchDelegateBoundsCount() > 0) {
         ImmutableList.Builder<Rect> builder = new ImmutableList.Builder<>();
         for (int i = 0; i < proto.getTouchDelegateBoundsCount(); ++i) {
@@ -722,6 +754,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
       nonclippedHeight = proto.hasNonclippedHeight() ? proto.getNonclippedHeight() : null;
       nonclippedWidth = proto.hasNonclippedWidth() ? proto.getNonclippedWidth() : null;
       textSize = proto.hasTextSize() ? proto.getTextSize() : null;
+      textSizeUnit = proto.hasTextSizeUnit() ? proto.getTextSizeUnit() : null;
       textColor = proto.hasTextColor() ? proto.getTextColor() : null;
       backgroundDrawableColor =
           proto.hasBackgroundDrawableColor() ? proto.getBackgroundDrawableColor() : null;
@@ -769,6 +802,7 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
           resourceName,
           contentDescription,
           text,
+          stateDescription,
           importantForAccessibility,
           visibleToUser,
           clickable,
@@ -781,11 +815,13 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
           checkable,
           checked,
           hasTouchDelegate,
+          isScreenReaderFocusable,
           touchDelegateBounds,
           boundsInScreen,
           nonclippedHeight,
           nonclippedWidth,
           textSize,
+          textSizeUnit,
           textColor,
           backgroundDrawableColor,
           typefaceStyle,
@@ -800,6 +836,12 @@ public class ViewHierarchyElementAndroid extends ViewHierarchyElement {
           hintText,
           hintTextColor,
           textCharacterLocations);
+    }
+
+    /** Try to get the background color of the View. */
+    private static @Nullable Integer getBackgroundDrawableColor(View fromView) {
+      Drawable background = fromView.getBackground();
+      return (background instanceof ColorDrawable) ? ((ColorDrawable) background).getColor() : null;
     }
 
     /**

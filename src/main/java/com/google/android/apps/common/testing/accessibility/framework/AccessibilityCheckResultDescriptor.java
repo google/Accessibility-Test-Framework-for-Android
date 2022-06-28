@@ -50,6 +50,12 @@ public class AccessibilityCheckResultDescriptor {
     if (checkClass != null) {
       message.append(" Reported by ");
       message.append(result.getSourceCheckClass().getName());
+      if (result instanceof AccessibilityHierarchyCheckResult) {
+        String helpUrl = ((AccessibilityHierarchyCheckResult) result).getHelpUrl();
+        if (helpUrl != null) {
+          message.append(". Learn more at ").append(helpUrl);
+        }
+      }
     }
     return message.toString();
   }

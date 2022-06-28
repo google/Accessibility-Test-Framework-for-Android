@@ -26,17 +26,17 @@ import com.google.android.apps.common.testing.accessibility.framework.checks.Lin
 import com.google.android.apps.common.testing.accessibility.framework.checks.RedundantDescriptionCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.TextSizeCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TraversalOrderCheck;
+import com.google.android.apps.common.testing.accessibility.framework.checks.UnexposedTextCheck;
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import java.util.Map;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-/**
- * Pre-sets for check configurations used with {@code getConfigForPreset}
- */
+/** Pre-sets for check configurations used with {@code getConfigForPreset} */
 public enum AccessibilityCheckPreset {
   /** The latest set of checks (in general the most comprehensive list */
   LATEST,
@@ -53,12 +53,15 @@ public enum AccessibilityCheckPreset {
   /** The set of checks available in the 3.1 release of the framework */
   VERSION_3_1_CHECKS,
 
+  /** The set of checks available in the 4.0 release of the framework */
+  VERSION_4_0_CHECKS,
+
   /** Don't check anything */
   NO_CHECKS,
 
   /**
-   * Preset used occasionally to hold checks that are about to be part of {@code LATEST}.
-   * Includes all checks in {@code LATEST}.
+   * Preset used occasionally to hold checks that are about to be part of {@code LATEST}. Includes
+   * all checks in {@code LATEST}.
    */
   PRERELEASE;
 
@@ -77,6 +80,8 @@ public enum AccessibilityCheckPreset {
               .put(ClassNameCheck.class, new ClassNameCheck())
               .put(TraversalOrderCheck.class, new TraversalOrderCheck())
               .put(LinkPurposeUnclearCheck.class, new LinkPurposeUnclearCheck())
+              .put(TextSizeCheck.class, new TextSizeCheck())
+              .put(UnexposedTextCheck.class, new UnexposedTextCheck())
               .build();
 
   private static final ImmutableMap<String, AccessibilityHierarchyCheck>
@@ -103,6 +108,8 @@ public enum AccessibilityCheckPreset {
    * @param preset The preset of interest
    * @return A set of all checks for {@code AccessibilityHierarchy}s with scopes for the preset
    */
+  // incompatible argument for parameter element of add.
+  @SuppressWarnings("nullness:argument")
   public static ImmutableSet<AccessibilityHierarchyCheck> getAccessibilityHierarchyChecksForPreset(
       AccessibilityCheckPreset preset) {
     ImmutableSet.Builder<AccessibilityHierarchyCheck> checks = ImmutableSet.builder();
@@ -115,9 +122,6 @@ public enum AccessibilityCheckPreset {
      * AccessibilityHierarchy was added after 2.0's release, but the checks that match those for
      * Views in previous versions should be returned for the same preset to support migrating from
      * View checks to AccessibilityHierarchy checks.
-     *
-     * Note that we mirror the bucketing for Views over Infos, because there are no known clients
-     * using versioned AccessibilityInfoChecks
      */
     /* Checks included in version 1.0 */
     checks.add(CLASS_TO_HIERARCHY_CHECK.get(SpeakableTextPresentCheck.class));
@@ -151,11 +155,18 @@ public enum AccessibilityCheckPreset {
       return checks.build();
     }
 
+    /* Checks included in version 4.0 */
+    checks.add(CLASS_TO_HIERARCHY_CHECK.get(TextSizeCheck.class));
+    if (preset == VERSION_4_0_CHECKS) {
+      return checks.build();
+    }
+
     /* Checks added since last release */
     if (preset == LATEST) {
       return checks.build();
     }
 
+    checks.add(CLASS_TO_HIERARCHY_CHECK.get(UnexposedTextCheck.class));
     if (preset == PRERELEASE) {
       return checks.build();
     }
@@ -174,6 +185,6 @@ public enum AccessibilityCheckPreset {
         entry : classToInstanceMap.entrySet()) {
       builder.put(entry.getKey().getName(), entry.getValue());
     }
-    return builder.build();
+    return builder.buildOrThrow();
   }
 }
