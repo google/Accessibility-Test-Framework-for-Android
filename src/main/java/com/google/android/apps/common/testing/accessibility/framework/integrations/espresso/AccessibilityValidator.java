@@ -67,6 +67,8 @@ public final class AccessibilityValidator {
   private @Nullable Boolean saveViewImages;
   private int screenshotsCaptured = 0;
 
+  private @Nullable Integer customTouchTargetSize;
+
   private @Nullable AccessibilityCheckResultType throwExceptionFor =
       AccessibilityCheckResultType.ERROR;
 
@@ -176,6 +178,19 @@ public final class AccessibilityValidator {
   }
 
   /**
+   * Sets a user-defined minimum touch target size for use by {@link
+   * com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck}. A
+   * value set here should override the default value used by the check.
+   *
+   * @param touchTargetSize a user-defined minimum touch target size in pixels
+   */
+  @CanIgnoreReturnValue
+  public AccessibilityValidator setCustomTouchTargetSize(int touchTargetSize) {
+    this.customTouchTargetSize = touchTargetSize;
+    return this;
+  }
+
+  /**
    * Suppresses all results that match the given matcher. Suppressed results will not be included in
    * any logs or cause any {@code Exception} to be thrown
    *
@@ -278,6 +293,10 @@ public final class AccessibilityValidator {
         }
         screenshotsCaptured++;
       }
+    }
+
+    if (customTouchTargetSize != null) {
+      parameters.putCustomTouchTargetSize(customTouchTargetSize);
     }
 
     return processResults(
