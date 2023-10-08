@@ -39,3 +39,4 @@ List<AccessibilityHierarchyCheckResult> errors =
 if (errors.size() > 0) {
   throw new RuntimeException(errors.get(0).getMessage().toString());
 }
+
