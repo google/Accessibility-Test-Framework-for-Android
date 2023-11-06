@@ -190,13 +190,13 @@ public class ClusteringUtils {
    * <p>If {@code includeIndices} is {@code false}, then the result will indicate the simple class
    * names of the ancestor elements in the accessibility hierarchy leading up to an element with a
    * resource name. For example, "app:id/toolbar/LinearLayout/ItemRenderer" would indicate an
-   * element with a simple class name of "ItemRenderer" under an element with a simple class name
-   * of "LinearLayout", under an element with the resource name {@code app:id/toolbar}.
+   * element with a simple class name of "ItemRenderer" under an element with a simple class name of
+   * "LinearLayout", under an element with the resource name {@code app:id/toolbar}.
    *
    * <p>If {@code includeIndices} is true, then the result will also indicate the indices of the
    * children in the path from the ancestor. For example,
-   * "app:id/toolbar/LinearLayout[2]/ItemRenderer[1]" would indicate the element is the second
-   * child of the third child of an element with the resource name {@code app:id/toolbar}.
+   * "app:id/toolbar/LinearLayout[2]/ItemRenderer[1]" would indicate the element is the second child
+   * of the third child of an element with the resource name {@code app:id/toolbar}.
    *
    * @return the pseudo resource ID, or {@code null} if neither the element or any of its ancestors
    *     has a resource name.
@@ -230,10 +230,10 @@ public class ClusteringUtils {
             if (shortClassName != null) {
               parentResourceId.append('/').append(shortClassName);
               if (includeIndices) {
-                parentResourceId.append('[').append(i).append(']');
+                parentResourceId.append('[').append(i + 1).append(']');
               }
             } else if (includeIndices) {
-              parentResourceId.append(":nth-child(").append(i).append(')');
+              parentResourceId.append(":nth-child(").append(i + 1).append(')');
             } else {
               parentResourceId.append(":child");
 

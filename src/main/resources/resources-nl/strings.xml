@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Dit item heeft geen &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Dit item heeft geen contentbeschrijving.</string>
+  
   <string name="result_message_not_visible">Dit item is niet zichtbaar.</string>
   
   <string name="result_message_not_enabled">Dit item staat niet aan.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">uitvoerbaar</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Conflicterende elementen: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Itembeschrijvingen</string>
   
   <string name="result_message_brief_same_speakable_text">Meerdere items hebben dezelfde beschrijving.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Overweeg de contrastverhouding te verhogen tussen de voorgrond en achtergrond van deze afbeelding.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">De contrastverhouding van deze afbeelding is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar %2$.2f of hoger.</string>
+  <string name="result_message_image_contrast_not_sufficient">De contrastverhouding van deze afbeelding is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;%3$s&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;%4$s&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar %2$.2f of hoger.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar %2$.2f of hoger.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;%3$s&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;%4$s&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar %2$.2f of hoger.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;%3$s&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;%4$s&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%4$06X&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de afbeelding is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;%3$s&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;%4$s&lt;/tt&gt;. Overweeg deze verhouding te verhogen naar de aangepaste verhouding van %2$.2f of hoger.</string>
   
   <string name="check_title_redundant_description">Label itemtype</string>
   
@@ -83,13 +87,25 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">De &lt;tt&gt;android:contentDescription&lt;/tt&gt; van dit item bevat mogelijk overbodige tekst.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">De contentbeschrijving van dit item kan onnodige tekst bevatten.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">De &lt;tt&gt;android:contentDescription&lt;/tt&gt; van dit item, \'&lt;tt&gt;%1$s&lt;/tt&gt;\', eindigt met het itemtype.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">De beschrijving &lt;tt&gt;android:contentDescription&lt;/tt&gt; van dit item, \'&lt;tt&gt;%1$s&lt;/tt&gt;\', bevat het itemtype \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">De contentbeschrijving van dit item is: &lt;tt&gt;%1$s&lt;/tt&gt;, en bevat het itemtype &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
   <string name="result_message_content_desc_contains_action">De &lt;tt&gt;android:contentDescription&lt;/tt&gt; van dit item, \'&lt;tt&gt;%1$s&lt;/tt&gt;\', bevat de actie \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">De contentbeschrijving van dit item is:
+    &lt;tt&gt;%1$s&lt;/tt&gt;,
+    en bevat de actie &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
+  
   <string name="result_message_content_desc_contains_state">De &lt;tt&gt;android:contentDescription&lt;/tt&gt; van dit item, \'&lt;tt&gt;%1$s&lt;/tt&gt;\', bevat de status \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">De contentbeschrijving van dit item is:
+    &lt;tt&gt;%1$s&lt;/tt&gt;,
+    en bevat de status &lt;tt&gt;%2$s&lt;/tt&gt;.</string>
   
   <string name="button_item_type">knop</string>
   
@@ -117,6 +133,10 @@
   
   <string name="result_message_web_content">Webcontent is niet geëvalueerd.</string>
   
+  <string name="result_message_unsupported_compose_content">Composable content wordt niet geëvalueerd in deze omgeving.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter content wordt niet geëvalueerd in deze omgeving.</string>
+  
   <string name="result_message_missing_speakable_text">Dit item heeft mogelijk geen label dat leesbaar is voor schermlezers.</string>
   
   <string name="check_title_text_contrast">Contrast tekst</string>
@@ -135,21 +155,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Overweeg de contrastverhouding tussen de voorgrond en achtergrond van deze afbeeldingstekst te verhogen.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op een tekstkleur van &lt;tt&gt;#%2$06X&lt;/tt&gt; en een achtergrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
+  <string name="result_message_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op een tekstkleur van &lt;tt&gt;%2$s&lt;/tt&gt; en een achtergrondkleur van &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de tekstkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een hogere contrastverhouding opleveren dan de aangepaste verhouding %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de tekstkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg kleuren te gebruiken die een hogere contrastverhouding opleveren dan de aangepaste verhouding %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;#%2$06X&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">De maximale mogelijke tekstcontrastverhouding van het item is %1$.2f, op basis van de tekstkleur &lt;tt&gt;%2$s&lt;/tt&gt; en niet-dekkende achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">De maximale mogelijke tekstcontrastverhouding van het item is %1$.2f, op basis van de tekstkleur &lt;tt&gt;%2$s&lt;/tt&gt; en niet-dekkende achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg kleuren te gebruiken die een hogere contrastverhouding opleveren dan de aangepaste verhouding %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">De minimale mogelijke tekstcontrastverhouding van het item is %1$.2f, op basis van de tekstkleur &lt;tt&gt;%2$s&lt;/tt&gt; en niet-dekkende achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">De minimale mogelijke tekstcontrastverhouding van het item is %1$.2f, op basis van de tekstkleur &lt;tt&gt;%2$s&lt;/tt&gt; en niet-dekkende achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg kleuren te gebruiken die een hogere contrastverhouding opleveren dan de aangepaste verhouding %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op een geschatte voorgrondkleur van &lt;tt&gt;%2$s&lt;/tt&gt; en een geschatte achtergrondkleur van &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;#%2$06X&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;#%3$06X&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">De contrastverhouding van de tekst van dit item is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg kleuren te gebruiken die een contrastverhouding opleveren die hoger is dan %4$.2f voor kleine tekst of %5$.2f voor grote tekst.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar %4$.2f of hoger.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de geschatte voorgrondkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de geschatte achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">De contrastverhouding van de itemtekst is %1$.2f. Deze verhouding is gebaseerd op de opgegeven voorgrondkleur &lt;tt&gt;%2$s&lt;/tt&gt; en de opgegeven achtergrondkleur &lt;tt&gt;%3$s&lt;/tt&gt;. Overweeg de contrastverhouding van de itemtekst te verhogen naar de aangepaste verhouding van %4$.2f of hoger.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">De voor- en achtergrondkleur van dit item komen overeen met de voorgestelde contrastverhouding.</string>
   
@@ -279,17 +307,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste breedte en schaalbare tekst.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Deze &lt;tt&gt;Text&lt;/tt&gt; heeft een vaste breedte en schaalbare tekst.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste hoogte en schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Deze &lt;tt&gt;Text&lt;/tt&gt; heeft een vaste hoogte en schaalbare tekst.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Deze &lt;tt&gt;TextView&lt;/tt&gt; heeft een vaste grootte en schaalbare tekst.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Deze &lt;tt&gt;Text&lt;/tt&gt; heeft een vaste grootte en schaalbare tekst.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste breedte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Dit element heeft een vaste breedte en bevat een &lt;tt&gt;Text&lt;/tt&gt;-element met schaalbare tekst.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste hoogte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Dit element heeft een vaste hoogte en bevat een &lt;tt&gt;Text&lt;/tt&gt;-element met schaalbare tekst.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Deze &lt;tt&gt;ViewGroup&lt;/tt&gt; heeft een vaste grootte en bevat een &lt;tt&gt;TextView&lt;/tt&gt; met schaalbare tekst.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Dit element heeft een vaste grootte en bevat een &lt;tt&gt;Text&lt;/tt&gt;-element met schaalbare tekst.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Je kunt de &lt;tt&gt;LayoutParams&lt;/tt&gt; aanpassen om tekstuitbreiding toe te staan.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Je kunt de maatmodifiers aanpassen met &lt;tt&gt;sizeIn&lt;/tt&gt; om tekstuitvouwing toe te staan.</string>
   
   <string name="check_title_unexposed_text">Onzichtbare tekst</string>
   
@@ -297,9 +339,9 @@
   
   <string name="result_message_text_detected_in_image_view">Er zijn OCR-resultaten gevonden in deze ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">Onzichtbare tekst gevonden: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Mogelijke tekst gevonden: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Tekst gevonden: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Mogelijke tekst: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">De content in deze &lt;tt&gt;SurfaceView&lt;/tt&gt; is misschien niet zichtbaar voor toegankelijkheidsservices.</string>
   

@@ -14,7 +14,6 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyElementProto;
@@ -303,7 +302,7 @@ public class WindowHierarchyElement {
     }
 
     // Window contents
-    for (ViewHierarchyElement view : viewHierarchyElements) {
+    for (ViewHierarchyElement view : getAllViews()) {
       builder.addViews(view.toProto());
     }
     return builder.build();
@@ -318,42 +317,46 @@ public class WindowHierarchyElement {
 
   /** Returns a new builder that can build a WindowHierarchyElement from a proto. */
   static Builder newBuilder(WindowHierarchyElementProto proto) {
-    Builder builder = new Builder();
-    builder.proto = checkNotNull(proto);
-    return builder;
+    return new Builder(proto);
   }
 
   /**
    * A builder for {@link WindowHierarchyElement}; obtained using {@link
-   * WindowHierarchyElement#builder}.
+   * WindowHierarchyElement#newBuilder(WindowHierarchyElementProto)}.
    */
   public static class Builder {
-    protected @Nullable WindowHierarchyElementProto proto;
+    private final WindowHierarchyElementProto proto;
 
-    Builder() {}
+    Builder(WindowHierarchyElementProto proto) {
+      this.proto = proto;
+    }
 
     public WindowHierarchyElement build() {
 
-      WindowHierarchyElement result;
-
-      if (proto != null) {
-        result = new WindowHierarchyElement(proto);
-      } else {
-        throw new IllegalStateException("Nothing from which to build");
-      }
+      WindowHierarchyElement result = new WindowHierarchyElement(proto);
 
       // Add entries to the origin maps after pointers to the window have been set.
       // The condensed unique IDs cannot be obtained without the window.
       setWindow(result);
+
+      setOrigins(result);
+
       return result;
     }
 
     /** Set backpointers from the window's views to the window. */
     private static void setWindow(WindowHierarchyElement window) {
-      if (window.viewHierarchyElements != null) {
-        for (ViewHierarchyElement view : window.viewHierarchyElements) {
-          view.setWindow(window);
-        }
+      for (ViewHierarchyElement view : window.viewHierarchyElements) {
+        view.setWindow(window);
+      }
+    }
+
+    /** Sets the origin for each of the window's elements. */
+    private static void setOrigins(WindowHierarchyElement window) {
+      // Assumes that viewHierarchyElements is in depth-first order, in conformance with
+      // getAllViews().
+      for (ViewHierarchyElement view : window.viewHierarchyElements) {
+        view.computeAndSetOrigin();
       }
     }
   }

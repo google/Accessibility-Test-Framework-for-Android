@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">このアイテムには &lt;tt&gt;android:contentDescription&lt;/tt&gt; がありません。</string>
   
+  <string name="result_message_no_content_desc_generic">このアイテムにはコンテンツの説明がありません。</string>
+  
   <string name="result_message_not_visible">このアイテムは視認できません。</string>
   
   <string name="result_message_not_enabled">このアイテムは有効になっていません。</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">操作可能</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">競合する要素: &lt;tt&gt;%1$s&lt;/tt&gt;。</string>
+  
   <string name="check_title_duplicate_speakable_text">アイテムの説明</string>
   
   <string name="result_message_brief_same_speakable_text">複数のアイテムの説明が同じです。</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">イメージの前景と背景の間のコントラスト比を上げることを検討してください。</string>
   
-  <string name="result_message_image_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_contrast_not_sufficient">このイメージのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;%3$s&lt;/tt&gt; と背景色 &lt;tt&gt;%4$s&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;%3$s&lt;/tt&gt; と背景色 &lt;tt&gt;%4$s&lt;/tt&gt; に基づいています。この比率を %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">この画像のコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">この画像のコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;%3$s&lt;/tt&gt; と背景色 &lt;tt&gt;%4$s&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%4$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">この画像のコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;%3$s&lt;/tt&gt; と背景色 &lt;tt&gt;%4$s&lt;/tt&gt; に基づいた比率です。この比率を修正値の %2$.2f 以上に上げることを検討してください。</string>
   
   <string name="check_title_redundant_description">アイテムタイプのラベル</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; には、不必要なテキストが含まれています。</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">このアイテムのコンテンツの説明に不要なテキストが含まれている可能性があります。</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt;、「&lt;tt&gt;%1$s&lt;/tt&gt;」はアイテムタイプで終わっています。</string>
   
   <string name="result_message_content_desc_contains_redundant_word">このアイテムの &lt;tt&gt;android:contentDescription&lt;/tt&gt; の「&lt;tt&gt;%1$s&lt;/tt&gt;」には、アイテムタイプ「&lt;tt&gt;%2$s&lt;/tt&gt;」が含まれています。</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">このアイテムのコンテンツの説明「&lt;tt&gt;%1$s&lt;/tt&gt;」には、アイテムタイプ「&lt;tt&gt;%2$s&lt;/tt&gt;」が含まれています。</string>
+  
   <string name="result_message_content_desc_contains_action">このアイテムの&lt;tt&gt;android:contentDescription&lt;/tt&gt;である [&lt;tt&gt;%1$s&lt;/tt&gt;] には、「&lt;tt&gt;%2$s&lt;/tt&gt;」という操作が含まれています。</string>
   
+  <string name="result_message_content_desc_contains_action_generic">このアイテムのコンテンツの説明「&lt;tt&gt;%1$s&lt;/tt&gt;」には、アクション「&lt;tt&gt;%2$s&lt;/tt&gt;」が含まれています。</string>
+  
   <string name="result_message_content_desc_contains_state">このアイテムの&lt;tt&gt;android:contentDescription&lt;/tt&gt;である [&lt;tt&gt;%1$s&lt;/tt&gt;] には、「&lt;tt&gt;%2$s&lt;/tt&gt;」という状態が含まれています。</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">このアイテムのコンテンツの説明「&lt;tt&gt;%1$s&lt;/tt&gt;」には、状態「&lt;tt&gt;%2$s&lt;/tt&gt;」が含まれています。</string>
   
   <string name="button_item_type">ボタン</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">ウェブ コンテンツは評価されていません。</string>
   
+  <string name="result_message_unsupported_compose_content">この環境では、コンポーズ可能なコンテンツは評価されません。</string>
+  
+  <string name="result_message_unsupported_flutter_content">この環境では、Flutter のコンテンツは評価されません。</string>
+  
   <string name="result_message_missing_speakable_text">このアイテムには、読み上げ機能が認識できるラベルがない可能性があります。</string>
   
   <string name="check_title_text_contrast">テキストのコントラスト</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">アイテムのテキストの前景と背景のコントラスト比を上げることを検討してください。</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。このアイテムのテキストのコントラスト比を %4$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色（&lt;tt&gt;#%2$06X&lt;/tt&gt;）と背景色（&lt;tt&gt;#%3$06X&lt;/tt&gt;）に基づいています。修正値の %4$.2f より大きいコントラスト比になるような色を使用することを検討してください。</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、テキストの色（&lt;tt&gt;%2$s&lt;/tt&gt;）と背景色（&lt;tt&gt;%3$s&lt;/tt&gt;）に基づいています。修正値の %4$.2f より大きいコントラスト比になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">アイテムで使用できる最大のテキストのコントラスト比は %1$.2f で、これはテキスト色 &lt;tt&gt;%2$s&lt;/tt&gt; と透明な背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。この比率を %4$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">アイテムで使用できる最大のテキストのコントラスト比は %1$.2f で、これはテキスト色 &lt;tt&gt;%2$s&lt;/tt&gt; と透明な背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。修正値の %4$.2f より大きいコントラスト比になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">アイテムで使用できる最小のテキストのコントラスト比は %1$.2f で、これはテキスト色 &lt;tt&gt;%2$s&lt;/tt&gt; と透明な背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。この比率を %4$.2f 以上に上げることを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">アイテムで使用できる最小のテキストのコントラスト比は %1$.2f で、これはテキスト色 &lt;tt&gt;%2$s&lt;/tt&gt; と透明な背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。修正値の %4$.2f より大きいコントラスト比になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、概算の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;#%2$06X&lt;/tt&gt; と背景色 &lt;tt&gt;#%3$06X&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。この比率は、指定の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいています。小さいテキストの場合でコントラスト比が %4$.2f 以上、大きいテキストの場合で %5$.2f 以上になるような色を使用することを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいた比率です。この比率を %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">このアイテムのテキストのコントラスト比は %1$.2f です。これは、概算の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">このアイテムのテキストのコントラスト比は %1$.2f です。これは、指定の前景色 &lt;tt&gt;%2$s&lt;/tt&gt; と背景色 &lt;tt&gt;%3$s&lt;/tt&gt; に基づいた比率です。この比率を修正値の %4$.2f 以上に上げることを検討してください。</string>
   
   <string name="result_message_contrast_sufficient_confirmed">このアイテムの前景色と背景色は、推奨されたコントラスト比を満たしています。</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; は幅が固定されており、テキストサイズが変更可能です。</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">この &lt;tt&gt;Text&lt;/tt&gt; は幅が固定されており、テキストサイズが変更可能です。</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; は高さが固定されており、テキストサイズが変更可能です。</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">この &lt;tt&gt;Text&lt;/tt&gt; は高さが固定されており、テキストサイズが変更可能です。</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">この &lt;tt&gt;TextView&lt;/tt&gt; はサイズが固定されており、テキストサイズが変更可能です。</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">この &lt;tt&gt;Text&lt;/tt&gt; はサイズが固定されており、テキストサイズが変更可能です。</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; は幅が固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">この要素は幅が固定されており、テキストサイズが変更可能な &lt;tt&gt;Text&lt;/tt&gt; 要素を含んでいます。</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; は高さが固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">この要素は高さが固定されており、テキストサイズが変更可能な &lt;tt&gt;Text&lt;/tt&gt; 要素を含んでいます。</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">この &lt;tt&gt;ViewGroup&lt;/tt&gt; はサイズが固定されており、テキストサイズが変更可能な &lt;tt&gt;TextView&lt;/tt&gt; を含んでいます。</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">この要素はサイズが固定されており、テキストサイズが変更可能な &lt;tt&gt;Text&lt;/tt&gt; 要素を含んでいます。</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">テキストを拡大できるようにするには、&lt;tt&gt;LayoutParams&lt;/tt&gt; を変更することを検討してください。</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">テキストを拡大できるようにするには、&lt;tt&gt;sizeIn&lt;/tt&gt; を使用してサイズ修飾子を変更することを検討してください。</string>
   
   <string name="check_title_unexposed_text">表示されないテキスト</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">この ImageView 内で OCR の結果が検出されました。</string>
   
-  <string name="result_message_brief_unexposed_text">表示されないテキストが検出されました: %1$s</string>
+  <string name="result_message_brief_unexposed_text">テキストと思われる要素が検出されました: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">テキストが検出されました: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">テキストと思われる要素: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">この &lt;tt&gt;SurfaceView&lt;/tt&gt; では、ユーザー補助サービスからコンテンツが見られないようになっている可能性があります。</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">表示されないテキスト（「%1$s」など）が検出されました。</string>
+  <string name="result_message_brief_multiple_unexposed_texts">非表示のテキストと思われる要素（「%1$s」など）が検出されました。</string>
   
   <string name="result_message_multiple_unexposed_texts">このアイテムでは、ユーザー補助サービスからコンテンツが見られないようになっている可能性があります。</string>
   

@@ -26,6 +26,7 @@ import com.google.android.apps.common.testing.accessibility.framework.ViewHierar
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchyOrigin;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,14 @@ public class SpeakableTextPresentCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_SHOULD_NOT_FOCUS = 3;
   /** Result when the view is missing speakable text. */
   public static final int RESULT_ID_MISSING_SPEAKABLE_TEXT = 4;
-  /** Result when the view type is excluded. */
+  /** Result when the view is a WebView. */
   public static final int RESULT_ID_WEB_CONTENT = 5;
+
+  /** Result when the view has unsupported Compose content. */
+  private static final int RESULT_ID_UNSUPPORTED_COMPOSE_CONTENT = 6;
+
+  /** Result when the view has unsupported Flutter content. */
+  private static final int RESULT_ID_UNSUPPORTED_FLUTTER_CONTENT = 7;
 
   @Override
   protected String getHelpTopic() {
@@ -97,6 +104,32 @@ public class SpeakableTextPresentCheck extends AccessibilityHierarchyCheck {
         continue;
       }
 
+      // There is no support for virtual views in hierarchies built from Views.
+      CharSequence className = element.getClassName();
+      if (hierarchy.getOrigin() == AccessibilityHierarchyOrigin.VIEWS) {
+        if (TextUtils.equals(
+            className, ViewHierarchyElementUtils.ANDROID_COMPOSE_VIEW_CLASS_NAME)) {
+          results.add(
+              new AccessibilityHierarchyCheckResult(
+                  this.getClass(),
+                  AccessibilityCheckResultType.NOT_RUN,
+                  element,
+                  RESULT_ID_UNSUPPORTED_COMPOSE_CONTENT,
+                  null));
+          continue;
+        }
+        if (TextUtils.equals(className, ViewHierarchyElementUtils.FLUTTER_VIEW_CLASS_NAME)) {
+          results.add(
+              new AccessibilityHierarchyCheckResult(
+                  this.getClass(),
+                  AccessibilityCheckResultType.NOT_RUN,
+                  element,
+                  RESULT_ID_UNSUPPORTED_FLUTTER_CONTENT,
+                  null));
+          continue;
+        }
+      }
+
       if (!ViewHierarchyElementUtils.shouldFocusView(element)) {
         results.add(new AccessibilityHierarchyCheckResult(
             this.getClass(),
@@ -139,7 +172,7 @@ public class SpeakableTextPresentCheck extends AccessibilityHierarchyCheck {
   }
 
   private static String generateMessageForResultId(Locale locale, int resultId) {
-    switch(resultId) {
+    switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
       case RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY:
@@ -150,8 +183,12 @@ public class SpeakableTextPresentCheck extends AccessibilityHierarchyCheck {
         return StringManager.getString(locale, "result_message_missing_speakable_text");
       case RESULT_ID_WEB_CONTENT:
         return StringManager.getString(locale, "result_message_web_content");
+      case RESULT_ID_UNSUPPORTED_COMPOSE_CONTENT:
+        return StringManager.getString(locale, "result_message_unsupported_compose_content");
+      case RESULT_ID_UNSUPPORTED_FLUTTER_CONTENT:
+        return StringManager.getString(locale, "result_message_unsupported_flutter_content");
       default:
-        throw new IllegalStateException("Unsupported result id");
+        throw new IllegalStateException("Unsupported result id: " + resultId);
     }
   }
 }

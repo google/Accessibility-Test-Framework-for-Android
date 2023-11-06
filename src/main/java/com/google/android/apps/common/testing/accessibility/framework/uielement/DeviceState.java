@@ -42,6 +42,7 @@ public class DeviceState {
   protected final Locale locale;
 
   protected final @Nullable Float fontScale;
+  protected final boolean hasFeatureWatch;
 
   /** Creates a record of the device state at the time of construction. */
   DeviceState(DeviceStateProto fromProto) {
@@ -51,12 +52,15 @@ public class DeviceState {
     // Use English if no locale was recorded in the proto.
     locale = languageTag.isEmpty() ? Locale.ENGLISH : getLocaleFromLanguageTag(languageTag);
     fontScale = fromProto.hasFontScale() ? fromProto.getFontScale() : null;
+    hasFeatureWatch = fromProto.getFeatureWatch();
   }
 
-  protected DeviceState(int sdkVersion, Locale locale, @Nullable Float fontScale) {
+  protected DeviceState(
+      int sdkVersion, Locale locale, @Nullable Float fontScale, boolean hasFeatureWatch) {
     this.sdkVersion = sdkVersion;
     this.locale = locale;
     this.fontScale = fontScale;
+    this.hasFeatureWatch = hasFeatureWatch;
     defaultDisplayInfo = new DisplayInfo();
   }
 
@@ -87,6 +91,14 @@ public class DeviceState {
     return fontScale;
   }
 
+  /**
+   * Indicates whether the device is known to have system feature {@link
+   * android.content.pm.PackageManager#FEATURE_WATCH}.
+   */
+  public boolean hasFeatureWatch() {
+    return hasFeatureWatch;
+  }
+
   DeviceStateProto toProto() {
     DeviceStateProto.Builder builder = DeviceStateProto.newBuilder();
     builder.setSdkVersion(sdkVersion);
@@ -95,10 +107,13 @@ public class DeviceState {
     if (fontScale != null) {
       builder.setFontScale(fontScale);
     }
+    if (hasFeatureWatch) {
+      builder.setFeatureWatch(true);
+    }
     return builder.build();
   }
 
-  private String getLanguageTag() {
+  protected String getLanguageTag() {
     return locale.toLanguageTag();
   }
 

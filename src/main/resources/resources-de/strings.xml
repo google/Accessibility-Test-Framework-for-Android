@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Für dieses Objekt wurde kein &lt;tt&gt;android:contentDescription&lt;/tt&gt;-Text angegeben.</string>
   
+  <string name="result_message_no_content_desc_generic">Dieses Element hat keine Inhaltsbeschreibung.</string>
+  
   <string name="result_message_not_visible">Dieses Objekt ist nicht sichtbar.</string>
   
   <string name="result_message_not_enabled">Dieses Objekt ist deaktiviert.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">ausführbar</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">In Konflikt stehende Elemente: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Objektbeschreibungen</string>
   
   <string name="result_message_brief_same_speakable_text">Es sind mehrere Objekte mit derselben Beschreibung vorhanden.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Ziehen Sie in Erwägung, das Kontrastverhältnis zwischen dem Vorder- und dem Hintergrund dieses Bilds zu erhöhen.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Das Kontrastverhältnis des Bilds liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;#%4$06X&lt;/tt&gt;. Ziehen Sie in Erwägung, dieses Verhältnis auf mindestens %2$.2f zu erhöhen.</string>
+  <string name="result_message_image_contrast_not_sufficient">Das Kontrastverhältnis des Bilds liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;%4$s&lt;/tt&gt;. Ziehen Sie in Erwägung, dieses Verhältnis auf mindestens %2$.2f zu erhöhen.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;#%4$06X&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;%4$s&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;#%4$06X&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;%4$s&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;#%4$06X&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Das Kontrastverhältnis des Bildes liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;%4$s&lt;/tt&gt;. Sie sollten das Kontrastverhältnis auf mindestens %2$.2f erhöhen.</string>
   
   <string name="check_title_redundant_description">Objekttyplabel</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Das &lt;tt&gt;android:contentDescription&lt;/tt&gt;-Attribut dieses Objekts enthält möglicherweise überflüssigen Text.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Die Inhaltsbeschreibung dieses Elements enthält möglicherweise überflüssigen Text.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Das &lt;tt&gt;android:contentDescription&lt;/tt&gt;-Attribut dieses Objekts (\"&lt;tt&gt;%1$s&lt;/tt&gt;\") endet mit dem Typ des Objekts.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Das &lt;tt&gt;android:contentDescription&lt;/tt&gt; dieses Objekts, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", enthält den Objekttyp \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Die Inhaltsbeschreibung „&lt;tt&gt;%1$s&lt;/tt&gt;“ dieses Elements enthält den Elementtyp „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_action">\"&lt;tt&gt;%1$s&lt;/tt&gt;\", das &lt;tt&gt;android:contentDescription&lt;/tt&gt; dieses Elements, enthält die Aktion \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Die Inhaltsbeschreibung „&lt;tt&gt;%1$s&lt;/tt&gt;“ dieses Elements enthält die Aktion „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_state">\"&lt;tt&gt;%1$s&lt;/tt&gt;\", das &lt;tt&gt;android:contentDescription&lt;/tt&gt; dieses Elements, enthält den Status \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Die Inhaltsbeschreibung „&lt;tt&gt;%1$s&lt;/tt&gt;“ dieses Elements enthält den Status „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
   <string name="button_item_type">Schaltfläche</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">Webinhalte werden nicht bewertet.</string>
   
+  <string name="result_message_unsupported_compose_content">Zusammensetzbare Inhalte werden in dieser Umgebung nicht bewertet.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Mehrfache Inhalte werden in dieser Umgebung nicht bewertet.</string>
+  
   <string name="result_message_missing_speakable_text">Dieses Objekt hat möglicherweise kein für die Sprachausgabe lesbares Label.</string>
   
   <string name="check_title_text_contrast">Textkontrast</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Ziehen Sie in Erwägung, bei diesem Objekt das Kontrastverhältnis zwischen Textvordergrund und -hintergrund zu erhöhen.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Das Textkontrastverhältnis dieses Objekts liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der Textfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Ziehen Sie in Erwägung, das Textkontrastverhältnis auf mindestens %4$.2f zu erhöhen.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Das Textkontrastverhältnis dieses Objekts liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Ziehen Sie in Erwägung, das Textkontrastverhältnis auf mindestens %4$.2f zu erhöhen.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der Textfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten Farben verwenden, mit denen sich ein Kontrastverhältnis ergibt, das größer als %4$.2f ist.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten Farben verwenden, mit denen sich ein Kontrastverhältnis ergibt, das größer als %4$.2f ist.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten bei Texten mit kleiner Schriftgröße ein Kontrastverhältnis von über %4$.2f und bei Texten mit großer Schriftgröße von %5$.2f verwenden.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Das maximal mögliche Textkontrastverhältnis des Elements liegt bei %1$.2f, basierend auf der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der transparenten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Das Textkontrastverhältnis des Objekts liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Ziehen Sie in Erwägung, dieses Verhältnis auf mindestens %4$.2f zu erhöhen.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Das maximal mögliche Textkontrastverhältnis des Elements liegt bei %1$.2f, basierend auf der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der transparenten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten Farben verwenden, mit denen sich ein Kontrastverhältnis ergibt, das größer als %4$.2f ist.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten bei Texten mit kleiner Schriftgröße ein Kontrastverhältnis von über %4$.2f und bei Texten mit großer Schriftgröße von %5$.2f verwenden.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Das minimal mögliche Textkontrastverhältnis des Elements liegt bei %1$.2f, basierend auf der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der transparenten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Das minimal mögliche Textkontrastverhältnis des Elements liegt bei %1$.2f, basierend auf der Textfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der transparenten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten Farben verwenden, mit denen sich ein Kontrastverhältnis ergibt, das größer als %4$.2f ist.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten bei Texten mit kleiner Schriftgröße ein Kontrastverhältnis von über %4$.2f und bei Texten mit großer Schriftgröße von %5$.2f verwenden.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;#%2$06X&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;#%3$06X&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Das Textkontrastverhältnis des Objekts liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Ziehen Sie in Erwägung, dieses Verhältnis auf mindestens %4$.2f zu erhöhen.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten bei Texten mit kleiner Schriftgröße ein Kontrastverhältnis von über %4$.2f und bei Texten mit großer Schriftgröße von %5$.2f verwenden.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der geschätzten Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der geschätzten Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Das Textkontrastverhältnis des Elements liegt bei %1$.2f. Dieses Verhältnis ergibt sich aus der angegebenen Vordergrundfarbe &lt;tt&gt;%2$s&lt;/tt&gt; und der angegebenen Hintergrundfarbe &lt;tt&gt;%3$s&lt;/tt&gt;. Sie sollten das Textkontrastverhältnis dieses Elements auf mindestens %4$.2f erhöhen.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Die Vorder- und Hintergrundfarben dieses Elements entsprechen dem empfohlenen Kontrastverhältnis.</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; hat eine feste Breite und skalierbaren Text.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; hat eine feste Breite und skalierbaren Text.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; hat eine feste Höhe und skalierbaren Text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; hat eine feste Höhe und skalierbaren Text.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; hat eine feste Größe und skalierbaren Text.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; hat eine feste Größe und skalierbaren Text.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; hat eine feste Breite und enthält &lt;tt&gt;TextView&lt;/tt&gt; mit skalierbarem Text.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Dieses Element hat eine feste Breite und enthält ein &lt;tt&gt;Text&lt;/tt&gt;-Element mit skalierbarem Text.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; hat eine feste Höhe und enthält &lt;tt&gt;TextView&lt;/tt&gt; mit skalierbarem Text.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Dieses Element hat eine feste Höhe und enthält ein &lt;tt&gt;Text&lt;/tt&gt;-Element mit skalierbarem Text.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; hat eine feste Größe und enthält &lt;tt&gt;TextView&lt;/tt&gt; mit skalierbarem Text.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Dieses Element hat eine feste Größe und enthält ein &lt;tt&gt;Text&lt;/tt&gt;-Element mit skalierbarem Text.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Passen Sie die &lt;tt&gt;LayoutParams&lt;/tt&gt; an, um eine Textausdehnung zu ermöglichen.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Passen Sie die Größenmodifikatoren mit &lt;tt&gt;sizeIn&lt;/tt&gt; an, um eine Textausdehnung zu ermöglichen.</string>
   
   <string name="check_title_unexposed_text">Text nicht enthalten</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">OCR-Ergebnisse wurden in ImageView gefunden.</string>
   
-  <string name="result_message_brief_unexposed_text">Gefundener nicht enthaltener Text: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Nicht enthaltener Text erkannt: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Gefundener Text: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Erkannter Text: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Bei dieser &lt;tt&gt;Oberflächenansicht&lt;/tt&gt; werden Inhalte möglicherweise nicht für Bedienungshilfen offengelegt.</string>
+  <string name="result_message_text_detected_in_surface_view">Bei dieser &lt;tt&gt;Oberflächenansicht&lt;/tt&gt; werden Inhalte möglicherweise von Bedienungshilfen nicht erkannt.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Es wurden mehrere nicht enthaltene Texte gefunden, darunter „%1$s“.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Es wurden mehrere nicht enthaltene Texte erkannt, darunter „%1$s“.</string>
   
   <string name="result_message_multiple_unexposed_texts">Die Inhalte dieses Elements werden von Bedienungshilfen möglicherweise nicht erkannt.</string>
   

@@ -23,24 +23,24 @@ import "com/google/android/apps/common/testing/accessibility/framework/uielement
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
 option java_outer_classname = "AccessibilityHierarchyProtos";
 
-
 // Wire format for an AccessibilityHierarchy
-// Next index: 5
+// Next index: 6
 message AccessibilityHierarchyProto {
   optional DeviceStateProto device_state = 1;
   repeated WindowHierarchyElementProto windows = 2;
   optional int32 active_window_id = 3 [default = -1];
   optional ViewElementClassNamesProto view_element_class_names = 4;
+  optional AccessibilityHierarchyOriginProto origin = 5;
 }
 
-// Wire format for an ViewElementClassNames
+// Wire format for ViewElementClassNames
 // Next index: 2
 message ViewElementClassNamesProto {
   map<string, int32> class_name = 1;
 }
 
 // Wire format for a DeviceState
-// Next index: 5
+// Next index: 6
 message DeviceStateProto {
   optional DisplayInfoProto default_display_info = 1;
   optional int32 sdk_version = 2;
@@ -49,6 +49,7 @@ message DeviceStateProto {
   // was launched.
   optional string locale = 3;
   optional float font_scale = 4;
+  optional bool feature_watch = 5;
 }
 
 // Wire format for a DisplayInfo
@@ -87,14 +88,10 @@ message WindowHierarchyElementProto {
   optional bool accessibility_focused = 9;
   optional bool active = 10;
   optional RectProto bounds_in_screen = 11;
-
-  // Extra protos to save with each window node.
-  // max is 536,870,911
-  extensions 400000 to max;
 }
 
 // Wire format for a ViewHierarchyElement
-// Next index: 44
+// Next index: 45
 message ViewHierarchyElementProto {
   // Bookkeeping
   optional int32 id = 1 [default = -1];
@@ -105,6 +102,7 @@ message ViewHierarchyElementProto {
   optional string package_name = 4;
   optional string class_name = 5;
   optional string resource_name = 6;
+  optional string test_tag = 44;
   optional CharSequenceProto content_description = 7;
   optional CharSequenceProto text = 8;
   optional CharSequenceProto state_description = 43;
@@ -146,10 +144,6 @@ message ViewHierarchyElementProto {
   repeated RectProto text_character_locations = 40;
   optional int32 text_size_unit = 41;
   optional bool screen_reader_focusable = 42;
-
-  // Extra protos to save with each view node.
-  // max is 536,870,911
-  extensions 400000 to max;
 }
 
 // Wire format for a ViewHierarchyAction
@@ -157,4 +151,14 @@ message ViewHierarchyElementProto {
 message ViewHierarchyActionProto {
   optional int32 action_id = 1;
   optional string action_label = 2;
+}
+
+// Original data source from which the AccessibilityHierarchy was constructed.
+// Next index: 5
+enum AccessibilityHierarchyOriginProto {
+  ORIGIN_UNSPECIFIED = 0;
+  ORIGIN_VIEWS = 1;
+  ORIGIN_ACCESSIBILITY_NODE_INFOS = 2;
+  ORIGIN_ACCESSIBILITY_NODE_INFOS_AND_VIEWS = 4;
+  ORIGIN_WINDOW_LIST = 3;
 }

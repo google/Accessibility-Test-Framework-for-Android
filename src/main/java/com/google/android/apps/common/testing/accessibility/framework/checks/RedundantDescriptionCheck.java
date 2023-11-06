@@ -182,11 +182,11 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
       List<AccessibilityHierarchyCheckResult> results) {
     CharSequence contentDescription = checkNotNull(view.getContentDescription());
     for (String wordKey : wordKeys) {
-      CharSequence word = StringManager.getString(locale, wordKey);
+      String word = StringManager.getString(locale, wordKey);
       if (containsWordIgnoreCase(contentDescription, word)) {
         ResultMetadata resultMetadata = new HashMapResultMetadata();
         resultMetadata.putString(KEY_CONTENT_DESCRIPTION, contentDescription.toString());
-        resultMetadata.putString(KEY_REDUNDANT_WORD, word.toString());
+        resultMetadata.putString(KEY_REDUNDANT_WORD, word);
         results.add(
             new AccessibilityHierarchyCheckResult(
                 this.getClass(),
@@ -234,7 +234,8 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_CONTENT_DESC_CONTAINS_ITEM_TYPE:
         return String.format(
             locale,
-            StringManager.getString(locale, "result_message_content_desc_contains_redundant_word"),
+            StringManager.getString(
+                locale, "result_message_content_desc_contains_redundant_word_generic"),
             metadata.getString(KEY_CONTENT_DESCRIPTION),
             metadata.getString(KEY_REDUNDANT_WORD));
       case RESULT_ID_CONTENT_DESC_ENDS_WITH_VIEW_TYPE:
@@ -245,13 +246,13 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_CONTENT_DESC_CONTAINS_STATE:
         return String.format(
             locale,
-            StringManager.getString(locale, "result_message_content_desc_contains_state"),
+            StringManager.getString(locale, "result_message_content_desc_contains_state_generic"),
             metadata.getString(KEY_CONTENT_DESCRIPTION),
             metadata.getString(KEY_REDUNDANT_WORD));
       case RESULT_ID_CONTENT_DESC_CONTAINS_ACTION:
         return String.format(
             locale,
-            StringManager.getString(locale, "result_message_content_desc_contains_action"),
+            StringManager.getString(locale, "result_message_content_desc_contains_action_generic"),
             metadata.getString(KEY_CONTENT_DESCRIPTION),
             metadata.getString(KEY_REDUNDANT_WORD));
       default:
@@ -273,7 +274,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_CONTENT_DESC_CONTAINS_STATE:
       case RESULT_ID_CONTENT_DESC_CONTAINS_ACTION:
         return StringManager.getString(
-            locale, "result_message_brief_content_desc_contains_redundant_word");
+            locale, "result_message_brief_content_desc_contains_redundant_word_generic");
       default:
         throw new IllegalStateException("Unsupported result id");
     }
@@ -305,7 +306,7 @@ public class RedundantDescriptionCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY:
         return StringManager.getString(locale, "result_message_not_important_for_accessibility");
       case RESULT_ID_NO_CONTENT_DESC:
-        return StringManager.getString(locale, "result_message_no_content_desc");
+        return StringManager.getString(locale, "result_message_no_content_desc_generic");
       default:
         return null;
     }

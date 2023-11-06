@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Ten element nie ma tekstu w atrybucie &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Ten element nie ma opisu treści.</string>
+  
   <string name="result_message_not_visible">Ten element nie jest widoczny.</string>
   
   <string name="result_message_not_enabled">Ten element nie jest włączony.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">aktywny</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Sprzeczne elementy: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Opisy elementów</string>
   
   <string name="result_message_brief_same_speakable_text">Kilka elementów ma taki sam opis.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Zwiększ kontrast pomiędzy tłem a pierwszym planem tego obrazu.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;%3$s&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;%4$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %2$.2f.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;%3$s&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;%4$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;%3$s&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;%4$s&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tego obrazu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;%3$s&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;%4$s&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu co najmniej do zmienionej wartości (%2$.2f).</string>
   
   <string name="check_title_redundant_description">Etykieta typu elementu</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Atrybut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tego elementu może zawierać zbędny tekst.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Opis treści tego elementu może zawierać zbędny tekst.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Atrybut &lt;tt&gt;android:contentDescription&lt;/tt&gt; elementu „&lt;tt&gt;%1$s&lt;/tt&gt;” zawiera na końcu opisu typ tego elementu.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Atrybut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tego elementu, „&lt;tt&gt;%1$s&lt;/tt&gt;”, zawiera typ elementu „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Opis treści tego elementu („&lt;tt&gt;%1$s&lt;/tt&gt;”) zawiera typ elementu „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_action">Atrybut &lt;tt&gt;android:contentDescription&lt;/tt&gt;, „&lt;tt&gt;%1$s&lt;/tt&gt;”, w tym elemencie zawiera działanie „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Opis treści tego elementu („&lt;tt&gt;%1$s&lt;/tt&gt;”) zawiera działanie „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_state">Atrybut &lt;tt&gt;android:contentDescription&lt;/tt&gt;, „&lt;tt&gt;%1$s&lt;/tt&gt;”, w tym elemencie zawiera stan „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Opis treści tego elementu („&lt;tt&gt;%1$s&lt;/tt&gt;”) zawiera stan „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="button_item_type">przycisk</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">Treści internetowe nie są sprawdzane.</string>
   
+  <string name="result_message_unsupported_compose_content">W tym środowisku nie są oceniane treści kompozycyjne.</string>
+  
+  <string name="result_message_unsupported_flutter_content">W tym środowisku nie są oceniane treści z platformy Flutter.</string>
+  
   <string name="result_message_missing_speakable_text">Etykieta tego elementu może nie być czytelna dla czytnika ekranu.</string>
   
   <string name="check_title_text_contrast">Kontrast tekstu</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Zwiększ kontrast pierwszego planu względem tła dla tego elementu.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na kolorze tekstu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na kolorze tekstu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na kolorze tekstu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które pozwolą uzyskać współczynnik kontrastu wyższy niż w przypadku zmienionego współczynnika %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na kolorze tekstu (&lt;tt&gt;%2$s&lt;/tt&gt;) i kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które pozwolą uzyskać współczynnik kontrastu wyższy niż w przypadku zmienionego współczynnika %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Maksymalny współczynnik kontrastu tekstu tego elementu to %1$.2f, gdy kolor tekstu to &lt;tt&gt;%2$s&lt;/tt&gt;, a nieprzezroczysty kolor tła – &lt;tt&gt;%3$s&lt;/tt&gt;. Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Maksymalny współczynnik kontrastu tekstu tego elementu to %1$.2f, gdy kolor tekstu to &lt;tt&gt;%2$s&lt;/tt&gt;, a nieprzezroczysty kolor tła – &lt;tt&gt;%3$s&lt;/tt&gt;. Zastanów się nad użyciem kolorów, które pozwolą uzyskać współczynnik kontrastu wyższy niż w przypadku zmienionego współczynnika %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Minimalny współczynnik kontrastu tekstu tego elementu to %1$.2f, gdy kolor tekstu to &lt;tt&gt;%2$s&lt;/tt&gt;, a nieprzezroczysty kolor – &lt;tt&gt;%3$s&lt;/tt&gt;. Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Minimalny współczynnik kontrastu tekstu tego elementu to %1$.2f, gdy kolor tekstu to &lt;tt&gt;%2$s&lt;/tt&gt;, a nieprzezroczysty kolor – &lt;tt&gt;%3$s&lt;/tt&gt;. Zastanów się nad użyciem kolorów, które pozwolą uzyskać współczynnik kontrastu wyższy niż w przypadku zmienionego współczynnika %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacowanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz szacowanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do zmienionej wartości (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu tekstu tego elementu co najmniej do zmienionej wartości (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacunkowym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz szacunkowym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na podanym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad użyciem kolorów, które skutkują współczynnikiem powyżej %4$.2f w przypadku małego tekstu i %5$.2f w przypadku dużego.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do %4$.2f lub większej wartości.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Współczynnik ten jest oparty na szacowanym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz szacowanym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad zwiększeniem tego współczynnika co najmniej do zmienionej wartości (%4$.2f).</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Współczynnik kontrastu tekstu tego elementu wynosi %1$.2f. Jest on oparty na podanym kolorze pierwszego planu (&lt;tt&gt;%2$s&lt;/tt&gt;) oraz podanym kolorze tła (&lt;tt&gt;%3$s&lt;/tt&gt;). Zastanów się nad zwiększeniem współczynnika kontrastu tekstu tego elementu co najmniej do zmienionej wartości (%4$.2f).</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Kolory pierwszego planu i tła tego elementu zapewniają sugerowany współczynnik kontrastu.</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stałą szerokość i skalowalny tekst.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Ten element &lt;tt&gt;Text&lt;/tt&gt; ma stałą szerokość i skalowalny tekst.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stałą wysokość i skalowalny tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Ten element &lt;tt&gt;Text&lt;/tt&gt; ma stałą wysokość i skalowalny tekst.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Ten element &lt;tt&gt;TextView&lt;/tt&gt; ma stały rozmiar i skalowalny tekst.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Ten element &lt;tt&gt;Text&lt;/tt&gt; ma stały rozmiar i skalowalny tekst.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stałą szerokość i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Ten element ma stałą szerokość i zawiera element &lt;tt&gt;Text&lt;/tt&gt; ze skalowalnym tekstem.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stałą wysokość i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Ten element ma stałą wysokość i zawiera element &lt;tt&gt;Text&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ten element &lt;tt&gt;ViewGroup&lt;/tt&gt; ma stały rozmiar i zawiera element &lt;tt&gt;TextView&lt;/tt&gt; ze skalowalnym tekstem.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Ten element ma stały rozmiar i zawiera element &lt;tt&gt;Text&lt;/tt&gt; ze skalowalnym tekstem.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Rozważ modyfikację &lt;tt&gt;LayoutParams&lt;/tt&gt;, aby umożliwić zwiększanie rozmiaru tekstu.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Aby umożliwić rozwinięcie tekstu, rozważ zmianę modyfikatorów rozmiaru za pomocą parametru &lt;tt&gt;sizeIn&lt;/tt&gt;.</string>
   
   <string name="check_title_unexposed_text">Nieudostępniony tekst</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">W tym obiekcie ImageView wykryto wyniki funkcji OCR.</string>
   
-  <string name="result_message_brief_unexposed_text">Wykryto nieudostępniony tekst: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Wykryto potencjalny niewidoczny tekst: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Wykryto tekst: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Potencjalny tekst: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Ten obiekt &lt;tt&gt;SurfaceView&lt;/tt&gt; może nie udostępniać swojej zawartości usługom ułatwień dostępu.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Znaleziono nieudostępniane fragmenty tekstu, w tym „%1$s”.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Znaleziono potencjalne nieudostępniane fragmenty tekstu, w tym „%1$s”.</string>
   
   <string name="result_message_multiple_unexposed_texts">Ten element może nie udostępniać swojej zawartości usługom ułatwień dostępu.</string>
   

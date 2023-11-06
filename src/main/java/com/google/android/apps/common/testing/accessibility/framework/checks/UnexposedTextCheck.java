@@ -45,26 +45,37 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
 
   /** Result when the view is not visible. */
   public static final int RESULT_ID_NOT_VISIBLE = 1;
+
   /** Result when thew view is not {@code importantForAccessibility} */
   public static final int RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY = 2;
+
   /** Result when OCR result is not available. */
   public static final int RESULT_ID_OCR_RESULT_NOT_AVAILABLE = 3;
+
   /** Result when the view should not be focused by a screen reader. */
   public static final int RESULT_ID_SHOULD_NOT_FOCUS = 4;
+
   /** Result when the view type is excluded. */
   public static final int RESULT_ID_WEB_CONTENT = 5;
+
   /** Result when OCR results were detected inside an ImageView. */
   public static final int RESULT_ID_TEXT_DETECTED_IN_IMAGE_VIEW = 6;
+
   /** Result when no matching OCR results were detected for a focusable view. */
   public static final int RESULT_ID_NO_MATCHING_OCR_TEXT = 7;
+
   /** Result when OCR results can not match the speakable text of their best matching view. */
   public static final int RESULT_ID_UNEXPOSED_TEXT = 8;
+
   /** Result when OCR results match multiple views and it is ambiguous which should be used. */
   public static final int RESULT_ID_MULTIPLE_BEST_MATCH_VIEWS = 9;
+
   /** Result when OCR results were detected inside a SurfaceView. */
   public static final int RESULT_ID_UNEXPOSED_TEXT_IN_SURFACE_VIEW = 10;
+
   /** Result when multiple unexposed OCR results were detected inside a View. */
   public static final int RESULT_ID_MULTIPLE_UNEXPOSED_TEXTS = 11;
+
   /** Result when only a single character is identified by OCR but no text is rendered there. */
   public static final int RESULT_ID_SINGLE_OCR_CHARACTER_WITHOUT_TEXT = 12;
 
@@ -75,22 +86,31 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
    * {@code String}. Populated in results with {@link #RESULT_ID_UNEXPOSED_TEXT}.
    */
   public static final String KEY_UNEXPOSED_TEXT = "KEY_UNEXPOSED_TEXT";
+
   /**
    * Result metadata key for OCR results which are not exposed to the Accessibility service as a
    * {@code String}. Populated in results with {@link #RESULT_ID_UNEXPOSED_TEXT}.
    */
   public static final String KEY_UNEXPOSED_TEXTS = "KEY_UNEXPOSED_TEXTS";
+
   /** Bounds of OCR text within the screen in the form of a flattened Rect. */
   public static final String KEY_OCR_BOUNDS = "KEY_OCR_BOUNDS";
+
   /**
    * Result metadata key for OCR results which wre detected inside an ImageView as a {@code String}.
    * Populated in results with {@link #RESULT_ID_TEXT_DETECTED_IN_IMAGE_VIEW}.
    */
   public static final String KEY_TEXT_DETECTED_IN_IMAGE_VIEW = "KEY_TEXT_DETECTED_IN_IMAGE_VIEW";
+
   /** OCR results with confidence scores not great than this threshold will be ignored. */
   private static final float CONFIDENCE_FILTER_THRESHOLD = 0.5f;
+
   /** Maximum edit distance allowed to consider OCR text to match speakable text. */
   private static final int OCR_EDIT_DISTANCE_THRESHOLD = 2;
+
+  /** Minimum OCR text length to check if it matches spoken text substring */
+  private static final int MIN_OCR_TEXT_LENGTH_TO_CHECK_SUBSTRING_OF_SPEAKABLE_TEXT_THRESHOLD = 2;
+
   /**
    * If there are more than 2 unexposed OCR results are detected inside one View, only report one
    * warning for all unexposed OCR results against this View.
@@ -323,39 +343,42 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
     ImmutableList.Builder<AccessibilityHierarchyCheckResult> builder = ImmutableList.builder();
     for (TextComponent text : checkNotNull(textList)) {
       String ocrText = text.getValue();
+
       // If any view contains character locations, attempt to match the OCR text to known text
       // character locations. Even if this view doesn't contain them, views in its speakable subtree
       // might.
-      if (containsCharacterLocations) {
-        List<ViewHierarchyElement> bestMatchViews =
-            filterViewsByOverlappingCharacterLocations(text, viewsToEval);
-        if (bestMatchViews.size() == 1) {
-          ViewHierarchyElement bestMatchView = bestMatchViews.get(0);
-          String renderedText = matchTextToCharacterLocations(text, bestMatchView);
-          if (ocrResultMatchesRenderedText(text.getValue(), renderedText)) {
-            // Sometimes the OCR recognizes text incorrectly. If text character locations can be
-            // derived from the accessibility hierarchy, the character bounds can be matched with
-            // the OCR bounds to determine the actual text. If the OCR text is close enough, it
-            // probably was an OCR error, and the rendered text is the actual speakable text.
-            // If not, it's probably a more drastic mistake, and it's better to ignore this OCR
-            // text entirely.
-            ocrText = renderedText;
-          } else {
-            // If the OCR text bounds matches on screen character locations, but the OCR text itself
-            // is too dissimilar from those characters, the OCR is likely wrong. Processing this
-            // text component would likely cause a false positive, because the incorrect text cannot
-            // exist in the accessibility hierarchy.
-            continue;
-          }
-        } else if (bestMatchViews.size() > 1) {
-          return ImmutableList.of(
-              createNotRunCheckResult(view, RESULT_ID_MULTIPLE_BEST_MATCH_VIEWS));
-        } else if (bestMatchViews.isEmpty() && (ocrText.length() == 1)) {
-          // If character locations exist but there is no view that could contain text corresponding
-          // to the OCR text, and the OCR text is a single character, the OCR is probably an icon.
-          return ImmutableList.of(createNotRunCheckResultForSingleCharOcr(view, ocrText));
+      List<ViewHierarchyElement> bestMatchTextViews =
+          containsCharacterLocations
+              ? filterViewsByOverlappingCharacterLocations(text, viewsToEval)
+              : ImmutableList.of();
+      if (bestMatchTextViews.size() == 1) {
+        ViewHierarchyElement bestMatchView = bestMatchTextViews.get(0);
+        String renderedText = matchTextToCharacterLocations(text, bestMatchView);
+        if (ocrResultMatchesRenderedText(text.getValue(), renderedText)) {
+          // Sometimes the OCR recognizes text incorrectly. If text character locations can be
+          // derived from the accessibility hierarchy, the character bounds can be matched with
+          // the OCR bounds to determine the actual text. If the OCR text is close enough, it
+          // probably was an OCR error, and the rendered text is the actual speakable text.
+          // If not, it's probably a more drastic mistake, and it's better to ignore this OCR
+          // text entirely.
+          ocrText = renderedText;
+        } else {
+          // If the OCR text bounds matches on screen character locations, but the OCR text itself
+          // is too dissimilar from those characters, the OCR is likely wrong. Processing this
+          // text component would likely cause a false positive, because the incorrect text cannot
+          // exist in the accessibility hierarchy.
+          continue;
         }
+      } else if (bestMatchTextViews.size() > 1) {
+        builder.add(createNotRunCheckResult(view, RESULT_ID_MULTIPLE_BEST_MATCH_VIEWS));
+        continue;
+      } else if (bestMatchTextViews.isEmpty() && (ocrText.length() == 1)) {
+        // If character locations exist but there is no view that could contain text corresponding
+        // to the OCR text, and the OCR text is a single character, the OCR is probably an icon.
+        builder.add(createNotRunCheckResultForSingleCharOcr(view, ocrText));
+        continue;
       }
+
       if (!isTextMatching(ocrText, speakableText.toString())) {
         // Checks if this text is recognized from an image view which is not important for
         // accessibility
@@ -383,41 +406,93 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
           return builder.build();
         }
 
+        if (!view.getBoundsInScreen().contains(text.getBoundsInScreen())) {
+          // Ignores the OCR text if it is barely inside the best match view, because this OCR text
+          // may be outside of the active window. Processing this OCR text would likely to cause a
+          // false positive.
+          Rect intersection = view.getBoundsInScreen().intersect(text.getBoundsInScreen());
+          if (intersection.area() < 0.3 * text.getBoundsInScreen().area()) {
+            continue;
+          }
+        }
+
         ResultMetadata resultMetadata = new HashMapResultMetadata();
         resultMetadata.putString(KEY_UNEXPOSED_TEXT, ocrText);
         resultMetadata.putString(KEY_OCR_BOUNDS, text.getBoundsInScreen().flattenToString());
+
+        // Only reports a warning when the OCR result matches the text being rendered at the same
+        // position.
+        AccessibilityCheckResultType resultType =
+            bestMatchTextViews.isEmpty()
+                ? AccessibilityCheckResultType.INFO
+                : AccessibilityCheckResultType.WARNING;
         builder.add(
             new AccessibilityHierarchyCheckResult(
-                this.getClass(),
-                AccessibilityCheckResultType.WARNING,
-                view,
-                RESULT_ID_UNEXPOSED_TEXT,
-                resultMetadata));
+                this.getClass(), resultType, view, RESULT_ID_UNEXPOSED_TEXT, resultMetadata));
       }
     }
-    ImmutableList<AccessibilityHierarchyCheckResult> results = builder.build();
+
+    return mergeCheckResultsForOneViewIfPossible(builder.build(), view);
+  }
+
+  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
+    String messageId = MESSAGE_IDS.get(resultId);
+    return (messageId == null) ? null : StringManager.getString(locale, messageId);
+  }
+
+  private ImmutableList<AccessibilityHierarchyCheckResult> mergeCheckResultsForOneViewIfPossible(
+      ImmutableList<AccessibilityHierarchyCheckResult> results, ViewHierarchyElement view) {
+    List<AccessibilityHierarchyCheckResult> unexposedTextWarnings = new ArrayList<>();
+    List<AccessibilityHierarchyCheckResult> unexposedTextInfos = new ArrayList<>();
+    List<AccessibilityHierarchyCheckResult> otherResults = new ArrayList<>();
+    for (AccessibilityHierarchyCheckResult result : results) {
+      if (result.getResultId() == RESULT_ID_UNEXPOSED_TEXT) {
+        if (result.getType() == AccessibilityCheckResultType.WARNING) {
+          unexposedTextWarnings.add(result);
+        } else if (result.getType() == AccessibilityCheckResultType.INFO) {
+          unexposedTextInfos.add(result);
+        }
+      } else {
+        otherResults.add(result);
+      }
+    }
+
+    ImmutableList.Builder<AccessibilityHierarchyCheckResult> builder = ImmutableList.builder();
+    return builder
+        .addAll(
+            mergeUnexposedTextCheckResults(
+                unexposedTextWarnings, AccessibilityCheckResultType.WARNING, view))
+        .addAll(
+            mergeUnexposedTextCheckResults(
+                unexposedTextInfos, AccessibilityCheckResultType.INFO, view))
+        .addAll(otherResults)
+        .build();
+  }
+
+  private List<AccessibilityHierarchyCheckResult> mergeUnexposedTextCheckResults(
+      List<AccessibilityHierarchyCheckResult> results,
+      AccessibilityCheckResultType resultType,
+      ViewHierarchyElement view) {
+
     if (results.size() > MERGE_MULTIPLE_UNEXPOSED_OCR_RESULTS_IN_ONE_VIEW_THRESHOLD) {
       ResultMetadata resultMetadata = new HashMapResultMetadata();
       List<String> unexposedTexts = new ArrayList<>();
       for (AccessibilityHierarchyCheckResult result : results) {
-        unexposedTexts.add(checkNotNull(result.getMetadata()).getString(KEY_UNEXPOSED_TEXT));
+        ResultMetadata metadata = checkNotNull(result.getMetadata());
+        unexposedTexts.add(checkNotNull(metadata.getString(KEY_UNEXPOSED_TEXT)));
       }
+
       resultMetadata.putStringList(KEY_UNEXPOSED_TEXTS, unexposedTexts);
       return ImmutableList.of(
           new AccessibilityHierarchyCheckResult(
               this.getClass(),
-              AccessibilityCheckResultType.WARNING,
+              resultType,
               view,
               RESULT_ID_MULTIPLE_UNEXPOSED_TEXTS,
               resultMetadata));
     } else {
       return results;
     }
-  }
-
-  private static @Nullable String generateMessageForResultId(Locale locale, int resultId) {
-    String messageId = MESSAGE_IDS.get(resultId);
-    return (messageId == null) ? null : StringManager.getString(locale, messageId);
   }
 
   private AccessibilityHierarchyCheckResult createNotRunCheckResult(
@@ -518,6 +593,11 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
       return true;
     }
 
+    if (asciiOcrText.length() >= MIN_OCR_TEXT_LENGTH_TO_CHECK_SUBSTRING_OF_SPEAKABLE_TEXT_THRESHOLD
+        && (asciiSpeakableText.contains(asciiOcrText.substring(1))
+            || asciiSpeakableText.contains(asciiOcrText.substring(0, asciiOcrText.length() - 1)))) {
+      return true;
+    }
 
     return false;
   }
@@ -730,7 +810,7 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
     }
 
     ViewHierarchyElement bestMatch = null;
-    float highestIOU = 0;
+    float highestIou = 0;
     for (ViewHierarchyElement view : allViews) {
       if (!includeNotImportantViews) {
         if (!view.isImportantForAccessibility() || !shouldFocusView(view)) {
@@ -741,9 +821,9 @@ public class UnexposedTextCheck extends AccessibilityHierarchyCheck {
       float iou =
           calculateIntersectionOverUnion(
               view.getBoundsInScreen(), textComponent.getBoundsInScreen());
-      if (iou > 0 && iou >= highestIOU) {
+      if (iou > 0 && iou >= highestIou) {
         bestMatch = view;
-        highestIOU = iou;
+        highestIou = iou;
       }
     }
 

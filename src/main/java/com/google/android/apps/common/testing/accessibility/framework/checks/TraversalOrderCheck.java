@@ -25,6 +25,7 @@ import com.google.android.apps.common.testing.accessibility.framework.ResultMeta
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.common.base.Joiner;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -139,7 +140,7 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   @Override
   public String getShortMessageForResultData(
       Locale locale, int resultId, @Nullable ResultMetadata metadata) {
-    switch(resultId) {
+    switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
       case RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY:
@@ -155,7 +156,7 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   }
 
   private static String generateMessageForResultId(Locale locale, int resultId) {
-    switch(resultId) {
+    switch (resultId) {
       case RESULT_ID_NOT_VISIBLE:
         return StringManager.getString(locale, "result_message_not_visible");
       case RESULT_ID_NOT_IMPORTANT_FOR_ACCESSIBILITY:
@@ -212,14 +213,18 @@ public class TraversalOrderCheck extends AccessibilityHierarchyCheck {
   }
 
   private static class CycleException extends Exception {
-    private final List<ViewHierarchyElement> elements;
 
     CycleException(List<ViewHierarchyElement> elements) {
-      this.elements = elements;
+      super(constructCycleMessage(elements));
     }
 
-    List<ViewHierarchyElement> getElements() {
-      return elements;
+    /**
+     * Resulting message looks like:
+     *
+     * <p>[ViewHierarchyElement class=...]->[...]->[...]->[ViewHierarchyElement <same as first>]
+     */
+    private static String constructCycleMessage(List<ViewHierarchyElement> elements) {
+      return Joiner.on("->").join(elements);
     }
   }
 }

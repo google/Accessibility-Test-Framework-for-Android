@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Šiame elemente nėra &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Nėra šio elemento turinio aprašo</string>
+  
   <string name="result_message_not_visible">Šis elementas nematomas.</string>
   
   <string name="result_message_not_enabled">Šis elementas neįgalintas.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">veikiamasis</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Nesuderinamas (-i) elementas (-ai): &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Elemento aprašai</string>
   
   <string name="result_message_brief_same_speakable_text">Kelių elementų aprašai sutampa.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Apsvarstykite galimybę padidinti kontrasto santykį tarp šio vaizdo priekinio plano ir fono.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Vaizdo kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%4$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šį santykį iki %2$.2f arba didesnio.</string>
+  <string name="result_message_image_contrast_not_sufficient">Vaizdo kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;%3$s&lt;/tt&gt;) ir fono (&lt;tt&gt;%4$s&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šį santykį iki %2$.2f arba didesnio.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;#%3$06X&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;#%4$06X&lt;/tt&gt; fono spalva. Pabandykite padidinti šį santykį iki %2$.2f ar daugiau.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;%3$s&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;%4$s&lt;/tt&gt; fono spalva. Pabandykite padidinti šį santykį iki %2$.2f ar daugiau.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Pabandykite padidinti šį santykį iki modifikuoto santykio (%2$.2f) ar didesnio</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;%3$s&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;%4$s&lt;/tt&gt;). Pabandykite padidinti šį santykį iki modifikuoto santykio (%2$.2f) ar didesnio</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;#%3$06X&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;#%4$06X&lt;/tt&gt; fono spalva. Pabandykite padidinti šį santykį iki modifikuoto santykio (%2$.2f) ar didesnio</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Šio vaizdo kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;%3$s&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;%4$s&lt;/tt&gt; fono spalva. Pabandykite padidinti šį santykį iki modifikuoto santykio (%2$.2f) ar didesnio</string>
   
   <string name="check_title_redundant_description">Elemento tipo etiketė</string>
   
@@ -83,16 +87,28 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt; gali būti nereikalingo teksto.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Šio elemento turinio apraše gali būti nereikalingo teksto.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt;, „&lt;tt&gt;%1$s&lt;/tt&gt;“ pabaigoje nurodytas elemento tipas.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt;, „&lt;tt&gt;%1$s&lt;/tt&gt;“ nurodytas elemento tipas „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Šio elemento turinio apraše „&lt;tt&gt;%1$s&lt;/tt&gt;“ yra elemento tipas „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
   <string name="result_message_content_desc_contains_action">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     „&lt;tt&gt;%1$s&lt;/tt&gt;“
     yra veiksmas „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Šio elemento turinio apraše,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
+    yra veiksmas „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_state">Šio elemento &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     „&lt;tt&gt;%1$s&lt;/tt&gt;“
+    yra būsena „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Šio elemento turinio apraše,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
     yra būsena „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
   <string name="button_item_type">mygtukas</string>
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Žiniatinklio turinys nebuvo įvertintas.</string>
   
+  <string name="result_message_unsupported_compose_content">Šioje aplinkoje lankstus turinys nėra vertinamas.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Šioje aplinkoje „Flutter“ turinys nėra vertinamas.</string>
+  
   <string name="result_message_missing_speakable_text">Šiame elemente gali nebūti ekrano skaitytuvais nuskaitomos etiketės.</string>
   
   <string name="check_title_text_contrast">Teksto kontrastas</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Apsvarstykite galimybę padidinti šio elemento teksto priekinio plano ir fono kontrasto santykį.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal teksto (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%3$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f arba didesnio.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal teksto (&lt;tt&gt;%2$s&lt;/tt&gt;) ir fono (&lt;tt&gt;%3$s&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f arba didesnio.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Šio elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal teksto (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%3$06X&lt;/tt&gt;) spalvas. Pamėginkite naudoti spalvas, dėl kurių kontrasto santykis būtų didesnis nei modifikuotasis santykis (%4$.2f).</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Šio elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal teksto (&lt;tt&gt;%2$s&lt;/tt&gt;) ir fono (&lt;tt&gt;%3$s&lt;/tt&gt;) spalvas. Pamėginkite naudoti spalvas, dėl kurių kontrasto santykis būtų didesnis nei modifikuotasis santykis (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Pamėginkite naudoti spalvas, kurių mažo šrifto kontrasto santykis didesnis nei %4$.2f arba didelio šrifto kontrasto santykis didesnis nei %5$.2f.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Didžiausias galimas elemento teksto kontrasto santykis yra %1$.2f, atsižvelgiant į teksto spalvą (&lt;tt&gt;%2$s&lt;/tt&gt;) ir neskaidrią fono spalvą (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ir fono (&lt;tt&gt;#%3$06X&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Didžiausias galimas elemento teksto kontrasto santykis yra %1$.2f, atsižvelgiant į teksto spalvą (&lt;tt&gt;%2$s&lt;/tt&gt;) ir neskaidrią fono spalvą (&lt;tt&gt;%3$s&lt;/tt&gt;). Pamėginkite naudoti spalvas, dėl kurių kontrasto santykis būtų didesnis nei modifikuotasis santykis (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;#%2$06X&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;#%3$06X&lt;/tt&gt; fono spalva. Pamėginkite naudoti spalvas, kurių mažo šrifto kontrasto santykis didesnis nei %4$.2f arba didelio šrifto kontrasto santykis didesnis nei %5$.2f.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Mažiausias galimas elemento teksto kontrasto santykis yra %1$.2f, atsižvelgiant į teksto spalvą (&lt;tt&gt;%2$s&lt;/tt&gt;) ir neskaidrią fono spalvą (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;#%2$06X&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;#%3$06X&lt;/tt&gt; fono spalva. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Mažiausias galimas elemento teksto kontrasto santykis yra %1$.2f, atsižvelgiant į teksto spalvą (&lt;tt&gt;%2$s&lt;/tt&gt;) ir neskaidrią fono spalvą (&lt;tt&gt;%3$s&lt;/tt&gt;). Pamėginkite naudoti spalvas, dėl kurių kontrasto santykis būtų didesnis nei modifikuotasis santykis (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Pamėginkite padidinti šio elemento teksto kontrasto santykį iki modifikuoto %4$.2f santykio ar didesnio.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;%2$s&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;%3$s&lt;/tt&gt;). Pamėginkite naudoti spalvas, kurių mažo šrifto kontrasto santykis didesnis nei %4$.2f arba didelio šrifto kontrasto santykis didesnis nei %5$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;#%2$06X&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;#%3$06X&lt;/tt&gt; fono spalva. Pamėginkite padidinti šio elemento teksto kontrasto santykį iki modifikuoto %4$.2f santykio ar didesnio.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Elemento teksto kontrasto santykis yra %1$.2f. Šis santykis nustatytas pagal aptiktas priekinio plano (&lt;tt&gt;%2$s&lt;/tt&gt;) ir fono (&lt;tt&gt;%3$s&lt;/tt&gt;) spalvas. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;%2$s&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;%3$s&lt;/tt&gt; fono spalva. Pamėginkite naudoti spalvas, kurių mažo šrifto kontrasto santykis didesnis nei %4$.2f arba didelio šrifto kontrasto santykis didesnis nei %5$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;%2$s&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;%3$s&lt;/tt&gt; fono spalva. Apsvarstykite galimybę padidinti šio elemento teksto kontrasto santykį iki %4$.2f ar didesnio.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas nustatyta priekinio plano spalva (&lt;tt&gt;%2$s&lt;/tt&gt;) ir nustatyta fono spalva (&lt;tt&gt;%3$s&lt;/tt&gt;). Pamėginkite padidinti šio elemento teksto kontrasto santykį iki modifikuoto %4$.2f santykio ar didesnio.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Šio produkto teksto kontrasto santykis yra %1$.2f. Šis santykis pagrįstas pateikta &lt;tt&gt;%2$s&lt;/tt&gt; priekinio plano spalva ir pateikta &lt;tt&gt;%3$s&lt;/tt&gt; fono spalva. Pamėginkite padidinti šio elemento teksto kontrasto santykį iki modifikuoto %4$.2f santykio ar didesnio.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Šios prekės priekinio plano ir fono spalvos atitinka siūlomą kontrasto santykį</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; yra fiksuoto pločio ir keičiamo mastelio tekstas.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; yra fiksuoto pločio ir keičiamo mastelio tekstas.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; yra fiksuoto aukščio ir keičiamo mastelio tekstas.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; yra fiksuoto aukščio ir keičiamo mastelio tekstas.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; yra fiksuoto dydžio ir keičiamo mastelio tekstas.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; yra fiksuoto dydžio ir keičiamo mastelio tekstas.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; yra fiksuoto pločio ir jame (joje) yra&lt;tt&gt;TextView&lt;/tt&gt; su keičiamo mastelio tekstu.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Šis elementas yra fiksuoto pločio ir jame yra elementas „&lt;tt&gt;Text&lt;/tt&gt;“ su keičiamo mastelio tekstu.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; yra fiksuoto aukščio ir jame (joje) yra&lt;tt&gt;TextView&lt;/tt&gt; su keičiamo mastelio tekstu.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Šis elementas yra fiksuoto aukščio ir jame yra elementas „&lt;tt&gt;Text&lt;/tt&gt;“ su keičiamo mastelio tekstu.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; yra fiksuoto dydžio ir jame (joje) yra&lt;tt&gt;TextView&lt;/tt&gt; su keičiamo mastelio tekstu.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Šis elementas yra fiksuoto dydžio ir jame yra elementas „&lt;tt&gt;Text&lt;/tt&gt;“ su keičiamo mastelio tekstu.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Galbūt reikėtų modifikuoti &lt;tt&gt;LayoutParams&lt;/tt&gt;, kad būtų galima išskleisti tekstą.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Apsvarstykite galimybę keisti dydžio modifikatorius naudodami „&lt;tt&gt;sizeIn&lt;/tt&gt;“, kad būtų galima išskleisti tekstą.</string>
   
   <string name="check_title_unexposed_text">Neįtrauktas tekstas</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">Šio „ImageView“ viduje naudojant optinį ženklų atpažinimą aptikta ženklų.</string>
   
-  <string name="result_message_brief_unexposed_text">Aptiktas neįtrauktas tekstas: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Aptiktas galimas tekstas: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Aptiktas tekstas: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Galimas tekstas: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Šis „&lt;tt&gt;SurfaceView&lt;/tt&gt;“ gali nerodyti turinio pritaikomumo paslaugose.</string>
+  <string name="result_message_text_detected_in_surface_view">Šio &lt;tt&gt;SurfaceView&lt;/tt&gt; turinys gali būti nepateikiamas pritaikomumo paslaugoms.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Aptikti keli pritaikomumo paslaugų neaptinkami tekstai, įskaitant „%1$s“.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Aptikta pritaikomumo paslaugų neaptinkamų tekstų, įskaitant „%1$s“.</string>
   
-  <string name="result_message_multiple_unexposed_texts">Pritaikomumo paslaugos gali neaptikti šio elemento turinio.</string>
+  <string name="result_message_multiple_unexposed_texts">Šio elemento turinys gali būti nepateikiamas pritaikomumo paslaugoms.</string>
   
   <string name="result_message_ocr_result_not_available">Optinio simbolių atpažinimo rezultatų nėra.</string>
   

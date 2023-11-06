@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Dette elementet mangler &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Dette elementet har ingen innholdsbeskrivelse.</string>
+  
   <string name="result_message_not_visible">Dette elementet er ikke synlig.</string>
   
   <string name="result_message_not_enabled">Dette elementet er ikke slått på.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">interaktive</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Element(er) i konflikt: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Elementbeskrivelser</string>
   
   <string name="result_message_brief_same_speakable_text">Flere elementer har samme beskrivelse.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Du bør vurdere å øke kontrastforholdet mellom forgrunnen og bakgrunnen i bildet.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Kontrastforholdet i bildet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;#%3$06X&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du bør vurdere å øke dette kontrastforholdet til %2$.2f eller høyere.</string>
+  <string name="result_message_image_contrast_not_sufficient">Kontrastforholdet i bildet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;%3$s&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;%4$s&lt;/tt&gt;. Du bør vurdere å øke dette kontrastforholdet til %2$.2f eller høyere.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastforholdet i bildet er %1$.2f. Dette er basert på forgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du bør vurdere å øke dette forholdet til %2$.2f eller høyere.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastforholdet i bildet er %1$.2f. Dette er basert på forgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%4$s&lt;/tt&gt;. Du bør vurdere å øke dette forholdet til %2$.2f eller høyere.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastforholdet i bildet er %1$.2f. Dette forholdet er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;#%3$06X&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du bør vurdere å øke forholdet til %2$.2f, som er det modifiserte forholdet, eller høyere.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastforholdet i bildet er %1$.2f. Dette forholdet er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;%3$s&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;%4$s&lt;/tt&gt;. Du bør vurdere å øke forholdet til %2$.2f, som er det modifiserte forholdet, eller høyere.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastforholdet i bildet er %1$.2f. Dette forholdet er basert på forgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du bør vurdere å øke forholdet til %2$.2f, som er det modifiserte forholdet, eller høyere.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastforholdet i bildet er %1$.2f. Dette forholdet er basert på forgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%4$s&lt;/tt&gt;. Du bør vurdere å øke forholdet til %2$.2f, som er det modifiserte forholdet, eller høyere.</string>
   
   <string name="check_title_redundant_description">Etikett for elementtype</string>
   
@@ -83,17 +87,25 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Dette elementets &lt;tt&gt;android:contentDescription&lt;/tt&gt; kan inneholde unødvendig tekst.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Innholdsbeskrivelsen for dette elementet kan inneholde unødvendig tekst.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Dette elementets &lt;tt&gt;android:contentDescription&lt;/tt&gt;, «&lt;tt&gt;%1$s&lt;/tt&gt;» slutter med elementets type.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Dette elementets &lt;tt&gt;android:contentDescription&lt;/tt&gt;, «&lt;tt&gt;%1$s&lt;/tt&gt;», inneholder elementtypen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Innholdsbeskrivelsen for dette elementet, «&lt;tt&gt;%1$s&lt;/tt&gt;», inneholder elementtypen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
   
   <string name="result_message_content_desc_contains_action">Dette elementets &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     «&lt;tt&gt;%1$s&lt;/tt&gt;»,
     inneholder handlingen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Innholdsbeskrivelsen for dette elementet, «&lt;tt&gt;%1$s&lt;/tt&gt;», inneholder handlingen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
+  
   <string name="result_message_content_desc_contains_state">Dette elementets &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     «&lt;tt&gt;%1$s&lt;/tt&gt;»,
     inneholder statusen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Innholdsbeskrivelsen for dette elementet, «&lt;tt&gt;%1$s&lt;/tt&gt;», inneholder statusen «&lt;tt&gt;%2$s&lt;/tt&gt;».</string>
   
   <string name="button_item_type">knapp</string>
   
@@ -121,6 +133,10 @@
   
   <string name="result_message_web_content">Nettinnholdet er ikke evaluert.</string>
   
+  <string name="result_message_unsupported_compose_content">Formbart innhold evalueres ikke i dette miljøet.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter-innhold evalueres ikke i dette miljøet.</string>
+  
   <string name="result_message_missing_speakable_text">Dette elementet har ingen etikett som kan leses av skjermlesere.</string>
   
   <string name="check_title_text_contrast">Tekstkontrast</string>
@@ -139,21 +155,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Du bør vurdere å øke kontrastforholdet for forgrunns- og bakgrunnsfargen for teksten til dette elementet.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på tekstfargen &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å øke dette kontrastforholdet for teksten til %4$.2f eller høyere.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å øke dette kontrastforholdet for teksten til %4$.2f eller høyere.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette forholdet er basert på tekstfargen &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å bruke farger som gir et kontrastforhold som er større enn det modifiserte forholdet %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette forholdet er basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å bruke farger som gir et kontrastforhold som er større enn det modifiserte forholdet %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør bruk farger som gir et kontrastforhold høyere enn %4$.2f for liten tekst eller %5$.2f for stor tekst.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Det høyeste mulige tekstkontrastforholdet for elementet er %1$.2f, basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og den gjennomsiktige bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan være lurt å øke kontrastforholdet for teksten i dette elementet til %4$.2f eller høyere.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f eller høyere.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Det høyeste mulige tekstkontrastforholdet for elementet er %1$.2f, basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og den gjennomsiktige bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan være lurt å bruke farger som gir et kontrastforhold som er større enn det modifiserte forholdet %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på forgrunnsfargen (&lt;tt&gt;#%2$06X&lt;/tt&gt;) og bakgrunnsfargen (&lt;tt&gt;#%3$06X&lt;/tt&gt;) som er angitt. Du bør bruke farger som gir et kontrastforhold på mer enn %4$.2f for liten tekst eller %5$.2f for stor tekst.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Det laveste mulige tekstkontrastforholdet for elementet er %1$.2f, basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og gjennomsiktige bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan være lurt å øke kontrastforholdet for teksten i dette elementet til %4$.2f eller høyere.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på forgrunnsfargen &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f eller høyere.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Det laveste mulige tekstkontrastforholdet for elementet er %1$.2f, basert på tekstfargen &lt;tt&gt;%2$s&lt;/tt&gt; og gjennomsiktige bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan være lurt å bruke farger som gir et kontrastforhold som er større enn det modifiserte forholdet %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f, som er det modifiserte kontrastforholdet, eller høyere.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør bruk farger som gir et kontrastforhold høyere enn %4$.2f for liten tekst eller %5$.2f for stor tekst.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette forholdet er basert på forgrunnsfargen &lt;tt&gt;#%2$06X&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f, som er det modifiserte kontrastforholdet, eller høyere.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f eller høyere.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på forgrunnsfargen (&lt;tt&gt;%2$s&lt;/tt&gt;) og bakgrunnsfargen (&lt;tt&gt;%3$s&lt;/tt&gt;) som er angitt. Du bør bruke farger som gir et kontrastforhold på mer enn %4$.2f for liten tekst eller %5$.2f for stor tekst.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på forgrunnsfargen &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f eller høyere.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette er basert på et anslag om at forgrunnsfargen er &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen er &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f, som er det modifiserte kontrastforholdet, eller høyere.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastforholdet for teksten til dette elementet er %1$.2f. Dette forholdet er basert på forgrunnsfargen &lt;tt&gt;%2$s&lt;/tt&gt; og bakgrunnsfargen &lt;tt&gt;%3$s&lt;/tt&gt;. Du bør vurdere å øke kontrastforholdet for teksten til dette elementet til %4$.2f, som er det modifiserte kontrastforholdet, eller høyere.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Forgrunns- og bakgrunnsfargene for dette elementet samsvarer med det foreslåtte kontrastforholdet.</string>
   
@@ -283,17 +307,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast bredde og skalerbar tekst</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Dette &lt;tt&gt;Text&lt;/tt&gt;-elementet har fast bredde og skalerbar tekst.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast høyde og skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Dette &lt;tt&gt;Text&lt;/tt&gt;-elementet har fast høyde og skalerbar tekst.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Denne &lt;tt&gt;TextView&lt;/tt&gt; har fast størrelse og skalerbar tekst.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Dette &lt;tt&gt;Text&lt;/tt&gt;-elementet har fast størrelse og skalerbar tekst.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast bredde og inneholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Dette elementet har fast bredde og inneholder et &lt;tt&gt;Text&lt;/tt&gt;-element med skalerbar tekst.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast høyde og inneholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Dette elementet har fast høyde og inneholder et &lt;tt&gt;Text&lt;/tt&gt;-element med skalerbar tekst.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Denne &lt;tt&gt;ViewGroup&lt;/tt&gt; har fast størrelse og inneholder en &lt;tt&gt;TextView&lt;/tt&gt; med skalerbar tekst.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Dette elementet har fast størrelse og inneholder et &lt;tt&gt;Text&lt;/tt&gt;-element med skalerbar tekst.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Du bør endre &lt;tt&gt;LayoutParams&lt;/tt&gt; slik at det er mulig å utvide teksten.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Vurder å endre størrelsesmodifikatorene ved hjelp av &lt;tt&gt;sizeIn&lt;/tt&gt; for å tillate tekstutvidelse.</string>
   
   <string name="check_title_unexposed_text">Tekst som ikke vises</string>
   
@@ -301,13 +339,13 @@
   
   <string name="result_message_text_detected_in_image_view">OCR-resultater ble oppdaget i denne ImageView-visningen.</string>
   
-  <string name="result_message_brief_unexposed_text">Tekst som ikke vises ble oppdaget: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Mulig tekst oppdaget: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Oppdaget tekst: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Mulig tekst: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Denne &lt;tt&gt;SurfaceView&lt;/tt&gt;-visningen gjør kanskje ikke innholdet sitt synlig for tilgjengelighetstjenester.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Det er oppdaget flere tekster som ikke vises, inkludert «%1$s».</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Det er muligens oppdaget tekster som ikke vises, inkludert «%1$s».</string>
   
   <string name="result_message_multiple_unexposed_texts">Dette elementet gjør kanskje ikke innholdet sitt synlig for tilgjengelighetstjenester.</string>
   

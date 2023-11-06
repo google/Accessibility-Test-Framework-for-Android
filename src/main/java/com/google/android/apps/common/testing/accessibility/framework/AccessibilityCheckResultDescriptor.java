@@ -15,9 +15,8 @@
 package com.google.android.apps.common.testing.accessibility.framework;
 
 import android.view.View;
-import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
-import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElementDescriptor;
 import java.util.Locale;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -35,11 +34,17 @@ public class AccessibilityCheckResultDescriptor {
    * @param result the {@link AccessibilityCheckResult} to describe
    * @return a String description of the result
    */
-  @SuppressWarnings("deprecation") // Needed to support AccessibilityViewCheckResult.
   public String describeResult(AccessibilityCheckResult result) {
     StringBuilder message = new StringBuilder();
     if (result instanceof AccessibilityViewCheckResult) {
-      message.append(describeView(((AccessibilityViewCheckResult) result).getView()));
+      View view = ((AccessibilityViewCheckResult) result).getView();
+      message.append(
+          (view != null)
+              ? describeView(view)
+              : describeElement(
+                  ((AccessibilityViewCheckResult) result)
+                      .getAccessibilityHierarchyCheckResult()
+                      .getElement()));
       message.append(": ");
     } else if (result instanceof AccessibilityHierarchyCheckResult) {
       message.append(describeElement(((AccessibilityHierarchyCheckResult) result).getElement()));
@@ -71,6 +76,7 @@ public class AccessibilityCheckResultDescriptor {
     StringBuilder message = new StringBuilder();
     if ((view != null
         && view.getId() != View.NO_ID
+        && view.getId() != 0
         && view.getResources() != null
         && !ViewAccessibilityUtils.isViewIdGenerated(view.getId()))) {
       message.append("View ");
@@ -98,20 +104,7 @@ public class AccessibilityCheckResultDescriptor {
     if (element == null) {
       return "<null>";
     }
-    StringBuilder message = new StringBuilder();
-    message.append("View ");
-    if (!TextUtils.isEmpty(element.getResourceName())) {
-      message.append(element.getResourceName());
-    } else {
-      Rect bounds = element.getBoundsInScreen();
-      if (!bounds.isEmpty()) {
-        message.append("with bounds: ");
-        message.append(bounds.toShortString());
-      } else {
-        message.append("with no valid resource name or bounds");
-      }
-    }
-    return message.toString();
+    return new ViewHierarchyElementDescriptor().describe(element);
   }
 }
 

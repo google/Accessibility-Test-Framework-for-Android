@@ -16,9 +16,11 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 
 import static com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils.isPotentiallyObscured;
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck.Category;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResult;
@@ -29,6 +31,9 @@ import com.google.android.apps.common.testing.accessibility.framework.QuestionHa
 import com.google.android.apps.common.testing.accessibility.framework.ResultMetadata;
 import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.Span;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
+import com.google.android.apps.common.testing.accessibility.framework.replacements.Spans;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
@@ -38,7 +43,10 @@ import com.google.android.apps.common.testing.accessibility.framework.utils.cont
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.ContrastUtils;
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Range;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -57,7 +65,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   public static final int RESULT_ID_COULD_NOT_GET_TEXT_COLOR = 4;
   /** Result when the view's background color could not be obtained. */
   public static final int RESULT_ID_COULD_NOT_GET_BACKGROUND_COLOR = 5;
-  /** Result when the view's text is not opaque. */
+  /** Legacy result when the view's text is not opaque. */
   public static final int RESULT_ID_TEXT_MUST_BE_OPAQUE = 6;
   /** Result when the view's background is not opaque. */
   public static final int RESULT_ID_BACKGROUND_MUST_BE_OPAQUE = 7;
@@ -87,6 +95,26 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    * user-defined contrast ratio.
    */
   public static final int RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT = 22;
+  /**
+   * Result when the view's upper bound of contrast ratio for a non-opqaue background is
+   * insufficient.
+   */
+  public static final int RESULT_ID_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT = 23;
+  /**
+   * Result when the view's lower bound of contrast ratio for a non-opqaue background is
+   * insufficient.
+   */
+  public static final int RESULT_ID_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT = 24;
+  /**
+   * Result when the view's upper bound of contrast ratio for a non-opqaue background is
+   * insufficient using user-defined contrast ratio.
+   */
+  public static final int RESULT_ID_CUSTOMIZED_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT = 25;
+  /**
+   * Result when the view's lower bound of contrast ratio for a non-opqaue background is
+   * insufficient using user-defined contrast ratio.
+   */
+  public static final int RESULT_ID_CUSTOMIZED_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT = 26;
 
   /** Result metadata key for the {@code int} color of the view's background. */
   public static final String KEY_BACKGROUND_COLOR = "KEY_BACKGROUND_COLOR";
@@ -96,6 +124,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   public static final String KEY_CONTRAST_RATIO = "KEY_CONTRAST_RATIO";
   /** Result metadata key for the {@code int} color of the view's foreground. */
   public static final String KEY_FOREGROUND_COLOR = "KEY_FOREGROUND_COLOR";
+  /** Result metadata key for the {@code String} substring of text corresponding to the result. */
+  public static final String KEY_RESULT_TEXT_SUBSTRING = "KEY_RESULT_TEXT_SUBSTRING";
   /** Result metadata key for the {@code double} required contrast ratio for this view. */
   public static final String KEY_REQUIRED_CONTRAST_RATIO = "KEY_REQUIRED_CONTRAST_RATIO";
   /**
@@ -142,6 +172,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
   private static final int TYPEFACE_BOLD = 1;
 
+  private static final int OPAQUE_ALPHA = 255;
+
   @Override
   protected String getHelpTopic() {
     return "7158390"; // Color contrast
@@ -167,7 +199,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_NOT_VISIBLE,
-                null));
+                /* metadata= */ null));
         continue;
       }
 
@@ -182,7 +214,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_NOT_TEXT_VIEW,
-                null));
+                /* metadata= */ null));
         continue;
       }
 
@@ -193,7 +225,7 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_TEXTVIEW_EMPTY,
-                null));
+                /* metadata= */ null));
         continue;
       }
 
@@ -204,22 +236,37 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_NOT_ENABLED,
-                null));
+                /* metadata= */ null));
         continue;
       }
 
-      AccessibilityHierarchyCheckResult lightweightResult =
+      ImmutableList<AccessibilityHierarchyCheckResult> lightweightResults =
           attemptLightweightEval(view, parameters);
-      if (lightweightResult != null) {
-        results.add(lightweightResult);
-        if (lightweightResult.getType() == AccessibilityCheckResultType.NOT_RUN) {
-          // Lightweight evaluation didn't run successfully.
-          AccessibilityHierarchyCheckResult heavyweightResult =
-              attemptHeavyweightEval(view, parameters);
-          if (heavyweightResult != null) {
-            // Heavyweight evaluation found a noteworthy issue.
-            results.add(heavyweightResult);
+
+      boolean runHeavyWeightEval = false;
+      for (AccessibilityHierarchyCheckResult lightweightResult : lightweightResults) {
+        if (lightweightResult.getResultId() == RESULT_ID_BACKGROUND_MUST_BE_OPAQUE) {
+          AccessibilityHierarchyCheckResult contrastRangeResult =
+              attemptContrastRangeEval(view, parameters, lightweightResult);
+          if (contrastRangeResult != null) {
+            if (contrastRangeResult.getType().equals(AccessibilityCheckResultType.WARNING)) {
+              runHeavyWeightEval = true;
+            } else {
+              results.add(contrastRangeResult);
+            }
           }
+        } else if (lightweightResult.getType().equals(AccessibilityCheckResultType.NOT_RUN)) {
+          results.add(lightweightResult);
+          runHeavyWeightEval = true;
+        } else {
+          results.add(lightweightResult);
+        }
+      }
+      if (runHeavyWeightEval) {
+        AccessibilityHierarchyCheckResult heavyweightResult =
+            attemptHeavyweightEval(view, parameters);
+        if (heavyweightResult != null) {
+          results.add(heavyweightResult);
         }
       }
     }
@@ -271,8 +318,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                     StringManager.getString(
                         locale, "result_message_textview_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
-                    metadata.getInt(KEY_TEXT_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                     metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
@@ -284,8 +331,62 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                     StringManager.getString(
                         locale, "result_message_customized_textview_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
-                    metadata.getInt(KEY_TEXT_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
+                    metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO)));
+        appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+        return builder.toString();
+      case RESULT_ID_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+        builder =
+            new StringBuilder(
+                String.format(
+                    locale,
+                    StringManager.getString(
+                        locale, "result_message_textview_upper_bound_contrast_not_sufficient"),
+                    metadata.getDouble(KEY_CONTRAST_RATIO),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
+                    metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
+        appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+        return builder.toString();
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+        builder =
+            new StringBuilder(
+                String.format(
+                    locale,
+                    StringManager.getString(
+                        locale,
+                        "result_message_customized_textview_upper_bound_contrast_not_sufficient"),
+                    metadata.getDouble(KEY_CONTRAST_RATIO),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
+                    metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO)));
+        appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+        return builder.toString();
+      case RESULT_ID_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
+        builder =
+            new StringBuilder(
+                String.format(
+                    locale,
+                    StringManager.getString(
+                        locale, "result_message_textview_lower_bound_contrast_not_sufficient"),
+                    metadata.getDouble(KEY_CONTRAST_RATIO),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
+                    metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
+        appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+        return builder.toString();
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
+        builder =
+            new StringBuilder(
+                String.format(
+                    locale,
+                    StringManager.getString(
+                        locale,
+                        "result_message_customized_textview_lower_bound_contrast_not_sufficient"),
+                    metadata.getDouble(KEY_CONTRAST_RATIO),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_TEXT_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                     metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO)));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
@@ -305,8 +406,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                           locale,
                           "result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available"),
                       metadata.getDouble(KEY_CONTRAST_RATIO),
-                      metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                      metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                      ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                      ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                       metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO)));
         } else {
           builder =
@@ -316,8 +417,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                       StringManager.getString(
                           locale, "result_message_textview_heuristic_contrast_not_sufficient"),
                       metadata.getDouble(KEY_CONTRAST_RATIO),
-                      metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                      metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                      ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                      ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                       ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT, /* Suggested for small text */
                       ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT /* Suggested for large text */));
         }
@@ -331,8 +432,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                     StringManager.getString(
                         locale, "result_message_textview_heuristic_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
-                    metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                     metadata.getDouble(KEY_REQUIRED_CONTRAST_RATIO), /* Suggested for small text */
                     metadata.getDouble(
                         KEY_TOLERANT_CONTRAST_RATIO) /* Suggested for large text */));
@@ -347,8 +448,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
                         locale,
                         "result_message_textview_heuristic_customized_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
-                    metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF,
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR)),
                     metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO)));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
@@ -377,6 +478,10 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_BORDERLINE:
       case RESULT_ID_CUSTOMIZED_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
         return StringManager.getString(locale, "result_message_brief_text_contrast_not_sufficient");
       default:
         throw new IllegalStateException("Unsupported result id");
@@ -396,6 +501,10 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT:
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
       case RESULT_ID_TEXTVIEW_HEURISTIC_CONTRAST_BORDERLINE:
+      case RESULT_ID_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
+      case RESULT_ID_CUSTOMIZED_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT:
         return checkNotNull(metadata).getDouble(KEY_REQUIRED_CONTRAST_RATIO, 0.0)
             - checkNotNull(metadata).getDouble(KEY_CONTRAST_RATIO, 0.0);
       case RESULT_ID_CUSTOMIZED_TEXTVIEW_HEURISTIC_CONTRAST_NOT_SUFFICIENT:
@@ -437,96 +546,290 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
   }
 
   /**
+   * Checks if a view has any foreground color present in the text. It can be the color obtained
+   * directly from the text or the color obtained from foreground color spans.
+   *
+   * @param view The {@link ViewHierarchyElement} to check
+   * @param text The text span to check for foreground color spans
+   */
+  private static boolean hasAnyForegroundColor(ViewHierarchyElement view, SpannableString text) {
+    if (getForegroundColor(view) != null) {
+      return true;
+    }
+    if (text == null) {
+      return false;
+    }
+    for (Span span : text.getSpans()) {
+      if (span instanceof Spans.ForegroundColorSpan) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if a view has any background color present in the text. It can be the color obtained
+   * directly from the text or the color obtained from background color spans.
+   *
+   * @param view The {@link ViewHierarchyElement} to check
+   * @param text The text span to check for background color spans
+   */
+  private static boolean hasAnyBackgroundColor(ViewHierarchyElement view, SpannableString text) {
+    if (view.getBackgroundDrawableColor() != null) {
+      return true;
+    }
+    if (text == null) {
+      return false;
+    }
+    for (Span span : text.getSpans()) {
+      if (span instanceof Spans.BackgroundColorSpan) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Computes a list of foreground color ranges in a view. Each element is a foreground color along
+   * with the range in which that color is present. The list is continuous in terms of the range. If
+   * colored span detection is disabled, only the primary text color is present in the output list.
+   *
+   * @param text The text span to check for foreground color spans
+   * @param textColor The primary text color obtained from a view
+   * @return a list of {@link ColorRangeInfo} containing all foreground color ranges in a view
+   */
+  private static ImmutableList<ColorRangeInfo> getForegroundColorRangeInfos(
+      SpannableString text, @Nullable Integer textColor) {
+    return getColorRangeInfos(text, Spans.ForegroundColorSpan.class, textColor);
+  }
+
+  /**
+   * Computes a list of background color ranges in a view. Each element is a background color along
+   * with the range in which that color is present. The list is continuous in terms of the range. If
+   * colored span detection is disabled, only the primary background color is present in the output
+   * list.
+   *
+   * @param text The text span to check for background color spans
+   * @param backgroundDrawableColor The primary background color obtained from a view
+   * @return a list of {@link ColorRangeInfo} containing all background color ranges in a view
+   */
+  private static ImmutableList<ColorRangeInfo> getBackgroundColorRangeInfos(
+      SpannableString text, @Nullable Integer backgroundDrawableColor) {
+    return getColorRangeInfos(text, Spans.BackgroundColorSpan.class, backgroundDrawableColor);
+  }
+
+  private static ImmutableList<ColorRangeInfo> getColorRangeInfos(
+      SpannableString text, Class<? extends Span> clazz, @Nullable Integer defaultColor) {
+    ArrayList<ColorRangeInfo> colorRangeInfos =
+        Lists.newArrayList(new ColorRangeInfo(0, text.length(), defaultColor));
+    ArrayList<Span> filteredSpans =
+        Lists.newArrayList(Collections2.filter(text.getSpans(), clazz::isInstance));
+    if (filteredSpans.isEmpty()) {
+      return ImmutableList.copyOf(colorRangeInfos);
+    }
+
+    for (Span span : filteredSpans) {
+      int start = span.getStart();
+      int end = span.getEnd();
+
+      // Identify the range of ColorRangeInfos that are touched by the span.
+      int startPtr = 0;
+      int endPtr = colorRangeInfos.size() - 1;
+      while (colorRangeInfos.get(startPtr).getEnd() < start) {
+        startPtr++;
+      }
+      while (colorRangeInfos.get(endPtr).getStart() > end) {
+        endPtr--;
+      }
+      ColorRangeInfo startRange = colorRangeInfos.get(startPtr);
+      ColorRangeInfo endRange = colorRangeInfos.get(endPtr);
+
+      // Remove the ColorRangeInfos from startPtr to endPtr
+      for (int i = startPtr; i <= endPtr; i++) {
+        colorRangeInfos.remove(startPtr);
+      }
+
+      // Replace those ColorRangeInfos with 1, 2 or 3 entries.
+      int ptr = startPtr;
+      if (startRange.getStart() < start) {
+        colorRangeInfos.add(
+            ptr++, new ColorRangeInfo(startRange.getStart(), start, startRange.getColor()));
+      }
+      colorRangeInfos.add(ptr++, new ColorRangeInfo(start, end, getSpanColor(span)));
+      if (end < endRange.getEnd()) {
+        colorRangeInfos.add(ptr, new ColorRangeInfo(end, endRange.getEnd(), endRange.getColor()));
+      }
+    }
+
+    return ImmutableList.copyOf(colorRangeInfos);
+  }
+
+  /** Gets the color of a foreground or background color span. */
+  private static int getSpanColor(Span span) {
+    if (span instanceof Spans.ForegroundColorSpan) {
+      return ((Spans.ForegroundColorSpan) span).getForegroundColor();
+    }
+    if (span instanceof Spans.BackgroundColorSpan) {
+      return ((Spans.BackgroundColorSpan) span).getBackgroundColor();
+    }
+    throw new IllegalArgumentException("Unexpected Span type");
+  }
+
+  /**
+   * Computes a list of all foreground and background color pair ranges based on overlap.
+   *
+   * @param foregroundColorRangeInfos The list of foreground color with corresponding range
+   * @param backgroundColorRangeInfos The list of background color with corresponding range
+   * @return a set of {@link ColorPair} containing all pairs of foreground and background color with
+   *     overlapping ranges
+   */
+  private static ImmutableList<ColorPair> getColorPairs(
+      ImmutableList<ColorRangeInfo> foregroundColorRangeInfos,
+      ImmutableList<ColorRangeInfo> backgroundColorRangeInfos) {
+    ImmutableList.Builder<ColorPair> colorPairs = new ImmutableList.Builder<>();
+    int foregroundIndex = 0;
+    int backgroundIndex = 0;
+    while (foregroundIndex != foregroundColorRangeInfos.size()
+        || backgroundIndex != backgroundColorRangeInfos.size()) {
+      ColorRangeInfo foregroundInfo = foregroundColorRangeInfos.get(foregroundIndex);
+      ColorRangeInfo backgroundInfo = backgroundColorRangeInfos.get(backgroundIndex);
+
+      colorPairs.add(
+          new ColorPair(
+              max(foregroundInfo.getStart(), backgroundInfo.getStart()),
+              min(foregroundInfo.getEnd(), backgroundInfo.getEnd()),
+              foregroundInfo.getColor(),
+              backgroundInfo.getColor()));
+      if (foregroundInfo.getEnd() == backgroundInfo.getEnd()) {
+        foregroundIndex += 1;
+        backgroundIndex += 1;
+      } else if (foregroundInfo.getEnd() < backgroundInfo.getEnd()) {
+        foregroundIndex += 1;
+      } else {
+        backgroundIndex += 1;
+      }
+    }
+
+    return colorPairs.build();
+  }
+
+  /**
    * Performs lightweight contrast evaluation on the provided {@code view}. During lightweight
    * evaluation, we examine text color and background Drawables to extract properties about
    * component colors.
    *
    * @param view The {@link ViewHierarchyElement} to evaluate
    * @param parameters Optional check input parameters
-   * @return an {@link AccessibilityHierarchyCheckResult} describing the result of the lightweight
-   *     evaluation, or {@code null} if there is sufficient text contrast.
+   * @return a list of {@link AccessibilityHierarchyCheckResult} describing the results of the
+   *     lightweight evaluation, or empty list if there is sufficient text contrast.
    */
-  private @Nullable AccessibilityHierarchyCheckResult attemptLightweightEval(
+  private ImmutableList<AccessibilityHierarchyCheckResult> attemptLightweightEval(
       ViewHierarchyElement view, @Nullable Parameters parameters) {
-    Integer textColor = getForegroundColor(view);
-    Integer backgroundDrawableColor = view.getBackgroundDrawableColor();
-    if (textColor == null) {
-      return new AccessibilityHierarchyCheckResult(
-          CHECK_CLASS,
-          AccessibilityCheckResultType.NOT_RUN,
-          view,
-          RESULT_ID_COULD_NOT_GET_TEXT_COLOR,
-          null);
+    SpannableString text = TextUtils.isEmpty(view.getText()) ? view.getHintText() : view.getText();
+    if (text == null) {
+      return ImmutableList.of();
     }
 
-    if (backgroundDrawableColor == null) {
-      return new AccessibilityHierarchyCheckResult(
-          CHECK_CLASS,
-          AccessibilityCheckResultType.NOT_RUN,
-          view,
-          RESULT_ID_COULD_NOT_GET_BACKGROUND_COLOR,
-          null);
+    // Skip the check if no foreground colors are detected.
+    if (!hasAnyForegroundColor(view, text)) {
+      return ImmutableList.of(
+          new AccessibilityHierarchyCheckResult(
+              CHECK_CLASS,
+              AccessibilityCheckResultType.NOT_RUN,
+              view,
+              RESULT_ID_COULD_NOT_GET_TEXT_COLOR,
+              /* metadata= */ null));
     }
 
-    int textAlpha = Color.alpha(textColor);
-    if (textAlpha < 255) {
+    // Skip the check if no background colors are detected.
+    if (!hasAnyBackgroundColor(view, text)) {
+      return ImmutableList.of(
+          new AccessibilityHierarchyCheckResult(
+              CHECK_CLASS,
+              AccessibilityCheckResultType.NOT_RUN,
+              view,
+              RESULT_ID_COULD_NOT_GET_BACKGROUND_COLOR,
+              /* metadata= */ null));
+    }
+
+    // Find all the foreground and background color pairs in the view text.
+    ImmutableList<ColorPair> colorPairs =
+        getColorPairs(
+            getForegroundColorRangeInfos(text, getForegroundColor(view)),
+            getBackgroundColorRangeInfos(text, view.getBackgroundDrawableColor()));
+
+    ImmutableList.Builder<AccessibilityHierarchyCheckResult> results = ImmutableList.builder();
+    for (ColorPair colorPair : colorPairs) {
+      Integer foregroundColor = colorPair.getForegroundColor();
+      Integer backgroundColor = colorPair.getBackgroundColor();
+      if (foregroundColor == null || backgroundColor == null) {
+        continue;
+      }
+
       ResultMetadata resultMetadata = new HashMapResultMetadata();
-      resultMetadata.putFloat(KEY_TEXT_OPACITY, (textAlpha / 255f) * 100);
+      // Store the text being checked if the result corresponds to a proper substring of the view
+      // text.
+      if (colorPair.getStart() > 0 || colorPair.getEnd() < text.length()) {
+        String substringText =
+            text.subSequence(colorPair.getStart(), colorPair.getEnd()).toString();
+        resultMetadata.putString(KEY_RESULT_TEXT_SUBSTRING, substringText);
+      }
 
-      return new AccessibilityHierarchyCheckResult(
-          CHECK_CLASS,
-          AccessibilityCheckResultType.NOT_RUN,
-          view,
-          RESULT_ID_TEXT_MUST_BE_OPAQUE,
-          resultMetadata);
+      // Skip the check if background is non-opaque. Contrast range evaluation will be triggered
+      // while aggregating the results from lightweight eval.
+      int backgroundAlpha = Color.alpha(backgroundColor);
+      if (backgroundAlpha < OPAQUE_ALPHA) {
+        resultMetadata.putFloat(KEY_BACKGROUND_OPACITY, (backgroundAlpha * 100f) / OPAQUE_ALPHA);
+        resultMetadata.putInt(KEY_TEXT_COLOR, foregroundColor);
+        resultMetadata.putInt(KEY_BACKGROUND_COLOR, backgroundColor);
+
+        results.add(
+            new AccessibilityHierarchyCheckResult(
+                CHECK_CLASS,
+                AccessibilityCheckResultType.NOT_RUN,
+                view,
+                RESULT_ID_BACKGROUND_MUST_BE_OPAQUE,
+                resultMetadata));
+        continue;
+      }
+      // Obtain the alpha blended text color and calculate the contrast ratio.
+      int compositeTextColor = ContrastUtils.compositeColors(foregroundColor, backgroundColor);
+      double contrastRatio =
+          ContrastUtils.calculateContrastRatio(compositeTextColor, backgroundColor);
+      double requiredContrast =
+          Boolean.TRUE.equals(isLargeText(view))
+              ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
+              : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+      // Set the required contrast ratio to a customized value if provided.
+      Double customizedHeuristicContrastRatio =
+          (parameters == null) ? null : parameters.getCustomTextContrastRatio();
+      if (customizedHeuristicContrastRatio != null) {
+        requiredContrast = customizedHeuristicContrastRatio;
+      }
+      // If calculated contrast ratio is less than required, add an error result to the results
+      // list.
+      if ((requiredContrast - contrastRatio) > CONTRAST_TOLERANCE) {
+        resultMetadata.putDouble(
+            (customizedHeuristicContrastRatio == null)
+                ? KEY_REQUIRED_CONTRAST_RATIO
+                : KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO,
+            requiredContrast);
+        resultMetadata.putDouble(KEY_CONTRAST_RATIO, contrastRatio);
+        resultMetadata.putInt(KEY_TEXT_COLOR, foregroundColor);
+        resultMetadata.putInt(KEY_BACKGROUND_COLOR, backgroundColor);
+
+        results.add(
+            new AccessibilityHierarchyCheckResult(
+                CHECK_CLASS,
+                AccessibilityCheckResultType.ERROR,
+                view,
+                (customizedHeuristicContrastRatio == null)
+                    ? RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT
+                    : RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT,
+                resultMetadata));
+      }
     }
-
-    int backgroundAlpha = Color.alpha(backgroundDrawableColor);
-    if (backgroundAlpha < 255) {
-      ResultMetadata resultMetadata = new HashMapResultMetadata();
-      resultMetadata.putFloat(KEY_BACKGROUND_OPACITY, (backgroundAlpha / 255f) * 100);
-
-      return new AccessibilityHierarchyCheckResult(
-          CHECK_CLASS,
-          AccessibilityCheckResultType.NOT_RUN,
-          view,
-          RESULT_ID_BACKGROUND_MUST_BE_OPAQUE,
-          resultMetadata);
-    }
-
-    double contrastRatio = ContrastUtils.calculateContrastRatio(textColor, backgroundDrawableColor);
-    double requiredContrast =
-        Boolean.TRUE.equals(isLargeText(view))
-            ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
-            : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
-    Double customizedHeuristicContrastRatio =
-        (parameters == null) ? null : parameters.getCustomTextContrastRatio();
-    if (customizedHeuristicContrastRatio != null) {
-      requiredContrast = customizedHeuristicContrastRatio;
-    }
-    if ((requiredContrast - contrastRatio) > CONTRAST_TOLERANCE) {
-      ResultMetadata resultMetadata = new HashMapResultMetadata();
-      resultMetadata.putDouble(
-          (customizedHeuristicContrastRatio == null)
-              ? KEY_REQUIRED_CONTRAST_RATIO
-              : KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO,
-          requiredContrast);
-      resultMetadata.putDouble(KEY_CONTRAST_RATIO, contrastRatio);
-      resultMetadata.putInt(KEY_TEXT_COLOR, textColor);
-      resultMetadata.putInt(KEY_BACKGROUND_COLOR, backgroundDrawableColor);
-
-      return new AccessibilityHierarchyCheckResult(
-          CHECK_CLASS,
-          AccessibilityCheckResultType.ERROR,
-          view,
-          (customizedHeuristicContrastRatio == null)
-              ? RESULT_ID_TEXTVIEW_CONTRAST_NOT_SUFFICIENT
-              : RESULT_ID_CUSTOMIZED_TEXTVIEW_CONTRAST_NOT_SUFFICIENT,
-          resultMetadata);
-    }
-
-    // Sufficient contrast
-    return null;
+    return results.build();
   }
 
   /**
@@ -548,12 +851,15 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
           AccessibilityCheckResultType.NOT_RUN,
           view,
           RESULT_ID_HEURISTIC_COULD_NOT_GET_SCREENCAPTURE,
-          null);
+          /* metadata= */ null);
     }
     Rect screenCaptureBounds = new Rect(0, 0, screenCapture.getWidth(), screenCapture.getHeight());
     Rect viewBounds = view.getBoundsInScreen();
     Rect textCharacterBounds = getTextCharacterBounds(view);
-    if (!textCharacterBounds.isEmpty() && screenCaptureBounds.contains(textCharacterBounds)) {
+    if (!textCharacterBounds.isEmpty()
+        && screenCaptureBounds.contains(textCharacterBounds)
+
+        && Rect.intersects(viewBounds, textCharacterBounds)) {
       // Extracts foreground/background colors from the region which contains the text characters.
       viewBounds = textCharacterBounds;
     }
@@ -599,8 +905,8 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
           resultMetadata);
     }
 
-    List<Integer> foregroundColors = contrastSwatch.getForegroundColors();
-    List<Double> contrastRatios = contrastSwatch.getContrastRatios();
+    ImmutableList<Integer> foregroundColors = contrastSwatch.getForegroundColors();
+    ImmutableList<Double> contrastRatios = contrastSwatch.getContrastRatios();
     ArrayList<Integer> lowForegroundColors = new ArrayList<>();
     ArrayList<Double> lowContrastRatios = new ArrayList<>();
 
@@ -692,6 +998,88 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
 
     // Sufficient contrast
     return null;
+  }
+
+  /**
+   * Performs contrast evaluation on the provided {@code view} by calculating the maximum & minimum
+   * contrast ratios for a non-opaque background. We cannot obtain the exact contrast ratio for
+   * non-opaque background as the backdrop is an unknown. The maximum and minimum values of contrast
+   * ratio are calculated for the non opaque background and used as follows:
+   *
+   * <ul>
+   *   <li>Case 1: Upper bound &lt; Required ratio: ERROR: Report this result
+   *   <li>Case 2: Lower bound &lt; Required ratio: Run heavyweight eval and report heavyweight
+   *       result if it is not null
+   *   <li>Case 3: Both upper &amp; lower bound &gt;= Required ratio: Report no issue
+   * </ul>
+   *
+   * @param view The {@link ViewHierarchyElement} to evaluate
+   * @param parameters Optional check input parameters
+   * @param lightweightResult An {@link AccessibilityHierarchyCheckResult} describing the
+   *     lightweight result which triggered the contrast range eval
+   * @return an {@link AccessibilityHierarchyCheckResult} describing the results of the contrast
+   *     range evaluation, or {@code null} if there is sufficient text contrast.
+   */
+  private @Nullable AccessibilityHierarchyCheckResult attemptContrastRangeEval(
+      ViewHierarchyElement view,
+      @Nullable Parameters parameters,
+      AccessibilityHierarchyCheckResult lightweightResult) {
+    if (lightweightResult.getMetadata() == null) {
+      return null;
+    }
+    int textColor = lightweightResult.getMetadata().getInt(KEY_TEXT_COLOR);
+    int backgroundDrawableColor = lightweightResult.getMetadata().getInt(KEY_BACKGROUND_COLOR);
+    String substringText = lightweightResult.getMetadata().getString(KEY_RESULT_TEXT_SUBSTRING, "");
+
+    ResultMetadata resultMetadata = new HashMapResultMetadata();
+    resultMetadata.putInt(KEY_TEXT_COLOR, textColor);
+    resultMetadata.putInt(KEY_BACKGROUND_COLOR, backgroundDrawableColor);
+    if (!substringText.isEmpty()) {
+      resultMetadata.putString(KEY_RESULT_TEXT_SUBSTRING, substringText);
+    }
+
+    double requiredContrast =
+        Boolean.TRUE.equals(isLargeText(view))
+            ? ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT
+            : ContrastUtils.CONTRAST_RATIO_WCAG_NORMAL_TEXT;
+    Double customizedHeuristicContrastRatio =
+        (parameters == null) ? null : parameters.getCustomTextContrastRatio();
+    if (customizedHeuristicContrastRatio != null) {
+      requiredContrast = customizedHeuristicContrastRatio;
+    }
+    resultMetadata.putDouble(
+        (customizedHeuristicContrastRatio == null)
+            ? KEY_REQUIRED_CONTRAST_RATIO
+            : KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO,
+        requiredContrast);
+
+    Range<Double> contrastRange =
+        ContrastUtils.calculateContrastRatioRange(textColor, backgroundDrawableColor);
+    double upperBound = contrastRange.upperEndpoint();
+    double lowerBound = contrastRange.lowerEndpoint();
+    if ((requiredContrast - upperBound) > CONTRAST_TOLERANCE) {
+      resultMetadata.putDouble(KEY_CONTRAST_RATIO, upperBound);
+      return new AccessibilityHierarchyCheckResult(
+          CHECK_CLASS,
+          AccessibilityCheckResultType.ERROR,
+          view,
+          (customizedHeuristicContrastRatio == null)
+              ? RESULT_ID_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT
+              : RESULT_ID_CUSTOMIZED_TEXTVIEW_UPPER_BOUND_CONTRAST_NOT_SUFFICIENT,
+          resultMetadata);
+    } else if ((requiredContrast - lowerBound) > CONTRAST_TOLERANCE) {
+      resultMetadata.putDouble(KEY_CONTRAST_RATIO, lowerBound);
+      return new AccessibilityHierarchyCheckResult(
+          CHECK_CLASS,
+          AccessibilityCheckResultType.WARNING,
+          view,
+          (customizedHeuristicContrastRatio == null)
+              ? RESULT_ID_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT
+              : RESULT_ID_CUSTOMIZED_TEXTVIEW_LOWER_BOUND_CONTRAST_NOT_SUFFICIENT,
+          resultMetadata);
+    } else {
+      return null;
+    }
   }
 
   @VisibleForTesting
@@ -838,5 +1226,78 @@ public class TextContrastCheck extends AccessibilityHierarchyCheck {
    */
   private static @Nullable Integer getForegroundColor(ViewHierarchyElement view) {
     return TextUtils.isEmpty(view.getText()) ? view.getHintTextColor() : view.getTextColor();
+  }
+
+  /** A foreground-background color pair with the range it occurs in. */
+  static final class ColorPair {
+    private final int start;
+    private final int end;
+    private final @Nullable Integer fgColor;
+    private final @Nullable Integer bgColor;
+
+    ColorPair(int start, int end, @Nullable Integer fgColor, @Nullable Integer bgColor) {
+      this.start = start;
+      this.end = end;
+      this.fgColor = fgColor;
+      this.bgColor = bgColor;
+    }
+
+    int getStart() {
+      return start;
+    }
+
+    int getEnd() {
+      return end;
+    }
+
+    @Nullable Integer getForegroundColor() {
+      return fgColor;
+    }
+
+    @Nullable Integer getBackgroundColor() {
+      return bgColor;
+    }
+
+    @Override
+    public String toString() {
+      return String.format(
+          Locale.ENGLISH, "ColorPair{range=[%d,%d] fg=%s bg=%s}", start, end, fgColor, bgColor);
+    }
+  }
+
+  /** A text range and the color corresponding to the range. */
+  static final class ColorRangeInfo {
+    private final int start;
+    private final int end;
+    private final @Nullable Integer color;
+
+    ColorRangeInfo(int start, int end, @Nullable Integer color) {
+      this.start = start;
+      this.end = end;
+      this.color = color;
+      checkState(start <= end, "start %s should be before end %s", start, end);
+    }
+
+    int getStart() {
+      return start;
+    }
+
+    int getEnd() {
+      return end;
+    }
+
+    @Nullable Integer getColor() {
+      return color;
+    }
+
+    @Override
+    public String toString() {
+      return String.format(
+          Locale.ENGLISH,
+          "ColorRangeInfo{range=[%d,%d] color=%s}",
+          start,
+          end,
+          color == null ? null : ContrastUtils.colorToHexString(color));
+    }
   }
 }

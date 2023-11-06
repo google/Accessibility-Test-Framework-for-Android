@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">此项目没有 &lt;tt&gt;android:contentDescription&lt;/tt&gt;。</string>
   
+  <string name="result_message_no_content_desc_generic">此项目没有内容说明。</string>
+  
   <string name="result_message_not_visible">此项目不会向用户显示。</string>
   
   <string name="result_message_not_enabled">此项目处于未启用状态。</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">可执行操作</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">存在冲突的元素：&lt;tt&gt;%1$s&lt;/tt&gt;。</string>
+  
   <string name="check_title_duplicate_speakable_text">项目说明</string>
   
   <string name="result_message_brief_same_speakable_text">多个项目具有相同的说明。</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">建议提高此图片前景与背景之间的对比度。</string>
   
-  <string name="result_message_image_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至 %2$.2f 以上。</string>
+  <string name="result_message_image_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;%4$s&lt;/tt&gt; 计算得出的。建议将此比率提高至 %2$.2f 以上。</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此对比度提高至 %2$.2f 或更高。</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;%4$s&lt;/tt&gt; 计算得出的。建议将此对比度提高至 %2$.2f 或更高。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">此图片的对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;%4$s&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">此图片的对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;%4$s&lt;/tt&gt; 计算得出的。建议将此比率提高至修改后的比率 %2$.2f 或更高。</string>
   
   <string name="check_title_redundant_description">项目类型标签</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">此项目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; 可能包含不必要的文本。</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">此项目的内容说明可能包含不必要的文字。</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">此项目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; 为“&lt;tt&gt;%1$s&lt;/tt&gt;”，以该项目的类型结尾。</string>
   
   <string name="result_message_content_desc_contains_redundant_word">此项目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; 为“&lt;tt&gt;%1$s&lt;/tt&gt;”，包含该项目的类型“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">此项目的内容说明“&lt;tt&gt;%1$s&lt;/tt&gt;”包含内容类型“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
+  
   <string name="result_message_content_desc_contains_action">此项目的&lt;tt&gt;android:contentDescription&lt;/tt&gt;“&lt;tt&gt;%1$s&lt;/tt&gt;”中包含操作“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
   
+  <string name="result_message_content_desc_contains_action_generic">此项目的内容说明“&lt;tt&gt;%1$s&lt;/tt&gt;”包含操作“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
+  
   <string name="result_message_content_desc_contains_state">此项目的&lt;tt&gt;android:contentDescription&lt;/tt&gt;“&lt;tt&gt;%1$s&lt;/tt&gt;”中包含状态“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">此项目的内容说明“&lt;tt&gt;%1$s&lt;/tt&gt;”包含状态“&lt;tt&gt;%2$s&lt;/tt&gt;”。</string>
   
   <string name="button_item_type">按钮</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">未评估网页内容。</string>
   
+  <string name="result_message_unsupported_compose_content">系统未评估此环境中的可组合内容。</string>
+  
+  <string name="result_message_unsupported_flutter_content">系统未评估此环境中的 Flutter 内容。</string>
+  
   <string name="result_message_missing_speakable_text">此项目可能没有屏幕阅读器可读的标签。</string>
   
   <string name="check_title_text_contrast">文本对比度</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">建议提高此项目文本前景相对于背景的对比度。</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
+  <string name="result_message_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景颜色 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 计算得出的。建议使用会使对比度高于修改后的比率 (%4$.2f) 的颜色。</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据文本颜色 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和背景颜色 (&lt;tt&gt;%3$s&lt;/tt&gt;) 计算得出的。建议使用会使对比度高于修改后的比率 (%4$.2f) 的颜色。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">该内容可达到的最高文本对比度为 %1$.2f，达到此对比度的设置为：&lt;tt&gt;%2$s&lt;/tt&gt;文本颜色，&lt;tt&gt;%3$s&lt;/tt&gt;不透明背景颜色。建议将此内容的文本对比度提高至 %4$.2f 或更高。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">该内容可达到的最高文本对比度为 %1$.2f，达到此对比度的设置为：&lt;tt&gt;%2$s&lt;/tt&gt;文本颜色，&lt;tt&gt;%3$s&lt;/tt&gt;不透明背景颜色。建议使用会使对比度高于修改后的比率 (%4$.2f) 的颜色。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据给定的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和给定的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">该内容可达到的最低文本对比度为 %1$.2f，达到此对比度的设置为：&lt;tt&gt;%2$s&lt;/tt&gt;文本颜色，&lt;tt&gt;%3$s&lt;/tt&gt;不透明背景颜色。建议将此内容的文本对比度提高至 %4$.2f 或更高。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">该内容可达到的最低文本对比度为 %1$.2f，达到此对比度的设置为：&lt;tt&gt;%2$s&lt;/tt&gt;文本颜色，&lt;tt&gt;%3$s&lt;/tt&gt;不透明背景颜色。建议使用会使对比度高于修改后的比率 (%4$.2f) 的颜色。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据给定的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和给定的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议针对小文本和大文本分别使用会使对比度高于 %4$.2f 和 %5$.2f 的颜色。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至 %4$.2f 或更高。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">此项目的文本对比度为 %1$.2f。该比率是根据估算的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和估算的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">此项目的文本对比度为 %1$.2f。该比率是根据提供的前景颜色 &lt;tt&gt;%2$s&lt;/tt&gt; 和提供的背景颜色 &lt;tt&gt;%3$s&lt;/tt&gt; 计算得出的。建议将此项目的文本对比度提高至修改后的比率 %4$.2f 或更高。</string>
   
   <string name="result_message_contrast_sufficient_confirmed">此项目的前景颜色和背景颜色符合建议对比度。</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的宽度和可缩放的文字。</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">此&lt;tt&gt;Text&lt;/tt&gt;有固定的宽度和可缩放的文字。</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的高度和可缩放的文字。</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">此&lt;tt&gt;Text&lt;/tt&gt;有固定的高度和可缩放的文字。</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">此&lt;tt&gt;TextView&lt;/tt&gt;有固定的尺寸和可缩放的文字。</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">此&lt;tt&gt;Text&lt;/tt&gt;有固定的尺寸和可缩放的文字。</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的宽度，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">此元素有固定的宽度，且包含带可缩放文字的&lt;tt&gt;Text&lt;/tt&gt;元素。</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的高度，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">此元素有固定的高度，且包含带可缩放文字的&lt;tt&gt;Text&lt;/tt&gt;元素。</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">此&lt;tt&gt;ViewGroup&lt;/tt&gt;有固定的尺寸，且包含带可缩放文字的&lt;tt&gt;TextView&lt;/tt&gt;。</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">此元素有固定的尺寸，且包含带可缩放文字的&lt;tt&gt;Text&lt;/tt&gt;元素。</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">请考虑修改 &lt;tt&gt;LayoutParams&lt;/tt&gt;，以便能够放大文字。</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">请考虑使用 &lt;tt&gt;sizeIn&lt;/tt&gt; 修改大小修饰符，以便能够放大文字。</string>
   
   <string name="check_title_unexposed_text">不包含可见文本</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">在此 ImageView 中检测到 OCR 结果。</string>
   
-  <string name="result_message_brief_unexposed_text">经检测不包含可见文本：%1$s</string>
+  <string name="result_message_brief_unexposed_text">检测到可能不可见的文本：%1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">检测到文本：%1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">可能不可见的文本：%1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">此 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能未向无障碍服务公开其内容。</string>
+  <string name="result_message_text_detected_in_surface_view">此 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能不会向无障碍服务公开其内容。</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">检测到多个不含可显示文字的项目，包括“%1$s”。</string>
+  <string name="result_message_brief_multiple_unexposed_texts">检测到可能不可见的文本，包括“%1$s”。</string>
   
   <string name="result_message_multiple_unexposed_texts">此项目可能不会向无障碍服务公开其内容。</string>
   

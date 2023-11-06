@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Táto položka nemá žiaden atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Táto položka nemá žiadny opis obsahu.</string>
+  
   <string name="result_message_not_visible">Táto položka nie je viditeľná.</string>
   
   <string name="result_message_not_enabled">Táto položka nie je zapnutá.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">možno vykonať akciu</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Konfliktné prvky: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Popisy položiek</string>
   
   <string name="result_message_brief_same_speakable_text">Viaceré položky majú rovnaký popis.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Zvážte zvýšenie kontrastného pomeru medzi popredím a pozadím tohto obrázka.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Kontrastný pomer tohto obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“ a odhadovanej farbe pozadia „&lt;tt&gt;#%4$06X&lt;/tt&gt;“. Zvážte zvýšenie tohto pomeru na %2$.2f alebo viac.</string>
+  <string name="result_message_image_contrast_not_sufficient">Kontrastný pomer tohto obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia „&lt;tt&gt;%3$s&lt;/tt&gt;“ a odhadovanej farbe pozadia „&lt;tt&gt;%4$s&lt;/tt&gt;“. Zvážte zvýšenie tohto pomeru na %2$.2f alebo viac.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na hodnotu %2$.2f alebo vyššiu.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;%3$s&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;%4$s&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na hodnotu %2$.2f alebo vyššiu.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;%3$s&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;%4$s&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%3$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastný pomer obrázka je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;%3$s&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;%4$s&lt;/tt&gt;). Zvážte zvýšenie tohto pomeru na modifikovaný pomer %2$.2f alebo viac.</string>
   
   <string name="check_title_redundant_description">Štítok typu položky</string>
   
@@ -83,13 +87,25 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky možno obsahuje nepotrebný text.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Opis obsahu tejto položky možno obsahuje nepotrebný text.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky, „&lt;tt&gt;%1$s&lt;/tt&gt;“ končí typom položky.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Atribút &lt;tt&gt;android:contentDescription&lt;/tt&gt; tejto položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ obsahuje typ položky „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Opis obsahu tejto položky, „&lt;tt&gt;%1$s&lt;/tt&gt;“, obsahuje typ položky „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_action">Táto položka obsahuje v rámci atribútu &lt;tt&gt;android:contentDescription&lt;/tt&gt; („&lt;tt&gt;%1$s&lt;/tt&gt;“) akciu „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Opis obsahu tejto položky,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
+    obsahuje akciu „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_state">Táto položka obsahuje v rámci atribútu &lt;tt&gt;android:contentDescription&lt;/tt&gt; („&lt;tt&gt;%1$s&lt;/tt&gt;“) stav „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Opis obsahu tejto položky,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
+    obsahuje stav „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
   <string name="button_item_type">tlačidlo</string>
   
@@ -117,6 +133,10 @@
   
   <string name="result_message_web_content">Webový obsah nie je vyhodnotený.</string>
   
+  <string name="result_message_unsupported_compose_content">Komponovateľný obsah sa v tomto prostredí nevyhodnocuje.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Obsah služby Flutter sa v tomto prostredí nevyhodnocuje.</string>
+  
   <string name="result_message_missing_speakable_text">Štítok tejto položky nemusí byť čitateľný pre čítačky obrazovky.</string>
   
   <string name="check_title_text_contrast">Kontrast textu</string>
@@ -135,21 +155,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Zvážte zvýšenie kontrastného pomeru popredia a pozadia textu tejto položky.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu „&lt;tt&gt;#%2$06X&lt;/tt&gt;“ a farbe pozadia „&lt;tt&gt;#%3$06X&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu „&lt;tt&gt;%2$s&lt;/tt&gt;“ a farbe pozadia „&lt;tt&gt;%3$s&lt;/tt&gt;“. Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu &lt;tt&gt;#%2$06X&lt;/tt&gt; a farbe pozadia &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvážte použitie farieb, pri ktorých bude kontrastný pomer vyšší ako modifikovaný pomer %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na farbe textu &lt;tt&gt;%2$s&lt;/tt&gt; a farbe pozadia &lt;tt&gt;%3$s&lt;/tt&gt;. Zvážte použitie farieb, pri ktorých bude kontrastný pomer vyšší ako modifikovaný pomer %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Maximálny možný kontrastný pomer textu položky je %1$.2f. Vychádza z farby textu (&lt;tt&gt;%2$s&lt;/tt&gt;) a farby priehľadného pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte možnosť zvýšiť kontrastný pomer textu tejto položky na %4$.2f alebo viac.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Maximálny možný kontrastný pomer textu položky je %1$.2f. Vychádza z farby textu (&lt;tt&gt;%2$s&lt;/tt&gt;) a farby priehľadného pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte možnosť použiť farby, pri ktorých bude kontrastný pomer vyšší ako modifikovaný pomer %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Minimálny možný kontrastný pomer textu položky je %1$.2f. Vychádza z farby textu (&lt;tt&gt;%2$s&lt;/tt&gt;) a farby priehľadného pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte možnosť zvýšiť kontrastný pomer textu tejto položky na %4$.2f alebo viac.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte možnosť zvýšiť kontrastný pomer textu tejto položky na %4$.2f alebo viac.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Minimálny možný kontrastný pomer textu položky je %1$.2f. Vychádza z farby textu (&lt;tt&gt;%2$s&lt;/tt&gt;) a farby priehľadného pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte možnosť použiť farby, pri ktorých bude kontrastný pomer vyšší ako modifikovaný pomer %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;#%2$06X&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na %4$.2f alebo viac.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastný pomer textu položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte použitie farieb, ktoré vytvoria kontrastný pomer vyšší ako %4$.2f pre malý text alebo %5$.2f pre veľký text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte možnosť zvýšiť kontrastný pomer textu tejto položky na %4$.2f alebo viac.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na odhadovanej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a odhadovanej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastný pomer textu tejto položky je %1$.2f. Tento pomer je založený na poskytnutej farbe popredia (&lt;tt&gt;%2$s&lt;/tt&gt;) a poskytnutej farbe pozadia (&lt;tt&gt;%3$s&lt;/tt&gt;). Zvážte zvýšenie kontrastného pomeru textu tejto položky na modifikovaný pomer %4$.2f alebo viac.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Farby popredia a pozadia tejto položky vyhovujú navrhnutému kontrastnému pomeru.</string>
   
@@ -279,17 +307,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú šírku a rozšíriteľný text.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Toto zobrazenie &lt;tt&gt;Text&lt;/tt&gt; má pevnú šírku a rozšíriteľný text.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú výšku a rozšíriteľný text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Toto zobrazenie &lt;tt&gt;Text&lt;/tt&gt; má pevnú výšku a rozšíriteľný text.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Toto zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; má pevnú veľkosť a rozšíriteľný text.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Toto zobrazenie &lt;tt&gt;Text&lt;/tt&gt; má pevnú veľkosť a rozšíriteľný text.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú šírku a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Tento prvok má pevnú šírku a obsahuje prvok &lt;tt&gt;Text&lt;/tt&gt; s rozšíriteľným textom.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú výšku a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Tento prvok má pevnú výšku a obsahuje prvok &lt;tt&gt;Text&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Táto skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnú veľkosť a obsahuje zobrazenie &lt;tt&gt;TextView&lt;/tt&gt; s rozšíriteľným textom.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Tento prvok má pevnú veľkosť a obsahuje prvok &lt;tt&gt;Text&lt;/tt&gt; s rozšíriteľným textom.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Zvážte úpravu nastavenia &lt;tt&gt;LayoutParams&lt;/tt&gt;, aby sa text mohol zväčšiť.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Zvážte úpravu modifikátorov veľkostí pomocou nastavenia&lt;tt&gt;sizeIn&lt;/tt&gt;, aby sa text mohol rozšíriť.</string>
   
   <string name="check_title_unexposed_text">Nezobrazený text</string>
   
@@ -297,15 +339,15 @@
   
   <string name="result_message_text_detected_in_image_view">V tejto položke ImageView boli zistené výsledky OCR.</string>
   
-  <string name="result_message_brief_unexposed_text">Bol zistený nezobrazený text: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Bol zistený možný text: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Bol zistený text: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Možný text: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Toto zobrazenie &lt;tt&gt;SurfaceView&lt;/tt&gt; možno nesprístupňuje svoj obsah službám dostupnosti.</string>
+  <string name="result_message_text_detected_in_surface_view">Toto zobrazenie &lt;tt&gt;SurfaceView&lt;/tt&gt; nemusí sprístupniť svoj obsah službám dostupnosti.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Zistili sa viaceré nezobrazené texty, napríklad „%1$s“.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Zistili sa možné nezobrazené texty, napríklad „%1$s“.</string>
   
-  <string name="result_message_multiple_unexposed_texts">Obsah tejto položky sa zrejme službám dostupnosti nezobrazuje.</string>
+  <string name="result_message_multiple_unexposed_texts">Táto položka nemusí sprístupniť svoj obsah službám dostupnosti.</string>
   
   <string name="result_message_ocr_result_not_available">Výsledky OCR nie sú k dispozícii.</string>
   

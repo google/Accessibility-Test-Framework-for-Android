@@ -13,8 +13,6 @@
  */
 package com.google.android.apps.common.testing.accessibility.framework.uielement;
 
-import android.os.Build;
-import android.os.Parcel;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DisplayInfoMetricsProto;
@@ -45,18 +43,8 @@ public class DisplayInfoAndroid extends DisplayInfo {
     display.getMetrics(tempMetrics);
     this.metricsWithoutDecoration = new MetricsAndroid(tempMetrics);
     tempMetrics.setToDefaults();
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      display.getRealMetrics(tempMetrics);
-      this.realMetrics = new MetricsAndroid(tempMetrics);
-    } else {
-      this.realMetrics = null;
-    }
-  }
-
-  DisplayInfoAndroid(Parcel fromParcel) {
-    super();
-    this.metricsWithoutDecoration = new MetricsAndroid(fromParcel);
-    this.realMetrics = (fromParcel.readInt() == 1) ? new MetricsAndroid(fromParcel) : null;
+    display.getRealMetrics(tempMetrics);
+    this.realMetrics = new MetricsAndroid(tempMetrics);
   }
 
   DisplayInfoAndroid(DisplayInfoProto fromProto) {
@@ -89,16 +77,6 @@ public class DisplayInfoAndroid extends DisplayInfo {
     return realMetrics;
   }
 
-  void writeToParcel(Parcel out, int flags) {
-    metricsWithoutDecoration.writeToParcel(out, flags);
-    if (realMetrics != null) {
-      out.writeInt(1);
-      realMetrics.writeToParcel(out, flags);
-    } else {
-      out.writeInt(0);
-    }
-  }
-
   @Override
   DisplayInfoProto toProto() {
     DisplayInfoProto.Builder builder = DisplayInfoProto.newBuilder();
@@ -128,29 +106,8 @@ public class DisplayInfoAndroid extends DisplayInfo {
           metrics.widthPixels);
     }
 
-    MetricsAndroid(Parcel fromParcel) {
-      super(
-          fromParcel.readFloat(),
-          fromParcel.readFloat(),
-          fromParcel.readFloat(),
-          fromParcel.readFloat(),
-          fromParcel.readInt(),
-          fromParcel.readInt(),
-          fromParcel.readInt());
-    }
-
     MetricsAndroid(DisplayInfoMetricsProto fromProto) {
       super(fromProto);
-    }
-
-    void writeToParcel(Parcel dest, @SuppressWarnings("unused") int flags) {
-      dest.writeFloat(density);
-      dest.writeFloat(scaledDensity);
-      dest.writeFloat(xDpi);
-      dest.writeFloat(yDpi);
-      dest.writeInt(densityDpi);
-      dest.writeInt(heightPixels);
-      dest.writeInt(widthPixels);
     }
   }
 }

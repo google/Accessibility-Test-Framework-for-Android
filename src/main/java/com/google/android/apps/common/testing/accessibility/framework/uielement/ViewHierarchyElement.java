@@ -17,12 +17,14 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.lang.Boolean.TRUE;
 
+import com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.LayoutParams;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.SpannableString;
 import com.google.android.apps.common.testing.accessibility.framework.replacements.TextUtils;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyActionProto;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.ViewHierarchyElementProto;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AndroidFrameworkProtos.RectProto;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
@@ -45,6 +47,10 @@ import org.checkerframework.dataflow.qual.Pure;
  * #getCondensedUniqueId()}.
  */
 public class ViewHierarchyElement {
+  /** className on an element that holds View content from a Compose AndroidView. */
+  private static final String VIEW_FACTORY_HOLDER_CLASS_NAME =
+      "androidx.compose.ui.viewinterop.ViewFactoryHolder";
+
   protected final int id;
   protected final @Nullable Integer parentId;
 
@@ -57,7 +63,9 @@ public class ViewHierarchyElement {
   protected final @Nullable CharSequence packageName;
   protected final @Nullable CharSequence className;
   protected final @Nullable CharSequence accessibilityClassName;
+  private ViewHierarchyElementOrigin origin;
   protected final @Nullable String resourceName;
+  protected final @Nullable CharSequence testTag;
   protected final @Nullable SpannableString contentDescription;
   protected final @Nullable SpannableString text;
   protected final @Nullable SpannableString stateDescription;
@@ -106,7 +114,9 @@ public class ViewHierarchyElement {
       @Nullable CharSequence packageName,
       @Nullable CharSequence className,
       @Nullable CharSequence accessibilityClassName,
+      ViewHierarchyElementOrigin origin,
       @Nullable String resourceName,
+      @Nullable CharSequence testTag,
       @Nullable SpannableString contentDescription,
       @Nullable SpannableString text,
       @Nullable SpannableString stateDescription,
@@ -152,7 +162,9 @@ public class ViewHierarchyElement {
     this.packageName = packageName;
     this.className = className;
     this.accessibilityClassName = accessibilityClassName;
+    this.origin = origin;
     this.resourceName = resourceName;
+    this.testTag = testTag;
     this.contentDescription = contentDescription;
     this.text = text;
     this.stateDescription = stateDescription;
@@ -211,6 +223,7 @@ public class ViewHierarchyElement {
     accessibilityClassName =
         proto.hasAccessibilityClassName() ? proto.getAccessibilityClassName() : null;
     resourceName = proto.hasResourceName() ? proto.getResourceName() : null;
+    testTag = proto.hasTestTag() ? proto.getTestTag() : null;
     contentDescription =
         proto.hasContentDescription() ? new SpannableString(proto.getContentDescription()) : null;
     text = proto.hasText() ? new SpannableString(proto.getText()) : null;
@@ -266,16 +279,17 @@ public class ViewHierarchyElement {
     hintText = proto.hasHintText() ? new SpannableString(proto.getHintText()) : null;
     hintTextColor = proto.hasHintTextColor() ? proto.getHintTextColor() : null;
     ImmutableList.Builder<Rect> characterLocations = ImmutableList.<Rect>builder();
-    if (proto.getTextCharacterLocationsCount() > 0) {
-      for (int i = 0; i < proto.getTextCharacterLocationsCount(); ++i) {
-        characterLocations.add(new Rect(proto.getTextCharacterLocations(i)));
-      }
+    for (RectProto rectProto : proto.getTextCharacterLocationsList()) {
+      characterLocations.add(new Rect(rectProto));
     }
     textCharacterLocations = characterLocations.build();
+
+    // The origin cannot be determined without the element's parents, so it will be set later.
+    origin = ViewHierarchyElementOrigin.UNKNOWN;
   }
 
   /**
-   * Returns the value uniquely identifying this window within the context of its containing {@link
+   * Returns the value uniquely identifying this element within the context of its containing {@link
    * WindowHierarchyElement}.
    */
   @Pure
@@ -285,7 +299,7 @@ public class ViewHierarchyElement {
 
   /**
    * @return a value uniquely representing this {@link ViewHierarchyElement} and its containing
-   *     {@link WindowHierarchyElement} in the context of it's containing {@link
+   *     {@link WindowHierarchyElement} in the context of its containing {@link
    *     AccessibilityHierarchy}.
    */
   public long getCondensedUniqueId() {
@@ -380,6 +394,16 @@ public class ViewHierarchyElement {
   @Pure
   public @Nullable String getResourceName() {
     return resourceName;
+  }
+
+  /**
+   * Gets the Compose testTag.
+   *
+   * @see androidx.compose.ui.Modifier#testTag(String)
+   */
+  @Pure
+  public @Nullable CharSequence getTestTag() {
+    return testTag;
   }
 
   /**
@@ -715,6 +739,19 @@ public class ViewHierarchyElement {
     return accessibilityClassName;
   }
 
+  /** Returns the type of node from which the element was originally constructed. */
+  public ViewHierarchyElementOrigin getOrigin() {
+    return origin;
+  }
+
+  /**
+   * Computes and sets the origin of the element. This is used when the origin cannot be determined
+   * during construction of the instance.
+   */
+  /* package */ void computeAndSetOrigin() {
+    this.origin = computeOrigin(getClassName(), getParentView());
+  }
+
   /**
    * Returns the {@link ViewHierarchyElement} which acts as a label for this element, or {@code
    * null} if this element is not labeled by another
@@ -858,6 +895,28 @@ public class ViewHierarchyElement {
     return true;
   }
 
+  // For debugging
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder("[ViewHierarchyElement");
+    if (!TextUtils.isEmpty(className)) {
+      sb.append(" class=").append(className);
+    }
+    if (!TextUtils.isEmpty(resourceName)) {
+      sb.append(" resource=").append(resourceName);
+    }
+    if (!TextUtils.isEmpty(testTag)) {
+      sb.append(" testTag=").append(testTag);
+    }
+    if (!TextUtils.isEmpty(text)) {
+      sb.append(" text=").append(text);
+    }
+    if (boundsInScreen != null) {
+      sb.append(" bounds=").append(boundsInScreen);
+    }
+    return sb.append("]").toString();
+  }
+
   /**
    * Returns a list of identifiers that represents all the superclasses of the corresponding view
    * element.
@@ -897,6 +956,9 @@ public class ViewHierarchyElement {
     }
     if (!TextUtils.isEmpty(resourceName)) {
       builder.setResourceName(resourceName);
+    }
+    if (!TextUtils.isEmpty(testTag)) {
+      builder.setTestTag(testTag.toString());
     }
     if (!TextUtils.isEmpty(contentDescription)) {
       builder.setContentDescription(contentDescription.toProto());
@@ -1054,12 +1116,33 @@ public class ViewHierarchyElement {
     return (id != null) ? getWindow().getAccessibilityHierarchy().getViewById(id) : null;
   }
 
+  /** Determines the type of content that produced a ViewHierarchyElement. */
+  protected static ViewHierarchyElementOrigin computeOrigin(
+      @Nullable CharSequence className, @Nullable ViewHierarchyElement parent) {
+    if ((parent == null) || TextUtils.equals(className, VIEW_FACTORY_HOLDER_CLASS_NAME)) {
+      return ViewHierarchyElementOrigin.VIEW;
+    }
+    CharSequence parentClassName = parent.getClassName();
+    if (TextUtils.equals(
+        parentClassName, ViewHierarchyElementUtils.ANDROID_COMPOSE_VIEW_CLASS_NAME)) {
+      return ViewHierarchyElementOrigin.COMPOSE;
+    }
+    if (TextUtils.equals(parentClassName, ViewHierarchyElementUtils.FLUTTER_VIEW_CLASS_NAME)) {
+      return ViewHierarchyElementOrigin.FLUTTER;
+    }
+    if (TextUtils.equals(parentClassName, ViewHierarchyElementUtils.WEB_VIEW_CLASS_NAME)) {
+      return ViewHierarchyElementOrigin.WEB;
+    }
+    return parent.getOrigin();
+  }
+
   private boolean propertiesEquals(ViewHierarchyElement element) {
     return (getCondensedUniqueId() == element.getCondensedUniqueId())
         && (getChildViewCount() == element.getChildViewCount())
         && TextUtils.equals(getPackageName(), element.getPackageName())
         && TextUtils.equals(getClassName(), element.getClassName())
         && TextUtils.equals(getResourceName(), element.getResourceName())
+        && TextUtils.equals(getTestTag(), element.getTestTag())
         && isImportantForAccessibility() == element.isImportantForAccessibility()
         && TextUtils.equals(getContentDescription(), element.getContentDescription())
         && TextUtils.equals(getText(), element.getText())

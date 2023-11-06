@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">לפריט זה אין &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">לפריט הזה אין תיאור תוכן.</string>
+  
   <string name="result_message_not_visible">פריט זה אינו גלוי.</string>
   
   <string name="result_message_not_enabled">פריט זה אינו מופעל.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">מאפשר פעולה</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">הרכיבים המתנגשים: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">תיאורי פריטים</string>
   
   <string name="result_message_brief_same_speakable_text">יש כמה פריטים בעלי תיאור זהה.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">כדאי להגדיל את יחס הניגודיות בין קדמת התמונה לרקע שלה.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; ועל הערכה שצבע הרקע של התמונה הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. כדאי להגדיל את היחס הזה ל-%2$.2f לפחות.</string>
+  <string name="result_message_image_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;%3$s&lt;/tt&gt; ועל הערכה שצבע הרקע של התמונה הוא &lt;tt&gt;%4$s&lt;/tt&gt;. כדאי להגדיל את היחס הזה ל-%2$.2f לפחות.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על צבע החזית, &lt;tt&gt;#%3$06X&lt;/tt&gt;, וצבע הרקע, &lt;tt&gt;#%4$06X&lt;/tt&gt;, שצוינו. כדאי להגדיל את היחס ל-%2$.2f לפחות.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על צבע החזית, &lt;tt&gt;%3$s&lt;/tt&gt;, וצבע הרקע, &lt;tt&gt;%4$s&lt;/tt&gt;, שצוינו. כדאי להגדיל את היחס ל-%2$.2f לפחות.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%3$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%4$06X&lt;/tt&gt;. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">יחס הניגודיות של התמונה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;%3$s&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;%4$s&lt;/tt&gt;. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%3$06X&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;#%4$06X&lt;/tt&gt;, כפי שצוינו. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של התמונה הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;%3$s&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;%4$s&lt;/tt&gt;, כפי שצוינו. כדאי להגדיל את היחס הזה ליחס המוגדר, %2$.2f, לפחות.</string>
   
   <string name="check_title_redundant_description">תווית סוג פריט</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">ה-&lt;tt&gt;android:contentDescription&lt;/tt&gt; של פריט זה עשוי להכיל טקסט מיותר.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">יכול להיות שיש טקסט מיותר בתיאור התוכן של הפריט הזה.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">ה-&lt;tt&gt;android:contentDescription&lt;/tt&gt; של פריט זה, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", מסתיים בסוג הפריט.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">ה-&lt;tt&gt;android:contentDescription&lt;/tt&gt; של פריט זה, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", מכיל את סוג הפריט \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">תיאור התוכן של הפריט הזה – \"&lt;tt&gt;%1$s&lt;/tt&gt;\" – מכיל פריט מסוג \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
   <string name="result_message_content_desc_contains_action">המאפיין &lt;tt&gt;android:contentDescription&lt;/tt&gt; של הפריט הזה,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     מכיל את הפעולה \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">תיאור התוכן של הפריט הזה –
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\" –
+    מכיל את הפעולה \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
+  
   <string name="result_message_content_desc_contains_state">המאפיין &lt;tt&gt;android:contentDescription&lt;/tt&gt; של הפריט הזה,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     מכיל את המצב \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">תיאור התוכן של הפריט הזה –
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\" –
+    מכיל את המצב \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
   <string name="button_item_type">לחצן</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">תוכן אינטרנט שאינו עובר הערכה.</string>
   
+  <string name="result_message_unsupported_compose_content">אין בדיקה של תוכן קומפוזבילי בסביבה הזו.</string>
+  
+  <string name="result_message_unsupported_flutter_content">אין בדיקת תוכן של Flutter בסביבה הזו.</string>
+  
   <string name="result_message_missing_speakable_text">ייתכן שלפריט זה אין תווית שקוראי מסך מסוגלים לקרוא.</string>
   
   <string name="check_title_text_contrast">ניגודיות טקסט</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">כדאי להגדיל את יחס הניגודיות בין קדמת הטקסט לרקע הטקסט של פריט זה.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על צבע טקסט &lt;tt&gt;#%2$06X&lt;/tt&gt; ועל צבע רקע &lt;tt&gt;#%3$06X&lt;/tt&gt;. כדאי להגדיל את יחס הניגודיות של טקסט הפריט ל-%4$.2f לפחות.</string>
+  <string name="result_message_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על צבע טקסט &lt;tt&gt;%2$s&lt;/tt&gt; ועל צבע רקע &lt;tt&gt;%3$s&lt;/tt&gt;. כדאי להגדיל את יחס הניגודיות של טקסט הפריט ל-%4$.2f לפחות.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. היחס הזה מבוסס על צבע הטקסט &lt;tt&gt;#%2$06X&lt;/tt&gt; ועל צבע הרקע &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ לבחור בצבעים שיחס הניגודיות ביניהם גדול יותר מהיחס ששונה, שהוא %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. היחס הזה מבוסס על צבע הטקסט &lt;tt&gt;%2$s&lt;/tt&gt; ועל צבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt;. מומלץ לבחור בצבעים שיחס הניגודיות ביניהם גדול יותר מהיחס ששונה, שהוא %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">יחס הניגודיות המקסימלי לפריט הוא %1$.2f, על סמך צבע הטקסט &lt;tt&gt;%2$s&lt;/tt&gt; וצבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt; שאינו אטום. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה ל-%4$.2f לפחות.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">יחס הניגודיות המקסימלי לפריט הוא %1$.2f, על סמך צבע הטקסט &lt;tt&gt;%2$s&lt;/tt&gt; וצבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt; שאינו אטום. מומלץ לבחור בצבעים שיחס הניגודיות ביניהם גדול יותר מהיחס ששונה, שהוא %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט בפריט הוא %1$.2f. יחס זה מבוסס על צבע החזית שצוין (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ועל צבע הרקע שצוין (&lt;tt&gt;#%3$06X&lt;/tt&gt;). לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">יחס הניגודיות המינימלי לפריט הוא %1$.2f, על סמך צבע הטקסט &lt;tt&gt;%2$s&lt;/tt&gt; וצבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt; שאינו אטום. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה ל-%4$.2f לפחות.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%2$06X&lt;/tt&gt;, ועל צבע הרקע &lt;tt&gt;#%3$06X&lt;/tt&gt; שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">יחס הניגודיות המינימלי לפריט הוא %1$.2f, על סמך צבע הטקסט &lt;tt&gt;%2$s&lt;/tt&gt; וצבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt; שאינו אטום. מומלץ לבחור בצבעים שיחס הניגודיות ביניהם גדול יותר מהיחס ששונה, שהוא %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;#%2$06X&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;#%3$06X&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;%2$s&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;%3$s&lt;/tt&gt;. לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;#%2$06X&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;#%3$06X&lt;/tt&gt;, כפי שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">יחס הניגודיות של הטקסט של פריט זה הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;%2$s&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;%3$s&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט בפריט הוא %1$.2f. יחס זה מבוסס על צבע החזית שצוין (&lt;tt&gt;%2$s&lt;/tt&gt;) ועל צבע הרקע שצוין (&lt;tt&gt;%3$s&lt;/tt&gt;). לטקסט קטן מומלץ להשתמש בצבעים עם יחס ניגודיות הגבוה מ-%4$.2f, ולטקסט גדול מומלץ להשתמש בצבעים עם יחס הגבוה מ-%5$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;%2$s&lt;/tt&gt;, ועל צבע הרקע &lt;tt&gt;%3$s&lt;/tt&gt; שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של פריט זה ל-%4$.2f לפחות.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס זה מבוסס על הערכה שהצבע הקדמי הוא &lt;tt&gt;%2$s&lt;/tt&gt; ושצבע הרקע הוא &lt;tt&gt;%3$s&lt;/tt&gt;. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">יחס הניגודיות של הטקסט של הפריט הוא %1$.2f. יחס הניגודיות מבוסס על הצבע הקדמי, &lt;tt&gt;%2$s&lt;/tt&gt;, ועל צבע הרקע, &lt;tt&gt;%3$s&lt;/tt&gt;, כפי שצוינו. מומלץ להגדיל את יחס הניגודיות של הטקסט של הפריט הזה לפחות ליחס הניגודיות שהוגדר, שהוא %4$.2f.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">הצבע הקדמי וצבע הרקע של הפריט הזה עומדים ביחס הניגודיות המוצע.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש רוחב קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">ב&lt;tt&gt;Text&lt;/tt&gt; יש רוחב קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש גובה קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">ב&lt;tt&gt;Text&lt;/tt&gt; יש גובה קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">ב-&lt;tt&gt;TextView&lt;/tt&gt; יש גודל קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">ב&lt;tt&gt;Text&lt;/tt&gt; יש גודל קבוע וטקסט שניתן לשנות את הגודל שלו.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש רוחב קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">לרכיב הזה יש רוחב קבוע והוא מכיל רכיב &lt;tt&gt;Text&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש גובה קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">לרכיב הזה יש גובה קבוע והוא מכיל רכיב &lt;tt&gt;Text&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">ב-&lt;tt&gt;ViewGroup&lt;/tt&gt; יש גודל קבוע והוא מכיל &lt;tt&gt;TextView&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">לרכיב הזה יש גודל קבוע והוא מכיל רכיב &lt;tt&gt;Text&lt;/tt&gt; עם טקסט שניתן לשנות את הגודל שלו.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">כדאי לשקול לשנות את &lt;tt&gt;LayoutParams&lt;/tt&gt; כדי לאפשר הרחבה של הטקסט.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">אולי כדאי לשנות את מידות הגודל באמצעות &lt;tt&gt;sizeIn&lt;/tt&gt; כדי לאפשר הרחבה של הטקסט.</string>
   
   <string name="check_title_unexposed_text">טקסט לא גלוי</string>
   
@@ -301,13 +343,13 @@
   
   <string name="result_message_text_detected_in_image_view">תוצאות OCR זוהו בתוך ה-ImageView הזה.</string>
   
-  <string name="result_message_brief_unexposed_text">זוהה טקסט לא גלוי: %1$s</string>
+  <string name="result_message_brief_unexposed_text">זוהה רכיב שעשוי להיות טקסט: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">זוהה טקסט: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">הרכיב שעשוי להיות טקסט: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">יכול להיות שהתוכן ב-&lt;tt&gt;SurfaceView&lt;/tt&gt; לא גלוי לשירותי הנגישות.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">זוהו כמה טקסטים שאינם גלויים לשירותי הנגישות, כולל \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">זוהו רכיבים שעשויים להיות טקסט ולא גלויים לשירותי הנגישות, כולל \"%1$s\".</string>
   
   <string name="result_message_multiple_unexposed_texts">יכול להיות שתוכן הפריט הזה לא גלוי לשירותי הנגישות.</string>
   

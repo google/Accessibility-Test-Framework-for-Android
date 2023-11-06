@@ -25,13 +25,17 @@ import com.google.common.collect.ImmutableList;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-/** Extracting extra rendering data from an {@link AccessibilityNodeInfo}. */
+/** Extracts extra data from the View associated with an {@link AccessibilityNodeInfo}. */
 class AccessibilityNodeInfoExtraDataExtractor {
 
-  private static final boolean AT_26 = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O);
+  /**
+   * See
+   * https://developer.android.com/reference/kotlin/androidx/compose/ui/semantics/package-summary#(androidx.compose.ui.semantics.SemanticsPropertyReceiver).testTag()
+   */
+  static final String EXTRA_DATA_TEST_TAG = "androidx.compose.ui.semantics.testTag";
 
   private final boolean obtainCharacterLocations;
-  private final boolean obtainRenderingInfo;
+  @VisibleForTesting final boolean obtainRenderingInfo;
 
   /** The maximum allowed length of the requested text location data. */
   private final @Nullable Integer characterLocationArgMaxLength;
@@ -51,11 +55,6 @@ class AccessibilityNodeInfoExtraDataExtractor {
     this.characterLocationArgMaxLength = characterLocationArgMaxLength;
   }
 
-  AccessibilityNodeInfoExtraDataExtractor(
-      boolean obtainCharacterLocations, boolean obtainRenderingInfo) {
-    this(obtainCharacterLocations, obtainRenderingInfo, /* characterLocationArgMaxLength= */ null);
-  }
-
   ExtraData getExtraData(AccessibilityNodeInfo fromInfo) {
     ExtraData extraData = new ExtraData();
 
@@ -67,6 +66,10 @@ class AccessibilityNodeInfoExtraDataExtractor {
       fetchRenderingInfo(fromInfo, extraData);
     }
 
+    if (VERSION.SDK_INT >= VERSION_CODES.O) {
+      fetchTestTag(fromInfo, extraData);
+    }
+
     return extraData;
   }
 
@@ -74,22 +77,23 @@ class AccessibilityNodeInfoExtraDataExtractor {
    * Retrieves text character locations for the {@code TextView}'s text.
    *
    * <p>Returns an empty list if the text is {@code null} or an empty string, or if the character
-   * locations are not available.
+   * locations are not available. Limits the size of the result if the constructor was given a
+   * non-null value for characterLocationArgMaxLength.
    *
    * @param textView A {@code TextView} which may have a text
-   * @param characterLocationArgMaxLength The maximum allowed length of the requested text location
-   *     data
    * @return The locations of each text character in screen coordinates
    */
-  ImmutableList<Rect> getTextCharacterLocations(
-      TextView textView, @Nullable Integer characterLocationArgMaxLength) {
-    return (obtainCharacterLocations && AT_26)
-        ? getTextCharacterLocationsAux(textView, characterLocationArgMaxLength)
-        : ImmutableList.of();
+  ImmutableList<Rect> getTextCharacterLocations(TextView textView) {
+    return getTextCharacterLocations(textView, characterLocationArgMaxLength);
   }
 
-  ImmutableList<Rect> getTextCharacterLocations(TextView textView) {
-    return getTextCharacterLocations(textView, /* characterLocationArgMaxLength= */ null);
+  @VisibleForTesting
+  @RequiresApi(VERSION_CODES.O)
+  ImmutableList<Rect> getTextCharacterLocations(
+      TextView textView, @Nullable Integer characterLocationArgMaxLength) {
+    return (obtainCharacterLocations && (VERSION.SDK_INT >= VERSION_CODES.O))
+        ? getTextCharacterLocationsAux(textView, characterLocationArgMaxLength)
+        : ImmutableList.of();
   }
 
   @RequiresApi(VERSION_CODES.O)
@@ -119,10 +123,7 @@ class AccessibilityNodeInfoExtraDataExtractor {
    */
   @RequiresApi(VERSION_CODES.R)
   private static void fetchRenderingInfo(AccessibilityNodeInfo fromInfo, ExtraData extraData) {
-    Bundle args = new Bundle();
-    try {
-      // Cannot perform this action on a not sealed instance.
-      if (fromInfo.refreshWithExtraData(EXTRA_DATA_RENDERING_INFO_KEY, args)) {
+    if (safeRefreshWithExtraData(fromInfo, EXTRA_DATA_RENDERING_INFO_KEY, new Bundle())) {
         AccessibilityNodeInfo.ExtraRenderingInfo extraRenderingInfo =
             fromInfo.getExtraRenderingInfo();
         if (extraRenderingInfo != null) {
@@ -139,12 +140,6 @@ class AccessibilityNodeInfoExtraDataExtractor {
             extraData.setLayoutSize(layoutSize);
           }
         }
-      }
-    } catch (IllegalStateException e) {
-      // Hopefully we are running inside a Robolectric test.
-      if (!isRobolectric()) {
-        throw e;
-      }
     }
   }
 
@@ -168,7 +163,7 @@ class AccessibilityNodeInfoExtraDataExtractor {
       extraData.setTextCharacterLocations(ImmutableList.of());
     } else {
       Bundle args = createTextCharacterLocationsRequestBundle(text, maxCharacterLocationLength);
-      if (fromInfo.refreshWithExtraData(EXTRA_DATA_TEXT_CHARACTER_LOCATION_KEY, args)) {
+      if (safeRefreshWithExtraData(fromInfo, EXTRA_DATA_TEXT_CHARACTER_LOCATION_KEY, args)) {
         ImmutableList<Rect> locations = parseCharacterLocationsFromExtras(fromInfo.getExtras());
         if (locations != null) {
           extraData.setTextCharacterLocations(locations);
@@ -177,6 +172,7 @@ class AccessibilityNodeInfoExtraDataExtractor {
     }
   }
 
+  @RequiresApi(VERSION_CODES.O)
   private static @Nullable ImmutableList<Rect> parseCharacterLocationsFromExtras(Bundle extras) {
     Parcelable[] data = extras.getParcelableArray(EXTRA_DATA_TEXT_CHARACTER_LOCATION_KEY);
     if (data == null) {
@@ -213,6 +209,44 @@ class AccessibilityNodeInfoExtraDataExtractor {
     return args;
   }
 
+  /**
+   * Retrieves the Compose testTag and stores it in {@code extraData}.
+   *
+   * <p>The result will be {@code null} if a testTag has not been set.
+   *
+   * @param fromInfo The {@link AccessibilityNodeInfo} which may have a test tag
+   * @param extraData destination for the testTag
+   */
+  @RequiresApi(VERSION_CODES.O)
+  private static void fetchTestTag(AccessibilityNodeInfo fromInfo, ExtraData extraData) {
+    if (fromInfo.getAvailableExtraData().contains(EXTRA_DATA_TEST_TAG)
+        && safeRefreshWithExtraData(fromInfo, EXTRA_DATA_TEST_TAG, new Bundle())) {
+        CharSequence testTag = fromInfo.getExtras().getCharSequence(EXTRA_DATA_TEST_TAG);
+        if (testTag != null) {
+          extraData.setTestTag(testTag);
+        }
+      }
+  }
+
+  /**
+   * Calls AccessibilityNodeInfo#refreshWithExtraData(String, Bundle), but handles any thrown
+   * IllegalStateException if this code is being run in a Robolectric test. refreshWithExtraData
+   * throws an IllegalStateException when it is called on a sealed instance.
+   *
+   * @return {@code true} iff the refresh succeeded.
+   */
+  private static boolean safeRefreshWithExtraData(
+      AccessibilityNodeInfo fromInfo, String extraDataKey, Bundle args) {
+    try {
+      return fromInfo.refreshWithExtraData(extraDataKey, args);
+    } catch (IllegalStateException e) {
+      if (isRobolectric()) {
+        return false;
+      }
+      throw e;
+    }
+  }
+
   private static boolean isRobolectric() {
     return "robolectric".equals(Build.FINGERPRINT);
   }
@@ -222,6 +256,7 @@ class AccessibilityNodeInfoExtraDataExtractor {
     private @Nullable Integer textSizeUnit = null;
     private @Nullable Size layoutSize = null;
     private @Nullable ImmutableList<Rect> textCharacterLocations = null;
+    private @Nullable CharSequence testTag = null;
 
     ExtraData() {}
 
@@ -303,6 +338,22 @@ class AccessibilityNodeInfoExtraDataExtractor {
     @VisibleForTesting
     ExtraData setTextCharacterLocations(ImmutableList<Rect> textCharacterLocations) {
       this.textCharacterLocations = textCharacterLocations;
+      return this;
+    }
+
+    /**
+     * Gets the Compose testTag if one has been set.
+     *
+     * @return The Compose testTag or {@code null} if one has not been set
+     */
+    @Nullable CharSequence getTestTag() {
+      return testTag;
+    }
+
+    @CanIgnoreReturnValue
+    @VisibleForTesting
+    ExtraData setTestTag(CharSequence testTag) {
+      this.testTag = testTag;
       return this;
     }
   }

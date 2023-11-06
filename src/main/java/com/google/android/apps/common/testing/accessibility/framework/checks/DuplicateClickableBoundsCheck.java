@@ -27,6 +27,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElementDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -54,6 +55,8 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
       "KEY_CONFLICTS_BECAUSE_LONG_CLICKABLE";
   /** Result metadata key for the {@code int} number of other views with the same bounds. */
   public static final String KEY_CONFLICTING_VIEW_COUNT = "KEY_CONFLICTING_VIEW_COUNT";
+  /** Result metadata for the list of conflicting resource ids with the same bounds. */
+  public static final String KEY_CONFLICTING_VIEWS_LIST = "KEY_CONFLICTING_VIEWS_LIST";
   /**
    * Result metadata key for the {@code int} of the left coordinate of the location of views with
    * the same bounds.
@@ -116,6 +119,8 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
           resultMetadata
               .putBoolean(KEY_CONFLICTS_BECAUSE_LONG_CLICKABLE, culprit.isLongClickable());
           resultMetadata.putInt(KEY_CONFLICTING_VIEW_COUNT, elements.size() - 1);
+          resultMetadata.putString(
+              KEY_CONFLICTING_VIEWS_LIST, getConflictingElements(elements, culprit));
           setBoundsInMetadata(culprit.getBoundsInScreen(), resultMetadata);
           results.add(new AccessibilityHierarchyCheckResult(
               this.getClass(),
@@ -168,20 +173,71 @@ public class DuplicateClickableBoundsCheck extends AccessibilityHierarchyCheck {
         locale,
         metadata.getBoolean(KEY_CONFLICTS_BECAUSE_CLICKABLE, false),
         metadata.getBoolean(KEY_CONFLICTS_BECAUSE_LONG_CLICKABLE, false));
+    StringBuilder builder = new StringBuilder();
     switch(resultId) {
       case RESULT_ID_SAME_BOUNDS:
-        return String.format(locale,
-            StringManager.getString(locale, "result_message_same_view_bounds"), actionString,
-            bounds.toShortString(), metadata.getInt(KEY_CONFLICTING_VIEW_COUNT));
+        builder.append(
+            String.format(
+                locale,
+                StringManager.getString(locale, "result_message_same_view_bounds"),
+                actionString,
+                bounds.toShortString(),
+                metadata.getInt(KEY_CONFLICTING_VIEW_COUNT)));
+        break;
 
       // Legacy
       case RESULT_ID_VIEW_BOUNDS:
-        return String.format(locale,
-            StringManager.getString(locale, "result_message_view_bounds"), actionString,
-            bounds.toShortString());
+        builder.append(
+            String.format(
+                locale,
+                StringManager.getString(locale, "result_message_view_bounds"),
+                actionString,
+                bounds.toShortString()));
+        break;
       default:
         throw new IllegalStateException("Unsupported result id");
     }
+    appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
+    return builder.toString();
+  }
+
+  /**
+   * Appends messages for {@link #KEY_CONFLICTING_VIEWS_LIST} to the provided {@code builder} if the
+   * relevant key is set in the given {@code resultMetadata}.
+   *
+   * @param builder the {@link StringBuilder} to which result messages should be appended
+   */
+  private static void appendMetadataStringsToMessageIfNeeded(
+      Locale locale, @Nullable ResultMetadata metadata, StringBuilder builder) {
+    if (metadata == null) {
+      return;
+    }
+
+    if (!metadata.getString(KEY_CONFLICTING_VIEWS_LIST, "").isEmpty()) {
+      builder
+          .append(' ')
+          .append(
+              String.format(
+                  locale,
+                  StringManager.getString(
+                      locale, "result_message_addendum_conflicting_elements_list"),
+                  metadata.getString(KEY_CONFLICTING_VIEWS_LIST)));
+    }
+  }
+
+  @SuppressWarnings("ReferenceEquality") // Culprit is expected to be a member of the elements list.
+  private static String getConflictingElements(
+      List<? extends ViewHierarchyElement> elements, ViewHierarchyElement culprit) {
+    StringBuilder viewList = new StringBuilder();
+    for (ViewHierarchyElement element : elements) {
+      if (element != culprit) {
+        if (viewList.length() > 0) {
+          viewList.append(", ");
+        }
+        viewList.append(new ViewHierarchyElementDescriptor().describe(element));
+      }
+    }
+    return viewList.toString();
   }
 
   @Override

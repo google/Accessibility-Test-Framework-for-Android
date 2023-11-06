@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Položka nemá atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Tato položka nemá žádný popis obsahu.</string>
+  
   <string name="result_message_not_visible">Položka se nezobrazuje.</string>
   
   <string name="result_message_not_enabled">Položka není zapnutá.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">aktivní</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Kolidující prvky: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Popisy položek</string>
   
   <string name="result_message_brief_same_speakable_text">Několik položek má stejný popis.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Zkuste zvýšit kontrastní poměr mezi popředím a pozadím tohoto obrázku.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Kontrastní poměr tohoto obrázku je %1$.2f. Poměr vychází z odhadované barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste poměr zvýšit na %2$.2f nebo více.</string>
+  <string name="result_message_image_contrast_not_sufficient">Kontrastní poměr tohoto obrázku je %1$.2f. Poměr vychází z odhadované barvy popředí &lt;tt&gt;%3$s&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;%4$s&lt;/tt&gt;. Zkuste poměr zvýšit na %2$.2f nebo více.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste tento poměr zvýšit na hodnotu %2$.2f nebo více.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;%3$s&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;%4$s&lt;/tt&gt;. Zkuste tento poměr zvýšit na hodnotu %2$.2f nebo více.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste tento poměr zvýšit na upravenou hodnotu %2$.2f nebo více.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;%3$s&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;%4$s&lt;/tt&gt;. Zkuste tento poměr zvýšit na upravenou hodnotu %2$.2f nebo více.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;#%3$06X&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;#%4$06X&lt;/tt&gt;. Zkuste tento poměr zvýšit na upravenou hodnotu %2$.2f nebo více.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastní poměr tohoto obrázku je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;%3$s&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;%4$s&lt;/tt&gt;. Zkuste tento poměr zvýšit na upravenou hodnotu %2$.2f nebo více.</string>
   
   <string name="check_title_redundant_description">Popisek typu položky</string>
   
@@ -83,15 +87,27 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky pravděpodobně obsahuje zbytečný text.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Popis obsahu této položky pravděpodobně obsahuje zbytečný text.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ končí typem položky.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ obsahuje typ položky „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Popis obsahu této položky „&lt;tt&gt;%1$s&lt;/tt&gt;“ obsahuje typ položky „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
   <string name="result_message_content_desc_contains_action">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky,
     „&lt;tt&gt;%1$s&lt;/tt&gt;“,
     obsahuje akci „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Popis obsahu této položky,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
+    obsahuje akci „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
   <string name="result_message_content_desc_contains_state">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; této položky,
+    „&lt;tt&gt;%1$s&lt;/tt&gt;“,
+    obsahuje stav „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Popis obsahu této položky,
     „&lt;tt&gt;%1$s&lt;/tt&gt;“,
     obsahuje stav „&lt;tt&gt;%2$s&lt;/tt&gt;“.</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Webový obsah nebyl vyhodnocen.</string>
   
+  <string name="result_message_unsupported_compose_content">Komponovatelný obsah se v tomto prostředí nehodnotí.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Obsah ze sady Flutter se v tomto prostředí nehodnotí.</string>
+  
   <string name="result_message_missing_speakable_text">Popisek této položky pravděpodobně nebude pro nástroj na čtení obrazovky čitelný.</string>
   
   <string name="check_title_text_contrast">Kontrast textu</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Zkuste zvýšit kontrastní poměr mezi popředím a pozadím tohoto obrázku.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Poměr vychází z barvy textu &lt;tt&gt;#%2$06X&lt;/tt&gt; a barvy pozadí položky &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na %4$.2f nebo více.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Poměr vychází z barvy textu &lt;tt&gt;%2$s&lt;/tt&gt; a barvy pozadí položky &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na %4$.2f nebo více.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Vychází z barvy textu &lt;tt&gt;#%2$06X&lt;/tt&gt; a barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste použít barvy, jejichž kontrastní poměr bude větší než vámi definovaný poměr %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Vychází z barvy textu &lt;tt&gt;%2$s&lt;/tt&gt; a barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste použít barvy, jejichž kontrastní poměr bude větší než vámi definovaný poměr %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvažte použití barev, které ve výsledku dosahují vyššího kontrastního poměru než %4$.2f pro malý text nebo %5$.2f pro velký text.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Na základě barvy textu „&lt;tt&gt;%2$s&lt;/tt&gt;“ a průhledné barvy pozadí „&lt;tt&gt;%3$s&lt;/tt&gt;“ je maximální možný kontrastní poměr textu položky „%1$.2f“. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastní poměr textu této položky je %1$.2f. Vychází z odhadované barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Na základě barvy textu „&lt;tt&gt;%2$s&lt;/tt&gt;“ a průhledné barvy pozadí „&lt;tt&gt;%3$s&lt;/tt&gt;“ je maximální možný kontrastní poměr textu položky „%1$.2f“. Zkuste použít barvy, jejichž kontrastní poměr bude větší než vámi definovaný poměr %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zvažte použití barev, které ve výsledku dosahují vyššího kontrastního poměru než %4$.2f pro malý text nebo %5$.2f pro velký text.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Na základě barvy textu „&lt;tt&gt;%2$s&lt;/tt&gt;“ a průhledné barvy pozadí „&lt;tt&gt;%3$s&lt;/tt&gt;“ je minimální možný kontrastní poměr textu položky „%1$.2f“. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastní poměr textu této položky je %1$.2f. Vychází z uvedené barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a uvedené barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Na základě barvy textu „&lt;tt&gt;%2$s&lt;/tt&gt;“ a průhledné barvy pozadí „&lt;tt&gt;%3$s&lt;/tt&gt;“ je minimální možný kontrastní poměr textu položky „%1$.2f“. Zkuste použít barvy, jejichž kontrastní poměr bude větší než vámi definovaný poměr %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na upravenou hodnotu %4$.2f nebo více.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zvažte použití barev, které ve výsledku dosahují vyššího kontrastního poměru než %4$.2f pro malý text nebo %5$.2f pro velký text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;#%2$06X&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;#%3$06X&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na upravenou hodnotu %4$.2f nebo více.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastní poměr textu této položky je %1$.2f. Vychází z odhadované barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zvažte použití barev, které ve výsledku dosahují vyššího kontrastního poměru než %4$.2f pro malý text nebo %5$.2f pro velký text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastní poměr textu této položky je %1$.2f. Vychází z uvedené barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a uvedené barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste ho u této položky zvýšit na %4$.2f nebo více.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z odhadované barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a odhadované barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na upravenou hodnotu %4$.2f nebo více.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastní poměr textu této položky je %1$.2f. Tento poměr vychází z poskytnuté barvy popředí &lt;tt&gt;%2$s&lt;/tt&gt; a poskytnuté barvy pozadí &lt;tt&gt;%3$s&lt;/tt&gt;. Zkuste zvýšit kontrastní poměr textu na upravenou hodnotu %4$.2f nebo více.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Barvy popředí a pozadí této položky splňují doporučený kontrastní poměr.</string>
   
@@ -259,7 +287,7 @@
   
   <string name="result_message_short_text">Text této položky je příliš krátký na ohodnocení.</string>
   
-  <string name="result_message_item_exposed_needs_manual_assessment">Tato obrazovka vyžaduje ruční kontrolu pro zajištění toho, že jsou všechny položky exponovány službám přístupnosti.</string>
+  <string name="result_message_item_exposed_needs_manual_assessment">Tato obrazovka vyžaduje manuální kontrolu pro zajištění toho, že jsou všechny položky exponovány službám přístupnosti.</string>
   
   <string name="result_message_has_unexposed_items">Na této obrazovce se mohou nacházet položky, které nejsou exponovány službám přístupnosti.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Tento text &lt;tt&gt;TextView&lt;/tt&gt; má pevnou šířku a jeho velikost lze zvětšit/zmenšit.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Tento text &lt;tt&gt;Text&lt;/tt&gt; má pevnou šířku a jeho velikost lze zvětšit/zmenšit.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Tento text &lt;tt&gt;TextView&lt;/tt&gt; má pevnou výšku a jeho velikosti lze zvětšit/zmenšit.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Tento text &lt;tt&gt;Text&lt;/tt&gt; má pevnou výšku a jeho velikost lze zvětšit/zmenšit.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Tento text &lt;tt&gt;TextView&lt;/tt&gt; má pevné rozměry a jeho velikost lze zvětšit/zmenšit.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Tento text &lt;tt&gt;Text&lt;/tt&gt; má pevné rozměry a jeho velikost lze zvětšit/zmenšit.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Tento text &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnou šířku a obsahuje text &lt;tt&gt;TextView&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Tento prvek má pevnou šířku a obsahuje prvek &lt;tt&gt;Text&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Tento text &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevnou výšku a obsahuje text &lt;tt&gt;TextView&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Tento prvek má pevnou výšku a obsahuje prvek &lt;tt&gt;Text&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Tento text &lt;tt&gt;ViewGroup&lt;/tt&gt; má pevné rozměry a obsahuje text &lt;tt&gt;TextView&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Tento prvek má pevnou velikost a obsahuje prvek &lt;tt&gt;Text&lt;/tt&gt;, jehož velikost lze zvětšit/zmenšit.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">K povolení rozbalení textu zvažte úpravu &lt;tt&gt;LayoutParams&lt;/tt&gt;.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Zvažte upravení modifikátorů velikosti pomocí &lt;tt&gt;sizeIn&lt;/tt&gt;, aby se text mohl roztáhnout.</string>
   
   <string name="check_title_unexposed_text">Neobsahuje viditelný text</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">V tomto ImageView byly objeveny výsledky OCR.</string>
   
-  <string name="result_message_brief_unexposed_text">Štítek neobsahuje viditelný text: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Rozpoznán text: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Byl zjištěn text: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Rozpoznán text: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Zdá se, že &lt;tt&gt;SurfaceView&lt;/tt&gt; nepovoluje přístup ke svému obsahu službám usnadnění přístupu.</string>
+  <string name="result_message_text_detected_in_surface_view">Tento pohled &lt;tt&gt;SurfaceView&lt;/tt&gt; nemusí zobrazit obsah službám pro usnadnění přístupu.</string>
   
   <string name="result_message_brief_multiple_unexposed_texts">Rozpoznáno několik textů, které nejsou viditelné, včetně „%1$s“.</string>
   
-  <string name="result_message_multiple_unexposed_texts">Tato položka nepovoluje přístup ke svému obsahu službám usnadnění přístupu.</string>
+  <string name="result_message_multiple_unexposed_texts">Tato položka se nemusí zobrazit službám usnadnění přístupu</string>
   
   <string name="result_message_ocr_result_not_available">Výsledky OCR nejsou dostupné.</string>
   

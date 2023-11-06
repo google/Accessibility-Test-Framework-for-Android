@@ -2,9 +2,11 @@ package com.google.android.apps.common.testing.accessibility.framework.ocr;
 
 import com.google.android.apps.common.testing.accessibility.framework.proto.AccessibilityEvaluationProtos.OcrResultProto;
 import com.google.common.collect.ImmutableList;
+import com.google.errorprone.annotations.Immutable;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** The OCR text recognition result from a screenshot */
+@Immutable
 public class OcrResult {
 
   public static final OcrResult EMPTY_RESULT = new OcrResult(ImmutableList.of());

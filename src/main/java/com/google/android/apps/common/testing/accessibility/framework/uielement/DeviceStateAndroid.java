@@ -18,8 +18,8 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Parcel;
 import android.view.WindowManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.proto.AccessibilityHierarchyProtos.DeviceStateProto;
 import com.google.common.annotations.VisibleForTesting;
@@ -45,8 +45,9 @@ public class DeviceStateAndroid extends DeviceState {
       int sdkVersion,
       Locale locale,
       DisplayInfoAndroid defaultDisplayInfo,
-      @Nullable Float fontScale) {
-    super(sdkVersion, locale, fontScale);
+      @Nullable Float fontScale,
+      boolean hasFeatureWatch) {
+    super(sdkVersion, locale, fontScale, hasFeatureWatch);
     this.defaultDisplayInfo = defaultDisplayInfo;
   }
 
@@ -56,26 +57,8 @@ public class DeviceStateAndroid extends DeviceState {
     return defaultDisplayInfo;
   }
 
-  void writeToParcel(Parcel out, int flags) {
-    defaultDisplayInfo.writeToParcel(out, flags);
-    out.writeInt(sdkVersion);
-    out.writeString(getLanguageTag());
-    ParcelUtils.writeNullableFloat(out, fontScale);
-  }
-
   @Override
-  DeviceStateProto toProto() {
-    DeviceStateProto.Builder builder = DeviceStateProto.newBuilder();
-    builder.setSdkVersion(sdkVersion);
-    builder.setDefaultDisplayInfo(defaultDisplayInfo.toProto());
-    builder.setLocale(getLanguageTag());
-    if (fontScale != null) {
-      builder.setFontScale(fontScale);
-    }
-    return builder.build();
-  }
-
-  private String getLanguageTag() {
+  protected String getLanguageTag() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       return locale.toLanguageTag();
     } else {
@@ -94,11 +77,6 @@ public class DeviceStateAndroid extends DeviceState {
   /** Returns a new builder that can build a DeviceStateAndroid from a context. */
   static Builder newBuilder(Context context) {
     return new Builder(context);
-  }
-
-  /** Returns a new builder that can build a DeviceStateAndroid from a parcel. */
-  static Builder newBuilder(Parcel fromParcel) {
-    return new Builder(fromParcel);
   }
 
   /** Returns a new builder that can build a DeviceStateAndroid from a proto. */
@@ -146,22 +124,19 @@ public class DeviceStateAndroid extends DeviceState {
     private final Locale locale;
     private final DisplayInfoAndroid defaultDisplayInfo;
     private final @Nullable Float fontScale;
+    private final boolean hasFeatureWatch;
 
     // dereference of possibly-null reference wm
     @SuppressWarnings("nullness:dereference.of.nullable")
     Builder(Context context) {
       WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
       defaultDisplayInfo = new DisplayInfoAndroid(wm.getDefaultDisplay());
-      sdkVersion = Build.VERSION.SDK_INT;
+
+      sdkVersion =
+              Build.VERSION.SDK_INT;
       locale = Locale.getDefault();
       fontScale = context.getResources().getConfiguration().fontScale;
-    }
-
-    Builder(Parcel fromParcel) {
-      defaultDisplayInfo = new DisplayInfoAndroid(fromParcel);
-      sdkVersion = fromParcel.readInt();
-      locale = getLocaleFromLanguageTag(checkNotNull(fromParcel.readString()));
-      fontScale = ParcelUtils.readNullableFloat(fromParcel);
+      hasFeatureWatch = hasFeatureWatch(context);
     }
 
     Builder(DeviceStateProto fromProto) {
@@ -172,10 +147,17 @@ public class DeviceStateAndroid extends DeviceState {
       // This is for backward compatibility.
       locale = languageTag.isEmpty() ? Locale.getDefault() : getLocaleFromLanguageTag(languageTag);
       fontScale = fromProto.hasFontScale() ? fromProto.getFontScale() : null;
+      hasFeatureWatch = fromProto.getFeatureWatch();
+    }
+
+    private static boolean hasFeatureWatch(Context context) {
+      return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH)
+          && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH);
     }
 
     public DeviceStateAndroid build() {
-      return new DeviceStateAndroid(sdkVersion, locale, defaultDisplayInfo, fontScale);
+      return new DeviceStateAndroid(
+          sdkVersion, locale, defaultDisplayInfo, fontScale, hasFeatureWatch);
     }
   }
 }

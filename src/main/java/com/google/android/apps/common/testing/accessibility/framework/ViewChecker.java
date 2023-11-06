@@ -15,7 +15,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Evaluates accessibility checks against specified Views. */
 @CheckReturnValue
-@SuppressWarnings("deprecation") // AccessibilityViewCheckResult used for legacy check delegation
 public class ViewChecker {
 
   private static final String TAG = "ViewChecker";
@@ -90,7 +89,8 @@ public class ViewChecker {
         View checkedView =
             (element != null) ? mapFromElementIdToView.get(element.getCondensedUniqueId()) : null;
         results.add(
-            new AccessibilityViewCheckResult(check.getClass(), hierarchyCheckResult, checkedView));
+            new AccessibilityViewCheckResult(
+                check.getClass(), hierarchyCheckResult, element, checkedView));
       }
     }
     return results.build();

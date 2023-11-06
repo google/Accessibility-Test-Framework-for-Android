@@ -17,6 +17,7 @@ package com.google.android.apps.common.testing.accessibility.framework.checks;
 import static com.google.android.apps.common.testing.accessibility.framework.ViewHierarchyElementUtils.isPotentiallyObscured;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck.Category;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResult.AccessibilityCheckResultType;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheck;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityHierarchyCheckResult;
@@ -34,6 +35,7 @@ import com.google.android.apps.common.testing.accessibility.framework.utils.cont
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.ContrastUtils;
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Image;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
@@ -223,8 +225,8 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
           resultMetadata);
     }
 
-    List<Integer> foregroundColors = contrastSwatch.getForegroundColors();
-    List<Double> contrastRatios = contrastSwatch.getContrastRatios();
+    ImmutableList<Integer> foregroundColors = contrastSwatch.getForegroundColors();
+    ImmutableList<Double> contrastRatios = contrastSwatch.getContrastRatios();
     ArrayList<Integer> lowForegroundColors = new ArrayList<>();
     ArrayList<Double> lowContrastRatios = new ArrayList<>();
 
@@ -309,8 +311,8 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
                     StringManager.getString(locale, "result_message_image_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
                     ContrastUtils.CONTRAST_RATIO_WCAG_LARGE_TEXT,
-                    metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF));
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR))));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
       case RESULT_ID_CUSTOMIZED_IMAGE_CONTRAST_NOT_SUFFICIENT:
@@ -322,8 +324,8 @@ public class ImageContrastCheck extends AccessibilityHierarchyCheck {
                         locale, "result_message_image_customized_contrast_not_sufficient"),
                     metadata.getDouble(KEY_CONTRAST_RATIO),
                     metadata.getDouble(KEY_CUSTOMIZED_HEURISTIC_CONTRAST_RATIO),
-                    metadata.getInt(KEY_FOREGROUND_COLOR) & 0xFFFFFF,
-                    metadata.getInt(KEY_BACKGROUND_COLOR) & 0xFFFFFF));
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_FOREGROUND_COLOR)),
+                    ContrastUtils.colorToHexString(metadata.getInt(KEY_BACKGROUND_COLOR))));
         appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
         return builder.toString();
       default:

@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Bu öğede &lt;tt&gt;android:contentDescription&lt;/tt&gt; yok.</string>
   
+  <string name="result_message_no_content_desc_generic">Bu öğenin içerik açıklaması yok.</string>
+  
   <string name="result_message_not_visible">Bu öğe görünmüyor.</string>
   
   <string name="result_message_not_enabled">Bu öğe etkin değil.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">işlem yapılabilir</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Çakışan öğeler: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Öğe açıklamaları</string>
   
   <string name="result_message_brief_same_speakable_text">Birden fazla öğe aynı açıklamaya sahip.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Resmin ön ve arka planı arasındaki kontrast oranını artırmayı düşünün.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Bu resmin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengi (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) dayanır. Bu oranı %2$.2f veya üzerine çıkarmayı düşünün.</string>
+  <string name="result_message_image_contrast_not_sufficient">Bu resmin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengi (&lt;tt&gt;%3$s&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;%4$s&lt;/tt&gt;) dayanır. Bu oranı %2$.2f veya üzerine çıkarmayı düşünün.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre hesaplanır. Bu oranı %2$.2f veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%4$s&lt;/tt&gt;) göre hesaplanır. Bu oranı %2$.2f veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Resmin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre verilir. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Resmin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;%4$s&lt;/tt&gt;) göre verilir. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%4$06X&lt;/tt&gt;) göre hesaplanır. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Resmin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%4$s&lt;/tt&gt;) göre hesaplanır. Bu oranı değiştirilen orana (%2$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
   <string name="check_title_redundant_description">Öğe türü etiketi</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Bu öğenin &lt;tt&gt;android:contentDescription&lt;/tt&gt; özelliği, gereksiz metin içeriyor olabilir.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Bu öğenin içerik açıklaması gereksiz metin içeriyor olabilir.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Bu öğenin &lt;tt&gt;android:contentDescription&lt;/tt&gt; özelliği olan \"&lt;tt&gt;%1$s&lt;/tt&gt;\", öğenin türüyle bitiyor.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Bu öğenin &lt;tt&gt;android:contentDescription&lt;/tt&gt; özelliği olan \"&lt;tt&gt;%1$s&lt;/tt&gt;\", \"&lt;tt&gt;%2$s&lt;/tt&gt;\" öğe türünü içeriyor.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Bu öğenin içerik açıklaması (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), \"&lt;tt&gt;%2$s&lt;/tt&gt;\" öğe türünü içeriyor.</string>
+  
   <string name="result_message_content_desc_contains_action">Bu öğenin &lt;tt&gt;android:contentDescription&lt;/tt&gt; özelliği olan \"&lt;tt&gt;%1$s&lt;/tt&gt;\" içerisinde \"&lt;tt&gt;%2$s&lt;/tt&gt;\" işlemini barındırıyor.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Bu öğenin içerik açıklaması (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), \"&lt;tt&gt;%2$s&lt;/tt&gt;\" işlemini içeriyor.</string>
+  
   <string name="result_message_content_desc_contains_state">Bu öğenin &lt;tt&gt;android:contentDescription&lt;/tt&gt; özelliği olan \"&lt;tt&gt;%1$s&lt;/tt&gt;\" içerisinde \"&lt;tt&gt;%2$s&lt;/tt&gt;\" durumunu barındırıyor.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Bu öğenin içerik açıklaması (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), \"&lt;tt&gt;%2$s&lt;/tt&gt;\" durumunu içeriyor.</string>
   
   <string name="button_item_type">düğme</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">Web içeriği değerlendirilmedi.</string>
   
+  <string name="result_message_unsupported_compose_content">Oluşturulabilir içerik bu ortamda değerlendirilmez.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter içeriği bu ortamda değerlendirilmez.</string>
+  
   <string name="result_message_missing_speakable_text">Bu öğe, ekran okuyucuların okuyabileceği bir etikete sahip olmayabilir.</string>
   
   <string name="check_title_text_contrast">Metin kontrastı</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Bu öğenin ön plan - arka plan kontrast oranını artırmayı düşünün.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengi (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmayı düşünün.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengi (&lt;tt&gt;%2$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmayı düşünün.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Değiştirilen orandan (%4$.2f) daha büyük bir kontrast oranı sağlayan renkler kullanılması önerilir.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, metin rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) dayanır. Değiştirilen orandan (%4$.2f) daha büyük bir kontrast oranı sağlayan renkler kullanılması önerilir.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre verilir. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Metin rengi (&lt;tt&gt;%2$s&lt;/tt&gt;) ve opak olmayan arka plan rengi (&lt;tt&gt;%3$s&lt;/tt&gt;) temel alınarak öğenin olabilecek maksimum metin kontrast oranı %1$.2f. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Metin rengi (&lt;tt&gt;%2$s&lt;/tt&gt;) ve opak olmayan arka plan rengi (&lt;tt&gt;%3$s&lt;/tt&gt;) temel alınarak öğenin olabilecek maksimum metin kontrast oranı %1$.2f. Değiştirilen orandan (%4$.2f) daha büyük bir kontrast oranı sağlayan renkler kullanılması önerilir.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı: %1$.2f. Bu oran, belirtilen ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Metin rengi (&lt;tt&gt;%2$s&lt;/tt&gt;) ve opak olmayan arka plan rengi (&lt;tt&gt;%3$s&lt;/tt&gt;) temel alınarak öğenin olabilecek minimum metin kontrast oranı %1$.2f. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Metin rengi (&lt;tt&gt;%2$s&lt;/tt&gt;) ve opak olmayan arka plan rengi (&lt;tt&gt;%3$s&lt;/tt&gt;) temel alınarak öğenin olabilecek minimum metin kontrast oranı %1$.2f. Değiştirilen orandan (%4$.2f) daha büyük bir kontrast oranı sağlayan renkler kullanılması önerilir.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre verilir. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) göre verilir. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;#%3$06X&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) dayanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı: %1$.2f. Bu oran, belirtilen ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) göre hesaplanır. Küçük metinler için en az %4$.2f, büyük metinler için en az %5$.2f kontrast oranı sağlayan renkler kullanmanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını %4$.2f veya üzerine çıkarmanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, tahmini ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve tahmini arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) göre verilir. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Bu öğenin metin kontrast oranı %1$.2f. Bu oran, sağlanan ön plan rengine (&lt;tt&gt;%2$s&lt;/tt&gt;) ve arka plan rengine (&lt;tt&gt;%3$s&lt;/tt&gt;) göre hesaplanır. Bu öğenin metin kontrast oranını değiştirilen orana (%4$.2f) veya daha yüksek bir değere ayarlamanız önerilir.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Bu öğenin ön ve arka plan renkleri, önerilen kontrast oranını karşılıyor.</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit genişliğe ve ölçeklenebilir metne sahip.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Bu &lt;tt&gt;Text&lt;/tt&gt;, sabit genişliğe ve ölçeklenebilir metne sahip.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit yüksekliğe ve ölçeklenebilir metne sahip.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Bu &lt;tt&gt;Text&lt;/tt&gt;, sabit yüksekliğe ve ölçeklenebilir metne sahip.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Bu &lt;tt&gt;TextView&lt;/tt&gt;, sabit boyuta ve ölçeklenebilir metne sahip.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Bu &lt;tt&gt;Text&lt;/tt&gt;, sabit boyuta ve ölçeklenebilir metne sahip.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit genişliğe sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Bu öğe, sabit genişliğe sahip ve ölçeklenebilir metin barındıran bir &lt;tt&gt;Text&lt;/tt&gt; öğesi içeriyor.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit yüksekliğe sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Bu öğe sabit yüksekliğe sahip ve ölçeklenebilir metin barındıran bir &lt;tt&gt;Text&lt;/tt&gt; öğesi içeriyor.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Bu &lt;tt&gt;ViewGroup&lt;/tt&gt;, sabit boyuta sahip ve ölçeklenebilir metin bulunan bir &lt;tt&gt;TextView&lt;/tt&gt; içeriyor.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Bu öğe sabit bir boyuta sahip ve ölçeklenebilir metin barındıran bir &lt;tt&gt;Text&lt;/tt&gt; öğesi içeriyor.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Metni genişletmek için &lt;tt&gt;LayoutParams&lt;/tt&gt; öğesini değiştirebilirsiniz.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Metin genişletmek için &lt;tt&gt;sizeIn&lt;/tt&gt; aracılığıyla öğesi ile boyut değiştiricileri değiştirebilirsiniz.</string>
   
   <string name="check_title_unexposed_text">Gösterilmeyen Metin</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">Bu ImageView içinde OCR sonuçları algılandı.</string>
   
-  <string name="result_message_brief_unexposed_text">Gösterilmeyen metin algılandı: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Olası metin algılandı: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Metin algılandı: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Olası metin: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Bu &lt;tt&gt;SurfaceView&lt;/tt&gt; öğesindeki içerikler, erişilebilirlik hizmetlerine gösterilmiyor olabilir.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">\"%1$s\" dahil olmak üzere birden çok gösterilmeyen metin algılandı.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">\"%1$s\" dahil olmak üzere gösterilmeyen olası metinler algılandı.</string>
   
   <string name="result_message_multiple_unexposed_texts">Bu öğedeki içerikler, erişilebilirlik hizmetlerine gösterilmiyor olabilir.</string>
   

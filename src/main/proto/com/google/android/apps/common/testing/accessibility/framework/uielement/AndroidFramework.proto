@@ -20,7 +20,7 @@ package com.google.android.apps.common.testing.accessibility.framework.uielement
 
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.uielement.proto";
 option java_outer_classname = "AndroidFrameworkProtos";
-
+option objc_class_prefix = "AXEP";
 
 // Proto representation of Rect
 // Next index: 5
@@ -39,7 +39,7 @@ message CharSequenceProto {
 }
 
 // Proto representation of a Spanned
-// Next index: 8
+// Next index: 10
 message SpanProto {
   optional int32 start = 1;
   optional int32 end = 2;
@@ -48,15 +48,19 @@ message SpanProto {
   optional string url = 5;
   optional string span_class_name = 6;
   optional int32 style = 7;
+  optional int32 background_color = 8;
+  optional int32 foreground_color = 9;
 
   // Span types used by the test framework
-  // Next index: 5
+  // Next index: 7
   enum SpanType {
     UNKNOWN = 0;
     CLICKABLE = 1;
     URL = 2;
     STYLE = 3;
     UNDERLINE = 4;
+    BACKGROUND_COLOR = 5;
+    FOREGROUND_COLOR = 6;
   }
 }
 

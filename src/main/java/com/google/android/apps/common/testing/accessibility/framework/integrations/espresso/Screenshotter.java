@@ -1,14 +1,16 @@
 package com.google.android.apps.common.testing.accessibility.framework.integrations.espresso;
 
-import static com.google.common.base.Preconditions.checkArgument;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Picture;
 import android.graphics.Rect;
 import android.os.Build;
+import android.os.StrictMode;
+import android.os.StrictMode.ThreadPolicy;
 import android.view.View;
 import com.google.android.libraries.accessibility.utils.log.LogUtils;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Creates a pseudo screenshot.
@@ -24,7 +26,6 @@ import com.google.android.libraries.accessibility.utils.log.LogUtils;
  *       coordinates of the pixels within the Bitmap.
  * </ol>
  */
-// Adapted from java/com/google/testing/screendiffing/android/AndroidImageDiffer.java
 class Screenshotter {
   private static final String TAG = "Screenshotter";
 
@@ -32,10 +33,14 @@ class Screenshotter {
    * Returns a Bitmap with a rendering of the visible portion of the view and all of its children.
    * In some cases, the Bitmap may be smaller than the size of the display. This assumes that the
    * content of the display below and to the right of the View are of no interest.
+   *
+   * @return {@code null} if the width or height of the given view is zero
    */
-  public Bitmap getScreenshot(View view) {
-    checkArgument(view.getWidth() > 0, "View width must be >0");
-    checkArgument(view.getHeight() > 0, "View height must be >0");
+  public @Nullable Bitmap getScreenshot(View view) {
+    if (view.getWidth() <= 0 || view.getHeight() <= 0) {
+      return null;
+    }
+
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
       return getScreenShotPPlus(view);
     } else {
@@ -44,23 +49,31 @@ class Screenshotter {
   }
 
   private static Bitmap getScreenShotPPlus(View view) {
-    LogUtils.i(TAG, ">= P");
-    Picture picture = new Picture();
-    int[] windowOffset = getWindowOffset(view);
-    Canvas canvas =
-        picture.beginRecording(
-            windowOffset[0] + view.getWidth(), windowOffset[1] + view.getHeight());
-    view.computeScroll();
-    canvas.translate(windowOffset[0] - view.getScrollX(), windowOffset[1] - view.getScrollY());
-    view.draw(canvas);
+    // Obtaining a hardware Bitmap's image can trigger a strict mode violation, see b/136288531.
+    StrictMode.ThreadPolicy originalPolicy = StrictMode.getThreadPolicy();
+    StrictMode.setThreadPolicy(ThreadPolicy.LAX);
+    try {
+      LogUtils.i(TAG, ">= P");
+      Picture picture = new Picture();
+      int[] windowOffset = getWindowOffset(view);
+      Canvas canvas =
+          picture.beginRecording(
+              windowOffset[0] + view.getWidth(), windowOffset[1] + view.getHeight());
+      view.computeScroll();
+      canvas.translate(windowOffset[0] - view.getScrollX(), windowOffset[1] - view.getScrollY());
+      view.draw(canvas);
 
-    // End recording before creating the Bitmap so that the Picture is fully initialized prior to
-    // creating the Bitmap copy below. Matches the previous call to beginRecording. See b/80539264.
-    picture.endRecording();
-    Bitmap bitmap =
-        Bitmap.createBitmap(
-            picture, picture.getWidth(), picture.getHeight(), Bitmap.Config.ARGB_8888);
-    return bitmap;
+      // End recording before creating the Bitmap so that the Picture is fully initialized prior to
+      // creating the Bitmap copy below. Matches the previous call to beginRecording. See
+      // b/80539264.
+      picture.endRecording();
+      Bitmap bitmap =
+          Bitmap.createBitmap(
+              picture, picture.getWidth(), picture.getHeight(), Bitmap.Config.ARGB_8888);
+      return bitmap;
+    } finally {
+      StrictMode.setThreadPolicy(originalPolicy);
+    }
   }
 
   private static Bitmap getScreenshotPreP(View view) {

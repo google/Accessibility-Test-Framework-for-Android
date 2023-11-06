@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Ta element nima atributa &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Ta element nima opisa vsebine.</string>
+  
   <string name="result_message_not_visible">Ta element ni viden.</string>
   
   <string name="result_message_not_enabled">Ta element ni omogočen.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">z elementom je mogoče opraviti dejanje</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Elementi v sporu: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Opisi elementov</string>
   
   <string name="result_message_brief_same_speakable_text">Več elementov ima enak opis.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Razmislite o povečanju kontrastnega razmerja med ospredjem in ozadjem slike.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Razmislite o povečanju razmerja na %2$.2f ali več.</string>
+  <string name="result_message_image_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;%3$s&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;%4$s&lt;/tt&gt;. Razmislite o povečanju razmerja na %2$.2f ali več.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na %2$.2f ali več.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;%3$s&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;%4$s&lt;/tt&gt;. Priporočamo, da to razmerje povečate na %2$.2f ali več.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;%3$s&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;%4$s&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%3$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%4$06X&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje slike je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;%3$s&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;%4$s&lt;/tt&gt;. Priporočamo, da to razmerje povečate na spremenjeno razmerje %2$.2f ali več.</string>
   
   <string name="check_title_redundant_description">Oznaka vrste elementa</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">V atributu &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa je morda nepotrebno besedilo.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">V opisu vsebine tega elementa je morda nepotrebno besedilo.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa (»&lt;tt&gt;%1$s&lt;/tt&gt;«) se konča z vrsto elementa.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa (»&lt;tt&gt;%1$s&lt;/tt&gt;«) vsebuje vrsto elementa »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Opis vsebine tega elementa, »&lt;tt&gt;%1$s&lt;/tt&gt;«, vsebuje vrsto elementa »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
   
   <string name="result_message_content_desc_contains_action">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa
     (»&lt;tt&gt;%1$s&lt;/tt&gt;«)
     vključuje dejanje »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Opis vsebine tega elementa,
+    »&lt;tt&gt;%1$s&lt;/tt&gt;«,
+    vsebuje dejanje »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
+  
   <string name="result_message_content_desc_contains_state">Atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; tega elementa
     (»&lt;tt&gt;%1$s&lt;/tt&gt;«)
     vključuje stanje »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Opis vsebine tega elementa,
+    »&lt;tt&gt;%1$s&lt;/tt&gt;«,
+    vsebuje stanje »&lt;tt&gt;%2$s&lt;/tt&gt;«.</string>
   
   <string name="button_item_type">gumb</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Spletna vsebina se ne ocenjuje.</string>
   
+  <string name="result_message_unsupported_compose_content">Sestavljiva vsebina se v tem okolju ne ocenjuje.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Vsebina Flutter se v tem okolju ne ocenjuje.</string>
+  
   <string name="result_message_missing_speakable_text">Ta element ne sme imeti oznake, ki jo lahko preberejo bralniki zaslona.</string>
   
   <string name="check_title_text_contrast">Kontrast besedila</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Razmislite o povečanju kontrastnega razmerja ospredja in ozadja besedila elementa.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;#%2$06X&lt;/tt&gt; in barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;%2$s&lt;/tt&gt; in barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;#%2$06X&lt;/tt&gt; in barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od spremenjenega razmerja %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na barvi besedila &lt;tt&gt;%2$s&lt;/tt&gt; in barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od spremenjenega razmerja %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Največje možno razmerje kontrasta besedila elementa je %1$.2f glede na barvo besedila &lt;tt&gt;%2$s&lt;/tt&gt; in neprosojno barvo ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Največje možno razmerje kontrasta besedila elementa je %1$.2f glede na barvo besedila &lt;tt&gt;%2$s&lt;/tt&gt; in neprosojno barvo ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od spremenjenega razmerja %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Najmanjše možno razmerje kontrasta besedila elementa je %1$.2f glede na barvo besedila &lt;tt&gt;%2$s&lt;/tt&gt; in neprosojno barvo ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Najmanjše možno razmerje kontrasta besedila elementa je %1$.2f glede na barvo besedila &lt;tt&gt;%2$s&lt;/tt&gt; in neprosojno barvo ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od spremenjenega razmerja %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;#%2$06X&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;#%3$06X&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Uporabite barve, s katerimi bo kontrastno razmerje večje od %4$.2f za majhno besedilo ali %5$.2f za veliko besedilo.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na %4$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na ocenjeni barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in ocenjeni barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Kontrastno razmerje besedila elementa je %1$.2f. To razmerje temelji na izbrani barvi ospredja &lt;tt&gt;%2$s&lt;/tt&gt; in izbrani barvi ozadja &lt;tt&gt;%3$s&lt;/tt&gt;. Razmislite o povečanju kontrastnega razmerja besedila elementa na spremenjeno razmerje %4$.2f ali več.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Barve ospredja in ozadja elementa so v skladu s predlaganim kontrastnim razmerjem.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno širino in prilagodljivo velikost pisave.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">To besedilo &lt;tt&gt;Text&lt;/tt&gt; ima fiksno širino in prilagodljivo velikost pisave.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno višino in prilagodljivo velikost pisave.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">To besedilo &lt;tt&gt;Text&lt;/tt&gt; ima fiksno višino in prilagodljivo velikost pisave.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">To besedilo &lt;tt&gt;TextView&lt;/tt&gt; ima fiksno velikost in prilagodljivo velikost pisave.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">To besedilo &lt;tt&gt;Text&lt;/tt&gt; ima fiksno velikost in prilagodljivo velikost pisave.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno širino in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Ta element ima fiksno širino in vsebuje element &lt;tt&gt;Text&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno višino in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Ta element ima fiksno višino in vsebuje element &lt;tt&gt;Text&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ta skupina &lt;tt&gt;ViewGroup&lt;/tt&gt; ima fiksno velikost in vsebuje besedilo &lt;tt&gt;TextView&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Ta element ima fiksno velikost in vsebuje element &lt;tt&gt;Text&lt;/tt&gt; s prilagodljivo velikostjo pisave.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Prilagodite parametre &lt;tt&gt;LayoutParams&lt;/tt&gt;, da omogočite razširjanje besedila.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Prilagodite modifikatorje velikosti z uporabo &lt;tt&gt;sizeIn&lt;/tt&gt;, da omogočite razširitev besedila.</string>
   
   <string name="check_title_unexposed_text">Neizpostavljeno besedilo</string>
   
@@ -301,13 +343,13 @@
   
   <string name="result_message_text_detected_in_image_view">V tem elementu ImageView so bili zaznani rezultati tehnologije OCR.</string>
   
-  <string name="result_message_brief_unexposed_text">Zaznano je bilo neizpostavljeno besedilo: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Zaznano je možno besedilo: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Zaznano je bilo besedilo: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Možno besedilo: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Ta &lt;tt&gt;SurfaceView&lt;/tt&gt; morda ne razkriva svoje vsebine storitvam za ljudi s posebnimi potrebami.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Zaznanih je več neizpostavljenih besedil, vključno z naslednjim: »%1$s«.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Zaznana so možna neizpostavljena besedila, vključno z naslednjim: »%1$s«.</string>
   
   <string name="result_message_multiple_unexposed_texts">Ta element morda ne razkriva svoje vsebine storitvam za ljudi s posebnimi potrebami.</string>
   

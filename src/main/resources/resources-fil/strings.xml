@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Walang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ang item na ito.</string>
   
+  <string name="result_message_no_content_desc_generic">Walang paglalarawan ng content ang item na ito.</string>
+  
   <string name="result_message_not_visible">Hindi nakikita ang item na ito.</string>
   
   <string name="result_message_not_enabled">Hindi naka-enable ang item na ito.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">naaaksyunan</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">(Mga) magkakasalungat na elemento: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">mga paglalarawan ng item</string>
   
   <string name="result_message_brief_same_speakable_text">Maraming item na may parehong paglalarawan.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Pag-isipang taasan ang contrast ratio sa pagitan ng foreground at background ng larawang ito.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">%1$.2f ang contrast ratio ng larawan. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Pag-isipang taasan ang ratio na ito sa %2$.2f o higit pa.</string>
+  <string name="result_message_image_contrast_not_sufficient">%1$.2f ang contrast ratio ng larawan. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;%3$s&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;%4$s&lt;/tt&gt;. Pag-isipang taasan ang ratio na ito sa %2$.2f o higit pa.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio na ito sa %2$.2f o higit pa.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;%3$s&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;%4$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio na ito sa %2$.2f o higit pa.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa tinatayang kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at tinatayang kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng ratio na ito sa binagong ratio na %2$.2f o higit pa.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa tinatayang kulay ng foreground na &lt;tt&gt;%3$s&lt;/tt&gt; at tinatayang kulay ng background na &lt;tt&gt;%4$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng ratio na ito sa binagong ratio na %2$.2f o higit pa.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;#%3$06X&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;#%4$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng ratio na ito sa binagong ratio na %2$.2f o higit pa.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Ang contrast ratio ng larawan ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;%3$s&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;%4$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng ratio na ito sa binagong ratio na %2$.2f o higit pa.</string>
   
   <string name="check_title_redundant_description">Label ng uri ng item</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Maaring maglaman ng hindi kinakailangang teksto ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ng item na ito.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Posibleng may hindi kinakailangang text ang paglalarawan ng content ng item na ito.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Nagtatapos sa uri ng item ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; na, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Ang &lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito ay naglalaman ng uri ng item na \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Naglalaman ng uri ng item na \"&lt;tt&gt;%2$s&lt;/tt&gt;\" ang paglalarawan ng content na \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito.</string>
   
   <string name="result_message_content_desc_contains_action">Ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ng item na ito,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     ay naglalaman ng aksyong \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Naglalaman ng aksyong
+    \"&lt;tt&gt;%2$s&lt;/tt&gt;\"
+    ang paglalarawan ng content na \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito.</string>
+  
   <string name="result_message_content_desc_contains_state">Ang &lt;tt&gt;android:contentDescription&lt;/tt&gt; ng item na ito,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     ay naglalaman ng status na \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Naglalaman ng status na
+    \"&lt;tt&gt;%2$s&lt;/tt&gt;\"
+    ang paglalarawan ng content na \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ng item na ito.</string>
   
   <string name="button_item_type">button</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Hindi nasuri ang web content.</string>
   
+  <string name="result_message_unsupported_compose_content">Hindi sinusuri ang nako-compose na content sa ganitong environment.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Hindi sinusuri ang content ng Flutter sa ganitong environment.</string>
+  
   <string name="result_message_missing_speakable_text">Maaaring walang label na mababasa ng mga screen reader ang item na ito.</string>
   
   <string name="check_title_text_contrast">Contrast ng teksto</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Pag-isipang taasan ang contrast ratio ng foreground sa background ng teksto ng item na ito.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">%1$.2f ang contrast ratio ng teksto ng item na ito. Nakabatay ang ratio na ito sa isang kulay ng teksto na &lt;tt&gt;#%2$06X&lt;/tt&gt; at kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng teksto ng item na ito sa %4$.2f o higit pa.</string>
+  <string name="result_message_textview_contrast_not_sufficient">%1$.2f ang contrast ratio ng teksto ng item na ito. Nakabatay ang ratio na ito sa isang kulay ng teksto na &lt;tt&gt;%2$s&lt;/tt&gt; at kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng teksto ng item na ito sa %4$.2f o higit pa.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa kulay ng text na &lt;tt&gt;#%2$06X&lt;/tt&gt; at kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na humahantong sa contrast ratio na mas malaki kaysa binagong ratio na %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa kulay ng text na &lt;tt&gt;%2$s&lt;/tt&gt; at kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na humahantong sa contrast ratio na mas malaki kaysa binagong ratio na %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">%1$.2f ang contrast ratio ng text ng item na ito. Nakabatay ang ratio na ito sa tinatayang kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at tinatayang kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pag-isipan ang paggamit ng contrast ratio na higit pa sa %4$.2f para sa maliliit na text, o %5$.2f para sa malalaking text.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Ang maximum na posibleng contrast ratio ng text ng item ay %1$.2f, batay sa kulay ng text na &lt;tt&gt;%2$s&lt;/tt&gt; at hindi opaque na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">%1$.2f ang contrast ratio ng text ng item na ito. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Ang maximum na posibleng contrast ratio ng text ng item ay %1$.2f, batay sa kulay ng text na &lt;tt&gt;%2$s&lt;/tt&gt; at hindi opaque na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na humahantong sa contrast ratio na mas malaki kaysa binagong ratio na %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">%1$.2f ang contrast ratio ng text ng item. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na nagresulta sa isang contrast ratio na higit pa sa %4$.2f para sa maliliit na text, o %5$.2f para sa malalaking text.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Ang minimum na posibleng contrast ratio ng text ng item ay %1$.2f, batay sa kulay ng text na &lt;tt&gt;%2$s&lt;/tt&gt; at hindi opaque na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Ang minimum na posibleng contrast ratio ng text ng item ay %1$.2f, batay sa kulay ng text na &lt;tt&gt;%2$s&lt;/tt&gt; at hindi opaque na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na humahantong sa contrast ratio na mas malaki kaysa binagong ratio na %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">%1$.2f ang contrast ratio ng text ng item. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at sa isang tinatayang kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng text ng item na ito sa binagong ratio na %4$.2f o higit pa.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">%1$.2f ang contrast ratio ng text ng item na ito. Nakabatay ang ratio na ito sa tinatayang kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at tinatayang kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Pag-isipan ang paggamit ng contrast ratio na higit pa sa %4$.2f para sa maliliit na text, o %5$.2f para sa malalaking text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;#%2$06X&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;#%3$06X&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng text ng item na ito sa binagong ratio na %4$.2f o higit pa.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">%1$.2f ang contrast ratio ng text ng item na ito. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at isang tinatayang kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">%1$.2f ang contrast ratio ng text ng item. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang paggamit ng mga kulay na nagresulta sa isang contrast ratio na higit pa sa %4$.2f para sa maliliit na text, o %5$.2f para sa malalaking text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Pag-isipang taasan ang contrast ratio ng text ng item na ito sa %4$.2f o higit pa.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">%1$.2f ang contrast ratio ng text ng item. Nakabatay ang ratio na ito sa isang tinatayang kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at sa isang tinatayang kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng text ng item na ito sa binagong ratio na %4$.2f o higit pa.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Ang contrast ratio ng text ng item ay %1$.2f. Nakabatay ang ratio na ito sa ibinigay na kulay ng foreground na &lt;tt&gt;%2$s&lt;/tt&gt; at ibinigay na kulay ng background na &lt;tt&gt;%3$s&lt;/tt&gt;. Isaalang-alang ang pagtataas ng contrast ratio ng text ng item na ito sa binagong ratio na %4$.2f o higit pa.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Natutugunan ng foreground at background na kulay ng item na ito ang iminungkahing contrast ratio.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Hindi nagbabago ang lapad nitong &lt;tt&gt;TextView&lt;/tt&gt; at nababago ang sukat ng text.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Hindi nagbabago ang lapad nitong &lt;tt&gt;Text&lt;/tt&gt; at nababago ang sukat ng text.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Hindi nagbabago ang taas nitong &lt;tt&gt;TextView&lt;/tt&gt; at nababago ang sukat ng text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Hindi nagbabago ang taas nitong &lt;tt&gt;Text&lt;/tt&gt; at nababago ang sukat ng text.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Hindi nagbabago ang laki nitong &lt;tt&gt;TextView&lt;/tt&gt; at nababago ang sukat ng text.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Hindi nagbabago ang laki nitong &lt;tt&gt;Text&lt;/tt&gt; at nababago ang sukat ng text.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Hindi nagbabago ang lapad nitong &lt;tt&gt;ViewGroup&lt;/tt&gt; at naglalaman ng &lt;tt&gt;TextView&lt;/tt&gt; na nababago ang sukat ng text.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Hindi nagbabago ang lapad ng element na ito at naglalaman ng &lt;tt&gt;Text&lt;/tt&gt; element na nababago ang sukat ng text.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Hindi nagbabago ang taas nitong &lt;tt&gt;ViewGroup&lt;/tt&gt; at naglalaman ng &lt;tt&gt;TextView&lt;/tt&gt; na nababago ang sukat ng text.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Hindi nagbabago ang taas ng element na ito at naglalaman ng &lt;tt&gt;Text&lt;/tt&gt; element na nababago ang sukat ng text.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Hindi nagbabago ang laki nitong &lt;tt&gt;ViewGroup&lt;/tt&gt; at naglalaman ng &lt;tt&gt;TextView&lt;/tt&gt; na nababago ang sukat ng text.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Hindi nagbabago ang laki ng element na ito at naglalaman ng &lt;tt&gt;Text&lt;/tt&gt; element na nababago ang sukat ng text.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Pag-isipan ang pagbago sa &lt;tt&gt;LayoutParams&lt;/tt&gt; para mabigyan daan ang paglawak ng text.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Pag-isipan ang pagbago sa mga modifier ng laki gamit ang &lt;tt&gt;sizeIn&lt;/tt&gt; para payagan ang pag-expand ng text.</string>
   
   <string name="check_title_unexposed_text">Hindi Nakalantad na Text</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">May na-detect na mga resulta ng OCR sa loob ng ImageView na ito.</string>
   
-  <string name="result_message_brief_unexposed_text">May na-detect na hindi nakalantad na text: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Na-detect na posibleng text: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Na-detect na text: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Posibleng text: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Posibleng hindi inilalantad ng &lt;tt&gt;SurfaceView&lt;/tt&gt; na ito ang content nito sa mga serbisyo sa accessibility.</string>
+  <string name="result_message_text_detected_in_surface_view">Posibleng hindi ipakita ng &lt;tt&gt;SurfaceView&lt;/tt&gt; ang content nito sa mga serbisyo para sa accessibility.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Naka-detect ng maraming hindi nakalantad na text, kabilang ang \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">May na-detect ng na posibleng hindi nakikitang text, kabilang ang \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">Baka hindi inilalantad ng item na ito ang content nito sa mga serbisyo para sa accessibility.</string>
+  <string name="result_message_multiple_unexposed_texts">Posibleng hindi ipinapakita ng item na ito ang content nito sa mga serbisyo sa accessibility.</string>
   
   <string name="result_message_ocr_result_not_available">Hindi available ang mga resulta ng OCR.</string>
   

@@ -46,16 +46,16 @@ public class Span {
   }
 
   public SpanProto toProto() {
-    // Note that subclasses explicitly do not rely on inheritance to write properties managed by
-    // this class.  This is to ensure the SpanType is properly set from each specific span.
-    SpanProto.Builder builder = SpanProto.newBuilder();
-    builder.setSpanClassName(spanClassName);
-    builder.setStart(start);
-    builder.setEnd(end);
-    builder.setFlags(flags);
-    builder.setType(SpanType.UNKNOWN);
+    return toProtoBuilder(SpanType.UNKNOWN).build();
+  }
 
-    return builder.build();
+  protected SpanProto.Builder toProtoBuilder(SpanType type) {
+    return SpanProto.newBuilder()
+        .setSpanClassName(spanClassName)
+        .setStart(start)
+        .setEnd(end)
+        .setFlags(flags)
+        .setType(type);
   }
 
   protected Span copyWithAdjustedPosition(int newStart, int newEnd) {

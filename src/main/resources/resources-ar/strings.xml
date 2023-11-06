@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">لا يتضمن هذا العنصر &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">لا يحتوي هذا العنصر على وصف للمحتوى.</string>
+  
   <string name="result_message_not_visible">هذا العنصر غير مرئي.</string>
   
   <string name="result_message_not_enabled">لم يتم تفعيل هذا العنصر.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">يمكن اتخاذ إجراء بشأنه</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">العناصر المتعارضة: &lt;tt&gt;%1$s&lt;/tt&gt;</string>
+  
   <string name="check_title_duplicate_speakable_text">أوصاف العناصر</string>
   
   <string name="result_message_brief_same_speakable_text">تملك عناصر متعددة الوصف نفسه.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">ننصحك بزيادة معدل التباين بين واجهة هذه الصورة وخلفيتها.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">إنّ معدل تباين الصورة هو %1$.2f. يستند هذا المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%3$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة المعدل إلى %2$.2f أو أكثر.</string>
+  <string name="result_message_image_contrast_not_sufficient">إنّ معدل تباين الصورة هو %1$.2f. يستند هذا المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;%3$s&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;%4$s&lt;/tt&gt;. ننصحك بزيادة المعدل إلى %2$.2f أو أكثر.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى %2$.2f أو نسبة أعلى.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;%3$s&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;%4$s&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى %2$.2f أو نسبة أعلى.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">تبلغ نسبة تباين الصورة %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">تبلغ نسبة تباين الصورة %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;%3$s&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;%4$s&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%4$06X&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين الصورة %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;%3$s&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;%4$s&lt;/tt&gt;. ننصحك بزيادة نسبة التباين إلى النسبة المعدّلة، وهي %2$.2f، أو نسبة أعلى.</string>
   
   <string name="check_title_redundant_description">تسمية نوع العنصر</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">قد يتضمن &lt;tt&gt;android:contentDescription&lt;/tt&gt; لهذا العنصر نصًا غير ضروري.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">قد يحتوي وصف محتوى هذا العنصر على نص غير ضروري.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">ينتهي &lt;tt&gt;android:contentDescription&lt;/tt&gt; لهذا العنصر، \"&lt;tt&gt;%1$s&lt;/tt&gt;\"، بنوع العنصر.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">يتضمّن &lt;tt&gt;android:contentDescription&lt;/tt&gt; لهذا العنصر، \"&lt;tt&gt;%1$s&lt;/tt&gt;\"، نوع العنصر \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">يحتوي وصف محتوى هذا العنصر \"&lt;tt&gt;%1$s&lt;/tt&gt;\" على نوع العنصر \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="result_message_content_desc_contains_action">في هذا العنصر، يتضّمن &lt;tt&gt;android:contentDescription&lt;/tt&gt; الوصف
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\"
     الذي يتناول الإجراء \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">يحتوي وصف محتوى هذا العنصر،
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\"،
+    على الإجراء \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">في هذا العنصر، يتضمن &lt;tt&gt;android:contentDescription&lt;/tt&gt; الوصف
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\"
     الذي يتناول الحالة \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">يحتوي وصف محتوى هذا العنصر،
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\"،
+    على الحالة \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="button_item_type">زر</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">لم يتم تقييم محتوى الويب.</string>
   
+  <string name="result_message_unsupported_compose_content">لا يتم تقييم المحتوى القابل للإنشاء في هذا العرض.</string>
+  
+  <string name="result_message_unsupported_flutter_content">لا يتم تقييم محتوى Flutter في هذا العرض.</string>
+  
   <string name="result_message_missing_speakable_text">قد لا يحتوي هذا العنصر على تسمية يمكن قراءتها بواسطة قارئات الشاشة.</string>
   
   <string name="check_title_text_contrast">تباين النص</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">ننصحك بزيادة معدل تباين ألوان الواجهة إلى الخلفية لنص هذا العنصر.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">يبلغ معدل تباين النص %1$.2f. يستند هذا المعدل إلى لون نص &lt;tt&gt;#%2$06X&lt;/tt&gt; ولون خلفية &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة معدل تباين نص هذا العنصر إلى %4$.2f أو أكثر.</string>
+  <string name="result_message_textview_contrast_not_sufficient">يبلغ معدل تباين النص %1$.2f. يستند هذا المعدل إلى لون نص &lt;tt&gt;%2$s&lt;/tt&gt; ولون خلفية &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة معدل تباين نص هذا العنصر إلى %4$.2f أو أكثر.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون النصّ، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من النسبة المعدّلة، وهي %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون النصّ، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من النسبة المعدّلة، وهي %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">يبلغ معدل تباين النص الخاص بهذا العنصر %1$.2f. يستند المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;#%2$06X&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تؤدي إلى تحقيق معدل تباين يزيد عن %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">إنّ الحدّ الأقصى لنسبة تباين النص الخاصة بالعنصر هي %1$.2f، استنادًا إلى نص باللون &lt;tt&gt;%2$s&lt;/tt&gt; ولون خلفية غير معتم هو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون تقديري للمقدّمة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون تقديري للخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">إنّ الحدّ الأقصى لنسبة تباين النص الخاصة بالعنصر هي %1$.2f، استنادًا إلى نص باللون &lt;tt&gt;%2$s&lt;/tt&gt; ولون خلفية غير معتم هو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من النسبة المعدّلة، وهي %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">إنّ الحدّ الأدنى لنسبة تباين النص الخاصة بالعنصر هي %1$.2f، استنادًا إلى نص باللون &lt;tt&gt;%2$s&lt;/tt&gt; ولون خلفية غير معتم هو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون المقدّمة المحدّد، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية المحدّد، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">إنّ الحدّ الأدنى لنسبة تباين النص الخاصة بالعنصر هي %1$.2f، استنادًا إلى نص باللون &lt;tt&gt;%2$s&lt;/tt&gt; ولون خلفية غير معتم هو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من النسبة المعدّلة، وهي %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">يبلغ معدل تباين النص الخاص بهذا العنصر %1$.2f. يستند المعدل إلى لون تقديري للواجهة هو &lt;tt&gt;%2$s&lt;/tt&gt; ولون تقديري للخلفية هو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك باستخدام ألوان تؤدي إلى تحقيق معدل تباين يزيد عن %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;#%2$06X&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;#%3$06X&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون تقديري للمقدّمة، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون تقديري للخلفية، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك باستخدام ألوان تحقق نسبة تباين أعلى من %4$.2f للنصوص الصغيرة الحجم أو %5$.2f للنصوص الكبيرة الحجم.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">تبلغ نسبة تباين نص العنصر %1$.2f. وتستند هذه النسبة إلى لون المقدّمة المحدّد، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون الخلفية المحدّد، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر هذا إلى %4$.2f أو أكثر.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. تستند هذه النسبة إلى لون مقدّر للواجهة، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون مقدّر للخلفية، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">تبلغ نسبة تباين النص لهذا العنصر %1$.2f. وتستند هذه النسبة إلى لون الواجهة، وهو &lt;tt&gt;%2$s&lt;/tt&gt;، ولون الخلفية، وهو &lt;tt&gt;%3$s&lt;/tt&gt;. ننصحك بزيادة نسبة تباين نص العنصر إلى النسبة المعدّلة، وهي %4$.2f، أو نسبة أعلى.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">يستوفي لونا الواجهة والخلفية لهذا العنصر معايير نسبة التباين المقترَحة.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بعرض ثابت ونص يمكن تغيير حجمه.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">يتميز عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" هذا بعرض ثابت ونص يمكن تغيير حجمه.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بارتفاع ثابت ونص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">يتميز عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" هذا بارتفاع ثابت ونص يمكن تغيير حجمه.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">يتميز &lt;tt&gt;TextView&lt;/tt&gt; هذا بحجم ثابت ونص يمكن تغيير حجمه.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">يتميز عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" هذا بحجم ثابت ونص يمكن تغيير حجمه.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بعرض ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">يتميز هذا العنصر بعرض ثابت ويحتوي على عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" مع نص يمكن تغيير حجمه.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بارتفاع ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">يتميز هذا العنصر بارتفاع ثابت ويحتوي على عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" مع نص يمكن تغيير حجمه.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">تتميز &lt;tt&gt;ViewGroup&lt;/tt&gt; هذه بحجم ثابت وتحتوي على &lt;tt&gt;TextView&lt;/tt&gt; بنص يمكن تغيير حجمه.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">حجم هذا العنصر ثابت ويحتوي على عنصر \"&lt;tt&gt;Text&lt;/tt&gt;\" مع نص يمكن تغيير حجمه.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">يمكنك تغيير &lt;tt&gt;LayoutParams&lt;/tt&gt; للسماح بتوسيع النص.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">يمكنك تغيير عناصر تعديل الحجم باستخدام \"&lt;tt&gt;sizeIn&lt;/tt&gt;\" للسماح بتوسيع النص.</string>
   
   <string name="check_title_unexposed_text">نص غير ظاهر</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">تم رصد نتائج التعرّف البصري على الأحرف داخل ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">تم رصد نص غير ظاهر: %1$s.</string>
+  <string name="result_message_brief_unexposed_text">تم رصد نص محتمَل: %1$s.</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">تم رصد نص: %1$s.</string>
+  <string name="result_message_brief_text_detected_in_image_view">النص المحتمَل: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">يُحتمَل أنّه لا يتم عرض محتوى &lt;tt&gt;SurfaceView&lt;/tt&gt; هذا لخدمات تسهيل الاستخدام.</string>
+  <string name="result_message_text_detected_in_surface_view">قد لا تعرض &lt;tt&gt;SurfaceView&lt;/tt&gt; محتواها للخدمات المخصّصة لتسهيل الاستخدام.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">تم رصد عدة نصوص غير معروضة، بما في ذلك \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">تم رصد نصوص محتمَلة غير ظاهرة، بما في ذلك \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">يُحتمَل أنّه لا يتم عرض محتوى هذا العنصر لخدمات تسهيل الاستخدام.</string>
+  <string name="result_message_multiple_unexposed_texts">قد لا يعرض هذا الملف محتواه للخدمات المخصّصة لتسهيل الاستخدام.</string>
   
   <string name="result_message_ocr_result_not_available">نتائج التعرّف البصري على الأحرف غير متوفّرة.</string>
   

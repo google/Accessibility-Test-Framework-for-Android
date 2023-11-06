@@ -23,6 +23,7 @@ import "com/google/android/apps/common/testing/accessibility/framework/uielement
 
 option java_package = "com.google.android.apps.common.testing.accessibility.framework.proto";
 option java_outer_classname = "AccessibilityEvaluationProtos";
+option objc_class_prefix = "AXEP";
 
 // Describes a single-hierarchy accessibility evaluation by ATF
 // Next index: 3

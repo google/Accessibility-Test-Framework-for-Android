@@ -43,6 +43,12 @@ public class SpannableString implements CharSequence {
         case UNDERLINE:
           localSpan = new Spans.UnderlineSpan(span);
           break;
+        case BACKGROUND_COLOR:
+          localSpan = new Spans.BackgroundColorSpan(span);
+          break;
+        case FOREGROUND_COLOR:
+          localSpan = new Spans.ForegroundColorSpan(span);
+          break;
         case UNKNOWN:
           localSpan = new Span(span);
           break;

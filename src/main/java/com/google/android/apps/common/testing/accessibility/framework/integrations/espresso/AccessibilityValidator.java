@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import androidx.test.platform.io.PlatformTestStorage;
 import androidx.test.services.storage.TestStorage;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPreset;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckPresetAndroid;
@@ -46,24 +47,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hamcrest.Matcher;
 
 /**
  * A configurable executor for the {@link AccessibilityViewHierarchyCheck}s designed for use with
- * Espresso. Clients can call {@link #checkAndReturnResults} on a {@link View} to run all of the
- * checks with the options specified in this object.
+ * Espresso or Robolectric tests. Clients can call {@link #checkAndReturnResults} on a {@link View}
+ * to run all of the checks with the options specified in this object.
  */
-@SuppressWarnings("deprecation")
 public final class AccessibilityValidator {
 
   private static final String TAG = "AccessibilityValidator";
+
+
   private AccessibilityCheckPreset preset = AccessibilityCheckPreset.LATEST;
   private boolean runChecksFromRootView = false;
 
   @VisibleForTesting Screenshotter screenshotter = new Screenshotter();
-  private boolean captureScreenshots = false;
-  private boolean saveScreenshots = false;
+  @VisibleForTesting BitmapWriter bitmapWriter = new BitmapWriter();
+  private @MonotonicNonNull PlatformTestStorage testStorage;
+
+  private boolean captureScreenshots = true;
+  private @Nullable Boolean saveScreenshots;
   private @Nullable Boolean saveViewImages;
   private int screenshotsCaptured = 0;
 
@@ -79,34 +86,61 @@ public final class AccessibilityValidator {
 
   private @Nullable Matcher<? super AccessibilityViewCheckResult> suppressingMatcher = null;
   private final List<AccessibilityCheckListener> checkListeners = new ArrayList<>();
+  private final List<CheckResultsListener> checkResultsListeners = new ArrayList<>();
+  private Parameters parameters = new Parameters();
 
   public AccessibilityValidator() {
+  }
+
+  /**
+   * Runs accessibility checks with default parameters. The default parameters can be set using
+   * {@link #setParameters(Parameters)}.
+   *
+   * @param view the {@link View} to check
+   */
+  public final void check(View view) {
+    check(view, parameters);
   }
 
   /**
    * Runs accessibility checks.
    *
    * @param view the {@link View} to check
+   * @param parameters supplemental input data and preferences
    */
-  public final void check(View view) {
-    checkNotNull(view);
-    checkAndReturnResults(view);
+  public final void check(View view, Parameters parameters) {
+    ImmutableList<AccessibilityViewCheckResult> unused = checkAndReturnResults(view, parameters);
   }
 
   /**
-   * Runs accessibility checks and returns the list of results. If the result is not needed, call
-   * {@link #check(View)} instead.
+   * Runs accessibility checks with default parameters and returns the list of results. If the
+   * result is not needed, call {@link #check(View)} instead. The default parameters can be set
+   * using {@link #setParameters(Parameters)}.
    *
    * @param view the {@link View} to check
    * @return an immutable list of the resulting {@link AccessibilityViewCheckResult}s
    */
   public final List<AccessibilityViewCheckResult> checkAndReturnResults(View view) {
-    if (view != null) {
-      View viewToCheck = runChecksFromRootView ? view.getRootView() : view;
-      return runAccessibilityChecks(viewToCheck);
-    }
-    return ImmutableList.<AccessibilityViewCheckResult>of();
+    return checkAndReturnResults(view, parameters);
   }
+
+  /**
+   * Runs accessibility checks and returns the list of results. If the result is not needed, call
+   * {@link #check(View, Parameters)} instead.
+   *
+   * @param view the {@link View} to check
+   * @param parameters supplemental input data and preferences
+   * @return an immutable list of the resulting {@link AccessibilityViewCheckResult}s
+   */
+  private final ImmutableList<AccessibilityViewCheckResult> checkAndReturnResults(
+      View view, Parameters parameters) {
+    checkNotNull(view);
+    checkNotNull(parameters);
+
+    View viewToCheck = runChecksFromRootView ? view.getRootView() : view;
+    return runAccessibilityChecks(viewToCheck, parameters);
+  }
+
 
   /**
    * Specify the set of checks to be run. The default is {link AccessibilityCheckPreset.LATEST}.
@@ -137,6 +171,8 @@ public final class AccessibilityValidator {
    * provided to the ATF checks. This allows more through testing by some checks - for example, in
    * heavyweight contrast checking - but incurs additional overhead.
    *
+   * <p>Default: {@code true}
+   *
    * @return this
    * @see #setSaveImages(boolean, boolean)
    */
@@ -153,6 +189,7 @@ public final class AccessibilityValidator {
    *
    * <p>This is syntactic sugar for {@link #setSaveImages(boolean, boolean)}.
    */
+  @CanIgnoreReturnValue
   public AccessibilityValidator setSaveImages(boolean save) {
     return setSaveImages(save, save);
   }
@@ -162,11 +199,11 @@ public final class AccessibilityValidator {
    * retained after check evaluation. These can be useful for debugging, but produce more test
    * artifacts. These settings have no effect unless screenshot capture has been enabled.
    *
-   * @param saveScreenshots whether screenshots should be saved after evaluation. Default is {@code
-   *     false}.
+   * @param saveScreenshots whether screenshots should be saved after evaluation. By default, these
+   *     images are saved when the checks produce any result other than {@code NOT_RUN}.
    * @param saveViewImages whether an image should be saved of each View to which heavyweight
-   *     contrast checking is applied. By default, these images are only saved when they produce
-   *     results that cause an exception to be thrown.
+   *     contrast checking is applied. By default, these images are saved when the checks produce
+   *     findings based on the images.
    */
   @CanIgnoreReturnValue
   public AccessibilityValidator setSaveImages(boolean saveScreenshots, boolean saveViewImages) {
@@ -186,7 +223,7 @@ public final class AccessibilityValidator {
   @CanIgnoreReturnValue
   public AccessibilityValidator setSuppressingResultMatcher(
       @Nullable Matcher<? super AccessibilityViewCheckResult> resultMatcher) {
-      suppressingMatcher = resultMatcher;
+    suppressingMatcher = resultMatcher;
     return this;
   }
 
@@ -197,6 +234,7 @@ public final class AccessibilityValidator {
    * @return this
    * @deprecated Use {@link #setThrowExceptionFor}
    */
+  @CanIgnoreReturnValue
   @Deprecated
   public AccessibilityValidator setThrowExceptionForErrors(boolean throwExceptionForErrors) {
     return setThrowExceptionFor(
@@ -262,18 +300,49 @@ public final class AccessibilityValidator {
   }
 
   /**
+   * Adds a listener to receive a callback after checks have been evaluated. Listeners will be
+   * called in the order they are added and before any {@link AccessibilityViewCheckException} would
+   * be thrown.
+   *
+   * @return this
+   */
+  @CanIgnoreReturnValue
+  public AccessibilityValidator addCheckListener(CheckResultsListener listener) {
+    checkResultsListeners.add(listener);
+    return this;
+  }
+
+  /**
+   * Sets preferences to used by when evaluating checks unless explicitly provided by argument.
+   *
+   * @return this
+   */
+  @CanIgnoreReturnValue
+  public AccessibilityValidator setParameters(Parameters parameters) {
+    this.parameters = parameters;
+    return this;
+  }
+
+
+  /**
    * Runs accessibility checks on a {@code View} hierarchy
    *
    * @param view the {@link View} to check
    * @return a list of the results of the checks
    */
-  private ImmutableList<AccessibilityViewCheckResult> runAccessibilityChecks(View view) {
-    Parameters parameters = new Parameters();
+  private ImmutableList<AccessibilityViewCheckResult> runAccessibilityChecks(
+      View view, Parameters parameters) {
+    try {
+      parameters = parameters.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException("Could not clone parameters", e);
+    }
+    Bitmap screenshot = null;
     if (captureScreenshots) {
-      Bitmap screenshot = createPseudoScreenshot(view.getRootView());
+      screenshot = screenshotter.getScreenshot(view.getRootView());
       if (screenshot != null) {
         parameters.putScreenCapture(new BitmapImage(screenshot));
-        if (!Boolean.FALSE.equals(saveViewImages)) {
+        if ((parameters.getSaveViewImages() == null) && !Boolean.FALSE.equals(saveViewImages)) {
           parameters.setSaveViewImages(true);
         }
         screenshotsCaptured++;
@@ -283,28 +352,12 @@ public final class AccessibilityValidator {
     return processResults(
         view.getContext(),
         viewChecker.runViewChecksOnView(
-            AccessibilityCheckPresetAndroid.getViewChecksForPreset(preset), view, parameters));
-  }
-
-  /**
-   * Tries to capture a screenshot (image) of the given View, and writes it to a file if desired.
-   *
-   * @param root the root {@code View} of the hierarchy
-   * @return the image, if successfully captured, or {@code null}.
-   */
-  private @Nullable Bitmap createPseudoScreenshot(View root) {
-    Bitmap screenshot = screenshotter.getScreenshot(root);
-    if ((screenshot != null) && saveScreenshots) {
-      writeBitmapToFile(
-          root.getContext(),
-          screenshot,
-          String.format(Locale.ENGLISH, "pseudo_screenshot_%d.png", screenshotsCaptured + 1));
-    }
-    return screenshot;
+            AccessibilityCheckPresetAndroid.getViewChecksForPreset(preset), view, parameters),
+        screenshot);
   }
 
   private static boolean isRobolectric() {
-    return "robolectric".equals(Build.FINGERPRINT);
+    return Objects.equals(Build.FINGERPRINT, "robolectric");
   }
 
   /** Returns the number of times that this instance has captured a screenshot. */
@@ -324,7 +377,8 @@ public final class AccessibilityValidator {
    * more than one result in a screenshot with the same View ID, a single letter ("b", "c", etc.)
    * may be appended to {R} to avoid overwritting data.
    */
-  private void saveResultImages(Context context, List<AccessibilityViewCheckResult> results) {
+  private void saveResultImages(
+      PlatformTestStorage testStorage, List<AccessibilityViewCheckResult> results) {
     HashMap<String, Integer> resourceIdCounts = new HashMap<>();
     for (AccessibilityViewCheckResult result : results) {
       Image viewImage = result.getViewImage();
@@ -343,7 +397,7 @@ public final class AccessibilityValidator {
                     ? Character.toString((char) ('a' + resourceIdCount))
                     : ""),
                 screenshotsCaptured);
-        writeBitmapToFile(context, bitmap, outputPath);
+        bitmapWriter.write(testStorage, bitmap, outputPath);
       }
     }
   }
@@ -359,7 +413,7 @@ public final class AccessibilityValidator {
       return "NO_VIEW";
     }
     int viewId = view.getId();
-    if (viewId < 0) {
+    if ((viewId == View.NO_ID) || (viewId == 0)) {
       return "NO_ID";
     }
     if (view.getResources() != null && !isViewIdGenerated(viewId)) {
@@ -383,30 +437,6 @@ public final class AccessibilityValidator {
   }
 
   /**
-   * Writes the bitmap out to a file that will be included in the test outputs.
-   *
-   * <p>This is an expensive, synchronous operation performed on the UI thread. We really shouldn't
-   * be doing this, but don't have any convenient alternatives.
-   */
-  private static void writeBitmapToFile(Context context, Bitmap bitmap, String path) {
-    // StrictMode.permitCustomSlowCalls is needed to use Bitmap.compress. Normally, this operation
-    // should not be performed on the UI thread. But it is permissible here because this code should
-    // only be used for testing, and it must finish before the end of the test's lifecycle.
-    StrictMode.ThreadPolicy oldPolicy = StrictMode.getThreadPolicy();
-    StrictMode.setThreadPolicy(
-        new StrictMode.ThreadPolicy.Builder(oldPolicy).permitCustomSlowCalls().build());
-    try (BufferedOutputStream stream =
-        new BufferedOutputStream(
-            new TestStorage(context.getContentResolver()).openOutputFile(path))) {
-      bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-    } catch (IOException e) {
-      Log.w(TAG, "Error writing bitmap to file", e);
-    } finally {
-      StrictMode.setThreadPolicy(oldPolicy);
-    }
-  }
-
-  /**
    * Reports the given check results. Any result matching {@link #suppressingMatcher} is replaced
    * with a copy whose type is set to SUPPRESSED.
    *
@@ -417,12 +447,16 @@ public final class AccessibilityValidator {
    *   <li>Results of type {@code INFO}, {@code WARNING} and {@code ERROR} will be logged to logcat.
    * </ol>
    *
+   * @param screenshot screenshot image, if one was captured
    * @return The same values as in {@code results}, except that any result that matches {@link
    *     #suppressingMatcher} will be replaced with a copy whose type is SUPPRESSED.
    */
   @VisibleForTesting
   ImmutableList<AccessibilityViewCheckResult> processResults(
-      Context context, ImmutableList<AccessibilityViewCheckResult> results) {
+      Context context,
+      ImmutableList<AccessibilityViewCheckResult> results,
+      @Nullable Bitmap screenshot) {
+
     ImmutableList<AccessibilityViewCheckResult> processedResults =
         suppressMatchingResults(results, suppressingMatcher);
     for (AccessibilityCheckListener checkListener : checkListeners) {
@@ -441,13 +475,16 @@ public final class AccessibilityValidator {
 
     List<AccessibilityViewCheckResult> severeResults = getSevereResults(errors, warnings, infos);
 
-    if (captureScreenshots) {
-      if (saveViewImages == null) {
-        saveResultImages(context, severeResults);
-      } else if (Boolean.TRUE.equals(saveViewImages)) {
-        saveResultImages(context, results);
-      }
+    String screenshotPath = null;
+    CheckResultsCallback checkResultsCallback =
+        CheckResultsCallback.builder()
+            .setAccessibilityViewCheckResults(processedResults)
+            .setScreenshotPath(screenshotPath)
+            .build();
+    for (CheckResultsListener checkResultsListener : checkResultsListeners) {
+      checkResultsListener.onResults(checkResultsCallback);
     }
+
     if (!severeResults.isEmpty()) {
       throw new AccessibilityViewCheckException(severeResults, resultDescriptor);
     }
@@ -459,7 +496,7 @@ public final class AccessibilityValidator {
       Log.w(TAG, describeResult(result));
     }
     for (AccessibilityViewCheckResult result : errors) {
-      Log.e(TAG, describeResult(result));
+      Log.w(TAG, describeResult(result));
     }
     return processedResults;
   }
@@ -487,6 +524,16 @@ public final class AccessibilityValidator {
     return FluentIterable.from(results)
         .transform(result -> matcher.matches(result) ? result.getSuppressedResultCopy() : result)
         .toList();
+  }
+
+  /** Returns {@code true} iff there is any result that is not of type {@code NOT_RUN}. */
+  private static boolean hasRunResult(ImmutableList<AccessibilityViewCheckResult> results) {
+    for (AccessibilityViewCheckResult result : results) {
+      if (result.getType() != AccessibilityCheckResultType.NOT_RUN) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -527,10 +574,52 @@ public final class AccessibilityValidator {
     return ImmutableList.<AccessibilityViewCheckResult>of();
   }
 
-  /**
-   * Interface for receiving callbacks when results have been obtained.
-   */
+  /** Interface for receiving callbacks when results have been obtained. */
   public static interface AccessibilityCheckListener {
+    /**
+     * @param results results from the evaluation of checks. This may include results whose {@code
+     *     getType} returns {@code NOT_RUN} or {@code SUPPRESSED} if a suppressing result matcher
+     *     was specified.
+     */
     void onResults(Context context, List<? extends AccessibilityViewCheckResult> results);
   }
+
+  /** Interface to receive a callback after checks have been evaluated. */
+  public static interface CheckResultsListener {
+    void onResults(CheckResultsCallback callback);
+  }
+
+  /** Utility to write a Bitmap to a test output file. */
+  @VisibleForTesting
+  static class BitmapWriter {
+    /**
+     * Writes the bitmap out to a file that will be included in the test outputs.
+     *
+     * <p>This is an expensive, synchronous operation performed on the UI thread. We really
+     * shouldn't be doing this, but don't have any convenient alternatives.
+     *
+     * @return whether bitmap was successfully written to path
+     */
+    @CanIgnoreReturnValue
+    boolean write(PlatformTestStorage testStorage, Bitmap bitmap, String path) {
+      // StrictMode.permitCustomSlowCalls is needed to use Bitmap.compress. Normally, this operation
+      // should not be performed on the UI thread. But it is permissible here because this code
+      // should only be used for testing, and it must finish before the end of the test's lifecycle.
+      StrictMode.ThreadPolicy oldPolicy = StrictMode.getThreadPolicy();
+      StrictMode.setThreadPolicy(
+          new StrictMode.ThreadPolicy.Builder(oldPolicy).permitCustomSlowCalls().build());
+      try (BufferedOutputStream stream =
+          new BufferedOutputStream(testStorage.openOutputFile(path))) {
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return true;
+      } catch (IOException e) {
+        Log.w(TAG, "Error writing bitmap to file", e);
+        return false;
+      } finally {
+        StrictMode.setThreadPolicy(oldPolicy);
+      }
+    }
+  }
+
 }

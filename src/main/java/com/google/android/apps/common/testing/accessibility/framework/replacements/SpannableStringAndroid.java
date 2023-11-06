@@ -16,6 +16,14 @@ package com.google.android.apps.common.testing.accessibility.framework.replaceme
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import android.text.NoCopySpan;
+import android.text.Spanned;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.URLSpan;
+import android.text.style.UnderlineSpan;
 import com.google.common.collect.ImmutableList;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -24,9 +32,9 @@ public class SpannableStringAndroid extends SpannableString {
 
   public SpannableStringAndroid(CharSequence text) {
     super(checkNotNull(text));
-    if (text instanceof android.text.Spanned) {
+    if (text instanceof Spanned) {
       // Capture span information within an Android environment
-      this.spans = getSpansAndroid((android.text.Spanned) text);
+      this.spans = getSpansAndroid((Spanned) text);
     } else if (text instanceof SpannableString) {
       SpannableString spannableString = (SpannableString) text;
       this.spans = ImmutableList.<Span>copyOf(spannableString.getSpans());
@@ -54,7 +62,7 @@ public class SpannableStringAndroid extends SpannableString {
     return new SpannableStringAndroid(source);
   }
 
-  private static ImmutableList<Span> getSpansAndroid(android.text.Spanned spanned) {
+  private static ImmutableList<Span> getSpansAndroid(Spanned spanned) {
 
     if (TextUtils.isEmpty(spanned)) {
       return ImmutableList.<Span>of();
@@ -70,25 +78,35 @@ public class SpannableStringAndroid extends SpannableString {
 
       Span newSpan;
       // Build local replacement Spans, most specific first
-      if (spans[i] instanceof android.text.NoCopySpan) {
+      if (spans[i] instanceof NoCopySpan) {
         // Don't copy NoCopySpans
         continue;
-      } else if (spans[i] instanceof android.text.style.URLSpan) {
-        android.text.style.URLSpan androidUrlSpan = (android.text.style.URLSpan) spans[i];
+      } else if (spans[i] instanceof URLSpan) {
+        URLSpan androidUrlSpan = (URLSpan) spans[i];
         newSpan =
             new Spans.URLSpan(
                 Spans.URLSpan.ANDROID_CLASS_NAME, start, end, flags, androidUrlSpan.getURL());
-      } else if (spans[i] instanceof android.text.style.ClickableSpan) {
+      } else if (spans[i] instanceof ClickableSpan) {
         newSpan =
             new Spans.ClickableSpan(Spans.ClickableSpan.ANDROID_CLASS_NAME, start, end, flags);
-      } else if (spans[i] instanceof android.text.style.StyleSpan) {
-        android.text.style.StyleSpan androidStyleSpan = (android.text.style.StyleSpan) spans[i];
+      } else if (spans[i] instanceof StyleSpan) {
+        StyleSpan androidStyleSpan = (StyleSpan) spans[i];
         newSpan =
             new Spans.StyleSpan(
                 Spans.StyleSpan.ANDROID_CLASS_NAME, start, end, flags, androidStyleSpan.getStyle());
-      } else if (spans[i] instanceof android.text.style.UnderlineSpan) {
+      } else if (spans[i] instanceof UnderlineSpan) {
         newSpan =
             new Spans.UnderlineSpan(Spans.UnderlineSpan.ANDROID_CLASS_NAME, start, end, flags);
+      } else if (spans[i] instanceof BackgroundColorSpan) {
+        BackgroundColorSpan androidBackgroundColorSpan = (BackgroundColorSpan) spans[i];
+        newSpan =
+            new Spans.BackgroundColorSpan(
+                start, end, flags, androidBackgroundColorSpan.getBackgroundColor());
+      } else if (spans[i] instanceof ForegroundColorSpan) {
+        ForegroundColorSpan androidForegroundColorSpan = (ForegroundColorSpan) spans[i];
+        newSpan =
+            new Spans.ForegroundColorSpan(
+                start, end, flags, androidForegroundColorSpan.getForegroundColor());
       } else {
         // Keep track of the unknown span types without creating a subclass-specific instance
         newSpan = new Span(spans[i].getClass().getName(), start, end, flags);

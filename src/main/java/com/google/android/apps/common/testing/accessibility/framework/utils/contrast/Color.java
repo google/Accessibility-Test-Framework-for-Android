@@ -14,32 +14,50 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.utils.contrast;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
+
 /** Used as a local replacement for Android's {@link android.graphics.Color} */
 public final class Color {
 
   public static final int BLACK = 0xFF000000;
+  public static final int WHITE = 0xFFFFFFFF;
 
   private Color() {
     // Not instantiable
   }
 
-  /** @see android.graphics.Color#alpha(int) */
+  /** See {@link android.graphics.Color#alpha(int)}. */
+  @IntRange(from = 0, to = 255)
   public static int alpha(int color) {
     return color >>> 24;
   }
 
-  /** @see android.graphics.Color#red(int) */
+  /** See {@link android.graphics.Color#red(int)}. */
+  @IntRange(from = 0, to = 255)
   public static int red(int color) {
     return (color >> 16) & 0xFF;
   }
 
-  /** @see android.graphics.Color#green(int) */
+  /** See {@link android.graphics.Color#green(int)}. */
+  @IntRange(from = 0, to = 255)
   public static int green(int color) {
     return (color >> 8) & 0xFF;
   }
 
-  /** @see android.graphics.Color#blue(int) */
+  /** See {@link android.graphics.Color#blue(int)}. */
+  @IntRange(from = 0, to = 255)
   public static int blue(int color) {
     return color & 0xFF;
+  }
+
+  /** See {@link android.graphics.Color#argb(int, int, int, int)}. */
+  @ColorInt
+  public static int argb(
+      @IntRange(from = 0, to = 255) int alpha,
+      @IntRange(from = 0, to = 255) int red,
+      @IntRange(from = 0, to = 255) int green,
+      @IntRange(from = 0, to = 255) int blue) {
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
   }
 }

@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Este item não contém &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Este item não tem uma descrição do conteúdo.</string>
+  
   <string name="result_message_not_visible">Este item não é visível.</string>
   
   <string name="result_message_not_enabled">Este item não está ativo.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">acionável</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Elementos conflitantes: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Descrições de itens</string>
   
   <string name="result_message_brief_same_speakable_text">Vários itens têm a mesma descrição.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Considere aumentar a taxa de contraste entre o primeiro plano e o plano de fundo dessa imagem.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Considere aumentar essa taxa para %2$.2f ou mais.</string>
+  <string name="result_message_image_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;%3$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%4$s&lt;/tt&gt;. Considere aumentar essa taxa para %2$.2f ou mais.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">A taxa de contraste da imagem é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecida e na cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt; fornecida. Aumente esse valor para %2$.2f ou mais.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">A taxa de contraste da imagem é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;%3$s&lt;/tt&gt; fornecida e na cor de fundo &lt;tt&gt;%4$s&lt;/tt&gt; fornecida. Aumente esse valor para %2$.2f ou mais.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Ela tem como base uma estimativa da cor do primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt;. Aumente esse valor para a proporção modificada de %2$.2f ou mais.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">A taxa de contraste da imagem é %1$.2f. Ela tem como base uma estimativa da cor do primeiro plano &lt;tt&gt;%3$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%4$s&lt;/tt&gt;. Aumente esse valor para a proporção modificada de %2$.2f ou mais.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">A taxa de contraste da imagem é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%3$06X&lt;/tt&gt; e na cor de fundo &lt;tt&gt;#%4$06X&lt;/tt&gt; fornecidas. Aumente esse valor para a proporção modificada de %2$.2f ou mais.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">A taxa de contraste da imagem é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;%3$s&lt;/tt&gt; e na cor de fundo &lt;tt&gt;%4$s&lt;/tt&gt; fornecidas. Aumente esse valor para a proporção modificada de %2$.2f ou mais.</string>
   
   <string name="check_title_redundant_description">Rótulo do tipo de item</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; deste item pode conter texto desnecessário.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">A descrição do conteúdo deste item pode apresentar texto desnecessário.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">O &lt;tt&gt;android:contentDescription&lt;/tt&gt; \"&lt;tt&gt;%1$s&lt;/tt&gt;\" deste item termina com o tipo do item.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">A descrição &lt;tt&gt;android:contentDescription&lt;/tt&gt; do item \"&lt;tt&gt;%1$s&lt;/tt&gt;\" contém o tipo de item \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">A descrição do conteúdo de \"&lt;tt&gt;%1$s&lt;/tt&gt;\" apresenta o tipo de item \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="result_message_content_desc_contains_action">A &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\" deste item
     contém a ação \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">A descrição do conteúdo de
+   \"&lt;tt&gt;%1$s&lt;/tt&gt;\"
+    apresenta a ação \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">A &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\" deste item
     contém o estado \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">A descrição de conteúdo de
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\"
+    apresenta o estado \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="button_item_type">botão</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">O conteúdo da Web não foi avaliado.</string>
   
+  <string name="result_message_unsupported_compose_content">Os elementos da interface não são avaliados neste ambiente.</string>
+  
+  <string name="result_message_unsupported_flutter_content">O conteúdo do Flutter não é avaliado neste ambiente.</string>
+  
   <string name="result_message_missing_speakable_text">O rótulo deste item pode não ser lido por leitores de tela.</string>
   
   <string name="check_title_text_contrast">Contraste do texto</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Considere aumentar a taxa de contraste do primeiro plano e do plano de fundo do texto neste item.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do texto &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %4$.2f ou mais.</string>
+  <string name="result_message_textview_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do texto &lt;tt&gt;%2$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt;. Considere aumentar a taxa de contraste do texto neste item para %4$.2f ou mais.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de texto &lt;tt&gt;#%2$06X&lt;/tt&gt; e na cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Use cores que resultam em uma taxa de contraste maior que a taxa modificada de %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de texto &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt;. Use cores que resultam em uma taxa de contraste maior que a taxa modificada de %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Com base na cor de texto &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de plano de fundo &lt;tt&gt;%3$s&lt;/tt&gt; não opaca, a taxa máxima de contraste do texto do item é %1$.2f. Aumente esse valor para %4$.2f ou mais.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">A taxa de contraste do texto no item é %1$.2f. Ela é determinada com base na estimativa da cor do primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Aumente esse valor para %4$.2f ou mais.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Com base na cor de texto &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de plano de fundo &lt;tt&gt;%3$s&lt;/tt&gt; não opaca, a taxa máxima de contraste do texto do item é %1$.2f. Use cores que gerem um valor maior que a taxa modificada %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">A taxa de contraste do texto no item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; fornecida e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecida. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Com base na cor de texto &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de plano de fundo &lt;tt&gt;%3$s&lt;/tt&gt; não opaca, a taxa mínima de contraste do texto do item é %1$.2f. Aumente esse valor para %4$.2f ou mais.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e na cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecidas. Aumente esse valor para %4$.2f ou mais.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Com base na cor de texto &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de plano de fundo &lt;tt&gt;%3$s&lt;/tt&gt; não opaca, a taxa mínima de contraste do texto do item é %1$.2f. Use cores que gerem um valor maior que a taxa modificada %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na estimativa da cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e da cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Aumente esse valor para a taxa modificada de %4$.2f ou mais.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">A taxa de contraste do texto no item é %1$.2f. Essa taxa baseia-se em uma estimativa da cor do primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt;. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;#%2$06X&lt;/tt&gt; e na cor de fundo &lt;tt&gt;#%3$06X&lt;/tt&gt; fornecidas. Aumente esse valor para a taxa modificada de %4$.2f ou mais.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">A taxa de contraste do texto no item é %1$.2f. Ela é determinada com base na estimativa da cor do primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt;. Aumente esse valor para %4$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">A taxa de contraste do texto no item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; fornecida e da cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt; fornecida. Use cores que resultam em uma taxa de contraste maior que %4$.2f para textos pequenos ou %5$.2f para textos grandes.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt; fornecidas. Aumente esse valor para %4$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na estimativa da cor de primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; e da cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt;. Aumente esse valor para a taxa modificada de %4$.2f ou mais.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">A taxa de contraste de texto do item é %1$.2f. Ela é determinada com base na cor de primeiro plano &lt;tt&gt;%2$s&lt;/tt&gt; e na cor de fundo &lt;tt&gt;%3$s&lt;/tt&gt; fornecidas. Aumente esse valor para a taxa modificada de %4$.2f ou mais.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">As cores de primeiro plano e de fundo do item estão em conformidade com a taxa de contraste sugerida.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Esta &lt;tt&gt;TextView&lt;/tt&gt; tem largura fixa e texto que pode ser aumentado.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Este &lt;tt&gt;Text&lt;/tt&gt; tem largura fixa e texto escalonável.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Esta &lt;tt&gt;TextView&lt;/tt&gt; tem altura fixa e texto que pode ser aumentado.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Este &lt;tt&gt;Text&lt;/tt&gt; tem altura fixa e texto escalonável.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Esta &lt;tt&gt;TextView&lt;/tt&gt; tem tamanho fixo e texto que pode ser aumentado.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Este &lt;tt&gt;Text&lt;/tt&gt; tem tamanho fixo e texto escalonável.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Esta &lt;tt&gt;ViewGroup&lt;/tt&gt; tem largura fixa e contém uma &lt;tt&gt;TextView&lt;/tt&gt; com texto que pode ser aumentado.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Este elemento tem uma largura fixa e apresenta um elemento de &lt;tt&gt;Text&lt;/tt&gt; com texto escalonável.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Esta &lt;tt&gt;ViewGroup&lt;/tt&gt; tem altura fixa e contém uma &lt;tt&gt;TextView&lt;/tt&gt; com texto que pode ser aumentado.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Este elemento tem uma altura fixa e apresenta um elemento de &lt;tt&gt;Text&lt;/tt&gt; com texto escalonável.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Esta &lt;tt&gt;ViewGroup&lt;/tt&gt; tem tamanho fixo e contém uma &lt;tt&gt;TextView&lt;/tt&gt; com texto que pode ser aumentado.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Este elemento tem um tamanho fixo e apresenta um elemento de &lt;tt&gt;Text&lt;/tt&gt; com texto escalonável.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Modifique &lt;tt&gt;LayoutParams&lt;/tt&gt; para permitir a expansão de texto.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Altere os modificadores de tamanho usando &lt;tt&gt;sizeIn&lt;/tt&gt; para permitir a expansão do texto.</string>
   
   <string name="check_title_unexposed_text">Texto oculto</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">Resultados OCR foram detectados neste ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">Texto oculto detectado: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Possível texto detectado: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Texto detectado: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Possível texto: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Esta &lt;tt&gt;SurfaceView&lt;/tt&gt; pode não estar exibindo o conteúdo para os serviços de acessibilidade.</string>
+  <string name="result_message_text_detected_in_surface_view">Esta &lt;tt&gt;SurfaceView&lt;/tt&gt; pode não estar mostrando o conteúdo para os serviços de acessibilidade.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Diversos textos ocultos detectados, incluindo \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Possíveis textos ocultos detectados, incluindo \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">Este item pode não estar exibindo o conteúdo para os serviços de acessibilidade.</string>
+  <string name="result_message_multiple_unexposed_texts">Este item pode não estar mostrando o conteúdo para os serviços de acessibilidade.</string>
   
   <string name="result_message_ocr_result_not_available">Os resultados do OCR não estão disponíveis.</string>
   

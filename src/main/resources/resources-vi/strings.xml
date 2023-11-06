@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Mục này không có &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Mục này không có phần mô tả nội dung.</string>
+  
   <string name="result_message_not_visible">Mục này không hiển thị.</string>
   
   <string name="result_message_not_enabled">Mục này bị tắt.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">có thể thao tác</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">(Các) phần tử xung đột: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Mô tả mục</string>
   
   <string name="result_message_brief_same_speakable_text">Nhiều mục có cùng mô tả.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Cân nhắc tăng tỷ lệ tương phản giữa mặt nổi và nền của hình ảnh.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Tỷ lệ tương phản của hình ảnh là %1$.2f. Tỷ lệ này dựa trên màu mặt nổi ước tính của &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền ước tính của &lt;tt&gt;#%4$06X&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ này lên %2$.2f hoặc cao hơn.</string>
+  <string name="result_message_image_contrast_not_sufficient">Tỷ lệ tương phản của hình ảnh là %1$.2f. Tỷ lệ này dựa trên màu mặt nổi ước tính của &lt;tt&gt;%3$s&lt;/tt&gt; và màu nền ước tính của &lt;tt&gt;%4$s&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ này lên %2$.2f hoặc cao hơn.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu &lt;tt&gt;#%3$06X&lt;/tt&gt; (màu nổi) và màu &lt;tt&gt;#%4$06X&lt;/tt&gt; (màu nền) do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản lên thành %2$.2f hoặc cao hơn.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu &lt;tt&gt;%3$s&lt;/tt&gt; (màu nổi) và màu &lt;tt&gt;%4$s&lt;/tt&gt; (màu nền) do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản lên thành %2$.2f hoặc cao hơn.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;#%4$06X&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản lên mức đã chỉnh sửa là %2$.2f hoặc cao hơn.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;%3$s&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;%4$s&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản lên mức đã chỉnh sửa là %2$.2f hoặc cao hơn.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi là &lt;tt&gt;#%3$06X&lt;/tt&gt; và màu nền là &lt;tt&gt;#%4$06X&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản lên mức đã chỉnh sửa là %2$.2f hoặc cao hơn.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Ảnh này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi là &lt;tt&gt;%3$s&lt;/tt&gt; và màu nền là &lt;tt&gt;%4$s&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản lên mức đã chỉnh sửa là %2$.2f hoặc cao hơn.</string>
   
   <string name="check_title_redundant_description">Nhãn loại mục</string>
   
@@ -83,17 +87,29 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này có thể chứa văn bản không cần thiết.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Phần mô tả nội dung của mục này có thể chứa văn bản không cần thiết.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này \"&lt;tt&gt;%1$s&lt;/tt&gt;\" kết thúc bằng loại của mục.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" có chứa loại mục \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Phần mô tả nội dung của mục này, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", chứa loại mục \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="result_message_content_desc_contains_action">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     có thao tác \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Phần mô tả nội dung của mục này,
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
+    chứa hành động \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">&lt;tt&gt;android:contentDescription&lt;/tt&gt; của mục này,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     có trạng thái \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Phần nội dung của mục này,
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
+    chứa trạng thái \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="button_item_type">nút</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Nội dung web chưa được xác thực.</string>
   
+  <string name="result_message_unsupported_compose_content">Nội dung có thể soạn thảo sẽ không được đánh giá trong môi trường này.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Nội dung trên Flutter sẽ không được đánh giá trong môi trường này.</string>
+  
   <string name="result_message_missing_speakable_text">Mục này có thể không có nhãn mà trình đọc màn hình đọc được.</string>
   
   <string name="check_title_text_contrast">Độ tương phản văn bản</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Cân nhắc tăng tỷ lệ tương phản giữa mặt nổi và nền văn bản của mục này.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này dựa trên màu văn bản của &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền của &lt;tt&gt;#%3$06X&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ tương phản văn bản của mục này lên %4$.2f hoặc cao hơn.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này dựa trên màu văn bản của &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền của &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc tăng tỷ lệ tương phản văn bản của mục này lên %4$.2f hoặc cao hơn.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu văn bản là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền là &lt;tt&gt;#%3$06X&lt;/tt&gt;. Hãy cân nhắc việc sử dụng những màu đem lại tỷ lệ tương phản cao hơn mức đã chỉnh sửa là %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu văn bản là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc sử dụng những màu đem lại tỷ lệ tương phản cao hơn mức đã chỉnh sửa là %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;#%3$06X&lt;/tt&gt;. Hãy cân nhắc sử dụng các màu đem lại tỷ lệ tương phản cao hơn %4$.2f đối với văn bản có cỡ chữ nhỏ, hoặc %5$.2f đối với văn bản có cỡ chữ lớn.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Tỷ lệ tương phản văn bản tối đa có thể đạt được của mục này là %1$.2f, dựa trên màu văn bản là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền không mờ là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu nền trước ước tính là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền ước tính là &lt;tt&gt;#%3$06X&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Tỷ lệ tương phản văn bản tối đa có thể đạt được của mục này là %1$.2f, dựa trên màu văn bản là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền không mờ là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc sử dụng những màu đem lại tỷ lệ tương phản cao hơn mức đã chỉnh sửa là %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu &lt;tt&gt;#%2$06X&lt;/tt&gt; (màu nổi) và màu &lt;tt&gt;#%3$06X&lt;/tt&gt; (màu nền) do bạn cung cấp. Hãy cân nhắc sử dụng các màu đem lại tỷ lệ tương phản cao hơn %4$.2f đối với văn bản có cỡ chữ nhỏ, hoặc %5$.2f đối với văn bản có cỡ chữ lớn.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Tỷ lệ tương phản văn bản tối thiểu có thể đạt được của mục này là %1$.2f, dựa trên màu văn bản là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền không mờ là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu nền trước là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền là &lt;tt&gt;#%3$06X&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Tỷ lệ tương phản văn bản tối thiểu có thể đạt được của mục này là %1$.2f, dựa trên màu văn bản là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền không mờ là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc sử dụng những màu đem lại tỷ lệ tương phản cao hơn mức đã chỉnh sửa là %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;#%3$06X&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản của phần văn bản trong mục này lên mức đã chỉnh sửa là %4$.2f hoặc cao hơn.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc sử dụng các màu đem lại tỷ lệ tương phản cao hơn %4$.2f đối với văn bản có cỡ chữ nhỏ, hoặc %5$.2f đối với văn bản có cỡ chữ lớn.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi là &lt;tt&gt;#%2$06X&lt;/tt&gt; và màu nền là &lt;tt&gt;#%3$06X&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản của phần văn bản trong mục này lên mức đã chỉnh sửa là %4$.2f hoặc cao hơn.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu nền trước ước tính là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền ước tính là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu &lt;tt&gt;%2$s&lt;/tt&gt; (màu nổi) và màu &lt;tt&gt;%3$s&lt;/tt&gt; (màu nền) do bạn cung cấp. Hãy cân nhắc sử dụng các màu đem lại tỷ lệ tương phản cao hơn %4$.2f đối với văn bản có cỡ chữ nhỏ, hoặc %5$.2f đối với văn bản có cỡ chữ lớn.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Tỷ lệ tương phản văn bản của mục này là %1$.2f. Tỷ lệ này được xác định dựa trên màu nền trước là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền là &lt;tt&gt;%3$s&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản văn bản của mục này lên mức %4$.2f trở lên.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi ước đoán là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền ước đoán là &lt;tt&gt;%3$s&lt;/tt&gt;. Hãy cân nhắc việc tăng tỷ lệ tương phản của phần văn bản trong mục này lên mức đã chỉnh sửa là %4$.2f hoặc cao hơn.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Văn bản của mục này có tỷ lệ tương phản là %1$.2f. Tỷ lệ này được xác định dựa trên màu nổi là &lt;tt&gt;%2$s&lt;/tt&gt; và màu nền là &lt;tt&gt;%3$s&lt;/tt&gt; do bạn cung cấp. Hãy cân nhắc việc tăng tỷ lệ tương phản của phần văn bản trong mục này lên mức đã chỉnh sửa là %4$.2f hoặc cao hơn.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Màu nổi và màu nền của mục này đáp ứng được tỷ lệ tương phản đề xuất.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; này có chiều rộng cố định và có văn bản có thể thay đổi cỡ chữ.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Phần tử &lt;tt&gt;Text&lt;/tt&gt; này có chiều rộng cố định và có thể tăng cỡ chữ.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; này có chiều cao cố định và có văn bản có thể thay đổi cỡ chữ.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Phần tử &lt;tt&gt;Text&lt;/tt&gt; này có chiều cao cố định và có thể tăng cỡ chữ.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; này có kích thước cố định và có văn bản có thể thay đổi cỡ chữ.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Phần tử &lt;tt&gt;Text&lt;/tt&gt; này có kích thước cố định và có thể tăng cỡ chữ.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; này có chiều rộng cố định và chứa một &lt;tt&gt;TextView&lt;/tt&gt; có văn bản có thể thay đổi cỡ chữ.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Phần tử này có chiều rộng cố định và chứa một phần tử &lt;tt&gt;Text&lt;/tt&gt; có thể tăng cỡ chữ.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; này có chiều cao cố định và chứa một &lt;tt&gt;TextView&lt;/tt&gt; có văn bản có thể thay đổi cỡ chữ.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Phần tử này có chiều cao cố định và chứa một phần tử &lt;tt&gt;Text&lt;/tt&gt; có thể tăng cỡ chữ.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; này có kích thước cố định và chứa một &lt;tt&gt;TextView&lt;/tt&gt; có văn bản có thể thay đổi cỡ chữ.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Phần tử này có kích thước cố định và chứa một phần tử &lt;tt&gt;Text&lt;/tt&gt; có thể tăng cỡ chữ.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Hãy cân nhắc việc điều chỉnh &lt;tt&gt;LayoutParams&lt;/tt&gt; để có thể mở rộng văn bản.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Hãy cân nhắc việc điều chỉnh các tham số sửa đổi kích thước thông qua tham số &lt;tt&gt;sizeIn&lt;/tt&gt; để cho phép mở rộng văn bản.</string>
   
   <string name="check_title_unexposed_text">Văn bản không hiển thị</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">Đã phát hiện kết quả OCR trong ImageView này.</string>
   
-  <string name="result_message_brief_unexposed_text">Đã phát hiện văn bản không hiển thị: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Phát hiện nội dung có thể có văn bản: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Đã phát hiện văn bản: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Nội dung có thể là văn bản: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">&lt;tt&gt;SurfaceView&lt;/tt&gt; này có thể đang không hiển thị nội dung cho các dịch vụ hỗ trợ tiếp cận.</string>
+  <string name="result_message_text_detected_in_surface_view">Lớp &lt;tt&gt;SurfaceView&lt;/tt&gt; này có thể không hiển thị nội dung cho các dịch vụ hỗ trợ tiếp cận.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Đã phát hiện nhiều đoạn văn bản không hiển thị, trong đó \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Phát hiện các đoạn văn bản có thể không hiển thị, trong đó có \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">Mục này có thể đang không hiện nội dung đối với các dịch vụ hỗ trợ tiếp cận.</string>
+  <string name="result_message_multiple_unexposed_texts">Mục này có thể không hiển thị nội dung cho các dịch vụ hỗ trợ tiếp cận.</string>
   
   <string name="result_message_ocr_result_not_available">Không hỗ trợ kết quả nhận dạng ký tự quang học (OCR).</string>
   

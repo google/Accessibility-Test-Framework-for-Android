@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Для этого элемента не задано значение атрибута &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Для этого объекта не задано описание контента.</string>
+  
   <string name="result_message_not_visible">Этот элемент скрыт.</string>
   
   <string name="result_message_not_enabled">Этот элемент отключен.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">на действия пользователя</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Конфликтующие элементы: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Описание элемента</string>
   
   <string name="result_message_brief_same_speakable_text">У нескольких элементов совпадает описание.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Возможно, на этом изображении следует увеличить коэффициент контрастности переднего плана относительного заднего.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он рассчитывается путем сопоставления цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и цвета заднего плана (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, этот коэффициент следует увеличить хотя бы до %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он рассчитывается путем сопоставления цвета переднего плана (&lt;tt&gt;%3$s&lt;/tt&gt;) и цвета заднего плана (&lt;tt&gt;%4$s&lt;/tt&gt;). Возможно, этот коэффициент следует увеличить хотя бы до %2$.2f.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до %2$.2f или выше.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%3$s&lt;/tt&gt;) и фона (&lt;tt&gt;%4$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент до %2$.2f или выше.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%4$06X&lt;/tt&gt;) планов. Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;%3$s&lt;/tt&gt;) и заднего (&lt;tt&gt;%4$s&lt;/tt&gt;) планов. Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности этого изображения равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%3$s&lt;/tt&gt;) и фона (&lt;tt&gt;%4$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%2$.2f).</string>
   
   <string name="check_title_redundant_description">Метка типа элемента</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; этого элемента может содержать ненужный текст.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Описание контента, заданное для этого объекта, может содержать лишний текст.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; этого элемента (\"&lt;tt&gt;%1$s&lt;/tt&gt;\") заканчивается указанием его типа.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Значение атрибута &lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", содержит указание на его тип – \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Описание контента, заданное для этого объекта (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), содержит следующий тип элемента: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_action">У этого объекта есть атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;), содержащий следующее действие: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Описание контента, заданное для этого объекта (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), содержит следующее действие: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">У этого объекта есть атрибут &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;), содержащий следующее состояние: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Описание контента, заданное для этого объекта (\"&lt;tt&gt;%1$s&lt;/tt&gt;\"), содержит следующее состояние: \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="button_item_type">кнопка</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">Оценка веб-контента не проводилась.</string>
   
+  <string name="result_message_unsupported_compose_content">Составляемый контент не оценивается в этой среде.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Контент Flutter не оценивается в этой среде.</string>
+  
   <string name="result_message_missing_speakable_text">У этого элемента нет метки, которая может быть распознана программой чтения с экрана.</string>
   
   <string name="check_title_text_contrast">Контрастность текста</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Возможно, вам следует увеличить коэффициент контрастности текста элемента относительно фона.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и его фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент хотя бы до %4$.2f.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета текста (&lt;tt&gt;%2$s&lt;/tt&gt;) и его фона (&lt;tt&gt;%3$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент хотя бы до %4$.2f.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента составляет %1$.2f. Чтобы узнать его, мы сопоставили цвет фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;) и самого текста (&lt;tt&gt;#%2$06X&lt;/tt&gt;). Советуем увеличить коэффициент как минимум до заданного вами значения (%4$.2f).</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Коэффициент контрастности текста этого элемента составляет %1$.2f. Чтобы узнать его, мы сопоставили цвет фона (&lt;tt&gt;%3$s&lt;/tt&gt;) и самого текста (&lt;tt&gt;%2$s&lt;/tt&gt;). Советуем увеличить коэффициент как минимум до заданного вами значения (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Максимально возможный коэффициент контрастности текста этого элемента – %1$.2f, так как используется &lt;tt&gt;%2$s&lt;/tt&gt; цвет текста и &lt;tt&gt;%3$s&lt;/tt&gt; цвет непрозрачного фона. Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Максимально возможный коэффициент контрастности текста этого элемента – %1$.2f, так как используется &lt;tt&gt;%2$s&lt;/tt&gt; цвет текста и &lt;tt&gt;%3$s&lt;/tt&gt; цвет непрозрачного фона. Рассмотрите возможность использования цветов, которые создают коэффициент контрастности, который имеет более высокое значение, чем измененный коэффициент (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и заднего (&lt;tt&gt;#%3$06X&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Минимально возможный коэффициент контрастности текста этого элемента – %1$.2f, так как используется &lt;tt&gt;%2$s&lt;/tt&gt; цвет текста и &lt;tt&gt;%3$s&lt;/tt&gt; цвет непрозрачного фона. Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Минимально возможный коэффициент контрастности текста этого элемента – %1$.2f, так как используется &lt;tt&gt;%2$s&lt;/tt&gt; цвет текста и &lt;tt&gt;%3$s&lt;/tt&gt; цвет непрозрачного фона. Рассмотрите возможность использования цветов, которые создают коэффициент контрастности, который имеет более высокое значение, чем измененный коэффициент (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;%2$s&lt;/tt&gt;) и заднего (&lt;tt&gt;%3$s&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;#%2$06X&lt;/tt&gt;) и фона (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%2$s&lt;/tt&gt;) и фона (&lt;tt&gt;%3$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цветов переднего (&lt;tt&gt;%2$s&lt;/tt&gt;) и заднего (&lt;tt&gt;%3$s&lt;/tt&gt;) планов. Возможно, вам следует изменить контрастность так, чтобы значения коэффициента были выше %4$.2f для мелкого текста и %5$.2f – для крупного.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%2$s&lt;/tt&gt;) и фона (&lt;tt&gt;%3$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%2$s&lt;/tt&gt;) и фона (&lt;tt&gt;%3$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Коэффициент контрастности текста этого элемента равен %1$.2f. Он основан на сопоставлении цвета переднего плана (&lt;tt&gt;%2$s&lt;/tt&gt;) и фона (&lt;tt&gt;%3$s&lt;/tt&gt;). Возможно, вам следует увеличить этот коэффициент как минимум до заданного значения (%4$.2f).</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Соотношение цветов переднего и заднего плана этого элемента должно соответствовать рекомендуемому коэффициенту контрастности.</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированную ширину и масштабируемый текст.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Этот &lt;tt&gt;Text&lt;/tt&gt; имеет фиксированную ширину и масштабируемый текст.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированную высоту и масштабируемый текст.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Этот &lt;tt&gt;Text&lt;/tt&gt; имеет фиксированную высоту и масштабируемый текст.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Этот &lt;tt&gt;TextView&lt;/tt&gt; имеет фиксированный размер и масштабируемый текст.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Этот &lt;tt&gt;Text&lt;/tt&gt; имеет фиксированный размер и масштабируемый текст.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Этот &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированную ширину и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Этот элемент имеет фиксированную ширину и содержит элемент \"&lt;tt&gt;Text&lt;/tt&gt;\" с масштабируемым текстом.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Этот &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированную высоту и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Этот элемент имеет фиксированную высоту и содержит элемент \"&lt;tt&gt;Text&lt;/tt&gt;\" с масштабируемым текстом.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Это &lt;tt&gt;ViewGroup&lt;/tt&gt; имеет фиксированный размер и содержит &lt;tt&gt;TextView&lt;/tt&gt; с масштабируемым текстом.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Этот элемент имеет фиксированный размер и содержит элемент \"&lt;tt&gt;Text&lt;/tt&gt;\" с масштабируемым текстом.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Для расширения границ текста измените &lt;tt&gt;LayoutParams&lt;/tt&gt;.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Возможно, вам следует изменить модификаторы размера с помощью параметра &lt;tt&gt;sizeIn&lt;/tt&gt;, чтобы обеспечить расширение текста.</string>
   
   <string name="check_title_unexposed_text">Недоступный текст</string>
   
@@ -297,11 +335,11 @@
   
   <string name="result_message_text_detected_in_image_view">Внутри этого объекта ImageView был распознан текст.</string>
   
-  <string name="result_message_brief_unexposed_text">Обнаружен недоступный текст: %1$s.</string>
+  <string name="result_message_brief_unexposed_text">Возможно, обнаружен следующий текст: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Обнаружен текст: %1$s.</string>
+  <string name="result_message_brief_text_detected_in_image_view">Возможно, обнаружен следующий текст: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Содержание этого &lt;tt&gt;SurfaceView&lt;/tt&gt; может быть недоступно для службы специальных возможностей.</string>
+  <string name="result_message_text_detected_in_surface_view">Содержание этого &lt;tt&gt;SurfaceView&lt;/tt&gt; может быть недоступно службе специальных возможностей.</string>
   
   <string name="result_message_brief_multiple_unexposed_texts">Обнаружено несколько фрагментов нераспознанного текста, включая \"%1$s\".</string>
   

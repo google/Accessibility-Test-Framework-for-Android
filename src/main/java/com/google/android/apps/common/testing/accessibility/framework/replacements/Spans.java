@@ -32,15 +32,7 @@ public final class Spans {
 
     @Override
     public SpanProto toProto() {
-      // Explicitly not invoking super to ensure the SpanType is properly set
-      SpanProto.Builder builder = SpanProto.newBuilder();
-      builder.setSpanClassName(getSpanClassName());
-      builder.setStart(getStart());
-      builder.setEnd(getEnd());
-      builder.setFlags(getFlags());
-      builder.setType(SpanType.CLICKABLE);
-
-      return builder.build();
+      return toProtoBuilder(SpanType.CLICKABLE).build();
     }
 
     @Override
@@ -66,20 +58,14 @@ public final class Spans {
       this.url = proto.getUrl();
     }
 
-    /** @see android.text.style.URLSpan#getURL() */
+    /** Returns the URL. @see android.text.style.URLSpan#getURL() */
     public @Nullable String getUrl() {
       return url;
     }
 
     @Override
     public SpanProto toProto() {
-      // Explicitly not invoking super to ensure the SpanType is properly set
-      SpanProto.Builder builder = SpanProto.newBuilder();
-      builder.setSpanClassName(getSpanClassName());
-      builder.setStart(getStart());
-      builder.setEnd(getEnd());
-      builder.setFlags(getFlags());
-      builder.setType(SpanType.URL);
+      SpanProto.Builder builder = toProtoBuilder(SpanType.URL);
       String url = getUrl();
       if (url != null) {
         builder.setUrl(url);
@@ -122,16 +108,7 @@ public final class Spans {
 
     @Override
     public SpanProto toProto() {
-      SpanProto.Builder builder = SpanProto.newBuilder();
-
-      builder.setSpanClassName(getSpanClassName());
-      builder.setStart(getStart());
-      builder.setEnd(getEnd());
-      builder.setFlags(getFlags());
-      builder.setType(SpanType.STYLE);
-      builder.setStyle(getStyle());
-
-      return builder.build();
+      return toProtoBuilder(SpanType.STYLE).setStyle(style).build();
     }
 
     @Override
@@ -155,20 +132,84 @@ public final class Spans {
 
     @Override
     public SpanProto toProto() {
-      SpanProto.Builder builder = SpanProto.newBuilder();
-
-      builder.setSpanClassName(getSpanClassName());
-      builder.setStart(getStart());
-      builder.setEnd(getEnd());
-      builder.setFlags(getFlags());
-      builder.setType(SpanType.UNDERLINE);
-
-      return builder.build();
+      return toProtoBuilder(SpanType.UNDERLINE).build();
     }
 
     @Override
     protected Span copyWithAdjustedPosition(int newStart, int newEnd) {
       return new UnderlineSpan(getSpanClassName(), newStart, newEnd, getFlags());
+    }
+  }
+
+  /** Used as a local replacement for Android's {@link android.text.style.BackgroundColorSpan} */
+  public static class BackgroundColorSpan extends Span {
+
+    public static final String ANDROID_CLASS_NAME = "android.text.style.BackgroundColorSpan";
+
+    private final int backgroundColor;
+
+    public BackgroundColorSpan(int start, int end, int flags, int color) {
+      super(ANDROID_CLASS_NAME, start, end, flags);
+      this.backgroundColor = color;
+    }
+
+    public BackgroundColorSpan(SpanProto proto) {
+      super(proto);
+      this.backgroundColor = proto.getBackgroundColor();
+    }
+
+    /**
+     * Returns the background color. @see
+     * android.text.style.BackgroundColorSpan#getBackgroundColor()
+     */
+    public int getBackgroundColor() {
+      return backgroundColor;
+    }
+
+    @Override
+    public SpanProto toProto() {
+      return toProtoBuilder(SpanType.BACKGROUND_COLOR).setBackgroundColor(backgroundColor).build();
+    }
+
+    @Override
+    protected Span copyWithAdjustedPosition(int newStart, int newEnd) {
+      return new BackgroundColorSpan(newStart, newEnd, getFlags(), backgroundColor);
+    }
+  }
+
+  /** Used as a local replacement for Android's {@link android.text.style.ForegroundColorSpan} */
+  public static class ForegroundColorSpan extends Span {
+
+    public static final String ANDROID_CLASS_NAME = "android.text.style.ForegroundColorSpan";
+
+    private final int foregroundColor;
+
+    public ForegroundColorSpan(int start, int end, int flags, int color) {
+      super(ANDROID_CLASS_NAME, start, end, flags);
+      this.foregroundColor = color;
+    }
+
+    public ForegroundColorSpan(SpanProto proto) {
+      super(proto);
+      this.foregroundColor = proto.getForegroundColor();
+    }
+
+    /**
+     * Returns the foreground color. @see
+     * android.text.style.ForegroundColorSpan#getForegroundColor()
+     */
+    public int getForegroundColor() {
+      return foregroundColor;
+    }
+
+    @Override
+    public SpanProto toProto() {
+      return toProtoBuilder(SpanType.FOREGROUND_COLOR).setForegroundColor(foregroundColor).build();
+    }
+
+    @Override
+    protected Span copyWithAdjustedPosition(int newStart, int newEnd) {
+      return new ForegroundColorSpan(newStart, newEnd, getFlags(), foregroundColor);
     }
   }
 }

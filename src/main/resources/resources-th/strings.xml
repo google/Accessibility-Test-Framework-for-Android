@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">รายการนี้ไม่มี &lt;tt&gt;android:contentDescription&lt;/tt&gt;</string>
   
+  <string name="result_message_no_content_desc_generic">รายการนี้ไม่มีคำอธิบายเนื้อหา</string>
+  
   <string name="result_message_not_visible">รายการนี้ไม่สามารถมองเห็นได้</string>
   
   <string name="result_message_not_enabled">รายการนี้ไม่ได้เปิดใช้</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">ดำเนินการได้</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">องค์ประกอบที่ขัดแย้งกัน: &lt;tt&gt;%1$s&lt;/tt&gt;</string>
+  
   <string name="check_title_duplicate_speakable_text">คำอธิบายรายการ</string>
   
   <string name="result_message_brief_same_speakable_text">หลายรายการมีรายละเอียดเหมือนกัน</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">พิจารณาเพิ่มอัตราความคมชัดระหว่างพื้นหน้าและพื้นหลังของรูปภาพนี้</string>
   
-  <string name="result_message_image_contrast_not_sufficient">อัตราส่วนความคมชัดของรูปภาพนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;#%3$06X&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;#%4$06X&lt;/tt&gt; พิจารณาเพิ่มอัตราส่วนนี้เป็น %2$.2f หรือสูงกว่า</string>
+  <string name="result_message_image_contrast_not_sufficient">อัตราส่วนความคมชัดของรูปภาพนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;%3$s&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;%4$s&lt;/tt&gt; พิจารณาเพิ่มอัตราส่วนนี้เป็น %2$.2f หรือสูงกว่า</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;#%3$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%4$06X&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนนี้เป็น %2$.2f หรือมากกว่า</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;%3$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%4$s&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนนี้เป็น %2$.2f หรือมากกว่า</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;#%3$06X&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;#%4$06X&lt;/tt&gt; ลองเพิ่มอัตราส่วนนี้ให้มีอัตราส่วนที่แก้ไขแล้วเป็น %2$.2f หรือมากกว่า</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;%3$s&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;%4$s&lt;/tt&gt; ลองเพิ่มอัตราส่วนนี้ให้มีอัตราส่วนที่แก้ไขแล้วเป็น %2$.2f หรือมากกว่า</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;#%3$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%4$06X&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนนี้ให้มีอัตราส่วนที่แก้ไขแล้วเป็น %2$.2f หรือมากกว่า</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของรูปภาพคือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;%3$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%4$s&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนนี้ให้มีอัตราส่วนที่แก้ไขแล้วเป็น %2$.2f หรือมากกว่า</string>
   
   <string name="check_title_redundant_description">ป้ายกำกับประเภทรายการ</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">&lt;tt&gt;android:contentDescription&lt;/tt&gt; ของรายการนี้อาจมีข้อความที่ไม่จำเป็น</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">คำอธิบายเนื้อหาของรายการนี้อาจมีข้อความที่ไม่จำเป็น</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">&lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ของรายการนี้ลงท้ายด้วยประเภทของรายการ</string>
   
   <string name="result_message_content_desc_contains_redundant_word">&lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ของรายการนี้มีประเภทรายการ \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">คำอธิบายเนื้อหา \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ของรายการนี้มีประเภทรายการเป็น \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
+  
   <string name="result_message_content_desc_contains_action">&lt;tt&gt;android:contentDescription&lt;/tt&gt; ของรายการนี้ \"&lt;tt&gt;%1$s&lt;/tt&gt;\" มีการดำเนินการ \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
   
+  <string name="result_message_content_desc_contains_action_generic">คำอธิบายเนื้อหา \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ของรายการนี้มีการดำเนินการเป็น \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
+  
   <string name="result_message_content_desc_contains_state">&lt;tt&gt;android:contentDescription&lt;/tt&gt; ของรายการนี้ \"&lt;tt&gt;%1$s&lt;/tt&gt;\" มีสถานะ \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">คำอธิบายเนื้อหา \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ของรายการนี้มีสถานะเป็น \"&lt;tt&gt;%2$s&lt;/tt&gt;\"</string>
   
   <string name="button_item_type">ปุ่ม</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">ยังไม่ได้ประเมินเนื้อหาเว็บ</string>
   
+  <string name="result_message_unsupported_compose_content">เนื้อหาที่คุณเขียนได้ไม่ได้ผ่านการประเมินในสภาพแวดล้อมนี้</string>
+  
+  <string name="result_message_unsupported_flutter_content">เนื้อหา Flutter ไม่ได้ผ่านการประเมินในสภาพแวดล้อมนี้</string>
+  
   <string name="result_message_missing_speakable_text">รายการนี้อาจไม่มีป้ายกำกับที่โปรแกรมอ่านหน้าจอสามารถอ่านได้</string>
   
   <string name="check_title_text_contrast">ความคมชัดของข้อความ</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">พิจารณาเพิ่มอัตราส่วนความคมชัดของพื้นหน้าต่อพื้นหลังของข้อความรายการนี้</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีข้อความของ &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลังของ &lt;tt&gt;#%3$06X&lt;/tt&gt; พิจารณาเพิ่มอัตราส่วนความคมชัดของข้อความของรายการนี้เป็น %4$.2f หรือสูงกว่า</string>
+  <string name="result_message_textview_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีข้อความของ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลังของ &lt;tt&gt;%3$s&lt;/tt&gt; พิจารณาเพิ่มอัตราส่วนความคมชัดของข้อความของรายการนี้เป็น %4$.2f หรือสูงกว่า</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีข้อความ &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%3$06X&lt;/tt&gt; ลองใช้สีที่ทำให้อัตราส่วนความคมชัดมากกว่า %4$.2f ซึ่งเป็นอัตราส่วนที่แก้ไขแล้ว</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีข้อความ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ลองใช้สีที่ทำให้อัตราส่วนความคมชัดมากกว่า %4$.2f ซึ่งเป็นอัตราส่วนที่แก้ไขแล้ว</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;#%3$06X&lt;/tt&gt; ลองใช้สีที่ทำให้มีอัตราส่วนความคมชัดมากกว่า %4$.2f สำหรับข้อความขนาดเล็ก หรือ %5$.2f สำหรับข้อความขนาดใหญ่</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">อัตราส่วนคอนทราสต์สูงสุดที่เป็นไปได้สำหรับข้อความของรายการคือ %1$.2f โดยอิงจากสีข้อความ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ไม่ทึบแสง ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;#%3$06X&lt;/tt&gt; ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">อัตราส่วนคอนทราสต์สูงสุดที่เป็นไปได้สำหรับข้อความของรายการคือ %1$.2f โดยอิงจากสีข้อความ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ไม่ทึบแสง ลองใช้สีที่ทำให้อัตราส่วนคอนทราสต์มากกว่า %4$.2f ซึ่งเป็นอัตราส่วนที่แก้ไขแล้ว</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%3$06X&lt;/tt&gt; ที่ระบุไว้ ลองใช้สีที่ทำให้มีอัตราส่วนความคมชัดมากกว่า %4$.2f สำหรับข้อความขนาดเล็ก หรือ %5$.2f สำหรับข้อความขนาดใหญ่</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">อัตราส่วนคอนทราสต์ต่ำสุดที่เป็นไปได้สำหรับข้อความของรายการคือ %1$.2f โดยอิงจากสีข้อความ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ไม่ทึบแสง ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%3$06X&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">อัตราส่วนคอนทราสต์ต่ำสุดที่เป็นไปได้สำหรับข้อความของรายการคือ %1$.2f โดยอิงจากสีข้อความ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ไม่ทึบแสง ลองใช้สีที่ทำให้อัตราส่วนคอนทราสต์มากกว่า %4$.2f ซึ่งเป็นอัตราส่วนที่แก้ไขแล้ว</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;#%3$06X&lt;/tt&gt; ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนที่แก้ไขแล้วเป็น %4$.2f หรือมากกว่า</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;%3$s&lt;/tt&gt; ลองใช้สีที่ทำให้มีอัตราส่วนความคมชัดมากกว่า %4$.2f สำหรับข้อความขนาดเล็ก หรือ %5$.2f สำหรับข้อความขนาดใหญ่</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;#%2$06X&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;#%3$06X&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนที่แก้ไขแล้วเป็น %4$.2f หรือมากกว่า</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;%3$s&lt;/tt&gt; ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ระบุไว้ ลองใช้สีที่ทำให้มีอัตราส่วนความคมชัดมากกว่า %4$.2f สำหรับข้อความขนาดเล็ก หรือ %5$.2f สำหรับข้อความขนาดใหญ่</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนเป็น %4$.2f หรือมากกว่า</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้าโดยประมาณของ &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลังโดยประมาณของ &lt;tt&gt;%3$s&lt;/tt&gt; ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนที่แก้ไขแล้วเป็น %4$.2f หรือมากกว่า</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">อัตราส่วนความคมชัดของข้อความของรายการนี้คือ %1$.2f อัตราส่วนนี้จะขึ้นอยู่กับสีพื้นหน้า &lt;tt&gt;%2$s&lt;/tt&gt; และสีพื้นหลัง &lt;tt&gt;%3$s&lt;/tt&gt; ที่ระบุไว้ ลองเพิ่มอัตราส่วนดังกล่าวให้มีอัตราส่วนที่แก้ไขแล้วเป็น %4$.2f หรือมากกว่า</string>
   
   <string name="result_message_contrast_sufficient_confirmed">สีพื้นหน้าและสีพื้นหลังของรายการนี้ตรงตามอัตราส่วนความคมชัดที่แนะนำ</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; นี้มีความกว้างคงที่และข้อความที่รองรับการปรับขนาด</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; นี้มีความกว้างคงที่และข้อความที่รองรับการปรับขนาด</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; นี้มีความสูงคงที่และข้อความที่รองรับการปรับขนาด</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; นี้มีความสูงคงที่และข้อความที่รองรับการปรับขนาด</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; นี้มีขนาดคงที่และข้อความที่รองรับการปรับขนาด</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; นี้มีขนาดคงที่และข้อความที่รองรับการปรับขนาด</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; นี้มีความกว้างคงที่และมี &lt;tt&gt;TextView&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">องค์ประกอบนี้มีความกว้างคงที่และมีองค์ประกอบ &lt;tt&gt;Text&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; นี้มีความสูงคงที่และมี &lt;tt&gt;TextView&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">องค์ประกอบนี้มีความสูงคงที่และมีองค์ประกอบ &lt;tt&gt;Text&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; นี้มีขนาดคงที่และมี &lt;tt&gt;TextView&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">องค์ประกอบนี้มีขนาดคงที่และมีองค์ประกอบ &lt;tt&gt;Text&lt;/tt&gt; พร้อมข้อความที่รองรับการปรับขนาด</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">ลองแก้ไข &lt;tt&gt;LayoutParams&lt;/tt&gt; เพื่ออนุญาตให้ใช้การขยายข้อความ</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">ลองแก้ไขตัวปรับขนาดโดยใช้ &lt;tt&gt;sizeIn&lt;/tt&gt; เพื่ออนุญาตให้ใช้การขยายข้อความ</string>
   
   <string name="check_title_unexposed_text">ข้อความที่ไม่ได้เปิดเผย</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">ระบบตรวจพบผลลัพธ์ OCR ใน ImageView นี้</string>
   
-  <string name="result_message_brief_unexposed_text">ตรวจพบข้อความที่ไม่ได้เปิดเผย: %1$s</string>
+  <string name="result_message_brief_unexposed_text">ตรวจพบสิ่งที่อาจเป็นข้อความ: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">ตรวจพบข้อความ: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">สิ่งที่อาจเป็นข้อความ: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">&lt;tt&gt;SurfaceView&lt;/tt&gt; นี้อาจไม่แสดงเนื้อหาแก่บริการการช่วยเหลือพิเศษ</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">ตรวจพบข้อความที่ไม่ได้เปิดเผยหลายรายการ รวมถึง \"%1$s\"</string>
+  <string name="result_message_brief_multiple_unexposed_texts">ตรวจพบสิ่งที่อาจเป็นข้อความซึ่งไม่ได้เปิดเผย รวมถึง \"%1$s\"</string>
   
   <string name="result_message_multiple_unexposed_texts">รายการนี้อาจไม่แสดงเนื้อหาแก่บริการการช่วยเหลือพิเศษ</string>
   

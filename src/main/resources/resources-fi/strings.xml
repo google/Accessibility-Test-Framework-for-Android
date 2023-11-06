@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Tällä kohteella ei ole attribuuttia &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Kohteella ei ole sisällön kuvausta.</string>
+  
   <string name="result_message_not_visible">Tämä kohde ei ole näkyvä.</string>
   
   <string name="result_message_not_enabled">Tätä kohdetta ei ole otettu käyttöön.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">toiminnallinen</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Ristiriitaiset elementit: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Kohteen kuvaukset</string>
   
   <string name="result_message_brief_same_speakable_text">Useilla kohteilla on sama kuvaus.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Tämän kuvan taustan ja etualan välistä kontrastia kannattaa lisätä.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Tämän kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja arvioituun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Suhteeksi kannattaa asettaa vähintään %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient">Tämän kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin &lt;tt&gt;%3$s&lt;/tt&gt; ja arvioituun taustaväriin &lt;tt&gt;%4$s&lt;/tt&gt;. Suhteeksi kannattaa asettaa vähintään %2$.2f.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;#%3$06X&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;#%4$06X&lt;/tt&gt;. Kontrastisuhdetta kannattaa suurentaa vähintään tasolle %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;%3$s&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;%4$s&lt;/tt&gt;. Kontrastisuhdetta kannattaa suurentaa vähintään tasolle %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;%3$s&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;%4$s&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Kuvan kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;%3$s&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;%4$s&lt;/tt&gt;). Kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %2$.2f.</string>
   
   <string name="check_title_redundant_description">Kohdetyypin tunniste</string>
   
@@ -83,16 +87,28 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;-attribuutissa voi olla tarpeetonta tekstiä.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Kohteen sisällön kuvauksessa voi olla tarpeetonta tekstiä.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;-attribuutin ”&lt;tt&gt;%1$s&lt;/tt&gt;” lopussa on kohteen tyyppi.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt; \"&lt;tt&gt;%1$s&lt;/tt&gt;\" sisältää kohdetyypin \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Kohteen sisällön kuvaus (&lt;tt&gt;%1$s&lt;/tt&gt;) sisältää kohdetyypin \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="result_message_content_desc_contains_action">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     sisältää toiminnon \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Kohteen sisällön kuvaus
+    (&lt;tt&gt;%1$s&lt;/tt&gt;)
+    sisältää toiminnon \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">Tämän kohteen &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
+    sisältää tilan \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Kohteen sisällön kuvaus
+    (&lt;tt&gt;%1$s&lt;/tt&gt;)
     sisältää tilan \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="button_item_type">painike</string>
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Verkkosisältöä ei tarkistettu.</string>
   
+  <string name="result_message_unsupported_compose_content">Koottavaa sisältöä ei arvioida tässä ympäristössä.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter-sisältöä ei arvioida tässä ympäristössä.</string>
+  
   <string name="result_message_missing_speakable_text">Tällä kohteella ei ehkä ole tunnistetta, jonka näytönlukijat voivat lukea.</string>
   
   <string name="check_title_text_contrast">Tekstin kontrasti</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Tämän kohteen etualan ja taustan kontrastisuhdetta kannattaa lisätä.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin (&lt;tt&gt;%2$s&lt;/tt&gt;) ja taustaväriin (&lt;tt&gt;%3$s&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Kannattaa käyttää värejä, joiden kontrastisuhde on suurempi kuin muokattu suhde %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu tekstin väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Kannattaa käyttää värejä, joiden kontrastisuhde on suurempi kuin muokattu suhde %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Kohteen suurin mahdollinen tekstin kontrastisuhde on %1$.2f. Tämä perustuu tekstin väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja läpinäkyvään taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Kohteen suurin mahdollinen tekstin kontrastisuhde on %1$.2f. Tämä perustuu tekstin väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja läpinäkyvään taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Kannattaa käyttää värejä, joiden kontrastisuhde on suurempi kuin muokattu suhde %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu ilmoitettuun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja ilmoitettuun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Kohteen pienin mahdollinen kontrastisuhde on %1$.2f. Tämä perustuu tekstin väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja läpinäkyvään taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;#%2$06X&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;#%3$06X&lt;/tt&gt;. Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Kohteen pienin mahdollinen kontrastisuhde on %1$.2f. Tämä perustuu tekstin väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja läpinäkyvään taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Kannattaa käyttää värejä, joiden kontrastisuhde on suurempi kuin muokattu suhde %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;%2$s&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;%3$s&lt;/tt&gt;). Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;#%2$06X&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;%2$s&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;%3$s&lt;/tt&gt;). Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Tämän kohteen tekstin kontrastisuhde on %1$.2f. Suhde perustuu ilmoitettuun etualan väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja ilmoitettuun taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Pienen tekstin kontrastisuhteeksi kannattaa asettaa yli %4$.2f ja suuren tekstin kontrastisuhteeksi yli %5$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin &lt;tt&gt;%2$s&lt;/tt&gt; ja valittuun taustaväriin &lt;tt&gt;%3$s&lt;/tt&gt;. Tekstin kontrastisuhteeksi kannattaa asettaa vähintään %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu arvioituun etualan väriin (&lt;tt&gt;%2$s&lt;/tt&gt;) ja arvioituun taustaväriin (&lt;tt&gt;%3$s&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Tämän elementin tekstin kontrastisuhde on %1$.2f. Suhde perustuu valittuun etualan väriin (&lt;tt&gt;%2$s&lt;/tt&gt;) ja valittuun taustaväriin (&lt;tt&gt;%3$s&lt;/tt&gt;). Tekstin kontrastisuhdetta kannattaa suurentaa vähintään muokatulle tasolle %4$.2f.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Tämän elementin etualan ja taustan värit vastaavat suositeltua kontrastisuhdetta.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä leveys ja skaalautuva teksti.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Luokalla (&lt;tt&gt;Text&lt;/tt&gt;) on kiinteä leveys ja skaalautuva teksti.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä korkeus ja skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Luokalla (&lt;tt&gt;Text&lt;/tt&gt;) on kiinteä korkeus ja skaalautuva teksti.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Luokalla &lt;tt&gt;TextView&lt;/tt&gt; on kiinteä koko ja skaalautuva teksti.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Luokalla (&lt;tt&gt;Text&lt;/tt&gt;) on kiinteä koko ja skaalautuva teksti.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä leveys ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Elementillä on kiinteä leveys ja se sisältää elementin (&lt;tt&gt;Text&lt;/tt&gt;), jossa on skaalautuva teksti.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä korkeus ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Elementillä on kiinteä korkeus ja se sisältää elementin (&lt;tt&gt;Text&lt;/tt&gt;), jossa on skaalautuva teksti.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Luokalla &lt;tt&gt;ViewGroup&lt;/tt&gt; on kiinteä koko ja se sisältää luokan &lt;tt&gt;TextView&lt;/tt&gt;, jolla on skaalautuva teksti.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Elementillä on kiinteä koko ja se sisältää elementin (&lt;tt&gt;Text&lt;/tt&gt;), jossa on skaalautuva teksti.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Voit mahdollistaa tekstin laajentumisen muokkaamalla kohtaa &lt;tt&gt;LayoutParams&lt;/tt&gt;.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Harkitse koon muokkausta muokkaajalla (&lt;tt&gt;sizeIn&lt;/tt&gt;), jotta teksti voi laajentua.</string>
   
   <string name="check_title_unexposed_text">Näkymätöntä tekstiä</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">Tekstintunnistus havaitsi tuloksia ImageView\'ssa.</string>
   
-  <string name="result_message_brief_unexposed_text">Näkymätöntä tekstiä havaittu: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Mahdollista tekstiä havaittu: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Tekstiä havaittu: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Mahdollista tekstiä: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Tämä &lt;tt&gt;alustanäkymä&lt;/tt&gt; ei välttämättä näytä sisältöään saavutettavuuspalveluille.</string>
+  <string name="result_message_text_detected_in_surface_view">Tämä &lt;tt&gt;SurfaceView&lt;/tt&gt; ei välttämättä näy saavutettavuuspalveluille.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Useita näkymättömiä tekstejä havaittu, kuten \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Mahdollisia näkymättömiä tekstejä havaittu, kuten \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">Tämän kohteen sisältö ei välttämättä näy kaikille saavutettavuuspalveluille.</string>
+  <string name="result_message_multiple_unexposed_texts">Tämän kohteen sisältö ei välttämättä näy saavutettavuuspalveluille.</string>
   
   <string name="result_message_ocr_result_not_available">Tekstintunnistustulokset eivät ole saatavilla.</string>
   

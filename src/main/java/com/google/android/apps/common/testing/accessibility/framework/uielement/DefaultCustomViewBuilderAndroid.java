@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.Checkable;
 import com.google.android.libraries.accessibility.utils.log.LogUtils;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.Chip;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Default implementation for interface {@link CustomViewBuilderAndroid}. */
@@ -36,8 +38,15 @@ public class DefaultCustomViewBuilderAndroid implements CustomViewBuilderAndroid
     if (fromView instanceof MaterialButton) {
       // Although MaterialButton implements Checkable, it isn't always checkable for accessibility.
       return ((MaterialButton) fromView).isCheckable();
-    } else {
-      return (fromView instanceof Checkable);
     }
+    if (fromView instanceof MaterialCardView) {
+      // MaterialCardView also implements Checkable and isn't always checkable for accessibility.
+      return ((MaterialCardView) fromView).isCheckable();
+    }
+    if (fromView instanceof Chip) {
+      // Chip also implements Checkable and isn't always checkable for accessibility.
+      return ((Chip) fromView).isCheckable();
+    }
+    return (fromView instanceof Checkable);
   }
 }

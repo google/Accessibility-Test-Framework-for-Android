@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Locale;
 
 /** An exception class to be used for throwing exceptions with accessibility results. */
-@SuppressWarnings("deprecation")
 public final class AccessibilityViewCheckException
     extends com.google.android.apps.common.testing.accessibility.framework.integrations
         .AccessibilityViewCheckException {

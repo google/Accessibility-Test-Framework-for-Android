@@ -4,6 +4,7 @@ import com.google.android.apps.common.testing.accessibility.framework.proto.Acce
 import com.google.android.apps.common.testing.accessibility.framework.replacements.Rect;
 import com.google.common.collect.ImmutableList;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import com.google.errorprone.annotations.Immutable;
 import java.util.List;
 import java.util.Objects;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -12,6 +13,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * Represents every entity across the hierarchy of recognized text. An entity may contain other
  * smaller entities, or may be an atom.
  */
+@Immutable
 public class TextComponent {
 
   private final String value;

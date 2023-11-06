@@ -26,7 +26,6 @@ import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Provides deprecated methods for {@link AccessibilityCheckPreset}. */
-@SuppressWarnings("deprecation") // Need to support AccessibilityViewHierarchyCheck.
 public final class AccessibilityCheckPresetAndroid {
 
   /**
@@ -60,7 +59,9 @@ public final class AccessibilityCheckPresetAndroid {
           Sets.difference(
                   checks,
                   ImmutableSet.<AccessibilityHierarchyCheck>of(
-                      AccessibilityCheckPreset.getHierarchyCheckForClass(ClassNameCheck.class)))
+                      checkNotNull(
+                          AccessibilityCheckPreset.getHierarchyCheckForClass(
+                              ClassNameCheck.class))))
               .immutableCopy();
     }
 

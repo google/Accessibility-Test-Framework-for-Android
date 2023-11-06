@@ -28,7 +28,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import androidx.annotation.RequiresApi;
 import com.google.android.libraries.accessibility.utils.log.LogUtils;
 import java.util.HashSet;
 import java.util.Set;
@@ -62,12 +61,7 @@ public final class ViewAccessibilityUtils {
       return false;
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      return view.isImportantForAccessibility();
-    } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      // Prior to Jelly Bean, all Views were considered important for accessibility.
-      return true;
-    } else {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
       // On APIs between 16 and 21, we must piece together accessibility importance from the
       // available properties. We return false incorrectly for some cases where unretrievable
       // listeners prevent us from determining importance.
@@ -96,6 +90,8 @@ public final class ViewAccessibilityUtils {
           || (view.getAccessibilityNodeProvider() != null)
           || isAccessibilityLiveRegion(view);
     }
+
+    return view.isImportantForAccessibility();
   }
 
   /**
@@ -145,7 +141,6 @@ public final class ViewAccessibilityUtils {
    * @return {@code true} if a screen reader would choose to place accessibility focus on {@code
    *     view}, {@code false} otherwise.
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
   public static boolean shouldFocusView(View view) {
     if (view == null) {
       return false;
@@ -186,10 +181,6 @@ public final class ViewAccessibilityUtils {
    *     labels it.
    */
   public static @Nullable View getLabelForView(View view) {
-    if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-      /* Earlier versions don't support labelFor */
-      return null;
-    }
     int idToFind = view.getId();
     if (idToFind == View.NO_ID) {
       /* Views lacking IDs can't be labeled by others */
@@ -271,7 +262,6 @@ public final class ViewAccessibilityUtils {
     return (resourceId & 0xFF000000) == 0 && (resourceId & 0x00FFFFFF) != 0;
   }
 
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1) // Calls View#getLabelFor
   private static @Nullable View lookForLabelForViewInViewAndChildren(
       View view, @Nullable View childToSkip, int idToFind) {
     if (view.getLabelFor() == idToFind) {
@@ -339,8 +329,7 @@ public final class ViewAccessibilityUtils {
   }
 
   private static boolean isAccessibilityLiveRegion(View view) {
-    return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-        && (view.getAccessibilityLiveRegion() != View.ACCESSIBILITY_LIVE_REGION_NONE);
+    return view.getAccessibilityLiveRegion() != View.ACCESSIBILITY_LIVE_REGION_NONE;
   }
 
   /**
@@ -354,7 +343,6 @@ public final class ViewAccessibilityUtils {
    * @return {@code true} if an ancestor of {@code view} may gain accessibility focus, {@code false}
    *     otherwise
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean hasFocusableAncestor(View view) {
     if (view == null) {
       return false;
@@ -379,7 +367,6 @@ public final class ViewAccessibilityUtils {
    * @return {@code true} if it is possible for {@code view} to gain accessibility focus, {@code
    *     false} otherwise.
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls isChildOfScrollableContainer
   private static boolean isAccessibilityFocusable(View view) {
     if (view == null) {
       return false;
@@ -407,7 +394,6 @@ public final class ViewAccessibilityUtils {
    * @return {@code true} if {@code view} is a top-level view within a scrollable container, {@code
    *     false} otherwise
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls View#getParentForAccessibility
   private static boolean isChildOfScrollableContainer(View view) {
     if (view == null) {
       return false;
@@ -442,7 +428,6 @@ public final class ViewAccessibilityUtils {
    * @return {@code true} if a spoken description for {@code view} was determined, {@code false}
    *     otherwise.
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls hasNonActionableSpeakingChildren
   private static boolean isSpeakingView(View view) {
     if (hasText(view)) {
       return true;
@@ -465,7 +450,6 @@ public final class ViewAccessibilityUtils {
    * @param view The {@link View} to evaluate
    * @return {@code true} if {@code view} has non-actionable speaking children within its subtree
    */
-  @RequiresApi(Build.VERSION_CODES.JELLY_BEAN) // Calls isAccessibilityFocusable
   private static boolean hasNonActionableSpeakingChildren(View view) {
     if ((view == null) || !(view instanceof ViewGroup)) {
       return false;

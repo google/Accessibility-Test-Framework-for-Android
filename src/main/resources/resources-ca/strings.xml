@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Aquest element no té cap atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Aquest element no té cap descripció de contingut.</string>
+  
   <string name="result_message_not_visible">Aquest element no és visible.</string>
   
   <string name="result_message_not_enabled">Aquest element no està activat.</string>
@@ -47,7 +49,9 @@
   
   <string name="clickable_and_long_clickable">clicable i clicable de manera prolongada</string>
   
-  <string name="actionable">accionable</string>
+  <string name="actionable">aplicable</string>
+  
+  <string name="result_message_addendum_conflicting_elements_list">Elements en conflicte: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
   
   <string name="check_title_duplicate_speakable_text">Descripcions dels elements</string>
   
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Pots augmentar la relació de contrast entre el primer pla i el fons d\'aquesta imatge.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Pots augmentar aquesta relació a %2$.2f o més.</string>
+  <string name="result_message_image_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;%3$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%4$s&lt;/tt&gt;) estimats. Pots augmentar aquesta relació a %2$.2f o més.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a %2$.2f o a una de superior.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;%3$s&lt;/tt&gt;) i el color de fons (&lt;tt&gt;%4$s&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a %2$.2f o a una de superior.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;%3$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%4$s&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%3$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%4$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relació de contrast de la imatge és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;%3$s&lt;/tt&gt;) i el color de fons (&lt;tt&gt;%4$s&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%2$.2f) o a una de superior.</string>
   
   <string name="check_title_redundant_description">Etiqueta de tipus d\'element</string>
   
@@ -83,15 +87,27 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">És possible que l\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element contingui text innecessari.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">És possible que la descripció del contingut d\'aquest element contingui text innecessari.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">L\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", acaba amb el tipus d\'element.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">L\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", conté el tipus d\'element \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">La descripció del contingut d\'aquest element, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", conté el tipus d\'element \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
   <string name="result_message_content_desc_contains_action">L\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     conté l\'acció \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
+  <string name="result_message_content_desc_contains_action_generic">La descripció del contingut d\'aquest element,
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
+    conté l\'acció \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
   <string name="result_message_content_desc_contains_state">L\'atribut &lt;tt&gt;android:contentDescription&lt;/tt&gt; d\'aquest element,
+    \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
+    conté l\'estat \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">La descripció del contingut d\'aquest element,
     \"&lt;tt&gt;%1$s&lt;/tt&gt;\",
     conté l\'estat \"&lt;tt&gt;%2$s&lt;/tt&gt;\".</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">El contingut web no s\'ha avaluat.</string>
   
+  <string name="result_message_unsupported_compose_content">El contingut componible no s\'avalua en aquest entorn.</string>
+  
+  <string name="result_message_unsupported_flutter_content">El contingut de Flutter no s\'avalua en aquest entorn.</string>
+  
   <string name="result_message_missing_speakable_text">És possible que aquest element no tingui una etiqueta que puguin llegir els lectors de pantalla.</string>
   
   <string name="check_title_text_contrast">Contrast del text</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Pots augmentar la relació de contrast entre el primer pla i el fons del text d\'aquest element.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color del text &lt;tt&gt;#%2$06X&lt;/tt&gt; i el color de fons &lt;tt&gt;#%3$06X&lt;/tt&gt;. Pots augmentar aquesta relació a %4$.2f o més.</string>
+  <string name="result_message_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color del text &lt;tt&gt;%2$s&lt;/tt&gt; i el color de fons &lt;tt&gt;%3$s&lt;/tt&gt;. Pots augmentar aquesta relació a %4$.2f o més.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de text (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Utilitza colors que generin una relació de contrast superior a la modificada (%4$.2f).</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de text (&lt;tt&gt;%2$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;). Utilitza colors que generin una relació de contrast superior a la modificada (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">La relació de contrast màxima possible del text de l\'element és %1$.2f per al color de text &lt;tt&gt;%2$s&lt;/tt&gt; i el color de fons no opac &lt;tt&gt;%3$s&lt;/tt&gt;. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">La relació de contrast màxima possible del text de l\'element és %1$.2f per al color de text &lt;tt&gt;%2$s&lt;/tt&gt; i el color de fons no opac &lt;tt&gt;%3$s&lt;/tt&gt;. Utilitza colors que generin una relació de contrast superior a la modificada (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">La relació de contrast mínima possible del text de l\'element és %1$.2f per al color de text &lt;tt&gt;%2$s&lt;/tt&gt; i el color de fons no opac &lt;tt&gt;%3$s&lt;/tt&gt;. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">La relació de contrast mínima possible del text de l\'element és %1$.2f per al color de text &lt;tt&gt;%2$s&lt;/tt&gt; i el color de fons no opac &lt;tt&gt;%3$s&lt;/tt&gt;. Utilitza colors que generin una relació de contrast superior a la modificada (%4$.2f).</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i un color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) estimats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;#%2$06X&lt;/tt&gt;) i el color de fons (&lt;tt&gt;#%3$06X&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i el color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) proporcionats. Utilitza colors que generin una relació de contrast superior a%4$.2f per al text petit, o %5$.2f per al text gran.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i el color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació almenys fins a %4$.2f.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en un color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i un color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) estimats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relació de contrast del text de l\'element és %1$.2f. Aquesta relació es basa en el color de primer pla (&lt;tt&gt;%2$s&lt;/tt&gt;) i el color de fons (&lt;tt&gt;%3$s&lt;/tt&gt;) proporcionats. Et recomanem que augmentis aquesta relació a la modificada (%4$.2f) o a una de superior.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Els colors de primer pla i de fons d\'aquest element es corresponen amb la relació de contrast suggerida.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una amplada fixa i text escalable.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Aquest &lt;tt&gt;Text&lt;/tt&gt; té una amplada fixa i text escalable.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una alçada fixa i text escalable.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Aquest &lt;tt&gt;Text&lt;/tt&gt; té una alçada fixa i text escalable.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Aquesta &lt;tt&gt;TextView&lt;/tt&gt; té una mida fixa i text escalable.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Aquest &lt;tt&gt;Text&lt;/tt&gt; té una mida fixa i text escalable.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una amplada fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Aquest element té una amplada fixa i conté un element de &lt;tt&gt;Text&lt;/tt&gt; amb text escalable.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una alçada fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Aquest element té una alçada fixa i conté un element de &lt;tt&gt;Text&lt;/tt&gt; amb text escalable.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Aquest &lt;tt&gt;ViewGroup&lt;/tt&gt; té una mida fixa i conté una &lt;tt&gt;TextView&lt;/tt&gt; amb text escalable.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Aquest element té una mida fixa i conté un element de &lt;tt&gt;Text&lt;/tt&gt; amb text escalable.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Prova de modificar &lt;tt&gt;LayoutParams&lt;/tt&gt; per permetre que el text s\'expandeixi.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Prova de canviar els modificadors de mida amb &lt;tt&gt;sizeIn&lt;/tt&gt; per permetre que el text s\'ampliï.</string>
   
   <string name="check_title_unexposed_text">Text no exposat</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">S\'han detectat resultats de ROC dins d\'aquesta ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">S\'ha detectat text no exposat: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Possible text detectat: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">S\'ha detectat text: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Text possible: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">És possible que aquesta &lt;tt&gt;SurfaceView&lt;/tt&gt; no estigui mostrant el seu contingut als serveis d\'accessibilitat.</string>
+  <string name="result_message_text_detected_in_surface_view">És possible que aquesta &lt;tt&gt;SurfaceView&lt;/tt&gt; no mostri el seu contingut als serveis d\'accessibilitat.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">S\'han detectat diversos textos no exposats, com ara \"%1$s\".</string>
+  <string name="result_message_brief_multiple_unexposed_texts">S\'han detectat possibles textos no exposats, com ara \"%1$s\".</string>
   
-  <string name="result_message_multiple_unexposed_texts">És possible que aquest element no estigui exposant el seu contingut als serveis d\'accessibilitat.</string>
+  <string name="result_message_multiple_unexposed_texts">És possible que aquest element no exposi el seu contingut als serveis d\'accessibilitat.</string>
   
   <string name="result_message_ocr_result_not_available">Els resultats d\'OCR no estan disponibles.</string>
   

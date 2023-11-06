@@ -109,11 +109,20 @@ public class ClickableSpanCheck extends AccessibilityHierarchyCheck {
                 results.add(new AccessibilityHierarchyCheckResult(this.getClass(),
                     AccessibilityCheckResultType.ERROR, element, RESULT_ID_NULL_URL, null));
               } else {
-                Uri uri = new Uri(url);
-                if (uri.isRelative()) {
-                  // Relative URIs cannot be resolved.
-                  results.add(new AccessibilityHierarchyCheckResult(this.getClass(),
-                      AccessibilityCheckResultType.ERROR, element, RESULT_ID_RELATIVE_LINK, null));
+                try {
+                  Uri uri = new Uri(url);
+                  if (uri.isRelative()) {
+                    // Relative URIs cannot be resolved.
+                    results.add(
+                        new AccessibilityHierarchyCheckResult(
+                            this.getClass(),
+                            AccessibilityCheckResultType.ERROR,
+                            element,
+                            RESULT_ID_RELATIVE_LINK,
+                            null));
+                  }
+                } catch (IllegalArgumentException e) {
+                  // Ignore malformed URLs
                 }
               }
             } else if (span instanceof Spans.ClickableSpan) { // Non-URLSpan ClickableSpan

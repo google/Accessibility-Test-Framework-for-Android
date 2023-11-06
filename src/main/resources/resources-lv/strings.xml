@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Šim vienumam nav atribūta &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Šim vienumam nav satura apraksta.</string>
+  
   <string name="result_message_not_visible">Šis vienums nav redzams.</string>
   
   <string name="result_message_not_enabled">Šis vienums nav iespējots.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">izmantojams</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Konfliktējošie elementi: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Vienumu apraksti</string>
   
   <string name="result_message_brief_same_speakable_text">Vairākiem vienumiem ir vienādi apraksti.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Apsveriet iespēju palielināt kontrasta attiecību starp šī attēla priekšplānu un fonu.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šo attiecību uz %2$.2f vai lielāku attiecību.</string>
+  <string name="result_message_image_contrast_not_sufficient">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;%4$s&lt;/tt&gt;). Apsveriet iespēju palielināt šo attiecību uz %2$.2f vai lielāku attiecību.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;#%4$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz %2$.2f vai vairāk.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;%3$s&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;%4$s&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz %2$.2f vai vairāk.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;#%4$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz pārveidotajai attiecībai %2$.2f vai vairāk.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;%3$s&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;%4$s&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz pārveidotajai attiecībai %2$.2f vai vairāk.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;#%4$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz pārveidotajai attiecībai %2$.2f vai vairāk.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Attēla kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;%3$s&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;%4$s&lt;/tt&gt;. Apsveriet iespēju palielināt šo attiecību līdz pārveidotajai attiecībai %2$.2f vai vairāk.</string>
   
   <string name="check_title_redundant_description">Vienuma veida iezīme</string>
   
@@ -83,13 +87,25 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Iespējams, šī vienuma atribūtā &lt;tt&gt;android:contentDescription&lt;/tt&gt; ir ietverts nevajadzīgs teksts.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Šī vienuma satura aprakstā var būt ietverts nevajadzīgs teksts.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Šī vienuma atribūts &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) beidzas ar vienuma veidu.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Šī vienuma atribūts &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) ietver vienuma veidu “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Šī vienuma satura apraksts (“&lt;tt&gt;%1$s&lt;/tt&gt;”) ietver vienuma veidu “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_action">Šī vienuma atribūts &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) ietver vienuma veidu “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Šī vienuma satura apraksts
+    (“&lt;tt&gt;%1$s&lt;/tt&gt;”)
+    ietver šādu darbību: “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_state">Šī vienuma atribūts &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) ietver vienuma statusu “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Šī vienuma satura apraksts
+    (“&lt;tt&gt;%1$s&lt;/tt&gt;”)
+    ietver šādu statusu: “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="button_item_type">poga</string>
   
@@ -117,6 +133,10 @@
   
   <string name="result_message_web_content">Tīmekļa saturs nav novērtēts.</string>
   
+  <string name="result_message_unsupported_compose_content">Šajā vidē netiek novērtēts izveidojams saturs.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Šajā vidē netiek novērtēts Flutter saturs.</string>
+  
   <string name="result_message_missing_speakable_text">Iespējams, šim vienumam nav iezīmes, ko ekrāna lasītāji var nolasīt.</string>
   
   <string name="check_title_text_contrast">Teksta kontrasts</string>
@@ -135,21 +155,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Apsveriet iespēju palielināt šī vienuma teksta priekšplāna/fona kontrasta attiecību.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz teksta krāsu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) un fona krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz teksta krāsu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) un fona krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā pārveidotā attiecība %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā pārveidotā attiecība %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;#%2$06X&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt;. Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā %4$.2f mazam tekstam vai %5$.2f lielam tekstam.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Vienuma maksimālā iespējamā teksta kontrasta attiecība ir %1$.2f, pamatojoties uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un necaurredzamo fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;#%2$06X&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Vienuma maksimālā iespējamā teksta kontrasta attiecība ir %1$.2f, pamatojoties uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un necaurredzamo fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā pārveidotā attiecība %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;#%2$06X&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt;. Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā %4$.2f mazam tekstam vai %5$.2f lielam tekstam.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Vienuma minimālā iespējamā teksta kontrasta attiecība ir %1$.2f, pamatojoties uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un necaurredzamo fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;#%2$06X&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Vienuma minimālā iespējamā teksta kontrasta attiecība ir %1$.2f, pamatojoties uz teksta krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un necaurredzamo fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā pārveidotā attiecība %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;#%2$06X&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību līdz pārveidotajai attiecībai %4$.2f vai vairāk.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;%2$s&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;%3$s&lt;/tt&gt;. Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā %4$.2f mazam tekstam vai %5$.2f lielam tekstam.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;#%2$06X&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;#%3$06X&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību līdz pārveidotajai attiecībai %4$.2f vai vairāk.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu (&lt;tt&gt;%2$s&lt;/tt&gt;) un aptuveno fona krāsu (&lt;tt&gt;%3$s&lt;/tt&gt;). Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;%2$s&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;%3$s&lt;/tt&gt;. Apsveriet iespēju izmantot krāsas, kas veido lielāku kontrasta attiecību nekā %4$.2f mazam tekstam vai %5$.2f lielam tekstam.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;%2$s&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;%3$s&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību uz %4$.2f vai lielāku attiecību.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz aptuveno priekšplāna krāsu &lt;tt&gt;%2$s&lt;/tt&gt; un aptuveno fona krāsu &lt;tt&gt;%3$s&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību līdz pārveidotajai attiecībai %4$.2f vai vairāk.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Šī vienuma teksta kontrasta attiecība ir %1$.2f. Šī attiecība ir balstīta uz norādīto priekšplāna krāsu &lt;tt&gt;%2$s&lt;/tt&gt; un norādīto fona krāsu &lt;tt&gt;%3$s&lt;/tt&gt;. Apsveriet iespēju palielināt šī vienuma teksta kontrasta attiecību līdz pārveidotajai attiecībai %4$.2f vai vairāk.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Šī vienuma priekšplāna un fona krāsa atbilst ieteiktajai kontrasta attiecībai.</string>
   
@@ -279,17 +307,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Šim vienumam (&lt;tt&gt;TextView&lt;/tt&gt;) ir fiksēts platums un mērogojams teksts.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Šim elementam (&lt;tt&gt;Text&lt;/tt&gt;) ir fiksēts platums un mērogojams teksts.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Šim vienumam (&lt;tt&gt;TextView&lt;/tt&gt;) ir fiksēts augstums un mērogojams teksts.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Šim elementam (&lt;tt&gt;Text&lt;/tt&gt;) ir fiksēts augstums un mērogojams teksts.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Šim vienumam (&lt;tt&gt;TextView&lt;/tt&gt;) ir fiksēts izmērs un mērogojams teksts.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Šim elementam (&lt;tt&gt;Text&lt;/tt&gt;) ir fiksēts izmērs un mērogojams teksts.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Šim vienumam (&lt;tt&gt;ViewGroup&lt;/tt&gt;) ir fiksēts platums, un tas ietver vienumu &lt;tt&gt;TextView&lt;/tt&gt; ar mērogojamu tekstu.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Šim elementam ir fiksēts platums, un tas ietver elementu &lt;tt&gt;Text&lt;/tt&gt; ar mērogojamu tekstu.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Šim vienumam (&lt;tt&gt;ViewGroup&lt;/tt&gt;) ir fiksēts augstums, un tas ietver vienumu &lt;tt&gt;TextView&lt;/tt&gt; ar mērogojamu tekstu.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Šim elementam ir fiksēts augstums, un tas ietver elementu &lt;tt&gt;Text&lt;/tt&gt; ar mērogojamu tekstu.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Šim vienumam (&lt;tt&gt;ViewGroup&lt;/tt&gt;) ir fiksēts izmērs, un tas ietver vienumu &lt;tt&gt;TextView&lt;/tt&gt; ar mērogojamu tekstu.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Šim elementam ir fiksēts izmērs, un tas ietver elementu &lt;tt&gt;Text&lt;/tt&gt; ar mērogojamu tekstu.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Apsveriet iespēju mainīt vienumu &lt;tt&gt;LayoutParams&lt;/tt&gt;, lai varētu izvērst tekstu.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Lai atļautu teksta izvēršanu, apsveriet iespēju pārveidot izmēra modificētājus, izmantojot funkciju &lt;tt&gt;sizeIn&lt;/tt&gt;.</string>
   
   <string name="check_title_unexposed_text">Neredzams teksts</string>
   
@@ -297,11 +339,11 @@
   
   <string name="result_message_text_detected_in_image_view">Šajā ImageView vienumā ir konstatēti OCR rezultāti.</string>
   
-  <string name="result_message_brief_unexposed_text">Konstatēts neredzams teksts: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Konstatēts iespējams teksts: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Konstatēts teksts: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Iespējamais teksts: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Šķiet, šis &lt;tt&gt;SurfaceView&lt;/tt&gt; nerāda saturu pieejamības pakalpojumos.</string>
+  <string name="result_message_text_detected_in_surface_view">Iespējams, šis &lt;tt&gt;SurfaceView&lt;/tt&gt; nerāda saturu pieejamības pakalpojumos.</string>
   
   <string name="result_message_brief_multiple_unexposed_texts">Konstatēti vairāki neredzami teksta vienumi, tostarp “%1$s”.</string>
   

@@ -16,6 +16,7 @@
 
 package com.google.android.apps.common.testing.accessibility.framework;
 
+
 import com.google.android.apps.common.testing.accessibility.framework.checks.ClassNameCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.ClickableSpanCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.DuplicateClickableBoundsCheck;
@@ -56,6 +57,7 @@ public enum AccessibilityCheckPreset {
   /** The set of checks available in the 4.0 release of the framework */
   VERSION_4_0_CHECKS,
 
+
   /** Don't check anything */
   NO_CHECKS,
 
@@ -87,16 +89,14 @@ public enum AccessibilityCheckPreset {
   private static final ImmutableMap<String, AccessibilityHierarchyCheck>
       CLASS_NAME_TO_HIERARCHY_CHECK = mapClassNameToInstance(CLASS_TO_HIERARCHY_CHECK);
 
-  /** @return an instance of a {@link AccessibilityHierarchyCheck} of the given class type. */
+
+  /** Returns an instance of the given {@link AccessibilityHierarchyCheck} class. */
   public static @Nullable AccessibilityHierarchyCheck getHierarchyCheckForClass(
       Class<? extends AccessibilityHierarchyCheck> clazz) {
     return CLASS_TO_HIERARCHY_CHECK.get(clazz);
   }
 
-  /**
-   * @return an instance of the class with the given name if it extends from {@link
-   *     AccessibilityHierarchyCheck}.
-   */
+  /** Returns an instance of the {@link AccessibilityHierarchyCheck} class with the given name. */
   public static @Nullable AccessibilityHierarchyCheck getHierarchyCheckForClassName(
       String className) {
     return CLASS_NAME_TO_HIERARCHY_CHECK.get(className);

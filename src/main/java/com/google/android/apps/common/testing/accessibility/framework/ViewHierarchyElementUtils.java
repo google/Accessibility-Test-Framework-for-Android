@@ -34,6 +34,10 @@ public final class ViewHierarchyElementUtils {
   public static final String WEB_VIEW_CLASS_NAME = "android.webkit.WebView";
   public static final String SWITCH_CLASS_NAME = "android.widget.Switch";
   public static final String TOGGLE_BUTTON_CLASS_NAME = "android.widget.ToggleButton";
+  public static final String COMPOSE_VIEW_CLASS_NAME = "androidx.compose.ui.platform.ComposeView";
+  public static final String ANDROID_COMPOSE_VIEW_CLASS_NAME =
+      "androidx.compose.ui.platform.AndroidComposeView";
+  public static final String FLUTTER_VIEW_CLASS_NAME = "io.flutter.embedding.android.FlutterView";
   private static final String ANDROIDX_SCROLLING_VIEW_CLASS_NAME =
       "androidx.core.view.ScrollingView";
 
@@ -275,7 +279,7 @@ public final class ViewHierarchyElementUtils {
    * focusable, returns {@code view}.
    *
    * @param view The {@link ViewHierarchyElement} to evaluate.
-   * @return The first ancestor of {@code view} that is accessiblity focusable.
+   * @return The first ancestor of {@code view} that is accessibility focusable.
    */
   public static @Nullable ViewHierarchyElement getFocusableForAccessibilityAncestor(
       ViewHierarchyElement view) {
@@ -539,7 +543,8 @@ public final class ViewHierarchyElementUtils {
       ViewHierarchyElement parentView = checkNotNull(view.getParentView());
       for (int i = 0; i < parentView.getChildViewCount(); i++) {
         ViewHierarchyElement siblingView = parentView.getChildView(i);
-        if (checkNotNull(siblingView.getDrawingOrder()) > checkNotNull(view.getDrawingOrder())
+        if ((siblingView.getDrawingOrder() != null)
+            && (checkNotNull(siblingView.getDrawingOrder()) > checkNotNull(view.getDrawingOrder()))
             && Rect.intersects(element.getBoundsInScreen(), siblingView.getBoundsInScreen())) {
           return true;
         }

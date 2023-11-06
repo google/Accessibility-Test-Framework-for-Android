@@ -9,6 +9,9 @@
   <string description="The result message of a check describing that this view (UI element) does not have any text set for the android contentDescription attribute. [CHAR LIMIT=NONE]"
     name="result_message_no_content_desc">This item has no <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>.</string>
 
+  <string description="The result message of a check describing that this view (UI element) does not have any text set for the android contentDescription attribute. [CHAR LIMIT=NONE]"
+    name="result_message_no_content_desc_generic">This item has no content description.</string>
+
   <string description="The result message of a check describing that this view (UI element) is not currently visible to the user. [CHAR LIMIT=NONE]"
     name="result_message_not_visible">This item is not visible.</string>
 
@@ -79,6 +82,9 @@
   <string description="Describes a UI element on which an action may be performed by the user [CHAR LIMIT=NONE]"
     name="actionable">actionable</string>
 
+  <string description="A message that is appended to a result message containing the list of conflicting elements which all share the same space on the screen. [CHAR LIMIT=NONE]"
+    name="result_message_addendum_conflicting_elements_list">Conflicting element(s): <xliff:g example="first_element_id, second_element_id" id="conflicting_elements_list">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>.</string>
+
   <!-- Result message strings that are used by DuplicateSpeakableTextCheck -->
 
   <string description="The title of a check describing that this view (UI element) has the same text to be spoken by a screen reader as another view on the screen. [CHAR LIMIT=50]"
@@ -116,16 +122,16 @@
     name="result_message_brief_image_contrast_not_sufficient">Consider increasing the contrast ratio between this image\'s foreground and background.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of the image in this view (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
-      name="result_message_image_contrast_not_sufficient">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+      name="result_message_image_contrast_not_sufficient">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%4$s&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of the image in this view (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
-      name="result_message_image_contrast_not_sufficient_confirmed">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+      name="result_message_image_contrast_not_sufficient_confirmed">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%4$s&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of the image in this view (UI element) is lower than a user-defined ratio. [CHAR LIMIT=NONE]"
-      name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+      name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%4$s&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of the image in this view (UI element) is lower than a user-defined ratio. [CHAR LIMIT=NONE]"
-      name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%4$06X&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
+      name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#000000" id="foreground_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%4$s&lt;/tt&gt;</xliff:g>. Consider increasing this ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%2$.2f</xliff:g> or greater.</string>
 
   <!-- Result message strings that are used by RedundantDescriptionCheck -->
 
@@ -138,11 +144,17 @@
   <string description="The brief result message of a check describing that this view (UI element) has redundant or unnecessary text within its 'android:contentDescription' attribute. [CHAR LIMIT=NONE]"
     name="result_message_brief_content_desc_contains_redundant_word">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g> might contain unnecessary text.</string>
 
+  <string description="The brief result message of a check describing that this view (UI element) has redundant or unnecessary text within its content description. [CHAR LIMIT=NONE]"
+    name="result_message_brief_content_desc_contains_redundant_word_generic">This item\'s content description might contain unnecessary text.</string>
+
   <string description="The result message of a check stating that a description of a view (UI element) ends with that view's type (ex: a view of type Button whose 'android:contentDescription' is 'Save button'). [CHAR LIMIT=NONE]"
     name="result_message_content_desc_ends_with_view_type">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>, \"<xliff:g example="Save button" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" ends with the item\'s type.</string>
 
   <string description="The result message of a check stating that a description of a view (UI element) has redundant or unnecessary text (ex: a view of type Button whose 'android:contentDescription' is 'Save button'). [CHAR LIMIT=NONE]"
     name="result_message_content_desc_contains_redundant_word">This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>, \"<xliff:g example="Save button" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" contains the item type \"<xliff:g example="button" id="item_type">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".</string>
+
+  <string description="The result message of a check stating that a description of a view (UI element) has redundant or unnecessary text (ex: a view of type Button whose content description is 'Save button'). [CHAR LIMIT=NONE]"
+    name="result_message_content_desc_contains_redundant_word_generic">This item\'s content description, \"<xliff:g example="Save button" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\" contains the item type \"<xliff:g example="button" id="item_type">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".</string>
 
   <string description="The result message of a check stating that a description of a view (UI element) might specify an available action within its 'android:contentDescription' attribute. [CHAR LIMIT=NONE]"
     name="result_message_content_desc_contains_action">
@@ -151,9 +163,23 @@
     contains the action \"<xliff:g example="tap" id="item_action">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".
   </string>
 
+  <string description="The result message of a check stating that a description of a view (UI element) might specify an available action within its content description. [CHAR LIMIT=NONE]"
+    name="result_message_content_desc_contains_action_generic">
+    This item\'s content description,
+    \"<xliff:g example="Tap to send" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\",
+    contains the action \"<xliff:g example="tap" id="item_action">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".
+  </string>
+
   <string description="The result message of a check stating that a description of a view (UI element) might specify an element state within its 'android:contentDescription' attribute. [CHAR LIMIT=NONE]"
     name="result_message_content_desc_contains_state">
     This item\'s <xliff:g example="android:contentDescription" id="content_description_attr">&lt;tt&gt;android:contentDescription&lt;/tt&gt;</xliff:g>,
+    \"<xliff:g example="Rush delivery selected" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\",
+    contains the state \"<xliff:g example="selected" id="item_state">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".
+  </string>
+
+  <string description="The result message of a check stating that a description of a view (UI element) might specify an element state within its content description. [CHAR LIMIT=NONE]"
+    name="result_message_content_desc_contains_state_generic">
+    This item\'s content description,
     \"<xliff:g example="Rush delivery selected" id="content_desc">&lt;tt&gt;%1$s&lt;/tt&gt;</xliff:g>\",
     contains the state \"<xliff:g example="selected" id="item_state">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g>\".
   </string>
@@ -192,6 +218,12 @@
   <string description="The result message of a check describing that web content (UI element shown within a browser) was not evaluated. [CHAR LIMIT=NONE]"
     name="result_message_web_content">Web content is not evaluated.</string>
 
+  <string description="The result message of a check describing that the Composable content of this View (UI element) was not evaluated. [CHAR LIMIT=NONE]"
+    name="result_message_unsupported_compose_content">Composable content is not evaluated in this environment.</string>
+
+  <string description="The result message of a check describing that the Flutter content of this View (UI element) was not evaluated. [CHAR LIMIT=NONE]"
+    name="result_message_unsupported_flutter_content">Flutter content is not evaluated in this environment.</string>
+
   <string description="The result message of a check describing that this View (UI element) has no description that would be spoken to the user by a screen reader if this view were to be focused. [CHAR LIMIT=NONE]"
     name="result_message_missing_speakable_text">This item may not have a label readable by screen readers.</string>
 
@@ -222,28 +254,41 @@
     name="result_message_brief_text_contrast_not_sufficient">Consider increasing this item\'s text foreground to background contrast ratio.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
-    name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+    name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than a user-defined required ratio. [CHAR LIMIT=NONE]"
-      name="result_message_customized_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than the modified ratio of <xliff:g example="3.0" id="customized_contrast_ratio">%4$.2f</xliff:g>.</string>
+      name="result_message_customized_textview_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than the modified ratio of <xliff:g example="3.0" id="customized_contrast_ratio">%4$.2f</xliff:g>.</string>
+
+  <string description="The result message of a check describing that the upper bound of contrast ratio (the ratio of the luminance of the foreground and non-opaque background colors) of this TextView (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
+    name="result_message_textview_upper_bound_contrast_not_sufficient">The item\'s maximum possible text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>, based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and non-opaque background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+
+  <string description="The result message of a check describing that the upper bound of contrast ratio (the ratio of the luminance of the foreground and non-opaque background colors) of this TextView (UI element) is lower than a user-defined required ratio. [CHAR LIMIT=NONE]"
+      name="result_message_customized_textview_upper_bound_contrast_not_sufficient">The item\'s maximum possible text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>, based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and non-opaque background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than the modified ratio of <xliff:g example="3.0" id="customized_contrast_ratio">%4$.2f</xliff:g>.</string>
+
+  <string description="The result message of a check describing that the lower bound of contrast ratio (the ratio of the luminance of the foreground and non-opaque background colors) of this TextView (UI element) is lower than the required ratio. [CHAR LIMIT=NONE]"
+    name="result_message_textview_lower_bound_contrast_not_sufficient">The item\'s minimum possible text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>, based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and non-opaque background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+
+  <string description="The result message of a check describing that the lower bound of contrast ratio (the ratio of the luminance of the foreground and non-opaque background colors) of this TextView (UI element) is lower than a user-defined required ratio. [CHAR LIMIT=NONE]"
+      name="result_message_customized_textview_lower_bound_contrast_not_sufficient">The item\'s minimum possible text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>, based on a text color of <xliff:g example="#000000" id="text_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and non-opaque background color of <xliff:g example="#FFFFFF" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than the modified ratio of <xliff:g example="3.0" id="customized_contrast_ratio">%4$.2f</xliff:g>.</string>
+
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio unless its text is considered to be large. [CHAR LIMIT=NONE]"
-    name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
+    name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio when its text size is available. [CHAR LIMIT=NONE]"
-    name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+    name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio unless its text is considered to be large. Result based on colors obtained or confirmed through questions. [CHAR LIMIT=NONE]"
-      name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
+      name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider using colors that result in a contrast ratio greater than <xliff:g example="4.5" id="recommended_contrast_ratio">%4$.2f</xliff:g> for small text, or <xliff:g example="3.0" id="tolerant_contrast_ratio">%5$.2f</xliff:g> for large text.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than the required ratio when its text size is available. Result based on colors obtained or confirmed through questions. [CHAR LIMIT=NONE]"
-      name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+      name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to <xliff:g example="3.0" id="recommended_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than a user-defined ratio. [CHAR LIMIT=NONE]"
-      name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+      name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on an estimated foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and an estimated background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this TextView (UI element) is lower than a user-defined ratio based on user provided colors. [CHAR LIMIT=NONE]"
-      name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;#%2$06X&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;#%3$06X&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
+      name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is <xliff:g example="2.9" id="contrast_ratio">%1$.2f</xliff:g>. This ratio is based on the provided foreground color of <xliff:g example="#FFFFFF" id="foreground_color">&lt;tt&gt;%2$s&lt;/tt&gt;</xliff:g> and provided background color of <xliff:g example="#000000" id="background_color">&lt;tt&gt;%3$s&lt;/tt&gt;</xliff:g>. Consider increasing this item\'s text contrast ratio to the modified ratio of <xliff:g example="3.0" id="customized_heuristic_contrast_ratio">%4$.2f</xliff:g> or greater.</string>
 
   <string description="The result message of a check describing that the contrast ratio (the ratio of the luminance of the foreground and background colors) of this View (UI element) meets a suggested ratio based on user provided colors. [CHAR LIMIT=NONE]"
       name="result_message_contrast_sufficient_confirmed">
@@ -464,29 +509,57 @@
       name="result_message_brief_fixed_width_text_view_with_scaled_text">
     This <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> has a fixed width and scalable text.</string>
 
+  <string description="The brief result message indicating scalable text in a fixed width Text (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">
+    This <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> has a fixed width and scalable text.</string>
+
   <string description="The brief result message indicating scalable text in a fixed height TextView. [CHAR LIMIT=NONE]"
       name="result_message_brief_fixed_height_text_view_with_scaled_text">
     This <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> has a fixed height and scalable text.</string>
+
+  <string description="The brief result message indicating scalable text in a fixed height Text (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_height_text_with_scaled_text_compose">
+    This <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> has a fixed height and scalable text.</string>
 
   <string description="The brief result message indicating scalable text in a fixed size TextView. [CHAR LIMIT=NONE]"
       name="result_message_brief_fixed_size_text_view_with_scaled_text">
     This <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> has a fixed size and scalable text.</string>
 
+  <string description="The brief result message indicating scalable text in a fixed size Text (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_size_text_with_scaled_text_compose">
+    This <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> has a fixed size and scalable text.</string>
+
   <string description="The brief result message indicating scalable text in a fixed width ViewGroup. [CHAR LIMIT=NONE]"
       name="result_message_brief_fixed_width_view_group_with_scaled_text">
     This <xliff:g example="ViewGroup" id="view_group_class">&lt;tt&gt;ViewGroup&lt;/tt&gt;</xliff:g> has a fixed width and contains a <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> with scalable text.</string>
+
+  <string description="The brief result message indicating scalable text in a fixed width parent (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_width_parent_with_scaled_text_compose">
+    This element has a fixed width and contains a <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> element with scalable text.</string>
 
   <string description="The brief result message indicating scalable text in a fixed height ViewGroup. [CHAR LIMIT=NONE]"
       name="result_message_brief_fixed_height_view_group_with_scaled_text">
     This <xliff:g example="ViewGroup" id="view_group_class">&lt;tt&gt;ViewGroup&lt;/tt&gt;</xliff:g> has a fixed height and contains a <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> with scalable text.</string>
 
+  <string description="The brief result message indicating scalable text in a fixed height parent (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_height_parent_with_scaled_text_compose">
+    This element has a fixed height and contains a <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> element with scalable text.</string>
+
   <string description="The brief result message indicating scalable text in a fixed size ViewGroup. [CHAR LIMIT=NONE]"
       name="result_message_brief_fixed_size_view_group_with_scaled_text">
     This <xliff:g example="ViewGroup" id="view_group_class">&lt;tt&gt;ViewGroup&lt;/tt&gt;</xliff:g> has a fixed size and contains a <xliff:g example="TextView" id="text_view_class">&lt;tt&gt;TextView&lt;/tt&gt;</xliff:g> with scalable text.</string>
 
+  <string description="The brief result message indicating scalable text in a fixed size parent (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_brief_fixed_size_parent_with_scaled_text_compose">
+    This element has a fixed size and contains a <xliff:g example="Text" id="text_class">&lt;tt&gt;Text&lt;/tt&gt;</xliff:g> element with scalable text.</string>
+
   <string description="The result message when scalable text is within a fixed size TextView. [CHAR LIMIT=NONE]"
       name="result_message_fixed_size_text_view_with_scaled_text">
     Consider modifying the <xliff:g example="LayoutParams" id="layout_params_class">&lt;tt&gt;LayoutParams&lt;/tt&gt;</xliff:g> to allow for text expansion.</string>
+
+  <string description="The result message when scalable text is within a fixed size Text (UI element). [CHAR LIMIT=NONE]"
+      name="result_message_fixed_size_text_with_scaled_text_compose">
+    Consider modifying the size modifiers using <xliff:g example="sizeIn" id="size_constraint_modifier">&lt;tt&gt;sizeIn&lt;/tt&gt;</xliff:g> to allow for text expansion.</string>
 
   <!-- Message strings that are used by UnexposedTextCheck -->
 
@@ -500,19 +573,19 @@
       name="result_message_text_detected_in_image_view">OCR results were detected inside this ImageView.</string>
 
   <string description="The brief result message of a check describing that an item's accessibility label does not include its visible text. [CHAR LIMIT=NONE]"
-      name="result_message_brief_unexposed_text">Unexposed text detected: <xliff:g example="Mon" id="unexposed_text_detected">%1$s</xliff:g></string>
+      name="result_message_brief_unexposed_text">Possible text detected: <xliff:g example="Mon" id="unexposed_text_detected">%1$s</xliff:g></string>
 
   <string description="The result message of a check describing that OCR results were detected inside an ImageView. [CHAR LIMIT=NONE]"
-      name="result_message_brief_text_detected_in_image_view">Text detected: <xliff:g example="Monday" id="text_detected_in_image_view">%1$s</xliff:g></string>
+      name="result_message_brief_text_detected_in_image_view">Possible text: <xliff:g example="Monday" id="text_detected_in_image_view">%1$s</xliff:g></string>
 
   <string description="The result message of a check describing that OCR results were detected inside a SurfaceView. [CHAR LIMIT=NONE]"
-      name="result_message_text_detected_in_surface_view">This &lt;tt&gt;SurfaceView&lt;/tt&gt; may not be exposing its content to accessibility services.</string>
+      name="result_message_text_detected_in_surface_view">This &lt;tt&gt;SurfaceView&lt;/tt&gt; may not expose its content to accessibility services.</string>
 
   <string description="The brief result message of a check describing that multiple OCR results were detected inside a View. [CHAR LIMIT=NONE]"
-      name="result_message_brief_multiple_unexposed_texts">Multiple unexposed texts detected, including &quot;<xliff:g example="Mon" id="unexposed_text_detected">%1$s</xliff:g>&quot;.</string>
+      name="result_message_brief_multiple_unexposed_texts">Possible unexposed texts detected, including &quot;<xliff:g example="Mon" id="unexposed_text_detected">%1$s</xliff:g>&quot;.</string>
 
   <string description="The result message of a check describing that multiple unexposed OCR results were detected inside a View. [CHAR LIMIT=NONE]"
-      name="result_message_multiple_unexposed_texts">This item may not be exposing its content to accessibility services.</string>
+      name="result_message_multiple_unexposed_texts">This item may not expose its content to accessibility services.</string>
 
   <string description="The result message of a check describing this check is not applicable because OCR result is not available. [CHAR LIMIT=NONE]"
       name="result_message_ocr_result_not_available">OCR results are not available.</string>

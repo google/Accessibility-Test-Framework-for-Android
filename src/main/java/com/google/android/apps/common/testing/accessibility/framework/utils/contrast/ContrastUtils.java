@@ -16,6 +16,11 @@
 
 package com.google.android.apps.common.testing.accessibility.framework.utils.contrast;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+import com.google.common.collect.Range;
+
 /** Utilities for dealing with colors and evaluation of their relative contrast. */
 public final class ContrastUtils {
 
@@ -38,6 +43,8 @@ public final class ContrastUtils {
   public static final double CONTRAST_RATIO_WCAG_NORMAL_TEXT = 4.5;
 
   public static final double CONTRAST_RATIO_WCAG_LARGE_TEXT = 3.0;
+
+  private static final int COLOR_MASK = 0xFF;
 
   private ContrastUtils() {
     // Not instantiable
@@ -138,16 +145,95 @@ public final class ContrastUtils {
       throw new IllegalArgumentException("Luminance values may not be negative.");
     }
 
-    return (Math.max(lum1, lum2) + 0.05d) / (Math.min(lum1, lum2) + 0.05d);
+    return (max(lum1, lum2) + 0.05d) / (min(lum1, lum2) + 0.05d);
   }
 
   /**
-   * Converts an {@code int} representation of a {@link Color} to a hex string.
+   * Calculates contrast ratio between foreground color and background color when the background is
+   * overlaid on an opaque backdrop.
+   *
+   * @param foregroundColor The foreground color (can be opaque or non-opaque)
+   * @param backgroundColor The background color (can be opaque or non-opaque)
+   * @param backdrop The opaque backdrop
+   * @return The contrast ratio of foreground with background overlaid on backdrop
+   */
+  private static double calculateContrastOnBackdrop(
+      int foregroundColor, int backgroundColor, int backdrop) {
+    int backgroundOnBackdrop = compositeColors(backgroundColor, backdrop);
+    int compositeforegroundColorOnBackgroundOnBackdrop =
+        compositeColors(foregroundColor, backgroundOnBackdrop);
+    return calculateContrastRatio(
+        compositeforegroundColorOnBackgroundOnBackdrop, backgroundOnBackdrop);
+  }
+
+  /**
+   * Calculates maximum and minimum value of contrast ratio when background color is not opaque.
+   * Approach: https://lists.w3.org/Archives/Public/w3c-wai-ig/2012OctDec/0011.html#replies
+   *
+   * @param foregroundColor The foreground color (can be opaque or non-opaque)
+   * @param backgroundColor The background color (can be opaque or non-opaque)
+   * @return The range [minimum, maximum] of contrast ratio
+   */
+  public static Range<Double> calculateContrastRatioRange(
+      int foregroundColor, int backgroundColor) {
+    double contrastOnBlackBackdrop =
+        calculateContrastOnBackdrop(foregroundColor, backgroundColor, Color.BLACK);
+    double contrastOnWhiteBackdrop =
+        calculateContrastOnBackdrop(foregroundColor, backgroundColor, Color.WHITE);
+
+    double backgroundOnBlackLuminance =
+        calculateLuminance(compositeColors(backgroundColor, Color.BLACK));
+    double backgroundOnWhiteLuminance =
+        calculateLuminance(compositeColors(backgroundColor, Color.WHITE));
+    double foregroundColorLuminance = calculateLuminance(foregroundColor);
+
+    double minimumContrastRatio = 1.0;
+    if (foregroundColorLuminance < backgroundOnBlackLuminance) {
+      minimumContrastRatio = contrastOnBlackBackdrop;
+    } else if (backgroundOnWhiteLuminance < foregroundColorLuminance) {
+      minimumContrastRatio = contrastOnWhiteBackdrop;
+    }
+    return Range.closed(
+        minimumContrastRatio, max(contrastOnBlackBackdrop, contrastOnWhiteBackdrop));
+  }
+
+  /**
+   * Converts an {@code int} representation of a {@link Color} to a hex string in the form of <code>
+   * #<i>rrggbb</i></code> if opaque or <code>#<i>aarrggbb</i></code> if not.
    *
    * @param color The {@link Color} value to convert
    * @return The hex string representation of the color
    */
   public static String colorToHexString(int color) {
-    return String.format("#%06X", (0xFFFFFF & color));
+    if (Color.alpha(color) == 255) {
+      return String.format("#%06X", (0xFFFFFF & color));
+    }
+    return String.format("#%08X", color);
+  }
+
+  /**
+   * Overlays a translucent color over an opaque color.
+   *
+   * @param color The translucent {@link Color}
+   * @param colorToOverlayOn The opaque {@link Color}
+   * @return The alpha blended {@link Color}
+   */
+  public static int compositeColors(int color, int colorToOverlayOn) {
+    int alpha = Color.alpha(color);
+    int r = compositeComponents(Color.red(color), Color.red(colorToOverlayOn), alpha);
+    int g = compositeComponents(Color.green(color), Color.green(colorToOverlayOn), alpha);
+    int b = compositeComponents(Color.blue(color), Color.blue(colorToOverlayOn), alpha);
+    return Color.argb(COLOR_MASK, r, g, b);
+  }
+
+  /**
+   * Overlays a translucent color component over an opaque color component.
+   *
+   * @param component The translucent color component
+   * @param componentToOverlayOn The opaque color component
+   * @return The alpha blended color component
+   */
+  private static int compositeComponents(int component, int componentToOverlayOn, int alpha) {
+    return (component * alpha + componentToOverlayOn * (COLOR_MASK - alpha)) / COLOR_MASK;
   }
 }

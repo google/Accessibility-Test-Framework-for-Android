@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">這個項目不含 &lt;tt&gt;android:contentDescription&lt;/tt&gt;。</string>
   
+  <string name="result_message_no_content_desc_generic">這個項目沒有內容說明。</string>
+  
   <string name="result_message_not_visible">這個項目不會顯示在畫面上。</string>
   
   <string name="result_message_not_enabled">這個項目未啟用。</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">可操作</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">衝突元素：&lt;tt&gt;%1$s&lt;/tt&gt;。</string>
+  
   <string name="check_title_duplicate_speakable_text">項目說明</string>
   
   <string name="result_message_brief_same_speakable_text">多個項目的說明重複。</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">建議提高這張圖片前景和背景之間的對比度。</string>
   
-  <string name="result_message_image_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比例是根據估計前景顏色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和估計背景顏色 &lt;tt&gt;#%4$06X&lt;/tt&gt; 計算而得。建議將對比度提高為 %2$.2f 以上。</string>
+  <string name="result_message_image_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比例是根據估計前景顏色 &lt;tt&gt;%3$s&lt;/tt&gt; 和估計背景顏色 &lt;tt&gt;%4$s&lt;/tt&gt; 計算而得。建議將對比度提高為 %2$.2f 以上。</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%4$06X&lt;/tt&gt; 計算而得。建議將這個對比度提高至 %2$.2f 以上。</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%4$s&lt;/tt&gt; 計算而得。建議將這個對比度提高至 %2$.2f 以上。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%4$06X&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">這張圖片的對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;%3$s&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;%4$s&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%4$06X&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">這張圖片的對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;%3$s&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;%4$s&lt;/tt&gt;) 計算而得。建議將這個對比度提高至修正後的比值 (%2$.2f) 以上。</string>
   
   <string name="check_title_redundant_description">項目類型標籤</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">這個項目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; 可能含有不必要的文字。</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">這個項目的內容說明可能包含不必要的文字。</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">這個項目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) 結尾是項目的類型。</string>
   
   <string name="result_message_content_desc_contains_redundant_word">這個項目的 &lt;tt&gt;android:contentDescription&lt;/tt&gt; (&lt;tt&gt;%1$s&lt;/tt&gt;) 含有「&lt;tt&gt;%2$s&lt;/tt&gt;」項目類型。</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">這個項目的內容說明「&lt;tt&gt;%1$s&lt;/tt&gt;」包含以下項目類型：「&lt;tt&gt;%2$s&lt;/tt&gt;」。</string>
+  
   <string name="result_message_content_desc_contains_action">這個項目的&lt;tt&gt;android:contentDescription&lt;/tt&gt;「&lt;tt&gt;%1$s&lt;/tt&gt;」包含「&lt;tt&gt;%2$s&lt;/tt&gt;」動作。</string>
   
+  <string name="result_message_content_desc_contains_action_generic">這個項目的內容說明「&lt;tt&gt;%1$s&lt;/tt&gt;」包含以下動作：「&lt;tt&gt;%2$s&lt;/tt&gt;」。</string>
+  
   <string name="result_message_content_desc_contains_state">這個項目的&lt;tt&gt;android:contentDescription&lt;/tt&gt;「&lt;tt&gt;%1$s&lt;/tt&gt;」包含「&lt;tt&gt;%2$s&lt;/tt&gt;」狀態。</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">這個項目的內容說明「&lt;tt&gt;%1$s&lt;/tt&gt;」包含以下狀態：「&lt;tt&gt;%2$s&lt;/tt&gt;」。</string>
   
   <string name="button_item_type">按鈕</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">未評估網頁內容。</string>
   
+  <string name="result_message_unsupported_compose_content">系統並未評估這個環境中的可組合內容。</string>
+  
+  <string name="result_message_unsupported_flutter_content">系統並未評估這個環境中的 Flutter 內容。</string>
+  
   <string name="result_message_missing_speakable_text">這個項目可能含有螢幕閱讀器無法讀出的標籤。</string>
   
   <string name="check_title_text_contrast">文字對比度</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">建議提高這個項目的文字前景與背景之間的對比度。</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比例是根據文字顏色 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景顏色 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議將項目的文字對比度提高為 %4$.2f 以上。</string>
+  <string name="result_message_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比例是根據文字顏色 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景顏色 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議將項目的文字對比度提高為 %4$.2f 以上。</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比率是依據文字色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓對比度超過修正後的比率 (%4$.2f)。</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比率是依據文字色彩 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議使用其他色彩，讓對比度超過修正後的比率 (%4$.2f)。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是根據系統預估的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">依據文字顏色 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和非不透明背景顏色 (&lt;tt&gt;%3$s&lt;/tt&gt;) 判定，這個項目的文字對比度最大值可能為 %1$.2f。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">這個項目的文字對比度為 %1$.2f。這個比率是根據系統預估的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">依據文字顏色 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和非不透明背景顏色 (&lt;tt&gt;%3$s&lt;/tt&gt;) 判定，這個項目的文字對比度最大值可能為 %1$.2f。建議使用其他顏色，讓對比度高於修正後的比值 (%4$.2f)。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">依據文字顏色 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和非不透明背景顏色 (&lt;tt&gt;%3$s&lt;/tt&gt;) 判定，這個項目的文字對比度最小值可能為 %1$.2f。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">這個項目的文字對比度為 %1$.2f。這個比率是根據既有的前景色彩 &lt;tt&gt;#%2$06X&lt;/tt&gt; 和背景色彩 &lt;tt&gt;#%3$06X&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">依據文字顏色 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和非不透明背景顏色 (&lt;tt&gt;%3$s&lt;/tt&gt;) 判定，這個項目的文字對比度最小值可能為 %1$.2f。建議使用其他顏色，讓對比度高於修正後的比值 (%4$.2f)。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是根據系統預估的前景色彩 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;#%2$06X&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;#%3$06X&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">這個項目的文字對比度為 %1$.2f。這個比率是根據系統預估的前景色彩 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是根據既有的前景色彩 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議使用其他色彩，讓小型文字的對比度超過 %4$.2f，或是讓大型文字的對比度超過 %5$.2f。</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">這個項目的文字對比度為 %1$.2f。這個比率是根據既有的前景色彩 &lt;tt&gt;%2$s&lt;/tt&gt; 和背景色彩 &lt;tt&gt;%3$s&lt;/tt&gt; 計算而得。建議提高這個項目的文字對比度，最低值最好不要小於 %4$.2f。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">這個項目的文字對比度為 %1$.2f。這個比值是依據系統預估的前景色彩 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;%3$s&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">這個項目的文字對比度為 %1$.2f。這個比值是依據既有的前景色彩 (&lt;tt&gt;%2$s&lt;/tt&gt;) 和背景色彩 (&lt;tt&gt;%3$s&lt;/tt&gt;) 計算而得。建議將這個項目的文字對比度提高至修正後的比值 (%4$.2f) 以上。</string>
   
   <string name="result_message_contrast_sufficient_confirmed">這個項目的前景和背景色彩對比度達到建議比值。</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定寬度及可縮放比例的文字。</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">這個 &lt;tt&gt;Text&lt;/tt&gt; 的寬度固定，其中含有可縮放比例的文字。</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定高度及可縮放比例的文字。</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">這個 &lt;tt&gt;Text&lt;/tt&gt; 的高度固定，其中含有可縮放比例的文字。</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">這個 &lt;tt&gt;TextView&lt;/tt&gt; 有固定大小及可縮放比例的文字。</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">這個 &lt;tt&gt;Text&lt;/tt&gt; 的大小固定，其中含有可縮放比例的文字。</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定寬度並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">這個元素的寬度固定，其中包含的 &lt;tt&gt;Text&lt;/tt&gt; 元素含有可縮放比例的文字。</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定高度並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">這個元素的高度固定，其中包含的 &lt;tt&gt;Text&lt;/tt&gt; 元素含有可縮放比例的文字。</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">這個 &lt;tt&gt;ViewGroup&lt;/tt&gt; 有固定大小並包含具備可縮放文字的 &lt;tt&gt;TextView&lt;/tt&gt;。</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">這個元素的大小固定，其中包含的 &lt;tt&gt;Text&lt;/tt&gt; 元素含有可縮放比例的文字。</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">請考慮修改 &lt;tt&gt;LayoutParams&lt;/tt&gt; 來放大文字。</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">建議使用 &lt;tt&gt;sizeIn&lt;/tt&gt; 來修改大小修飾符，以便展開文字。</string>
   
   <string name="check_title_unexposed_text">不含會顯示的文字</string>
   
@@ -297,15 +335,15 @@
   
   <string name="result_message_text_detected_in_image_view">在這個 ImageView 中偵測到 OCR 結果。</string>
   
-  <string name="result_message_brief_unexposed_text">偵測到標籤不含會顯示的文字：%1$s</string>
+  <string name="result_message_brief_unexposed_text">偵測到可能的文字：%1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">偵測到文字：%1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">可能的文字：%1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">這個 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能不會向無障礙服務顯示其內容。</string>
+  <string name="result_message_text_detected_in_surface_view">這個 &lt;tt&gt;SurfaceView&lt;/tt&gt; 可能不會向無障礙服務顯示內容。</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">偵測到多個不含可顯示文字的項目，包括「%1$s」。</string>
+  <string name="result_message_brief_multiple_unexposed_texts">偵測到可能未顯示的文字，包括「%1$s」。</string>
   
-  <string name="result_message_multiple_unexposed_texts">這個項目可能不會向無障礙服務顯示其內容。</string>
+  <string name="result_message_multiple_unexposed_texts">這個項目可能不會向無障礙服務顯示內容。</string>
   
   <string name="result_message_ocr_result_not_available">無法提供 OCR 結果。</string>
   

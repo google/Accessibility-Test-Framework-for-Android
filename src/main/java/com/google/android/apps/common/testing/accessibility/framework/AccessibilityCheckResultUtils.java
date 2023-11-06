@@ -28,6 +28,7 @@ import com.google.android.apps.common.testing.accessibility.framework.checks.Red
 import com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TextContrastCheck;
 import com.google.android.apps.common.testing.accessibility.framework.checks.TouchTargetSizeCheck;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
 import com.google.common.collect.ImmutableBiMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 
 /** Utility class for dealing with {@code AccessibilityCheckResult}s */
-@SuppressWarnings("deprecation") // Need to support AccessibilityViewCheckResult.
 public final class AccessibilityCheckResultUtils {
 
   /**
@@ -191,6 +191,24 @@ public final class AccessibilityCheckResultUtils {
       public boolean matchesSafely(AccessibilityViewCheckResult result) {
         View view = result.getView();
         return (view != null) && viewMatcher.matches(view);
+      }
+    };
+  }
+
+  /**
+   * Returns a {@link Matcher} for an {@link AccessibilityViewCheckResult} whose element matches the
+   * given matcher for a {@link ViewHierarchyElement}.
+   *
+   * @param elementMatcher a {@code Matcher} for a {@code ViewHierarchyElement}
+   * @return a {@code Matcher} for an {@code AccessibilityViewCheckResult}
+   */
+  public static Matcher<AccessibilityViewCheckResult> matchesElements(
+      final Matcher<? super ViewHierarchyElement> elementMatcher) {
+    return new TypeSafeMemberMatcher<AccessibilityViewCheckResult>("Element", elementMatcher) {
+      @Override
+      public boolean matchesSafely(AccessibilityViewCheckResult result) {
+        ViewHierarchyElement element = result.getElement();
+        return (element != null) && elementMatcher.matches(element);
       }
     };
   }

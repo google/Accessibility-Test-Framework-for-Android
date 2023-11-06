@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Este elemento no tiene &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Este elemento no tiene una descripción del contenido.</string>
+  
   <string name="result_message_not_visible">Este elemento no es visible.</string>
   
   <string name="result_message_not_enabled">Este elemento no está habilitado.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">que permite una acción</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Elementos en conflicto: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Descripciones del elemento</string>
   
   <string name="result_message_brief_same_speakable_text">Varios elementos tienen la misma descripción.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Intenta aumentar la relación de contraste entre el primer plano y el fondo de la imagen.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">La relación de contraste de la imagen es %1$.2f, que se calcula con un color de primer plano estimado de &lt;tt&gt;#%3$06X&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;#%4$06X&lt;/tt&gt;. Intenta aumentar esta relación a %2$.2f o un valor mayor.</string>
+  <string name="result_message_image_contrast_not_sufficient">La relación de contraste de la imagen es %1$.2f, que se calcula con un color de primer plano estimado de &lt;tt&gt;%3$s&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;%4$s&lt;/tt&gt;. Intenta aumentar esta relación a %2$.2f o un valor mayor.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se basa en el color del primer plano, &lt;tt&gt;#%3$06X&lt;/tt&gt;, y el color de fondo proporcionado, &lt;tt&gt;#%4$06X&lt;/tt&gt;. Te recomendamos que la aumentes a %2$.2f o a un valor mayor.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se basa en el color del primer plano, &lt;tt&gt;%3$s&lt;/tt&gt;, y el color de fondo proporcionado, &lt;tt&gt;%4$s&lt;/tt&gt;. Te recomendamos que la aumentes a %2$.2f o a un valor mayor.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;%3$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%4$s&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%3$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%4$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">La relación de contraste de la imagen es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;%3$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%4$s&lt;/tt&gt;). Te recomendamos que aumentes la relación al valor modificado de %2$.2f o a uno mayor.</string>
   
   <string name="check_title_redundant_description">Etiqueta del tipo de elemento</string>
   
@@ -83,13 +87,25 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Es posible que el &lt;tt&gt;android:contentDescription&lt;/tt&gt; de este elemento tenga texto innecesario.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Es posible que la descripción del contenido de este elemento tenga texto innecesario.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">El &lt;tt&gt;android:contentDescription&lt;/tt&gt; de este elemento, \"&lt;tt&gt;%1$s&lt;/tt&gt;\", termina con el tipo del elemento.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">La &lt;tt&gt;android:contentDescription&lt;/tt&gt; del elemento “&lt;tt&gt;%1$s&lt;/tt&gt;” contiene el tipo de elemento “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">La descripción del contenido de este elemento, “&lt;tt&gt;%1$s&lt;/tt&gt;”, contiene el tipo de elemento “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_action">El atributo &lt;tt&gt;android:contentDescription&lt;/tt&gt;, “&lt;tt&gt;%1$s&lt;/tt&gt;”, contiene la acción “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">La descripción del contenido de este elemento,
+    “&lt;tt&gt;%1$s&lt;/tt&gt;”, contiene la acción
+    “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_state">El atributo &lt;tt&gt;android:contentDescription&lt;/tt&gt;, “&lt;tt&gt;%1$s&lt;/tt&gt;”, contiene el estado “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">La descripción del contenido de este elemento,
+    “&lt;tt&gt;%1$s&lt;/tt&gt;”,
+    contiene el estado “&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="button_item_type">botón</string>
   
@@ -117,6 +133,10 @@
   
   <string name="result_message_web_content">No se evalúa el contenido web.</string>
   
+  <string name="result_message_unsupported_compose_content">El contenido que se puede componer no se evalúa en este entorno.</string>
+  
+  <string name="result_message_unsupported_flutter_content">El contenido de Flutter no se evalúa en este entorno.</string>
+  
   <string name="result_message_missing_speakable_text">Es posible que este elemento no tenga una etiqueta que puedan leer los lectores de pantalla.</string>
   
   <string name="check_title_text_contrast">Contraste del texto</string>
@@ -135,21 +155,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Intenta aumentar la relación de contraste del texto entre el primer plano y el fondo de este elemento.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">La relación de contraste del texto del elemento es %1$.2f. Esta relación se calcula con un color de texto de &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
+  <string name="result_message_textview_contrast_not_sufficient">La relación de contraste del texto del elemento es %1$.2f. Esta relación se calcula con un color de texto de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo de &lt;tt&gt;%3$s&lt;/tt&gt;. Intenta aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con un color de texto &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo &lt;tt&gt;#%3$06X&lt;/tt&gt;. Te recomendamos que uses colores que proporcionen una relación de contraste mayor que el valor modificado de %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con un color de texto &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo &lt;tt&gt;%3$s&lt;/tt&gt;. Te recomendamos que uses colores que proporcionen una relación de contraste mayor que el valor modificado de %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con un color de primer plano estimado de &lt;tt&gt;#%2$06X&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">La relación máxima de contraste de texto posible del elemento es %1$.2f, según un color de texto de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo translúcido de &lt;tt&gt;%3$s&lt;/tt&gt;. Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">La relación máxima de contraste de texto posible del elemento es %1$.2f, según un color de texto de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo translúcido de &lt;tt&gt;%3$s&lt;/tt&gt;. Te recomendamos que uses colores que proporcionen una relación de contraste mayor que el valor modificado de %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se basa en el color de primer plano de &lt;tt&gt;#%2$06X&lt;/tt&gt; y el color de fondo proporcionado de &lt;tt&gt;#%3$06X&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">La relación mínima de contraste de texto posible del elemento es %1$.2f, según un color de texto de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo translúcido de &lt;tt&gt;%3$s&lt;/tt&gt;. Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">La relación mínima de contraste de texto posible del elemento es %1$.2f, según un color de texto de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo translúcido de &lt;tt&gt;%3$s&lt;/tt&gt;. Te recomendamos que uses colores que proporcionen una relación de contraste mayor que el valor modificado de %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con un color de primer plano estimado de &lt;tt&gt;%2$s&lt;/tt&gt; y un color de fondo estimado de &lt;tt&gt;%3$s&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;#%2$06X&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;#%3$06X&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores estimados del color de primer plano (&lt;tt&gt;%2$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%3$s&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se basa en el color de primer plano de &lt;tt&gt;%2$s&lt;/tt&gt; y el color de fondo proporcionado de &lt;tt&gt;%3$s&lt;/tt&gt;. Intenta usar colores que generen una relación de contraste mayor que %4$.2f para texto pequeño o %5$.2f para texto grande.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;%2$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%3$s&lt;/tt&gt;). Te recomendamos aumentar la relación de contraste del texto de este elemento a %4$.2f o un valor mayor.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores estimados del color de primer plano (&lt;tt&gt;%2$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%3$s&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">La relación de contraste del texto de este elemento es de %1$.2f. Esta relación se calcula con los valores proporcionados del color de primer plano (&lt;tt&gt;%2$s&lt;/tt&gt;) y el color de fondo (&lt;tt&gt;%3$s&lt;/tt&gt;). Te recomendamos que aumentes la relación de contraste del texto de este elemento al valor modificado de %4$.2f o a uno mayor.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Los colores de primer plano y de fondo de este elemento cumplen con el valor sugerido de la relación de contraste.</string>
   
@@ -279,17 +307,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene un ancho fijo y texto escalable.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Este elemento &lt;tt&gt;Text&lt;/tt&gt; tiene un ancho fijo y texto escalable.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene una altura fija y texto escalable</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Este elemento &lt;tt&gt;Text&lt;/tt&gt; tiene una altura fija y texto escalable.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Este elemento &lt;tt&gt;TextView&lt;/tt&gt; tiene un tamaño fijo y texto escalable.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Este elemento &lt;tt&gt;Text&lt;/tt&gt; tiene un tamaño fijo y texto escalable.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene un ancho fijo y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Este elemento tiene un ancho fijo y contiene un elemento &lt;tt&gt;Text&lt;/tt&gt; con texto escalable.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene una altura fija y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Este elemento tiene una altura fija y contiene un elemento &lt;tt&gt;Text&lt;/tt&gt; con texto escalable.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Este elemento &lt;tt&gt;ViewGroup&lt;/tt&gt; tiene un tamaño fijo y contiene un elemento &lt;tt&gt;TextView&lt;/tt&gt; con texto escalable.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Este elemento tiene un tamaño fijo y contiene un elemento &lt;tt&gt;Text&lt;/tt&gt; con texto escalable.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Considera modificar los &lt;tt&gt;LayoutParams&lt;/tt&gt; para permitir la expansión del texto.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Considera editar los modificadores de tamaño con &lt;tt&gt;sizeIn&lt;/tt&gt; para permitir la expansión del texto.</string>
   
   <string name="check_title_unexposed_text">Texto no visible</string>
   
@@ -297,15 +339,15 @@
   
   <string name="result_message_text_detected_in_image_view">Se detectaron resultados de OCR en este elemento ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">Se detectó texto no visible: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Se detectó texto oculto: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Se detectó texto: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Texto oculto: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">Es posible que &lt;tt&gt;SurfaceView&lt;/tt&gt; no permita que los servicios de accesibilidad tengan acceso a su contenido.</string>
+  <string name="result_message_text_detected_in_surface_view">Es posible que esta &lt;tt&gt;SurfaceView&lt;/tt&gt; no exponga su contenido a los servicios de accesibilidad.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Se detectaron varios textos no visibles, incluido “%1$s”.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Se detectaron posibles textos no visibles, incluido “%1$s”.</string>
   
-  <string name="result_message_multiple_unexposed_texts">Es posible que este recurso no esté mostrando su contenido a los servicios de accesibilidad.</string>
+  <string name="result_message_multiple_unexposed_texts">Es posible que este elemento no exponga su contenido a los servicios de accesibilidad.</string>
   
   <string name="result_message_ocr_result_not_available">Los resultados de OCR no están disponibles.</string>
   

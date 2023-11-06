@@ -19,6 +19,7 @@ import com.google.android.apps.common.testing.accessibility.framework.replacemen
 import com.google.android.apps.common.testing.accessibility.framework.strings.StringManager;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.AccessibilityHierarchy;
 import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElement;
+import com.google.android.apps.common.testing.accessibility.framework.uielement.ViewHierarchyElementOrigin;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
@@ -205,6 +206,9 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
    */
   private static final String KEY_OCCUPIED_FRACTION_OF_HEIGHT = "KEY_OCCUPIED_FRACTION_OF_HEIGHT";
 
+  /** Result metadata key for the {@code ViewHierarchyElementOrigin} of the element. */
+  private static final String KEY_ELEMENT_ORIGIN = "KEY_ELEMENT_ORIGIN";
+
   private static final Class<? extends AccessibilityHierarchyCheck> CHECK_CLASS =
       TextSizeCheck.class;
 
@@ -245,7 +249,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_NOT_VISIBLE,
-                null));
+                metadataWithOrigin(view)));
         continue;
       }
 
@@ -256,7 +260,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_NOT_TEXT_VIEW,
-                null));
+                metadataWithOrigin(view)));
         continue;
       }
 
@@ -267,20 +271,20 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
                 AccessibilityCheckResultType.NOT_RUN,
                 view,
                 RESULT_ID_TEXTVIEW_EMPTY,
-                null));
+                metadataWithOrigin(view)));
         continue;
       }
 
       Float textSize = view.getTextSize();
       Integer textSizeUnit = view.getTextSizeUnit();
-      if ((textSize == null) || (textSizeUnit == null)) {
+      if ((textSize == null) || (textSizeUnit == null) || (textSizeUnit < 0)) {
         results.add(
             new AccessibilityHierarchyCheckResult(
                 CHECK_CLASS,
                 AccessibilityCheckResultType.NOT_RUN,
                 null,
                 RESULT_ID_TEXT_SIZE_NOT_AVAILABLE,
-                null));
+                metadataWithOrigin(view)));
         continue;
       }
 
@@ -305,12 +309,15 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
       return generated;
     }
 
-    StringBuilder builder = new StringBuilder(getBaseMessageForResultData(locale, resultId));
+    StringBuilder builder =
+        new StringBuilder(getBaseMessageForResultData(locale, resultId, metadata));
     appendMetadataStringsToMessageIfNeeded(locale, metadata, builder);
     return builder.toString();
   }
 
-  private String getBaseMessageForResultData(Locale locale, int resultId) {
+  private String getBaseMessageForResultData(
+      Locale locale, int resultId, @Nullable ResultMetadata metadata) {
+    ViewHierarchyElementOrigin origin = originFromMetadata(metadata);
     switch (resultId) {
       case RESULT_ID_FIXED_TEXT_SIZE:
       case RESULT_ID_TEXT_SIZE_IN_PX:
@@ -324,7 +331,10 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
       case RESULT_ID_FIXED_HEIGHT_VIEW_GROUP_WITH_SCALABLE_TEXT:
       case RESULT_ID_FIXED_SIZE_VIEW_GROUP_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_fixed_size_text_view_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_fixed_size_text_with_scaled_text_compose"
+                : "result_message_fixed_size_text_view_with_scaled_text");
       default:
         throw new IllegalStateException("Unsupported result id");
     }
@@ -338,6 +348,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
       return generated;
     }
 
+    ViewHierarchyElementOrigin origin = originFromMetadata(metadata);
     switch (resultId) {
       case RESULT_ID_FIXED_TEXT_SIZE:
       case RESULT_ID_SMALL_FIXED_TEXT_SIZE:
@@ -348,22 +359,40 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
             unitToString(checkNotNull(metadata).getInt(KEY_TEXT_SIZE_UNIT)));
       case RESULT_ID_FIXED_WIDTH_TEXT_VIEW_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_width_text_view_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_width_text_view_with_scaled_text_compose"
+                : "result_message_brief_fixed_width_text_view_with_scaled_text");
       case RESULT_ID_FIXED_HEIGHT_TEXT_VIEW_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_height_text_view_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_height_text_with_scaled_text_compose"
+                : "result_message_brief_fixed_height_text_view_with_scaled_text");
       case RESULT_ID_FIXED_SIZE_TEXT_VIEW_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_size_text_view_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_size_text_with_scaled_text_compose"
+                : "result_message_brief_fixed_size_text_view_with_scaled_text");
       case RESULT_ID_FIXED_WIDTH_VIEW_GROUP_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_width_view_group_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_width_parent_with_scaled_text_compose"
+                : "result_message_brief_fixed_width_view_group_with_scaled_text");
       case RESULT_ID_FIXED_HEIGHT_VIEW_GROUP_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_height_view_group_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_height_parent_with_scaled_text_compose"
+                : "result_message_brief_fixed_height_view_group_with_scaled_text");
       case RESULT_ID_FIXED_SIZE_VIEW_GROUP_WITH_SCALABLE_TEXT:
         return StringManager.getString(
-            locale, "result_message_brief_fixed_size_view_group_with_scaled_text");
+            locale,
+            (origin == ViewHierarchyElementOrigin.COMPOSE)
+                ? "result_message_brief_fixed_size_parent_with_scaled_text_compose"
+                : "result_message_brief_fixed_size_view_group_with_scaled_text");
       default:
         throw new IllegalStateException("Unsupported result id");
     }
@@ -442,7 +471,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
     if ((layoutParams != null)
         && (isFixed(layoutParams.getWidth()) || isFixed(layoutParams.getHeight()))) {
 
-      ResultMetadata metadata = new HashMapResultMetadata();
+      ResultMetadata metadata = metadataWithOrigin(textView);
       if (textView.isAgainstScrollableEdge()) {
         metadata.putBoolean(KEY_IS_AGAINST_SCROLLABLE_EDGE, true);
       }
@@ -527,7 +556,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
    */
   private static AccessibilityHierarchyCheckResult createViewGroupResult(
       ViewHierarchyElement viewGroup, List<ViewHierarchyElement> scalableTextViews) {
-    ResultMetadata metadata = new HashMapResultMetadata();
+    ResultMetadata metadata = metadataWithOrigin(viewGroup);
 
     SpannableString text = scalableTextViews.get(0).getText();
 
@@ -642,7 +671,7 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
     boolean isDialogTitleInPx = (textSizeUnit == COMPLEX_UNIT_PX) && isDialogTitle(view);
     boolean inMaterialTabLayoutInPx =
         (textSizeUnit == COMPLEX_UNIT_PX) && inMaterialTabLayout(view);
-    ResultMetadata metadata = new HashMapResultMetadata();
+    ResultMetadata metadata = metadataWithOrigin(view);
     metadata.putInt(KEY_TEXT_SIZE_UNIT, textSizeUnit);
     metadata.putFloat(KEY_ESTIMATED_TEXT_SIZE_DP, textSizeDp);
     return new AccessibilityHierarchyCheckResult(
@@ -713,6 +742,43 @@ public class TextSizeCheck extends AccessibilityHierarchyCheck {
 
   private static String unitToString(int unit) {
     return SIZE_UNIT_TO_STRING_MAP.getOrDefault(unit, "?");
+  }
+
+  /**
+   * Returns a {@code ResultMetadata} populated with a key-value pair for the origin of {@code
+   * view}. To save space, origin is only populated if it is {@code COMPOSE}. The origin key is
+   * omitted for any other value and assumed to be {@code UNKNOWN}, which is treated identically to
+   * {@code VIEW}.
+   *
+   * @param view The view whose origin is stored in the returned {@code ResultMetadata}.
+   * @return A {@code ResultMetadata} containing the origin of {@code view}.
+   */
+  private static ResultMetadata metadataWithOrigin(ViewHierarchyElement view) {
+    ResultMetadata metadata = new HashMapResultMetadata();
+    if (view.getOrigin() == ViewHierarchyElementOrigin.COMPOSE) {
+      metadata.putString(KEY_ELEMENT_ORIGIN, view.getOrigin().name());
+    }
+    return metadata;
+  }
+
+  /**
+   * @return The value of {@code KEY_ELEMENT_ORIGIN} from {@code metadata}, or {@code UNKNOWN} if no
+   *     value exists for the key or if it is an invalid origin. Returns {@code UNKNOWN} if {@code
+   *     metadata} is {@code null}.
+   */
+  private static ViewHierarchyElementOrigin originFromMetadata(@Nullable ResultMetadata metadata) {
+    if (metadata == null) {
+      return ViewHierarchyElementOrigin.UNKNOWN;
+    }
+    try {
+      String originString = metadata.getString(KEY_ELEMENT_ORIGIN);
+      return ViewHierarchyElementOrigin.valueOf(originString);
+    } catch (RuntimeException e) {
+      // If the key does not exist, or the key is the wrong type, or the value stored in metadata
+      // cannot be converted into a ViewHierarchyElementOrigin, an exception is thrown. In any of
+      // these cases, fall back to UNKNOWN.
+      return ViewHierarchyElementOrigin.UNKNOWN;
+    }
   }
 
   private static float getDensity(AccessibilityHierarchy hierarchy) {

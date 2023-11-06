@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Ez az elem nem rendelkezik a következővel: &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Ez az elem nem rendelkezik tartalomleírással.</string>
+  
   <string name="result_message_not_visible">Ez az elem nem látható.</string>
   
   <string name="result_message_not_enabled">Ez az elem nincs bekapcsolva.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">végrehajtható</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Ütköző elem(ek): &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Elemleírások</string>
   
   <string name="result_message_brief_same_speakable_text">Több elem rendelkezik ugyanazzal a leírással.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Érdemes lenne növelni a kép előtere és háttere közötti kontrasztarányt.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">A kép kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; becsült előtérszínen, valamint a(z) &lt;tt&gt;#%4$06X&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni az arányt.</string>
+  <string name="result_message_image_contrast_not_sufficient">A kép kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;%3$s&lt;/tt&gt; becsült előtérszínen, valamint a(z) &lt;tt&gt;%4$s&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni az arányt.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">A kép kontrasztaránya: %1$.2f. Ez az arány a megadott &lt;tt&gt;#%3$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%4$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">A kép kontrasztaránya: %1$.2f. Ez az arány a megadott &lt;tt&gt;%3$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%4$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %2$.2f értékre (vagy nagyobbra) növelni.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">A kép kontrasztaránya: %1$.2f. Ez az arány a becsült &lt;tt&gt;#%3$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%4$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %2$.2f értékre (vagy nagyobbra) növelni.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">A kép kontrasztaránya: %1$.2f. Ez az arány a becsült &lt;tt&gt;%3$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%4$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %2$.2f értékre (vagy nagyobbra) növelni.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">A kép kontrasztaránya: %1$.2f. Ez az arány a megadott &lt;tt&gt;#%3$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%4$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %2$.2f értékre (vagy nagyobbra) növelni.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">A kép kontrasztaránya: %1$.2f. Ez az arány a megadott &lt;tt&gt;%3$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%4$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %2$.2f értékre (vagy nagyobbra) növelni.</string>
   
   <string name="check_title_redundant_description">Elemtípuscímke</string>
   
@@ -83,13 +87,21 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma felesleges szöveget tartalmazhat.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Az elem tartalomleírása felesleges szöveget tartalmazhat.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma, „&lt;tt&gt;%1$s&lt;/tt&gt;” az elem típusával végződik.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma („&lt;tt&gt;%1$s&lt;/tt&gt;”) tartalmazza az elem típusát („&lt;tt&gt;%2$s&lt;/tt&gt;”).</string>
   
+  <string name="result_message_content_desc_contains_redundant_word_generic">Az elem tartalomleírása („&lt;tt&gt;%1$s&lt;/tt&gt;”) a következő elemtípust tartalmazza: „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_action">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma (&lt;tt&gt;%1$s&lt;/tt&gt;) tartalmazza a műveletet (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Az elem tartalomleírása („&lt;tt&gt;%1$s&lt;/tt&gt;”) a következő műveletet tartalmazza: „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_state">Az elem &lt;tt&gt;android:contentDescription&lt;/tt&gt; attribútuma (&lt;tt&gt;%1$s&lt;/tt&gt;) tartalmazza az állapotot (&lt;tt&gt;%2$s&lt;/tt&gt;).</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Az elem tartalomleírása („&lt;tt&gt;%1$s&lt;/tt&gt;”) a következő állapotot tartalmazza: „&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="button_item_type">gomb</string>
   
@@ -117,6 +129,10 @@
   
   <string name="result_message_web_content">A webes tartalom nincs megvizsgálva.</string>
   
+  <string name="result_message_unsupported_compose_content">A rendszer nem értékeli ki a kompatibilis tartalmat ebben a környezetben.</string>
+  
+  <string name="result_message_unsupported_flutter_content">A rendszer nem értékeli ki a Flutter-tartalmakat ebben a környezetben.</string>
+  
   <string name="result_message_missing_speakable_text">Ez az elem nem rendelkezik képernyőolvasó által olvasható címkével.</string>
   
   <string name="check_title_text_contrast">Szövegkontraszt</string>
@@ -135,21 +151,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Érdemes lenne növelni az elemszöveg előterének és hátterének kontrasztarányát.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%2$06X&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;%2$s&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;#%2$06X&lt;/tt&gt; betűszínen és a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek a módosított %4$.2f értéknél nagyobbra növelik a kontrasztarányt.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a(z) &lt;tt&gt;%2$s&lt;/tt&gt; betűszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek a módosított %4$.2f értéknél nagyobbra növelik a kontrasztarányt.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a(z) &lt;tt&gt;#%2$06X&lt;/tt&gt; becsült előtérszínen és a(z) &lt;tt&gt;#%3$06X&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek %4$.2f értéknél nagyobbra növelik a kontrasztarányt kis méretű szövegnél, vagy %5$.2f értéknél nagyobbra nagy méretű szövegnél.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Az elem szövegének maximális lehetséges kontrasztaránya %1$.2f, amely a(z) &lt;tt&gt;%2$s&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; nem átlátszatlan háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a becsült &lt;tt&gt;#%2$06X&lt;/tt&gt; előtérszínen és a becsült &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Az elem szövegének maximális lehetséges kontrasztaránya %1$.2f, amely a(z) &lt;tt&gt;%2$s&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; nem átlátszatlan háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek a módosított %4$.2f értéknél nagyobbra növelik a kontrasztarányt.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;#%2$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek %4$.2f értéknél nagyobbra növelik a kontrasztarányt kis méretű szövegnél, vagy %5$.2f értéknél nagyobbra nagy méretű szövegnél.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Az elem szövegének legkisebb lehetséges kontrasztaránya %1$.2f, amely a(z) &lt;tt&gt;%2$s&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; átlátszatlan háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;#%2$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Az elem szövegének legkisebb lehetséges kontrasztaránya %1$.2f, amely a(z) &lt;tt&gt;%2$s&lt;/tt&gt; szövegszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; átlátszatlan háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek a módosított %4$.2f értéknél nagyobbra növelik a kontrasztarányt.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a becsült &lt;tt&gt;#%2$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a(z) &lt;tt&gt;%2$s&lt;/tt&gt; becsült előtérszínen és a(z) &lt;tt&gt;%3$s&lt;/tt&gt; becsült háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek %4$.2f értéknél nagyobbra növelik a kontrasztarányt kis méretű szövegnél, vagy %5$.2f értéknél nagyobbra nagy méretű szövegnél.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;#%2$06X&lt;/tt&gt; előtérszínen és &lt;tt&gt;#%3$06X&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Az elem szövegének kontrasztaránya %1$.2f. Ez az érték a becsült &lt;tt&gt;%2$s&lt;/tt&gt; előtérszínen és a becsült &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;%2$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne olyan színeket használni, amelyek %4$.2f értéknél nagyobbra növelik a kontrasztarányt kis méretű szövegnél, vagy %5$.2f értéknél nagyobbra nagy méretű szövegnél.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;%2$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a becsült &lt;tt&gt;%2$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Az elem szövegének kontrasztaránya %1$.2f. Ez az arány a megadott &lt;tt&gt;%2$s&lt;/tt&gt; előtérszínen és &lt;tt&gt;%3$s&lt;/tt&gt; háttérszínen alapul. Érdemes lenne a módosított %4$.2f értékre (vagy nagyobbra) növelni az elem szövegének kontrasztarányát.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Az elem előtérszíne és háttérszíne megfelel a javasolt kontrasztaránynak.</string>
   
@@ -279,17 +303,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">Ez a(z) &lt;tt&gt;TextView&lt;/tt&gt; rögzített szélességgel és nagyítható szöveggel rendelkezik.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">Ez a(z) &lt;tt&gt;Text&lt;/tt&gt; rögzített szélességgel és nagyítható szöveggel rendelkezik.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">Ez a(z) &lt;tt&gt;TextView&lt;/tt&gt; rögzített magassággal és nagyítható szöveggel rendelkezik.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">Ez a(z) &lt;tt&gt;Text&lt;/tt&gt; rögzített magassággal és nagyítható szöveggel rendelkezik.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">Ez a(z) &lt;tt&gt;TextView&lt;/tt&gt; rögzített mérettel és nagyítható szöveggel rendelkezik.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">Ez a(z) &lt;tt&gt;Text&lt;/tt&gt; rögzített mérettel és nagyítható szöveggel rendelkezik.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">Ez a(z) &lt;tt&gt;ViewGroup&lt;/tt&gt; rögzített szélességgel rendelkezik, és hozzá tartozik egy nagyítható szövegű &lt;tt&gt;TextView&lt;/tt&gt;.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Ez az elem rögzített szélességgel rendelkezik, és tartalmaz egy nagyítható szövegű &lt;tt&gt;Text&lt;/tt&gt; elemet.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">Ez a(z) &lt;tt&gt;ViewGroup&lt;/tt&gt; rögzített magassággal rendelkezik, és hozzá tartozik egy nagyítható szövegű &lt;tt&gt;TextView&lt;/tt&gt;.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Ez az elem rögzített magassággal rendelkezik, és tartalmaz egy nagyítható szövegű &lt;tt&gt;Text&lt;/tt&gt; elemet.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">Ez a(z) &lt;tt&gt;ViewGroup&lt;/tt&gt; rögzített mérettel rendelkezik, és hozzá tartozik egy nagyítható szövegű &lt;tt&gt;TextView&lt;/tt&gt;.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Ez az elem rögzített mérettel rendelkezik, és tartalmaz egy nagyítható szövegű &lt;tt&gt;Text&lt;/tt&gt; elemet.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Fontolja meg a &lt;tt&gt;LayoutParams&lt;/tt&gt; módosítását, hogy lehetővé tegye a szövegek kibontását.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Fontolja meg a méretmódosítók &lt;tt&gt;sizeIn&lt;/tt&gt; használatával történő megváltoztatását, hogy lehetővé tegye a szöveg kibontását.</string>
   
   <string name="check_title_unexposed_text">Nincs látható szöveg</string>
   
@@ -297,13 +335,13 @@
   
   <string name="result_message_text_detected_in_image_view">A rendszer OCR-eredményeket észlelt az ImageView-n belül.</string>
   
-  <string name="result_message_brief_unexposed_text">Nincs látható szöveg: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Lehetséges szöveg észlelve: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Szöveg észlelve: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Lehetséges szöveg: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Előfordulhat, hogy ez a &lt;tt&gt;SurfaceView&lt;/tt&gt; nem hozza nyilvánosságra tartalmait a kisegítő lehetőségek szolgáltatásai számára.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Több helyen nincs látható szöveg, például: „%1$s”.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Lehetséges nem látható szöveg észlelve, például: „%1$s”.</string>
   
   <string name="result_message_multiple_unexposed_texts">Előfordulhat, hogy ez az elem nem hozza nyilvánosságra tartalmait a kisegítő lehetőségek szolgáltatásai számára.</string>
   

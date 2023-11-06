@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">This item has no &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">This item has no content description.</string>
+  
   <string name="result_message_not_visible">This item is not visible.</string>
   
   <string name="result_message_not_enabled">This item isn\'t enabled.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">actionable</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Conflicting element(s): &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Item descriptions</string>
   
   <string name="result_message_brief_same_speakable_text">Multiple items have the same description.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Consider increasing the contrast ratio between this image\'s foreground and background.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
+  <string name="result_message_image_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;%3$s&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;%4$s&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;%3$s&lt;/tt&gt; and provided background colour of &lt;tt&gt;%4$s&lt;/tt&gt;. Consider increasing this ratio to %2$.2f or greater.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">The image\'s contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;%3$s&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;%4$s&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%3$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%4$06X&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">The image\'s contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;%3$s&lt;/tt&gt; and provided background colour of &lt;tt&gt;%4$s&lt;/tt&gt;. Consider increasing this ratio to the modified ratio of %2$.2f or greater.</string>
   
   <string name="check_title_redundant_description">Item type label</string>
   
@@ -83,15 +87,27 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt; might contain unnecessary text.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">This item\'s content description might contain unnecessary text.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;, \"&lt;tt&gt;%1$s&lt;/tt&gt;\" ends with the item\'s type.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;, ‘&lt;tt&gt;%1$s&lt;/tt&gt;’ contains the item type ‘&lt;tt&gt;%2$s&lt;/tt&gt;’.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">This item\'s content description, \'&lt;tt&gt;%1$s&lt;/tt&gt;\' contains the item type \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
   <string name="result_message_content_desc_contains_action">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     \'&lt;tt&gt;%1$s&lt;/tt&gt;\',
     contains the action \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">This item\'s content description,
+    \'&lt;tt&gt;%1$s&lt;/tt&gt;\',
+    contains the action \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
+  
   <string name="result_message_content_desc_contains_state">This item\'s &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
+    \'&lt;tt&gt;%1$s&lt;/tt&gt;\',
+    contains the state \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">This item\'s content description,
     \'&lt;tt&gt;%1$s&lt;/tt&gt;\',
     contains the state \'&lt;tt&gt;%2$s&lt;/tt&gt;\'.</string>
   
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Web content is not evaluated.</string>
   
+  <string name="result_message_unsupported_compose_content">Composable content is not evaluated in this environment.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter content is not evaluated in this environment.</string>
+  
   <string name="result_message_missing_speakable_text">This item may not have a label readable by screen readers.</string>
   
   <string name="check_title_text_contrast">Text contrast</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Consider increasing this item\'s text foreground to background contrast ratio.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
+  <string name="result_message_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than the modified ratio of %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than the modified ratio of %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">The item\'s maximum possible text contrast ratio is %1$.2f based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and non-opaque background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">The item\'s maximum possible text contrast ratio is %1$.2f based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and non-opaque background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than the modified ratio of %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">The item\'s minimum possible text contrast ratio is %1$.2f based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and non-opaque background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">The item\'s minimum possible text contrast ratio is %1$.2f based on a text colour of &lt;tt&gt;%2$s&lt;/tt&gt; and non-opaque background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than the modified ratio of %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;#%2$06X&lt;/tt&gt; and provided background colour of &lt;tt&gt;#%3$06X&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and provided background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider using colours that result in a contrast ratio greater than %4$.2f for small text, or %5$.2f for large text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and provided background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to %4$.2f or greater.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">The item\'s text contrast ratio is %1$.2f. This ratio is based on an estimated foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and an estimated background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">The item\'s text contrast ratio is %1$.2f. This ratio is based on the provided foreground colour of &lt;tt&gt;%2$s&lt;/tt&gt; and provided background colour of &lt;tt&gt;%3$s&lt;/tt&gt;. Consider increasing this item\'s text contrast ratio to the modified ratio of %4$.2f or greater.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">This item\'s foreground and background colours meet the suggested contrast ratio.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed width and scalable text.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">This &lt;tt&gt;Text&lt;/tt&gt; has a fixed width and scalable text.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed height and scalable text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">This &lt;tt&gt;Text&lt;/tt&gt; has a fixed height and scalable text.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">This &lt;tt&gt;TextView&lt;/tt&gt; has a fixed size and scalable text.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">This &lt;tt&gt;Text&lt;/tt&gt; has a fixed size and scalable text.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed width and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">This element has a fixed width and contains a &lt;tt&gt;Text&lt;/tt&gt; element with scalable text.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed height and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">This element has a fixed height and contains a &lt;tt&gt;Text&lt;/tt&gt; element with scalable text.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">This &lt;tt&gt;ViewGroup&lt;/tt&gt; has a fixed size and contains a &lt;tt&gt;TextView&lt;/tt&gt; with scalable text.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">This element has a fixed size and contains a &lt;tt&gt;Text&lt;/tt&gt; element with scalable text.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Consider modifying the &lt;tt&gt;LayoutParams&lt;/tt&gt; to allow for text expansion.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Consider modifying the size modifiers using &lt;tt&gt;sizeIn&lt;/tt&gt; to allow for text expansion.</string>
   
   <string name="check_title_unexposed_text">Unexposed text</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">OCR results were detected inside this ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">Unexposed text detected: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Possible text detected: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Text detected: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Possible text: %1$s</string>
   
-  <string name="result_message_text_detected_in_surface_view">This &lt;tt&gt;SurfaceView&lt;/tt&gt; may not be exposing its content to accessibility services.</string>
+  <string name="result_message_text_detected_in_surface_view">This &lt;tt&gt;SurfaceView&lt;/tt&gt; may not expose its content to accessibility services.</string>
   
-  <string name="result_message_brief_multiple_unexposed_texts">Multiple unexposed pieces of text detected, including \'%1$s\'.</string>
+  <string name="result_message_brief_multiple_unexposed_texts">Possible unexposed texts detected, including \'%1$s\'.</string>
   
-  <string name="result_message_multiple_unexposed_texts">This item may not be exposing its content to accessibility services.</string>
+  <string name="result_message_multiple_unexposed_texts">This item may not expose its content to accessibility services.</string>
   
   <string name="result_message_ocr_result_not_available">OCR results are not available.</string>
   

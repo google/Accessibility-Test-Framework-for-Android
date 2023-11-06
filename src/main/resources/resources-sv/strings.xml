@@ -5,6 +5,8 @@
   
   <string name="result_message_no_content_desc">Det här objektet saknar &lt;tt&gt;android:contentDescription&lt;/tt&gt;.</string>
   
+  <string name="result_message_no_content_desc_generic">Det finns ingen innehållsbeskrivning för objektet.</string>
+  
   <string name="result_message_not_visible">Det här objektet visas inte.</string>
   
   <string name="result_message_not_enabled">Det här objektet är inte aktiverat.</string>
@@ -49,6 +51,8 @@
   
   <string name="actionable">handlingsbar</string>
   
+  <string name="result_message_addendum_conflicting_elements_list">Motstridiga element: &lt;tt&gt;%1$s&lt;/tt&gt;.</string>
+  
   <string name="check_title_duplicate_speakable_text">Objektsbeskrivningar</string>
   
   <string name="result_message_brief_same_speakable_text">Flera objekt har samma beskrivning.</string>
@@ -69,13 +73,13 @@
   
   <string name="result_message_brief_image_contrast_not_sufficient">Du kan öka kontrastförhållandet mellan bildens förgrund och bakgrund.</string>
   
-  <string name="result_message_image_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Det här förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Du kan öka förhållandet till %2$.2f eller större.</string>
+  <string name="result_message_image_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Det här förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;%4$s&lt;/tt&gt;. Du kan öka förhållandet till %2$.2f eller större.</string>
   
-  <string name="result_message_image_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till minst %2$.2f.</string>
+  <string name="result_message_image_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;%4$s&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till minst %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;%4$s&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
   
-  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%4$06X&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
+  <string name="result_message_image_customized_contrast_not_sufficient_confirmed">Bildens kontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;%4$s&lt;/tt&gt;. Det kan vara bra att öka kontrastförhållandet till det ändrade värdet på minst %2$.2f.</string>
   
   <string name="check_title_redundant_description">Objekttypsbeteckning</string>
   
@@ -83,16 +87,28 @@
   
   <string name="result_message_brief_content_desc_contains_redundant_word">Objektets &lt;tt&gt;android:contentDescription&lt;/tt&gt; kan innehålla onödig text.</string>
   
+  <string name="result_message_brief_content_desc_contains_redundant_word_generic">Objektets innehållsbeskrivning kan innehålla onödig text.</string>
+  
   <string name="result_message_content_desc_ends_with_view_type">Objektets &lt;tt&gt;android:contentDescription&lt;/tt&gt;, ”&lt;tt&gt;%1$s&lt;/tt&gt;” slutar med objekttyp.</string>
   
   <string name="result_message_content_desc_contains_redundant_word">Objektets &lt;tt&gt;android:contentDescription&lt;/tt&gt;, ”&lt;tt&gt;%1$s&lt;/tt&gt;” innehåller objekttypen ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="result_message_content_desc_contains_redundant_word_generic">Objektets innehållsbeskrivning ”&lt;tt&gt;%1$s&lt;/tt&gt;” innehåller objekttypen ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="result_message_content_desc_contains_action">Objektets &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     ”&lt;tt&gt;%1$s&lt;/tt&gt;”,
     innehåller åtgärden ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
+  <string name="result_message_content_desc_contains_action_generic">Objektets innehållsbeskrivning,
+    ”&lt;tt&gt;%1$s&lt;/tt&gt;”
+    innehåller åtgärden ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
   <string name="result_message_content_desc_contains_state">Objektets &lt;tt&gt;android:contentDescription&lt;/tt&gt;,
     ”&lt;tt&gt;%1$s&lt;/tt&gt;”,
+    innehåller statusen ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
+  
+  <string name="result_message_content_desc_contains_state_generic">Objektets innehållsbeskrivning,
+    ”&lt;tt&gt;%1$s&lt;/tt&gt;”
     innehåller statusen ”&lt;tt&gt;%2$s&lt;/tt&gt;”.</string>
   
   <string name="button_item_type">knapp</string>
@@ -121,6 +137,10 @@
   
   <string name="result_message_web_content">Webbinnehåll utvärderas inte.</string>
   
+  <string name="result_message_unsupported_compose_content">Innehåll som kan skapas utvärderas inte i denna miljö.</string>
+  
+  <string name="result_message_unsupported_flutter_content">Flutter-innehåll utvärderas inte i denna miljö.</string>
+  
   <string name="result_message_missing_speakable_text">Objektet saknar kanske en beteckning som kan läsas av skärmläsare.</string>
   
   <string name="check_title_text_contrast">Textkontrast</string>
@@ -139,21 +159,29 @@
   
   <string name="result_message_brief_text_contrast_not_sufficient">Du kan öka kontrastförhållandet mellan objekttextens förgrund och bakgrund.</string>
   
-  <string name="result_message_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka textens kontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Du kan öka textens kontrastförhållande till %4$.2f eller större.</string>
   
-  <string name="result_message_customized_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Överväg att använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f.</string>
+  <string name="result_message_customized_textview_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på textfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Överväg att använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
+  <string name="result_message_textview_upper_bound_contrast_not_sufficient">Objektets största möjliga textkontrastförhållande är %1$.2f, baserat på en textfärg som är &lt;tt&gt;%2$s&lt;/tt&gt; och en genomskinlig bakgrundsfärg som är &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller mer.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_customized_textview_upper_bound_contrast_not_sufficient">Objektets största möjliga textkontrastförhållande är %1$.2f, baserat på en textfärg som är &lt;tt&gt;%2$s&lt;/tt&gt; och en genomskinlig bakgrundsfärg som är &lt;tt&gt;%3$s&lt;/tt&gt;. Överväg att använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
+  <string name="result_message_textview_lower_bound_contrast_not_sufficient">Objektets lägsta möjliga textkontrastförhållande är %1$.2f, baserat på en textfärg som är &lt;tt&gt;%2$s&lt;/tt&gt; och en genomskinlig bakgrundsfärg som är &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller mer.</string>
   
-  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_customized_textview_lower_bound_contrast_not_sufficient">Objektets lägsta möjliga textkontrastförhållande är %1$.2f, baserat på en textfärg som är &lt;tt&gt;%2$s&lt;/tt&gt; och en genomskinlig bakgrundsfärg som är &lt;tt&gt;%3$s&lt;/tt&gt;. Överväg att använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
   
-  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;#%2$06X&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;#%3$06X&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Du kan använda färger som resulterar i ett kontrastförhållande som är större än %4$.2f för liten text eller %5$.2f för stor text.</string>
+  
+  <string name="result_message_textview_heuristic_contrast_not_sufficient_when_text_size_available_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Det kan vara bra att öka objektets textkontrastförhållande till %4$.2f eller större.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den uppskattade förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den uppskattade bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
+  
+  <string name="result_message_textview_heuristic_customized_contrast_not_sufficient_confirmed">Objektets textkontrastförhållande är %1$.2f. Förhållandet baseras på den angivna förgrundsfärgen &lt;tt&gt;%2$s&lt;/tt&gt; och den angivna bakgrundsfärgen &lt;tt&gt;%3$s&lt;/tt&gt;. Du kan öka objektets kontrastförhållande till %4$.2f eller större.</string>
   
   <string name="result_message_contrast_sufficient_confirmed">Objektets förgrunds- och bakgrundsfärger uppfyller det föreslagna kontrastförhållandet.</string>
   
@@ -283,17 +311,31 @@
   
   <string name="result_message_brief_fixed_width_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast bredd och skalbar text.</string>
   
+  <string name="result_message_brief_fixed_width_text_view_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; har fast bredd och skalbar text.</string>
+  
   <string name="result_message_brief_fixed_height_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast höjd och skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_height_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; har fast höjd och skalbar text.</string>
   
   <string name="result_message_brief_fixed_size_text_view_with_scaled_text">&lt;tt&gt;TextView&lt;/tt&gt; har fast storlek och skalbar text.</string>
   
+  <string name="result_message_brief_fixed_size_text_with_scaled_text_compose">&lt;tt&gt;Text&lt;/tt&gt; har fast storlek och skalbar text.</string>
+  
   <string name="result_message_brief_fixed_width_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast bredd och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
+  
+  <string name="result_message_brief_fixed_width_parent_with_scaled_text_compose">Det här elementet har fast bredd och innehåller ett &lt;tt&gt;Text&lt;/tt&gt;-element med skalbar text.</string>
   
   <string name="result_message_brief_fixed_height_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast höjd och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
   
+  <string name="result_message_brief_fixed_height_parent_with_scaled_text_compose">Det här elementet har fast höjd och innehåller ett &lt;tt&gt;Text&lt;/tt&gt;-element med skalbar text.</string>
+  
   <string name="result_message_brief_fixed_size_view_group_with_scaled_text">&lt;tt&gt;ViewGroup&lt;/tt&gt; har fast storlek och innehåller &lt;tt&gt;TextView&lt;/tt&gt; med skalbar text.</string>
   
+  <string name="result_message_brief_fixed_size_parent_with_scaled_text_compose">Det här elementet har fast storlek och innehåller ett &lt;tt&gt;Text&lt;/tt&gt;-element med skalbar text.</string>
+  
   <string name="result_message_fixed_size_text_view_with_scaled_text">Du kan modifiera &lt;tt&gt;LayoutParams&lt;/tt&gt; för att utvidga texten.</string>
+  
+  <string name="result_message_fixed_size_text_with_scaled_text_compose">Överväg att ändra storleksmodifieraren med hjälp av &lt;tt&gt;sizeIn&lt;/tt&gt; så att texten utökas.</string>
   
   <string name="check_title_unexposed_text">Synlig text saknas</string>
   
@@ -301,15 +343,15 @@
   
   <string name="result_message_text_detected_in_image_view">OCR-resultat upptäcktes i ImageView.</string>
   
-  <string name="result_message_brief_unexposed_text">Text som saknas har identifierats: %1$s</string>
+  <string name="result_message_brief_unexposed_text">Möjlig text har identifierats: %1$s</string>
   
-  <string name="result_message_brief_text_detected_in_image_view">Text har identifierats: %1$s</string>
+  <string name="result_message_brief_text_detected_in_image_view">Möjlig text: %1$s</string>
   
   <string name="result_message_text_detected_in_surface_view">Denna &lt;tt&gt;SurfaceView&lt;/tt&gt; kanske inte visar sitt innehåll för tillgänglighetstjänster.</string>
   
   <string name="result_message_brief_multiple_unexposed_texts">Flera texter som saknas har identifierats, inklusive %1$s.</string>
   
-  <string name="result_message_multiple_unexposed_texts">Denna kanske inte visar sitt innehåll för tillgänglighetstjänster.</string>
+  <string name="result_message_multiple_unexposed_texts">Objektet får inte exponera sitt innehåll för tillgänglighetstjänster.</string>
   
   <string name="result_message_ocr_result_not_available">OCR-resultat är inte tillgängliga.</string>
   

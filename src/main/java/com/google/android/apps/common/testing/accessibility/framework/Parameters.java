@@ -9,7 +9,7 @@ import com.google.android.apps.common.testing.accessibility.framework.utils.cont
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 /** Supplemental input data or preferences for an {@link AccessibilityHierarchyCheck}. */
-public class Parameters {
+public class Parameters implements Cloneable {
 
   private @Nullable Image screenCapture;
   private @Nullable Double customTextContrastRatio;
@@ -220,5 +220,16 @@ public class Parameters {
       ocrResult = ocrEngine.detect(screenCapture);
     }
     return ocrResult;
+  }
+
+  /**
+   * Performs a "shallow copy" of this object.
+   *
+   * <p>The fields screenCapture (Image) and ocrEngine (OcrEngine) are neither copied nor immutable,
+   * so the clone will not be completely independent of the original.
+   */
+  @Override
+  public Parameters clone() throws CloneNotSupportedException {
+    return (Parameters) super.clone();
   }
 }
