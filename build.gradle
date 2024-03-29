@@ -79,7 +79,7 @@ publishing {
         mavenAar(MavenPublication) {
             groupId 'com.google.android.apps.common.testing.accessibility.framework'
             artifactId 'accessibility-test-framework'
-            version '4.1.0'
+            version '4.1.1'
             from components.android
             artifact sourceJar
             artifact javadocJar
