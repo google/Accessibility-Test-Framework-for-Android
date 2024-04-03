@@ -17,6 +17,8 @@ package com.google.android.apps.common.testing.accessibility.framework.integrati
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import androidx.test.espresso.EspressoException;
+
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheckResultDescriptor;
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 import java.util.List;
@@ -25,7 +27,8 @@ import java.util.Locale;
 /** An exception class to be used for throwing exceptions with accessibility results. */
 public final class AccessibilityViewCheckException
     extends com.google.android.apps.common.testing.accessibility.framework.integrations
-        .AccessibilityViewCheckException {
+        .AccessibilityViewCheckException
+    implements EspressoException {
 
   private final AccessibilityCheckResultDescriptor resultDescriptor;
 
