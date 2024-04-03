@@ -4,9 +4,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.14'
-        classpath 'digital.wup:android-maven-publish:3.6.3'
+        classpath 'com.android.tools.build:gradle:8.3.1'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
     }
 }
 
@@ -21,8 +20,9 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '29.0.3'
+    namespace 'com.google.android.apps.common.testing.accessibility.framework'
+    compileSdk 34
+
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 34
@@ -33,6 +33,13 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    publishing {
+        singleVariant('release') {
+            withJavadocJar()
+            withSourcesJar()
+        }
     }
 }
 
@@ -53,24 +60,6 @@ protobuf {
   }
 }
 
-// Creates the source jar for release to maven central.
-task sourceJar(type: Jar) {
-    classifier "sources"
-    from android.sourceSets.main.java.srcDirs
-}
-
-// Creates javadoc for the project.
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    failOnError false // Currently cannot import android sdk javadoc references so we ignore errors.
-}
-
-// Creates the source javadoc jar for release to maven central.
-task javadocJar(type: Jar) {
-    classifier "javadoc"
-    from javadoc
-}
-apply plugin: 'digital.wup.android-maven-publish'
 apply plugin: 'maven-publish'
 
 // Creates the artifacts for release to maven central.
@@ -80,9 +69,9 @@ publishing {
             groupId 'com.google.android.apps.common.testing.accessibility.framework'
             artifactId 'accessibility-test-framework'
             version '4.1.1'
-            from components.android
-            artifact sourceJar
-            artifact javadocJar
+            afterEvaluate {
+                from components.release
+            }
             pom {
                 name = 'Accessibility Test Framework'
                 description = 'Library used to test for common accessibility issues.'
